@@ -46,9 +46,11 @@ class SyntheaRepository:
             if frame is None:
                 continue
             if "PATIENT" in frame.columns:
-                result[name] = frame[frame["PATIENT"] == patient_id]
+                ids = frame["PATIENT"].astype(str).str.strip()
+                result[name] = frame[ids == str(patient_id).strip()]
             elif name == "Patient" and "Id" in frame.columns:
-                result[name] = frame[frame["Id"] == patient_id]
+                ids = frame["Id"].astype(str).str.strip()
+                result[name] = frame[ids == str(patient_id).strip()]
             else:
                 result[name] = pd.DataFrame()
         return result
