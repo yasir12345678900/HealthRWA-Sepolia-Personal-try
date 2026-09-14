@@ -429,7 +429,7 @@ if role == "Doctor":
                         for module, records in data.items():
 
                             with st.expander(
-                                f"Medical Module: {module.upper()}",
+                                module.upper(),
                                 expanded=True
                             ):
                                 if records.empty:
