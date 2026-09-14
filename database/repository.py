@@ -1,4 +1,4 @@
-import pandas as pd
+import re\nimport pandas as pd
 
 from database.did_mapping import create_patient_did
 
@@ -31,8 +31,7 @@ class SyntheaRepository:
     def resolve_did(self, did):
         return did.replace("did:patient:", "")
 
-    def query_patient(self, did, scope):
-        patient_id = self.resolve_did(did)
+    @staticmethod\n    def _canonical_id(value):\n        text = str(value).strip().replace("\\ufeff", "")\n        match = re.search(r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}", text)\n        return match.group(0).lower() if match else text.lower()\n\n    def query_patient(self, did, scope):\n        patient_id = self._canonical_id(self.resolve_did(did))
         result = {}
         datasets = {
             "Patient": self.patients,
