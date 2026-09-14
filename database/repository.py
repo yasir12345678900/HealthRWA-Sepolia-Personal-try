@@ -1,4 +1,5 @@
-import re\nimport pandas as pd
+import re
+import pandas as pd
 
 from database.did_mapping import create_patient_did
 
@@ -15,24 +16,35 @@ class SyntheaRepository:
     def _load_csv(path, filename):
         file_path = f"{path}/{filename}"
         try:
-            return pd.read_csv(file_path)
+            frame = pd.read_csv(file_path, encoding="utf-8-sig")
+            frame.columns = [str(column).strip().upper() for column in frame.columns]
+            return frame
         except (UnicodeDecodeError, pd.errors.ParserError, OSError) as exc:
-            # Keep the dashboard usable when an optional Synthea export is
-            # missing or damaged; the affected scope simply returns no rows.
             print(f"Warning: could not load {file_path}: {exc}")
             return pd.DataFrame()
 
+    @staticmethod
+    def _canonical_id(value):
+        text = str(value).strip().replace("\ufeff", "")
+        match = re.search(
+            r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-"
+            r"[0-9a-fA-F]{4}-[0-9a-fA-F]{12}",
+            text,
+        )
+        return match.group(0).lower() if match else text.lower()
+
     def get_patient_dids(self):
-        if "Id" not in self.patients.columns:
+        if "ID" not in self.patients.columns:
             return pd.DataFrame(columns=["DID", "FIRST", "LAST", "BIRTHDATE"])
-        self.patients["DID"] = self.patients["Id"].apply(create_patient_did)
-        return self.patients[["DID", "FIRST", "LAST", "BIRTHDATE"]]
+        self.patients["DID"] = self.patients["ID"].apply(create_patient_did)
+        columns = [column for column in ["DID", "FIRST", "LAST", "BIRTHDATE"] if column in self.patients]
+        return self.patients[columns]
 
     def resolve_did(self, did):
-        return did.replace("did:patient:", "")
+        return str(did).replace("did:patient:", "", 1)
 
-    @staticmethod\n    def _canonical_id(value):\n        text = str(value).strip().replace("\\ufeff", "")\n        match = re.search(r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}", text)\n        return match.group(0).lower() if match else text.lower()\n\n    def query_patient(self, did, scope):\n        patient_id = self._canonical_id(self.resolve_did(did))
-        result = {}
+    def query_patient(self, did, scope):
+        patient_id = self._canonical_id(self.resolve_did(did))
         datasets = {
             "Patient": self.patients,
             "Observation": self.observations,
@@ -40,16 +52,13 @@ class SyntheaRepository:
             "Condition": self.conditions,
             "Procedure": self.procedures,
         }
+        result = {}
         for name in scope:
-            frame = datasets.get(name)
-            if frame is None:
-                continue
-            if "PATIENT" in frame.columns:
-                ids = frame["PATIENT"].astype(str).str.strip()
-                result[name] = frame[ids == str(patient_id).strip()]
-            elif name == "Patient" and "Id" in frame.columns:
-                ids = frame["Id"].astype(str).str.strip()
-                result[name] = frame[ids == str(patient_id).strip()]
-            else:
+            frame = datasets.get(name, pd.DataFrame())
+            id_column = "PATIENT" if "PATIENT" in frame.columns else ("ID" if name == "Patient" and "ID" in frame.columns else None)
+            if id_column is None:
                 result[name] = pd.DataFrame()
+                continue
+            ids = frame[id_column].map(self._canonical_id)
+            result[name] = frame.loc[ids == patient_id].copy()
         return result
