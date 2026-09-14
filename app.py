@@ -432,10 +432,17 @@ if role == "Doctor":
                                 f"Medical Module: {module.upper()}",
                                 expanded=True
                             ):
-                                st.dataframe(
-                                    records,
-                                    use_container_width=True
-                                )
+                                if records.empty:
+                                    st.warning("No records found for this patient in this module.")
+                                else:
+                                    st.dataframe(records, use_container_width=True)
+                                    st.download_button(
+                                        "Download CSV",
+                                        records.to_csv(index=False).encode("utf-8"),
+                                        file_name=f"{module.lower()}_records.csv",
+                                        mime="text/csv",
+                                        key=f"download_{module.lower()}",
+                                    )
 
                     # ---------------------------------
                     # ACCESS DENIED
