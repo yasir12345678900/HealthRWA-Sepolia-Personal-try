@@ -22,6 +22,8 @@ from models.access import AccessRequest
 # MEDICAL & BLOCKCHAIN THEME CSS INJECTION
 # ==========================================
 st.set_page_config(page_title="HALAH Consent Management", page_icon="", layout="wide")
+import halah_theme
+halah_theme.apply_theme()
 
 st.markdown("""
 <style>
