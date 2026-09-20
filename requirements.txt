@@ -5,4 +5,4 @@ web3
 cryptography
 boto3
 python-dateutil
-plotly
+plotlypython-dotenv

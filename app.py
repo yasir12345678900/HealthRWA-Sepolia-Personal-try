@@ -6,6 +6,7 @@ Date (YYYY-MM-DD): 2026-06-08, 2026-08-02
 '''
 from datetime import datetime, date, time
 import streamlit as st
+from blockchain import onchain_ui  # on-chain mode (Sepolia)
 import pandas as pd
 from services.consent_service import *
 from services.identity_service import *
@@ -136,6 +137,7 @@ role = st.sidebar.selectbox(
     "Select Access Role",
     ["Patient", "Guardian", "Doctor", "Auditor"]
 )
+onchain_ui.render_chain_badge()
 
 # ==========================
 # ROLE: Patient (SRQ1)
@@ -260,6 +262,7 @@ if role == "Guardian":
                         • <b>Status:</b> Consent Fully Activated on-chain.
                     </div>
                     """, unsafe_allow_html=True)
+                    onchain_ui.render_onchain_mint(consent, audit_db)
 
 # ==========================
 # ROLE: Doctor (SRQ3, SRQ4, SRQ5)
