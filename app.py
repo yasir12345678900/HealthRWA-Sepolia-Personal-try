@@ -1,3 +1,9 @@
+import os as _os, streamlit as _st
+_cn=_os.environ.get("CODESPACE_NAME","")
+_dom=_os.environ.get("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN","app.github.dev")
+if _cn:  # HALAH_OPEN_LINK
+    _st.info("open in a real browser tab:")
+    _st.markdown(f"## \U0001F310 [OPEN HALAH APP](https://{_cn}-8501.{_dom})")
 '''
 HALAH: A Blockchain-Based Patient Consent Management System
 History Access Link for Authorised Healthcare Version 1
