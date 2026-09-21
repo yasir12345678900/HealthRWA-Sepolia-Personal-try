@@ -46,6 +46,7 @@ def render_onchain_mint(consent, audit_db):
     audit_db.log(actor_did="Blockchain", actor_role="SmartContract", action="ONCHAIN_MINT",
                  patient_did=consent.patient_did, consent_id=consent.consent_id,
                  scope=consent.scope, purpose=consent.purpose, result="SUCCESS",
+                 tx_hash=r["tx_hash"], block_number=r["block_number"],
                  metadata={"tx_hash": r["tx_hash"], "token_id": r.get("token_id"),
                            "block": r["block_number"], "gas_used": r["gas_used"],
                            "contract": r["contract"], "explorer": r["explorer_tx"]})

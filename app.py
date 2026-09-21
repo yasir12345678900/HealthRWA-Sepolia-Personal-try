@@ -1,9 +1,3 @@
-import os as _os, streamlit as _st
-_cn=_os.environ.get("CODESPACE_NAME","")
-_dom=_os.environ.get("GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN","app.github.dev")
-if _cn:  # HALAH_OPEN_LINK
-    _st.info("open in a real browser tab:")
-    _st.markdown(f"## \U0001F310 [OPEN HALAH APP](https://{_cn}-8501.{_dom})")
 '''
 HALAH: A Blockchain-Based Patient Consent Management System
 History Access Link for Authorised Healthcare Version 1
@@ -201,14 +195,14 @@ if role == "Patient":
             result="SUCCESS"
         )
         
-        st.success(" Smart Contract Successfully Deployed & Logged!")
+        st.success("Consent contract created and logged (off-chain).")
         # 视觉渲染渲染区块链生成的哈希结果
         st.markdown(f"""
         <div class="blockchain-badge">
-            <b>[BLOCKCHAIN RECEIPT]</b><br>
+            <b>[CONSENT CREATED - OFF-CHAIN]</b><br>
             • <b>Consent ID:</b> {consent.consent_id}<br>
-            • <b>TxHash:</b> {getattr(log_entry, 'tx_hash', '0x1c8b9f...a4e2d3')} <br>
-            • <b>Block Number:</b> #{getattr(log_entry, 'block_number', '18402195')}
+            • <b>TxHash:</b> OFF-CHAIN - anchoring happens after guardian 2/2 approval <br>
+            • <b>Block Number:</b> pending
         </div>
         """, unsafe_allow_html=True)
 
@@ -249,7 +243,7 @@ if role == "Guardian":
 
                 # 如果多签满足阈值，铸造SBT令牌
                 if len(consent.signatures) == consent.threshold:
-                    consent.token_id = "SBT001"
+                    consent.token_id = f"SBT-LOCAL-{consent.consent_id[:8]}"
                     mint_log = audit_db.log(
                         actor_did="Blockchain",
                         actor_role="SmartContract",
@@ -263,9 +257,9 @@ if role == "Guardian":
                     st.balloons()
                     st.markdown(f"""
                     <div class="blockchain-badge" style="border-left-color: #00f5d4;">
-                        <b>[SBT MINTED SUCCESS]</b><br>
+                        <b>[SBT MINTED - LOCAL LEDGER]</b><br>
                         • <b>Soulbound Token ID:</b> {consent.token_id}<br>
-                        • <b>Status:</b> Consent Fully Activated on-chain.
+                        • <b>Status:</b> 2/2 guardian approval reached - Sepolia anchoring result shown below.
                     </div>
                     """, unsafe_allow_html=True)
                     onchain_ui.render_onchain_mint(consent, audit_db)
@@ -533,8 +527,8 @@ if role == "Auditor":
     )
 
     m4.metric(
-        "Blockchain Integrity",
-        "VERIFIED"
+        "On-chain Anchors",
+        int(audit_df["onchain"].fillna(False).sum()) if "onchain" in audit_df.columns else 0
     )
 
     # ---------------------------------

@@ -5,4 +5,6 @@ web3
 cryptography
 boto3
 python-dateutil
-plotlypython-dotenv
+plotly
+python-dotenv
+pytest

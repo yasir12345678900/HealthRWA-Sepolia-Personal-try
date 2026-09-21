@@ -32,7 +32,8 @@ section[data-testid="stMain"] [data-testid="stMarkdownContainer"] p{color:var(--
 [data-testid="stMetricLabel"]{color:var(--muted)!important;}
 section[data-testid="stMain"] .stButton>button{background:linear-gradient(90deg,#2ec4b6 0%,#39d98a 100%)!important;color:#06222e!important;font-weight:800!important;border:none!important;border-radius:12px!important;padding:12px 26px!important;width:100%;box-shadow:0 8px 20px rgba(46,196,182,.28)!important;transition:all .28s cubic-bezier(.2,.8,.2,1)!important;}
 section[data-testid="stMain"] .stButton>button:hover{background:linear-gradient(90deg,#E07B1F 0%,#F5C542 100%)!important;transform:translateY(-2px) scale(1.01);box-shadow:0 12px 26px rgba(224,123,31,.38)!important;}
-[data-testid="stTextInput"] input,[data-testid="stTextArea"] textarea{color:var(--text)!important;}
+[data-testid="stTextInput"] input,[data-testid="stTextArea"] textarea,[data-baseweb="input"] input,[data-baseweb="textarea"] textarea{color:#eaf6f6!important;-webkit-text-fill-color:#eaf6f6!important;caret-color:#2ec4b6!important;}
+[data-testid="stTextInput"] input::placeholder,[data-testid="stTextArea"] textarea::placeholder{color:#7fa8b3!important;-webkit-text-fill-color:#7fa8b3!important;}
 [data-testid="stTextInput"]>div,[data-testid="stTextArea"]>div,[data-baseweb="select"]>div{background:#092a3a!important;border-radius:10px!important;border:1px solid rgba(46,196,182,.25)!important;}
 [data-testid="stTextInput"]>div:focus-within,[data-baseweb="select"]>div:focus-within{border-color:#2ec4b6!important;box-shadow:0 0 0 3px rgba(46,196,182,.22)!important;}
 [data-testid="stWidgetLabel"] p{color:#bfe3e0!important;font-weight:600;}
