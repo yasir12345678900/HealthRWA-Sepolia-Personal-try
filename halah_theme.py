@@ -53,6 +53,17 @@ div[data-testid="stAlert"]:has([data-testid="stAlertContentError"]){border-left:
 [data-testid="stSidebar"] [data-testid="stWidgetLabel"] p{color:#2ec4b6!important;letter-spacing:1.5px;text-transform:uppercase;font-size:.8rem;}
 [data-testid="stAppDeployButton"]{display:none;}
 header[data-testid="stHeader"]{background:transparent!important;}
+/* HALAH_INPUT_BLACK */
+[data-testid="stTextInput"]>div,[data-testid="stTextArea"]>div,[data-baseweb="select"]>div,[data-baseweb="input"],[data-baseweb="base-input"],[data-baseweb="textarea"]{background:#f2f7f8!important;border:1px solid rgba(46,196,182,.55)!important;border-radius:10px!important;}
+[data-testid="stTextInput"] input,[data-testid="stTextArea"] textarea,[data-baseweb="input"] input,[data-baseweb="base-input"] input,[data-baseweb="textarea"] textarea{color:#000!important;-webkit-text-fill-color:#000!important;background:#f2f7f8!important;caret-color:#000!important;font-weight:600!important;}
+[data-testid="stTextInput"] input::placeholder,[data-testid="stTextArea"] textarea::placeholder{color:#4a6670!important;-webkit-text-fill-color:#4a6670!important;opacity:1!important;}
+[data-baseweb="select"] div,[data-baseweb="select"] span,[data-baseweb="select"] input{color:#000!important;-webkit-text-fill-color:#000!important;}
+[data-baseweb="select"] svg{fill:#0b1f28!important;}
+[data-baseweb="popover"] ul,[data-baseweb="menu"]{background:#ffffff!important;}
+[data-baseweb="popover"] li,[data-baseweb="menu"] li,[data-baseweb="popover"] li *{color:#000!important;-webkit-text-fill-color:#000!important;}
+[data-baseweb="tag"]{background:#2ec4b6!important;border:1px solid #1fa89b!important;}
+[data-baseweb="tag"] span,[data-baseweb="tag"] *{color:#06222e!important;-webkit-text-fill-color:#06222e!important;font-weight:700!important;}
+[data-testid="stTextInput"]>div:focus-within,[data-testid="stTextArea"]>div:focus-within,[data-baseweb="select"]>div:focus-within{border-color:#2ec4b6!important;box-shadow:0 0 0 3px rgba(46,196,182,.35)!important;}
 </style>
 """
 
