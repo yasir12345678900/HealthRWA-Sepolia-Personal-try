@@ -268,9 +268,26 @@ if role == "Guardian":
         elif len(consent.signatures) >= consent.threshold:
             st.warning(f"Threshold {len(consent.signatures)}/{consent.threshold} reached but NOT anchored on Sepolia yet (token: {consent.token_id or '-'}). "
                        "Click below and wait ~30 s without touching anything.")
-            if st.button("Anchor on Sepolia now", type="primary", key=f"anchor_{consent.consent_id}"):
-                onchain_ui.render_onchain_mint(consent, audit_db)
-                consent_db.update(consent)
+            _c1, _c2 = st.columns(2)
+            if _c1.button("Sync from Sepolia (find existing mint)", key=f"sync_{consent.consent_id}"):
+                from services import anchor_service
+                try:
+                    _res = anchor_service.reconcile(consent, audit_db, consent_db)
+                    if _res["status"] == "reconciled":
+                        st.success(f"Found on-chain: token #{_res['token_id']} block {_res['block_number']} - ledger updated ({_res['duplicates']} duplicate mint(s))")
+                        st.markdown(f"[View transaction on Etherscan](https://sepolia.etherscan.io/tx/{_res['tx_hash']})")
+                    elif _res["status"] == "none":
+                        st.info("No matching mint found on-chain for this consent.")
+                except Exception as _e:
+                    st.warning(f"Sync failed: {_e}")
+            if _c2.button("Anchor on Sepolia now (background)", type="primary", key=f"anchor_{consent.consent_id}"):
+                onchain_ui.render_onchain_anchor_async(consent, audit_db, consent_db)
+            from services import anchor_service as _as
+            _j = _as.job_status(consent.consent_id)
+            if _j and _j.get("status") == "done":
+                st.success(f"Anchored - token #{_j['result'].get('token_id')} block {_j['result'].get('block_number')}")
+            elif _j and _j.get("status") == "running":
+                st.info("Anchoring in progress - refresh in ~30 s.")
         did = st.selectbox("Select Your Guardian DID Identity", consent.guardian_dids)
 
         if st.button("Sign Consent via VC"):
@@ -331,8 +348,7 @@ if role == "Guardian":
                         • <b>Status:</b> 2/2 guardian approval reached - Sepolia anchoring result shown below.
                     </div>
                     """, unsafe_allow_html=True)
-                    onchain_ui.render_onchain_mint(consent, audit_db)
-                    consent_db.update(consent)
+                    onchain_ui.render_onchain_anchor_async(consent, audit_db, consent_db)
 
 # ==========================
 # ROLE: Doctor (SRQ3, SRQ4, SRQ5)

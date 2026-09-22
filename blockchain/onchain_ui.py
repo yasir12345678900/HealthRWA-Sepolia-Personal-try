@@ -66,3 +66,20 @@ def render_onchain_mint(consent, audit_db):
         else:
             st.link_button("View contract on Etherscan", r["explorer_contract"])
     return r
+
+
+def render_onchain_anchor_async(consent, audit_db, consent_db):
+    from services import anchor_service
+    if not bc.onchain_enabled():
+        st.caption("Demo mode - on-chain anchoring skipped"); return None
+    job = anchor_service.job_status(consent.consent_id)
+    if job is None or job.get("status") == "failed":
+        job = anchor_service.anchor_async(consent, audit_db, consent_db)
+    if job.get("status") == "running":
+        st.info("Anchoring on Sepolia in the background (15-30 s). You may navigate away - the result is written to the ledger automatically. Refresh or open Auditor to see it.")
+    elif job.get("status") == "done":
+        r = job["result"]; st.success(f"On-chain anchor confirmed - token #{r.get('token_id')} - block {r.get('block_number')}")
+        st.markdown(f"[View transaction on Etherscan]({r.get('explorer_tx')})")
+    elif job.get("status") == "failed":
+        st.warning(f"On-chain anchoring failed: {job.get('error')}")
+    return job
