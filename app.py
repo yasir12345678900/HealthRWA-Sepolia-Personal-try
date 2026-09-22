@@ -261,6 +261,16 @@ if role == "Guardian":
     
     if consent:
         st.info(f"Found active transaction for Patient: `{consent.patient_did}`")
+        _tid = str(consent.token_id or "")
+        _anchored = _tid.startswith("SBT-") and _tid[4:].isdigit()
+        if _anchored:
+            st.success(f"Already anchored on Sepolia - token #{_tid[4:]}")
+        elif len(consent.signatures) >= consent.threshold:
+            st.warning(f"Threshold {len(consent.signatures)}/{consent.threshold} reached but NOT anchored on Sepolia yet (token: {consent.token_id or '-'}). "
+                       "Click below and wait ~30 s without touching anything.")
+            if st.button("Anchor on Sepolia now", type="primary", key=f"anchor_{consent.consent_id}"):
+                onchain_ui.render_onchain_mint(consent, audit_db)
+                consent_db.update(consent)
         did = st.selectbox("Select Your Guardian DID Identity", consent.guardian_dids)
 
         if st.button("Sign Consent via VC"):
@@ -567,6 +577,9 @@ if role == "Auditor":
         st.stop()
 
     audit_df = pd.DataFrame(raw_audit_data)
+    _first_cols = [c for c in ["timestamp", "action", "actor_role", "onchain", "tx_hash", "block_number", "consent_id", "result"] if c in audit_df.columns]
+    if _first_cols:
+        audit_df = audit_df[_first_cols + [c for c in audit_df.columns if c not in _first_cols]]
 
     # ---------------------------------
     # Dashboard Metrics
@@ -676,7 +689,7 @@ if role == "Auditor":
     # ---------------------------------
     # Complete Ledger
     # ---------------------------------
-    st.subheader("Complete Blockchain Audit Ledger")
+    st.subheader("Audit Ledger - local events (tx_hash = None) + on-chain anchors (onchain = True)")
 
     st.dataframe(
         audit_df,
