@@ -21,3 +21,8 @@ class Consent:
     expiry_date:str=None
     state:str="CREATED"
     token_id:str=None
+    revoked:bool=False
+    jurisdiction:str="AU"
+    zk_secret:str=None
+    zk_commitment:str=None
+    signature_data:dict=field(default_factory=dict)

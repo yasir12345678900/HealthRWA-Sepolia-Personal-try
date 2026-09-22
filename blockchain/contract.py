@@ -14,6 +14,7 @@ and produce Etherscan links. Configuration comes ONLY from the environment
 Never commit real keys. mintConsent() is onlyOwner, so the signer must be the
 account that deployed the contract.
 '''
+import logging
 import os
 import json
 from dotenv import load_dotenv
@@ -28,7 +29,11 @@ EXPLORER = "https://sepolia.etherscan.io"
 ABI_DIR = os.path.join(os.path.dirname(__file__), "abi")
 
 
-def load_artifact(name="ConsentSBTv2.json"):
+CONTRACT_VERSION = int(os.environ.get("CONTRACT_VERSION", "2"))
+
+
+def load_artifact(name=None):
+    name = name or f"ConsentSBTv{CONTRACT_VERSION}.json"
     with open(os.path.join(ABI_DIR, name)) as f:
         return json.load(f)
 
@@ -64,6 +69,9 @@ def explorer_token(contract, token_id):
     return f"{EXPLORER}/nft/{contract}/{token_id}"
 
 
+log = logging.getLogger("halah.chain")
+
+
 class ConsentContract:
     def __init__(self, w3=None, address=None, private_key=None, abi=None):
         self.rpc = os.environ.get("RPC_URL", DEFAULT_RPC)
@@ -87,8 +95,8 @@ class ConsentContract:
         owner = None
         try:
             owner = self.contract.functions.owner().call()
-        except Exception:
-            pass
+        except Exception as e:
+            log.warning("owner() call failed: %s", e)
         return {
             "rpc": self.rpc,
             "chain_id": chain_id,
@@ -130,8 +138,8 @@ class ConsentContract:
             evs = self.contract.events.Transfer().process_receipt(receipt, errors=DISCARD)
             if evs:
                 token_id = int(evs[0]["args"]["tokenId"])
-        except Exception:
-            pass
+        except Exception as e:
+            log.warning("could not decode Transfer event for tx %s: %s", tx_hash, e)
         out = {
             "tx_hash": tx_hash,
             "status": int(receipt["status"]),
@@ -153,4 +161,35 @@ class ConsentContract:
 
     def revoke(self, token_id):
         tx_hash, receipt = self._send(self.contract.functions.revoke(int(token_id)))
-        return {"tx_hash": tx_hash, "status": int(receipt["status"]), "explorer_tx": explorer_tx(tx_hash)}
+        return {"tx_hash": tx_hash, "status": int(receipt["status"]), "block_number": int(receipt["blockNumber"]),
+                "gas_used": int(receipt["gasUsed"]), "explorer_tx": explorer_tx(tx_hash)}
+
+    # ---- v3 (C = (I,A,P,T,L,E)) ------------------------------------------
+    def has_v3(self):
+        return any(x.get("name") == "mintConsentV3" for x in self.abi if x.get("type") == "function")
+
+    def mint_consent_v3(self, patient_did, requester_did, purpose, not_before_ts, expiry_ts, jurisdiction="AU", burn_auth=2):
+        """VT: notBefore/expiry, VL: 2-letter jurisdiction, ERC-5484 burnAuth (0 Issuer,1 Owner,2 Both,3 Neither)."""
+        jur = (jurisdiction or "")[:2].encode("ascii").ljust(2, b"\0") if jurisdiction else b"\0\0"
+        fn = self.contract.functions.mintConsentV3(did_to_address(patient_did), did_to_address(requester_did), str(purpose),
+                                                   int(not_before_ts), int(expiry_ts), jur, int(burn_auth))
+        tx_hash, receipt = self._send(fn)
+        token_id = None
+        try:
+            evs = self.contract.events.ConsentMinted().process_receipt(receipt, errors=DISCARD)
+            if evs: token_id = int(evs[0]["args"]["tokenId"])
+        except Exception as e:
+            log.warning("could not decode ConsentMinted for %s: %s", tx_hash, e)
+        return {"tx_hash": tx_hash, "status": int(receipt["status"]), "block_number": int(receipt["blockNumber"]),
+                "gas_used": int(receipt["gasUsed"]), "token_id": token_id, "explorer_tx": explorer_tx(tx_hash),
+                "explorer_token": explorer_token(self.address, token_id) if token_id is not None else None,
+                "contract": self.address, "version": 3}
+
+    def check_valid_at(self, token_id, jurisdiction="AU"):
+        jur = jurisdiction.encode("ascii")[:2].ljust(2, b"\0")
+        return bool(self.contract.functions.checkValidAt(int(token_id), jur).call())
+
+    def burn(self, token_id):
+        tx_hash, receipt = self._send(self.contract.functions.burn(int(token_id)))
+        return {"tx_hash": tx_hash, "status": int(receipt["status"]), "block_number": int(receipt["blockNumber"]),
+                "explorer_tx": explorer_tx(tx_hash)}

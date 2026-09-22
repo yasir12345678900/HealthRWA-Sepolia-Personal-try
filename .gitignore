@@ -3,3 +3,11 @@
 *.swp
 *.pyc
 __pycache__/
+*.db
+data/halah.db
+tools/node_modules/
+tools/package*.json
+zk/build/
+zk/node_modules/
+zk/circom
+zk/package*.json

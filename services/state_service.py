@@ -7,13 +7,14 @@ Date: 2026-06-22, 2026-08-01
 from datetime import datetime
 
 def evaluate_state(consent):
+    if getattr(consent, "revoked", False):
+        consent.state = "REVOKED"
+        return consent.state
+
     now = datetime.now()
     start = datetime.fromisoformat(consent.start_date)
     expiry = datetime.fromisoformat(consent.expiry_date)
 
-    # if consent.revoked:
-    #     consent.state = "REVOKED"
-    #     return consent.state
 
     if len(consent.signatures) < consent.threshold:
         consent.state = "PENDING_SIGNATURE"

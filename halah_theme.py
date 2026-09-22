@@ -73,8 +73,8 @@ HERO = """
   <div class="halah-tag">History Access Link for Authorised Healthcare</div>
   <div class="halah-sub">HealthRWA - Trusted Multi-Party Patient Consent on Blockchain</div>
   <div class="halah-chips">
-    <span class="chip chip-gold">C = (I, A, P, E)</span>
-    <span class="chip chip-teal">ALLOW = VI + VA + VP</span>
+    <span class="chip chip-gold">C = (I, A, P, T, L, E)</span>
+    <span class="chip chip-teal">ALLOW = VI &and; VA &and; VP &nbsp;|&nbsp; VT &and; VL: phase 2</span>
     <span class="chip chip-ver">Version 1</span>
   </div>
 </div>

@@ -7,6 +7,7 @@ Date (YYYY-MM-DD): 2026-06-08, 2026-08-02
 from datetime import datetime, date, time
 import streamlit as st
 from blockchain import onchain_ui  # on-chain mode (Sepolia)
+from services import blockchain_service as bc
 import pandas as pd
 from services.consent_service import *
 from services.identity_service import *
@@ -151,6 +152,7 @@ if role == "Patient":
         patients = repo.get_patient_dids()
         patient_did = st.selectbox("Patient DID (Identity Pointer)", patients["DID"].tolist())
         doctor = st.text_input("Authorised Doctor DID", "did:hospital:001")
+        jurisdiction = st.selectbox("Jurisdiction (VL)", ["AU", "SA", "GB", "US"], index=0)
         scope = st.multiselect("Data Access Scope (EMR Modules)", ["Observation", "Medication", "Condition", "Procedure"])
         
     with col2:
@@ -181,6 +183,7 @@ if role == "Patient":
             start_datetime.isoformat(),
             expiry_datetime.isoformat()
         )
+        consent.jurisdiction = jurisdiction
         consent_db.save(consent)
 
         # 触发审计日志并捕获返回值记录虚拟交易
@@ -207,6 +210,47 @@ if role == "Patient":
         """, unsafe_allow_html=True)
 
 
+    # ---- My Consents / Revoke (additive) ----
+    st.markdown("---")
+    st.subheader("My Consents")
+    _mine = consent_db.get_patient_consent(patient_did)
+    if not _mine:
+        st.caption("No consents yet for this patient DID.")
+    for _c in _mine:
+        _state = evaluate_state(_c)
+        _cols = st.columns([3, 2, 3, 2])
+        _cols[0].markdown(f"`{_c.consent_id[:8]}...` -> {_c.requester_did}")
+        _cols[1].markdown(f"**{_state}**")
+        _cols[2].markdown(f"{len(_c.signatures)}/{_c.threshold} sigs - token: {_c.token_id or '-'}")
+        if getattr(_c, "revoked", False):
+            _cols[3].markdown("REVOKED")
+            continue
+        if _cols[3].button("Revoke", key=f"rv_{_c.consent_id}"):
+            consent_db.revoke(_c.consent_id)
+            audit_db.log(actor_did=patient_did, actor_role="Patient", action="REVOKE_CONSENT",
+                         patient_did=patient_did, consent_id=_c.consent_id,
+                         scope=_c.scope, purpose=_c.purpose, result="SUCCESS")
+            _tid = str(_c.token_id or "")
+            if bc.onchain_enabled() and _tid.startswith("SBT-") and _tid[4:].isdigit():
+                with st.spinner("Revoking on Sepolia - waiting for block confirmation..."):
+                    try:
+                        _r = bc.revoke(int(_tid[4:]))
+                        audit_db.log(actor_did="Blockchain", actor_role="SmartContract", action="ONCHAIN_REVOKE",
+                                     patient_did=patient_did, consent_id=_c.consent_id, result="SUCCESS",
+                                     tx_hash=_r["tx_hash"], block_number=_r.get("block_number"),
+                                     metadata={"token_id": int(_tid[4:]), "explorer_tx": _r["explorer_tx"]})
+                        st.success(f"Revoked on-chain. Tx: {_r['tx_hash']}")
+                        st.markdown(f"[View revoke transaction on Etherscan]({_r['explorer_tx']})")
+                    except Exception as _e:
+                        audit_db.log(actor_did="Blockchain", actor_role="SmartContract", action="ONCHAIN_REVOKE",
+                                     patient_did=patient_did, consent_id=_c.consent_id, result="FAILED",
+                                     metadata={"error": str(_e)[:300]})
+                        st.warning(f"Local revoke recorded; on-chain revoke failed: {_e}")
+            else:
+                st.success("Consent revoked (local ledger).")
+            st.rerun()
+
+
 # ==========================
 # ROLE: Guardian (SRQ2)
 # ==========================
@@ -220,8 +264,19 @@ if role == "Guardian":
         did = st.selectbox("Select Your Guardian DID Identity", consent.guardian_dids)
 
         if st.button("Sign Consent via VC"):
+            if did in consent.signatures:
+                st.warning("This guardian has already signed this consent (one signature per guardian).")
+                st.stop()
+            _sig, _addr = sign_consent(did, consent.consent_id)
+            if not verify_signature(did, consent.consent_id, _sig):
+                st.error("EIP-712 signature verification failed - approval rejected.")
+                st.stop()
+            if not hasattr(consent, "signature_data") or consent.signature_data is None:
+                consent.signature_data = {}
+            consent.signature_data[did] = {"scheme": "EIP-712", "signer": _addr, "signature": _sig}
             if verify_vc(did):
                 consent.signatures.append(did)
+                consent_db.update(consent)
                 
                 # 记录审计并回填链上凭证
                 log_entry = audit_db.log(
@@ -235,15 +290,19 @@ if role == "Guardian":
                     result="SUCCESS",
                     metadata={
                         "threshold": consent.threshold,
-                        "signature_count": len(consent.signatures)
+                        "signature_count": len(consent.signatures),
+                        "scheme": "EIP-712",
+                        "guardian_address": _addr,
+                        "signature": _sig
                     }
                 )
 
-                st.success(f"Identity verified. Multi-sig added: ({len(consent.signatures)}/{consent.threshold})")
+                st.success(f"EIP-712 signature verified (signer {_addr[:10]}...). Multi-sig: {len(consent.signatures)}/{consent.threshold}")
 
                 # 如果多签满足阈值，铸造SBT令牌
                 if len(consent.signatures) == consent.threshold:
                     consent.token_id = f"SBT-LOCAL-{consent.consent_id[:8]}"
+                    consent_db.update(consent)
                     mint_log = audit_db.log(
                         actor_did="Blockchain",
                         actor_role="SmartContract",
@@ -263,6 +322,7 @@ if role == "Guardian":
                     </div>
                     """, unsafe_allow_html=True)
                     onchain_ui.render_onchain_mint(consent, audit_db)
+                    consent_db.update(consent)
 
 # ==========================
 # ROLE: Doctor (SRQ3, SRQ4, SRQ5)
@@ -311,6 +371,10 @@ if role == "Doctor":
             # Evaluate Consent State
             # ---------------------------------
             state = evaluate_state(consent)
+            _req_jur = st.selectbox("Requester jurisdiction (VL check)", ["AU", "SA", "GB", "US"], index=0, key="req_jur")
+            _m = evaluate_allow(consent, _req_jur, verify_sig=verify_signature, verify_did=verify_vc)
+            st.markdown("**Decision matrix - ALLOW = VI AND VA AND VP AND VT AND VL**")
+            st.table(pd.DataFrame([{k: ("PASS" if v else "FAIL") for k, v in _m.items()}]))
 
             audit_db.log(
                 actor_did="System",
@@ -361,7 +425,7 @@ if role == "Doctor":
                 # ZK Access
                 # ---------------------------------
                 if st.button(
-                    "Execute Zero-Knowledge Access",
+                    ("Request Data Access (Groth16 ZK proof)" if zk_available() else "Request Data Access (integrity proof - ZK placeholder)"),
                     type="primary"
                 ):
 
