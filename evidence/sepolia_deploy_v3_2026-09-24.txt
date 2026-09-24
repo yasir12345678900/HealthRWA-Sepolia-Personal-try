@@ -10,3 +10,16 @@ Explorer       : https://sepolia.etherscan.io/address/0x0EC3617581DEC63A7f2bb162
 Previous (v2)  : 0xb0dA0440Abd6bd74bE0aebE226D593492124A6e7 (see onchain_mints_2026-09-21.txt) - superseded
 App config     : CONTRACT_ADDRESS=0x0EC3617581DEC63A7f2bb162DC14d088916ADc73  CONTRACT_VERSION=3
 Check          : python3 -m blockchain.sepolia_check   (expects [OK] Signer is contract owner)
+
+First real mint on the v3 contract (app run in GitHub Codespaces, branch claude/pensive-tesla-u9uk4j, 2026-09-24):
+  consent_id     : f050c29a-3d92-4131-8605-63bcb1ff8d92
+  flow           : CREATE_CONSENT 09:50:49 -> SIGN_CONSENT did:parent:A (EIP-712, 0x3Af549b0...) 09:51:05
+                   -> SIGN_CONSENT did:parent:B (EIP-712, 0x39B12b87...) 09:51:07 -> ONCHAIN_MINT 09:51:12
+  ONCHAIN_MINT   : tx 0x8be1b99e9b7054d427bdee0a0b5cc56ae99030a399f4b11d3629ed5d98daf13d
+                   block 11771243, gas 196406, token #1, method 0x1e1e7c76 = mintConsentV3(address,address,string,uint64,uint64,bytes2,uint8)
+                   from 0xD2f6d7A4...b03552DCF (owner) to 0x0EC3617581DEC63A7f2bb162DC14d088916ADc73
+                   https://sepolia.etherscan.io/tx/0x8be1b99e9b7054d427bdee0a0b5cc56ae99030a399f4b11d3629ed5d98daf13d
+  token holder   : did_to_address(did:patient:fe621c76-...) = 0x789997BFa84D1383379942E5Df6ABba4304E30C5
+  decision matrix: VI VA VP VT VL ALLOW = all true (STATE_CHECK metadata)
+  DATA_ACCESS    : GRANTED x2, zk_proof_verified=true, proof_mode=groth16 (real Groth16 proof)
+  Before v1.2 this mint would have stayed SBT-LOCAL-* (missing DISCARD import); token_id=1 recorded proves the fix on Sepolia.

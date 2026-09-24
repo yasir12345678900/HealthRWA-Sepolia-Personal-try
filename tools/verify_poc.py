@@ -42,8 +42,17 @@ def main():
             print(f"Consent {row['consent_id']}: token {tid or '-'} (not anchored)")
             continue
         n = int(tid[4:])
+        mint = next((e for e in onchain if e["consent_id"] == row["consent_id"] and e["action"] == "ONCHAIN_MINT"), None)
+        mint_to = w3.eth.get_transaction_receipt(mint["tx_hash"])["to"] if mint else None
+        if mint_to and mint_to.lower() != c.address.lower():
+            print(f"Consent {row['consent_id']} -> token #{n} lives on an older deployment {mint_to} - skipped")
+            continue
+        try:
+            holder = c.contract.functions.ownerOf(n).call()
+        except Exception:
+            print(f"Consent {row['consent_id']} -> token #{n} does not exist on {c.address} - skipped")
+            continue
         rec = c.contract.functions.consents(n).call()
-        holder = c.contract.functions.ownerOf(n).call()
         print(f"Consent {row['consent_id']} -> token #{n}")
         print(f"  ownerOf            {holder}  == did_to_address(patient) {holder == did_to_address(row['patient_did'])}")
         print(f"  requester          {rec[1]}  == did_to_address(doctor)  {rec[1] == did_to_address(row['requester_did'])}")
