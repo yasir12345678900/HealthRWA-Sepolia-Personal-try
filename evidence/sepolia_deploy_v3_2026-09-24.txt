@@ -41,3 +41,7 @@ Independent check (python -m tools.verify_poc, run in GitHub Codespaces against 
   every tx_hash in the ledger found on Sepolia with matching block; token #1 on 0x0EC36...ADc73:
   local ledger state revoked=True (matches chain: True)
   RESULT: ALL CHECKS PASSED
+
+Second independent check (python -m tools.verify_poc, re-executed ~21:16 local after the reproduction lifecycle):
+  five ledger transactions verified on Sepolia; token #1 revoked=True and token #2 revoked=False, both matching the chain.
+  RESULT: ALL CHECKS PASSED
