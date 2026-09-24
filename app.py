@@ -584,6 +584,7 @@ if role == "Doctor":
                                 "zk_proof_verified": proof_valid,
                                 "scope_valid": valid_scope,
                                 "consent_state": state,
+                                "proof_mode": proof.get("mode"),
                                 "decision_matrix": _m
                             }
                         )
