@@ -23,3 +23,16 @@ First real mint on the v3 contract (app run in GitHub Codespaces, branch claude/
   decision matrix: VI VA VP VT VL ALLOW = all true (STATE_CHECK metadata)
   DATA_ACCESS    : GRANTED x2, zk_proof_verified=true, proof_mode=groth16 (real Groth16 proof)
   Before v1.2 this mint would have stayed SBT-LOCAL-* (missing DISCARD import); token_id=1 recorded proves the fix on Sepolia.
+
+Rest of the lifecycle for consent f050c29a on Sepolia (ledger export: sepolia_audit_ledger_2026-09-24.csv, rows 45-48):
+  VL denial      : 10:02:50 STATE_CHECK requester jurisdiction SA vs consent AU -> VL=false, ALLOW=false
+                   10:02:51 DATA_ACCESS DENIED (zk_proof_verified=true, scope_valid=true, but decision_matrix VL=false)
+                   UI: "Security Exception: Access Denied by ZK-Policy. Failed checks: VL" (before v1.2 this was GRANTED)
+  Revoke         : 10:03:50 REVOKE_CONSENT (patient)
+  ONCHAIN_REVOKE : 10:04:00 tx 0x017efb9dc6acad9733fa05c19408c0166c9c0645e83b6ffdc41c4b3b85ddceaa
+                   block 11771307, token #1, revoke(uint256) selector 0x20c5429b
+                   https://sepolia.etherscan.io/tx/0x017efb9dc6acad9733fa05c19408c0166c9c0645e83b6ffdc41c4b3b85ddceaa
+  Result         : Patient view f050c29a = REVOKED, 2/2 sigs, token SBT-1
+
+Contrast in the same ledger (old v1.1 code, 2026-09-22): consents f5a8ad89 and cd9a24bd reached 2/2 but stayed
+SBT-LOCAL-* with no ONCHAIN_MINT row, i.e. the on-chain anchor was never recorded.
