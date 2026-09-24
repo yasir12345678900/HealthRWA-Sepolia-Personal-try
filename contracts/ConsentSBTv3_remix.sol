@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.20;
+// Remix copy of contracts/ConsentSBTv3.sol (imports pinned to OpenZeppelin 4.9.6). Keep both files identical otherwise.
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts@4.9.6/token/ERC721/ERC721.sol";
+import "@openzeppelin/contracts@4.9.6/access/Ownable.sol";
 
 /// @title ERC-5484 (Consensual Soulbound Token) interface
 interface IERC5484 {
