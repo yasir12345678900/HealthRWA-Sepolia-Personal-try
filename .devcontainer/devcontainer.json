@@ -1,0 +1,16 @@
+{
+  "name": "HALAH (Sepolia)",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+  "features": { "ghcr.io/devcontainers/features/node:1": { "version": "20" } },
+  "postCreateCommand": "pip install -r requirements.txt",
+  "containerEnv": {
+    "RPC_URL": "https://ethereum-sepolia-rpc.publicnode.com",
+    "CONTRACT_ADDRESS": "0x0EC3617581DEC63A7f2bb162DC14d088916ADc73",
+    "CONTRACT_VERSION": "3"
+  },
+  "secrets": {
+    "PRIVATE_KEY": { "description": "Private key of the ConsentSBTv3 owner wallet 0xD2f6d...52DCF (Sepolia TEST wallet only)" }
+  },
+  "forwardPorts": [8501],
+  "portsAttributes": { "8501": { "label": "HALAH Streamlit", "onAutoForward": "openBrowser" } }
+}
