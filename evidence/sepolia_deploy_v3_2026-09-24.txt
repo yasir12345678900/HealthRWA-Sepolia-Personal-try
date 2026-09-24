@@ -1,0 +1,12 @@
+HALAH ConsentSBTv3 (v1.2: DISCARD/reconcile fixes app-side; contract: internal _mintV3, consent stored before _safeMint)
+Network        : Ethereum Sepolia (chainId 11155111)
+Contract       : 0x0EC3617581DEC63A7f2bb162DC14d088916ADc73
+Deployer/owner : 0xd2f6d...52dcf (MetaMask "BNHP Ministry Test Wallet", Remix Account 16)
+Deployed       : 2026-09-24 ~19:40 local, via Remix (solc 0.8.34, optimizer 200), MetaMask nonce 115, fee ~0.0092 SepoliaETH
+Source         : contracts/ConsentSBTv3_remix.sol (identical to contracts/ConsentSBTv3.sol except OZ@4.9.6 import paths)
+Verification   : Blockscout "Verification Successful" (Remix plugin)
+Explorer       : https://sepolia.etherscan.io/address/0x0EC3617581DEC63A7f2bb162DC14d088916ADc73
+                 https://eth-sepolia.blockscout.com/address/0x0EC3617581DEC63A7f2bb162DC14d088916ADc73
+Previous (v2)  : 0xb0dA0440Abd6bd74bE0aebE226D593492124A6e7 (see onchain_mints_2026-09-21.txt) - superseded
+App config     : CONTRACT_ADDRESS=0x0EC3617581DEC63A7f2bb162DC14d088916ADc73  CONTRACT_VERSION=3
+Check          : python3 -m blockchain.sepolia_check   (expects [OK] Signer is contract owner)

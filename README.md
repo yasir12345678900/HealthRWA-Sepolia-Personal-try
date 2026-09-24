@@ -26,7 +26,7 @@ branch 'main' set up to track 'origin/main'.
   (no on-chain revoke, and "Anchor now" minted duplicates). Fixed in `blockchain/contract.py`.
 - **Sync from chain never matched on v3**: `find_onchain_tokens` read `notBefore` as the expiry (wrong struct index). Fixed.
 - **`ConsentSBTv3.mintConsent` (v2-compatible) always reverted**: `this.mintConsentV3(...)` made the contract the caller, which fails `onlyOwner`.
-  It now uses an internal `_mintV3`. The artifact was recompiled; **redeploy v3** to get this fix on Sepolia.
+  It now uses an internal `_mintV3`. Redeployed on Sepolia at `0x0EC3617581DEC63A7f2bb162DC14d088916ADc73` (see `evidence/sepolia_deploy_v3_2026-09-24.txt`).
 - **Doctor access**: an empty request scope was granted, and a VL (jurisdiction) mismatch was still granted. Access now requires
   a non-empty scope **and** the full VI..VL matrix. A denial names the failed checks.
 - **EMR data**: `observations.csv`, `medications.csv` and `procedures.csv` are partially corrupted (binary garbage after 128 KiB), so the
