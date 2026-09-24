@@ -41,11 +41,12 @@ def find_onchain_tokens(consent, lookback_blocks=60000):
     from blockchain.contract import did_to_address
     c = bc.chain.ConsentContract(); w3 = c.w3
     patient = did_to_address(consent.patient_did); requester = did_to_address(consent.requester_did); expiry = bc._expiry_ts(consent)
+    exp_idx = 4 if c.has_v3() else 3  # v3 struct: (patient, requester, purposeHash, notBefore, expiry, ...)
     out = []
     for e in c.contract.events.Transfer().get_logs(from_block=max(0, w3.eth.block_number - lookback_blocks)):
         if e["args"]["from"] != ZERO: continue
         tid = int(e["args"]["tokenId"]); rec = c.contract.functions.consents(tid).call()
-        if rec[0] == patient and rec[1] == requester and int(rec[3]) == expiry:
+        if rec[0] == patient and rec[1] == requester and int(rec[exp_idx]) == expiry:
             out.append((tid, w3.to_hex(e["transactionHash"]), int(e["blockNumber"])))
     return out
 

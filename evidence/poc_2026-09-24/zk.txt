@@ -1,0 +1,9 @@
+$ python3 - # Groth16 ZK proof: generate, verify, tamper, expired
+zk_available(): True
+scheme: Groth16/BN254 (circom+snarkjs)
+commitment (Poseidon): 1199837827157633285427938196030912220973596577604987794366438376392422562580
+publicSignals: ['1', '1199837827157633285427938196030912220973596577604987794366438376392422562580', '1790238118']
+proof.pi_a[0]: 2878344582911440832784404207563154452687... (prove 1.27s)
+verify(valid proof)       -> True
+verify(tampered signal)   -> False
+expired consent proof    -> REFUSED by circuit (now > expiry): ERROR:  4 Error in template ConsentValidity_74 line: 20

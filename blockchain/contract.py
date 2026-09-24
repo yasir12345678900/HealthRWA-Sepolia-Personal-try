@@ -19,6 +19,7 @@ import os
 import json
 from dotenv import load_dotenv
 from web3 import Web3
+from web3.logs import DISCARD
 from eth_utils import keccak, to_checksum_address
 
 load_dotenv()
@@ -134,7 +135,6 @@ class ConsentContract:
         tx_hash, receipt = self._send(fn)
         token_id = None
         try:
-            from web3.logs import DISCARD
             evs = self.contract.events.Transfer().process_receipt(receipt, errors=DISCARD)
             if evs:
                 token_id = int(evs[0]["args"]["tokenId"])

@@ -106,7 +106,6 @@ st.markdown("""
     
     /* 下拉框与输入框聚焦美化 */
     .stSelectbox, .stTextInput, .stTextArea {
-        background-color: white;
         border-radius: 8px;
     }
     
@@ -131,7 +130,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # 初始化数据仓库
-repo = repository.SyntheaRepository("data/synthea")
+@st.cache_resource(show_spinner="Loading Synthea EMR data...")
+def _load_repo():
+    return repository.SyntheaRepository("data/synthea")
+
+
+repo = _load_repo()
 
 # 侧边栏角色切换
 role = st.sidebar.selectbox(
@@ -172,12 +176,20 @@ if role == "Patient":
         st.error("Datetime format must be YYYY-MM-DD HH:MM:SS")
         st.stop()
 
+    guardian_list = [g.strip() for g in guardians.split(",") if g.strip()]
+
     st.markdown("---")
     if st.button("Initial Consent"):
+        if not scope:
+            st.error("Select at least one EMR module for the data access scope.")
+            st.stop()
+        if not guardian_list or not all(verify_vc(g) for g in guardian_list):
+            st.error("Enter at least one guardian DID; each must start with 'did:'.")
+            st.stop()
         consent = create_consent(
             patient_did,
             doctor,
-            guardians.split(","),
+            guardian_list,
             scope,
             "Treatment",
             start_datetime.isoformat(),
@@ -232,7 +244,7 @@ if role == "Patient":
                          scope=_c.scope, purpose=_c.purpose, result="SUCCESS")
             _tid = str(_c.token_id or "")
             if bc.onchain_enabled() and _tid.startswith("SBT-") and _tid[4:].isdigit():
-                with st.spinner("Revoking on Sepolia - waiting for block confirmation..."):
+                with st.spinner(f"Revoking on {onchain_ui.network_label()} - waiting for block confirmation..."):
                     try:
                         _r = bc.revoke(int(_tid[4:]))
                         audit_db.log(actor_did="Blockchain", actor_role="SmartContract", action="ONCHAIN_REVOKE",
@@ -240,7 +252,8 @@ if role == "Patient":
                                      tx_hash=_r["tx_hash"], block_number=_r.get("block_number"),
                                      metadata={"token_id": int(_tid[4:]), "explorer_tx": _r["explorer_tx"]})
                         st.success(f"Revoked on-chain. Tx: {_r['tx_hash']}")
-                        st.markdown(f"[View revoke transaction on Etherscan]({_r['explorer_tx']})")
+                        if onchain_ui.has_explorer():
+                            st.markdown(f"[View revoke transaction on Etherscan]({_r['explorer_tx']})")
                     except Exception as _e:
                         audit_db.log(actor_did="Blockchain", actor_role="SmartContract", action="ONCHAIN_REVOKE",
                                      patient_did=patient_did, consent_id=_c.consent_id, result="FAILED",
@@ -264,12 +277,12 @@ if role == "Guardian":
         _tid = str(consent.token_id or "")
         _anchored = _tid.startswith("SBT-") and _tid[4:].isdigit()
         if _anchored:
-            st.success(f"Already anchored on Sepolia - token #{_tid[4:]}")
+            st.success(f"Already anchored on {onchain_ui.network_label()} - token #{_tid[4:]}")
         elif len(consent.signatures) >= consent.threshold:
-            st.warning(f"Threshold {len(consent.signatures)}/{consent.threshold} reached but NOT anchored on Sepolia yet (token: {consent.token_id or '-'}). "
+            st.warning(f"Threshold {len(consent.signatures)}/{consent.threshold} reached but NOT anchored on {onchain_ui.network_label()} yet (token: {consent.token_id or '-'}). "
                        "Click below and wait ~30 s without touching anything.")
             _c1, _c2 = st.columns(2)
-            if _c1.button("Sync from Sepolia (find existing mint)", key=f"sync_{consent.consent_id}"):
+            if _c1.button(f"Sync from {onchain_ui.network_label()} (find existing mint)", key=f"sync_{consent.consent_id}"):
                 from services import anchor_service
                 try:
                     _res = anchor_service.reconcile(consent, audit_db, consent_db)
@@ -280,7 +293,7 @@ if role == "Guardian":
                         st.info("No matching mint found on-chain for this consent.")
                 except Exception as _e:
                     st.warning(f"Sync failed: {_e}")
-            if _c2.button("Anchor on Sepolia now (background)", type="primary", key=f"anchor_{consent.consent_id}"):
+            if _c2.button(f"Anchor on {onchain_ui.network_label()} now (background)", type="primary", key=f"anchor_{consent.consent_id}"):
                 onchain_ui.render_onchain_anchor_async(consent, audit_db, consent_db)
             from services import anchor_service as _as
             _j = _as.job_status(consent.consent_id)
@@ -345,7 +358,7 @@ if role == "Guardian":
                     <div class="blockchain-badge" style="border-left-color: #00f5d4;">
                         <b>[SBT MINTED - LOCAL LEDGER]</b><br>
                         • <b>Soulbound Token ID:</b> {consent.token_id}<br>
-                        • <b>Status:</b> 2/2 guardian approval reached - Sepolia anchoring result shown below.
+                        • <b>Status:</b> 2/2 guardian approval reached - on-chain anchoring result shown below.
                     </div>
                     """, unsafe_allow_html=True)
                     onchain_ui.render_onchain_anchor_async(consent, audit_db, consent_db)
@@ -402,17 +415,6 @@ if role == "Doctor":
             st.markdown("**Decision matrix - ALLOW = VI AND VA AND VP AND VT AND VL**")
             st.table(pd.DataFrame([{k: ("PASS" if v else "FAIL") for k, v in _m.items()}]))
 
-            audit_db.log(
-                actor_did="System",
-                actor_role="ConsentEngine",
-                action="STATE_CHECK",
-                patient_did=consent.patient_did,
-                consent_id=consent.consent_id,
-                scope=consent.scope,
-                purpose=consent.purpose,
-                result=state
-            )
-
             if state.upper() in ["ACTIVE", "SUCCESS"]:
 
                 st.success(
@@ -455,9 +457,21 @@ if role == "Doctor":
                     type="primary"
                 ):
 
-                    # if not scope:
-                    #     st.warning("Please select at least one authorised data module.")
-                    #     st.stop()
+                    if not scope:
+                        st.warning("Please select at least one authorised data module.")
+                        st.stop()
+
+                    audit_db.log(
+                        actor_did="System",
+                        actor_role="ConsentEngine",
+                        action="STATE_CHECK",
+                        patient_did=consent.patient_did,
+                        consent_id=consent.consent_id,
+                        scope=consent.scope,
+                        purpose=consent.purpose,
+                        result=state,
+                        metadata=_m
+                    )
 
                     # Generate ZK proof
                     proof = generate_proof(consent)
@@ -480,11 +494,12 @@ if role == "Doctor":
                     proof_valid = verify_proof(proof)
 
                     # Authorization decision
+                    # ALLOW also requires the full matrix (e.g. a VL jurisdiction mismatch must deny)
                     allowed = authorize(
                         state,
                         proof_valid,
                         valid_scope
-                    )
+                    ) and _m["ALLOW"]
 
                     # ---------------------------------
                     # ACCESS GRANTED
@@ -512,7 +527,8 @@ if role == "Doctor":
                             metadata={
                                 "zk_proof_verified": proof_valid,
                                 "scope_valid": valid_scope,
-                                "consent_state": state
+                                "consent_state": state,
+                                "proof_mode": proof.get("mode")
                             }
                         )
 
@@ -544,9 +560,15 @@ if role == "Doctor":
                     # ---------------------------------
                     else:
 
+                        _failed = [k for k, v in _m.items() if k != "ALLOW" and not v]
+                        if not proof_valid:
+                            _failed.append("ZK proof")
+                        if not valid_scope:
+                            _failed.append("scope")
                         st.error(
                             "Security Exception: "
                             "Access Denied by ZK-Policy."
+                            + (f" Failed checks: {', '.join(_failed)}" if _failed else "")
                         )
 
                         audit_db.log(
@@ -561,7 +583,8 @@ if role == "Doctor":
                             metadata={
                                 "zk_proof_verified": proof_valid,
                                 "scope_valid": valid_scope,
-                                "consent_state": state
+                                "consent_state": state,
+                                "decision_matrix": _m
                             }
                         )
 
@@ -593,6 +616,11 @@ if role == "Auditor":
         st.stop()
 
     audit_df = pd.DataFrame(raw_audit_data)
+    # dict/list cells (metadata, scope) have mixed shapes -> render as JSON text so Arrow can serialise them
+    import json as _json
+    for _col in ("metadata", "scope"):
+        if _col in audit_df.columns:
+            audit_df[_col] = audit_df[_col].apply(lambda v: None if v is None else _json.dumps(v, default=str))
     _first_cols = [c for c in ["timestamp", "action", "actor_role", "onchain", "tx_hash", "block_number", "consent_id", "result"] if c in audit_df.columns]
     if _first_cols:
         audit_df = audit_df[_first_cols + [c for c in audit_df.columns if c not in _first_cols]]

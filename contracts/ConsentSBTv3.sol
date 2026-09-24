@@ -37,7 +37,14 @@ contract ConsentSBTv3 is ERC721, Ownable, IERC5484 {
 
     function mintConsentV3(address patient, address requester, string calldata purpose,
                            uint64 notBefore, uint64 expiry, bytes2 jurisdiction, BurnAuth auth)
-        external onlyOwner returns (uint256 tokenId)
+        external onlyOwner returns (uint256)
+    {
+        return _mintV3(patient, requester, purpose, notBefore, expiry, jurisdiction, auth);
+    }
+
+    function _mintV3(address patient, address requester, string calldata purpose,
+                     uint64 notBefore, uint64 expiry, bytes2 jurisdiction, BurnAuth auth)
+        internal returns (uint256 tokenId)
     {
         require(patient != address(0) && requester != address(0), "zero address");
         require(notBefore <= expiry, "notBefore > expiry");
@@ -49,11 +56,12 @@ contract ConsentSBTv3 is ERC721, Ownable, IERC5484 {
         emit Issued(msg.sender, patient, tokenId, auth);
     }
 
-    /// v2-compatible signature (VL unrestricted, notBefore = now, burnAuth = Both)
+    /// v2-compatible signature (VL unrestricted, notBefore = now, burnAuth = Both).
+    /// Internal call: an external `this.` call would make msg.sender the contract and fail onlyOwner.
     function mintConsent(address patient, address requester, string calldata purpose, uint256 expiry)
         external onlyOwner returns (uint256)
     {
-        return this.mintConsentV3(patient, requester, purpose, uint64(block.timestamp), uint64(expiry), bytes2(0), BurnAuth.Both);
+        return _mintV3(patient, requester, purpose, uint64(block.timestamp), uint64(expiry), bytes2(0), BurnAuth.Both);
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 firstTokenId, uint256 batchSize) internal override {

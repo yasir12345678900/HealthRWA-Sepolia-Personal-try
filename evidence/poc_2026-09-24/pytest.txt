@@ -1,0 +1,33 @@
+$ python3 -m pytest -v tests/
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+cachedir: .pytest_cache
+rootdir: .
+plugins: anyio-4.15.1
+collecting ... collected 23 items
+
+tests/test_halah.py::test_did_to_address_is_deterministic_and_checksummed PASSED [  4%]
+tests/test_halah.py::test_not_configured_without_env PASSED              [  8%]
+tests/test_halah.py::test_audit_offchain_event_has_no_fake_tx_hash PASSED [ 13%]
+tests/test_halah.py::test_audit_onchain_event_keeps_real_tx_hash PASSED  [ 17%]
+tests/test_halah.py::test_v2_abi_has_consent_functions PASSED            [ 21%]
+tests/test_halah.py::test_no_fake_placeholders_left_in_app PASSED        [ 26%]
+tests/test_phase_red.py::test_revoked_consent_state_is_REVOKED PASSED    [ 30%]
+tests/test_phase_red.py::test_consent_persists_across_reload PASSED      [ 34%]
+tests/test_phase_red.py::test_revoke_persists_and_flags PASSED           [ 39%]
+tests/test_phase_red.py::test_audit_persists_across_reload PASSED        [ 43%]
+tests/test_phase_red.py::test_ui_labels_are_honest PASSED                [ 47%]
+tests/test_phase_yellow_green.py::test_eip712_roundtrip_and_rejections PASSED [ 52%]
+tests/test_phase_yellow_green.py::test_matrix_all_pass_and_each_dimension_fails_independently PASSED [ 56%]
+tests/test_phase_yellow_green.py::test_e2e_lifecycle_with_mocked_chain PASSED [ 60%]
+tests/test_phase_yellow_green.py::test_service_routes_to_v3_when_supported PASSED [ 65%]
+tests/test_regressions.py::test_discard_available_for_v3_receipt_decoding PASSED [ 69%]
+tests/test_regressions.py::test_reconcile_reads_v3_expiry_field PASSED   [ 73%]
+tests/test_regressions.py::test_v3_contract_compat_mint_does_not_use_external_self_call PASSED [ 78%]
+tests/test_regressions.py::test_jurisdiction_mismatch_denies PASSED      [ 82%]
+tests/test_regressions.py::test_partially_corrupted_csv_is_salvaged PASSED [ 86%]
+tests/test_zk.py::test_placeholder_mode_is_labelled_honestly PASSED      [ 91%]
+tests/test_zk.py::test_real_groth16_roundtrip_and_tamper PASSED          [ 95%]
+tests/test_zk.py::test_expired_consent_cannot_be_proven PASSED           [100%]
+
+============================== 23 passed in 4.24s ==============================

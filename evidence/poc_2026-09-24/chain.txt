@@ -1,0 +1,31 @@
+$ python3 -m tools.verify_poc   # re-reads the app ledger, checks every tx on-chain
+RPC http://127.0.0.1:8545 | chainId 31337 | head block 3
+Contract 0x5FbDB2315678afecb367f032d93F642f64180aa3 | code 8446 bytes | owner 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+
+Audit ledger: 11 events, 2 with a tx_hash
+  [OK] ONCHAIN_MINT    0xc7b86134379cfff385cc3410be5edf02cdb1959ed697e1dd06f9d65f4e78cb1c block 2 (ledger 2) SUCCESS gas 193534 to 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  [OK] ONCHAIN_REVOKE  0x39d4da68f7084d5b36c3b2b48625a3a2271a92623772f77809ca3b7d46de8511 block 3 (ledger 3) SUCCESS gas 32503 to 0x5FbDB2315678afecb367f032d93F642f64180aa3
+
+Consent cecbb5f5-2e6f-4511-9e71-b159bdb28f40 -> token #1
+  ownerOf            0x789997BFa84D1383379942E5Df6ABba4304E30C5  == did_to_address(patient) True
+  requester          0xfE1efA136DCbc3B8eE405bB4F359148051a0fA6e  == did_to_address(doctor)  True
+  purposeHash        0xff2a51e6eb5c67c2b1789c5fc8db6aaab2459d70d07eeac5c89f053cb18eb765  == keccak('Treatment') True
+  notBefore/expiry   1790237982 / 1798761599
+  jurisdiction       b'AU'  revoked(on-chain) True  burnAuth 2
+  checkValid         False
+  checkValidAt(AU)   False   checkValidAt(US) False
+  local ledger state revoked=True  (matches chain: True)
+
+RESULT: ALL CHECKS PASSED
+
+$ python3 - # VL on-chain: fresh un-revoked AU consent, checkValidAt by jurisdiction
+mintConsentV3 tx 0x6e84429cf7b808e02b44591b30e48a7a2efc97d1da923a8aa4b080986133a949 block 4 status 1 -> token #2
+checkValid         False
+checkValidAt(AU)   False
+checkValidAt(US)   False
+v2-compat mintConsent (was reverting 'Ownable: caller is not the owner') tx 0x91ce7fe36ff9abc980930d8660825464764f10428dedb1364c703140134f19a8 status 1
+
+# note: the reads above ran in the same second as the mint; notBefore = creation time, so block.timestamp
+# had not yet reached notBefore (VT enforced to the second). Re-reading a few seconds later:
+$ checkValid(2), checkValidAt(2,'AU'), checkValidAt(2,'US')
+True True False   <- VT ok, VL: AU allowed, US rejected on-chain

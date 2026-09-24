@@ -20,3 +20,19 @@ branch 'main' set up to track 'origin/main'.
 - **Limited-scope zero-knowledge proof** (`zk/`): Groth16/BN254 circuit proving "I know (secret, expiry) behind this Poseidon commitment
   and now <= expiry" without revealing either. Build once: `bash zk/build_zk.sh`; verifier: `contracts/ConsentValidityVerifier.sol`. Dev-only trusted setup.
 - Tests: `python3 -m pytest -q tests/`.
+
+## v1.2 fixes (2026-09-24) - found by an end-to-end run, proof in `evidence/poc_2026-09-24/`
+- **v3 mint lost its token id**: `mint_consent_v3` used `DISCARD` without importing it, so every v3 mint stayed `SBT-LOCAL-*`
+  (no on-chain revoke, and "Anchor now" minted duplicates). Fixed in `blockchain/contract.py`.
+- **Sync from chain never matched on v3**: `find_onchain_tokens` read `notBefore` as the expiry (wrong struct index). Fixed.
+- **`ConsentSBTv3.mintConsent` (v2-compatible) always reverted**: `this.mintConsentV3(...)` made the contract the caller, which fails `onlyOwner`.
+  It now uses an internal `_mintV3`. The artifact was recompiled; **redeploy v3** to get this fix on Sepolia.
+- **Doctor access**: an empty request scope was granted, and a VL (jurisdiction) mismatch was still granted. Access now requires
+  a non-empty scope **and** the full VI..VL matrix. A denial names the failed checks.
+- **EMR data**: `observations.csv`, `medications.csv` and `procedures.csv` are partially corrupted (binary garbage after 128 KiB), so the
+  whole module used to load empty. The loader now keeps every valid row. **Re-export these files from Synthea to restore the missing rows.**
+- UI: labels, expanders and download buttons were white-on-white; network labels now show the real chain instead of always "Sepolia";
+  the Synthea repo is cached (it was re-read on every click); the Auditor table no longer hits Arrow errors on the JSON columns;
+  STATE_CHECK is logged once per access request instead of on every page refresh; guardian DIDs are trimmed and validated.
+- New: `tools/verify_poc.py` (checks the audit ledger against the chain), `tools/poc_screenshots.py` (browser A-to-Z walkthrough),
+  `tests/test_regressions.py`.

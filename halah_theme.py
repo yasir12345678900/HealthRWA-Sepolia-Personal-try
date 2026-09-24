@@ -64,6 +64,11 @@ header[data-testid="stHeader"]{background:transparent!important;}
 [data-baseweb="tag"]{background:#2ec4b6!important;border:1px solid #1fa89b!important;}
 [data-baseweb="tag"] span,[data-baseweb="tag"] *{color:#06222e!important;-webkit-text-fill-color:#06222e!important;font-weight:700!important;}
 [data-testid="stTextInput"]>div:focus-within,[data-testid="stTextArea"]>div:focus-within,[data-baseweb="select"]>div:focus-within{border-color:#2ec4b6!important;box-shadow:0 0 0 3px rgba(46,196,182,.35)!important;}
+/* expanders + download buttons (were light text on a white header) */
+[data-testid="stExpander"] details{background:rgba(9,42,58,.85)!important;border:1px solid rgba(46,196,182,.35)!important;border-radius:12px!important;}
+[data-testid="stExpander"] summary,[data-testid="stExpander"] summary *{background:transparent!important;color:var(--text)!important;-webkit-text-fill-color:var(--text)!important;font-weight:700;}
+[data-testid="stDownloadButton"] button{background:linear-gradient(90deg,#2ec4b6 0%,#39d98a 100%)!important;border:none!important;border-radius:10px!important;}
+[data-testid="stDownloadButton"] button,[data-testid="stDownloadButton"] button *{color:#06222e!important;-webkit-text-fill-color:#06222e!important;font-weight:800!important;}
 </style>
 """
 
@@ -74,7 +79,7 @@ HERO = """
   <div class="halah-sub">HealthRWA - Trusted Multi-Party Patient Consent on Blockchain</div>
   <div class="halah-chips">
     <span class="chip chip-gold">C = (I, A, P, T, L, E)</span>
-    <span class="chip chip-teal">ALLOW = VI &and; VA &and; VP &nbsp;|&nbsp; VT &and; VL: phase 2</span>
+    <span class="chip chip-teal">ALLOW = VI &and; VA &and; VP &and; VT &and; VL</span>
     <span class="chip chip-ver">Version 1</span>
   </div>
 </div>

@@ -8,6 +8,19 @@ def _cached_status():
     return bc.chain_status()
 
 
+def network_label():
+    """'Sepolia' on chainId 11155111, otherwise 'chain <id>' - so UI text never claims Sepolia on another network."""
+    s = _cached_status()
+    if s.get("mode") == "demo" or "error" in s:
+        return "Sepolia"
+    return "Sepolia" if s.get("is_sepolia") else f"chain {s.get('chain_id')}"
+
+
+def has_explorer():
+    s = _cached_status()
+    return s.get("mode") == "onchain" and bool(s.get("is_sepolia"))
+
+
 def render_chain_badge():
     s = _cached_status()
     if s.get("mode") == "demo":
@@ -22,7 +35,10 @@ def render_chain_badge():
         st.sidebar.error("Contract address has no code - check CONTRACT_ADDRESS")
     elif s.get("signer_is_owner") is False:
         st.sidebar.error("Signer is not the contract owner - mint will revert")
-    st.sidebar.markdown(f"[View contract on Etherscan]({s['explorer_contract']})")
+    if s.get("is_sepolia"):
+        st.sidebar.markdown(f"[View contract on Etherscan]({s['explorer_contract']})")
+    else:
+        st.sidebar.caption(f"Contract {s['contract']} (no public explorer for this network)")
 
 
 def render_onchain_mint(consent, audit_db):
@@ -76,10 +92,13 @@ def render_onchain_anchor_async(consent, audit_db, consent_db):
     if job is None or job.get("status") == "failed":
         job = anchor_service.anchor_async(consent, audit_db, consent_db)
     if job.get("status") == "running":
-        st.info("Anchoring on Sepolia in the background (15-30 s). You may navigate away - the result is written to the ledger automatically. Refresh or open Auditor to see it.")
+        st.info(f"Anchoring on {network_label()} in the background (15-30 s). You may navigate away - the result is written to the ledger automatically. Refresh or open Auditor to see it.")
     elif job.get("status") == "done":
         r = job["result"]; st.success(f"On-chain anchor confirmed - token #{r.get('token_id')} - block {r.get('block_number')}")
-        st.markdown(f"[View transaction on Etherscan]({r.get('explorer_tx')})")
+        if has_explorer():
+            st.markdown(f"[View transaction on Etherscan]({r.get('explorer_tx')})")
+        else:
+            st.caption(f"Tx {r.get('tx_hash')}")
     elif job.get("status") == "failed":
         st.warning(f"On-chain anchoring failed: {job.get('error')}")
     return job

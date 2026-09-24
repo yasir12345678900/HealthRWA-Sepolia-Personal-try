@@ -3,6 +3,8 @@ import pandas as pd
 
 from database.did_mapping import create_patient_did
 
+UUID_RE = r"[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
+
 
 class SyntheaRepository:
     def __init__(self, path):
@@ -17,11 +19,26 @@ class SyntheaRepository:
         file_path = f"{path}/{filename}"
         try:
             return pd.read_csv(file_path)
-        except (UnicodeDecodeError, pd.errors.ParserError, OSError) as exc:
+        except (UnicodeDecodeError, pd.errors.ParserError):
+            # Partially corrupted export: keep every row that still parses and
+            # carries a valid patient UUID instead of dropping the whole module.
+            return SyntheaRepository._salvage_csv(file_path)
+        except OSError as exc:
             # Keep the dashboard usable when an optional Synthea export is
             # missing or damaged; the affected scope simply returns no rows.
             print(f"Warning: could not load {file_path}: {exc}")
             return pd.DataFrame()
+
+    @staticmethod
+    def _salvage_csv(file_path):
+        frame = pd.read_csv(file_path, encoding_errors="replace", on_bad_lines="skip",
+                            engine="python", dtype=str)
+        key = "PATIENT" if "PATIENT" in frame.columns else "Id"
+        if key in frame.columns:
+            frame = frame[frame[key].astype(str).str.fullmatch(UUID_RE, na=False)]
+        frame = frame[~frame.apply(lambda r: r.astype(str).str.contains("\ufffd", regex=False).any(), axis=1)]
+        print(f"Warning: {file_path} is partially corrupted - salvaged {len(frame)} valid rows")
+        return frame.reset_index(drop=True)
 
     def get_patient_dids(self):
         if "Id" not in self.patients.columns:
