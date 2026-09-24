@@ -36,3 +36,8 @@ Rest of the lifecycle for consent f050c29a on Sepolia (ledger export: sepolia_au
 
 Contrast in the same ledger (old v1.1 code, 2026-09-22): consents f5a8ad89 and cd9a24bd reached 2/2 but stayed
 SBT-LOCAL-* with no ONCHAIN_MINT row, i.e. the on-chain anchor was never recorded.
+
+Independent check (python -m tools.verify_poc, run in GitHub Codespaces against Sepolia, 2026-09-24 ~20:20 local):
+  every tx_hash in the ledger found on Sepolia with matching block; token #1 on 0x0EC36...ADc73:
+  local ledger state revoked=True (matches chain: True)
+  RESULT: ALL CHECKS PASSED
