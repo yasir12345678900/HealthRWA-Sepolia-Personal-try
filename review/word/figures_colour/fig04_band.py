@@ -23,4 +23,5 @@ pt = lambda n, x, y: f'{n} [shape=point, width=0.01, style=invis, {P(x, y)}];'
 L += [pt("a1", 2.8, 4.75), pt("a2", 2.8, 4.05), pt("b1", 2.0, 2.95), pt("b2", 2.0, 1.95), pt("r1", 8.625, 2.95), pt("r2", 8.625, 1.95)]
 L += ["a1 -> a2; b1 -> b2 [dir=both]; r1 -> r2 [dir=both];", "}"]
 open(f"{D}/fig04b.dot", "w").write("\n".join(L))
-subprocess.run(["neato", "-n2", "-Tpng", f"{D}/fig04b.dot", "-o", f"{D}/fig04b.png"], check=True)
+for fmt in ("png", "pdf", "svg"):
+    subprocess.run(["neato", "-n2", f"-T{fmt}", f"{D}/fig04b.dot", "-o", f"{D}/fig04b.{fmt}"], check=True)
