@@ -45,8 +45,9 @@
 <!-- v2 -->
 <g id="node3" class="node">
 <title>v2</title>
-<polygon fill="#ececff" stroke="#9370db" stroke-width="1.3" points="423.5,-338 368.5,-338 368.5,-302 423.5,-302 423.5,-338"/>
-<text text-anchor="middle" x="396" y="-316.9" font-family="Trebuchet MS" font-size="12.00" fill="#333333">Doctor</text>
+<polygon fill="#ececff" stroke="#9370db" stroke-width="1.3" points="438,-338 354,-338 354,-302 438,-302 438,-338"/>
+<text text-anchor="middle" x="396" y="-323.4" font-family="Trebuchet MS" font-size="12.00" fill="#333333">Healthcare</text>
+<text text-anchor="middle" x="396" y="-310.4" font-family="Trebuchet MS" font-size="12.00" fill="#333333">Professional</text>
 </g>
 <!-- v3 -->
 <g id="node4" class="node">
@@ -92,9 +93,9 @@
 <!-- c5 -->
 <g id="node10" class="node">
 <title>c5</title>
-<polygon fill="#ececff" stroke="#9370db" stroke-width="1.3" points="667.5,-209 584.5,-209 584.5,-173 667.5,-173 667.5,-209"/>
+<polygon fill="#ececff" stroke="#9370db" stroke-width="1.3" points="670.5,-209 581.5,-209 581.5,-173 670.5,-173 670.5,-209"/>
 <text text-anchor="middle" x="626" y="-194.4" font-family="Trebuchet MS" font-size="12.00" fill="#333333">Audit</text>
-<text text-anchor="middle" x="626" y="-181.4" font-family="Trebuchet MS" font-size="12.00" fill="#333333">Coordinator</text>
+<text text-anchor="middle" x="626" y="-181.4" font-family="Trebuchet MS" font-size="12.00" fill="#333333">Coordination</text>
 </g>
 <!-- m0 -->
 <g id="node11" class="node">

@@ -29,12 +29,35 @@ Open in Microsoft Word. On first open Word asks to update fields – choose Yes 
 - **New Figure 18 (§7.10)**: black-and-white flowchart of the HALAH prototype workflow (Patient → Guardian → Doctor, with the audit log), built only from Sections 7.2–7.5.
 - **Tables**: all tables are black and white, with a light-grey header row that repeats on every page. Rows no longer split across pages, and cell padding is slightly larger. Table 2's citation lists are now in ascending order (IEEE style; shown in the red-line). Table 9's column widths have been rebalanced.
 
+## Figure-to-text consistency check (latest round)
+
+Every figure was checked against the text, equations and algorithms that describe it. Where they differed, the figure was corrected to match your writing, keeping the same style (colour Figures 1–6, black-and-white flowcharts 7–12). Each change is explained in a red note under the figure in the red-line.
+
+| Figure | Checked against | Result |
+|---|---|---|
+| 1 Search string | §2.2.3 search concepts | Matches – unchanged (original image) |
+| 2 PRISMA | §2.2.5 criteria, §2.2.6 screening | Counts add up (125 − 35 − 7 = 83 → 43 → 40 → 33). Exclusion reason reworded to criterion 1; **author action**: 'automation tools (n = 7)' is not explained in the text |
+| 3 Layered MVC | §5.1 (actors, 7 Controller steps, 7 Model items) | Matches – redrawn readable in original design and order |
+| 4 Functional decomposition | §5.1.1 | 'Doctor' → 'Healthcare Professional'; 'Audit Coordinator' → 'Audit Coordination' |
+| 5 Predicate flow | §5.1.2, Eq. (21), Eq. (27) | Now shows the Controller evaluating the predicates on Model evidence, as the text says |
+| 6 End-to-end workflow | §5.2, Eq. (6) | Failed threshold/policy checks now go to DENY; decision node shows Eq. (6) |
+| 7 RO1 | Algorithm 1 | Added 'Define Authorisation Requirement'; order follows lines 13–18 |
+| 8 RO2 | Algorithm 2 | Added 'Record Verification Evidence' |
+| 9 RO3 | Algorithm 3 | Added membership (G) and duplicate-approval checks; threshold shown as \|A_v\| ≥ N |
+| 10 RO4 | Algorithm 4 | Added 'Consent Active?' check; scope test shown as S_R ⊆ S_C |
+| 11 RO5 | Algorithm 5 | Added requested-transition check |
+| 12 RO6 | Algorithm 6 | Added 'Compare Observed and Expected Decisions'; named the five properties |
+| 13–17 HALAH screenshots | Chapter 7 | Unchanged (HALAH kept as is) |
+| 18 HALAH workflow | §7.2–7.5 | Matches |
+
+Figure files: `figures_colour/` (Figures 2–6, PNG + PDF + SVG) and `figures_bw/` (Figures 7–12, PNG + PDF + SVG).
+
 ## Needs YOUR input (yellow notes in the red-line)
 
 1. Exact search date in §2.2.4 and records per database in §2.2.8 (must sum to 125); keep §2.2.8 only if the quality scoring was really done.
 2. Verify reference [21] (McCall, IEEE JBHI) – no record could be found.
-3. Target journal and submission month in Table 11.
-4. ~~Edit the Figure 6 and PRISMA images~~: done, both diagrams have been redrawn.
+3. Name the automation tool behind 'Records marked as ineligible by automation tools (n = 7)' in the PRISMA figure, or merge those records into another category.
+4. Target journal and submission month in Table 11.
 5. Retake the HALAH screenshots from prototype v1.1.
 6. In the HALAH document (kept unchanged): the 'CA 3 Discussion' label, the subject-less line after 'Access Granted.', and the missing formula before 'where C denotes…'.
 7. Cover date changed to September 2026 because the evidence is dated September – reject that change if the report must stay 'August 2026'.

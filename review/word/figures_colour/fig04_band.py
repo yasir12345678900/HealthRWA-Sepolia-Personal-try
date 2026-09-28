@@ -4,9 +4,9 @@ D = os.path.dirname(os.path.abspath(__file__))
 P = lambda x, y: f'pos="{x*72:.0f},{y*72:.0f}!"'
 def bb(x1, y1, x2, y2): return f'bb="{x1*72:.0f},{y1*72:.0f},{x2*72:.0f},{y2*72:.0f}"'
 CL = 'style=filled; fillcolor="#FFFFDE"; color="#AAAA33"; fontsize=13;'
-view = [("Patient", 1.9), ("Guardian / Authorised\\nParticipant", 3.75), ("Doctor", 5.55), ("Auditor", 6.95)]
+view = [("Patient", 1.9), ("Guardian / Authorised\\nParticipant", 3.75), ("Healthcare\\nProfessional", 5.55), ("Auditor", 6.95)]
 ctrl = [("Identity\\nVerification", 0.85), ("Authority\\nVerification", 2.45), ("Approval\\nAggregation", 4.05),
-        ("Policy\\nEnforcement", 5.65), ("Decision\\nEngine", 7.2), ("Audit\\nCoordinator", 8.75)]
+        ("Policy\\nEnforcement", 5.65), ("Decision\\nEngine", 7.2), ("Audit\\nCoordination", 8.75)]
 model = [("DID", 0.6), ("VC", 1.5), ("Consent", 2.5), ("Approval", 3.6), ("Policy", 4.65), ("Evidence", 5.7), ("Lifecycle", 6.8)]
 L = ['digraph G {', 'splines=false;',
      'graph [fontname="Trebuchet MS", fontsize=13, fontcolor="#333333", bgcolor=white, dpi=300, pad=0.15];',
@@ -24,4 +24,4 @@ L += [pt("a1", 2.8, 4.75), pt("a2", 2.8, 4.05), pt("b1", 2.0, 2.95), pt("b2", 2.
 L += ["a1 -> a2; b1 -> b2 [dir=both]; r1 -> r2 [dir=both];", "}"]
 open(f"{D}/fig04b.dot", "w").write("\n".join(L))
 for fmt in ("png", "pdf", "svg"):
-    subprocess.run(["neato", "-n2", f"-T{fmt}"] + (["-Gdpi=72"] if fmt != "png" else []) + [ f"{D}/fig04b.dot", "-o", f"{D}/fig04b.{fmt}"], check=True)
+    subprocess.run(["neato", "-n2", f"-T{fmt}", f"{D}/fig04b.dot", "-o", f"{D}/fig04b.{fmt}"], check=True)

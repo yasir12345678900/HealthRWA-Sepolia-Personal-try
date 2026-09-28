@@ -1,4 +1,4 @@
-%%{init: {"flowchart": {"curve": "basis", "rankSpacing": 28, "nodeSpacing": 40}}}%%
+%%{init: {"flowchart": {"curve": "basis"}}}%%
 flowchart TD
 A([Patient Creates Consent]) --> B[Consent Specification<br/>Purpose · Data Scope · Conditions]
 B --> C[DID / VC Verification<br/>Identity & Authority Validation]
@@ -6,12 +6,12 @@ C --> D[Identify Authorisation Participants]
 D --> E[Multi-Party Approval<br/>Collect Independent Approvals]
 E --> F{"Threshold<br/>Satisfied?"}
 F -- Yes --> G[Policy Evaluation<br/>Purpose & Data-Scope Validation]
-F -- No --> I[Authorisation Decision]
+F -- No --> L([DENY<br/>Reject Access])
 G --> H{Policy<br/>Compliant?}
-H -- No --> I
-H -- Yes --> I
+H -- Yes --> I["Authorisation Decision<br/>V<sub>I</sub> ∧ V<sub>A</sub> ∧ V<sub>P</sub> (Eq. 6)"]
+H -- No --> L
 I -- Allow --> J([ALLOW<br/>Grant Data Access])
-I -- Deny --> L([DENY<br/>Reject Access])
+I -- Deny --> L
 J --> K[Access Healthcare Data]
 K --> M[Record Audit Evidence]
 L --> M
