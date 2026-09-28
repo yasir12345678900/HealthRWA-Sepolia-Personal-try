@@ -24,4 +24,4 @@ L += [pt("a1", 2.8, 4.75), pt("a2", 2.8, 4.05), pt("b1", 2.0, 2.95), pt("b2", 2.
 L += ["a1 -> a2; b1 -> b2 [dir=both]; r1 -> r2 [dir=both];", "}"]
 open(f"{D}/fig04b.dot", "w").write("\n".join(L))
 for fmt in ("png", "pdf", "svg"):
-    subprocess.run(["neato", "-n2", f"-T{fmt}", f"{D}/fig04b.dot", "-o", f"{D}/fig04b.{fmt}"], check=True)
+    subprocess.run(["neato", "-n2", f"-T{fmt}"] + (["-Gdpi=72"] if fmt != "png" else []) + [ f"{D}/fig04b.dot", "-o", f"{D}/fig04b.{fmt}"], check=True)

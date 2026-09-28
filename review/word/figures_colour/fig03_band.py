@@ -32,4 +32,4 @@ L += ["sP -> vP; sG -> vG; sH -> vH; sA -> vA; vP -> c1; vG -> c1; vH -> c1; vA 
       "c6 -> m1 [dir=both]; c6 -> m2 [dir=both]; c7 -> m2;", "}"]
 open(f"{D}/fig03b.dot", "w").write("\n".join(L))
 for fmt in ("png", "pdf", "svg"):
-    subprocess.run(["neato", "-n2", f"-T{fmt}", f"{D}/fig03b.dot", "-o", f"{D}/fig03b.{fmt}"], check=True)
+    subprocess.run(["neato", "-n2", f"-T{fmt}"] + (["-Gdpi=72"] if fmt != "png" else []) + [ f"{D}/fig03b.dot", "-o", f"{D}/fig03b.{fmt}"], check=True)
