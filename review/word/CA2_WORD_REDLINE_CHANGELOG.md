@@ -4,7 +4,7 @@
 |---|---|
 | `Yasir_CA2_Report_WORD_original.docx` | Faithful Word conversion of the PDF (v33_1_3) – no content changes |
 | `Yasir_CA2_Report_REDLINE.docx` | Every change visible: red strikethrough = delete, red = add, red italic on yellow = instruction to you |
-| `Yasir_CA2_Report_CLEAN.docx` | All changes applied, notes removed, figures (1–17) and equations (1–35) renumbered |
+| `Yasir_CA2_Report_CLEAN.docx` | All changes applied, notes removed, figures (1–18) and equations (1–35) renumbered |
 
 Open in Microsoft Word. On first open Word asks to update fields – choose Yes to build the table of contents. Equations are native Word equations (editable).
 
@@ -13,14 +13,15 @@ Open in Microsoft Word. On first open Word asks to update fields – choose Yes 
 - **HALAH implementation integrated** as new **Chapter 7 – HALAH System and Workflow**, placed between the Proposed Solution (Ch. 6) and Current Progress (now Ch. 8). Sections 7.1–7.9 reproduce the HALAH document word for word (only section numbers, figure/table captions, line breaks in long equations and spaces after symbols were added). Sections 7.10–7.13 add the source-code mapping, automated test results (16 passed, 2 skipped, 0 failed), Sepolia on-chain evidence and limitations. Old Chapters 7–9 → 8–10; Tables 7–8 → 11–12.
 - **Each RO in Chapter 6 now points to the prototype** (Sections 7.2–7.5, Figures 13–17 in the red-line) with accurate claims: EIP-712 guardian signatures (not VC verification), N = |G|, purpose whitelist, lifecycle checks already implemented, VL vs VJ naming.
 - **Progress statuses corrected**: RO2 prototype level, RO4 completed, RO5 partially completed, RO6 covers SRQ1–SRQ4.
-- **Removed**: editing residue in §2.2, duplicated §2.3 opening, TEE digression, the unprovable 'no execution path' claim, Figure 4, and 46 repeated equations (each replaced by a reference to the original equation).
+- **Removed**: editing residue in §2.2, duplicated §2.3 opening, TEE digression, the unprovable 'no execution path' claim, and 46 repeated equations (each replaced by a reference to the original equation).
 - **Added**: Australian regulatory context (Privacy Act 1988, My Health Records Act 2012, Healthcare Identifiers Act 2010), PRISMA 2020 statement, justification of out-of-domain studies, §2.2.8 Quality Assessment, references [34]–[42].
 - **Moved**: temporal/lifecycle procedure §6.4.2 → §6.5.2 (RO5); the policy procedure §6.4.4 → §6.4.2 so Algorithm 4 follows it.
 - **Consistency & language**: Australian spelling (authorisation, decentralised, organised, summarises, program); RQ → SRQ throughout; missing articles and colons; 'as follows'; journal-name capitalisation; lost title capitals (FutureDID, IoT, TEE, UCON, DP-DID, Xinjiang, Byzantine); [31] corrected to *Pediatrics* 144(1), 2019.
 
-- **Figures 1–6 kept in their original colour design**. Figure 1 is unchanged. Figures 2, 3, 5 and 6 (red-line numbering) were re-drawn with the same tool (Mermaid), colours and font (Trebuchet MS), with only these fixes:
+- **Figures 1–6 kept in their original colour design**. Figure 1 is unchanged. Figures 2, 3, 4, 5 and 6 were re-drawn with the same tool (Mermaid), colours and font (Trebuchet MS), with only these fixes:
   - Figure 2 (PRISMA): 'decentralized' → 'decentralised'.
-  - Figure 3 (MVC): arranged as three labelled columns so every label is readable and the 'MODEL LAYER' title is no longer covered.
+  - Figure 3 (MVC): same banded layout as before (actors, View, Controller, Model), with every label readable, connectors kept clear of the boxes and the 'MODEL LAYER' title no longer covered.
+  - Figure 4 (functional decomposition): kept, no longer deleted; the layers are stacked so every label is readable.
   - Figure 5 (predicate flow): 'V_I(u)' etc. written as real subscripts.
   - Figure 6 (end-to-end workflow): 'Authorization' → 'Authorisation'.
   - Sources are in `figures_colour/`.
