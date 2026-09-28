@@ -1,0 +1,20 @@
+%%{init: {"flowchart": {"curve": "basis"}}}%%
+flowchart TD
+P1["V<sub>I</sub>(u)"] --> P2["V<sub>A</sub>(C)"]
+P2 --> P3["V<sub>P</sub>(C, R)"]
+P3 --> P4["V<sub>T</sub>(C, t)"]
+P4 --> P5["V<sub>L</sub>(C)"]
+P5 --> Q{"All Required<br/>Predicates<br/>= TRUE?"}
+Q -- YES --> AL[ALLOW]
+Q -- NO --> DE[DENY]
+AL --> G[Generate Authorisation Evidence]
+DE --> G
+classDef v fill:#FFF2CC,stroke:#D6B656,color:#000,font-weight:bold,font-size:22px
+classDef q fill:#F8CECC,stroke:#B85450,color:#000,font-weight:bold,font-size:22px
+classDef o fill:#FFE6CC,stroke:#D79B00,color:#000,font-weight:bold,font-size:22px
+class P1,P2,P3,P4,P5 v
+class Q q
+class AL,DE,G o
+linkStyle 0,1,2,3 stroke:#D6B656,stroke-width:1.5px
+linkStyle 4,5,6 stroke:#333333,stroke-width:1.5px
+linkStyle 7,8 stroke:#D79B00,stroke-width:1.5px

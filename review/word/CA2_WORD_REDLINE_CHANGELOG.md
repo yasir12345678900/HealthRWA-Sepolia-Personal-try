@@ -18,7 +18,13 @@ Open in Microsoft Word. On first open Word asks to update fields – choose Yes 
 - **Moved**: temporal/lifecycle procedure §6.4.2 → §6.5.2 (RO5); the policy procedure §6.4.4 → §6.4.2 so Algorithm 4 follows it.
 - **Consistency & language**: Australian spelling (authorisation, decentralised, organised, summarises, program); RQ → SRQ throughout; missing articles and colons; 'as follows'; journal-name capitalisation; lost title capitals (FutureDID, IoT, TEE, UCON, DP-DID, Xinjiang, Byzantine); [31] corrected to *Pediatrics* 144(1), 2019.
 
-- **Black-and-white figures (this round)**: every flowchart and diagram (Figures 1, 2, 3, 5–12) redrawn in black and white at 300 dpi, same boxes, text and arrows as before. Figure 3 is now laid out as three labelled columns (View, Controller, Model) so every label can be read in print. 'Authorisation Decision' (Figure 6) and 'decentralised identity' (PRISMA, Figure 2) are now spelt correctly inside the diagrams. The original colour images are kept in `Yasir_CA2_Report_WORD_original.docx`. HALAH screenshots (Figures 13–17) are unchanged.
+- **Figures 1–6 kept in their original colour design**. Figure 1 is unchanged. Figures 2, 3, 5 and 6 (red-line numbering) were re-drawn with the same tool (Mermaid), colours and font (Trebuchet MS), with only these fixes:
+  - Figure 2 (PRISMA): 'decentralized' → 'decentralised'.
+  - Figure 3 (MVC): arranged as three labelled columns so every label is readable and the 'MODEL LAYER' title is no longer covered.
+  - Figure 5 (predicate flow): 'V_I(u)' etc. written as real subscripts.
+  - Figure 6 (end-to-end workflow): 'Authorization' → 'Authorisation'.
+  - Sources are in `figures_colour/`.
+- **Flowcharts 7–12 in black and white**, re-drawn at 300 dpi with unchanged content (`figures_bw/`). HALAH screenshots (Figures 13–17) are unchanged.
 - **New Figure 18 (§7.10)**: black-and-white flowchart of the HALAH prototype workflow (Patient → Guardian → Doctor, with the audit log), built only from Sections 7.2–7.5.
 - **Tables**: all tables are black and white, with a light-grey header row that repeats on every page. Rows no longer split across pages, and cell padding is slightly larger. Table 2's citation lists are now in ascending order (IEEE style; shown in the red-line). Table 9's column widths have been rebalanced.
 

@@ -1,0 +1,24 @@
+%%{init: {"flowchart": {"curve": "basis"}}}%%
+flowchart TD
+A["<b>Identification of studies via databases and registers<br/>Records identified from:<br/>Databases (n = 125)<br/>Registers (n = 0)</b>"]
+A --> B["<b>Records removed before screening:<br/>• Duplicate records removed (n = 35)<br/>• Records marked as ineligible by automation tools (n = 7)<br/>• Records removed for other reasons (n = 0)</b>"]
+A --> C["<b>Records screened<br/>(n = 83)</b>"]
+C --> D["<b>Records excluded (n = 40)</b><br/><i>Reason: Unrelated to healthcare data sharing, consent, or decentralised identity</i>"]
+C --> E["<b>Reports sought for retrieval<br/>(n = 43)</b>"]
+E --> F["<b>Reports not retrieved<br/>(n = 3)</b><br/><i>Reason: Full-text inaccessible</i>"]
+E --> G["<b>Reports assessed for eligibility<br/>(n = 40)</b>"]
+G --> H["<b>Reports excluded:<br/>• Reason 1: Insufficient technical/architectural detail (n = 3)<br/>• Reason 2: Scope mismatch with consent/DID integration (n = 4)</b>"]
+G --> I["<b>Studies included in review</b><br/>(n = 33)<br/>Reports of included studies (n = 33)"]
+classDef id fill:#FFE6CC,stroke:#D79B00,stroke-width:2px,color:#000
+classDef ex fill:#D80073,stroke:#A50040,stroke-width:2px,color:#fff
+classDef sc fill:#1BA1E2,stroke:#006EAF,stroke-width:2px,color:#fff
+classDef so fill:#DAE8FC,stroke:#6C8EBF,stroke-width:2px,color:#000
+classDef as fill:#60A917,stroke:#2D7600,stroke-width:2px,color:#fff
+classDef inc fill:#008A00,stroke:#005700,stroke-width:2px,color:#fff
+class A id
+class B,D,F,H ex
+class C sc
+class E so
+class G as
+class I inc
+linkStyle default stroke:#333333,stroke-width:2px
