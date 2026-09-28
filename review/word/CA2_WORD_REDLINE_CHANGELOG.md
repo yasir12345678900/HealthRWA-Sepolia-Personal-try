@@ -4,7 +4,7 @@
 |---|---|
 | `Yasir_CA2_Report_WORD_original.docx` | Faithful Word conversion of the PDF (v33_1_3) – no content changes |
 | `Yasir_CA2_Report_REDLINE.docx` | Every change visible: red strikethrough = delete, red = add, red italic on yellow = instruction to you |
-| `Yasir_CA2_Report_CLEAN.docx` | All changes applied, notes removed, figures (1–16) and equations (1–35) renumbered |
+| `Yasir_CA2_Report_CLEAN.docx` | All changes applied, notes removed, figures (1–17) and equations (1–35) renumbered |
 
 Open in Microsoft Word. On first open Word asks to update fields – choose Yes to build the table of contents. Equations are native Word equations (editable).
 
@@ -18,12 +18,16 @@ Open in Microsoft Word. On first open Word asks to update fields – choose Yes 
 - **Moved**: temporal/lifecycle procedure §6.4.2 → §6.5.2 (RO5); the policy procedure §6.4.4 → §6.4.2 so Algorithm 4 follows it.
 - **Consistency & language**: Australian spelling (authorisation, decentralised, organised, summarises, program); RQ → SRQ throughout; missing articles and colons; 'as follows'; journal-name capitalisation; lost title capitals (FutureDID, IoT, TEE, UCON, DP-DID, Xinjiang, Byzantine); [31] corrected to *Pediatrics* 144(1), 2019.
 
+- **Black-and-white figures (this round)**: every flowchart and diagram (Figures 1, 2, 3, 5–12) redrawn in black and white at 300 dpi, same boxes, text and arrows as before. Figure 3 is now laid out as three labelled columns (View, Controller, Model) so every label can be read in print. 'Authorisation Decision' (Figure 6) and 'decentralised identity' (PRISMA, Figure 2) are now spelt correctly inside the diagrams. The original colour images are kept in `Yasir_CA2_Report_WORD_original.docx`. HALAH screenshots (Figures 13–17) are unchanged.
+- **New Figure 18 (§7.10)**: black-and-white flowchart of the HALAH prototype workflow (Patient → Guardian → Doctor, with the audit log), built only from Sections 7.2–7.5.
+- **Tables**: all tables are black and white, with a light-grey header row that repeats on every page. Rows no longer split across pages, and cell padding is slightly larger. Table 2's citation lists are now in ascending order (IEEE style; shown in the red-line). Table 9's column widths have been rebalanced.
+
 ## Needs YOUR input (yellow notes in the red-line)
 
 1. Exact search date in §2.2.4 and records per database in §2.2.8 (must sum to 125); keep §2.2.8 only if the quality scoring was really done.
 2. Verify reference [21] (McCall, IEEE JBHI) – no record could be found.
 3. Target journal and submission month in Table 11.
-4. Edit the images: 'Authorization Decision' (Figure 6 diagram) and 'decentralized' (PRISMA figure).
+4. ~~Edit the Figure 6 and PRISMA images~~: done, both diagrams have been redrawn.
 5. Retake the HALAH screenshots from prototype v1.1.
 6. In the HALAH document (kept unchanged): the 'CA 3 Discussion' label, the subject-less line after 'Access Granted.', and the missing formula before 'where C denotes…'.
 7. Cover date changed to September 2026 because the evidence is dated September – reject that change if the report must stay 'August 2026'.
