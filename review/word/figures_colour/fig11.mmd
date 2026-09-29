@@ -1,0 +1,15 @@
+%%{init: {"flowchart": {"curve": "basis"}}}%%
+flowchart TD
+A([Access Request]) --> B[Retrieve Consent State] --> C[Check Consent Validity Interval] --> Q1{"Within Valid<br/>Time?"}
+Q1 -- Yes --> D[Check Lifecycle State] --> Q2{"State Permits<br/>Access?"}
+Q2 -- Yes --> E[Evaluate Revocation Status] --> Q3{Revoked?}
+Q3 -- No --> F[Validate Requested Transition] --> Q4{"Transition<br/>Permitted?"}
+Q4 -- Yes --> G([Continue Authorisation Evaluation])
+Q1 -- No --> X[Deny Access]
+Q2 -- No --> X
+Q3 -- Yes --> X
+Q4 -- No --> X
+X --> Y([Record Lifecycle-Based Denial])
+class A,B,C,D,E,F,G,X,Y,Q1,Q2,Q3,Q4 g
+classDef g fill:#FFF2CC,stroke:#D6B656,stroke-width:2px,color:#000,font-weight:bold
+linkStyle default stroke:#D6B656,stroke-width:2px

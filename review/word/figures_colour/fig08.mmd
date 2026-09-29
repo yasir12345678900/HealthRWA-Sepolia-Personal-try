@@ -1,0 +1,12 @@
+%%{init: {"flowchart": {"curve": "basis"}}}%%
+flowchart TD
+A([Participant Requests<br/>Participation]) --> B[Resolve Participant DID] --> Q1{DID Valid?}
+Q1 -- Yes --> C[Retrieve Verifiable Credential] --> Q2{VC Valid?}
+Q2 -- Yes --> D[Extract Role and Authority Claims] --> Q3{"Authority Matches<br/>Consent?"}
+Q3 -- Yes --> E[Record Verification Evidence] --> F([Return Verified Identity<br/>and Authority])
+Q1 -- No --> R[Reject Participant]
+Q2 -- No --> R
+Q3 -- No --> R
+class A,B,C,D,E,F,Q1,Q2,Q3,R g
+classDef g fill:#FFF2CC,stroke:#D6B656,stroke-width:2px,color:#000,font-weight:bold
+linkStyle default stroke:#D6B656,stroke-width:2px

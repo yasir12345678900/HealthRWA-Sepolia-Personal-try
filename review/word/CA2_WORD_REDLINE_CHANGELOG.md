@@ -25,8 +25,15 @@ Open in Microsoft Word. On first open Word asks to update fields – choose Yes 
   - Figure 5 (predicate flow): 'V_I(u)' etc. written as real subscripts.
   - Figure 6 (end-to-end workflow): 'Authorization' → 'Authorisation'.
   - Sources are in `figures_colour/`.
-- **Flowcharts 7–12 in black and white**, re-drawn at 300 dpi with unchanged content (`figures_bw/`). HALAH screenshots (Figures 13–17) are unchanged.
-- **New Figure 18 (§7.10)**: black-and-white flowchart of the HALAH prototype workflow (Patient → Guardian → Doctor, with the audit log), built only from Sections 7.2–7.5.
+- **Figures 7–12 (research-objective workflows) checked against the text and re-drawn in the same gold Mermaid style**. Every step now matches the corresponding algorithm and procedure:
+  - Figure 7 (RO1): 'Define Authorisation Requirement' added; consent identifier generated before the object C = (I, A, P, E) is created (Algorithm 1, lines 13–15).
+  - Figure 8 (RO2): 'Record Verification Evidence' added (Algorithm 2, line 21).
+  - Figure 9 (RO3): 'Participant in Required Set G?' and 'Already Approved?' checks added (Algorithm 3, lines 7–14).
+  - Figure 10 (RO4): 'Evaluate Consent State / Consent Active?' added (Algorithm 4, lines 6–10); laid out with each check beside its step so it is readable.
+  - Figure 11 (RO5): 'Validate Requested Transition' added (Algorithm 5, lines 16–20).
+  - Figure 12 (RO6): 'Compare Observed and Expected Decisions' added and the five evaluated properties named (Algorithm 6, lines 9, 12–16).
+- **Figures 7–12 were never cited in the text**: each workflow paragraph now cites its figure (red insertion), and Figures 8–12 are moved to sit directly after that paragraph instead of in the middle of the numbered procedure steps (red note at the old place).
+- **Figure 18 (§7.10)**: HALAH prototype workflow, now in the same colours as the other workflows. HALAH screenshots (Figures 13–17) are unchanged.
 - **Tables**: all tables are black and white, with a light-grey header row that repeats on every page. Rows no longer split across pages, and cell padding is slightly larger. Table 2's citation lists are now in ascending order (IEEE style; shown in the red-line). Table 9's column widths have been rebalanced.
 
 ## Figure-to-text consistency check (latest round)
@@ -50,7 +57,7 @@ Every figure was checked against the text, equations and algorithms that describ
 | 13–17 HALAH screenshots | Chapter 7 | Unchanged (HALAH kept as is) |
 | 18 HALAH workflow | §7.2–7.5 | Matches |
 
-Figure files: `figures_colour/` (Figures 2–6, PNG + PDF + SVG) and `figures_bw/` (Figures 7–12, PNG + PDF + SVG).
+Figure files: `figures_colour/` (Figures 2–12 and 18, PNG; Figures 3–4 also PDF + SVG) and `figures_bw/` (black-and-white alternatives of Figures 7–12 and 18).
 
 ## Needs YOUR input (yellow notes in the red-line)
 

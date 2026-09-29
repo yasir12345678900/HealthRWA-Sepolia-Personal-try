@@ -1,0 +1,14 @@
+%%{init: {"flowchart": {"curve": "basis"}}}%%
+flowchart TD
+A([Consent Requires<br/>Multi-Party Approval]) --> B[Identify Required Participants] --> C[Participant Submits Approval] --> D[Verify DID and VC] --> Q1{"Participant<br/>Verified?"}
+Q1 -- No --> R1[Reject Invalid Approval]
+Q1 -- Yes --> Q2{"Participant in<br/>Required Set G?"}
+Q2 -- No --> R2[Reject Unauthorised Approval]
+Q2 -- Yes --> Q3{"Already<br/>Approved?"}
+Q3 -- Yes --> R3[Reject Duplicate Approval]
+Q3 -- No --> E[Record Valid Approval] --> F[Update Approval Count] --> Q4{"Threshold<br/>Satisfied?"}
+Q4 -- No --> P[Consent Remains Pending]
+Q4 -- Yes --> G[Activate Authorisation] --> H[Record Approval Evidence] --> I[Issue Consent Token or<br/>Activation Record]
+class A,B,C,D,E,F,G,H,I,P,Q1,Q2,Q3,Q4,R1,R2,R3 g
+classDef g fill:#FFF2CC,stroke:#D6B656,stroke-width:2px,color:#000,font-weight:bold
+linkStyle default stroke:#D6B656,stroke-width:2px

@@ -1,0 +1,27 @@
+digraph G { rankdir=TB; 
+graph [fontname="Trebuchet MS", fontsize=13, bgcolor=white, dpi=300, nodesep=0.35, ranksep=0.38, pad=0.15];
+node  [shape=box, style="filled", fillcolor="#FFF2CC", color="#D6B656", fontcolor="#000000", fontname="Trebuchet MS", fontsize=13, penwidth=1.3, margin="0.18,0.07"];
+edge  [color="#D6B656", fontcolor="#333333", fontname="Trebuchet MS", fontsize=12, arrowsize=0.75, penwidth=1.1];
+
+
+node [fontsize=12];
+subgraph cluster_p { label="Patient view (Section 7.2)"; style="filled,dashed"; fillcolor="#FFFFDE"; color="#AAAA33"; fontcolor="#333333"; fontsize=12; labeljust=l;
+  p1 [label="Create consent:\npatient DID, doctor DID,\nEMR-module scope, guardian DIDs,\nstart / expiry", shape=box, style="rounded,filled", penwidth=1.6];
+  pv [label="Expiry later\nthan start?", shape=diamond, margin="0.05,0.04"]; pr [label="Reject input"];
+  p2 [label="Consent stored\nstate = PENDING_SIGNATURE"]; }
+subgraph cluster_g { label="Guardian view (Section 7.3)"; style="filled,dashed"; fillcolor="#FFFFDE"; color="#AAAA33"; fontcolor="#333333"; fontsize=12; labeljust=l;
+  g1 [label="Guardian signs EIP-712 approval"];
+  gv [label="Signature valid and\nnot a duplicate?", shape=diamond, margin="0.05,0.04"]; gr [label="Reject approval"];
+  gt [label=<Approvals = N = |G| ?>, shape=diamond, margin="0.05,0.04"];
+  g2 [label="Mint consent SBT\n(local ID + Sepolia anchor)"]; }
+subgraph cluster_d { label="Doctor view (Section 7.4)"; style="filled,dashed"; fillcolor="#FFFFDE"; color="#AAAA33"; fontcolor="#333333"; fontsize=12; labeljust=l;
+  d1 [label="Doctor enters consent ID\nand selects EMR modules"];
+  dv [label=<State = ACTIVE and<BR/>S<SUB>R</SUB> ⊆ S<SUB>C</SUB> ?>, shape=diamond, margin="0.05,0.04"];
+  dg [label="ACCESS GRANTED\nrelease Synthea modules", shape=box, style="rounded,filled,bold"]; dd [label="ACCESS DENIED", shape=box, style="rounded,filled,bold"]; }
+A [label="Audit log (Section 7.5)\nCREATE_CONSENT • SIGN_CONSENT • MINT_SBT\nSTATE_CHECK • DATA_ACCESS (GRANTED / DENIED)", shape=cylinder, penwidth=1.6];
+p1 -> pv; pv -> p2 [label=" Yes"]; pv -> pr [label=" No"];
+p2 -> g1 -> gv; gv -> gt [label=" Yes"]; gv -> gr [label=" No"]; gt -> g1 [label=" No: wait for\n next guardian", style=dashed, constraint=false];
+gt -> g2 [label=" Yes"]; g2 -> d1 [label=" consent ACTIVE"]; d1 -> dv; dv -> dg [label=" Yes"]; dv -> dd [label=" No"];
+{p2 g2 dg dd} -> A [style=dotted, arrowhead=vee];
+
+}

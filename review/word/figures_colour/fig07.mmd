@@ -1,0 +1,10 @@
+%%{init: {"flowchart": {"curve": "basis"}}}%%
+flowchart TD
+A([Patient Creates Consent]) --> B[Collect Patient DID] --> C[Specify Authorised Doctor] --> D[Specify Guardian DIDs] --> E[Specify Purpose and Data Scope] --> F[Specify Consent Validity]
+F --> Q{"Consent Specification<br/>Valid?"}
+Q -- Yes --> G[Define Authorisation Requirement]
+Q -- No --> R[Reject Consent Request]
+G --> H[Generate Consent Identifier] --> I["Create Trust-Aware Consent Object<br/>C = (I, A, P, E)"] --> J[Persist Consent Record] --> K[Record Consent Creation Audit]
+class A,B,C,D,E,F,Q,G,H,I,J,K,R g
+classDef g fill:#FFF2CC,stroke:#D6B656,stroke-width:2px,color:#000,font-weight:bold
+linkStyle default stroke:#D6B656,stroke-width:2px

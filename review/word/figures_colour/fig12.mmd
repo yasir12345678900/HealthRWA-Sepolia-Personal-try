@@ -1,0 +1,18 @@
+%%{init: {"flowchart": {"curve": "basis"}}}%%
+flowchart TD
+A([Define Security and<br/>Authorisation Properties]) --> B[Define Threat and Failure Conditions] --> C[Implement Validation Scenarios]
+C --> D[Execute Valid Consent Workflow]
+C --> E[Execute Negative and<br/>Adversarial Scenarios]
+D --> F[Collect Decision and Audit Evidence]
+E --> F
+F --> G[Compare Observed and<br/>Expected Decisions]
+G --> H["Evaluate Security Properties<br/>(soundness, denial, threshold,<br/>policy scope, audit consistency)"]
+G --> I[Evaluate Functional and<br/>Practical Performance]
+H --> Q{"Properties<br/>Satisfied?"}
+I --> Q
+Q -- Yes --> J([Document Evidence and Limitations])
+Q -- No --> K[Identify Security or<br/>Functional Failure] --> L[Refine Framework]
+L -. iterate .-> C
+class A,B,C,D,E,F,G,H,I,J,K,L,Q g
+classDef g fill:#FFF2CC,stroke:#D6B656,stroke-width:2px,color:#000,font-weight:bold
+linkStyle default stroke:#D6B656,stroke-width:2px

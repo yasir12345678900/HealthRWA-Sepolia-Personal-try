@@ -1,0 +1,34 @@
+digraph G {
+graph [bgcolor=white, dpi=300, splines=ortho, pad=0.15];
+node [shape=box, style="filled", fillcolor="#FFF2CC", color="#D6B656", fontcolor="#000000", fontname="Trebuchet MS Bold", fontsize=13, penwidth=1.5, margin="0.16,0.08"];
+edge [color="#D6B656", penwidth=1.6, arrowsize=0.8];
+A [label="Doctor Requests\nPatient Data", style="rounded,filled", pos="166,742!"];
+B [label="Retrieve Consent Object", pos="166,684!"];
+C [label="Verify Requesting Identity\nand Authority", pos="166,616!"];
+Q1 [label="Identity\nValid?", shape=diamond, margin="0.02,0.02", pos="389,616!"];
+Dn [label="Evaluate Consent State", pos="166,536!"];
+Q2 [label="Consent\nActive?", shape=diamond, margin="0.02,0.02", pos="389,536!"];
+En [label="Verify Multi-Party Authorisation", pos="166,457!"];
+Q3 [label="Threshold\nSatisfied?", shape=diamond, margin="0.02,0.02", pos="389,457!"];
+F [label="Evaluate Requested Purpose", pos="166,378!"];
+Q4 [label="Purpose\nValid?", shape=diamond, margin="0.02,0.02", pos="389,378!"];
+G [label="Evaluate Requested Data Scope", pos="166,299!"];
+Q5 [label="Scope Within\nConsent?", shape=diamond, margin="0.02,0.02", pos="389,299!"];
+H [label="Generate Proof or\nAccess Evidence", pos="166,216!"];
+I [label="Grant Data Access", pos="166,155!"];
+J [label="Record Granted Access", style="rounded,filled", pos="166,97!"];
+X [label="Deny Access", pos="554,216!"];
+Y [label="Record Denied Access", style="rounded,filled", pos="554,155!"];
+y0 [label="Yes", shape=plaintext, style="", fixedsize=true, width=0.3, height=0.16, margin=0, fontname="Trebuchet MS", fontsize=11, fontcolor="#333333", pos="295,571!"];
+n0 [label="No", shape=plaintext, style="", fixedsize=true, width=0.3, height=0.16, margin=0, fontname="Trebuchet MS", fontsize=11, fontcolor="#333333", pos="482,630!"];
+y1 [label="Yes", shape=plaintext, style="", fixedsize=true, width=0.3, height=0.16, margin=0, fontname="Trebuchet MS", fontsize=11, fontcolor="#333333", pos="295,492!"];
+n1 [label="No", shape=plaintext, style="", fixedsize=true, width=0.3, height=0.16, margin=0, fontname="Trebuchet MS", fontsize=11, fontcolor="#333333", pos="482,551!"];
+y2 [label="Yes", shape=plaintext, style="", fixedsize=true, width=0.3, height=0.16, margin=0, fontname="Trebuchet MS", fontsize=11, fontcolor="#333333", pos="295,413!"];
+n2 [label="No", shape=plaintext, style="", fixedsize=true, width=0.3, height=0.16, margin=0, fontname="Trebuchet MS", fontsize=11, fontcolor="#333333", pos="482,472!"];
+y3 [label="Yes", shape=plaintext, style="", fixedsize=true, width=0.3, height=0.16, margin=0, fontname="Trebuchet MS", fontsize=11, fontcolor="#333333", pos="295,333!"];
+n3 [label="No", shape=plaintext, style="", fixedsize=true, width=0.3, height=0.16, margin=0, fontname="Trebuchet MS", fontsize=11, fontcolor="#333333", pos="482,392!"];
+y4 [label="Yes", shape=plaintext, style="", fixedsize=true, width=0.3, height=0.16, margin=0, fontname="Trebuchet MS", fontsize=11, fontcolor="#333333", pos="295,254!"];
+n4 [label="No", shape=plaintext, style="", fixedsize=true, width=0.3, height=0.16, margin=0, fontname="Trebuchet MS", fontsize=11, fontcolor="#333333", pos="482,313!"];
+A -> B; B -> C; C -> Q1; Q1 -> Dn; Dn -> Q2; Q2 -> En; En -> Q3; Q3 -> F; F -> Q4; Q4 -> G; G -> Q5; Q5 -> H; H -> I; I -> J;
+Q1 -> X; Q2 -> X; Q3 -> X; Q4 -> X; Q5 -> X; X -> Y;
+}
