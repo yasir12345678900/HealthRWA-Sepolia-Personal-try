@@ -206,9 +206,9 @@ Build: 195 pages, Figures 1–40, Tables 1–17, Equations (1)–(76), Reference
 
 ## Needs the author personally before submission
 
-1. Reference [64]: confirm the third author's surname on IEEE Xplore (record 11485301).
-2. Reference [68] (Ranaweera et al.): confirm the six co-authors from the ICAC 2023 record; the export was garbled.
-3. Reference [48]: confirm author name order against the ACM record (10.1145/3771992).
+1. Reference [64]: DONE — authors confirmed on IEEE Xplore (Hema S., Goli Bulli Sai Reddy, Shalini R.).
+2. Reference [68]: DONE — six co-authors confirmed on IEEE Xplore.
+3. Reference [48]: DONE — author order confirmed on ACM DL (H. Gao, X. Wu, H. Huang, Q. Li, Y. Xing; ACM Trans. Web 20(1):1–29).
 4. Title page date 'August 2026' versus transaction evidence dated 24 September 2026.
 5. Main research question (Section 3.2): reviewers suggest adding 'verify'; left unchanged because it is the registered question.
 6. The review panel of Section 2.3.1 is described as a six-member panel with a chair — be ready to explain who performed the coding if asked.
