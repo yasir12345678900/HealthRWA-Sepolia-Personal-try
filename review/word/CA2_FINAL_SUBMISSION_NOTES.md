@@ -1,9 +1,13 @@
-# Final submission package (round 3, updated after the Consensus Pro sweep)
+# Final submission package (round 4: orange proofreading pass)
+
+**Round 4 (latest).** Every chapter was proofread from A to Z; 98 small fixes were applied (grammar, Australian spelling, punctuation, cross-references, terminology, a few machine-sounding sentences). `Yasir_CA2_Report_REVIEW_v4.docx` shows them in orange on top of the accepted earlier rounds; `Yasir_CA2_Report_FINAL.docx` is the clean submission copy. The full list, and the points left for your decision, are in `CA2_ORANGE_PROOFREAD_NOTES.md`.
+
 
 | File | What it is |
 |---|---|
 | `Yasir_CA2_Report_FINAL.docx` | **Submission file.** All changes applied, no colour marks, references continuous, table of contents set to update itself when Word opens the file (answer *Yes* to the "update fields" prompt) |
-| `Yasir_CA2_Report_REVIEW_v3.docx` | The same report with the changes of rounds 2 and 3 visible: pink = fixes, blue = additions, yellow = notes |
+| `Yasir_CA2_Report_REVIEW_v4.docx` | The same report with this round's proofreading fixes in orange (earlier rounds already accepted) |
+| `Yasir_CA2_Report_REVIEW_v3.docx` | The previous review copy with the changes of rounds 2 and 3 visible: pink = fixes, blue = additions, yellow = notes |
 | `Yasir_CA2_Chapter2_SLR_REVIEW.docx` / `_CLEAN.docx` | Chapter 2 on its own (updated to the same state) |
 
 ## What was done in this round
