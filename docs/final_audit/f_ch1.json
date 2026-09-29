@@ -1,0 +1,126 @@
+[
+ {
+  "id": "F1",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "A systematic literature review of 33 studies",
+  "section": "Abstract",
+  "current": "A systematic literature review of 33 studies, structured by six requirements, shows that no reviewed study satisfies these requirements together.",
+  "after": "",
+  "replacement": "A systematic literature review of 44 primary studies, conducted under the PRISMA 2020 framework and structured by six requirements, shows that no reviewed study satisfies these requirements together.",
+  "reason": "The rebuilt Chapter 2 reports 44 included primary studies [35]–[78] (Sections 2.3.6, 2.5, 2.6); 33 is the pre-rebuild count and contradicts the whole review.",
+  "verdict": "MUST_FIX"
+ },
+ {
+  "id": "F2",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "Existing blockchain-based consent systems record consent as an immutable",
+  "section": "Abstract",
+  "current": "Existing blockchain-based consent systems record consent as an immutable permission event, but they do not establish who the participants are, whether they hold the authority to approve,",
+  "after": "",
+  "replacement": "Existing blockchain-based consent systems establish these conditions individually, and several combine three or four of them, but no reviewed system evaluates in every access decision who the participants are, whether they hold the authority to approve,",
+  "reason": "Chapter 2 (Section 2.5) retracts the claim that these conditions are absent; the gap is that they are not conjoined in one decision predicate with multi-party approval as a standing condition, so the abstract must state the conjunction gap, not absence.",
+  "verdict": "MUST_FIX"
+ },
+ {
+  "id": "F3",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "It should be noted that the proposed framework has also been extended",
+  "section": "1.3",
+  "current": "It should be noted that the proposed framework has also been extended beyond its four foundational dimensions to incorporate temporal validity and lifecycle trust (RO5).",
+  "after": "",
+  "replacement": "The purpose of this section is to explain why a trust-oriented authorisation framework is required and to introduce its dimensions. It should be noted at the outset that, in addition to the four foundational dimensions RO1 to RO4 that are introduced below, the proposed framework has been extended to incorporate temporal validity and lifecycle trust (RO5), which was originally planned for the next stage.",
+  "reason": "Section 1.3 opens by referring to 'its four foundational dimensions' before any dimension has been introduced (they appear five paragraphs later), so the first two paragraphs read as misplaced; the replacement makes the opening self-contained.",
+  "verdict": "MUST_FIX"
+ },
+ {
+  "id": "F4",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "August 2026",
+  "section": "Title page",
+  "current": "August 2026",
+  "after": "",
+  "replacement": "October 2026",
+  "reason": "The report is to be submitted at the end of September 2026; the title-page date should match the submission month (author to confirm the exact month required by the CA2 timetable).",
+  "verdict": "KEEP"
+ },
+ {
+  "id": "F5",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "connects the relevant participants, authority requirements, policy",
+  "section": "1.3",
+  "current": "",
+  "after": "constraints, and evidence associated with an authorisation decision.",
+  "replacement": "In the remainder of this report this object is denoted C = (I, A, P, T, L, E), where I denotes the participating identities, A the authority requirement comprising the guardian set G and the threshold N, P the purpose and data-scope policy, T the temporal validity window, L the jurisdictional constraint and E the authorisation evidence; the object is defined formally in Chapter 3.",
+  "reason": "The abstract and Section 1.3 refer to 'the consent object' but Chapter 1 never introduces the notation C = (I, A, P, T, L, E) used throughout Chapters 3 to 7.",
+  "verdict": "KEEP"
+ },
+ {
+  "id": "F6",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "about whether a particular healthcare data-access request should be",
+  "section": "1.3",
+  "current": "",
+  "after": "data-access request should be permitted.",
+  "replacement": "The contributions of the current stage are therefore threefold: a consent model in which consent is an evaluable object C rather than a permission record, an access decision defined as the conjunction of the identity, authority, policy, temporal and jurisdictional predicates with a patient-defined guardian threshold as a standing condition, and the HALAH prototype on the Ethereum Sepolia testnet through which this decision rule has been validated empirically.",
+  "reason": "An examiner expects the introduction to state the contributions explicitly; Chapter 1 currently states motivation and scope but no contribution statement.",
+  "verdict": "KEEP"
+ },
+ {
+  "id": "F7",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "based access-control mechanisms can restrict access to authorised",
+  "section": "1.1",
+  "current": "resources [2, 7, 3, 20, 5].",
+  "after": "",
+  "replacement": "resources [2, 7, 3, 20, 5, 28, 25].",
+  "reason": "The cited works cover blockchain surveys and DID/VC, but none of them addresses policy-based access control, which [28] (blockchain access control in healthcare) and [25] (RBAC/ABAC/context-aware access control) support.",
+  "verdict": "KEEP"
+ },
+ {
+  "id": "F8",
+  "severity": "GREEN",
+  "kind": "cite",
+  "anchor": "healthcare professionals, institutional authorities, and other authorised",
+  "section": "1.1",
+  "current": "stakeholders [31, 9].",
+  "after": "",
+  "replacement": "stakeholders [31].",
+  "reason": "[9] is a nursing survey on confidentiality and care coordination and does not discuss guardians or institutional authorities in authorisation decisions; [31] (paediatric guardian access) supports the sentence on its own.",
+  "verdict": "KEEP"
+ },
+ {
+  "id": "F9",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "The current stage delivers RO1 to RO5 in operational form",
+  "section": "Abstract",
+  "current": "The current stage delivers RO1 to RO5 in operational form together with the empirical component of RO6,",
+  "after": "",
+  "replacement": "The current stage delivers RO1 to RO4 in operational form, RO5 in largely completed form, and the empirical component of RO6,",
+  "reason": "Chapter 7 grades RO5 as 'Largely Completed' (modification and delegation outstanding), which the abstract itself acknowledges in its final sentence; the wording should match Chapter 7.",
+  "verdict": "KEEP"
+ },
+ {
+  "id": "F10",
+  "severity": "GREEN",
+  "kind": "add",
+  "anchor": "Contents",
+  "section": "Contents",
+  "current": "",
+  "after": "References",
+  "replacement": "(Insert a List of Figures and a List of Tables after the Contents; the report contains Figures 1 to 40 and Tables 1 to 15 but no lists.)",
+  "reason": "A thesis-style report with forty figures and fifteen tables is expected to carry lists of figures and tables; this is a front-matter addition rather than a sentence.",
+  "verdict": "KEEP"
+ },
+ {
+  "id": "SUMMARY",
+  "verdict": "Front matter and Chapter 1 are close to ready. The Contents page numbers were spot-checked against 24 headings and all match, and every Chapter 1 citation was checked against S_full.txt and studies_brief.txt: the [1]–[31] citations are appropriate for the sentences they support, and the Chapter 1 use of SLR studies [37, 43, 44, 45, 53, 57, 58, 61, 63, 66, 69, 71, 76] is consistent with their coding and with the rebuilt Section 2.5 (multi-party approval exists in six classes; the gap is the conjunction and its assurance). Two abstract errors must be fixed before submission: the study count (33 instead of 44) and the opening claim that existing systems do not establish identity, authority or collective approval, which contradicts the retraction in Chapter 2 and Chapter 1's own Section 1.2; the opening of Section 1.3 also refers to 'four foundational dimensions' before introducing them and should be made self-contained. Sepolia facts (contract 0x0EC3…Dc73, chainId 11155111, 23 automated tests, jurisdiction denial, on-chain revocation, N-of-N over G, independent verification) and the RO statuses in the abstract and Table 1 agree with Chapters 6, 7 and 9."
+ }
+]

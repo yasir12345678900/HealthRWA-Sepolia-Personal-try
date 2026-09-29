@@ -1,0 +1,98 @@
+[
+{"id":"A1","severity":"RED","kind":"fix","verdict":"MUST_FIX","anchor":"seven questions, which correspond one to one","section":"2.3.2",
+ "current":"which correspond one to one with the sub-research questions and objectives of this study",
+ "after":"","replacement":"which correspond to the six sub-research questions and the six research objectives of this study, the sixth of which is addressed by two review questions",
+ "reason":"Section 2.2, Chapter 3 (SRQ1 to SRQ6) and Chapter 1 (RO1 to RO6) all state six questions and objectives, so seven review questions cannot correspond one to one; the paragraph itself then maps Questions 6 and 7 jointly to Req 6."},
+
+{"id":"A2","severity":"RED","kind":"fix","verdict":"MUST_FIX","anchor":"The present prototype addresses this concern empirically","section":"2.3.7",
+ "current":"The present prototype addresses this concern empirically through adversarial and negative testing across each verification dimension.",
+ "after":"","replacement":"",
+ "reason":"Orphan sentence left over from the old chapter: it opens Section 2.3.7 (data extraction) with 'this concern', which has no antecedent, and refers to the prototype, which is off-topic in the methodology section."},
+
+{"id":"A3","severity":"RED","kind":"fix","verdict":"MUST_FIX","anchor":"Nevertheless, formal analysis remains necessary","section":"2.3.7",
+ "current":"Nevertheless, formal analysis remains necessary in order to demonstrate that these properties hold under defined assumptions.",
+ "after":"","replacement":"",
+ "reason":"Second sentence of the same orphan paragraph ('these properties' has no antecedent); both sentences must be deleted so that 2.3.7 begins with 'The included studies were analysed using a predefined data extraction form'."},
+
+{"id":"A4","severity":"RED","kind":"fix","verdict":"MUST_FIX","anchor":"disclosed as such in the threats to validity","section":"2.3.4",
+ "current":"which was added as a late arm and is disclosed as such in the threats to validity",
+ "after":"","replacement":"which was added as a late arm after the six other database searches had been frozen, and this late addition is declared as a limitation of the search strategy",
+ "reason":"The report contains no threats-to-validity section (the phrase occurs nowhere in the built text), so the sentence points the examiner to a section that does not exist."},
+
+{"id":"A5","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"The sentinels that were not retrieved were diagnosed individually","section":"2.3.4",
+ "current":"in each case the paper is not healthcare-scoped in its title, abstract and keywords, or it is an identity-generic study in which healthcare is only an application domain, so that the healthcare block of the query correctly excludes it",
+ "after":"","replacement":"in five of the eight cases the paper is not healthcare-scoped in its title, abstract and keywords, or it is an identity-generic study in which healthcare is only an application domain, so that the healthcare block of the query correctly excludes it; one sentinel lacks the trust and multi-party terms of the third block; one is the 2016 MedRec proposal, which lies outside the date range by design; and for one sentinel the cause of the miss had not been established at the checkpoint and is recorded as an open item",
+ "reason":"sentinels.txt records eight misses with different causes (SEN-08 misses on block C, SEN-09 on the date range, SEN-12 is an OPEN ITEM), so the claim that every miss was diagnosed and attributed to the healthcare block overstates the recall evidence."},
+
+{"id":"A6","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"Before screening, 423 within-source duplicates","section":"2.3.6",
+ "current":"423 within-source duplicates (from the SpringerLink and ScienceDirect sub-queries)",
+ "after":"","replacement":"422 within-source duplicates from the SpringerLink and ScienceDirect sub-queries, together with the one IEEE Xplore record that was not captured at the export boundary (423 records in total),",
+ "reason":"The chapter's own figures give 2,895 minus 2,515 plus 65 minus 23 = 422 within-source duplicates; the 423 in the PRISMA chain (9,256 minus 8,833 loaded) is reached only with the one uncaptured IEEE record, so the arithmetic must be stated as such."},
+
+{"id":"A7","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"the participating identities, the authority requirements, the permitted purpose","section":"2.2.1",
+ "current":"the temporal validity, the jurisdiction and the supporting evidence",
+ "after":"","replacement":"the temporal validity, the lifecycle state, the jurisdiction and the supporting evidence",
+ "reason":"The consent object is C = (I, A, P, T, L, E) in Chapters 1, 3 and 5 and in Section 2.6; the requirement definition omits the lifecycle component L although Req 5 (2.2.5) relies on it."},
+
+{"id":"A8","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"with particular attention to healthcare consent management","section":"2.1",
+ "current":"multi-party trust data governance, decentralised identity, verifiable credentials, multi-party authorisation, policy-based access control, and Trusted Computing",
+ "after":"","replacement":"blockchain-based consent governance, decentralised identity and authority, multi-party authorisation, policy- and context-aware access control, temporal validity and consent lifecycle, and formal security assurance and empirical validation",
+ "reason":"The overview still names the old review areas ('multi-party trust data governance', 'Trusted Computing') whereas the rebuilt Sections 2.4.1 to 2.4.6 follow the six requirements and treat trusted execution [23] only as background outside the corpus."},
+
+{"id":"A9","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"Each study assessed at the full-text stage was additionally evaluated","section":"2.3.7",
+ "current":"Each study assessed at the full-text stage was additionally evaluated against eight quality assessment items",
+ "after":"","replacement":"Each study that passed the relevance criteria at the full-text stage was additionally evaluated against eight quality assessment items",
+ "reason":"The paragraph later states that quality items were not scored for studies excluded on document type, duplication or unavailability, which contradicts 'each study assessed at the full-text stage'."},
+
+{"id":"A10","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"but not for studies excluded on document type, duplication or unavailability","section":"2.3.7",
+ "current":"but not for studies excluded on document type, duplication or unavailability, which precede quality assessment in the protocol",
+ "after":"","replacement":"but not for studies excluded as outside healthcare (EC1) or on document type, duplication, secondary status or unavailability (EC5 to EC8), because these criteria precede quality assessment in the protocol",
+ "reason":"codebook.txt (D-150) records that QA is scored for INCLUDE and for EC2, EC4 and EC9 exclusions only; EC1 exclusions also carry blank QA, which the current wording omits."},
+
+{"id":"A11","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"namely Tier A for strong direct evidence","section":"2.3.7",
+ "current":"namely Tier A for strong direct evidence, Tier B for direct evidence with limitations, Tier C for a supporting mechanism and Background for the secondary studies",
+ "after":"","replacement":"namely evidence Tier A for strong direct evidence, evidence Tier B for direct evidence with limitations, evidence Tier C for a supporting mechanism and Background for the secondary studies. It should be noted that these evidence tiers are distinct from the full-text priority tiers of Section 2.3.6, which use the same letters but rank records for reading order only",
+ "reason":"'Tier A/B/C' is used in 2.3.6 for the 39/1,066/695 full-text priority tiers and in 2.3.7 for the evidence tiers of included studies; without a distinction the reader may equate the 39 priority Tier A records with Tier A evidence."},
+
+{"id":"A12","severity":"YELLOW","kind":"add","verdict":"MUST_FIX","anchor":"coding of Tiers B and C continues after the checkpoint","section":"2.3.6",
+ "current":"",
+ "after":"coding of Tiers B and C continues after the checkpoint","replacement":"Therefore, 1,735 of the 1,800 records sought at full text had not been assessed at the checkpoint, in addition to the 588 pending-abstract records that had not been screened. The completeness of the corpus is consequently bounded by the dimension-level saturation rule rather than by exhaustive reading, and this is declared as a limitation of the review that is carried into the interpretation of the synthesis in Section 2.5.",
+ "reason":"An examiner will compute 1,800 minus 64 assessed minus 1 unretrieved and expect the chapter to state explicitly that most full texts were not read and that the corpus is a saturation-bounded checkpoint."},
+
+{"id":"A13","severity":"YELLOW","kind":"cite","verdict":"MUST_FIX","anchor":"most unauthorised disclosures in practice are not caused by unknown requesters","section":"2.2.4",
+ "current":"This is important because most unauthorised disclosures in practice are not caused by unknown requesters but by legitimate requesters who exceed the scope of what was permitted.",
+ "after":"","replacement":"This is important because many unauthorised disclosures in practice are caused not by unknown requesters but by legitimate requesters who exceed the scope of what was permitted, which is the insider risk that risk-aware and usage-control models seek to address [11].",
+ "reason":"The empirical claim 'most unauthorised disclosures' is uncited and unsupported by any reference in the list; softening to 'many' and anchoring it to the RQ-UCON study [11], which is motivated by physician access-history risk, makes it defensible."},
+
+{"id":"A14","severity":"YELLOW","kind":"cite","verdict":"KEEP","anchor":"Decentralised identifiers and verifiable credentials provide this capability.","section":"2.2.2",
+ "current":"Decentralised identifiers and verifiable credentials provide this capability.",
+ "after":"","replacement":"Decentralised identifiers and verifiable credentials provide this capability [20, 16].",
+ "reason":"The statement that DIDs and VCs enable identification without a central identity provider is a technical claim that the DID/VC survey [20] and the SSI review [16] directly support."},
+
+{"id":"A15","severity":"YELLOW","kind":"add","verdict":"KEEP","anchor":"the eligibility criteria and the PRISMA-based selection","section":"2.1",
+ "current":"",
+ "after":"the eligibility criteria and the PRISMA-based selection","replacement":"The review corpus consists of 44 primary studies [35]–[78] published between 2020 and 2026, which were identified and selected in accordance with the PRISMA 2020 statement [34], together with three secondary studies [79]–[81] that are used as background only.",
+ "reason":"The overview never states the size or the period of the corpus, so a reader of 2.1 does not learn until 2.3 that the chapter rests on 44 PRISMA-selected studies rather than on the background references cited in the second paragraph."},
+
+{"id":"A16","severity":"GREEN","kind":"fix","verdict":"KEEP","anchor":"Each study is assigned to the stream of its strongest coded requirement.","section":"2.3.8 (Figure 3 caption)",
+ "current":"Each study is assigned to the stream of its strongest coded requirement.",
+ "after":"","replacement":"Each study is assigned to the stream in which its principal contribution lies, as described in Section 2.3.8.",
+ "reason":"Section 2.3.8 and the 2.4 introduction say a study is placed in the stream of its principal contribution, whereas the caption says strongest coded requirement; the two rules are not identical (e.g. S13 [47] is coded Yes on T3 but is not a threshold mechanism)."},
+
+{"id":"A17","severity":"GREEN","kind":"fix","verdict":"KEEP","anchor":"The review was governed by a written protocol (Protocol v1.1)","section":"2.3.1",
+ "current":"The review was governed by a written protocol (Protocol v1.1), which fixed",
+ "after":"","replacement":"The review was governed by a written protocol, which fixed",
+ "reason":"No version 'v1.1' of the protocol is recorded in the workbook files (searchlog, codebook, decision log); the version label cannot be traced and adds nothing."},
+
+{"id":"A18","severity":"GREEN","kind":"fix","verdict":"KEEP","anchor":"is shown in Figure 1 and reads as follows","section":"2.3.3",
+ "current":"\"(\"healthcare\" OR \"health care\" OR \"health data\"",
+ "after":"","replacement":"(\"healthcare\" OR \"health care\" OR \"health data\"",
+ "reason":"The printed master query is wrapped in an extra pair of double quotation marks (opening before the first parenthesis and closing after the last), which is not part of the string executed in IEEE Xplore according to searchlog.txt; the closing quote after \"self-sovereign identity\") should be removed likewise."},
+
+{"id":"A19","severity":"GREEN","kind":"fix","verdict":"KEEP","anchor":"2.2.1 Representation of consent as an evaluable authorisation object (Req: 1)","section":"2.2.1–2.2.6",
+ "current":"(Req: 1)",
+ "after":"","replacement":"(Req 1)",
+ "reason":"The six sub-headings of 2.2 write 'Req: 1' to 'Req: 6' with a colon, whereas the rest of the chapter, Table 2 and Tables 3 to 9 write 'Req 1'; the same change applies to the other five headings."},
+
+{"id":"SUMMARY","verdict":"Sections 2.1 to 2.3 are now numerically sound: every PRISMA count (9,256; 2,794; 6,039; 2,910; 3,129; 2,541; 741; 588; 1,800; 39/1,066/695; 64; 17 = 9+3+2+2+1; 3; 44 = 19+21+3+1; 23 core / 21 supporting), every search date and version, the calibration set (48), the rescue sweep (125), the saturation rule (eight), the retrieval routes (five), the decision-log range (D-001 to D-166) and the QA gate (sum of QA1 to QA4 at least 3.0) match prisma_counts.txt, searchlog.txt, codebook.txt and the decision log, and all 44 rows of Table 2 (labels S1 to S44, references [35] to [78], authors, years, titles and stream assignments) match studies_brief.txt exactly, with the stream sizes 12/5/8/5/5/9 summing to 44. The items that must be fixed before submission are the leftover orphan paragraph at the start of 2.3.7, the 'seven questions correspond one to one' contradiction with the six SRQs, the pointer to a non-existent threats-to-validity section, the overstated sentinel diagnosis (one miss is still an open item, two have other causes), the 422-versus-423 within-source duplicate arithmetic, the missing lifecycle component in the Req 1 definition, and the stale 2.1 list of review areas (Trusted Computing, multi-party trust governance) that no longer matches the six streams. Citation relevance in 2.1 and 2.2 is acceptable (background references [1]–[34] are used for context only), with one uncited empirical claim in 2.2.4 to soften and cite; once the listed fixes and the explicit checkpoint limitation are applied, this part of the chapter is ready for submission."}
+]

@@ -1,0 +1,83 @@
+[
+{"id":"F1","severity":"RED","kind":"cite","anchor":"policy-based authorisation, and multi-party approval","section":"3.1",
+ "current":"multi-party approval [1, 13, 19, 20, 25, 32]","after":"",
+ "replacement":"multi-party approval [1, 13, 20, 25, 32, 53, 61, 69]",
+ "reason":"[19] (Data Trusts as a Service) describes subject-controlled policy access and provenance, not multi-approver mechanisms; the review's multi-party evidence is Madine [53], Punia [61] and Tan [69], and the sentence claims to summarise the 44-study review.","verdict":"MUST_FIX"},
+
+{"id":"F2","severity":"YELLOW","kind":"cite","anchor":"are issued by a single party [10, 13, 21]","section":"3.1",
+ "current":"are issued by a single party [10, 13, 21]","after":"",
+ "replacement":"are issued by a single party, as established in Section 2.5",
+ "reason":"The single-party finding concerns the SLR objects [71, 37, 44, 58, 66] and is made in Section 2.5; [10] (web consent receipts), [13] and [21] do not show that those objects are single-party and are not among the 44 primary studies.","verdict":"MUST_FIX"},
+
+{"id":"F3","severity":"RED","kind":"fix","anchor":"remain reliable under dynamic lifecycle conditions and whether their","section":"4.7",
+ "current":"remain reliable under dynamic lifecycle conditions and whether their","after":"",
+ "replacement":"satisfy the formally defined security properties and whether their",
+ "reason":"The same section (and Chapter 4 intro, 4.5, Table 11) states that the dynamic lifecycle controls of RO5 are already delivered in the current stage, so assigning 'dynamic lifecycle conditions' to the next stage contradicts the stage allocation.","verdict":"MUST_FIX"},
+
+{"id":"F4","severity":"YELLOW","kind":"fix","anchor":"Temporal and lifecycle trust has been operationalised in the current","section":"3.2",
+ "current":"Temporal and lifecycle trust has been operationalised in the current","after":"",
+ "replacement":"Before the question is stated, the scope of the current stage should be noted. Temporal and lifecycle trust has been operationalised in the current",
+ "reason":"Section 3.2 opens with a status paragraph whose second sentence begins 'Consequently' without a premise and precedes the research question it qualifies; the lead-in makes the paragraph read as an intended scope note rather than a misplaced fragment.","verdict":"MUST_FIX"},
+
+{"id":"F5","severity":"YELLOW","kind":"fix","anchor":"component L were introduced during implementation as explicit","section":"3.3.1",
+ "current":"component L were introduced during implementation as explicit","after":"",
+ "replacement":"component L are required by Gap 1 of Section 2.5.1 and were made explicit during implementation as",
+ "reason":"Section 2.5.1 (Gap 1) already requires the validity interval and the jurisdiction as components of the consent object, so stating that T and L were merely 'introduced during implementation' breaks the gap-to-RQ traceability.","verdict":"MUST_FIX"},
+
+{"id":"F6","severity":"YELLOW","kind":"fix","anchor":"constraints of the policy dimension, and they are investigated under SRQ5","section":"3.3.1",
+ "current":"constraints of the policy dimension, and they are investigated under SRQ5","after":"",
+ "replacement":"constraints of the policy dimension; the jurisdictional constraint is motivated by Gap 4 and the temporal constraint by Gap 5 of Section 2.5.1, and both are evaluated as the separate predicates VL and VT defined in Section 6.5",
+ "reason":"Chapter 2 places jurisdiction under Req 4 / Gap 4 ('evaluated together with the jurisdiction on every request'), whereas this sentence assigns L to SRQ5 only; the replacement reconciles the two chapters and points to where VL is defined.","verdict":"MUST_FIX"},
+
+{"id":"F7","severity":"YELLOW","kind":"add","anchor":"formally and empirically assured","section":"3.1",
+ "current":"","after":"formally and empirically assured",
+ "replacement":"In the terms of Section 2.5, these two requirements correspond to the conjunction gap and the assurance gap respectively. It should be noted that the approving set must be defined by the patient rather than by an institution, since in the reviewed studies the approving parties are contingent, institutional or custodial rather than patient-designated [53, 61, 50].",
+ "reason":"Section 2.5 and 2.6 name the two gaps and stress the patient-defined approving set, but the gap statement in 3.1 neither uses the names nor mentions who defines G, so the link between Chapter 2 and Chapter 3 is weaker than it should be.","verdict":"MUST_FIX"},
+
+{"id":"F8","severity":"YELLOW","kind":"add","anchor":"N denote the required authorisation threshold","section":"3.3.3",
+ "current":"","after":"N denote the required authorisation threshold",
+ "replacement":"In this context, Av is the subset of the guardian set G whose approvals have been independently verified, so that Av ⊆ G and 1 ≤ N ≤ |G|.",
+ "reason":"Av is introduced without any relation to the guardian set G defined in Section 3.1 and used in Chapter 6 (where 1 ≤ N ≤ |G| is stated), so the threshold notation is not fully defined here.","verdict":"MUST_FIX"},
+
+{"id":"F9","severity":"YELLOW","kind":"fix","anchor":"work therefore concerns hardening these controls rather than introducing","section":"4.5",
+ "current":"work therefore concerns hardening these controls rather than introducing","after":"",
+ "replacement":"work therefore concerns hardening these controls and extending them to consent modification, delegation and guardian-set changes (Section 9.2), rather than introducing",
+ "reason":"Section 9.2 lists consent modification, delegation and guardian-set changes as next-stage RO5 extensions, which is more than 'hardening'; the two statements of remaining RO5 work should agree.","verdict":"MUST_FIX"},
+
+{"id":"F10","severity":"YELLOW","kind":"fix","anchor":"together with the identified prototype hardening","section":"4.7",
+ "current":"together with the identified prototype hardening","after":"",
+ "replacement":"together with the systematic performance study and the identified prototype hardening (Sections 7.6 and 9.2)",
+ "reason":"Sections 7.6 and 9.2 state that a systematic performance and overhead study also remains for the next stage; 4.7 omits it, so the remaining agenda is stated inconsistently across chapters.","verdict":"MUST_FIX"},
+
+{"id":"F11","severity":"YELLOW","kind":"add","anchor":"the section of this report where each objective is realised","section":"4.7",
+ "current":"","after":"where each objective is realised",
+ "replacement":"Because each research question corresponds to one requirement of Section 2.2 and to one gap of Section 2.5.1, the tables also trace each objective to the gap that motivates it, so that RO1 addresses Gap 1, RO2 addresses Gap 2, and so on to RO6 and Gap 6.",
+ "reason":"Chapter 4 derives the objectives from the questions but never closes the RQ-gap-RO chain that Chapter 2 (Section 2.6) promises; one sentence makes the traceability explicit for the examiner.","verdict":"MUST_FIX"},
+
+{"id":"F12","severity":"YELLOW","kind":"add","anchor":"only a consent in the ACTIVE state can satisfy the","section":"3.3.5",
+ "current":"","after":"only a consent in the ACTIVE state can satisfy the",
+ "replacement":"It should be noted that Section 6.4 also writes the data-scope condition of Equation (14) as VS(C, R); for this reason the lifecycle predicate is written with three arguments, VS(C, t, q), wherever the two could be confused.",
+ "reason":"Chapter 6 uses VS(C, R) for data scope (Eq. 57) and VS(C, t, q) for lifecycle, and explains the clash there, but Chapter 3 introduces VS as the lifecycle predicate without warning, so a reader moving from Eq. (18) to Eq. (57) meets an undeclared symbol reuse.","verdict":"MUST_FIX"},
+
+{"id":"F13","severity":"GREEN","kind":"add","anchor":"Active → Expiration/Revocation","section":"3.3.5",
+ "current":"","after":"Expiration/Revocation.",
+ "replacement":"These conceptual stages correspond to the implemented states PENDING_SIGNATURE, PENDING_TOKEN, NOT_STARTED, ACTIVE, EXPIRED and REVOKED described in Section 6.5.2.",
+ "reason":"Equation (17) names conceptual stages that differ from the six implemented states listed in Section 6.5.2; a mapping sentence prevents the examiner reading them as two different state machines.","verdict":"KEEP"},
+
+{"id":"F14","severity":"GREEN","kind":"fix","anchor":"three-predicate formulation of Equation (29) represents the","section":"3.4",
+ "current":"the three-predicate formulation of Equation (29) represents the","after":"",
+ "replacement":"the three-predicate formulation of Equation (29) in Section 4.7 represents the",
+ "reason":"Equation (29) is only defined later in Section 4.7, so the forward reference should say where it is.","verdict":"KEEP"},
+
+{"id":"F15","severity":"GREEN","kind":"fix","anchor":"sub-research questions SRQ1 to SRQ6 are referred to as RQ1 to RQ6 in","section":"3.3",
+ "current":"sub-research questions SRQ1 to SRQ6 are referred to as RQ1 to RQ6 in","after":"",
+ "replacement":"sub-research questions SRQ1 to SRQ6 are referred to as RQ1 to RQ6 in Section 2.5.1, in",
+ "reason":"Section 2.5.1 already refers to 'research question RQ1 of Chapter 3' etc., so the abbreviation is used before this sentence introduces it.","verdict":"KEEP"},
+
+{"id":"F16","severity":"GREEN","kind":"fix","anchor":"The implemented mechanism defines the designated guardians at consent","section":"4.3",
+ "current":"The implemented mechanism defines the designated guardians at consent","after":"",
+ "replacement":"In the current prototype, the mechanism realising this objective defines the designated guardians at consent",
+ "reason":"Sections 4.3 to 4.6 each open with an implementation-status paragraph before the objective itself is stated; the lead-in signals that the paragraph is a status note so the ordering reads as deliberate.","verdict":"KEEP"},
+
+{"id":"SUMMARY","verdict":"Chapters 3 and 4 are broadly consistent with the rebuilt Chapter 2: the gap statement in 3.1 correctly reflects the conjunction and assurance gaps, no longer claims that multi-party authorisation is absent, and uses the SLR citations [36, 37, 44, 45, 53, 57, 58, 60, 61, 65, 66, 69, 71] in the same sense as Sections 2.5 and 2.5.1; the definitions of C, N = |G|, the 2-of-2 configuration, the 23 automated tests, VL (Eq. 64) and VS(C, t, q) match Chapter 6, and Tables 10 and 11 point to existing Sections 6.1 to 6.6 and 7.1 to 7.6. The main defects are two background citations that do not support their claims ([19] for multi-party approval and [10, 13, 21] for single-party issuance), a contradiction in Section 4.7 that assigns 'dynamic lifecycle conditions' to the next stage although RO5 is declared delivered, an unreconciled placement of the jurisdictional component L (SRQ5 in 3.3.1 versus Gap 4 in Chapter 2), a misplaced status paragraph at the head of Section 3.2, and remaining-work statements in 4.5 and 4.7 that omit the performance study and RO5 governance extensions listed in Sections 7.6 and 9.2. With the MUST_FIX items applied (about ten short edits, none structural), the two chapters are ready for submission; the stage labels (current stage / next stage / CA3) are used consistently with the definition in Chapter 1, and the minor inconsistency between Decision(C, R) in Equations (10), (21) to (23) and Decision(C, R, t) elsewhere can be left as is."}
+]

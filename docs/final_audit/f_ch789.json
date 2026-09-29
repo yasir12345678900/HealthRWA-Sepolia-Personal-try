@@ -1,0 +1,113 @@
+[
+{"id":"F1","severity":"RED","kind":"fix","verdict":"MUST_FIX","anchor":"the status of the activities in Table 15","section":"9.2",
+ "current":"At the time of writing, the status of the activities in Table 15 is as follows.",
+ "after":"","replacement":"At the time of writing, the status of the activities in Table 16 is as follows.",
+ "reason":"Table 15 is the publication plan; the activities whose status is reported are the next-stage activities of Table 16."},
+
+{"id":"F2","severity":"RED","kind":"fix","verdict":"MUST_FIX","anchor":"RO4 / RQ4 — Policy predicate VP, Eq. (57)","section":"Appendix A",
+ "current":"RO4 / RQ4 — Policy predicate VP, Eq. (57), Algorithm 4",
+ "after":"","replacement":"RO4 / RQ4 — Policy predicate VP, Eqs. (57)–(58), Algorithm 4",
+ "reason":"In Section 6.4, Eq. (57) defines the scope predicate VS and the policy predicate VP is Eq. (58); citing only (57) points the examiner to the wrong equation (in the build source the cell reads 'Eq. (52)', i.e. the auto-renumbered reference must be moved one equation forward to the VP definition)."},
+
+{"id":"F3","severity":"RED","kind":"fix","verdict":"MUST_FIX","anchor":"as demonstrated for the requested-subset rule in Section 6.8.4","section":"7.4",
+ "current":"VP evaluates to 0 and the request is denied with V P named as the failed check, as demonstrated for the requested-subset rule in Section 6.8.4.",
+ "after":"","replacement":"VP evaluates to 0 and the request is denied with VP named as the failed check; this over-scope denial is exercised by the per-dimension failure tests described in Section 6.8.9, while Section 6.8.4 shows the requested-subset rule enforced on the live system.",
+ "reason":"Section 6.8.4 shows only the positive path (a request that is a non-empty subset of the authorised scope); no live over-scope denial with VP named is demonstrated there, only in the automated tests of Section 6.8.9."},
+
+{"id":"F4","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"the objectives marked as completed require no further development","section":"9.1",
+ "current":"the objectives marked as completed require no further development, whereas the formal component of RO6 and the identified prototype limitations, namely the N-of-N approval rule, the server-derived guardian keys and the unauthenticated requester, define the remaining work.",
+ "after":"","replacement":"the objectives marked as completed require no further conceptual development, whereas the formal component of RO6, the systematic performance and overhead study, and the identified prototype limitations, namely the N-of-N approval rule, the server-derived guardian keys, the unauthenticated requester and the absence of cryptographic DID resolution, define the remaining work.",
+ "reason":"Sections 7.2, 7.3, 7.6 and 6.8.11 state that k-of-n thresholds, DID resolution and a performance study remain future work, so 'no further development' and the omission of the performance study contradict Chapter 7."},
+
+{"id":"F5","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"Temporal and lifecycle trust is largely completed (on-chain","section":"9.2",
+ "current":"Temporal and lifecycle trust is largely completed (on-chain notBefore and expiry fields; revoke transaction confirmed in block 11,771,307; explicit lifecycle state machine).",
+ "after":"","replacement":"The temporal and lifecycle foundation of the first activity, Consent Modification, Delegation and Lifecycle Extensions, is largely completed (on-chain notBefore and expiry fields; revoke transaction confirmed in block 11,771,307; explicit lifecycle state machine), whereas the modification, delegation and guardian-set extensions themselves have not been started.",
+ "reason":"The status sentence names an activity ('Temporal and lifecycle trust') that is not a row of Table 16, and does not say which part of the first row remains outstanding."},
+
+{"id":"F6","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"Comprehensive Empirical Validation — Partially delivered (23 automated tests","section":"9.2",
+ "current":"Comprehensive Empirical Validation — Partially delivered (23 automated tests; live jurisdiction denial and revocation-then-denial on Sepolia; independent chain verification reporting ALL CHECKS PASSED), with performance and overhead measurement remaining.",
+ "after":"","replacement":"Comprehensive Empirical Validation is partially delivered (23 automated tests; live jurisdiction denial and revocation-then-denial on Sepolia; independent chain verification reporting ALL CHECKS PASSED), with performance and overhead measurement remaining. Formal Security Assurance and the Integrated Framework Evaluation have not been started and constitute the next stage in full.",
+ "reason":"The status report covers only two of the four Table 16 activities and uses an em-dash fragment inconsistent with the surrounding prose; an examiner expects every planned activity to carry a status."},
+
+{"id":"F7","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"Lifecycle trust (RO5 direction)","section":"Appendix A",
+ "current":"Lifecycle trust (RO5 direction)",
+ "after":"","replacement":"RO5 / RQ5 — Temporal and lifecycle trust, Eqs. (63)–(64), Algorithm 5",
+ "reason":"Every other row is labelled by RO/RQ with its equation and algorithm; 'RO5 direction' implies RO5 is not a delivered objective, contradicting Sections 4.5, 7.5 and 9.1 which report it as largely completed."},
+
+{"id":"F8","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"Empirical assurance (RO6, empirical half)","section":"Appendix A",
+ "current":"Empirical assurance (RO6, empirical half)",
+ "after":"","replacement":"RO6 / RQ6 — Empirical validation, Eq. (66), Algorithm 6 (formal component outstanding)",
+ "reason":"Consistency of the traceability table: the row should name the RO/RQ, the defining equation and the algorithm as the other rows do, and state explicitly that the formal half is outstanding."},
+
+{"id":"F9","severity":"YELLOW","kind":"fix","verdict":"MUST_FIX","anchor":"The implemented decision rule is Decision(C, R, t) = ALLOW iff","section":"7.6",
+ "current":"The implemented decision rule is Decision(C, R, t) = ALLOW iff VI ∧ VA ∧ VP ∧ VT ∧ VL.",
+ "after":"","replacement":"The implemented decision rule is therefore exactly Eq. (80).",
+ "reason":"The sentence repeats Eq. (80) verbatim a few lines below it; the duplicated rule reads as an editing remnant."},
+
+{"id":"F10","severity":"YELLOW","kind":"fix","verdict":"KEEP","anchor":"unlike the objects reported in the literature [71, 37, 44, 58, 66]","section":"7.1",
+ "current":"unlike the objects reported in the literature [71, 37, 44, 58, 66], carries the guardian set and threshold together with the purpose, data scope, validity interval, jurisdiction and lifecycle state.",
+ "after":"","replacement":"unlike the single-party consent objects reported in the literature [71, 37, 44, 58, 66], which are issued on the authority of the patient alone, carries the guardian set and threshold together with the purpose, data scope, validity interval, jurisdiction and lifecycle state.",
+ "reason":"The five studies are exactly the Req 1 = Yes evaluable consent objects of Chapter 2 and none has a guardian set or threshold, so the citation is correct; however [44], [58] and [66] already carry validity interval, scope and, for [66], lifecycle state, so the distinguishing property should be stated as the multi-party A component rather than the whole list."},
+
+{"id":"F11","severity":"YELLOW","kind":"fix","verdict":"KEEP","anchor":"Decision(C, R) = ALLOW (81)","section":"9.2",
+ "current":"Decision(C, R) = ALLOW",
+ "after":"","replacement":"Decision(C, R, t) = ALLOW",
+ "reason":"Eq. (81) drops the time argument that Eq. (80), Eq. (59) and Eq. (65) carry, although the sentence that follows explicitly includes the temporal condition; the numbered equation should match the implemented rule."},
+
+{"id":"F12","severity":"YELLOW","kind":"fix","verdict":"KEEP","anchor":"With respect to the multi-party authorisation of RO3, which is discussed","section":"7.2",
+ "current":"With respect to the multi-party authorisation of RO3, which is discussed further in Section 7.3, the approval threshold in the current prototype is fixed at N-of-N:",
+ "after":"","replacement":"As also stated in Section 7.3, the approval threshold in the current prototype is fixed at N-of-N:",
+ "reason":"The N-of-N limitation is stated in full both here (RO2 section) and at the end of Section 7.3; the RO2 section should only cross-refer, since the limitation belongs to RO3."},
+
+{"id":"F13","severity":"GREEN","kind":"fix","verdict":"KEEP","anchor":"Authorisation evidence records the information required to demonstrate","section":"7.1",
+ "current":"Authorisation evidence records the information required to demonstrate how the consent decision was established.",
+ "after":"","replacement":"Temporal information defines the validity interval [ts, te] within which the consent may be exercised, and the jurisdiction component records the legal territory in which access is permitted. Authorisation evidence records the information required to demonstrate how the consent decision was established.",
+ "reason":"The component-by-component description of C omits T and L, which are then explained in a detached sentence after the paragraph's concluding statement; moving that sentence here keeps the six components together (the detached sentence should then be deleted, see F14)."},
+
+{"id":"F14","severity":"GREEN","kind":"fix","verdict":"KEEP","anchor":"Temporal information defines the validity interval [t s, te] within which","section":"7.1",
+ "current":"Temporal information defines the validity interval [t s, te] within which the consent may be exercised, and the jurisdiction component records the legal territory in which access is permitted.",
+ "after":"","replacement":"",
+ "reason":"Dangling sentence after the section's concluding statement; it becomes redundant once F13 is applied (apply only together with F13)."},
+
+{"id":"F15","severity":"GREEN","kind":"fix","verdict":"KEEP","anchor":"Formal Security & Lifecycle Analysis Verification of temporal constraints","section":"8",
+ "current":"addresses formal security assurance (Section 6.6).",
+ "after":"","replacement":"addresses formal security assurance (Section 6.6) and lifecycle trust (Section 6.5).",
+ "reason":"The third planned paper is titled Formal Security and Lifecycle Analysis, but its thesis alignment names only Section 6.6; lifecycle trust is defined in Section 6.5."},
+
+{"id":"F16","severity":"GREEN","kind":"fix","verdict":"KEEP","anchor":"Empirical evidence and benchmark datasets demonstrating that","section":"9.2 Table 16",
+ "current":"Empirical evidence and benchmark datasets demonstrating that the implementation consistently and efficiently enforces the proposed authorisation model.",
+ "after":"","replacement":"Empirical evidence, on synthetic healthcare records, demonstrating that the implementation consistently and efficiently enforces the proposed authorisation model, together with measured performance and overhead figures.",
+ "reason":"'Benchmark datasets' is not an outcome planned anywhere else in the report (all evaluation uses synthetic records), whereas the performance metrics listed in the preceding paragraph are not reflected in the expected outcome."},
+
+{"id":"F17","severity":"GREEN","kind":"fix","verdict":"KEEP","anchor":"The next stage activities are planned sequentially. The formal specification","section":"9.2",
+ "current":"The next stage activities are planned sequentially.",
+ "after":"","replacement":"The next stage activities are planned sequentially, in an order that differs from the order of presentation in Table 16.",
+ "reason":"Table 16 lists the lifecycle extensions first, whereas the text schedules them last; a one-clause acknowledgement prevents an examiner reading the table order as the timeline."},
+
+{"id":"F18","severity":"GREEN","kind":"fix","verdict":"KEEP","anchor":"Table 17: Traceability from the formal artefacts of this report","section":"Appendix A",
+ "current":"Table 17: Traceability from the formal artefacts of this report to the implemented mechanisms and their on-chain evidence.",
+ "after":"","replacement":"Table 17: Traceability from the formal artefacts of this report to the implemented mechanisms and their on-chain evidence.",
+ "reason":"Caption is placed below the table whereas Tables 10 to 16 carry their captions above; move the caption above the table for consistency (text unchanged)."},
+
+{"id":"F19","severity":"YELLOW","kind":"add","verdict":"MUST_FIX","anchor":"server-derived guardian keys and the unauthenticated requester role.","section":"7.6",
+ "current":"","after":"server-derived guardian keys and the unauthenticated requester role.",
+ "replacement":"In summary, RO1 to RO4 are completed at the conceptual and prototype level, RO5 is largely completed with its temporal and revocation controls enforced and anchored on-chain, and RO6 is partially completed through its empirical component. Therefore, the next stage of the research is defined by the formal component of RO6, the performance study and the dynamic lifecycle extensions of RO5, as set out in Chapter 9.",
+ "reason":"Chapter 7 has neither an introduction nor a closing summary of the six statuses; an examiner expects one consolidated statement that matches Chapter 4 and the abstract before the plan in Chapter 9 relies on it."},
+
+{"id":"F20","severity":"YELLOW","kind":"add","verdict":"MUST_FIX","anchor":"adversarial requests correctly denied.","section":"9.2",
+ "current":"","after":"adversarial requests correctly denied.",
+ "replacement":"The formal component will state the soundness property Decision(C, R, t) = ALLOW ⇒ VI ∧ VA ∧ VP ∧ VT ∧ VL and the lifecycle invariant that no REVOKED or EXPIRED consent can re-enter ACTIVE, and will verify them by model checking of the state machine or by proof over the predicate definitions of Chapter 6. The evaluation criterion for this component is that every property is either verified or refuted by an explicit counterexample.",
+ "reason":"The plan defines metrics for the performance study but no success criterion for the formal assurance work, which is the principal remaining objective; the examiner needs to know what 'formal assurance' will concretely deliver."},
+
+{"id":"F21","severity":"GREEN","kind":"add","verdict":"KEEP","anchor":"so that it can present the consent model together with the deployed","section":"8",
+ "current":"","after":"contract and its verified transaction evidence.",
+ "replacement":"It should be noted that the first paper will also report the N-of-N limitation of the current threshold mechanism and the format-only identity verification, so that the published claims remain consistent with the evaluated prototype.",
+ "reason":"The publication plan describes the first paper as 'Almost Ready' while Chapter 7 records prototype limitations; a sentence tying the paper's claims to those limitations pre-empts an examiner's concern about overstatement."},
+
+{"id":"F22","severity":"GREEN","kind":"cite","verdict":"KEEP","anchor":"the research towards dynamic consent governance [13, 24]","section":"9.2",
+ "current":"dynamic consent governance [13, 24]",
+ "after":"","replacement":"dynamic consent governance [13, 24]",
+ "reason":"Checked against S_full.txt: [13] (Khalid et al., dynamic consent management with decentralised controllers) and [24] (Narkhede et al., dynamic and granular consent frameworks) both support the phrase; no change required."},
+
+{"id":"SUMMARY","verdict":"Chapters 7 to 9 and Appendix A contain only two literature citations, [71, 37, 44, 58, 66] in 7.1 and [13, 24] in 9.2, and both are supported by the study profiles: the five studies are precisely the Req 1 = Yes evaluable consent objects of Chapter 2 and none carries a guardian set or threshold, while [13] and [24] are dynamic-consent works. The RO statuses (RO1 to RO4 completed, RO5 largely completed, RO6 partially completed), the Sepolia facts (contract 0x0EC3…, token #1 block 11,771,243, revoke block 11,771,307, token #2 block 11,771,581, 23 tests, 60-event ledger, hashes 0x8be1b99e… and 0x017efb9d…) and the six lifecycle states are consistent with Chapters 4 and 6.8. The items that must be fixed before submission are the wrong table reference (Table 15 for Table 16 in 9.2), the wrong equation number for VP in Appendix A (Eq. (57) instead of (58)), the overstated claim that Section 6.8.4 demonstrates an over-scope denial, the 9.1 statement that completed objectives need no further development, the incomplete status report on the Table 16 activities, and the missing chapter summary and formal-assurance success criterion; the remainder is cosmetic."}
+]
