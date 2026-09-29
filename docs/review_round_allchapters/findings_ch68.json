@@ -1,0 +1,215 @@
+[
+ {
+  "id": "X1",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "I61",
+  "section": "6.8.4",
+  "current": "which extends the three-predicate rule of Eq. (59) with the temporal and jurisdictional verdicts",
+  "after": "",
+  "replacement": "which is the complete decision rule of Eq. (59) and Eq. (65), extending the three-predicate rule of Eq. (69) with the temporal and jurisdictional verdicts",
+  "reason": "In the built text Eq. (59) is already the five-predicate rule VI ∧ VA ∧ VP ∧ VT ∧ VL; the three-predicate rule is Eq. (67)/(69), so the cross-reference is wrong."
+ },
+ {
+  "id": "X2",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "I23",
+  "section": "6.8.2",
+  "current": "and the enforcement state records whether the consent is active or revoked",
+  "after": "",
+  "replacement": "and the evidence component E records the authorisation evidence, including whether the consent remains active or has been revoked",
+  "reason": "Section 6.1 (Eq. 51), Chapter 5 and Chapter 7 define E as authorisation evidence, not an 'enforcement state'; the component name must be consistent across chapters."
+ },
+ {
+  "id": "X3",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "Enforcement / Revocation (E)",
+  "section": "6.8.10",
+  "current": "Enforcement / Revocation (E)",
+  "after": "",
+  "replacement": "Authorisation Evidence / Revocation (E)",
+  "reason": "Table 16 labels component E as 'Enforcement', contradicting the definition of E as authorisation evidence in Section 6.1 and Chapter 7."
+ },
+ {
+  "id": "X4",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "I78",
+  "section": "6.8.6",
+  "current": "This module operationalises the enforcement component of the consent object, which requires",
+  "after": "",
+  "replacement": "This module operationalises the revocation dimension of the evidence component E of the consent object, which requires",
+  "reason": "There is no 'enforcement component' in C = (I, A, P, T, L, E); the sixth component is evidence E, which records the active/revoked state."
+ },
+ {
+  "id": "X5",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "I83",
+  "section": "6.8.6",
+  "current": "the consent progresses through the controlled states PENDING_SIGNATURE, PENDING_TOKEN, NOT_STARTED, ACTIVE and REVOKED",
+  "after": "",
+  "replacement": "the consent progresses through the controlled states PENDING_SIGNATURE, PENDING_TOKEN, NOT_STARTED, ACTIVE and REVOKED of the six-state lifecycle defined in Section 6.5, the EXPIRED state not being reached in the demonstration",
+  "reason": "Section 6.5, Section 7.5 and Appendix A describe a six-state lifecycle including EXPIRED; listing five states here reads as an inconsistency."
+ },
+ {
+  "id": "X6",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "Table 16: Correspondence between the HALAH framework",
+  "section": "6.8.10",
+  "current": "Table 16: Correspondence between the HALAH framework components and the implemented subsystems.",
+  "after": "",
+  "replacement": "Table 14: Correspondence between the HALAH framework components and the implemented subsystems.",
+  "reason": "Table 16 appears in Chapter 6 before Table 14 (Chapter 8) and Table 15 (Chapter 9); tables must be numbered in order of appearance, so this table should become Table 14 and Tables 14/15 in Chapters 8-9 should be shifted to 15/16 (with their in-text references)."
+ },
+ {
+  "id": "X7",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "I6",
+  "section": "6.8",
+  "current": "are each exercised in this workflow by a real transaction on the Ethereum Sepolia test network, so the conceptual model and the running system can be verified against one another",
+  "after": "",
+  "replacement": "are each exercised in this workflow, and the resulting activation and revocation are anchored by real transactions on the Ethereum Sepolia test network, so the conceptual model and the running system can be verified against one another",
+  "reason": "Algorithm 2 (EIP-712 signer recovery) and the trust-predicate evaluation run off-chain in the application; only the mint and revoke are Sepolia transactions, so the sentence overstates what is on-chain."
+ },
+ {
+  "id": "X8",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "I41",
+  "section": "6.8.3",
+  "current": "The implementation therefore enforces the logical authorisation rule:",
+  "after": "",
+  "replacement": "The guardian approval establishes the VA conjunct of the logical authorisation rule that the implementation enforces at every subsequent access request:",
+  "reason": "The five-predicate ALLOW rule is an access-decision rule (Section 6.4), whereas the guardian ceremony only satisfies VA; the current wording conflates consent activation with the access decision."
+ },
+ {
+  "id": "X9",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "I122",
+  "section": "6.8.11",
+  "current": "",
+  "after": "same server, so it currently demonstrates the integration",
+  "replacement": "It should be noted that, in the same way, the identity predicate VI in the prototype performs identifier- and credential-format validation only; cryptographic resolution of DIDs against a registry and authentication of the requester are reserved for the next stage, as stated in Section 7.2.",
+  "reason": "Section 7.2 states this VI limitation explicitly, but the limitations paragraph of 6.8.11 omits it, so the implementation section reads as claiming full DID/VC verification."
+ },
+ {
+  "id": "X10",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "I113",
+  "section": "6.8.9",
+  "current": "",
+  "after": "the recorded lifecycle is consistent with the public chain",
+  "replacement": "In addition to the live demonstration, the same decision logic is exercised by a suite of 23 automated tests covering per-dimension failures of the decision matrix, rejection of invalid EIP-712 guardian signatures and tampered or expired zero-knowledge proofs. The live Sepolia evidence and the automated tests together constitute the empirical validation reported in Section 7.6.",
+  "reason": "Chapter 7.6 and Chapter 9 rely on '23 automated tests' as part of the empirical validation, but the test suite is never mentioned in Chapter 6, leaving the Chapter 7 status claim without a source in the implementation chapter."
+ },
+ {
+  "id": "X11",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "I68",
+  "section": "6.8.4",
+  "current": "",
+  "after": "a direct visual demonstration of fine-grained EMR access",
+  "replacement": "It should be noted that all medical records displayed in the demonstration are synthetic; no real patient data were used at any stage of the implementation or evaluation.",
+  "reason": "Screenshots show patient records; Section 7.6 states synthetic data were used, but the implementation chapter never says so, which an examiner would expect for ethics and scope."
+ },
+ {
+  "id": "X12",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "I122",
+  "section": "6.8.11",
+  "current": "",
+  "after": "These aspects define the immediate future work of the project",
+  "replacement": "In addition, this section reports functional evidence only. Transaction latency, gas cost and throughput have not been measured, and a systematic performance and overhead study is reserved for the next stage, as set out in Section 9.2.",
+  "reason": "Chapters 7-9 repeatedly state that performance evaluation remains outstanding; the implementation section should state this scope limit explicitly so the demonstration is not read as a performance evaluation."
+ },
+ {
+  "id": "X13",
+  "severity": "GREEN",
+  "kind": "cite",
+  "anchor": "I10",
+  "section": "6.8.1",
+  "current": "decentralised identifiers (DIDs) provide identity pointers",
+  "after": "",
+  "replacement": "decentralised identifiers (DIDs) [20] provide identity pointers",
+  "reason": "Section 6.8 contains no citations; the DID/VC survey [20] directly supports this background statement and links the implementation to the reviewed literature."
+ },
+ {
+  "id": "X14",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "I62",
+  "section": "6.8.4",
+  "current": "Figure 28: Trust Predicate Evaluation and Authorisation Decision Flow, as enforced by the implemented Consent Engine.",
+  "after": "",
+  "replacement": "Figure 28: Trust Predicate Evaluation and Authorisation Decision Flow of Figure 8, as enforced by the implemented Consent Engine.",
+  "reason": "Figure 28 repeats the title of Figure 8 in Chapter 5; the caption should make clear that it is the same decision flow shown at the implementation level, or the figure should be removed and Figure 8 referenced."
+ },
+ {
+  "id": "X15",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "I1",
+  "section": "6.8",
+  "current": "electronic medical record (EMR) modules, and finally revoked by the patient",
+  "after": "",
+  "replacement": "electronic medical record (EMR) modules, the term used by the implementation for the electronic health record (EHR) components discussed in the earlier chapters, and finally revoked by the patient",
+  "reason": "Chapters 1-5 use EHR whereas Section 6.8 switches to EMR without explanation; a one-clause reconciliation avoids the appearance of two different data objects."
+ },
+ {
+  "id": "X16",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "I30",
+  "section": "6.8.2",
+  "current": "complete lifecycle — activation as token #1, granted access, refused access and final revocation — and all transaction evidence in this chapter follows it",
+  "after": "",
+  "replacement": "complete lifecycle (activation as token #1, granted access, refused access and final revocation), and all transaction evidence in this chapter follows it",
+  "reason": "Em-dash parentheticals are out of keeping with the author's plain style used elsewhere in the report."
+ },
+ {
+  "id": "X17",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "I30",
+  "section": "6.8.2",
+  "current": "with the same configuration — the same four-module scope, the same guardians, jurisdiction, purpose and doctor — executed for a different demonstration patient",
+  "after": "",
+  "replacement": "with the same configuration (the same four-module scope, the same guardians, jurisdiction, purpose and doctor), executed for a different demonstration patient",
+  "reason": "Same style issue as X16."
+ },
+ {
+  "id": "X18",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "I97",
+  "section": "6.8.7",
+  "current": "The formal component — proofs and model checking of the stated properties — remains next-stage work.",
+  "after": "",
+  "replacement": "The formal component, namely proofs and model checking of the stated properties, remains next-stage work.",
+  "reason": "Same style issue as X16."
+ },
+ {
+  "id": "X19",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "I96",
+  "section": "6.8.7",
+  "current": "the nine access requests comprise the granted, refused and reproduced requests of the two lifecycles together with three granted requests recorded for the earlier trial consents",
+  "after": "",
+  "replacement": "the nine access requests comprise the six granted and refused requests recorded across the two lifecycles together with three granted requests recorded for the earlier trial consents",
+  "reason": "'Reproduced requests' is undefined and the counts do not add up visibly; stating the split (6 + 3 = 9) makes the aggregate indicator checkable."
+ },
+ {
+  "id": "SUMMARY",
+  "verdict": "Section 6.8 is a strong, well-evidenced implementation chapter: Figures 17-40 exist in order, every Sepolia fact (contract 0x0EC3…ADc73, blocks 11,771,243 / 11,771,307 / 11,771,581, tx hashes 0x8be1…, 0x25ef…, 0x017e…, signer 0x3Af5…, 60-event ledger) is stated identically in 6.8, Chapter 7, Chapter 9 and Appendix A, and no occurrence of 'Claude' or 'GitHub' appears anywhere in the built report. The two substantive errors are the mis-cited equation (Eq. (59) is already the five-predicate rule, so 'three-predicate rule of Eq. (59)' is wrong) and the renaming of component E as an 'enforcement state/component' in three places, contradicting its definition as authorisation evidence in Sections 6.1, 5 and 7.1; the five-state lifecycle list and the out-of-order Table 16 are the other inconsistencies with Chapters 6.5/7/Appendix A. The section carries no citations, which is acceptable for a demonstration chapter, but it should state the synthetic-data, VI-format-only, and no-performance-measurement limits and mention the 23-test suite on which Chapter 7 relies; with these fixes it is ready for submission."
+ }
+]

@@ -1,0 +1,281 @@
+[
+ {
+  "id": "X1",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "B148",
+  "section": "4.7",
+  "current": "RO5 and RO6 constitute the principal research agenda for CA3.",
+  "after": "",
+  "replacement": "The formal component of RO6 constitutes the principal research agenda for the next stage of the research, whereas RO5 has already been operationalised in the current prototype.",
+  "reason": "Directly contradicts the following paragraph (\"The current stage delivers RO1–RO5 in operational form\"), Section 4.5, Table 1 in Chapter 1 and Section 9.1, and uses the undefined label CA3."
+ },
+ {
+  "id": "X2",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "B149",
+  "section": "4.7",
+  "current": "Table 10: Research Questions, Research Objectives, and Thesis Chapters for Current Stage",
+  "after": "",
+  "replacement": "Table 10: Research Questions, Research Objectives, and Report Sections (RQ1 to RQ3)",
+  "reason": "The 'Thesis Chapter' column is wrong: Chapters 3, 4 and 5 are the research questions, objectives and MVC architecture; RO1–RO6 are realised in Sections 6.1–6.6 (progress in Sections 7.1–7.6), so every row should read 'Section 6.n / 7.n' rather than Chapter 3, 4 or 5, and the split of RQ1–RQ3 into 'Current Stage' and RQ4–RQ6 into 'CA3' contradicts the text stating that RO1–RO4 (and RO5) belong to the current stage."
+ },
+ {
+  "id": "X3",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "B150",
+  "section": "4.7",
+  "current": "Table 11: Research Questions, Research Objectives, and Thesis Chapters for CA3",
+  "after": "",
+  "replacement": "Table 11: Research Questions, Research Objectives, and Report Sections (RQ4 to RQ6)",
+  "reason": "Labelling RQ4–RQ6 as the CA3 (next-stage) table contradicts Section 4.4, which states that RO4 completes the foundational current-stage model, and Section 4.5, which states RO5 is realised; 'CA3' is never defined in the report."
+ },
+ {
+  "id": "X4",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "B4",
+  "section": "4.7",
+  "current": "where VT (C, t) represents temporal validity and VL (C) represents the validity of the consent lifecycle state and its transitions.",
+  "after": "",
+  "replacement": "where VT (C, t) represents temporal validity and VL (C) represents jurisdictional compliance, while the lifecycle state and its transitions are evaluated within VA (C), as stated in Section 3.4 and Section 6.5.",
+  "reason": "Defines VL as the lifecycle predicate, contradicting Section 3.3.5 and 3.4 (VL reserved for jurisdiction, lifecycle validity VS evaluated within VA) and Equation (64) in Chapter 6, where VL is the jurisdiction check."
+ },
+ {
+  "id": "X5",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "B4",
+  "section": "4.7",
+  "current": "The next stage research will extend this decision model by incorporating temporal and lifecycle conditions",
+  "after": "",
+  "replacement": "The implemented decision model incorporates the temporal and jurisdictional conditions as follows",
+  "reason": "Immediately after stating that the five-predicate rule is the decision rule of the implemented Consent Engine, the text says the extension is future work; Section 4.5 and Chapter 6 confirm VT and VL are already enforced."
+ },
+ {
+  "id": "X6",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "B4",
+  "section": "4.7",
+  "current": "This extension provides a consistent connection between the foundational current stage objectives and the planned next research on dynamic trust, formal assurance, and comprehensive validation.",
+  "after": "",
+  "replacement": "This formulation provides a consistent connection between the foundational objectives RO1 to RO4, the operational lifecycle controls of RO5 and the assurance objective RO6, whose formal component is planned for the next stage of the research.",
+  "reason": "Consistency with Section 4.5, Section 7.5 and Section 9.1, which state that temporal and lifecycle trust is already implemented rather than planned; Equation (29) followed by an unnumbered duplicate of Equation (30) should also be tidied so that only one numbered decision rule remains."
+ },
+ {
+  "id": "X7",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "B23",
+  "section": "3.2",
+  "current": "Consequently, formal security assurance forms the subsequent research scope and will be developed further in CA3.",
+  "after": "",
+  "replacement": "Consequently, formal security assurance forms the subsequent research scope and is developed further in the next stage of the research (Section 9.2).",
+  "reason": "'CA3' is undefined anywhere in the report; in addition this whole paragraph appears before the main research question is stated and should be moved to the end of Section 3.2, after the paragraph beginning 'For the current stage, the investigation is deliberately focused'."
+ },
+ {
+  "id": "X8",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "B35",
+  "section": "3.3.1",
+  "current": "A represents the authority and multi-party authorisation evidence",
+  "after": "",
+  "replacement": "A represents the authority requirements, namely the guardian set G and the approval threshold N",
+  "reason": "Section 6.1 defines A as the authorisation requirements (required participants and approval threshold) and E as the evidence; describing A as 'evidence' duplicates E and is inconsistent with Chapter 6 and Figure 11."
+ },
+ {
+  "id": "X9",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "B146",
+  "section": "4.7",
+  "current": "The relationship between the six research questions and the six research objectives is",
+  "after": "",
+  "replacement": "",
+  "reason": "The second occurrence of this sentence (immediately before 'RO5 and RO6 constitute') is an unfinished duplicate fragment left in the built text and must be deleted; the first occurrence, ending 'summarised in Table 10 and Table 11', is correct."
+ },
+ {
+  "id": "X10",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "B148",
+  "section": "4.7",
+  "current": "Current stage establishes the foundational mechanisms and their conceptual relationships, whereas next stage investigates whether these mechanisms remain",
+  "after": "",
+  "replacement": "The current stage establishes the foundational mechanisms, their conceptual relationships and their operational lifecycle controls, whereas the next stage investigates whether these mechanisms remain",
+  "reason": "The sentence is split by Tables 10 and 11 (it continues after the tables with 'reliable under dynamic lifecycle conditions'), so the tables should be moved after the paragraph; the wording also implies lifecycle trust is not yet established, contrary to Section 4.5."
+ },
+ {
+  "id": "X11",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "B80",
+  "section": "3.3.5",
+  "current": "In the implemented framework, the lifecycle validity predicate VS is evaluated as part of the collective authorisation predicate V A.",
+  "after": "",
+  "replacement": "In the implemented framework, the state and revocation conditions of VS are evaluated as part of the collective authorisation predicate VA, whereas Section 6.5 additionally evaluates VS as a composite temporal and lifecycle predicate VS(C, t, q) that includes the temporal condition of VT.",
+  "reason": "Chapter 6 (Section 6.5.2, Step 8) defines VS(C, t, q) as a composite temporal–state predicate including (ts ≤ t ≤ te) and ¬Revoked(C) that is 'evaluated separately', while Chapter 3 defines VS(C) as ValidState ∧ ValidTransition only; the two definitions must be reconciled."
+ },
+ {
+  "id": "X12",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "B121",
+  "section": "4",
+  "current": "The first four objectives establish the foundational trust-oriented authorisation mechanisms investigated during the current stage.",
+  "after": "",
+  "replacement": "The first four objectives establish the foundational trust-oriented authorisation mechanisms investigated during the current stage, RO5 has been operationalised in the current prototype, and the empirical component of RO6 has been delivered, so that only the formal component of RO6 remains for the next stage.",
+  "reason": "Aligns the chapter introduction with Table 1 in Chapter 1 (RO5 'Current', RO6 'Current (empirical) / Next (formal)') and with Sections 4.5, 4.6 and 9.1."
+ },
+ {
+  "id": "X13",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "B143",
+  "section": "4.6",
+  "current": "The empirical component has been executed against the demonstrated prototype.",
+  "after": "",
+  "replacement": "",
+  "reason": "Section 4.6 states the empirical status twice (first paragraph 'partially delivered: 23 automated tests…' and this later paragraph); delete this paragraph (including the following 'In particular, 23 automated tests cover…' sentence) and move the first status paragraph after the sentence that states the objective, so that each RO section states the objective first and its status second, as in RO1 and RO2."
+ },
+ {
+  "id": "X14",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "B133",
+  "section": "4.4",
+  "current": "Accordingly, the implemented mechanism evaluates whether the requested purpose is consistent with the consent",
+  "after": "",
+  "replacement": "In the implemented framework, the policy mechanism evaluates whether the requested purpose is consistent with the consent",
+  "reason": "'Accordingly' has no antecedent because this sentence is the first in the section, and it describes the implementation before the objective itself is stated; it should follow the sentence 'RO4 directly addresses RQ4…'. The same reordering applies to the opening paragraphs of Sections 4.3 and 4.5."
+ },
+ {
+  "id": "X15",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "B15",
+  "section": "3.1",
+  "current": "policy-based authorisation, and multi-party approval.",
+  "after": "",
+  "replacement": "policy-based authorisation, and multi-party approval [1, 13, 19, 20, 25, 32].",
+  "reason": "Chapters 3 and 4 contain no citations at all; the gap statement summarises the SLR and should point to representative reviewed studies for each mechanism (blockchain consent [1, 13], multi-party data sharing [19], DID/VC [20], policy-based access control [25], cryptographic access control [32]), all of which S_full confirms as related."
+ },
+ {
+  "id": "X16",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "B16",
+  "section": "3.1",
+  "current": "In particular, existing consent-oriented approaches tend to treat consent primarily as a record of a patient’s permission.",
+  "after": "",
+  "replacement": "In particular, existing consent-oriented approaches tend to treat consent primarily as a record of a patient’s permission [10, 13, 21].",
+  "reason": "This is the central gap claim and needs evidence; [10] (consent receipts as retained records), [13] (consent stored as encrypted data on-chain) and [21] (consent tracked rather than evaluated) are exactly the studies whose limitations in S_full support it."
+ },
+ {
+  "id": "X17",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "B17",
+  "section": "3.1",
+  "current": "A blockchain may provide an immutable representation of a consent event, but immutability does not establish the legitimacy of the entities involved in that event.",
+  "after": "",
+  "replacement": "A blockchain may provide an immutable representation of a consent event [2, 28], but immutability does not establish the legitimacy of the entities involved in that event.",
+  "reason": "The premise (blockchain as tamper-resistant, auditable record) is supported by the healthcare blockchain surveys [2] and [28] according to S_full; the conclusion is the author's own argument and needs no citation."
+ },
+ {
+  "id": "X18",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "B17",
+  "section": "3.1",
+  "current": "Similarly, a valid decentralised identity can establish who a participant is, but it does not necessarily establish what that participant is authorised to do.",
+  "after": "",
+  "replacement": "Similarly, a valid decentralised identity can establish who a participant is [20], but it does not necessarily establish what that participant is authorised to do.",
+  "reason": "[20] is the main DID/VC survey in the reference list and S_full confirms it supports claims about decentralised identity establishing identity and verifiable attributes; the same citation should be added in Section 3.3.2 after 'evidence concerning the participant’s role or authority'."
+ },
+ {
+  "id": "X19",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "B29",
+  "section": "3.3",
+  "current": "",
+  "after": "The research objectives are operationalised through six corresponding sub-research questions.",
+  "replacement": "Each sub-research question corresponds to one of the six requirements defined in Section 2.2 (Req 1 to Req 6) and to the associated gap identified in Section 2.5, so that SRQ1 to SRQ6 address, respectively, the representation, identity, threshold, policy, lifecycle and assurance requirements that no reviewed study satisfies together. For brevity, the sub-research questions SRQ1 to SRQ6 are referred to as RQ1 to RQ6 in Chapter 4 and in the remaining chapters.",
+  "reason": "The chapter never links the six sub-questions to the six SLR requirements and gap tables that generated them, and it uses 'SRQn' while Chapter 1, Chapter 4, the tables and Chapter 6 use 'RQn' without any statement that they are the same."
+ },
+ {
+  "id": "X20",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "B21",
+  "section": "3.1",
+  "current": "",
+  "after": "enabling technologies supporting the broader trust model.",
+  "replacement": "For clarity, the following terms are used throughout the remaining chapters. The patient is the data subject who creates the consent object C. The guardian set G is the set of designated participants whose independent approval is required, and the threshold N is the number of valid guardian approvals needed for activation. The authorised doctor D is the requester whose access request R is evaluated against C.",
+  "reason": "Section 2.6 promises that this chapter 'defines the key terms used in this study', but no definitions are given; C, G, N, D and R are used from Section 3.3 onward without introduction."
+ },
+ {
+  "id": "X21",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "B35",
+  "section": "3.3.1",
+  "current": "",
+  "after": "including the record of whether the consent remains active or has been revoked.",
+  "replacement": "It should be noted that the question names four dimensions, namely identity, authority requirements, policy constraints and authorisation evidence, whereas the consent object contains six components. The temporal component T and the jurisdictional component L were introduced during implementation as explicit constraints of the policy dimension, and they are investigated under SRQ5 rather than as an additional sub-research question.",
+  "reason": "SRQ1, RO1 and Table 10 describe a four-part model while Equation (7) and Chapter 6 use six components; an examiner will ask where T and L come from."
+ },
+ {
+  "id": "X22",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "B113",
+  "section": "3.4",
+  "current": "",
+  "after": "while lifecycle validity VS is evaluated within VA.",
+  "replacement": "The jurisdictional predicate VL is satisfied when the jurisdiction declared in the access request R matches the jurisdiction L recorded in the consent object, or when no jurisdiction is recorded; its formal definition is given in Equation (64) in Section 6.5.",
+  "reason": "VL is the only predicate in Equation (27) that is never defined in Chapter 3, and Chapter 6 defines it with two arguments, VL(C, R), so the reader needs to know that VL(C) is evaluated against the request."
+ },
+ {
+  "id": "X23",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "B49",
+  "section": "3.3.3",
+  "current": "Consequently, in the implemented framework N is instantiated as |G|, the number of designated guardians,",
+  "after": "",
+  "replacement": "In the implemented framework, N is instantiated as |G|, the number of designated guardians,",
+  "reason": "'Consequently' does not follow from Equation (10) and is repeated from the previous sentence; note also that Section 6.3.2 (Step 2) states 1 ≤ N ≤ |G|, which should be reconciled with the fixed N = |G| stated here and in Section 4.3."
+ },
+ {
+  "id": "X24",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "B87",
+  "section": "3.3.6",
+  "current": "Decision(C, R) = { ALLOW, VI ∧ VA ∧ VP ∧ VT ∧ VL; DENY, otherwise. }",
+  "after": "",
+  "replacement": "Decision(C, R, t) = { ALLOW, VI ∧ VA ∧ VP ∧ VT ∧ VL; DENY, otherwise. }",
+  "reason": "The decision depends on the evaluation instant t through VT, and Equations (27), (28), (30) and (65) in Chapter 6 write Decision(C, R, t); Equations (21) and (23) should be changed in the same way."
+ },
+ {
+  "id": "X25",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "B15",
+  "section": "3.1",
+  "current": "The systematic literature review indicates that substantial research has been conducted",
+  "after": "",
+  "replacement": "The systematic literature review presented in Chapter 2 (Section 2.5) indicates that substantial research has been conducted",
+  "reason": "The chapter restates the SLR gap without cross-referencing the section and tables where the gap was derived."
+ },
+ {
+  "id": "SUMMARY",
+  "verdict": "Chapters 3 and 4 contain no citations at all, so the gap statement in Section 3.1 rests on unsupported assertions; adding citations to the reviewed studies [1, 2, 10, 13, 19, 20, 21, 25, 28, 32] at the points indicated resolves this without any new references. The RQ-to-gap and RO-to-RQ traceability is sound in principle (each RO names its RQ), but the chapters are not submission-ready because of internal contradictions about research stage (the CA3 label, Tables 10 and 11 mapping RQ4–RQ6 to 'CA3' and to the wrong chapters, and the 'next stage will extend' sentence beside the implemented five-predicate rule), a dangling duplicate sentence in 4.7, and the redefinition of VL as the lifecycle predicate in Equation (30). The definitions of C, VI, VT, N = |G| and the five-predicate decision rule agree with Chapter 6, but component A must be reworded as 'authority requirements', VS must be reconciled with the composite VS(C, t, q) of Section 6.5, and VL needs an explicit definition linked to Equation (64)."
+ }
+]

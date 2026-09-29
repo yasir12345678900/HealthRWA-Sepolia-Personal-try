@@ -1,0 +1,270 @@
+[
+ {
+  "id": "G1",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "E79",
+  "section": "7.4",
+  "current": "RO4 represents the next stage of the framework beyond identity",
+  "after": "",
+  "replacement": "RO4 represents the third layer of the foundational framework, beyond identity",
+  "reason": "The section is labelled Status: Completed and Chapter 4 places RO4 in the current stage, yet this sentence calls RO4 the next stage, which is the label used throughout the report for planned work."
+ },
+ {
+  "id": "G2",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "E81",
+  "section": "7.4",
+  "current": "the request exceeds the authorised scope and the jurisdiction and validity conditions are evaluated against the stored consent before any decision is returned.",
+  "after": "",
+  "replacement": "the request exceeds the authorised scope, VP evaluates to 0 and the request is denied with VP named as the failed check, as demonstrated for the requested-subset rule in Section 6.8.4.",
+  "reason": "The example is left without its conclusion (denial) and instead drifts to jurisdiction and validity, contradicting the SR ⊆ SC rule stated three sentences earlier and Algorithm 4."
+ },
+ {
+  "id": "G3",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "F16",
+  "section": "9.2 Table 15",
+  "current": "Extend the consent model to",
+  "after": "",
+  "replacement": "Extend the implemented lifecycle mechanism to support consent modification, delegation and guardian-set changes, and formalise the state-transition model so that unauthorised transitions are excluded by construction. (This replaces the whole first sentence of the Planned Activities cell, i.e. also the words 'incorporate validity periods, dynamic expiration, immediate revocation, and controlled lifecycle transitions'.)",
+  "reason": "Validity periods, revocation and controlled lifecycle transitions are already implemented and demonstrated in Section 6.8 (blocks 11,771,243 and 11,771,307); Sections 7.5 and 9.2 state that only modification, delegation and guardian-set changes remain, so the planned activity contradicts the body."
+ },
+ {
+  "id": "G4",
+  "severity": "RED",
+  "kind": "add",
+  "anchor": "Table 17 row Lifecycle trust (RO5",
+  "section": "Appendix A",
+  "current": "",
+  "after": "Six-state lifecycle with on-",
+  "replacement": "RO4 / RQ4 — Policy predicate VP, Eq. (57), Algorithm 4 | §6.4 | Doctor subsystem: requested scope SR must be a non-empty subset of the authorised scope SC; purpose hash compared with the consent | STATE_CHECK and DATA_ACCESS events recording VP = PASS for the four-module scope of consents f050c29a and 04da25f5 (insert as a table row between the RO3 row and the decision-rule row)",
+  "reason": "Appendix A claims to trace each formal artefact of the report, but RO4, whose implementation Section 7.4 reports as complete, has no row, while RO1, RO2, RO3, RO5 and RO6 do."
+ },
+ {
+  "id": "G5",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "Table 17 row Decision rule",
+  "section": "Appendix A",
+  "current": "§5.2, §6.6",
+  "after": "",
+  "replacement": "§5.1.2, §6.4, §6.6",
+  "reason": "Figure 8 (trust predicate evaluation flow) is in Section 5.1.2 and Eq. (59) is in Section 6.4; Section 5.2 is the consent authorisation workflow and does not define either artefact."
+ },
+ {
+  "id": "G6",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "E90",
+  "section": "7.6",
+  "current": "Decision(C, R) = ALLOW, VI(u) ∧ VA(C) ∧ VP(C, R); DENY, otherwise.",
+  "after": "",
+  "replacement": "Decision(C, R, t) = ALLOW, VI(u) ∧ VA(C) ∧ VP(C, R) ∧ VT(C, t) ∧ VL(C); DENY, otherwise.",
+  "reason": "Eq. (80) gives the superseded three-predicate rule while the same section, two paragraphs later, states that the implemented rule is the five-predicate conjunction VI ∧ VA ∧ VP ∧ VT ∧ VL (Eq. (70)); Chapter 4 explicitly says the three-predicate form has been superseded."
+ },
+ {
+  "id": "G7",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "E88",
+  "section": "7.6",
+  "current": "Status: Partially Completed (empirical validation complete; formal assurance outstanding)",
+  "after": "",
+  "replacement": "Status: Partially Completed (scenario-based empirical validation complete; formal assurance and performance study outstanding)",
+  "reason": "The label says empirical validation is complete, but the same section, Table 14 and the paragraph after Table 15 all state that the performance and overhead study is still outstanding and describe empirical validation as partially delivered."
+ },
+ {
+  "id": "G8",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "F0",
+  "section": "7.6",
+  "current": "the consistency between the implemented consent, identity, and",
+  "after": "",
+  "replacement": "the consistency between the implemented consent, identity, policy, temporal, jurisdictional and",
+  "reason": "This sentence is a leftover from the earlier draft and understates the evidence: the preceding paragraph and Section 6.8 demonstrate VP, VT and VL (jurisdiction denial, revocation) as well as the first three mechanisms."
+ },
+ {
+  "id": "G9",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "Empirical validation now covers all six trust dimensions",
+  "section": "7.6",
+  "current": "Empirical validation now covers all six trust dimensions.",
+  "after": "",
+  "replacement": "Empirical validation now covers all five trust predicates of the decision matrix (VI, VA, VP, VT and VL) together with on-chain revocation.",
+  "reason": "The phrase six trust dimensions is not defined anywhere in the report; the decision matrix has five predicates and the consent object has six components, so the claim is ambiguous and unverifiable against Section 6.8."
+ },
+ {
+  "id": "G10",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "E65",
+  "section": "7.2",
+  "current": "In the current prototype the approval threshold is fixed at N-of-N: every",
+  "after": "",
+  "replacement": "With respect to the multi-party authorisation of RO3, which is discussed further in Section 7.3, the approval threshold in the current prototype is fixed at N-of-N: every",
+  "reason": "The N-of-N threshold and the two-guardian evaluation belong to RO3, but the paragraph sits in the RO2 section with no transition, and Section 7.3 then reports RO3 as Completed without mentioning this limitation."
+ },
+ {
+  "id": "G11",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "E76",
+  "section": "7.3",
+  "current": "",
+  "after": "enforce collective rather than unilateral authorisation.",
+  "replacement": "It should be noted that the implemented threshold is derived from the designated guardian set as N = |G|, so the prototype currently enforces an N-of-N instantiation of Eq. (74) and has been evaluated in the 2-of-2 configuration; configurable k-of-n thresholds are reserved for the next stage.",
+  "reason": "A Completed status for a threshold-based objective should state in the RO3 section itself that only the N-of-N case has been demonstrated, consistent with Sections 4.3 and 6.8.3."
+ },
+ {
+  "id": "G12",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "E57",
+  "section": "7.1",
+  "current": "",
+  "after": "specifies the purpose and permitted data scope.",
+  "replacement": "Temporal information defines the validity interval [ts, te] within which the consent may be exercised, and the jurisdiction component records the legal territory in which access is permitted.",
+  "reason": "The paragraph explains I, A, P and E of C = (I, A, P, T, L, E) but omits T and L, although both are enforced in the prototype (Section 6.8.2) and the section reports RO1 as complete."
+ },
+ {
+  "id": "G13",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "E85",
+  "section": "7.5",
+  "current": "rather than temporal enforcement itself.",
+  "after": "",
+  "replacement": "rather than temporal enforcement itself. The temporal predicate enforced at every access request is",
+  "reason": "Eq. (79) currently appears with no lead-in sentence after the status paragraph, so the equation is dangling."
+ },
+ {
+  "id": "G14",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "Temporal and Lifecycle Trust — Completed",
+  "section": "9.2",
+  "current": "Temporal and Lifecycle Trust — Completed (on-chain notBefore and expiry fields; revoke transaction confirmed in block 11,771,307; explicit lifecycle state machine). Comprehensive Empirical Validation — Partially delivered",
+  "after": "",
+  "replacement": "At the time of writing, the status of the activities in Table 15 is as follows. Temporal and lifecycle trust is largely completed (on-chain notBefore and expiry fields; revoke transaction confirmed in block 11,771,307; explicit lifecycle state machine). Comprehensive empirical validation is partially delivered",
+  "reason": "The paragraph after Table 15 is an unintroduced status note written with em dashes, and it labels RO5 as Completed whereas Sections 4.5, 7.5 and 9.1 label it largely or substantially completed."
+ },
+ {
+  "id": "G15",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "the next stage concentrates on two remaining foci",
+  "section": "9.2",
+  "current": "the next stage concentrates on two remaining foci: formal security assurance and comprehensive empirical validation, including performance measurement.",
+  "after": "",
+  "replacement": "the next stage concentrates on formal security assurance and comprehensive empirical validation, including performance measurement, together with the dynamic consent governance extensions of RO5, namely consent modification, delegation and guardian-set changes.",
+  "reason": "The next paragraph lists three foci (dynamic consent governance, formal assurance, empirical validation) and Table 15 lists four activities, so the count of two is internally inconsistent."
+ },
+ {
+  "id": "G16",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "Table 14 row Formal Security & Lifecycle Analysis",
+  "section": "8",
+  "current": "assurance (Chapter",
+  "after": "",
+  "replacement": "assurance (Chapter 5",
+  "reason": "Table 11 maps RO6 to thesis Chapter 5 and row 1 of the same table uses the thesis chapter map (Chapters 3-4 for RQ1-RQ4), so Chapter 6 is inconsistent with Chapter 4. (In the built table the cell reads 'assurance (Chapter 6).' across two lines; change 6 to 5.)"
+ },
+ {
+  "id": "G17",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "Table 14: Summary of Research Outputs",
+  "section": "8",
+  "current": "Table 14: Summary of Research Outputs and Publication Plan",
+  "after": "",
+  "replacement": "Table 15: Summary of Research Outputs and Publication Plan",
+  "reason": "Table numbering is out of order: Table 16 (Section 6.8.10) precedes Tables 14 and 15; renumber Table 16 in Section 6.8.10 to Table 14, this table to Table 15 and Table 15 in Section 9.2 to Table 16 (with the in-text references in 6.8.10, 8 and 9.2), leaving Table 17 unchanged."
+ },
+ {
+  "id": "G18",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "Table 17 row RO2 / RQ2",
+  "section": "Appendix A",
+  "current": "chain signer recovery per",
+  "after": "",
+  "replacement": "chain signer recovery per guardian DID (VI itself performs identifier- and credential-format validation only; DID resolution is reserved for the next stage), i.e. per",
+  "reason": "Section 7.2 states that VI in the prototype validates identifier and credential format only, so presenting EIP-712 signature recovery alone as the realisation of DID and VC verification overstates what Section 6.8 demonstrates for RO2."
+ },
+ {
+  "id": "G19",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "every granted access is accompanied by a real",
+  "section": "7.6",
+  "current": "",
+  "after": "Groth16 proof generated and verified at request time.",
+  "replacement": "It should be noted that the prover and the verifier currently run on the same server, so the proof demonstrates the integration of the zero-knowledge toolchain rather than an additional privacy guarantee, as discussed in Section 6.8.11.",
+  "reason": "Section 6.8.4 and 6.8.11 explicitly qualify the Groth16 proof in this way; omitting the qualification in the progress chapter overstates the evidence for RO6."
+ },
+ {
+  "id": "G20",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "F15",
+  "section": "9.2",
+  "current": "",
+  "after": "observed behaviour of the implemented system.",
+  "replacement": "The performance study will measure the gas cost of the mint and revoke transactions, the block-confirmation latency on Sepolia, the Groth16 proof generation and verification time, and the end-to-end decision latency per access request, and will report enforcement accuracy as the proportion of adversarial requests correctly denied.",
+  "reason": "Table 15 promises runtime performance, overhead and enforcement accuracy but the plan nowhere states the evaluation criteria or metrics an examiner would expect."
+ },
+ {
+  "id": "G21",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "F12",
+  "section": "9.2",
+  "current": "",
+  "after": "practical healthcare data-sharing scenarios.",
+  "replacement": "The next stage activities are planned sequentially. The formal specification of the security properties will be undertaken first, since the empirical experiments are to be designed against those properties; the performance and adversarial evaluation will follow in the second half of the stage, and the lifecycle extensions and integrated evaluation will be completed last, once the formal model is stable.",
+  "reason": "The research plan contains no timeline, ordering or dependencies between the four activities of Table 15, so its realism cannot be assessed by the examiner."
+ },
+ {
+  "id": "G22",
+  "severity": "GREEN",
+  "kind": "add",
+  "anchor": "F3",
+  "section": "8",
+  "current": "",
+  "after": "thesis chapters and research questions.",
+  "replacement": "It should be noted that no manuscript has been submitted at the time of writing. The first paper is intended for submission early in the next stage, so that it can present the consent model together with the deployed contract and its verified transaction evidence.",
+  "reason": "Chapter 8 lists targets and statuses (Almost Ready, In Progress, Planned) but never states whether anything has been submitted or when, which an examiner will look for."
+ },
+ {
+  "id": "G23",
+  "severity": "GREEN",
+  "kind": "cite",
+  "anchor": "F12",
+  "section": "9.2",
+  "current": "extend the research towards dynamic consent governance, formal security assurance,",
+  "after": "",
+  "replacement": "extend the research towards dynamic consent governance [13, 24], formal security assurance,",
+  "reason": "Chapters 7 to 9 contain no citations; dynamic consent governance is the topic of the blockchain-based dynamic consent study [13] and the consent-framework review [24], both already in the reference list."
+ },
+ {
+  "id": "G24",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "is rejected whenever SR is not a subset",
+  "section": "7.4",
+  "current": "is not a subset of the authorised scope S C.",
+  "after": "",
+  "replacement": "is not a subset of the authorised scope SC.",
+  "reason": "Typographical error: SC is split as S C; also Eq. (81) and Section 9.2 should use Decision(C, R, t) to match the implemented five-predicate rule, and the frequent bare phrases current stage and next stage (e.g. during current stage, By the completion of next stage) lack the article the."
+ },
+ {
+  "id": "SUMMARY",
+  "verdict": "Chapters 7 to 9 and Appendix A contain no citations, so citation relevance is not an issue, although one supporting citation for dynamic consent governance could be added from the existing list. The main problems are leftovers from the earlier draft that contradict the now-completed status: RO4 is still called the next stage, the RO4 example is left without its denial, Eq. (80) still gives the superseded three-predicate rule, the Table 15 RO5 row plans work that Section 6.8 already demonstrates, and Appendix A omits RO4 and mis-cites the section for the decision rule. With these corrected, the status labels (Completed / Largely Completed / Partially Completed) are broadly consistent with Section 6.8 and Chapter 4, but the research plan still lacks any timeline and evaluation metrics, and the table numbering (16 before 14 and 15) should be fixed before submission."
+ }
+]

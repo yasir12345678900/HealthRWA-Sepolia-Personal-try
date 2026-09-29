@@ -1,0 +1,281 @@
+[
+ {
+  "id": "G1",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "where VT (C, t) represents temporal validity and VL (C)",
+  "section": "4.7",
+  "current": "where VT (C, t) represents temporal validity and VL (C) represents the validity of the consent lifecycle state and its transitions.",
+  "after": "",
+  "replacement": "where VT (C, t) represents temporal validity and VL (C) represents the jurisdictional predicate corresponding to the component L of the consent object, while lifecycle validity and revocation are evaluated within VA (C).",
+  "reason": "Sections 3.3.5, 5.1.2, 6.5 and 6.8.4 define VL as the jurisdictional predicate, so defining it here as lifecycle validity contradicts the rest of the report."
+ },
+ {
+  "id": "G2",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "which extends the three-predicate rule of Eq. (59)",
+  "section": "6.8.4",
+  "current": "which extends the three-predicate rule of Eq. (59) with the temporal and jurisdictional verdicts",
+  "after": "",
+  "replacement": "which is the five-predicate rule of Eq. (59) and extends the three-predicate rule of Eq. (35) with the temporal and jurisdictional verdicts",
+  "reason": "Eq. (59) is already the five-predicate rule VI ∧ VA ∧ VP ∧ VT ∧ VL; the three-predicate rule appears as Eqs. (35), (42) and (69), so the cross-reference is wrong."
+ },
+ {
+  "id": "G3",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "The Controller is decomposed into six principal security functions",
+  "section": "5.1.1",
+  "current": "The Controller is decomposed into six principal security functions.",
+  "after": "",
+  "replacement": "The Controller is decomposed into six principal security functions, to which the two implementation-level functions introduced above, cryptographic proof generation and verification and on-chain anchoring, are added to give the eight functions shown in Figure 7.",
+  "reason": "The first sentence of Section 5.1.1 states that the Controller comprises eight functions (and opens with 'therefore' without an antecedent) while this sentence states six; the two statements must be reconciled and the eight-function paragraph moved after the six functions are listed."
+ },
+ {
+  "id": "G4",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "RO5 and RO6 constitute the principal research agenda for CA3",
+  "section": "4.7",
+  "current": "RO5 and RO6 constitute the principal research agenda for CA3.",
+  "after": "",
+  "replacement": "RO5 and RO6 were originally identified as the principal research agenda for the next stage (CA3), although RO5 has since been implemented in the current prototype.",
+  "reason": "Two sentences later the text states that the current stage delivers RO1–RO5, which contradicts this sentence; in addition the dangling fragment 'The relationship between the six research questions and the six research objectives is' printed immediately before it must be deleted."
+ },
+ {
+  "id": "G5",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "whereas next stage investigates whether these mechanisms remain",
+  "section": "4.7",
+  "current": "whereas next stage investigates whether these mechanisms remain",
+  "after": "",
+  "replacement": "whereas next stage investigates whether these mechanisms remain reliable under dynamic lifecycle conditions and whether their security and practical effectiveness can be formally and empirically demonstrated.",
+  "reason": "The sentence is cut off by the insertion of Tables 10 and 11 and its continuation ('reliable under dynamic lifecycle conditions and whether their security ...') appears as an orphaned fragment after Table 11 on page 62, where it must be deleted."
+ },
+ {
+  "id": "G6",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "Table 11: Research Questions, Research Objectives, and Thesis Chapters for CA3",
+  "section": "4.7",
+  "current": "Table 11: Research Questions, Research Objectives, and Thesis Chapters for CA3",
+  "after": "",
+  "replacement": "Table 11: Research Questions, Research Objectives, and Thesis Chapters for RQ4 to RQ6",
+  "reason": "Table 11 'for CA3' contains RQ4, which is a current-stage objective, and Table 10 'for Current Stage' omits RQ4 and RQ5 although both are implemented; note also that Tables 10–11 map RQ5–RQ6 to thesis Chapter 5 whereas Table 14 maps formal security assurance to Chapter 6."
+ },
+ {
+  "id": "G7",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "The consent Model will be expanded to include temporal validity",
+  "section": "5.11",
+  "current": "The consent Model will be expanded to include temporal validity, expiration, revocation, and controlled lifecycle transitions.",
+  "after": "",
+  "replacement": "The consent Model already includes temporal validity, expiration, revocation, and controlled lifecycle transitions, and the next stage will formalise these transitions and extend them to consent modification and delegation.",
+  "reason": "Contradicts the opening of Section 5.3, Table 13 and Section 6.5.1, which state that these controls are implemented; the following sentence 'The Controller will subsequently incorporate the corresponding temporal and lifecycle predicates' must likewise be changed to state that they are already incorporated."
+ },
+ {
+  "id": "G8",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "This objective belongs primarily to CA3 because it investigates",
+  "section": "6.5",
+  "current": "This objective belongs primarily to CA3 because it investigates how an authorisation remains trustworthy as time passes and as the consent state changes.",
+  "after": "",
+  "replacement": "This objective was originally assigned to the next stage because it investigates how an authorisation remains trustworthy as time passes and as the consent state changes; it has since been implemented in the current prototype, as Section 6.5.1 and Section 7.5 show.",
+  "reason": "Contradicts Sections 4.5, 6.5.1, 6.5.3 and 7.5; in addition the next sentence ends abruptly with 'temporal and lifecycle conditions that' before Eq. (63) and should read 'temporal and lifecycle conditions. The temporal condition is defined as'."
+ },
+ {
+  "id": "G9",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "Extend the consent model to incorporate validity periods",
+  "section": "9.2",
+  "current": "Extend the consent model to",
+  "after": "",
+  "replacement": "Extend the implemented lifecycle model towards consent modification, delegation and guardian-set changes, formalise the state-transition rules, and no longer",
+  "reason": "The first paragraph of Section 9.2 states that temporal and lifecycle trust has been implemented and that only two foci remain, yet the first row of Table 15 still plans 'validity periods, dynamic expiration, immediate revocation, and controlled lifecycle transitions' as next-stage work (rewrite that cell accordingly), and the second paragraph lists three foci including 'dynamic consent governance'; Section 9.1 also omits RO5 from its list of main activities."
+ },
+ {
+  "id": "G10",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "Table 16: Correspondence between the HALAH framework components",
+  "section": "6.8.10",
+  "current": "Table 16: Correspondence between the HALAH framework components and the implemented subsystems.",
+  "after": "",
+  "replacement": "Table 14: Correspondence between the HALAH framework components and the implemented subsystems.",
+  "reason": "Table 16 (page 141) is printed before Table 14 (page 148) and Table 15 (page 150), so tables are out of sequence; renumber Table 14 to 15 and Table 15 to 16 and update 'summarised in Table 15' in Section 9.2. Equation numbering likewise jumps from (5) to (7), so either restore Eq. (6) or renumber (7)–(81) and update the references to Eqs. (51), (54), (59), (69) and (70); Tables 14 and 16 are never referred to in the text."
+ },
+ {
+  "id": "G11",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "the earlier three-predicate formulation represents an initial design iteration",
+  "section": "4.7",
+  "current": "the earlier three-predicate formulation represents an initial design iteration that has since been superseded by the implementation.",
+  "after": "",
+  "replacement": "the three-predicate formulation of Eq. (29) represents the initial design iteration and is retained in Sections 5.2, 5.5, 6.7 and 7.6 only as the historical current-stage formulation.",
+  "reason": "The sentence claims the five-predicate rule is applied 'consistently throughout this chapter', yet Eqs. (35), (42), (43), (67), (69) and (80) present the three-predicate rule as the current-stage decision; the inserted paragraph also separates Eq. (29) from its 'where' clause and should be moved after that clause."
+ },
+ {
+  "id": "G12",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "This distinction is important because healthcare data should not be",
+  "section": "5.1",
+  "current": "This distinction is important because healthcare data should not be",
+  "after": "",
+  "replacement": "This distinction is important because healthcare data should not be treated as ordinary application state that can be directly manipulated by the View.",
+  "reason": "Figure 6 and two inserted paragraphs split this sentence, leaving the orphaned fragment 'treated as ordinary application state that can be directly manipulated by the View.' after them (delete that fragment); the same break occurs before Eq. (31) ('The integrated decision can therefore be expressed as'), before Eq. (33) ('Multi-party authorisation is satisfied when') and before Eq. (66) ('The formal decision model is expressed as'), where the inserted paragraphs must be moved after the equation."
+ },
+ {
+  "id": "G13",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "This separation establishes a clear progression between the current",
+  "section": "1.3",
+  "current": "This separation establishes a clear progression between the current and subsequent stages of the research.",
+  "after": "",
+  "replacement": "This separation establishes a clear progression between the current and subsequent stages of the research, in which the current research is concerned primarily with establishing the conceptual and technical foundations through which trustworthy multi-party authorisation can be constructed.",
+  "reason": "The sentence 'The current research is concerned primarily with establishing the conceptual and technical foundations ...' is printed twice in succession across the page break on pages 10–11; merge it here and delete both standalone copies."
+ },
+ {
+  "id": "G14",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "Consequently, formal security analysis remains the subject of the next",
+  "section": "1.3",
+  "current": "Consequently, formal security analysis remains the subject of the next research stage.",
+  "after": "",
+  "replacement": "Formal security analysis, however, remains the subject of the next research stage.",
+  "reason": "'Consequently' does not follow from the preceding sentence; moreover this status paragraph opens the Research Motivation before any motivation is stated, and the first paragraph of Section 3.2 ('Temporal and lifecycle trust has been operationalised ...') likewise precedes the main research question; both should be moved to the end of their sections, and CA3 should be defined at its first use in Section 3.2."
+ },
+ {
+  "id": "G15",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "These four dimensions collectively define the foundational scope",
+  "section": "1.3",
+  "current": "These four dimensions collectively define the foundational scope",
+  "after": "",
+  "replacement": "These four dimensions, together with the temporal and lifecycle dimension that has since been implemented, define the foundational scope",
+  "reason": "Table 1 that follows lists RO5 as a current dimension, so describing the current scope as four dimensions is inconsistent with the table."
+ },
+ {
+  "id": "G16",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "7.4 Progress of RO4: Policy-Aware Access Control",
+  "section": "7.4",
+  "current": "7.4 Progress of RO4: Policy-Aware Access Control",
+  "after": "",
+  "replacement": "7.4 Progress of RO4: Policy- and Context-Aware Access Control",
+  "reason": "RO titles differ across the report: Section 4.4 and Table 10 use 'Policy- and Context-Aware Access Control', Table 1 uses 'RO4: Policy- and Context-Aware Authorisation' and 'RO1: Trust-Centric Consent Modelling', and headings 7.2 and 7.6 drop 'Trust' and 'Formal ... Empirical'; replace both occurrences of this heading (Contents and Chapter 7) and align all other occurrences to the Chapter 4 wording."
+ },
+ {
+  "id": "G17",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "The workflow operationalizes the central premise of this research",
+  "section": "5.2",
+  "current": "The workflow operationalizes the central premise of this research",
+  "after": "",
+  "replacement": "The workflow operationalises the central premise of this research",
+  "reason": "American spelling in a British-spelling report; Section 5.2 also contains 'authorize', 'authorized' (twice) and 'consent-authorized', which should become 'authorise', 'authorised' and 'consent-authorised'."
+ },
+ {
+  "id": "G18",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "where T represents the temporal validity window of the consent and L",
+  "section": "6.1",
+  "current": "where T represents the temporal validity window of the consent and L represents the jurisdiction in which the consent may be exercised.",
+  "after": "",
+  "replacement": "where I represents patient and participant identity information, A represents authorisation requirements, P represents policy constraints, T represents the temporal validity window of the consent, L represents the jurisdiction in which the consent may be exercised, and E represents authorisation evidence.",
+  "reason": "Eq. (51) is followed by two consecutive 'where' clauses; delete the second ('where I represents patient and participant identity information ...') and apply the same merge after Eq. (36) in Section 5.3, which has the same defect."
+ },
+ {
+  "id": "G19",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "At the current stage, the experimental evidence primarily demonstrates",
+  "section": "7.6",
+  "current": "At the current stage, the experimental evidence primarily demonstrates the consistency between the implemented consent, identity, and",
+  "after": "",
+  "replacement": "At the current stage, the experimental evidence demonstrates the consistency between all five implemented trust predicates, including the consent, identity, and",
+  "reason": "Contradicts the preceding paragraph ('Empirical validation now covers all six trust dimensions'); Eq. (80) in the same section still shows the superseded three-predicate rule, and the closing example of Section 7.4 ('the request exceeds the authorised scope and the jurisdiction and validity conditions are evaluated ...') never states that the request is denied."
+ },
+ {
+  "id": "G20",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "In the current prototype the approval threshold is fixed at N-of-N",
+  "section": "7.2",
+  "current": "In the current prototype the approval threshold is fixed at N-of-N: every listed guardian must approve",
+  "after": "",
+  "replacement": "With respect to RO3, in the current prototype the approval threshold is fixed at N-of-N: every listed guardian must approve",
+  "reason": "The paragraph concerns RO3 but is placed in Section 7.2 (RO2) and should be moved to Section 7.3; the same N = |G|, 2-of-2, k-of-n statement is repeated in Sections 3.3.3, 4.3, 5.2, 6.3, 6.4.3, 6.8.3 and 7.2, and the copy in 6.4.3 (policy procedure) is off-topic and should be deleted."
+ },
+ {
+  "id": "G21",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "Presenter: Yasir Dhaifallah O Alyoubi Student ID: 24724078",
+  "section": "Front matter",
+  "current": "",
+  "after": "Student ID: 24724078",
+  "replacement": "Abstract. This report presents HALAH, a trust-oriented authorisation framework in which patient consent is represented as an evaluable consent object C = (I, A, P, T, L, E) rather than as a static permission record. The framework establishes trustworthy participants through decentralised identifiers and verifiable credentials, requires threshold-based approval by the guardian set G, enforces purpose, data-scope, temporal and jurisdictional constraints at every access request, and records auditable evidence of each decision. A prototype has been implemented and demonstrated on the Ethereum Sepolia test network, including consent activation, a granted request, a refused out-of-jurisdiction request, on-chain revocation and independent verification of the recorded transactions. The formal security analysis of the stated properties remains the subject of the next stage of the research.",
+  "reason": "The report has no abstract, no list of figures or tables, Appendix A is absent from the Contents, the title page says 'Presenter' rather than 'Candidate', and it is dated August 2026 although the evidence files (evidence/sepolia_audit_ledger_2026-09-24.csv) and the demonstration transactions are dated September 2026; insert the abstract on a new page after the title page."
+ },
+ {
+  "id": "G22",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "healthcare data-access request should be permitted",
+  "section": "1.3",
+  "current": "",
+  "after": "healthcare data-access request should be permitted",
+  "replacement": "Chapter 2 substantiates this problem through a systematic literature review and identifies the gaps that the existing studies leave open, and Chapter 3 translates these gaps into the research questions. Chapters 4 to 6 then present the research objectives, the architecture and the proposed solution, while Chapters 7 to 9 report the current progress, the publications and the remaining research plan.",
+  "reason": "Chapter 1 ends without any link from the problem statement to the literature review and gap analysis, so the chain Problem to Gaps is not signposted."
+ },
+ {
+  "id": "G23",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "The research objectives are operationalised through six corresponding sub-research questions",
+  "section": "3.3",
+  "current": "",
+  "after": "operationalised through six corresponding sub-research questions",
+  "replacement": "Each sub-research question corresponds to one of the six requirements Req 1 to Req 6 identified in Section 2.2 and to the corresponding research gap identified in Section 2.5.1, so that every question is traceable to a demonstrated shortcoming of the existing studies. In the remainder of this report the sub-research questions SRQ1 to SRQ6 are also referred to as RQ1 to RQ6.",
+  "reason": "The link from the six gaps of Chapter 2 to the six questions is never stated, and the report switches between 'SRQ' (Chapter 3, Sections 5.1.2–5.1.3) and 'RQ' (Chapters 1, 4, 6, 7, tables) without explanation."
+ },
+ {
+  "id": "G24",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "planned next research on dynamic trust, formal assurance, and comprehensive validation",
+  "section": "4.7",
+  "current": "",
+  "after": "formal assurance, and comprehensive validation",
+  "replacement": "Chapter 5 describes the MVC architecture through which these objectives are structured, and Chapter 6 presents the procedure and algorithm that realise each objective, together with the live demonstration of the implemented HALAH system on Sepolia.",
+  "reason": "Chapter 4 ends on an equation with no sentence linking the objectives to the architecture and solution chapters (ROs to Solution)."
+ },
+ {
+  "id": "G25",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "Each transaction hash is recorded in the audit ledger and is publicly inspectable",
+  "section": "9.1",
+  "current": "",
+  "after": "publicly inspectable on Etherscan",
+  "replacement": "The plan for the next stage therefore follows directly from the progress status reported in Chapter 7: the objectives marked as completed require no further development, whereas the formal component of RO6 and the identified prototype limitations, namely the N-of-N approval rule, the server-derived guardian keys and the unauthenticated requester, define the remaining work.",
+  "reason": "Chapter 9 does not connect the plan to the status of Chapter 7, so the chain Progress to Plan is missing."
+ },
+ {
+  "id": "SUMMARY",
+  "verdict": "Terminology is largely consistent (British spelling, HALAH, Sepolia, guardian set G, threshold N, consent object), but the report contains several contradictions introduced by status-update paragraphs inserted at the wrong positions: RO5 is described both as implemented and as next-stage work (Sections 4.7, 5.11, 6.5, Table 11, Table 15), VL is defined as lifecycle validity in Section 4.7 but as jurisdiction everywhere else, the three-predicate and five-predicate decision rules are both labelled 'current stage', and the Controller has six functions in one paragraph and eight in the next. Cross-references are mostly correct, but Eq. (59) is mis-described as the three-predicate rule in Section 6.8.4, Eq. (6) is missing from the numbering, Table 16 precedes Tables 14 and 15, and several sentences are truncated or duplicated by table and figure insertions (Sections 1.3, 4.7, 5.1, 5.1.2, 5.2, 6.5, 6.6). No mention of Claude, GitHub or AI generation and no placeholder text was found; with the above repairs, an abstract, and a consistent statement of which objectives are complete, the report is ready for submission."
+ }
+]

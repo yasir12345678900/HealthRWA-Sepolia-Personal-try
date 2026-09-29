@@ -1,0 +1,281 @@
+[
+ {
+  "id": "C1",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "E4",
+  "section": "6.5",
+  "current": "This objective belongs primarily to CA3 because it investigates how an authorisation remains trustworthy as time passes and as the consent state changes.",
+  "after": "",
+  "replacement": "Although this objective was originally planned for CA3, it has been realised in the current prototype; it investigates how an authorisation remains trustworthy as time passes and as the consent state changes.",
+  "reason": "Contradicts Section 4.5, Section 6.5.1 and Section 6.7, which all state that RO5 (VT, on-chain expiry, revocation, state machine) is implemented in the current prototype."
+ },
+ {
+  "id": "C2",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "E6",
+  "section": "6.5",
+  "current": "The lifecycle condition can be expressed as",
+  "after": "",
+  "replacement": "The jurisdictional condition, written VL(C, R) here and abbreviated to VL(C) in the decision rules that follow because the request R is understood, can be expressed as",
+  "reason": "Eq. (64) defines the jurisdiction predicate, not a lifecycle condition (lifecycle is evaluated within VA per Section 3.3.5), and the argument list VL(C, R) in Eq. (64) is inconsistent with VL(C) in Eqs. (59), (65), (66) and (70)."
+ },
+ {
+  "id": "C3",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "Here VS denotes the composite temporal–state predicate",
+  "section": "6.5.2",
+  "current": "Here VS denotes the composite temporal–state predicate evaluated by this procedure",
+  "after": "",
+  "replacement": "It should be noted that the symbol VS in this section denotes the composite temporal–state predicate of Eq. (18), which the implementation evaluates within VA, and that it must not be confused with the data-scope predicate VS(C, R) of Eq. (57); for this reason the lifecycle predicate is always written with three arguments, VS(C, t, q), in this section. It is evaluated by this procedure",
+  "reason": "The same symbol VS is used for data-scope compatibility in Eqs. (57)-(58) and for the temporal-state predicate in Section 6.5.2 (Steps 7 and 9), which an examiner will read as a notation error."
+ },
+ {
+  "id": "C4",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "E45",
+  "section": "6.7",
+  "current": "For the current stage implementation, the operational decision is based on",
+  "after": "",
+  "replacement": "For the current stage implementation, the operational decision was originally based on the three-predicate rule of Equation (69), which the CA3 extension of Equation (70) now supersedes in the implemented system.",
+  "reason": "The sentence is left dangling because the inserted paragraph 'Algorithms 1-5 are all realised...' separates it from Eq. (69), and calling the three-predicate rule the 'current stage' decision contradicts Eq. (59), which labels the five-predicate rule the 'complete current-stage authorisation decision'."
+ },
+ {
+  "id": "C5",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "E23",
+  "section": "6.6",
+  "current": "The formal decision model is expressed as",
+  "after": "",
+  "replacement": "The formal decision model is expressed in Equation (66) below.",
+  "reason": "The phrase now introduces the inserted paragraph about the empirical half rather than Eq. (66), leaving an incomplete sentence."
+ },
+ {
+  "id": "C6",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "D5",
+  "section": "6.1",
+  "current": "where I represents patient and participant identity information, A represents authorisation requirements, P represents policy constraints, and E represents authorisation evidence.",
+  "after": "",
+  "replacement": "In addition, I represents patient and participant identity information, A represents authorisation requirements, P represents policy constraints, and E represents authorisation evidence. The temporal component defines the interval during which the consent may be exercised, and the jurisdictional component defines the territory in which it may be exercised.",
+  "reason": "Eq. (51) is followed by two consecutive 'where' clauses (the override for T and L was inserted before the original one), and the component-by-component description that follows covers only four of the six components."
+ },
+ {
+  "id": "C7",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "D13",
+  "section": "6.1.3",
+  "current": "Require: Patient identity Ip, authorised doctor D, guardian set G, purpose Pu, data scope SC, validity interval T",
+  "after": "",
+  "replacement": "Require: Patient identity Ip, authorised doctor D, guardian set G, purpose Pu, data scope SC, validity interval T, jurisdiction L",
+  "reason": "Algorithm 1 constructs C = (I, A, P, T, L, E) and the stated sequence includes L, but L is neither an input nor validated anywhere in Algorithm 1 or in Steps 1-12 of Section 6.1.2."
+ },
+ {
+  "id": "C8",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "D11",
+  "section": "6.1.2",
+  "current": "",
+  "after": "If this condition is not satisfied, the consent request is rejected.",
+  "replacement": "The declared jurisdiction L is then validated as a well-formed ISO alpha-2 territory code and bound to the consent object, as described in Section 6.1.1, so that the subsequent jurisdictional check VL can be evaluated against it.",
+  "reason": "The twelve-step procedure omits the jurisdiction validation that Section 6.1.1 and the construction sequence Ip → ... → L → ... → E require."
+ },
+ {
+  "id": "C9",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "D42",
+  "section": "6.3.2",
+  "current": "Authorisation(C) = { ALLOW, |Av| ≥ N; PENDING, |Av| < N }",
+  "after": "",
+  "replacement": "Authorisation(C) = { ACTIVATED, |Av| ≥ N; PENDING, |Av| < N }",
+  "reason": "Algorithm 3 returns ACTIVATED and states that activation is distinct from the access decision ALLOW, so Step 13, Eq. (55) and the explicit condition '... ⇒ Authorisation(C) = ALLOW' should use ACTIVATED to avoid conflating threshold activation with data access."
+ },
+ {
+  "id": "C10",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "E26",
+  "section": "6.6",
+  "current": "Decision(C, R) = ALLOW ⇒ VI ∧ VA ∧ VP ∧ VT ∧ VL, where this soundness property is the one actually validated:",
+  "after": "",
+  "replacement": "The soundness property actually validated is Decision(C, R, t) = ALLOW ⇒ VI ∧ VA ∧ VP ∧ VT ∧ VL, of which Equations (67) and (68) give the foundational three-predicate form; each conjunct of the five-predicate rule",
+  "reason": "The paragraph begins with a bare formula and leaves Eqs. (67)-(68), whose original lead-in 'For current stage, the primary validation conditions are' was removed, without any introduction."
+ },
+ {
+  "id": "C11",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "D54",
+  "section": "6.4",
+  "current": "The complete current-stage authorisation decision is",
+  "after": "",
+  "replacement": "The complete authorisation decision enforced by the implemented system is",
+  "reason": "Eq. (59) is the five-predicate rule, yet Section 6.7 calls the three-predicate Eq. (69) the current-stage rule and Section 6.8.4 refers to 'the three-predicate rule of Eq. (59)', which should read Eq. (69); the label must be made consistent."
+ },
+ {
+  "id": "C12",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "Authorised(R, C, u) = VI(u) ∧ Active(C)",
+  "section": "6.4.3",
+  "current": "PurposeMatch(PR, PC) ∧ ScopeMatch(SR, SC)",
+  "after": "",
+  "replacement": "PurposeMatch(PR, PC) ∧ ScopeMatch(SR, SC) ∧ (ts ≤ t ≤ te) ∧ (Jur(R) = Jur(C))",
+  "reason": "Step 7 of the procedure and the later 'ALLOW ⟺ Identity ∧ Consent ∧ ...' formula omit the temporal and jurisdictional checks that Algorithm 4 (lines 26-27) and Eq. (59) include."
+ },
+ {
+  "id": "C13",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "D66",
+  "section": "6.4.2",
+  "current": "Require: Consent object C, access request R, requesting participant u",
+  "after": "",
+  "replacement": "Require: Consent object C, access request R = (u, PR, SR, Jur(R)), requesting participant u, current time t",
+  "reason": "Algorithm 4 uses t, ts, te and Jur(R) in lines 26-28 although none of them is declared as an input."
+ },
+ {
+  "id": "C14",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "D48",
+  "section": "6.3.3",
+  "current": "Require: Consent object C, participant approval a",
+  "after": "",
+  "replacement": "Require: Consent object C, approval a = (g, siga) submitted by guardian g with EIP-712 signature siga",
+  "reason": "Lines 3-4 and 16 of Algorithm 3 use g, siga, domain and Addr(g), none of which is introduced in the Require line."
+ },
+ {
+  "id": "C15",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "D11",
+  "section": "6.1.2",
+  "current": "In the current prototype this validation is a structural check that each identifier constitutes a well-formed DID.",
+  "after": "",
+  "replacement": "In the current prototype the identity validation of Steps 1 to 3 is a structural check that each identifier constitutes a well-formed DID.",
+  "reason": "The limitation note sits directly after Step 6 (temporal interval), so 'this validation' reads as referring to the te > ts check rather than to the identity checks it actually qualifies."
+ },
+ {
+  "id": "C16",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "E44",
+  "section": "6.7",
+  "current": "current stage establishes the foundational authorisation mechanisms and CA3 investigates their dynamic validity, security assurance, and comprehensive practical effectiveness.",
+  "after": "",
+  "replacement": "the current stage establishes the foundational authorisation mechanisms together with their dynamic validity, and CA3 completes their formal security assurance and comprehensive practical evaluation.",
+  "reason": "Contradicts the next paragraph of the same section, which states that Algorithms 1-5 (including the RO5 dynamic validity) are realised in the current prototype and only the formal-assurance branch remains."
+ },
+ {
+  "id": "C17",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "E45",
+  "section": "6.7",
+  "current": "4) Policy Compliance, 5) Temporal and Lifecycle Trust.",
+  "after": "",
+  "replacement": "4) Policy Compliance, 5) Temporal, Jurisdictional and Lifecycle Trust, and 6) Formal and Empirical Assurance of the complete decision.",
+  "reason": "The summary of the six mechanisms omits the jurisdictional predicate VL (component L) and the RO6 assurance layer, so it does not summarise all six objectives."
+ },
+ {
+  "id": "C18",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "where Jur(·) denotes the jurisdiction attribute",
+  "section": "6.5",
+  "current": "",
+  "after": "within VA rather than within this predicate.",
+  "replacement": "It should be noted that, because the jurisdiction L is validated and bound at consent creation (Section 6.1.1), the disjunct Jur(C) = ∅ is not reached for any consent created through the current interface, so that in the demonstrated system the predicate reduces to strict equality, as Section 6.8.5 confirms.",
+  "reason": "Eq. (64) admits an empty consent jurisdiction, whereas Section 6.1.1 says L is always validated and bound and Section 6.8.4 states VL holds 'if and only if' the jurisdictions are equal."
+ },
+ {
+  "id": "C19",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "D35",
+  "section": "6.3",
+  "current": "This distinction is important because a configurable k-of-n threshold, while a direct generalisation of the implemented mechanism, is left to future work.",
+  "after": "",
+  "replacement": "The N-of-N configuration was adopted for the prototype because it is the most conservative instantiation of the threshold condition, in which no designated guardian can be bypassed, and because it allows the mechanism to be demonstrated without the quorum-selection and key-management questions that a general k-of-n threshold introduces. A configurable k-of-n threshold, while a direct generalisation of the implemented mechanism, is therefore left to future work.",
+  "reason": "'This distinction is important because' does not follow from the preceding sentence, and the design choice of N = |G| is stated without justification."
+ },
+ {
+  "id": "C20",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "keccak256(purpose)",
+  "section": "6.4.3",
+  "current": "Therefore, a formal proof that no execution path can violate the privacy policy is deliberately left to future work.",
+  "after": "",
+  "replacement": "A formal proof that no execution path can violate the privacy policy is, however, deliberately left to future work.",
+  "reason": "'Therefore' presents the deferral of the formal proof as a consequence of purpose being stored as keccak256(purpose), which is a non sequitur."
+ },
+ {
+  "id": "C21",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "D1",
+  "section": "6",
+  "current": "",
+  "after": "6 Proposed Solution",
+  "replacement": "This chapter presents the proposed solution as six mechanisms, one for each research objective. Sections 6.1 to 6.6 define, for each objective, the formal condition, the workflow, the step-wise procedure and the corresponding algorithm, and each section also states which part of the mechanism is exercised by the current prototype and which part is deferred to the next stage. Section 6.7 relates the six algorithms to the research objectives, and Section 6.8 presents the implemented HALAH system and its demonstration on the Sepolia test network.",
+  "reason": "The chapter opens directly with Section 6.1 without any introduction stating its structure, notation or scope, which an examiner expects."
+ },
+ {
+  "id": "C22",
+  "severity": "YELLOW",
+  "kind": "add",
+  "anchor": "Figure 16 accordingly presents the RO6 workflow",
+  "section": "6.6",
+  "current": "",
+  "after": "branch has been executed and the formal branch remains planned.",
+  "replacement": "The empirical evidence comprises the 23 automated tests that exercise per-dimension failures of the decision matrix, invalid EIP-712 guardian signatures and tampered or expired proofs, the live jurisdiction-based denial and the revocation followed by refusal on Sepolia, and the independent re-verification of every recorded transaction against the chain, all of which are presented in Section 6.8.",
+  "reason": "Section 6.6 claims the empirical half has been carried out but never says what was executed or where the results are, whereas Sections 4.6 and 7.6 quantify it."
+ },
+ {
+  "id": "C23",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "D19",
+  "section": "6.2",
+  "current": "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant’s role, authority, or other relevant attribute.",
+  "after": "",
+  "replacement": "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant’s role, authority, or other relevant attribute [20].",
+  "reason": "Sections 6.1-6.7 contain no citations; the DID/VC roles are standard definitions that should be supported by the DID/VC survey [20] already in the reference list."
+ },
+ {
+  "id": "C24",
+  "severity": "GREEN",
+  "kind": "cite",
+  "anchor": "E51",
+  "section": "6.7",
+  "current": "Blockchain contributes integrity, tamper resistance, persistence, and auditability.",
+  "after": "",
+  "replacement": "Blockchain contributes integrity, tamper resistance, persistence, and auditability [2], [18].",
+  "reason": "The claim about what blockchain contributes is unsupported; [2] (healthcare blockchain survey: tamper-resistant recording, auditability) and [18] (blockchain immutability and tamper-resilient trust) already support it."
+ },
+ {
+  "id": "C25",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "Step 5 – Evaluate the Requested Purpose",
+  "section": "6.4.3",
+  "current": "PR|= PC. which means the requested",
+  "after": "",
+  "replacement": "PR ⊨ PC, which means the requested",
+  "reason": "Broken symbol and punctuation ('|=' and a full stop followed by a lower-case clause) inside one sentence."
+ },
+ {
+  "id": "SUMMARY",
+  "verdict": "Sections 6.1-6.7 contain no citations at all, so citation relevance is not an issue of wrong attribution but of absence; a design chapter of this length should at least anchor the DID/VC definitions [20], the blockchain-trust claims [2], [18] and the dynamic-consent motivation [13] to the existing reference list. The main risks to marks are internal: the same symbol VS is used for data scope and for lifecycle state, VL is written with different arguments and mislabelled as the lifecycle condition, the three-predicate rule and the five-predicate rule are both called the 'current-stage' decision, RO5 is said to belong to CA3 although it is implemented, and several override paragraphs were inserted mid-sentence in 6.1, 6.6 and 6.7, leaving dangling lead-ins. Figure 10-16 and Algorithm 1-6 references all resolve, each RO section does address its RQ, and 6.7 covers the six algorithms correctly apart from omitting jurisdiction and assurance from its summary list; with the RED and YELLOW fixes above the chapter is ready for submission."
+ }
+]

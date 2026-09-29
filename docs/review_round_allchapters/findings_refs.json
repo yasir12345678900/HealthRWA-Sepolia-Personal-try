@@ -1,0 +1,281 @@
+[
+ {
+  "id": "R1",
+  "severity": "RED",
+  "kind": "fix",
+  "anchor": "healthcare professionals, institutional authorities, and other authorised stakeholders [21, 9]",
+  "section": "1.1",
+  "current": "stakeholders [21, 9]",
+  "after": "",
+  "replacement": "stakeholders [31, 9]",
+  "reason": "The guardian and institutional-authority scenario is the subject of the AAP policy statement [31]; S_full states that [21] does not discuss guardians or institutional authorities, so the attribution should rest on [31] (with [9] for care coordination among professionals)."
+ },
+ {
+  "id": "R2",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "cryptographic and policy-based access-control mechanisms can restrict access to authorised resources [2, 7, 3]",
+  "section": "1.1",
+  "current": "resources [2, 7, 3]",
+  "after": "",
+  "replacement": "resources [2, 7, 3, 20, 5]",
+  "reason": "The sentence covers decentralised identifiers and verifiable credentials, but [2], [7] and [3] are blockchain-healthcare surveys that do not cover DIDs/VCs; the DID/VC survey [20] and the VC mechanism study [5] are the references in the list that support that part of the claim."
+ },
+ {
+  "id": "R3",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "relatively static permission-management mechanisms [28, 25, 11]",
+  "section": "1.1",
+  "current": "permission-management mechanisms [28, 25, 11]",
+  "after": "",
+  "replacement": "permission-management mechanisms [28, 25]",
+  "reason": "[11] proposes a dynamic risk- and usage-control (RQ-UCON) model for healthcare big data; it is not evidence that traditional architectures rely on centralised identity providers and static permissions, whereas the surveys [28] and [25] are."
+ },
+ {
+  "id": "R4",
+  "severity": "YELLOW",
+  "kind": "fix",
+  "anchor": "multi-party approval mechanisms, and policy-based access control [20, 15]",
+  "section": "1.2",
+  "current": "policy-based access control [20, 15]",
+  "after": "",
+  "replacement": "policy-based access control [20, 15, 4, 33, 25]",
+  "reason": "[20] and [15] cover identity/credential and IoT access-control mechanisms only; the multi-party (threshold committee) precedent is in [4] and [33] and policy-based healthcare access control is surveyed in [25], so the list of components is currently under-supported."
+ },
+ {
+  "id": "R5",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "control over how that information is used [6, 19]",
+  "section": "1.1",
+  "current": "how that information is used [6, 19]",
+  "after": "",
+  "replacement": "how that information is used [26, 19, 6]",
+  "reason": "[6] is a livestock supply-chain framework and only tangentially supports the general cross-organisational data-sharing claim; [26] (blockchain-empowered trustworthy data sharing survey) is the reference that directly supports it."
+ },
+ {
+  "id": "R6",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "other authorised entities to participate in data-sharing processes [31, 14]",
+  "section": "1.1",
+  "current": "data-sharing processes [31, 14]",
+  "after": "",
+  "replacement": "data-sharing processes [31, 21]",
+  "reason": "[14] measures individuals' intention to share NHS data and does not describe patients, professionals, guardians and researchers participating in data-sharing processes; [21] (health data sharing and consent management with SSI) does, and [31] covers guardians."
+ },
+ {
+  "id": "R7",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "traceability of decentralised data-management processes [8, 1]",
+  "section": "1.1",
+  "current": "decentralised data-management processes [8, 1]",
+  "after": "",
+  "replacement": "decentralised data-management processes [1, 26, 8]",
+  "reason": "[8] is a non-healthcare archival case study that S_full rates as droppable; adding [26] gives the claim a direct blockchain data-sharing source while [1] covers EHR integrity and auditability."
+ },
+ {
+  "id": "C1",
+  "severity": "RED",
+  "kind": "cite",
+  "anchor": "The systematic literature review indicates that substantial research has been conducted",
+  "section": "3.1",
+  "current": "policy-based authorisation, and multi-party approval.",
+  "after": "",
+  "replacement": "policy-based authorisation, and multi-party approval [13, 21, 20, 5, 32, 25, 4, 33].",
+  "reason": "Chapter 3 contains no citations at all; the opening sentence summarises the reviewed literature by mechanism and should point to the representative studies for each (consent [13, 21], DID/VC [20, 5], cryptographic access control [32], policy-based authorisation [25], threshold committees [4, 33])."
+ },
+ {
+  "id": "C2",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "existing consent-oriented approaches tend to treat consent primarily as a record",
+  "section": "3.1",
+  "current": "existing consent-oriented approaches tend to treat consent primarily as a record of a patient’s permission.",
+  "after": "",
+  "replacement": "existing consent-oriented approaches tend to treat consent primarily as a record of a patient’s permission [10, 13].",
+  "reason": "This is the central gap statement and it characterises existing work; consent receipts [10] and encrypted on-chain consent [13] are exactly the record-oriented approaches the SLR discussed and S_full confirms both treat consent as a record rather than an evaluable object."
+ },
+ {
+  "id": "C3",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "A valid decentralised identifier establishes the identity of a participant, while a verifiable credential",
+  "section": "3.3.2",
+  "current": "while a verifiable credential provides evidence concerning the participant’s role or authority.",
+  "after": "",
+  "replacement": "while a verifiable credential provides evidence concerning the participant’s role or authority [20, 16].",
+  "reason": "The DID/VC role separation is a claim about the W3C model and should be attributed to the DID/VC surveys [20] and [16], which S_full confirms support identity representation and verifiable claims."
+ },
+ {
+  "id": "C4",
+  "severity": "GREEN",
+  "kind": "cite",
+  "anchor": "A consent that is valid at one point in time cannot necessarily be assumed",
+  "section": "3.3.5",
+  "current": "cannot necessarily be assumed to remain valid indefinitely.",
+  "after": "",
+  "replacement": "cannot necessarily be assumed to remain valid indefinitely, as recognised in the dynamic consent literature [24, 13].",
+  "reason": "The dynamic nature of consent is the motivation for SRQ5 and is reviewed in [24] (dynamic and granular consent frameworks) and [13] (dynamic consent management), so the claim should be grounded in them."
+ },
+ {
+  "id": "C5",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "performs decentralised identity and authority verification using Decentralised Identifiers",
+  "section": "5.2",
+  "current": "using Decentralised Identifiers (DIDs) and Verifiable Credentials (VCs).",
+  "after": "",
+  "replacement": "using Decentralised Identifiers (DIDs) and Verifiable Credentials (VCs) [20].",
+  "reason": "Chapter 5 introduces DIDs and VCs as technologies without any reference; the first mention in the architecture chapter should cite the DID/VC survey [20]."
+ },
+ {
+  "id": "C6",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "A conventional immutable record may demonstrate that a transaction was stored",
+  "section": "5.3",
+  "current": "A conventional immutable record may demonstrate that a transaction was stored,",
+  "after": "",
+  "replacement": "A conventional immutable record may demonstrate that a transaction was stored [2, 10],",
+  "reason": "The contrast with conventional immutable consent records characterises prior work; [2] (blockchain as integrity/trust layer) and [10] (consent receipts as proof of a consent interaction) are the references that describe that record-oriented approach."
+ },
+ {
+  "id": "C7",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "This is particularly important for dynamic consent environments in which permissions may expire",
+  "section": "6.5.2",
+  "current": "for dynamic consent environments in which permissions may expire, be revoked, suspended, renewed, or otherwise modified",
+  "after": "",
+  "replacement": "for dynamic consent environments [13, 24] in which permissions may expire, be revoked, suspended, renewed, or otherwise modified",
+  "reason": "'Dynamic consent' is an established concept from the literature ([13] dynamic consent management systems, [24] dynamic and granular consent frameworks) and Chapter 6 uses it without attribution."
+ },
+ {
+  "id": "C8",
+  "severity": "YELLOW",
+  "kind": "cite",
+  "anchor": "A valid DID provides an identity reference, while a valid VC provides evidence",
+  "section": "6.2",
+  "current": "while a valid VC provides evidence associated with a participant’s role, authority, or other relevant attribute.",
+  "after": "",
+  "replacement": "while a valid VC provides evidence associated with a participant’s role, authority, or other relevant attribute [20, 5].",
+  "reason": "The RO2 principle Identity ≠ Authorisation rests on the standard DID/VC semantics; [20] (DID/VC survey) and [5] (verifiable credential attributes and selective disclosure) support this and Chapter 6 has no citation for it."
+ },
+ {
+  "id": "C9",
+  "severity": "GREEN",
+  "kind": "cite",
+  "anchor": "The threshold mechanism establishes collective authorisation.",
+  "section": "6.3",
+  "current": "The threshold mechanism establishes collective authorisation.",
+  "after": "",
+  "replacement": "The threshold mechanism establishes collective authorisation. It follows the threshold-committee principle used in decentralised identity systems [4, 33], but applies it to consent approval rather than to credential issuance.",
+  "reason": "S_full notes that [4] and [33] can be cited as precedents for threshold trust provided they are not presented as multi-party consent approval; this gives RO3 a literature anchor and states the difference honestly."
+ },
+ {
+  "id": "C10",
+  "severity": "GREEN",
+  "kind": "cite",
+  "anchor": "understanding consent as an active and evaluable component of a broader authorisation process",
+  "section": "1.1",
+  "current": "an active and evaluable component of a broader authorisation process.",
+  "after": "",
+  "replacement": "an active and evaluable component of a broader authorisation process, extending the dynamic consent perspective [13, 24].",
+  "reason": "The static-to-active transition is the thesis of the report and is related to the dynamic consent literature [13, 24], which is otherwise cited only in Chapter 2."
+ },
+ {
+  "id": "F1",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "F44",
+  "section": "References",
+  "current": "IEEE Communications Surveys & Tutorials, 27:3641–3671, 2025.",
+  "after": "",
+  "replacement": "IEEE Communications Surveys & Tutorials, 27(5):3641–3671, 2025.",
+  "reason": "Entry [20] omits the issue number while the other Communications Surveys & Tutorials entry [3] gives 25(1); the issue for this article should be added (5 is our reading of the record; verify against the DOI before applying)."
+ },
+ {
+  "id": "F2",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "F51",
+  "section": "References",
+  "current": "ACM Transactions on Management Information Systems (TMIS), 13(4):1–21, 2022.",
+  "after": "",
+  "replacement": "ACM Transactions on Management Information Systems, 13(4):1–21, 2022.",
+  "reason": "Entry [27] is the only entry that appends a journal abbreviation in parentheses; no other entry does, so it should be removed for consistency."
+ },
+ {
+  "id": "F3",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "F46",
+  "section": "References",
+  "current": "Information privacy in healthcare—the vital role of informed consent.",
+  "after": "",
+  "replacement": "Information privacy in healthcare: The vital role of informed consent.",
+  "reason": "Entry [22] uses an em dash to separate title and subtitle whereas every other entry uses a colon; the published title is 'Information Privacy in Healthcare - The Vital Role of Informed Consent'."
+ },
+ {
+  "id": "F4",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "F25",
+  "section": "References",
+  "current": "Blockchain-based electronic health records management: a comprehensive review and future research direction.",
+  "after": "",
+  "replacement": "Blockchain-based electronic health records management: A comprehensive review and future research direction.",
+  "reason": "Capitalisation after the title colon is inconsistent across the list ([2], [3], [4], [26], [30], [33] capitalise; [1], [7], [13], [24], [28] do not); the majority style capitalises the subtitle."
+ },
+ {
+  "id": "F5",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "F31",
+  "section": "References",
+  "current": "Blockchain application in healthcare systems: a review.",
+  "after": "",
+  "replacement": "Blockchain application in healthcare systems: A review.",
+  "reason": "Same subtitle-capitalisation inconsistency as F4 (entry [7])."
+ },
+ {
+  "id": "F6",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "F52",
+  "section": "References",
+  "current": "Blockchain-based access control and privacy preservation in healthcare: a comprehensive survey.",
+  "after": "",
+  "replacement": "Blockchain-based access control and privacy preservation in healthcare: A comprehensive survey.",
+  "reason": "Same subtitle-capitalisation inconsistency as F4 (entry [28])."
+ },
+ {
+  "id": "F7",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "F37",
+  "section": "References",
+  "current": "Privacy-first paradigm for dynamic consent management systems: empowering data subjects",
+  "after": "",
+  "replacement": "Privacy-first paradigm for dynamic consent management systems: Empowering data subjects",
+  "reason": "Same subtitle-capitalisation inconsistency as F4 (entry [13])."
+ },
+ {
+  "id": "F8",
+  "severity": "GREEN",
+  "kind": "fix",
+  "anchor": "F48",
+  "section": "References",
+  "current": "Enhancing patient autonomy in data ownership: privacy models and consent frameworks for healthcare.",
+  "after": "",
+  "replacement": "Enhancing patient autonomy in data ownership: Privacy models and consent frameworks for healthcare.",
+  "reason": "Same subtitle-capitalisation inconsistency as F4 (entry [24])."
+ },
+ {
+  "id": "SUMMARY",
+  "verdict": "All 34 references are cited at least once and every cited number [1]–[34] exists in the list, but every citation in the report occurs in Chapters 1 and 2 only: Chapters 3 to 9 (gap, objectives, architecture, proposed solution, progress, publications, plan) contain no citations at all, which an examiner will notice, so the ten 'cite' items above (Chapter 3 gap statement, DID/VC semantics in 3.3.2, 5.2 and 6.2, dynamic consent in 3.3.5 and 6.5, threshold precedent in 6.3) are the priority. Within Chapter 1 the citations are broadly appropriate but several groups attach studies to claims they do not cover (the guardian/institutional-authority scenario cited to [21, 9] instead of [31], DIDs/VCs cited to blockchain surveys [2, 7, 3], the UCON proposal [11] cited as evidence of traditional static access control, and multi-party approval cited to [20, 15]). The bibliographic entries are complete (authors, title, venue, volume/issue/pages, year) and the venues and years agree with S_full; remaining issues are minor style inconsistencies (subtitle capitalisation, the '(TMIS)' abbreviation in [27], the em dash in [22], the missing issue number in [20], uneven use of 'et al.' between [9] which lists ten authors and [12]/[31]/[33]/[34] which truncate, and [21] and [34] sitting out of alphabetical order, which should be left as is because renumbering two days before submission would risk breaking in-text citations)."
+ }
+]
