@@ -1,0 +1,107 @@
+[
+ {
+  "id": "K1",
+  "section": "1.2",
+  "current": "but consent itself often remains a relatively passive artefact indicating that a permission or approval has been created",
+  "replacement": "but in most systems consent remains a passive artefact indicating that a permission or approval has been created, and even where it is represented as an evaluable object [71, 37, 44, 58] its evaluation is not conjoined with a multi-party authority condition and is not formally assured",
+  "reason": "The new review codes 14 of 44 studies as fully satisfying Req 1 (evaluable consent object) and records that such objects exist since 2020; the sentence must not read as a general absence."
+ },
+ {
+  "id": "K2",
+  "section": "1.2",
+  "current": "The central problem addressed by this research is therefore the absence of an integrated trust-oriented mechanism that connects these different conditions within a coherent authorisation decision.",
+  "replacement": "The central problem addressed by this research is therefore the absence of a mechanism in which identity, authority, multi-party approval, policy, temporal and lifecycle conditions are conjoined in every access decision and in which that conjunction is assured both formally and empirically; the review in Chapter 2 shows that the individual conditions, and several partial combinations of them [58, 61, 45], already exist.",
+  "reason": "Section 2.5 frames the gap as a conjunction gap plus an assurance gap and retires the wording 'no integrated system'; Phuyal et al. [58] and Punia et al. [61] integrate several conditions."
+ },
+ {
+  "id": "K3",
+  "section": "1.2",
+  "current": "Existing approaches provide important technological components, including decentralised identity, verifiable credentials, blockchain-based records, multi-party approval mechanisms, and policy-based access control [20, 15].",
+  "replacement": "Existing approaches provide important technological components, including decentralised identity and verifiable credentials [58, 76], blockchain-based consent records [53, 71], multi-party approval mechanisms of several kinds [53, 61, 69, 43], and policy-based access control [44, 57, 63], as reviewed in Chapter 2.",
+  "reason": "The supporting citations are from the superseded 33-reference corpus; the new review supplies primary studies for each component and the sentence should point to them."
+ },
+ {
+  "id": "K4",
+  "section": "1.2",
+  "current": "However, these mechanisms are often investigated independently or integrated primarily at the implementation level without providing a unified Trust Computing model explaining how their combined operation establishes a trustworthy authorisation outcome.",
+  "replacement": "However, these mechanisms are usually investigated separately, and where they are combined in one system [58, 61, 45, 66] the combination excludes multi-party approval as a standing condition of the decision and is neither formally proved nor tested as an authorisation decision.",
+  "reason": "Consistent in spirit, but the new synthesis states precisely what the combined systems lack (multi-party as constitutive predicate; assurance); the vaguer 'unified Trust Computing model' wording should match Section 2.5."
+ },
+ {
+  "id": "K5",
+  "section": "3.1",
+  "current": "The systematic literature review indicates that substantial research has been conducted on individual mechanisms for securing healthcare data sharing, including blockchain-based consent management, decentralised identity, verifiable credentials, cryptographic access control, policy-based authorisation, and multi-party approval.",
+  "replacement": "The systematic literature review of 44 primary studies in Chapter 2 indicates that substantial research has been conducted on individual mechanisms for securing healthcare data sharing, including blockchain-based consent management, decentralised identity, verifiable credentials, cryptographic access control, policy-based authorisation and, in six distinct mechanism classes, multi-party approval.",
+  "reason": "Should carry the new corpus size (44, not 33) and reflect that multi-party approval was found in six classes rather than being treated as a mature stream."
+ },
+ {
+  "id": "K6",
+  "section": "3.1",
+  "current": "They are commonly investigated as independent technical solutions rather than as coordinated components of a unified trust-oriented authorisation model.",
+  "replacement": "They are commonly investigated as independent technical solutions; the few studies that coordinate several of them in one decision [58, 61, 45, 66, 57] do not make multi-party approval a standing condition of that decision and do not assure the conjunction formally or empirically.",
+  "reason": "The absolute 'independent solutions' reading contradicts the review, which identifies studies combining three or four conditions; the gap is the conjunction with multi-party approval and its assurance."
+ },
+ {
+  "id": "K7",
+  "section": "3.1",
+  "current": "In particular, existing consent-oriented approaches tend to treat consent primarily as a record of a patient’s permission.",
+  "replacement": "In particular, many consent-oriented approaches still treat consent primarily as a record or a Boolean flag [36, 60, 65], and even the evaluable consent objects reported since 2020 [71, 37, 44, 58, 66] carry only a subset of the conditions and are issued by a single party.",
+  "reason": "Gap 1 of Section 2.5.1 records 14 studies with evaluable consent objects; the sentence must not imply that consent-as-record is the general state of the art."
+ },
+ {
+  "id": "K8",
+  "section": "3.1",
+  "current": "there remains a need for an integrated trust-oriented authorisation framework that treats patient consent as a security-bearing and evaluable authorisation object.",
+  "replacement": "there remains a need for an authorisation framework in which the consent object carries identity, authority, threshold, policy, temporal, jurisdictional and lifecycle conditions, in which multi-party approval is a standing condition of every access decision, and in which the conjunction of these conditions is formally and empirically assured.",
+  "reason": "Section 2.5 states explicitly that the framework is not positioned on the idea of an evaluable consent object, which exists since 2020 [71, 37]; the gap statement must name the conjunction and the assurance."
+ },
+ {
+  "id": "K9",
+  "section": "3.1",
+  "current": "Multi-party approval can strengthen collective decision-making, but approval alone does not guarantee that the resulting access request conforms to the patient’s authorised purpose or data scope.",
+  "replacement": "Multi-party approval can strengthen collective decision-making, but in the reviewed studies it is never conjoined with a purpose or data-scope condition [61, 53, 69], and approval alone does not guarantee that the resulting access request conforms to the patient’s authorised purpose or data scope.",
+  "reason": "Not contradictory, but the new review provides the specific finding (no study conjoins purpose with multi-party approval) that this sentence should cite."
+ },
+ {
+  "id": "K10",
+  "section": "5.3",
+  "current": "This mechanism provides an important departure from conventional consent systems. In a traditional single-owner model, compromise, error, or misuse of one privileged account may be sufficient to produce an authorisation decision.",
+  "replacement": "This mechanism differs from the reviewed systems, in which joint approval is either a contingency path [53, 69], a registration-time co-consent [43, 47], an institution-side gate [61, 75] or a key-custody threshold [54, 35]; in a single-owner model, compromise, error, or misuse of one privileged account may be sufficient to produce an authorisation decision.",
+  "reason": "'Conventional consent systems' implies collective approval is absent from the literature; the review found six multi-party classes, so the departure must be stated as making approval constitutive of every decision."
+ },
+ {
+  "id": "K11",
+  "section": "5.6",
+  "current": "In conventional approval systems, multiple signatures may simply be appended to a document or transaction.",
+  "replacement": "In the reviewed approval mechanisms, multiple signatures may be appended at consent registration [38, 43] or collected as hash-integrity confirmations on a ledger transaction [75].",
+  "reason": "Optional: the review supplies concrete instances (Al Amin 2-of-2 wallet, Ekholm co-signature, Wu et al. hash-check vote) that make the point evidence-based rather than generic."
+ },
+ {
+  "id": "K12",
+  "section": "5.11",
+  "current": "The key innovation is that consent is treated as an active and evaluable authorisation object whose effectiveness depends on the joint satisfaction of identity, authority, collective approval, and policy conditions.",
+  "replacement": "The key innovation is not the evaluable consent object as such, which the literature provides [71, 37, 44, 58], but the conjunction in which the effectiveness of the consent depends on the joint satisfaction of identity, authority, collective approval, policy, temporal and jurisdictional conditions on every access decision, and the assurance of that conjunction.",
+  "reason": "Section 2.5 explicitly withholds novelty from 'consent as evaluable object'; the innovation claim must be relocated to the conjunction and its assurance."
+ },
+ {
+  "id": "K13",
+  "section": "7.1",
+  "current": "The current result demonstrates that consent can be represented as an evaluable authorisation object rather than as a binary permission.",
+  "replacement": "The current result demonstrates that consent can be represented as an evaluable authorisation object that, unlike the objects reported in the literature [71, 37, 44, 58, 66], carries the guardian set and threshold together with the purpose, data scope, validity interval, jurisdiction and lifecycle state.",
+  "reason": "As written the sentence presents the evaluable object as the contribution; the review shows such objects exist, so the distinguishing components must be named."
+ },
+ {
+  "id": "K14",
+  "section": "3.2",
+  "current": "How can a trust-oriented computing framework establish and enforce trustworthy multi-party consent for decentralised healthcare data sharing under identity, authority, and policy constraints?",
+  "replacement": "How can a trust-oriented computing framework establish, enforce and verify trustworthy multi-party consent for decentralised healthcare data sharing under identity, authority, policy, temporal and lifecycle constraints?",
+  "reason": "Not a contradiction of a finding, but the new Section 2.5 frames the gap as conjunction plus assurance across all six requirements (including temporal, lifecycle and verification), and the alignment sheet gives the main RQ in this extended form; the stated main RQ omits the temporal, lifecycle and verification dimensions."
+ },
+ {
+  "id": "K15",
+  "section": "1.3",
+  "current": "Multi-party authorisation concerns whether all required independent participants have jointly established the authorisation condition.",
+  "replacement": "Multi-party authorisation concerns whether the required threshold of independently verified participants, defined by the patient in the consent object, has jointly established the authorisation condition at the time of each access decision rather than only at registration or in an emergency.",
+  "reason": "Optional clarification: the review distinguishes registration-time, contingency and institution-side joint approval from the decision-time predicate required here; the definition should carry that distinction."
+ }
+]

@@ -1,0 +1,596 @@
+[
+ {
+  "t": "p",
+  "text": "The review corpus comprises the 44 primary studies [35]–[78] that were identified, screened and coded through the process described in the remainder of this section, together with three secondary studies [79]–[81] that were retained for background only and that are not counted as primary evidence. All 44 primary studies were published between 2020 and 2026, which is the publication period fixed in the review protocol. Of the 44 studies, 19 were retrieved through IEEE Xplore, 21 through Scopus, three through ProQuest and one through the ACM Digital Library, after the duplicate records that these databases share with SpringerLink, ScienceDirect and Web of Science had been removed. In the remainder of this chapter, each primary study is referred to by the label Sn (S1 to S44) together with its reference number, so that the reader can move between the tables, the text and the reference list without ambiguity."
+ },
+ {
+  "t": "h3",
+  "num": "2.3.1",
+  "title": "Review Design and Reporting Framework"
+ },
+ {
+  "t": "p",
+  "text": "A systematic literature review (SLR) was conducted to identify, classify and critically evaluate existing research on trustworthy multi-party authorisation for patient consent in healthcare data sharing. The review was designed to establish the conceptual and technical foundations of the proposed framework, and to determine, for each of the key requirements defined in Section 2.2, the extent to which the existing approaches already satisfy that requirement. In particular, the review considered not only whether a study addresses consent representation, identity, multi-party approval, policy enforcement, temporal validity or security assurance, but also whether these mechanisms are integrated into a single authorisation decision that can be trusted."
+ },
+ {
+  "t": "p",
+  "text": "The review process was structured according to the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA 2020) statement [34]. PRISMA 2020 was adopted to improve the transparency, reproducibility and traceability of the identification, screening, eligibility assessment and inclusion stages. The review was governed by a written protocol (Protocol v1.1), which fixed the review questions, the databases, the master search query, the inclusion and exclusion criteria, the data extraction codebook and the quality assessment items before any screening took place. All records, decisions and counts were maintained in a single PRISMA 2020 master workbook so that every number reported in this section can be traced to a record and to a decision."
+ },
+ {
+  "t": "p",
+  "text": "Screening and coding were performed by a review panel of six members, each of whom was responsible for one perspective of the review, namely review methodology, trust modelling, identity and multi-party authorisation, policy and temporal enforcement, formal and empirical assurance, and a chair who issued the final decision on each record. Every exclusion carries a reason code (EC1 to EC9, defined in Section 2.3.5) and every inclusion carries the page reference on which the positive coding is based. Where a panel member disagreed with the chair, the dissent was recorded against the record and retained in the log rather than being overwritten. All panel decisions were entered in a decision log (D-001 to D-166) that records the date, the subject, the position of each panel member, the evidence cited and the outcome, and the author retained the right to ratify, veto or reopen any decision by its identifier. The counts reported in this chapter are those of the checkpoint of 10 September 2026 (decision D-166)."
+ },
+ {
+  "t": "h3",
+  "num": "2.3.2",
+  "title": "Questions for Review"
+ },
+ {
+  "t": "p",
+  "text": "This systematic literature review is guided by the following seven questions, which correspond one to one with the sub-research questions and objectives of this study:"
+ },
+ {
+  "t": "p",
+  "text": "1. How do existing systems represent patient consent, that is, as a static record of a decision that has occurred or as a dynamic authorisation object that can be evaluated at the time of access?"
+ },
+ {
+  "t": "p",
+  "text": "2. What mechanisms are used to establish the identity and the authority of the participants in a consent decision, and is authentication distinguished from authorisation?"
+ },
+ {
+  "t": "p",
+  "text": "3. How do existing systems support joint or multi-party patient authorisation, and what prevents a single party from authorising access unilaterally?"
+ },
+ {
+  "t": "p",
+  "text": "4. How are policy, purpose, role, data scope and context enforced within the authorisation decision, rather than merely recorded alongside it?"
+ },
+ {
+  "t": "p",
+  "text": "5. How are temporal validity, consent states, expiration, withdrawal, revocation and renewal managed after a consent has been granted?"
+ },
+ {
+  "t": "p",
+  "text": "6. How are the security properties of existing consent and access-control systems defined and validated against identity, authorisation, policy, replay, expiry and state attacks?"
+ },
+ {
+  "t": "p",
+  "text": "7. How are the proposed approaches implemented and empirically evaluated in terms of authorisation correctness, security behaviour, audit evidence, interoperability and performance?"
+ },
+ {
+  "t": "p",
+  "text": "Questions 1 to 5 correspond to Req 1 to Req 5 of Section 2.2 respectively, while Questions 6 and 7 together correspond to Req 6, which combines formal security assurance with empirical validation. In addition to these seven questions, the synthesis in Section 2.5 addresses an unnumbered gap-testing question, namely the extent to which any single study integrates all of the dimensions above in one validated authorisation mechanism. This question is not a review question in its own right, because it operationalises the research gap rather than a separate objective, and it is answered only after the seven questions have been answered for every included study. Therefore, the review focused on the relationship between the individual security mechanisms rather than treating identity, consent, multi-party approval, policy and lifecycle control as isolated technologies."
+ },
+ {
+  "t": "h3",
+  "num": "2.3.3",
+  "title": "Search Databases and Search Strategy"
+ },
+ {
+  "t": "p",
+  "text": "The literature search was conducted using the following seven academic databases: 1) IEEE Xplore, 2) SpringerLink, 3) ProQuest Science and Technology, 4) ScienceDirect, 5) Scopus, 6) Web of Science, and 7) ACM Digital Library. In addition, Google Scholar was used as a discovery arm for snowballing and for testing the sensitivity of the search, but not as a structured retrieval source; its results are reported under the PRISMA 2020 heading of records identified through other methods and are not summed into the database total."
+ },
+ {
+  "t": "p",
+  "text": "These databases were selected because they provide complementary coverage of computer science, cybersecurity, distributed systems, healthcare informatics and information management research. IEEE Xplore and the ACM Digital Library were used to identify studies on multi-party trust architectures, cryptographic mechanisms, decentralised identity and access control. SpringerLink and ScienceDirect were used to identify research on healthcare information systems, privacy and data governance. ProQuest was included to capture peer-reviewed journal literature that is not indexed by the publisher databases. Scopus and Web of Science were used to improve the coverage of multidisciplinary and medical-informatics venues, which the sentinel test described in Section 2.3.4 confirmed to be necessary for the healthcare-oriented consent studies."
+ },
+ {
+  "t": "p",
+  "text": "A single master query was defined and executed on every database, adapted only to the field syntax of each platform. The query consists of three concept blocks joined by the AND operator. The first block captures the healthcare data domain (healthcare, health care, health data, medical data, patient data, electronic health record, electronic medical record, EHR and EMR). The second block captures the consent and authorisation concepts (patient consent, consent management, dynamic consent, authorization, authorisation and access control). The third block captures the trust and multi-party concepts (trust, trustworthy, trusted, multi-party, multiparty, joint consent, guardian, threshold, decentralized, decentralised, blockchain, smart contract, decentralized identifier, verifiable credential and self-sovereign identity). Within each block the terms are joined by the OR operator, and both British and American spellings are included. The master query, as executed in the command search of IEEE Xplore over all metadata fields, is shown in Figure 1 and reads as follows:"
+ },
+ {
+  "t": "p",
+  "text": "\"(\"healthcare\" OR \"health care\" OR \"health data\" OR \"medical data\" OR \"patient data\" OR \"electronic health record\" OR \"electronic medical record\" OR EHR OR EMR) AND (\"patient consent\" OR \"consent management\" OR \"dynamic consent\" OR \"authorization\" OR \"authorisation\" OR \"access control\") AND (\"trust\" OR \"trustworthy\" OR \"trusted\" OR \"multi-party\" OR \"multiparty\" OR \"joint consent\" OR \"guardian\" OR \"threshold\" OR \"decentralized\" OR \"decentralised\" OR \"blockchain\" OR \"smart contract\" OR \"decentralized identifier\" OR \"verifiable credential\" OR \"self-sovereign identity\")\""
+ },
+ {
+  "t": "p",
+  "text": "The same three blocks were entered in the TITLE-ABS-KEY field of Scopus, in the Topic field of Web of Science, in the NOFT (all fields except full text) field of ProQuest, and in the Title, Abstract and Keyword fields of the ACM Digital Library. It should be noted that two platforms could not accept the full Boolean expression. SpringerLink rejected long nested queries, and the master query was therefore executed as five short sub-queries that pair the consent, access-control and verifiable-credential terms with the healthcare and blockchain terms. ScienceDirect limits the number of Boolean connectors, and the master query was likewise executed as five sub-queries in the title, abstract and keyword field, with residual term compressions documented. In both cases the within-source overlap between sub-queries was removed at merge, and the low marginal yield of ScienceDirect was expected because Scopus already indexes the same publisher content. For Google Scholar the query was compressed to the platform character limit. It should also be noted that the review protocol originally listed eight family-specific sensitivity queries for IEEE Xplore; these were superseded by the single master query and were never executed, and this is declared as a documented deviation from the protocol rather than an unexecuted step."
+ },
+ {
+  "t": "h3",
+  "num": "2.3.4",
+  "title": "Search Period and Search Execution"
+ },
+ {
+  "t": "p",
+  "text": "The search was restricted to studies published between January 2020 and the search date in 2026. This period was selected to capture the development of blockchain-based consent management, decentralised identity and consent-aware access control from the first fully decentralised multi-party consent proposals in 2020 onwards, while maintaining a contemporary evidence base. Earlier seminal studies, such as the 2016 MedRec proposal, fall outside this period by design and are considered only as background through snowballing, and this date-range decision is recorded in the protocol."
+ },
+ {
+  "t": "p",
+  "text": "The searches were executed on 24 and 25 August 2026 for IEEE Xplore, Scopus, Web of Science, ProQuest, ScienceDirect, SpringerLink and Google Scholar, and on 5 September 2026 for the ACM Digital Library, which was added as a late arm and is disclosed as such in the threats to validity. Each query was frozen with a search identifier and a version number (IEEE-M v2, SCOPUS-M v3, WOS-M v2, PROQ-M v2, SD-M v2, SPR-M v3, GS-M v2 and ACM-M v1) before its export was accepted, and a changed query was always recorded as a new version rather than overwriting the previous one. Superseded versions were archived with their cause; for example, the first two Scopus versions were rejected because a subject-area limit had removed the medical-venue records, and an initial ProQuest run over the full text was rejected because its scope was inconsistent with the title, abstract and keyword scope of the other databases. The document-type filters (journal articles and conference papers) and the English-language filter were applied within each platform where available."
+ },
+ {
+  "t": "p",
+  "text": "The exported records were merged into a single screening register. IEEE Xplore returned 1,806 records, of which 1,805 were captured in two export batches merged by DOI. SpringerLink returned 2,895 records across the five sub-queries, exported in seven batches without abstracts because of a platform limitation, and reduced to 2,515 records after within-source deduplication. ProQuest returned 1,180 records, ScienceDirect 65 records (23 after within-source deduplication), Scopus 2,133 records, Web of Science 1,137 records, which had to be exported by e-mail because the direct download was blocked by the library proxy, and the ACM Digital Library 40 records. Google Scholar returned approximately 8,160 results, of which the first 100 by relevance were screened manually under a pre-declared stopping rule and recorded by screenshot. Duplicate records across databases were identified first by DOI and then by normalised title, and the most complete bibliographic record was retained."
+ },
+ {
+  "t": "p",
+  "text": "The purpose of the sentinel test was to validate the recall of the master query before it was frozen. Twelve sentinel papers that were already known to be relevant to the review questions, each representing one trust dimension, were defined in advance, and the frozen query was tested for whether it retrieved each of them. The four healthcare-scoped sentinels, namely Madine et al. [53], Jaiman and Urovi [49], Tith et al. [71] and Albalwy et al. [37], were retrieved by the master query, the first two through IEEE Xplore and all four through Scopus, Web of Science and ProQuest, and all four were present in the merged register. The sentinels that were not retrieved were diagnosed individually: in each case the paper is not healthcare-scoped in its title, abstract and keywords, or it is an identity-generic study in which healthcare is only an application domain, so that the healthcare block of the query correctly excludes it. These misses were therefore attributed to venue or scope and not to a defect of the query, and the protocol rule that no query is tuned to rescue a single paper was observed; such papers enter the review only through snowballing. Therefore, the sentinel test provides the recall evidence for the master query in place of the family-specific sensitivity searches that were not executed."
+ },
+ {
+  "t": "h3",
+  "num": "2.3.5",
+  "title": "Eligibility Criteria"
+ },
+ {
+  "t": "p",
+  "text": "The eligibility criteria were defined in the review protocol before the screening process began, to ensure consistency in the selection of studies across the title, abstract and full-text stages. The criteria were designed to identify research that is directly relevant to the review questions, and each exclusion decision in the screening register carries the code of the criterion under which it was made."
+ },
+ {
+  "t": "p",
+  "text": "A study was included if it satisfied all of the following criteria:"
+ },
+ {
+  "t": "p",
+  "text": "1. IC1: Addresses healthcare, health/patient/clinical/medical data, EHR/EMR or closely related healthcare information systems."
+ },
+ {
+  "t": "p",
+  "text": "2. IC2: Addresses patient consent, authorization, access control, trust, authority, permission or governance relevant to data access."
+ },
+ {
+  "t": "p",
+  "text": "3. IC3: Contributes a mechanism, architecture, model, protocol, algorithm, formal model, implemented system or empirical evaluation relevant to at least one SLR review question."
+ },
+ {
+  "t": "p",
+  "text": "4. IC4: Peer-reviewed journal or conference paper."
+ },
+ {
+  "t": "p",
+  "text": "5. IC5: Available in English."
+ },
+ {
+  "t": "p",
+  "text": "6. IC6: Full text available for final inclusion."
+ },
+ {
+  "t": "p",
+  "text": "7. IC7: Within the protocol publication period (2020–2026) except separately documented seminal/snowball studies."
+ },
+ {
+  "t": "p",
+  "text": "A study was excluded if it satisfied one or more of the following criteria:"
+ },
+ {
+  "t": "p",
+  "text": "1. EC1: Outside healthcare."
+ },
+ {
+  "t": "p",
+  "text": "2. EC2: General blockchain/identity/security/privacy with no meaningful authorization/access-control/consent relevance."
+ },
+ {
+  "t": "p",
+  "text": "3. EC3: Blockchain consensus but not authorization trust."
+ },
+ {
+  "t": "p",
+  "text": "4. EC4: Identity authentication only; no meaningful healthcare authorization relevance."
+ },
+ {
+  "t": "p",
+  "text": "5. EC5: Editorial, poster, presentation, magazine, news, tutorial or non-peer-reviewed item."
+ },
+ {
+  "t": "p",
+  "text": "6. EC6: Duplicate publication."
+ },
+ {
+  "t": "p",
+  "text": "7. EC7: Secondary review (kept separately for background/snowballing)."
+ },
+ {
+  "t": "p",
+  "text": "8. EC8: Full text unobtainable after reasonable attempts."
+ },
+ {
+  "t": "p",
+  "text": "9. EC9: Superficial mention of healthcare or consent; no evidence for SLR questions."
+ },
+ {
+  "t": "p",
+  "text": "Two rules governed the application of these criteria. First, a study was never excluded because it does not support the proposed research gap; the criteria concern relevance, document type and availability only, and a study whose findings contradict or weaken the gap was retained and coded in the same way as any other study. Second, any record whose eligibility was uncertain at a given stage was advanced to the next stage rather than excluded. In this context, it should be noted that several word-sense traps were identified during calibration and were frozen as screening rules: regulatory or insurance authorisation is not data authorisation, blockchain consensus is not consent, encryption is not authorisation, and informed consent to a clinical procedure without a data-access dimension falls under EC9. Secondary reviews excluded under EC7 were kept in a separate list for backward snowballing, and three of them [79]–[81] are cited as background in this chapter."
+ },
+ {
+  "t": "h3",
+  "num": "2.3.6",
+  "title": "Screening and Study Selection"
+ },
+ {
+  "t": "p",
+  "text": "The screening process consisted of four sequential stages: deduplication, title screening, abstract screening and full-text eligibility assessment. The counts reported below are those recorded in the PRISMA 2020 master workbook at the checkpoint of 10 September 2026 (decision D-166), and the arithmetic of each stage was verified against the screening register."
+ },
+ {
+  "t": "p",
+  "text": "In the identification stage, the seven database searches returned 9,256 records (IEEE Xplore 1,806; SpringerLink 2,895; ProQuest 1,180; ScienceDirect 65; Scopus 2,133; Web of Science 1,137; ACM Digital Library 40). The Google Scholar discovery arm returned approximately 8,160 results, of which the first 100 were screened; the candidates identified in this way were checked by DOI against the merged register and are reported separately as records identified through other methods. Before screening, 423 within-source duplicates (from the SpringerLink and ScienceDirect sub-queries) and 2,794 cross-database duplicates were removed by DOI and normalised-title matching, leaving 6,039 unique records."
+ },
+ {
+  "t": "p",
+  "text": "In the title stage, the panel first calibrated the screening rules on a set of 48 records, adjudicated the contested cases and froze the ruleset before the bulk screen was executed. Of the 6,039 titles screened, 2,910 were excluded, namely 1,396 under EC9 (clinical or health studies with no authorisation signal), 1,268 under EC1 (outside healthcare), 199 under EC7 (secondary reviews, moved to the snowballing list) and 47 under EC5 (front matter and non-peer-reviewed items). Every title exclusion was delivered with its reason code for a veto window, during which an adversarial rescue sweep returned 125 records to the uncertain category. The remaining 3,129 records advanced to the abstract stage."
+ },
+ {
+  "t": "p",
+  "text": "In the abstract stage, the ruleset was frozen after three audit passes, which added a centrality test (the consent or authorisation concept must be central to the contribution and not mentioned in passing) and the word-sense traps noted in Section 2.3.5. Of the 3,129 records, 2,541 abstracts were screened and 741 were excluded, in the majority of cases under EC2 (no consent or authorisation relevance), with smaller groups under EC7 and EC9. The remaining 588 records, 575 of them from SpringerLink, could not be screened at this stage because the SpringerLink export does not contain abstracts; these records were marked as pending and were not advanced, and they are reported as such in the flow diagram rather than being counted as screened or excluded. Therefore, 1,800 records advanced to full-text retrieval."
+ },
+ {
+  "t": "p",
+  "text": "Because the full-text pool of 1,800 records was too large to be read exhaustively within the study period, it was prioritised by signal detectors applied to the title and abstract of each record for the seven trust dimensions T1 to T7, the consent-core terms, formal-verification terms and evaluation terms. Tier A (39 records) comprises the records that combine a consent-core signal with at least three trust dimensions, or a multi-party signal with a consent-core signal, or a formal-verification signal with a consent-core signal. Tier B (1,066 records) comprises the records that carry a consent-core, multi-party or formal signal, or at least two trust-dimension signals, and Tier C (695 records) comprises the remainder. All 39 Tier A records were assessed at full text. Tier B and Tier C records were then read in a targeted order under a dimension-level saturation rule, under which saturation of a dimension is declared when eight consecutively coded studies carrying a positive signal for that dimension yield no new mechanism class for it; saturation is declared per dimension and never for the corpus as a whole. It should be noted that this prioritised full-text coding of Tiers B and C continues after the checkpoint under the same rule, and that the counts reported here are therefore those of the checkpoint of 10 September 2026."
+ },
+ {
+  "t": "p",
+  "text": "At the checkpoint, one full text could not be retrieved after five documented retrieval routes (EC8), and 64 full texts had been assessed for eligibility. Of these, 17 were excluded with reasons: nine under EC9 (superficial healthcare or consent relevance, including several studies in which consent was only a clinical procedure or a machine-learning metric), three under EC1 (outside healthcare), two under EC5 (non-peer-reviewed items), two under EC2 (no authorisation relevance) and one under EC4 (identity authentication only). Three studies were classified as secondary reviews under EC7 and retained for background [79]–[81]. The remaining 44 studies were included as primary studies and coded in full; of these, 23 are classified as core studies and 21 as supporting studies under the synthesis rule described in Section 2.3.7. Every included study also passed the quality gate described in Section 2.3.7, and the studies that fell exactly on the boundary of the gate were retained and tested in a sensitivity analysis rather than being excluded."
+ },
+ {
+  "t": "p",
+  "text": "Figure 2 presents the PRISMA 2020 flow diagram for this review, which summarises the identification, screening, eligibility and inclusion stages described above, including the records identified through the Google Scholar discovery arm, the pending-abstract records that were not advanced, the full text that could not be retrieved, and the reasons for exclusion at the full-text stage. The chain of counts in the diagram is internally consistent: 9,256 minus 2,794 minus 423 gives the 6,039 titles screened; 6,039 minus 2,910 gives the 3,129 records advanced to the abstract stage; 3,129 minus 741 minus 588 gives the 1,800 full texts sought; 39 plus 1,066 plus 695 gives the same 1,800; and the 64 full texts assessed comprise the 44 included primary studies, the three secondary studies and the 17 excluded reports."
+ },
+ {
+  "t": "h3",
+  "num": "2.3.7",
+  "title": "Data Extraction, Quality Assessment and Synthesis"
+ },
+ {
+  "t": "p",
+  "text": "The included studies were analysed using a predefined data extraction form that was implemented as the screening register of the workbook. For every study, the extracted information included the bibliographic record, the document type, the coding of the seven trust dimensions and the seven requirements defined below, the page reference and evidence note on which each positive coding rests, technology flags (blockchain, decentralised identifier, verifiable credential, threshold mechanism, policy model, revocation mechanism, formal method, prototype and dataset), the eight quality assessment items, the evidence tier, the gap-impact verdict, the reviewer and any recorded dissent. Extraction was performed only from the complete full text; a study whose full text was incomplete was not coded until the missing pages had been obtained."
+ },
+ {
+  "t": "p",
+  "text": "Each study was coded against seven trust dimensions using the values Yes, Partial or No. T1 (identity) records whether the identity of a participant is established by a decentralised identifier, verifiable credential, public-key certificate or equivalent, noting that a DID string alone is not a verified identity. T2 (authority) records whether the case-specific authority of a participant is verified separately from authentication, because identity is not authorisation. T3 (multi-party) records whether at least two distinct and independent participants must approve, as in k-of-n thresholds, guardian co-consent or multi-signature; blockchain consensus, endorsement policies, multi-authority attribute-based encryption and the mere presence of multiple organisations do not qualify. T4 (policy) records whether purpose, role, data scope or context influences the decision, noting that a policy described in prose is not enforcement. T5 (temporal) records whether time influences the decision through a start, end or expiry, noting that a timestamp in a log is not temporal authorisation. T6 (lifecycle) records whether consent states and transitions such as active, revoked and expired are enforced, noting that mentioning revocation is not implementing it. T7 (audit) records whether verifiable evidence of the decision is produced, noting that an immutable record is not by itself a trustworthy decision."
+ },
+ {
+  "t": "p",
+  "text": "Each study was further coded against the seven workbook requirements Req1 to Req7, which correspond to the seven review questions. Req1 is awarded only when consent is represented as an evaluable authorisation object with states, predicates, policy, lifecycle and evidence, and not for the mere existence of a consent record. Req2 requires that both identity and authority are verified, with Partial awarded when only one of them is. Req3 requires that authorisation depends on at least two independent participants. Req4 requires that purpose, scope, role or context is evaluated before access is granted, with Partial awarded when the policy is stored but does not influence the decision. Req5 requires that time or lifecycle state is technically enforced in the authorisation decision, with Partial awarded when it is recorded but not enforced. Req6 requires that security properties are formally defined and demonstrated by verification, model checking, a security proof, an attack model or a theorem, with Partial awarded for a threat discussion only; the statement that a system is secure is not evidence. Req7 requires working evidence in the form of a prototype, simulation, dataset, allow and deny test cases, attack cases or audit logs, noting that architecture diagrams alone are not empirical validation. Every positive coding required a page reference. Because Req 6 of this report combines formal security assurance with empirical validation, the workbook values of Req6 and Req7 are mapped to a single Req 6 column in the study tables of Section 2.4: a study is marked as satisfying Req 6 if either workbook value is Yes, as partially satisfying it if either value is Partial, and as not satisfying it otherwise."
+ },
+ {
+  "t": "p",
+  "text": "Each study assessed at the full-text stage was additionally evaluated against eight quality assessment items scored 1 for Yes, 0.5 for Partial and 0 for No. The first four items form the quality gate: QA1 asks whether the study deals with patient consent or consent-governed data access at the healthcare level; QA2 asks whether it deals with an authorisation or access-decision mechanism rather than storage or recording only; QA3 asks whether it introduces a proper framework, model, protocol or architecture to address its aim; and QA4 asks whether the proposed methodology is validated by a proof of concept or an implementation. A study was included when the sum of QA1 to QA4 was at least 3.0. The remaining four items, QA5 to QA8, do not affect inclusion but inform the evidence tier assigned to each study, namely Tier A for strong direct evidence, Tier B for direct evidence with limitations, Tier C for a supporting mechanism and Background for the secondary studies. It should be noted that a low quality score was never treated as evidence for or against the research gap; studies with low scores were retained and their influence was tested in a sensitivity analysis. Quality items were scored for every included study and for exclusions in which the relevance gate corroborated the decision, but not for studies excluded on document type, duplication or unavailability, which precede quality assessment in the protocol."
+ },
+ {
+  "t": "p",
+  "text": "After the seven review questions had been answered for a study, the chair recorded a gap-impact verdict stating whether the study contradicts, weakens, narrows or supports the proposed research gap, or has no effect on it, followed by a rationale organised by the deficits identified in Section 2.5. On the basis of this verdict, the included studies were divided into core and supporting studies for the synthesis. The distinction was adopted at decision D-164 and tightened at decision D-166 to the following rule: a study is a core study if, and only if, its gap-impact verdict is contradicts, weakens or narrows, or its T3 coding is Yes or Partial. Under this rule, 23 of the 44 included studies are core studies and 21 are supporting studies. The distinction does not affect the PRISMA inclusion counts; supporting studies are reviewed in Section 2.4 and cited as corroboration, while the core studies carry the argument of the synthesis in Section 2.5."
+ },
+ {
+  "t": "p",
+  "text": "Coding and synthesis were performed by the six-member review panel described in Section 2.3.1. For each full text, the panel executed a fixed review template in which the first member verified the completeness of the full text and the bibliographic identity of the record and applied the eligibility and quality gates, the second member coded consent representation and trust modelling, the third member coded identity, authority and multi-party authorisation, the fourth member coded policy, temporal and lifecycle enforcement, the fifth member coded formal assurance and empirical validation, and the chair issued the final decision and the gap-impact verdict. Where a member disagreed with the final decision, the dissent was recorded in the register against the study together with the reason, and the chair's decision stood subject to the author's ratification; a dissent was never removed from the log, so that the boundary cases remain visible in the sensitivity analysis. For full texts whose abstract already suggested a positive coding on a contested dimension, the tests that would decide that coding were pre-registered in the decision log before the full text was read, so that the outcome could not be adjusted after reading. The matrix of T1 to T7 and Req1 to Req7 values was re-derived from the register at every checkpoint, and the synthesis in Section 2.5 is based on the values held in the register at decision D-166."
+ },
+ {
+  "t": "h3",
+  "num": "2.3.8",
+  "title": "Shortlisted Studies and Their Categorisation"
+ },
+ {
+  "t": "p",
+  "text": "Each of the 44 shortlisted studies was analysed according to its scope, topic, authors, year of publication and its contribution to the review questions. Based on this analysis, each study was assigned to one of six review streams, which correspond to the six key requirements of Section 2.2: consent representation and blockchain-based consent governance (Req 1); decentralised identity and authority (Req 2); multi-party authorisation (Req 3); policy- and context-aware access control (Req 4); temporal validity and consent lifecycle (Req 5); and formal security assurance and empirical validation (Req 6). A study was placed in the stream in which its principal contribution lies, even though most studies touch on more than one requirement, and the extent to which each study addresses every requirement is recorded in the study tables of Section 2.4. The studies are listed in Table 2 in the order of their labels S1 to S44, together with their reference numbers [35] to [78]. The studies in each stream are reviewed in the next section, and their issues and limitations with respect to the key requirements defined in Section 2.2 are discussed."
+ },
+ {
+  "t": "ntable",
+  "n": 2,
+  "caption": "Listing of the studies identified after the shortlisting process",
+  "header": [
+   "Study",
+   "Authors (Year)",
+   "Ref.",
+   "Title",
+   "Review stream"
+  ],
+  "rows": [
+   [
+    "S1",
+    "Abbasi et al. (2026)",
+    "[35]",
+    "Nexa: Enabling Secure, Scalable, and Decentralized Management of Electronic Health Records Using Threshold Cryptography and Public Blockchains",
+    "Multi-party authorisation (Req 3)"
+   ],
+   [
+    "S2",
+    "Akter and Sanam (2025)",
+    "[36]",
+    "A Blockchain Framework for Secure Healthcare Data Management Using Role-Based Access Control and Smart Contracts",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S3",
+    "Albalwy et al. (2021)",
+    "[37]",
+    "A Blockchain-based dynamic consent architecture to support clinical genomic data sharing (ConsentChain): Proof-of-concept study",
+    "Policy- and context-aware access control (Req 4)"
+   ],
+   [
+    "S4",
+    "Al Amin et al. (2023)",
+    "[38]",
+    "Informed Consent as Patient Driven Policy for Clinical Diagnosis and Treatment: A Smart Contract Based Approach",
+    "Multi-party authorisation (Req 3)"
+   ],
+   [
+    "S5",
+    "Bhalerao (2026)",
+    "[39]",
+    "Decentralized Cryptographic Governance for Cloud-Based Medical Record Infrastructure: A Distributed Ledger Framework for Cyber-Resilient Healthcare Data Sovereignty",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S6",
+    "Cao et al. (2025)",
+    "[40]",
+    "A Privacy Set Intersection Protocol for Medical Data Security Sharing",
+    "Formal security assurance and empirical validation (Req 6)"
+   ],
+   [
+    "S7",
+    "Chockalingam et al. (2026)",
+    "[41]",
+    "Improving Security and Privacy of Cognitive Digital Twins Through Dynamic Consent for Healthcare and Resilient Societies",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S8",
+    "Dhanraj et al. (2026)",
+    "[42]",
+    "Blockchain-Augmented Federated Learning for Secure and Healthcare Diagnosis from Distributed Electronic Health Records",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S9",
+    "Ekholm et al. (2025)",
+    "[43]",
+    "Implementing electronic informed consent in rare disease genomics",
+    "Multi-party authorisation (Req 3)"
+   ],
+   [
+    "S10",
+    "Eneh et al. (2026)",
+    "[44]",
+    "Demo: EdgeConsent: On-Chain Attribute-Based Access Control for Data Consent Management",
+    "Temporal validity and consent lifecycle (Req 5)"
+   ],
+   [
+    "S11",
+    "Ferreira et al. (2025)",
+    "[45]",
+    "Blockchain Integration for Trust and Consent Management in MCP-Enabled FHIR Systems",
+    "Decentralised identity and authority (Req 2)"
+   ],
+   [
+    "S12",
+    "Ghosh et al. (2026)",
+    "[46]",
+    "Blockchain-Enabled Hybrid Quantum-Safe Attribute-Based Access Control Scheme with Attribute Revocation Strategy for Smart Healthcare System",
+    "Policy- and context-aware access control (Req 4)"
+   ],
+   [
+    "S13",
+    "Hagström et al. (2024)",
+    "[47]",
+    "Minors' and guardian access to and use of a national patient portal: A retrospective comparative case study of Sweden and Finland",
+    "Multi-party authorisation (Req 3)"
+   ],
+   [
+    "S14",
+    "Hancheng et al. (2026)",
+    "[48]",
+    "A Blockchain-Assisted Revocable and Efficient ABSE Scheme for Secure Medical Data Sharing",
+    "Formal security assurance and empirical validation (Req 6)"
+   ],
+   [
+    "S15",
+    "Jaiman and Urovi (2020)",
+    "[49]",
+    "A Consent Model for Blockchain-Based Health Data Sharing Platforms",
+    "Policy- and context-aware access control (Req 4)"
+   ],
+   [
+    "S16",
+    "Zhao and Su (2024)",
+    "[50]",
+    "A threshold traceable delegation authorization scheme for data sharing in healthcare",
+    "Formal security assurance and empirical validation (Req 6)"
+   ],
+   [
+    "S17",
+    "Li et al. (2026)",
+    "[51]",
+    "Privacy-Preserving Fine-Grained EMR Access Control for IoMT: A Hybrid RBAC-Smart Contract Scheme With Attribute-Based Authorization",
+    "Temporal validity and consent lifecycle (Req 5)"
+   ],
+   [
+    "S18",
+    "Luo et al. (2025)",
+    "[52]",
+    "Bilateral Privacy-Aware Proxy Re-Encryption With Traceability and Revocation for IoMT",
+    "Formal security assurance and empirical validation (Req 6)"
+   ],
+   [
+    "S19",
+    "Madine et al. (2020)",
+    "[53]",
+    "Fully Decentralized Multi-Party Consent Management for Secure Sharing of Patient Health Records",
+    "Multi-party authorisation (Req 3)"
+   ],
+   [
+    "S20",
+    "Maruthi and Singh (2025)",
+    "[54]",
+    "Enhancing Security and Privacy of IoMT Data for Unconscious Patient With Blockchain",
+    "Formal security assurance and empirical validation (Req 6)"
+   ],
+   [
+    "S21",
+    "Mei et al. (2026)",
+    "[55]",
+    "Efficient Dual-Revocation CP-ABE for Secure and Fine-Grained Data Sharing in IoMT",
+    "Formal security assurance and empirical validation (Req 6)"
+   ],
+   [
+    "S22",
+    "Zhang et al. (2023)",
+    "[56]",
+    "An Efficient Encryption Scheme with Fully Hidden Access Policy for Medical Data",
+    "Formal security assurance and empirical validation (Req 6)"
+   ],
+   [
+    "S23",
+    "Panagoulias et al. (2026)",
+    "[57]",
+    "Blockchain-Enabled Trust and Compliance for Clinical AI: Decentralized Governance Without Decentralized Data Storage",
+    "Temporal validity and consent lifecycle (Req 5)"
+   ],
+   [
+    "S24",
+    "Phuyal et al. (2026)",
+    "[58]",
+    "Enabling Cross-Institution Health Data Sharing in Norway: EUDI Wallets, On-Chain Consent, and openEHR-FHIR Translation",
+    "Decentralised identity and authority (Req 2)"
+   ],
+   [
+    "S25",
+    "Phuyal et al. (2026)",
+    "[59]",
+    "A Blockchain-Based Architecture for Dynamic and Auditable Patient Consent in Secondary Use of Health Data",
+    "Decentralised identity and authority (Req 2)"
+   ],
+   [
+    "S26",
+    "Prashanth et al. (2024)",
+    "[60]",
+    "Enhancing Health Record Security and Privacy with Blockchain-Based Access Management",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S27",
+    "Punia et al. (2025)",
+    "[61]",
+    "An access control system for cloud-based healthcare systems driven by blockchain",
+    "Multi-party authorisation (Req 3)"
+   ],
+   [
+    "S28",
+    "Qiao et al. (2025)",
+    "[62]",
+    "A Lightweight CP-ABE Scheme for EHR Over Cloud Based on Blockchain and Secure Multi-Party Computation",
+    "Formal security assurance and empirical validation (Req 6)"
+   ],
+   [
+    "S29",
+    "Román-Martínez et al. (2023)",
+    "[63]",
+    "Blockchain-Based Service-Oriented Architecture for Consent Management, Access Control, and Auditing",
+    "Policy- and context-aware access control (Req 4)"
+   ],
+   [
+    "S30",
+    "Hema et al. (2026)",
+    "[64]",
+    "Patient Centric Cryptographic Protection of Cloud Electronic Health Records",
+    "Temporal validity and consent lifecycle (Req 5)"
+   ],
+   [
+    "S31",
+    "Sawant and Gomes (2026)",
+    "[65]",
+    "A Decentralized Solution for Smarter and Safer Healthcare Systems with FabricMedChain",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S32",
+    "Shanmugham and Senthilkumar (2026)",
+    "[66]",
+    "Blockchain Enabled Self-Sovereign Identity and Consent Framework for Secure Healthcare Data Access",
+    "Decentralised identity and authority (Req 2)"
+   ],
+   [
+    "S33",
+    "Soohoo et al. (2026)",
+    "[67]",
+    "Development of the authentication and authorization processes for the iAgree portal, a platform for patient-controlled data sharing across health systems",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S34",
+    "Ranaweera et al. (2023)",
+    "[68]",
+    "Ensuring Electronic Health Record (EHR) Privacy using Zero Knowledge Proofs (ZKP) and Secure Encryption Schemes on Blockchain",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S35",
+    "Tan et al. (2024)",
+    "[69]",
+    "Secure and privacy-preserving sharing of personal health records with multi-party pre-authorization verification",
+    "Multi-party authorisation (Req 3)"
+   ],
+   [
+    "S36",
+    "Teeda and Subba Rao (2026)",
+    "[70]",
+    "A Patient-Centric Blockchain Based Electronic Health Records for Data Privacy and Confidentiality",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S37",
+    "Tith et al. (2020)",
+    "[71]",
+    "Patient consent management by a purpose-based consent model for electronic health record based on blockchain technology",
+    "Policy- and context-aware access control (Req 4)"
+   ],
+   [
+    "S38",
+    "Tremper et al. (2026)",
+    "[72]",
+    "Mainzelliste: Ten years of pseudonymization, record linkage, and informed consent management",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S39",
+    "Tseng et al. (2025)",
+    "[73]",
+    "EMR-Chain: Decentralized Electronic Medical Record Exchange System",
+    "Decentralised identity and authority (Req 2)"
+   ],
+   [
+    "S40",
+    "Wagner et al. (2024)",
+    "[74]",
+    "Integration of Trusted Third Party Software into an EDC System for Data Protection - Compliant Identity Management, Consent Management and Pseudonymization in Medical Research Studies",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ],
+   [
+    "S41",
+    "Wu et al. (2023)",
+    "[75]",
+    "Apply Trust Computing and Privacy Preserving Smart Contracts to Manage, Share, and Analyze Multi-site Clinical Trial Data",
+    "Multi-party authorisation (Req 3)"
+   ],
+   [
+    "S42",
+    "Wu and Zhang (2025)",
+    "[76]",
+    "HealthDID: An efficient and authorizable multi-party privacy-preserving EMR sharing system based on DID",
+    "Formal security assurance and empirical validation (Req 6)"
+   ],
+   [
+    "S43",
+    "Xu et al. (2023)",
+    "[77]",
+    "A Privacy-Preserving Medical Data Sharing Scheme Based on Blockchain",
+    "Temporal validity and consent lifecycle (Req 5)"
+   ],
+   [
+    "S44",
+    "Zhang et al. (2022)",
+    "[78]",
+    "Patient-centered cross-enterprise document sharing and dynamic consent framework using consortium blockchain and ciphertext-policy attribute-based encryption",
+    "Consent representation and blockchain-based consent governance (Req 1)"
+   ]
+  ],
+  "widths": [
+   700,
+   1900,
+   600,
+   4560,
+   1600
+  ],
+  "small": true
+ }
+]

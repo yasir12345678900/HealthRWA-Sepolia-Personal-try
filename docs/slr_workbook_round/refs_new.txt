@@ -1,0 +1,93 @@
+[35] A. Abbasi, M. N. Humeidi, and Q. Wang. Nexa: Enabling Secure, Scalable, and Decentralized Management of Electronic Health Records Using Threshold Cryptography and Public Blockchains. IEEE Access, 2026. doi:10.1109/ACCESS.2026.3677499
+
+[36] S. Akter and T. F. Sanam. A Blockchain Framework for Secure Healthcare Data Management Using Role-Based Access Control and Smart Contracts. 2025 International Conference on Electrical, Computer and Communication Engineering (ECCE), 2025. doi:10.1109/ECCE64574.2025.11013162
+
+[37] F. Albalwy, A. Brass, and A. Davies. A Blockchain-based dynamic consent architecture to support clinical genomic data sharing (ConsentChain): Proof-of-concept study. JMIR Medical Informatics, 2021. doi:10.2196/27816
+
+[38] M. Al Amin, A. Altarawneh, and I. Ray. Informed Consent as Patient Driven Policy for Clinical Diagnosis and Treatment: A Smart Contract Based Approach. Proceedings of the International Conference on Security and Cryptography, 2023. doi:10.5220/0012090600003555
+
+[39] G. Bhalerao. Decentralized Cryptographic Governance for Cloud-Based Medical Record Infrastructure: A Distributed Ledger Framework for Cyber-Resilient Healthcare Data Sovereignty. 2026 2nd International Conference on Emerging and Intelligent Technologies and Systems (EITS), 2026. doi:10.1109/EITS70066.2026.11609600
+
+[40] S. Cao, L. Han, G. Liu, T. Zhang, X. Zhang, and X. Yang. A Privacy Set Intersection Protocol for Medical Data Security Sharing. 2025 IEEE International Conference on Big Data (BigData), 2025. doi:10.1109/BigData66926.2025.11402158
+
+[41] S. Chockalingam, S. Pirbhulal, and H. Abie. Improving Security and Privacy of Cognitive Digital Twins Through Dynamic Consent for Healthcare and Resilient Societies. Lecture Notes in Computer Science, 2026. doi:10.1007/978-3-032-12801-0_20
+
+[42] J. A. Dhanraj, P. Dhongle, R.Tamilamuthan, M.Lakshmanan, N. Ashtankar, and S. R. Hole. Blockchain-Augmented Federated Learning for Secure and Healthcare Diagnosis from Distributed Electronic Health Records. 2026 1st International Conference on Emerging Trends in Advancements and Applications of Computational Intelligence Tech, 2026. doi:10.1109/ETAACT69135.2026.11541890
+
+[43] K. Ekholm, A. Augustinsson, Sundström J., C. Johansen, Storgärds M., Ljöstad L., et al.. Implementing electronic informed consent in rare disease genomics. Scientific Reports (Nature Publisher Group), 2025. doi:10.1038/s41598-025-32740-1
+
+[44] A. U. Eneh, L. A. C. Ahakonye, J. M. Lee, and D. -S. Kim. Demo: EdgeConsent: On-Chain Attribute-Based Access Control for Data Consent Management. 2026 IEEE International Conference on Blockchain and Cryptocurrency (ICBC), 2026. doi:10.1109/ICBC67748.2026.11575534
+
+[45] J. C. Ferreira, R. Correia, L. Rosário, and A. Vila. Blockchain Integration for Trust and Consent Management in MCP-Enabled FHIR Systems. 2025 IEEE International Conference on Distributed Ledger Technologies (ICDLT), 2025. doi:10.1109/ICDLT66400.2025.11466653
+
+[46] D. Ghosh, A.K. Das, S. Prajapat, and B. Sikdar. Blockchain-Enabled Hybrid Quantum-Safe Attribute-Based Access Control Scheme with Attribute Revocation Strategy for Smart Healthcare System. Distrib. Ledger Technol., 2026. doi:10.1145/3827623
+
+[47] Hagström J., Hägglund M., M. Holmroos, Lähteenmäki P., and Hörhammer I.. Minors’ and guardian access to and use of a national patient portal: A retrospective comparative case study of Sweden and Finland. International Journal of Medical Informatics, 2024. doi:10.1016/j.ijmedinf.2024.105465
+
+[48] G. Hancheng, W. Xiaoyu, H. Huang, L. Qi, and X. Yizheng. A Blockchain-Assisted Revocable and Efficient ABSE Scheme for Secure Medical Data Sharing. ACM Transactions on the Web, 2026. doi:10.1145/3771992
+
+[49] V. Jaiman and V. Urovi. A Consent Model for Blockchain-Based Health Data Sharing Platforms. IEEE Access, 2020. doi:10.1109/ACCESS.2020.3014565
+
+[50] Zhao, Jing and Su, Qianqian (corresponding). A threshold traceable delegation authorization scheme for data sharing in healthcare. Computers & Security, vol. 139, art. 103686 (2024); Qingdao University, China, 2024. doi:10.1016/j.cose.2023.103686
+
+[51] H. Li, D. Li, G. Lv, N. Crespi, R. Minerva, W. Shao, et al.. Privacy-Preserving Fine-Grained EMR Access Control for IoMT: A Hybrid RBAC-Smart Contract Scheme With Attribute-Based Authorization. IEEE Internet of Things Journal, 2026. doi:10.1109/JIOT.2025.3633504
+
+[52] J. Luo, P. Zeng, and X. Wang. Bilateral Privacy-Aware Proxy Re-Encryption With Traceability and Revocation for IoMT. IEEE Internet of Things Journal, 2025. doi:10.1109/JIOT.2025.3616987
+
+[53] M. M. Madine, K. Salah, R. Jayaraman, I. Yaqoob, Y. Al-Hammadi, S. Ellahham, et al.. Fully Decentralized Multi-Party Consent Management for Secure Sharing of Patient Health Records. IEEE Access, 2020. doi:10.1109/ACCESS.2020.3045048
+
+[54] V. Maruthi and K. Singh. Enhancing Security and Privacy of IoMT Data for Unconscious Patient With Blockchain. IEEE Transactions on Network and Service Management, 2025. doi:10.1109/TNSM.2025.3602117
+
+[55] L. Mei, K. Huang, X. Li, H. Wang, and X. Zhang. Efficient Dual-Revocation CP-ABE for Secure and Fine-Grained Data Sharing in IoMT. IEEE Internet of Things Journal, 2026. doi:10.1109/JIOT.2026.3685269
+
+[56] Zhang, Moli, Shao, Feijiao, Zheng, Ruijuan, Liu, Muhua, and Ji, Zhihang. An Efficient Encryption Scheme with Fully Hidden Access Policy for Medical Data. Electronics, 2023. doi:10.3390/electronics12132930
+
+[57] D.P. Panagoulias, A.I. Damian, C. Stamate, V. Toderian, P. Butusina, A. De Franceschi, et al.. Blockchain-Enabled Trust and Compliance for Clinical AI: Decentralized Governance Without Decentralized Data Storage. Electronics, 2026. doi:10.3390/electronics15143046
+
+[58] S. Phuyal, M. Bhandari, R. Bista, and J. C. Ferreira. Enabling Cross-Institution Health Data Sharing in Norway: EUDI Wallets, On-Chain Consent, and openEHR↔FHIR Translation. IEEE Access, 2026. doi:10.1109/ACCESS.2026.3661642
+
+[59] S. Phuyal, M. Bhandari, R. Bista, and J.C. Ferreira. A Blockchain-Based Architecture for Dynamic and Auditable Patient Consent in Secondary Use of Health Data. Blockchain in Healthcare Today, 2026. doi:10.30953/bhty.v9.491
+
+[60] M.S. Prashanth, R. Karnati, M.S. Velpuru, and H. Venkateshwara Reddy. Enhancing Health Record Security and Privacy with Blockchain-Based Access Management. Lecture Notes of the Institute for Computer Sciences, Social-Informatics and Telecommunications Engineering, LNICST, 2024. doi:10.1007/978-3-031-66044-3_13
+
+[61] A. Punia, P. Gulia, N.S. Gill, D. Kaushik, N. Alduaiji, P.K. Shukla, et al.. An access control system for cloud-based healthcare systems driven by blockchain. Journal of Cloud Computing, 2025. doi:10.1186/s13677-025-00831-z
+
+[62] J. Qiao, N. Wang, J. Fu, L. Deng, J. Wang, and J. Liu. A Lightweight CP-ABE Scheme for EHR Over Cloud Based on Blockchain and Secure Multi-Party Computation. Transactions on Emerging Telecommunications Technologies, 2025. doi:10.1002/ett.70053
+
+[63] I. Román-Martínez, J. Calvillo-Arbizu, V. J. Mayor-Gallego, G. Madinabeitia-Luque, A. J. Estepa-Alonso, and R. M. Estepa-Alonso. Blockchain-Based Service-Oriented Architecture for Consent Management, Access Control, and Auditing. IEEE Access, 2023. doi:10.1109/ACCESS.2023.3242605
+
+[64] S. Hema, G. B. Sai Reddy, and R. S. Patient Centric Cryptographic Protection of Cloud Electronic Health Records. 2026 6th International Conference on Expert Clouds and Applications (ICOECA), 2026. doi:10.1109/ICOECA68095.2026.11485301
+
+[65] N.M. Sawant and J. Gomes. A Decentralized Solution for Smarter and Safer Healthcare Systems with FabricMedChain. Iranian Journal of Science and Technology - Transactions of Electrical Engineering, 2026. doi:10.1007/s40998-025-00994-0
+
+[66] M. Shanmugham and C. Senthilkumar. Blockchain Enabled Self-Sovereign Identity and Consent Framework for Secure Healthcare Data Access. 2026 3rd International Conference on Emerging Trends in Engineering and Medical Sciences (ICETEMS), 2026. doi:10.1109/ICETEMS66917.2026.11469586
+
+[67] S.L. Soohoo, M.S. Keller, Y. Chen, D. Hu, Huang S.-C., Kuo T.-T., et al.. Development of the authentication and authorization processes for the iAgree portal, a platform for patient-controlled data sharing across health systems. JAMIA Open, 2026. doi:10.1093/jamiaopen/ooag111
+
+[68] T. A. V. Y. Ranaweera et al. Ensuring Electronic Health Record (EHR) Privacy using Zero Knowledge Proofs (ZKP) and Secure Encryption Schemes on Blockchain. 2023 5th International Conference on Advancements in Computing (ICAC), 2023. doi:10.1109/ICAC60630.2023.10417417
+
+[69] Tan K.-L., Chi C.-H., and Lam K.-Y.. Secure and privacy-preserving sharing of personal health records with multi-party pre-authorization verification. Wireless Networks, 2024. doi:10.1007/s11276-022-03114-6
+
+[70] A. Teeda and Y.V. Subba Rao. A Patient-Centric Blockchain Based Electronic Health Records for Data Privacy and Confidentiality. Lecture Notes in Networks and Systems, 2026. doi:10.1007/978-3-032-08246-6_15
+
+[71] D. Tith, Lee J.-S., H. Suzuki, W.M.A.B. Wijesundara, N. Taira, T. Obi, et al.. Patient consent management by a purpose-based consent model for electronic health record based on blockchain technology. Healthcare Informatics Research, 2020. doi:10.4258/hir.2020.26.4.265
+
+[72] G. Tremper, T. Brenner, M. Ben Amor, T. Kussel, and M. Lablans. Mainzelliste: Ten years of pseudonymization, record linkage, and informed consent management. Patterns, 2026. doi:10.1016/j.patter.2025.101432
+
+[73] Tseng C.-H., Hsieh Y.-H., Lin H.-Y., and Yuan S.-M.. EMR-Chain: Decentralized Electronic Medical Record Exchange System. Technologies, 2025. doi:10.3390/technologies13100446
+
+[74] J. Wagner, H. Schneiderheinze, M. Wurlitzer, Köckritz O., N. Dittberner, M. Bialke, et al.. Integration of Trusted Third Party Software into an EDC System for Data Protection - Compliant Identity Management, Consent Management and Pseudonymization in Medical Research Studies. Studies in Health Technology and Informatics, 2024. doi:10.3233/SHTI240840
+
+[75] Y. Wu, C. Liu, L. Sebald, P. Nguyen, and Y. Yesha. Apply Trust Computing and Privacy Preserving Smart Contracts to Manage, Share, and Analyze Multi-site Clinical Trial Data. DBB 2022 — Int. Conf. on Deep Learning, Big Data and Blockchain; LNNS vol. 541, pp. 3-14 (Springer, 2023); eds. Awan, Younas, Bentahar, Benbernou, 2023. doi:10.1007/978-3-031-16035-6_1
+
+[76] Zuodong Wu and Dawei Zhang. HealthDID: An efficient and authorizable multi-party privacy-preserving EMR sharing system based on DID. Computer Standards & Interfaces, vol. 93, art. 103967 (2025); Beijing Jiaotong University, 2025. doi:10.1016/j.csi.2024.103967
+
+[77] G. Xu, C. Qi, W. Dong, L. Gong, S. Liu, S. Chen, et al.. A Privacy-Preserving Medical Data Sharing Scheme Based on Blockchain. IEEE Journal of Biomedical and Health Informatics, 2023. doi:10.1109/JBHI.2022.3203577
+
+[78] L. Zhang, H. Kan, and H. Huang. Patient-centered cross-enterprise document sharing and dynamic consent framework using consortium blockchain and ciphertext-policy attribute-based encryption. ACM International Conference Proceeding Series, 2022. doi:10.1145/3528416.3530228
+
+[79] S. Phuyal, M. Bhandari, R. Bista, and J.C. Ferreira. HL7 FHIR consent for healthcare data sharing: challenges, opportunities and integrity implications. International Journal of Medical Informatics, 2026. doi:10.1016/j.ijmedinf.2026.106405
+
+[80] Phuyal, S., Bhandari, M., Correia Bezerra, R., Bista, R., and Ferreira, J. C.. Dynamic Consent for Secondary Use of Health Data: Challenges and Opportunities Under European Law. JMIR MEDICAL INFORMATICS, 2026. doi:10.2196/93348
+
+[81] J. Vinnakota, T. Raheem, and G. Hossain. Secure AI-Driven eConsent Platforms: Enhancing Trust, Compliance, and Participation in Clinical Research. 2026 IEEE 2nd International Conference on Secure IoT, Assured and Trusted Computing (SATC), 2026. doi:10.1109/SATC69565.2026.11542223
