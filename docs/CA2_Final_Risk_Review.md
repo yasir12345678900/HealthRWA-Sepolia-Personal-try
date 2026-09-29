@@ -1,216 +1,419 @@
-# CA2 Report — Final A-to-Z Risk Review (post PRISMA rebuild)
+# CA2 Report — Deep A-to-Z Risk and Style Review (final)
 
-Build: 195 pages, Figures 1–40, Tables 1–17, Equations (1)–(76), References [1]–[81] all cited, no vendor names, all-black submission copy validated.
+Build: 190 pages; Figures 1–40, Tables 1–17, Equations (1)–(76) in sequence; references [1]–[81] all cited; no vendor names; submission copy all black; no em-dash prose, no 'not only … but also', 'Importantly', 'Moreover', 'Taken together', 'In summary' left in the body.
 
-## RED — must fix (all applied unless listed under 'needs the author')
+Totals: RED 37 | YELLOW (risk) 86 | style rewrites 188 | KEEP 83
 
-- [ch1:F1] §Abstract — The rebuilt Chapter 2 reports 44 included primary studies [35]–[78] (Sections 2.3.6, 2.5, 2.6); 33 is the pre-rebuild count and contradicts the whole review.  → **applied**
-- [ch1:F2] §Abstract — Chapter 2 (Section 2.5) retracts the claim that these conditions are absent; the gap is that they are not conjoined in one decision predicate with multi-party approval as a standing condition, so the abstract must state   → **applied**
-- [ch2a:A1] §2.3.2 — Section 2.2, Chapter 3 (SRQ1 to SRQ6) and Chapter 1 (RO1 to RO6) all state six questions and objectives, so seven review questions cannot correspond one to one; the paragraph itself then maps Questions 6 and 7 jointly to  → **applied**
-- [ch2a:A2] §2.3.7 — Orphan sentence left over from the old chapter: it opens Section 2.3.7 (data extraction) with 'this concern', which has no antecedent, and refers to the prototype, which is off-topic in the methodology section.  → **applied**
-- [ch2a:A3] §2.3.7 — Second sentence of the same orphan paragraph ('these properties' has no antecedent); both sentences must be deleted so that 2.3.7 begins with 'The included studies were analysed using a predefined data extraction form'.  → **applied**
-- [ch2a:A4] §2.3.4 — The report contains no threats-to-validity section (the phrase occurs nowhere in the built text), so the sentence points the examiner to a section that does not exist.  → **applied**
-- [ch2b:B1] §2.4.7 — The author of [64] is cited as 'Hema et al.' everywhere else; the bare letter 'S' is a garbled surname that a marker would notice.  → **applied**
-- [ch2b:B2] §2.4.7 — Same garbled surname for [64]; the five Req 4 with Req 5 studies are Eneh, Mei, Panagoulias, Punia and Hema [64].  → **applied**
-- [ch2b:B3] §2.4.7 — Table 9 gives Punia et al. [61] ticks on Req 3, Req 4 and Req 5, so the statement that the only Req 3 triples are in [53] and [69] is contradicted by the table itself (Madine also forms Req 1/3/5 and Req 2/3/5).  → **applied**
-- [ch2b:B4] §2.5.1 — Gap 6 contradicts Sections 2.4.2, 2.4.6 and 2.5, which state that Phuyal et al. [58] test allow and deny paths over 100 runs (Req7 Yes in the workbook, tick in Table 4).  → **applied**
-- [ch2b:B5] §2.5.1 — Leftover of the earlier framing in which RO5 and RO6 were deferred; it lists only four dimensions and contradicts Chapter 1 (RO5 current, RO6 current/next), the preceding sentence about operational temporal and jurisdict  → **applied**
-- [ch2b:B6] §2.5.1 — The closing sentence of 2.5.1 omits the temporal and jurisdictional conditions that Eq. (6) and Gap 5 make part of the decision; same old-framing leftover as B5.  → **applied**
-- [ch2b:B7] §2.5.1 — This is labelled Eq. (6) but it is the first numbered equation in the whole report (no Eqs (1)-(5) exist; Chapter 3 starts at (7)); renumber it as (1) and shift the later equation numbers, or remove the number here, othe  → **applied**
-- [ch34:F1] §3.1 — [19] (Data Trusts as a Service) describes subject-controlled policy access and provenance, not multi-approver mechanisms; the review's multi-party evidence is Madine [53], Punia [61] and Tan [69], and the sentence claims  → **applied**
-- [ch34:F3] §4.7 — The same section (and Chapter 4 intro, 4.5, Table 11) states that the dynamic lifecycle controls of RO5 are already delivered in the current stage, so assigning 'dynamic lifecycle conditions' to the next stage contradict  → **applied**
-- [ch5:C1] §5.1 — The name verify_poc appears only in Chapter 5; Section 6.8.9 calls it 'an independent verification tool' and never introduces verify_poc, so the cross-reference cannot be followed.  → **applied**
-- [ch5:C2] §5.1.4 — Same broken cross-reference: verify_poc is not named anywhere in Chapter 6.  → **applied**
-- [ch5:C3] §5.2 — Third occurrence of the undefined name verify_poc; Chapter 6 describes the tool without naming it.  → **applied**
-- [ch6:C6-1] §6.3.2 — Eq. (55) ends in ALLOW although Step 13 and Algorithm 3 return ACTIVATED and the text states that activation is distinct from the access decision (ALLOW is the RO4 outcome).  → **applied**
-- [ch6:C6-2] §6.3.2 — Same inconsistency: Authorisation(C) takes the values ACTIVATED or PENDING in Step 13 and in Algorithm 3, not ALLOW.  → **applied**
-- [ch6:C6-4] §6.6 — Duplicated phrase makes the sentence ungrammatical; a marker would notice it immediately.  → **applied**
-- [ch68:C2] §7.6 (consistency with 6.8) — Section 6.8.6 states that the EXPIRED state was not reached in the demonstration and Section 6.8 shows no live policy-violation case, so Chapter 7's claim that expiration and policy violation were demonstrated live contr  → **applied**
-- [ch789:F1] §9.2 — Table 15 is the publication plan; the activities whose status is reported are the next-stage activities of Table 16.  → **applied**
-- [ch789:F2] §Appendix A — In Section 6.4, Eq. (57) defines the scope predicate VS and the policy predicate VP is Eq. (58); citing only (57) points the examiner to the wrong equation (in the build source the cell reads 'Eq. (52)', i.e. the auto-re  → **applied**
-- [ch789:F3] §7.4 — Section 6.8.4 shows only the positive path (a request that is a non-empty subset of the authorised scope); no live over-scope denial with VP named is demonstrated there, only in the automated tests of Section 6.8.9.  → **applied**
-- [global:G1] §Abstract — The rebuilt Chapter 2 (2.3, 2.4, 2.5, 2.6, 3.1) and Figure 5 all state 44 primary studies; the Abstract still carries the old count of 33.  → **applied**
-- [global:G2] §2.3.7 — Orphan paragraph: Section 2.3.7 (Data Extraction) opens with two sentences about the prototype and formal analysis that belong to no methodology context ('this concern' has no antecedent); delete this sentence and the fo  → **applied**
-- [global:G3] §2.4.7 — Unfinished placeholder 'S' in the Table 9 observation; from Table 9 the sixth study with Req 1 and Req 4 both ticked is Hema et al. [64] (S30).  → **applied**
-- [global:G4] §2.4.7 — Second unfinished placeholder 'S'; from Table 9 the fifth study with Req 4 and Req 5 both ticked is Hema et al. [64] (S30).  → **applied**
-- [global:G5] §9.2 — Wrong table number: Table 15 is the publication plan (Chapter 8); the activities whose status is reported (temporal and lifecycle trust, comprehensive empirical validation) are the next-stage activities of Table 16.  → **applied**
-- [global:G6] §6.7 — Contradiction: Sections 1.3, 4.5, 6.5, 7.5 and 9.2 state that temporal and lifecycle trust (RO5) has been brought forward into the current stage, yet 6.7 still attributes Eq. (70) to a CA3 extension.  → **applied**
-- [global:G7] §6.7 — Garbled phrase ('formal dynamic validity') left over from the edit that moved RO5 into the current stage; the same sentence already says the current stage delivers dynamic validity.  → **applied**
-- [global:G8] §2.5.1 / whole report — The built report contains no equations (1) to (5): numbering starts at (6) because the equations of the old Chapter 2 were removed, which an examiner will read as missing equations.  → **applied**
-- [global:G10] §2.5 — The full-text pool is 1,800 records everywhere else (2.3.6, Figure 2, 2.6); 1,805 is the IEEE Xplore export count and contradicts the PRISMA chain.  → **applied**
-- [refs:F1] §References — Entry [50] carries database-export debris ("(corresponding)", author affiliation, the year twice) and surname-first full names unlike every other new entry.  → **applied**
-- [refs:F2] §References — Entry [76] contains an author affiliation, the year twice and full given names, none of which belong in a reference entry.  → **applied**
-- [refs:F3] §References — Entry [75] pastes a raw catalogue string with editors, semicolons and the year twice; no other entry is formatted this way.  → **applied**
-- [refs:F4] §References — The third author of [64] is truncated to bare initials (the PRISMA export had "H. S, G. B. Sai Reddy, and S. R"); a marker will read "R. S." as an incomplete author, and the entry is also filed under S instead of H in th  → **applied**
-- [refs:F5] §References — Entry [68] is the only entry that gives a single author plus "et al."; the paper has six authors (ICAC 2023, pp. 792–797) and the list elsewhere prints up to six names before "et al."; the entry is also filed after Sooho  → **applied**
+## RED — had to be fixed (all applied)
 
-## YELLOW — recommended, applied
+- [ch2a:C2A1] §2.3.1 — The workbook and decision log (codebook.txt 'Decided by Agent 6', agentlog.txt A1-A6 columns, BRIEF.txt 'the author's coding panel') show the 'panel' as six agent roles operated and ratified by the author, not six human   → **applied (via chapter rewrite)**
+- [ch2a:C2A2] §2.3.7 — Same issue as the previous item; the two places must be changed together.  → **applied (via chapter rewrite)**
+- [ch2b:R3] §2.5 — Contradicts 2.4.3 and Table 5: in Hagström et al. [47] the collective condition is a professional's capacity assessment together with the minor's own consent gating guardian proxy access, not 'all legal guardians co-sign  → **applied (via chapter rewrite)**
+- [ch2b:R4] §2.5 — Recomputed: Req 6 tick (workbook Req6 Yes or Req7 Yes) is reached by 11 of the 44 (S3, S13, S14, S15, S16, S18, S20, S21, S23, S24, S42), but Gao [48] and Luo [52] are supporting studies with no table row, so only nine t  → **applied (via chapter rewrite)**
+- [ch34:R1] §3.3.3 — The sentence 'In this context, Av is the subset...' currently sits between the lead-in 'Multi-party authorisation is defined as' and Equation (4), which breaks the equation lead-in. Move it up so that 'Multi-party author  → **applied (via chapter rewrite)**
+- [ch34:R2] §3.3.3 — Delete this copy (it is moved by R1). After deletion the text reads 'Multi-party authorisation is defined as' directly followed by Equation (4).  → **applied (via chapter rewrite)**
+- [ch34:R3] §3.3.5 — Equation (10) is introduced by 'Temporal validity is defined as' but repeats the threshold-denial rule of Equations (5) and (17). The temporal predicate VT is never defined in Chapter 3 although it is used in Equations (  → **applied (via chapter rewrite)**
+- [ch34:R4] §3.3.5 — This sentence about the threshold N belongs to SRQ3, not SRQ5; here it interrupts the temporal-validity derivation between Equation (10) and 'Consequently, ... (11)'. Delete here and re-insert in SRQ3 (see R5).  → **applied (via chapter rewrite)**
+- [ch34:R5] §3.3.3 — Re-insertion of the sentence removed by R4 in its correct place, after Equation (5). Consistent with Section 4.3 (N-of-N, 2-of-2) and Section 7.3.  → **applied (via chapter rewrite)**
+- [ch34:R6] §3.3.4 — The example is broken: 'For example, if a consent authorises access to' is followed by the definition of C = (I, A, P, T, L, E) (Equation 7) and a long note on T and L, and the authorised scope SC is never stated before   → **applied (via chapter rewrite)**
+- [ch34:R7] §3.3.4 — Restores the example so that Equation (8) 'SR = {Observation, Medication, Procedure}' and Equation (9) 'SR ⊈ SC' follow a stated SC. Without this, SC is undefined in Chapter 3 (it is defined only in Section 6.4).  → **applied (via chapter rewrite)**
+- [ch34:R9] §3.1 — Contradicts Section 2.5: Tan et al. [69] use patient-appointed witnesses and Maruthi and Singh [54] patient-designated relatives, so 'rather than patient-designated' is an overclaim; Chapter 2 says 'in no study is the ap  → **applied (via chapter rewrite)**
+- [ch34:R11] §4.7 — Table 10 and Table 11 contain no gap column (columns are RQ, Research Objective, Research Focus and Scope, Report Section), so the statement that 'the tables also trace each objective to the gap' is false.  → **applied (via chapter rewrite)**
+- [ch34:R12] §4.6 — Duplicated content: the same three items (23 automated tests, live jurisdiction denial, independent re-verification with ALL CHECKS PASSED) are repeated four paragraphs later ('In particular, 23 automated tests cover ...  → **applied (via chapter rewrite)**
+- [ch5:G1] §5.3 — The inserted note about State(C) sits between the lead-in 'can then be represented as' and Eq. (32), so the lead-in has no equation. Move the note after Eq. (32) (i.e. place 'VA(C) = 1, |Av| >= N; 0, |Av| < N. (32)' dire  → **applied (via chapter rewrite)**
+- [ch5:G2] §5.3 — This threshold paragraph (together with the following sentence on k-of-n) has been dropped between Eq. (33) on scope containment and the sentence 'If the requested data exceeds the authorised scope...', so it interrupts   → **applied (via chapter rewrite)**
+- [ch5:G3] §5.2 — Eq. (28) is separated from its lead-in by the Figure 9 caption and the whole 'Figure 9 further shows...' paragraph. Place Eq. (28) immediately after the lead-in and move the 'Figure 9 further shows' paragraph after the e  → **applied (via chapter rewrite)**
+- [ch6:G1] §6.5.2 — Double comma typo 'VT,,' and wrong antecedent: as written, VT is said to be evaluated within VA, which contradicts Eq. (60)/(65) and Section 5 where VT(C, t) is a separate conjunct and only lifecycle state and revocation  → **applied (via chapter rewrite)**
+- [ch6:G2] §6.4.3 — Replace the whole sentence (it continues 'keccak256(purpose).' after the page break). Factual: services/access_service.py evaluates VP as consent.purpose in ALLOWED_PURPOSES; the Doctor interface only displays the consen  → **applied (via chapter rewrite)**
+- [ch789:G1] §7.1 — The description of the T and L components of C = (I, A, P, T, L, E) is stranded in an orphan paragraph after the concluding sentence of 7.1 (a leftover of a late insertion). Move it into the component list so that all si  → **applied (via chapter rewrite)**
+- [ch789:G2] §7.1 — Delete this orphan paragraph once its content has been moved into the component list (see G1). As it stands the section ends with a component definition after its own conclusion, which reads as an editing leftover.  → **applied (via chapter rewrite)**
+- [ch789:G3] §7.2 — The N-of-N / 2-of-2 / k-of-n note about RO3 is repeated word for word in substance at the end of Section 7.3. Section 7.2 is about RO2, so keep only the VI limitation here and let 7.3 carry the threshold note. Removes du  → **applied (via chapter rewrite)**
+- [ch789:G4] §7.4 — Ordering leftover: the implementation-status paragraph precedes the paragraph that states what RO4 is and introduces Eq. (73). The reader meets 'the policy predicate VP' before it has been defined in this chapter. Delete  → **applied (via chapter rewrite)**
+- [ch789:G5] §7.4 — Re-insertion of the paragraph removed in G4, now placed after the objective, Eq. (73) and the example, and split into shorter sentences in the author's voice.  → **applied (via chapter rewrite)**
+- [ch789:G7] §7.6 — The 'Status:' line of RO6 appears only after this paragraph, unlike every other section of Chapter 7 where Status directly follows the heading. This paragraph also refers to 'exactly Eq. (75)' before Eq. (75) has appeare  → **applied (via chapter rewrite)**
+- [ch789:G8] §7.6 — Eq. (75) currently dangles: it follows the sentence '…and access-control evaluation.' with no lead-in. Add a lead-in sentence so the equation is introduced.  → **applied (via chapter rewrite)**
+- [ch789:G9] §7.6 — Re-insertion of the paragraph removed in G7, now after Eq. (75) so that 'exactly Eq. (75)' refers backwards. Rewritten in the author's voice: 'Furthermore' removed, the 55-word sentence split, the parenthetical list of p  → **applied (via chapter rewrite)**
+- [ch789:G13] §9 — Ungrammatical leftover of a global replacement of the earlier stage names ('Stage 1'/'Stage 2') by 'current stage'/'next stage' without articles. The same defect recurs in G14–G20.  → **applied (via chapter rewrite)**
+- [ch789:G14] §9.2 — Missing article ('during current stage'). Search-and-replace leftover.  → **applied (via chapter rewrite)**
+- [ch789:G15] §9.2 — Missing articles ('While current stage', 'next stage will'). Split into two sentences in the author's style.  → **applied (via chapter rewrite)**
+- [ch789:G16] §9.2 — Missing article.  → **applied (via chapter rewrite)**
+- [ch789:G17] §9.2 — Missing article.  → **applied (via chapter rewrite)**
+- [ch789:G18] §9.2 — Missing article.  → **applied (via chapter rewrite)**
+- [ch789:G19] §9.2 — Missing article.  → **applied (via chapter rewrite)**
+- [ch789:G20] §9.2 — Missing articles.  → **applied (via chapter rewrite)**
+- [global:G1] §2.4.3 — Contradiction with Table 5 and Table 9: Hagström et al. [47] is T3 Partial (Req 3 ~) and is ticked (√) on Req 6 in both tables, and Section 2.5 lists [47] among the five studies with a complete empirical evaluation. The   → **applied (via chapter rewrite)**
+- [global:G3] §3.3.5 — Equation (10) is announced as the definition of temporal validity but repeats the threshold rule of Equation (5). The temporal predicate is otherwise never defined in Chapter 3, although Equations (11) and (18) use it an  → **applied (via chapter rewrite)**
 
-- [ch1:F3] §1.3 — Section 1.3 opens by referring to 'its four foundational dimensions' before any dimension has been introduced (they appear five paragraphs later), so the first two paragraphs read as misplaced; the re  → applied
-- [ch2a:A5] §2.3.4 — sentinels.txt records eight misses with different causes (SEN-08 misses on block C, SEN-09 on the date range, SEN-12 is an OPEN ITEM), so the claim that every miss was diagnosed and attributed to the   → applied
-- [ch2a:A6] §2.3.6 — The chapter's own figures give 2,895 minus 2,515 plus 65 minus 23 = 422 within-source duplicates; the 423 in the PRISMA chain (9,256 minus 8,833 loaded) is reached only with the one uncaptured IEEE re  → applied
-- [ch2a:A7] §2.2.1 — The consent object is C = (I, A, P, T, L, E) in Chapters 1, 3 and 5 and in Section 2.6; the requirement definition omits the lifecycle component L although Req 5 (2.2.5) relies on it.  → applied
-- [ch2a:A8] §2.1 — The overview still names the old review areas ('multi-party trust data governance', 'Trusted Computing') whereas the rebuilt Sections 2.4.1 to 2.4.6 follow the six requirements and treat trusted execu  → applied
-- [ch2a:A9] §2.3.7 — The paragraph later states that quality items were not scored for studies excluded on document type, duplication or unavailability, which contradicts 'each study assessed at the full-text stage'.  → applied
-- [ch2a:A10] §2.3.7 — codebook.txt (D-150) records that QA is scored for INCLUDE and for EC2, EC4 and EC9 exclusions only; EC1 exclusions also carry blank QA, which the current wording omits.  → applied
-- [ch2a:A11] §2.3.7 — 'Tier A/B/C' is used in 2.3.6 for the 39/1,066/695 full-text priority tiers and in 2.3.7 for the evidence tiers of included studies; without a distinction the reader may equate the 39 priority Tier A   → applied
-- [ch2a:A12] §2.3.6 — An examiner will compute 1,800 minus 64 assessed minus 1 unretrieved and expect the chapter to state explicitly that most full texts were not read and that the corpus is a saturation-bounded checkpoin  → applied
-- [ch2a:A13] §2.2.4 — The empirical claim 'most unauthorised disclosures' is uncited and unsupported by any reference in the list; softening to 'many' and anchoring it to the RQ-UCON study [11], which is motivated by physi  → applied
-- [ch2b:B8] §2.4.5 — Section 2.5 and Gap 5 state that Madine [53] and Punia [61] also enforce time inside the decision (Req 5 Yes in 8 studies), and both are multi-party, so 'the three systems ... all single-party' contra  → applied
-- [ch2b:B9] §2.5 — Section 2.4.3 and Table 5 describe [43] as a commercial, centralised platform used by three genomic medicine centres, so 'national platforms' misstates the evidence for Ekholm; see B9b for the co-sign  → applied
-- [ch2b:B9b] §2.5 — Section 2.4.3 describes Hagström [47] as proxy-access governance gated by a professional's assessment and the minor's consent, not as guardian co-signature at registration; the synthesis overstates th  → applied
-- [ch2b:B10] §2.5 — Sections 2.3.6 and 2.6 consistently report 1,800 full texts sought; 1,805 is the workbook's pre-deduplication signal-scan count and reads as a numerical inconsistency.  → applied
-- [ch2b:B11] §2.4.3 — The classes are introduced in the order first, second, fifth, fourth, third, sixth; renumbering Punia's class as third (and Zhao and Su's as fifth, see B12) restores a sequential enumeration of the si  → applied
-- [ch2b:B12] §2.4.3 — Companion to B11: with this change the six mechanism classes are numbered one to six in the order in which they are presented.  → applied
-- [ch2b:B13] §2.5 — Section 2.4.5 states that a post-revocation denial is demonstrated by [58], [57], [44], [45] and [68]; the synthesis silently drops Eneh [44], whose evidence note records 'denied again once rule revok  → applied
-- [ch2b:B14] §2.5.1 — 'rather than deferred to subsequent research' refers to a deferral that no longer exists anywhere in the report (Chapter 1 lists RO5 as current) and reads as a patch on the old text.  → applied
-- [ch2b:B15] §2.6 — An examiner expects a PRISMA-reported review to state its limitations; the chapter describes the pending abstracts and the saturation rule in 2.3 but never states them as limitations of the conclusion  → applied
-- [ch34:F2] §3.1 — The single-party finding concerns the SLR objects [71, 37, 44, 58, 66] and is made in Section 2.5; [10] (web consent receipts), [13] and [21] do not show that those objects are single-party and are no  → applied
-- [ch34:F4] §3.2 — Section 3.2 opens with a status paragraph whose second sentence begins 'Consequently' without a premise and precedes the research question it qualifies; the lead-in makes the paragraph read as an inte  → applied
-- [ch34:F5] §3.3.1 — Section 2.5.1 (Gap 1) already requires the validity interval and the jurisdiction as components of the consent object, so stating that T and L were merely 'introduced during implementation' breaks the  → applied
-- [ch34:F6] §3.3.1 — Chapter 2 places jurisdiction under Req 4 / Gap 4 ('evaluated together with the jurisdiction on every request'), whereas this sentence assigns L to SRQ5 only; the replacement reconciles the two chapte  → applied
-- [ch34:F7] §3.1 — Section 2.5 and 2.6 name the two gaps and stress the patient-defined approving set, but the gap statement in 3.1 neither uses the names nor mentions who defines G, so the link between Chapter 2 and Ch  → applied
-- [ch34:F8] §3.3.3 — Av is introduced without any relation to the guardian set G defined in Section 3.1 and used in Chapter 6 (where 1 ≤ N ≤ |G| is stated), so the threshold notation is not fully defined here.  → applied
-- [ch34:F9] §4.5 — Section 9.2 lists consent modification, delegation and guardian-set changes as next-stage RO5 extensions, which is more than 'hardening'; the two statements of remaining RO5 work should agree.  → applied
-- [ch34:F10] §4.7 — Sections 7.6 and 9.2 state that a systematic performance and overhead study also remains for the next stage; 4.7 omits it, so the remaining agenda is stated inconsistently across chapters.  → applied
-- [ch34:F11] §4.7 — Chapter 4 derives the objectives from the questions but never closes the RQ-gap-RO chain that Chapter 2 (Section 2.6) promises; one sentence makes the traceability explicit for the examiner.  → applied
-- [ch34:F12] §3.3.5 — Chapter 6 uses VS(C, R) for data scope (Eq. 57) and VS(C, t, q) for lifecycle, and explains the clash there, but Chapter 3 introduces VS as the lifecycle predicate without warning, so a reader moving   → applied
-- [ch5:C4] §5.1 — SQLite is never mentioned in Chapter 6 or Section 6.8, which refer only to 'the audit ledger' or 'the local ledger'; naming a storage technology here that the implementation chapter does not confirm i  → applied
-- [ch5:C5] §5.3 — This new sentence opens Section 5.3 before any representation has been introduced, so 'this representation' has no antecedent and the paragraph reads as misplaced.  → applied
-- [ch5:C6] §5.3 — Section 2.4.3 defines six mechanism classes and places Tan et al. [69] in the witness/notary class and Punia et al. [61] in the custodial M-of-N class, so the four-group summary here contradicts the C  → applied
-- [ch5:C7] §5.2 — The new sentence is inserted between the lead-in 'when the threshold condition of Eq. (33) holds' and Eq. (33) itself and reads as a bare figure description; tying it to Figure 9 and Eq. (33) makes it  → applied
-- [ch5:C8] §5.2 — Section 6.8.4 states that the proof is generated and verified as part of the cryptographic verification performed before access is granted, not after an ALLOW decision has already been reached.  → applied
-- [ch5:C9] §5.1.1 — The subsection opens with 'therefore' and 'the two additional functions' before the six conceptual functions have been introduced, so the reader cannot tell what the eight are additional to.  → applied
-- [ch5:C10] §5.3 — Reference [10] (Jesus and Pandit) proposes web consent receipts, not immutable ledger records; [28] (Tawfik et al.) surveys blockchain-based access control and auditability and supports the claim dire  → applied
-- [ch5:C11] §5.11 — The sentence is immediately followed by the statement that the Model 'already includes' temporal validity, revocation and lifecycle transitions and that the Controller 'already evaluates' VT and VL, w  → applied
-- [ch5:C16] §5.3 — Section 5.1.1 lists a Lifecycle component and Section 6.5 evaluates State(C), but C = (I, A, P, T, L, E) has no lifecycle element; an examiner will ask where the lifecycle state lives in the model.  → applied
-- [ch6:C6-3] §6.6.2 — Step 13 of the RO6 procedure re-uses ALLOW for the RO3 activation outcome; Algorithm 3 returns ACTIVATED.  → applied
-- [ch6:C6-5] §6.5 — The sentence is left dangling ('conditions that') before Eq. (63); the equation needs a proper lead-in.  → applied
-- [ch6:C6-6] §6.7 — Calling Eq. (70) 'the CA3 extension' contradicts the preceding sentence that Algorithms 1–5 are realised in the current prototype and the following sentence that the implemented system enforces Eq. (7  → applied
-- [ch6:C6-7] §6.7 — 'Formal dynamic validity' is garbled and contradicts the same sentence, which says dynamic validity is already established in the current stage; Chapter 3 assigns only the formal component of RO6 to C  → applied
-- [ch6:C6-8] §6.3.3 — The body of Algorithm 3 uses g, siga, domain, addrp and addrr, none of which is introduced in the Require line.  → applied
-- [ch6:C6-9] §6.1.2 — Algorithm 1 requires L and constructs C with it, and the procedure and the sequence Ip → D → G → Pu → SC → T → L → A validate L, but no line of the algorithm validates L.  → applied
-- [ch6:C6-10] §6.4.3 — Algorithm 4 declares R = (u, PR, SR, Jur(R)) and line 27 tests Jur(R), but Step 1 of the procedure defines R without the jurisdiction element. (If PR is a subscript in the source, adjust the matched s  → applied
-- [ch6:C6-11] §6.4.3 — The prose lists five conditions while the formula that follows in the same step contains seven conjuncts including (ts ≤ t ≤ te) and (Jur(R) = Jur(C)).  → applied
-- [ch6:C6-12] §6.4.3 — This closing rule omits the temporal and jurisdictional conditions that Eq. (59), Step 7 and Algorithm 4 (lines 26–27) all enforce, so the section contradicts itself.  → applied
-- [ch6:C6-13] §6.4.3 — Companion to C6-12: the 'respectively' list must match the extended conjunction.  → applied
-- [ch6:C6-14] §6.5.2 — Eq. (18) is VS(C) = ValidState(C) ∧ ValidTransition(C) and contains no temporal term; Chapter 3 itself says Section 6.5 'additionally' adds the temporal condition, so the cross-reference misdescribes   → applied
-- [ch6:C6-15] §6.3.2 — The sentence is ungrammatical, and it compares a participant u with a set of approvals a (Step 7 adds a, not u, to Av).  → applied
-- [ch6:C6-16] §6.5.2 — The sentence following the displayed flow begins in lower case and reads as a fragment; it should start a new sentence (also 'overall ... overall' in the preceding sentence).  → applied
-- [ch6:C6-17] §6.4.1 — Eqs. (60)–(62) apply ⊈ to SC and SR, so both must be written as sets; the built text shows no braces (apply the same change to Eq. (61): SR = {Observation, Medication, Procedure}).  → applied
-- [ch6:C6-18] §6.4.3 — Algorithm 4 line 28 introduces a Groth16 proof that is never explained in the RO4 procedure or workflow; an examiner would ask what the proof is and why it appears in the decision.  → applied
-- [ch68:C1] §6.8.1 — mintConsentV3 takes the purpose as a plaintext string in calldata (contracts/ConsentSBTv3.sol line 38, blockchain/contract.py line 174), so the claim that the plaintext purpose 'remains in the applica  → applied
-- [ch68:C3] §6.8.10 — The screenshots (Figures 17 to 40) precede Table 14; nothing follows it, so the sentence misdescribes the structure of the section.  → applied
-- [ch68:C4] §6.8.6 — RO5 claims enforced temporal expiration, but 6.8 says only that EXPIRED was not reached; the examiner needs to know where the expiry path is evidenced.  → applied
-- [ch789:F4] §9.1 — Sections 7.2, 7.3, 7.6 and 6.8.11 state that k-of-n thresholds, DID resolution and a performance study remain future work, so 'no further development' and the omission of the performance study contrad  → applied
-- [ch789:F5] §9.2 — The status sentence names an activity ('Temporal and lifecycle trust') that is not a row of Table 16, and does not say which part of the first row remains outstanding.  → applied
-- [ch789:F6] §9.2 — The status report covers only two of the four Table 16 activities and uses an em-dash fragment inconsistent with the surrounding prose; an examiner expects every planned activity to carry a status.  → applied
-- [ch789:F7] §Appendix A — Every other row is labelled by RO/RQ with its equation and algorithm; 'RO5 direction' implies RO5 is not a delivered objective, contradicting Sections 4.5, 7.5 and 9.1 which report it as largely compl  → applied
-- [ch789:F8] §Appendix A — Consistency of the traceability table: the row should name the RO/RQ, the defining equation and the algorithm as the other rows do, and state explicitly that the formal half is outstanding.  → applied
-- [ch789:F9] §7.6 — The sentence repeats Eq. (80) verbatim a few lines below it; the duplicated rule reads as an editing remnant.  → applied
-- [ch789:F19] §7.6 — Chapter 7 has neither an introduction nor a closing summary of the six statuses; an examiner expects one consolidated statement that matches Chapter 4 and the abstract before the plan in Chapter 9 rel  → applied
-- [ch789:F20] §9.2 — The plan defines metrics for the performance study but no success criterion for the formal assurance work, which is the principal remaining objective; the examiner needs to know what 'formal assurance  → applied
-- [global:G9] §2.4.1 — 'Eq. (5)' refers to an equation inside Sawant and Gomes [65], but in this report it reads as a reference to the report's own (non-existent) equation (5); the same wording in Table 3 ('decision functio  → applied
-- [global:G11] §6.6 — Duplicated words ('each conjunct ... each conjunct') make the sentence ungrammatical.  → applied
-- [global:G12] §6.5 — Orphan equation lead-in: the sentence breaks off ('conditions that') before Eq. (63).  → applied
-- [global:G13] §2.1 — Section 1.3 explicitly distinguishes the report's 'Trust Computing' from hardware 'trusted computing' and states that the latter lies outside the scope of the review in Chapter 2; the Overview then na  → applied
-- [global:G14] §2.3.2 — Seven review questions cannot correspond one to one with six sub-research questions; the following paragraph itself explains that Questions 6 and 7 jointly map to Req 6.  → applied
-- [global:G15] §2.4.3 — The six mechanism classes are presented in the order first, second, fifth, fourth, third, sixth; renumbering in reading order (with G16) removes an apparent error.  → applied
-- [global:G16] §2.4.3 — Companion of G15: after renumbering, the delegated threshold of Zhao and Su becomes the fifth class so that the classes run first to sixth in order.  → applied
-- [global:G17] §6.8.10 — Orphan lead-in: the colon introduces nothing (a page break follows); in the next sentence 'and it is followed by the screenshots of each subsystem' is also wrong because the screenshots precede Table   → applied
-- [global:G18] §5.1.2 / 5.1.3 — Section 3.3 states that SRQ1–SRQ6 are referred to as RQ1–RQ6 in Chapter 4 and all remaining chapters, but Chapter 5 mixes SRQ (5.1.2, 5.1.3 and the mapping line SRQ1 → Model ...) with RQ (5.11); repla  → applied
-- [global:G19] §2.6 — The eighth frozen query is the Google Scholar query itself (GS-M v2), and 2.3.6 attributes the 9,256 records to the seven database searches only; 'eight searches ... supplemented by' double-counts.  → applied
-- [global:G20] §2.3.8 — Figure 3 (and likewise Figure 4, whose lead-in should be added after 'correspond to Req 1 to Req 6 respectively.' in Section 2.4) is never referred to in the text; every figure in the rebuilt chapter   → applied
-- [global:G21] §2.6 — Figure 5 is never cited in the text. (Figures 12 to 15 and the screenshots 17 to 40 are likewise never cited by number; Chapter 6 relies on 'the figure above/below', which is tolerable but weaker.)  → applied
-- [refs:F6] §References — Trailing double full stop after "et al." appears in eight new entries ([43], [51], [53], [57], [61], [67], [71], [77]); apply the same replacement to every occurrence.  → applied
-- [refs:F7] §References — Entry [43] mixes initial-surname and surname-initial ordering within one author string.  → applied
-- [refs:F8] §References — Entry [47] mixes author-name ordering and ends the author list with a double full stop.  → applied
-- [refs:F9] §References — Entry [56] uses surname-comma-given-name full names, unlike every other entry in [35]–[81].  → applied
-- [refs:F10] §References — Entry [67] mixes author-name ordering and has a double full stop.  → applied
-- [refs:F11] §References — Entry [69] is surname-first with a double full stop; the body cites it as "Tan et al.".  → applied
-- [refs:F12] §References — Entry [71] mixes author-name ordering and has a double full stop.  → applied
-- [refs:F13] §References — Entry [73] is surname-first with a double full stop.  → applied
-- [refs:F14] §References — Entry [74] has one surname-first author in an otherwise initial-first list and a double full stop.  → applied
-- [refs:F15] §References — Entry [80] is surname-first with a double full stop and prints the journal in capitals, whereas [37] prints the same journal as "JMIR Medical Informatics" and [58], [59], [79] print the same authors i  → applied
-- [refs:F16] §References — Missing spaces after initials in [42]; the venue string of the same entry is also truncated ("... Computational Intelligence Tech") and should read "... Computational Intelligence Technologies (ETAACT  → applied
-- [refs:F17] §References — "(Nature Publisher Group)" is a ProQuest export artefact, not part of the journal name.  → applied
-- [refs:F18] §References — Entry [46] is the only entry with an abbreviated journal name; all other journal names are written in full.  → applied
-- [refs:F19] §References — The author string of [48] reads as given names treated as surnames (e.g. "G. Hancheng"), which would make the in-text "Hancheng et al." attribution wrong; the ACM page could not be reached from the au  → applied
+## YELLOW — recommended risk fixes (applied)
+
+- [ch1:F1] §Abstract — 'these conditions' has no antecedent (the previous sentence lists participants, not conditions), and the sentence runs to about 80 words with two 'and ... but ... and' joins. Same facts, split into th  → applied (via chapter rewrite)
+- [ch1:F4] §1.2 — Two problems. (a) Consistency: Chapter 2 (Sections 2.5 and 2.6) lists the studies that combine three or four conditions as [58, 61, 45, 66, 57]; Chapter 1 omits Panagoulias [57], which is one of the t  → applied (via chapter rewrite)
+- [ch1:F5] §1.3 — 'This separation' has no antecedent. The preceding sentence describes what formal analysis will do; the earlier draft evidently contrasted current and next-stage work immediately before, and that text  → applied (via chapter rewrite)
+- [ch2a:C2A3] §2.3.6 — prisma_counts.txt counts SCOPUS-1936 (EC8, not retrieved, never read) inside the 39 Tier A records ('all 39 Tier A: 34 decided at full text + SCOPUS-1936 EC8 not retrieved + 3 SECONDARY + 1 via D-032'  → applied (via chapter rewrite)
+- [ch2a:C2A4] §2.3.4 — sentinels.txt: SEN-09 (MedRec 2016) tests the date-range decision and SEN-10/SEN-11 are identity-generic scope tests, so not every sentinel represents a trust dimension. The sentence as written is fal  → applied (via chapter rewrite)
+- [ch2a:C2A5] §2.3.4 — MedRec (Azaria et al. 2016) is not cited anywhere in the reference list [1]-[81] (grep of built_refs.txt), so the claim that it 'is considered as background' is not borne out by the report. The reword  → applied (via chapter rewrite)
+- [ch2a:C2A6] §2.3.8 — The Figure 3 caption states 'Each study is assigned to the stream of its strongest coded requirement', which is a different (and checkable) rule from 'principal contribution'. The text should use the   → applied (via chapter rewrite)
+- [ch2b:R1] §2.4.3 — The six-forms summary in this paragraph does not match the first-to-sixth enumeration given earlier in the same section and the panel register (registers.txt): Tan [69] is listed twice (contingency pa  → applied (via chapter rewrite)
+- [ch2b:R2] §2.5 — The list of six forms omits the consumer-side delegated threshold of Zhao and Su [50], which the same paragraph discusses and which is class 3 of the ratified register, and splits class 1 (contingency  → applied (via chapter rewrite)
+- [ch2b:R5] §2.4.7 — Factual error: the quadruples {Req 1, 2, 3, 5} of Madine [53] and {Req 1, 4, 5, 6} of Panagoulias [57] are not disjoint; they share Req 1 and Req 5 (Table 9).  → applied (via chapter rewrite)
+- [ch2b:R7] §2.5 — Wrong cross-reference: Section 2.3.6 describes the 1,800-record pool and the tiering but does not report the 8%/2%/1%/74%/69% prevalence figures anywhere (they exist only in the workbook, prisma_count  → applied (via chapter rewrite)
+- [ch2b:R8] §2.5.1 — Broken sentence left over from a later insertion: Equation (1) has five conjuncts but the 'where' clause defines only VI, VA and VP; VT and VL are then defined inside a colon-clause of a different sen  → applied (via chapter rewrite)
+- [ch2b:R9] §2.5.1 — The end of 2.5.1 stacks four short concluding paragraphs ('The proposed research addresses this gap...', 'This formulation represents...', 'The present research therefore establishes...', 'Accordingly  → applied (via chapter rewrite)
+- [ch2b:R10] §2.5.1 — Delete: duplicate of the preceding paragraph after the merge in R9 (its content is carried over there without loss of facts).  → applied (via chapter rewrite)
+- [ch34:R8] §3.3.4 — 'the question' is ambiguous here: the four-dimension wording is in SRQ1 (and Equation 2 gives C = (I, A, P, E)), not in the SRQ4 question above. Without naming SRQ1 the reader sees Equation (2) and Eq  → applied (via chapter rewrite)
+- [ch34:R10] §3.1 — A bracketed list of eight citations attached to six different mechanisms does not let the reader see which reference supports which claim. Splitting by mechanism keeps the same references and matches   → applied (via chapter rewrite)
+- [ch34:R13] §4.6 — Tense contradiction: the paragraph says 'The empirical component will evaluate' although the chapter states that the empirical component has already been delivered (23 tests, live denials). 'comprehen  → applied (via chapter rewrite)
+- [ch34:R14] §4.7 — Internal contradiction: the same section says the empirical component of RO6 has been delivered in the current stage, so it cannot also be what the next stage 'empirically demonstrates'.  → applied (via chapter rewrite)
+- [ch34:R15] §4.5 — Missing article; broken sentence.  → applied (via chapter rewrite)
+- [ch34:R16] §3.3.5 — 'Consequently' does not follow from the preceding sentence about the ACTIVE state; the reservation of VL is a notational remark, not a consequence.  → applied (via chapter rewrite)
+- [ch34:R17] §4.3 — Sections 4.3, 4.4 and 4.5 open with an implementation-status paragraph before the objective is stated, which reads as a later insertion. Swap the two paragraphs so that the objective comes first (R17   → applied (via chapter rewrite)
+- [ch34:R18] §4.3 — Second half of the swap described in R17.  → applied (via chapter rewrite)
+- [ch34:R19] §4.4 — Same ordering problem as R17: the objective statement should precede the implementation note. Swap with R20.  → applied (via chapter rewrite)
+- [ch34:R20] §4.4 — Second half of the swap described in R19.  → applied (via chapter rewrite)
+- [ch34:R21] §4.5 — Same ordering problem as R17: the status paragraph precedes the objective. Swap with R22.  → applied (via chapter rewrite)
+- [ch34:R22] §4.5 — Second half of the swap described in R21.  → applied (via chapter rewrite)
+- [ch34:R23] §3.2 — 'Consequently' does not follow from the previous sentence, and 'formal security assurance forms the subsequent research scope' is imprecise: only the formal component of RO6 remains, as Chapter 4 stat  → applied (via chapter rewrite)
+- [ch5:G4] §5.8 — Typo: 'roleverification' is two words run together.  → applied (via chapter rewrite)
+- [ch5:G5] §5.1.2 — The same paragraph refers to 'SRQ1–SRQ5' two sentences later and Section 5.1.3 uses SRQ throughout; Chapter 3 names the sub-questions SRQ1–SRQ6. Use one label.  → applied (via chapter rewrite)
+- [ch5:G6] §5.1.2 — 'Consequently' is a non sequitur (the figure label does not follow from where lifecycle state is evaluated); the sentence is a 50-word semicolon chain and 'V L(C)' has a stray space. Three notations f  → applied (via chapter rewrite)
+- [ch5:G7] §5.8 — This implementation paragraph opens the section before the conceptual evidence record ER is introduced, and its content (transaction hash and block number in the audit ledger) is repeated in the final  → applied (via chapter rewrite)
+- [ch5:G8] §5.3 — Draft leftover: this two-sentence implementation note opens Section 5.3 before the Model layer and the consent object C have been introduced. Move the two sentences to the end of Section 5.3 (after '.  → applied (via chapter rewrite)
+- [ch5:G9] §5.1.4 — The paragraph is appended after the transitional sentence 'The subsequent sections describe each layer in greater detail...', so the section closes twice. Move it before 'Accordingly, the MVC architec  → applied (via chapter rewrite)
+- [ch6:G3] §6.3.3 — Algorithm 3 body uses g, siga, domain, idC, addrp, addrr, Pu, ts, te, L and burnAuth, none of which are declared in the Require line. Lines 8 and 12 also say 'participant' where the body otherwise use  → applied (via chapter rewrite)
+- [ch6:G4] §6.3.3 — Procedure Step 4 states that the approving participant's identity and authority are verified, possibly via Algorithm 2, before the approval is accepted. Algorithm 3 has no such line; it goes straight   → applied (via chapter rewrite)
+- [ch6:G5] §6.3.3 — Factual: mintConsentV3(address, address, string calldata purpose, uint64, uint64, bytes2, BurnAuth) takes the plaintext purpose; the contract hashes it internally. Section 6.8.1 itself says the plaint  → applied (via chapter rewrite)
+- [ch6:G6] §6.4.3 — The Step 7 conjunction and Algorithm 4 lines 26-27 include the temporal and jurisdictional checks, but the summarising chain omits them; the chain is a leftover of the three-predicate draft.  → applied (via chapter rewrite)
+- [ch6:G7] §6.4.3 — Dangling reference: 'this step' follows two unrelated paragraphs (threshold, purpose) and the reader cannot tell which step is meant; Algorithm 4 line 28 makes clear it is Step 8.  → applied (via chapter rewrite)
+- [ch6:G8] §6.4.3 — Duplicates the paragraph already given in Section 6.3 (fixed threshold, 2-of-2, k-of-n future work). The following sentence 'Consequently, a configurable k-of-n threshold remains an item of future wor  → applied (via chapter rewrite)
+- [ch6:G9] §6.2.2 — The paragraph sits after Step 7 (identity-authority binding) but 'This condition' and 'the four conditions above' refer to the VCvalid conjunction of Step 4, which already carries the same prototype c  → applied (via chapter rewrite)
+- [ch6:G10] §6.5.2 — Orphan sentence (with double spaces in the built text) inserted in the middle of Step 4, between the example about activation and the transition condition. It belongs at the end of Step 3, immediately  → applied (via chapter rewrite)
+- [ch6:G11] §6.5.3 — Single dangling sentence after Figure 15 that still speaks of 'extending the current-stage process', although the paragraph immediately before the figure states that Algorithm 5 is implemented and exe  → applied (via chapter rewrite)
+- [ch6:G12] §6.5 — Internal contradiction within one paragraph: the previous sentence says RO5 'has been realised in the current prototype', yet 'the current stage model' is then described as the three-predicate rule. S  → applied (via chapter rewrite)
+- [ch6:G13] §6.7 — Contradicts Sections 6.1.2 and 6.2.2, which state that VC signature, issuer and validity checks (Algorithm 2 lines 13-16) are not exercised and that the doctor is not authenticated. The sentence overc  → applied (via chapter rewrite)
+- [ch6:G14] §6.7 — The statement that (65) supersedes (64) is made three times in Section 6.7 (before Eq. 64, before Eq. 65 and here). Keep it once; this also removes the semicolon chain.  → applied (via chapter rewrite)
+- [ch6:G15] §6.6.2 — Seven properties are listed in prose but the formal set P, the result set V in Step 17 and Valid(F) contain six; 'temporal consistency' has no P member. Removing it from the prose keeps the three sets  → applied (via chapter rewrite)
+- [ch6:G16] §6.5 — Section 6.8.5 shows only that SA against AU is refused; it does not confirm that the empty-jurisdiction disjunct is unreachable. Note that the disjunct Jur(C) = ∅ does exist in the code (access_servic  → applied (via chapter rewrite)
+- [ch6:G17] §6.6.3 — Lines 2-5 of Algorithm 6 render as 'S ∗ valid', 'S ∗ negative', 'S ∗ adv', apparently a stray \ast in the subscript source; the procedure text uses Svalid, Snegative, Sadv. Check the LaTeX and fix all  → applied (via chapter rewrite)
+- [ch6:G18] §6.1.2 — Jurisdiction validation appears as an unnumbered paragraph wedged between the prototype caveat and Step 7, whereas Algorithm 1 line 13 treats it as a step. Tie it explicitly to Step 6 (or make it a st  → applied (via chapter rewrite)
+- [ch68:R1] §6.8.4 — Eq. (54), (60), (61) and (65) all write the rule as Decision(C, R, t); the chapter drops the t argument although VT(C, t) appears on the right-hand side. Make the signature identical to the equations   → applied (via chapter rewrite)
+- [ch68:R2] §6.8.4 — Eq. (59) defines VL(C, R) = 1 iff Jur(R) = Jur(C) OR Jur(C) = empty. The 'if and only if ... equals' statement contradicts the empty-jurisdiction disjunct of the formal model unless it is scoped to th  → applied (via chapter rewrite)
+- [ch68:R3] §6.8.2 — Internal tension: Figures 27 and 31 show the evaluated consent f050c29a while still ACTIVE ('captured before its revocation'), so the reason given for using a second lifecycle ('cannot be photographed  → applied (via chapter rewrite)
+- [ch68:R4] §6.8.6 — NOT_STARTED is only entered when the mint precedes the Start Time. The Figure 38 lifecycle (SIGN, MINT_SBT, ONCHAIN_MINT, STATE_CHECK, ...) shows no NOT_STARTED period for f050c29a and the Start Time   → applied (via chapter rewrite)
+- [ch789:G6] §7.4 — Chapter 6 defines VP as VU ∧ VS (Eq. (53)); Chapter 7 restates it as the undefined function Policy(C, R) with no link to Eq. (53). Insert the sentence between 'The proposed policy predicate is' and Eq  → applied (via chapter rewrite)
+- [ch789:G12] §8 — Table 15, row 3: the planned paper is 'Formal Security & Lifecycle Analysis' and its topic is 'verification of temporal constraints and state transitions', but the alignment cell points only to Sectio  → applied (via chapter rewrite)
+- [ch789:G21] §9.1 — The current-stage description lists only the RO1–RO4 activities, whereas the paragraph above it, Section 7.5, Section 4.5 and Chapter 1 all state that RO5 was brought forward and is largely complete.   → applied (via chapter rewrite)
+- [global:G2] §2.5 — The tables of Section 2.4 list only the 25 analysed studies and contain nine Req 6 ticks (Albalwy, Hagström, Jaiman, Zhao, Maruthi, Mei, Panagoulias, Phuyal [58], Wu and Zhang). Eleven is correct only  → applied (via chapter rewrite)
+- [global:G4] §3.3.5 — This paragraph about the threshold N = |G| belongs to SRQ3, not to the temporal-validity question, and sits between the (wrong) Equation (10) and Equation (11). Replace it with the temporal statement   → applied (via chapter rewrite)
+- [global:G5] §3.3.3 — Re-homes the misplaced N = |G| note (removed by G4) under SRQ3, immediately after Equation (5), where the threshold is introduced.  → applied (via chapter rewrite)
+- [global:G6] §3.3.3 — The lead-in 'is defined as' is followed by an inserted sentence instead of Equation (4); the two clauses must be swapped so that the equation follows its lead-in.  → applied (via chapter rewrite)
+- [global:G7] §5.3 — Same defect as G6: the lead-in 'can then be represented as' is cut off by an inserted note before Equation (32). Delete the lead-in here and re-insert it after the note (see G8).  → applied (via chapter rewrite)
+- [global:G8] §5.3 — Restores the lead-in of Equation (32) after the inserted note removed from that position by G7.  → applied (via chapter rewrite)
+- [global:G9] §3.3.4 — The note stands in Section 3.3.4 (SRQ4), whose question names policy, purpose and data-scope constraints; the four dimensions listed are those of the SRQ1 question in Section 3.3.1. Without the label   → applied (via chapter rewrite)
+- [global:G10] §3.3.4 — Broken example: 'if a consent authorises access to' is followed by the tuple C = (I, A, P, T, L, E) (Eq. 7) and a definitional paragraph, so the example never states the authorised scope SC before the  → applied (via chapter rewrite)
+- [global:G11] §3.3.4 — Completes the example left incomplete by the insertion of Eq. (7): the authorised scope is otherwise never stated, so Eq. (9) SR ⊈ SC cannot be read from the text (compare the complete example in Sect  → applied (via chapter rewrite)
+- [global:G13] §3.3 — The stated convention is not followed: Sections 5.1.2 and 5.1.3 use SRQ1–SRQ5/SRQ6 (about ten occurrences) while 5.1.2 and 5.11 use RQ1–RQ5 in the same breath. Either rewrite Section 5.1 to RQ or, as   → applied (via chapter rewrite)
+- [global:G14] §6.8.2 — Internal inconsistency: this sentence says the granted-access screenshots come from the second lifecycle (04da25f5), but the caption of Figure 27 states that the ALLOW = PASS decision matrix was captu  → applied (via chapter rewrite)
+- [global:G15] §7.6 — Sections 7.1 to 7.5 open with a 'Status:' line; in 7.6 the line appears only after two paragraphs, which reads as a pasted-in leftover. Delete it here (apply this item before G16) and re-insert it at   → applied (via chapter rewrite)
+- [global:G16] §7.6 — Places the status line first, consistent with Sections 7.1 to 7.5 (apply after G15).  → applied (via chapter rewrite)
+- [global:G17] §9.2 — Leftover of a global replacement of 'CA3' by 'next stage': the article is missing. Same defect recurs in G18–G23.  → applied (via chapter rewrite)
+- [global:G18] §9.2 — Replacement leftover (missing article).  → applied (via chapter rewrite)
+- [global:G19] §9.2 — Replacement leftover (missing article).  → applied (via chapter rewrite)
+- [global:G20] §9.2 — Replacement leftover (missing articles).  → applied (via chapter rewrite)
+- [global:G21] §9.2 — Replacement leftover (missing articles); the preceding sentence 'established during current stage and extend the research' needs 'the current stage' in the same way.  → applied (via chapter rewrite)
+- [global:G22] §4.5 — Replacement leftover (missing article); the preceding sentence 'extends the foundational current stage authorisation model' should read 'current-stage'.  → applied (via chapter rewrite)
+- [global:G23] §9.1 — Replacement leftover; also 'Next stage will extend the current prototype-based evaluation' in 9.2 should read 'The next stage will extend'.  → applied (via chapter rewrite)
+- [global:G24] §2.4 — Figure 4 has a caption but is never referred to in the text (the only occurrence of 'Figure 4' is its caption).  → applied (via chapter rewrite)
+- [global:G25] §6.2.1 — Figure 12 (RO2 workflow) is never referred to in the text; Figures 10, 11 and 16 are, so the omission is inconsistent.  → applied (via chapter rewrite)
+- [global:G26] §6.3.1 — Figure 13 is never referred to in the text.  → applied (via chapter rewrite)
+- [global:G27] §6.4.1 — Figure 14 is never referred to in the text.  → applied (via chapter rewrite)
+- [global:G28] §6.5.1 — Figure 15 is never referred to in the text.  → applied (via chapter rewrite)
+- [global:G29] §6.8.4 — Figure 28 is the only screenshot figure of Section 6.8 with neither a number reference nor an 'as shown in the figure above' sentence.  → applied (via chapter rewrite)
+- [global:G30] §6.8.6 — Figure 35 (lifecycle diagram) is never referred to in the text.  → applied (via chapter rewrite)
+- [global:G31] §Abstract — Two defects in one paragraph. (i) 'these conditions' in the second sentence has no antecedent: the first sentence names participants, not conditions. (ii) The second sentence runs to about 65 words wi  → applied (via chapter rewrite)
+- [global:G33] §References [42] — Export debris: the venue name is truncated at 'Tech'; the DOI prefix ETAACT identifies the conference acronym.  → applied (via chapter rewrite)
+- [global:G34] §References [1]–[81] — Mixed bibliographic style in one list: entries [1]–[34] give full first names, volume(issue):pages and no DOI (BibTeX plain style), whereas [35]–[81] give initials, mostly no volume or pages, and a DO  → applied (via chapter rewrite)
+
+## STYLE — machine-sounding passages rewritten in the author's voice (applied; shown in pink)
+
+- [ch1:S1] §1.2 — One 60-word sentence with three chained clauses and an embedded citation block; the inserted clause after 'and even where' is clearly a later addition. Split in
+- [ch1:S2] §1.3 — Opening sentence is about 55 words with a long parenthetical aside and the participle 'encompassing'; 'by contrast' is not in the author's register. Same facts 
+- [ch1:S3] §1.3 — Single 60-word definitional sentence; the author writes one idea per sentence. Meaning unchanged.
+- [ch1:S4] §1.3 — The two inserted qualifiers ('defined by the patient in the consent object', 'rather than only at registration or in an emergency') stretch the sentence to 45 w
+- [ch1:S5] §1.3 — 'not only ... but' construction, which the author does not use.
+- [ch1:S6] §1.3 — Roadmap is one 70-word comma-chained sentence, a typical machine pattern. Also adds Appendix A, which the Contents lists but the roadmap omits. Chapter descript
+- [ch1:S7] §1.3 — 55-word sentence with three independent clauses joined by commas. Split; facts consistent with Sections 6.8.3, 7.3 and 9.2 (N-of-N, synthetic data, formal proof
+- [ch2a:C2A11] §2.3.1 — 'not only ... but also' is not used by the author; two plain sentences carry the same content.
+- [ch2a:C2A12] §2.1 — 'not simply ... but' contrast and a 45-word sentence; the author opens with 'The purpose of ... is to' and uses one idea per sentence.
+- [ch2a:C2A13] §2.1 — 'This fragmentation creates an important distinction between X and Y' is a machine-style abstraction; the author states the point directly and uses 'In this con
+- [ch2a:C2A14] §2.2.1 — Rhetorical triad 'who is asking, for what purpose and at what time' reads as machine prose; the author would name the three conditions plainly.
+- [ch2a:C2A15] §2.2.3 — 'click an approval button' is colloquial and out of register with the author's formal prose.
+- [ch2a:C2A16] §2.2.4 — 'not by ... but by' contrast in a 44-word sentence; split into three short sentences with the same citation.
+- [ch2a:C2A17] §2.3.2 — 'operationalises' and the packed sentence are machine-flavoured, and the following 'Therefore, the review focused ...' does not follow from the preceding senten
+- [ch2a:C2A18] §2.3.3 — Semicolon chain in a 48-word sentence; the author uses short sentences. Fact verified: searchlog.txt IEEE-S1 to IEEE-S8 'NOT EXECUTED ... declared deviation D-1
+- [ch2a:C2A19] §2.3.4 — Semicolon and a 55-word sentence. Facts verified against searchlog.txt (SCOPUS v1/v2 SUBJAREA COMP; PROQ 'Anywhere' run rejected).
+- [ch2a:C2A20] §2.3.4 — One 47-word list sentence with an embedded relative clause; the author would give one database per sentence. All counts verified against searchlog.txt and prism
+- [ch2a:C2A21] §2.3.4 — The paragraph contains a 75-word sentence built as a semicolon chain ('in five of the eight cases ...; one sentinel lacks ...; one is the 2016 ...; and for one 
+- [ch2a:C2A22] §2.3.5 — Two semicolon constructions and a colon-introduced list inside one sentence; the author writes these as separate sentences. Facts unchanged (agentlog.txt D-008:
+- [ch2a:C2A23] §2.3.6 — A 58-word sentence with a semicolon; three short sentences say the same. Rule verified against agentlog.txt D-033.
+- [ch2a:C2A24] §2.3.6 — The paragraph is two very long sentences (the second is a colon plus a five-clause semicolon chain of arithmetic). All numbers are retained and verified against
+- [ch2a:C2A25] §2.3.7 — Semicolon joining two independent statements; split. Definition verified against codebook.txt T3.
+- [ch2a:C2A26] §2.3.7 — Semicolon; split into two sentences (codebook.txt Req6 wording).
+- [ch2a:C2A27] §2.3.7 — Semicolon; split. This also removes the second consecutive 'It should be noted that' opener in the same paragraph if the preceding one is kept.
+- [ch2a:C2A28] §2.3.7 — Semicolon; split. Core rule in the same paragraph verified verbatim against agentlog.txt D-166 (CORE iff Gap_Impact in {CONTRADICTS, WEAKENS, NARROWS} or T3 in 
+- [ch2a:C2A29] §2.3.7 — The second sentence of this paragraph is 93 words long and lists six members in one breath; a later sentence uses a semicolon. Rewritten one role per sentence, 
+- [ch2b:S1] §2.4 — One 75-word sentence with an embedded legend; the author writes one idea per sentence. The remainder ('√ denotes that ... Section 2.3.') follows unchanged.
+- [ch2b:S2] §2.4.1 — Opens with 'Taken together' (not in the author's vocabulary), uses colon asides and a 50-word sentence with 'not here but in'. Rewritten in short declarative se
+- [ch2b:S3] §2.4.2 — 'importantly for Req 2' inserted as an aside is a machine-style emphasis; the author does not use 'importantly' as a connective.
+- [ch2b:S4] §2.4.2 — 'equally precise' followed by a colon list is an AI flourish; the author states limitations plainly.
+- [ch2b:S5] §2.4.2 — 'In summary' opener and two sentences over 45 words with stacked clauses; split into the author's medium sentences. Facts, counts (10 T2 Yes, 8 elsewhere) and c
+- [ch2b:S6] §2.4.3 — 'Moreover' is not used by the author; 'In addition' is.
+- [ch2b:S7] §2.4.3 — An 80-word sentence built from six semicolon-separated clauses with 'it is defeasible' as a nominal aside; the first part is split into two sentences. The rest 
+- [ch2b:S8] §2.4.4 — Three sentences over 45 words, two 'namely' constructions and colon-introduced lists; rewritten as short sentences. All counts (16/22/6, seven of 44) and citati
+- [ch2b:S9] §2.4.5 — 'not merely ... but' contrast is a machine-style pattern the author does not use.
+- [ch2b:S10] §2.4.6 — Colon-introduced triad, 'Conversely', semicolon chain of three parallel clauses and 'self-declare'; rewritten as plain sentences with the same counts (4 of 25, 
+- [ch2b:S11] §2.4.6 — 'The meaning of evaluation in the corpus is instructive' and 'The pattern, described by the panel as ..., is the dominant form of evidence' are essayistic flour
+- [ch2b:S12] §2.4.7 — A 60-word 'from ... to ...' enumeration and a 55-word semicolon chain; split into one-idea sentences. Author's opening sentence retained verbatim.
+- [ch2b:S13] §2.4.7 — Semicolon triad ('...prove nothing; ...; and ...') and a closing 'namely' clause; the author's own sentence ('A blockchain record does not establish ...') is ke
+- [ch2b:S14] §2.4.7 — 'Rather, it lies in ...' and the cleft 'It is this integrated position ... that no reviewed study occupies' are rhetorical closers; rewritten plainly with the s
+- [ch2b:S15] §2.5 — The section opens with two overlapping topic sentences from different drafts (this one and the next, 'This section synthesises the review of the 44 primary stud
+- [ch2b:S16] §2.5 — Delete: duplicate of the merged opening sentence in S15.
+- [ch2b:S17] §2.5 — 'imposes on the framing' is a stylised phrasing; the author's habitual 'It should be noted that' fits here.
+- [ch2b:S18] §2.5 — Opens with 'Taken together' and contains a three-part semicolon sentence describing the framework; rewritten with 'Therefore' and short sentences. Same citation
+- [ch2b:S19] §2.6 — Two sentences of 60+ words built from semicolon chains; split. Also carries the corrected six-class list (see R1/R2) so that 2.6 matches 2.4.3 and 2.5.
+- [ch34:S1] §3.4 — Machine-sounding: 'robust', 'fosters', 'culminating in comprehensive', capitalised phrase chain; the last sentence ('links the user-facing interaction directly 
+- [ch34:S2] §3.4 — Semicolon plus 'rather' construction; split into two sentences as the author does.
+- [ch34:S3] §3.3.6 — 'not only ... but also' and a closing flourish; rewritten as short sentences.
+- [ch34:S4] §3.3.4 — 'not only ... but also' is not in the author's register.
+- [ch34:S5] §3.3.6 — 'not only ... but also'.
+- [ch34:S6] §4.6 — 'not only ... but also'.
+- [ch34:S7] §3.4 — Five-item rhetorical list ('explicitly represented, independently evaluated, jointly enforced, formally reasoned about, and empirically validated') and 'Rather'
+- [ch34:S8] §3.1 — 'coordinated satisfaction of multiple independently verifiable conditions', 'emergent property' and the 'not as ... but as' contrast read as machine-written; re
+- [ch34:S9] §3.3.3 — 'More fundamentally' opener and a 36-word nominal sentence; split.
+- [ch34:S10] §3.3.1 — 'not merely by ... but by' contrast; rewritten as separate sentences.
+- [ch34:S11] §3.1 — Semicolon chain in a 44-word sentence; split into two sentences.
+- [ch34:S12] §4.7 — 'Rather, ... emerging from', 'coherent', 'ultimately validated' read as machine-written; rewritten keeping the equation lead-in unchanged.
+- [ch34:S13] §3.4 — 'coherent', 'Instead, they constitute' phrasing; rewritten plainly.
+- [ch5:G15] §5.1 — One 85-word semicolon-chained sentence; machine-written cadence. Same facts, split into medium sentences in the author's voice.
+- [ch5:G16] §5.1.1 — Single 70-word sentence with a semicolon and stacked appositives. Rewritten as three plain sentences with the same content.
+- [ch5:G17] §5.2 — One 95-word sentence describing seven steps; reads as generated. Same steps, one idea per sentence (and see G3 for its placement).
+- [ch5:G18] §5.1 — Original is a 62-word sentence with nested 'because ... and because ... which is necessary for'. Replace the whole sentence (through '...any particular user int
+- [ch5:G19] §5.3 — Semicolon-chained 60-word sentence followed by short generated-sounding sentences. Citations checked against studies_brief and Section 2.4 (contingency [53], wi
+- [ch5:G20] §5.11 — 55-word sentence with 'not X, which..., but Y, and Z' structure. Same claim and citations, reordered numerically.
+- [ch5:G21] §5.9 — Nested 40-word sentence; the author's original closed this paragraph with a single short 'These properties can be summarised as shown in Table 5.' Rewritten in 
+- [ch5:G22] §5.1.2 — 'not only ... but also' is not used by the author.
+- [ch5:G23] §5.2 — 'Importantly' opener plus 'not only ... but also'; split into two plain sentences.
+- [ch5:G24] §5.2 — 'Importantly' sentence opener (the author's own text uses it once in 5.10; that instance is left as is, the added ones are replaced).
+- [ch5:G25] §5.1 — 'This is important because wallet-held signing keys ... are deferred' is a non sequitur connector, and the closing 45-word sentence chains three clauses. Wordin
+- [ch5:G26] §5.8 — 48-word chained sentence; split into three. See G7 for the duplicated content with the opening paragraph of 5.8.
+- [ch6:G23] §6.3 — Two 50-word sentences with nested clauses and a parenthetical 'while a direct generalisation'; the author writes one idea per sentence and enumerates with First
+- [ch6:G24] §6.3.1 — Dense nominal stack and appositive ending 'a substitution acknowledged as a prototype limitation' read as machine-written; split into plain sentences.
+- [ch6:G25] §6.1.1 — Semicolon chain of three clauses and a 'Whereas ..., ...' opener; author uses short declarative sentences.
+- [ch6:G26] §6.1.2 — Replace the whole sentence beginning 'The identifier is not supplied by any participant:'. Colon-linked clause; the author does not use this construction. The f
+- [ch6:G27] §6.1.2 — 'not only ... but also' is absent from the author's prose.
+- [ch6:G28] §6.1.2 — 'serves not merely as ... but as' closing flourish.
+- [ch6:G29] §6.3.2 — 'Importantly' is not used by the author; 'It should be noted that' is.
+- [ch6:G30] §6.4.3 — Semicolon chain and 'pipeline'; also this proof statement is repeated after Step 11 ('A formal proof that no execution path can violate the privacy policy is, h
+- [ch6:G31] §6.4.3 — 'transforms ... from ... into' closing flourish with a seven-item list in one 40-word sentence.
+- [ch6:G32] §6.5 — Semicolon chain; three ideas in one sentence.
+- [ch6:G33] §6.5 — 'it is precisely this check that' is a cleft emphasis the author does not use.
+- [ch6:G34] §6.5.2 — Replace the whole sentence beginning 'The lifecycle validation mechanism can therefore be interpreted as a per-request validity layer:'. Colon-linked explanatio
+- [ch6:G35] §6.6 — Replace the whole sentence ending 'all of which are presented in Section 6.8.' (mid-paragraph). One 60-word sentence with a five-item enumeration; author writes
+- [ch6:G36] §6.6 — 'actually', semicolon chain and 'of which' subordinate clause.
+- [ch6:G37] §6.6.2 — 'not only ... but also'.
+- [ch6:G38] §6.6.2 — 'not merely ... but' flourish closing the section.
+- [ch6:G39] §6.4.2 — 'not only ... but also'.
+- [ch68:S1] §6.8 — The original sentence runs to about 45 words with a nested definitional aside; the author writes one idea per sentence. The replacement covers the whole sentenc
+- [ch68:S2] §6.8 — The second sentence of the paragraph is a 60-word chain ('..., and the resulting ..., so the conceptual ...'). Split into the author's short declarative sentenc
+- [ch68:S3] §6.8.1 — Three semicolon-joined sentences and a 50-word closing sentence with 'whereas'. Rewritten as plain single-idea sentences; all facts unchanged.
+- [ch68:S4] §6.8.2 — One 70-word sentence enumerating six components. The author's style is one idea per sentence.
+- [ch68:S5] §6.8.2 — Two long sentences with multi-item parentheticals. Rewritten in short sentences; also incorporates the R3 correction of the reason for the second lifecycle. Fac
+- [ch68:S6] §6.8.3 — Two 40-word sentences with relative-clause chains. Split into the author's shorter sentences.
+- [ch68:S7] §6.8.3 — Semicolon chain and the words 'ceremony' and 'instantiation', which the author does not use. Replacement covers the sentence through 'Eq. (49).'
+- [ch68:S8] §6.8.4 — A 55-word sentence with two 'whose' clauses and a semicolon. Replacement covers the sentence through 'does not exceed the expiry.'
+- [ch68:S9] §6.8.4 — Semicolon chain with a trailing 'so' clause. Replacement covers the sentence through 'rather than assumed.'
+- [ch68:S10] §6.8.5 — 'not only ... but also' is a construction the author does not use.
+- [ch68:S11] §6.8.6 — A 75-word sentence that cites 'Section 6.5' twice and uses a colon chain. Split into short sentences; adopts the R4 state list (adjust NOT_STARTED per the ledge
+- [ch68:S12] §6.8.6 — A 60-word sentence with an embedded relative clause and a trailing 'because' clause.
+- [ch68:S13] §6.8.7 — Colon chain and 'namely', which the author rarely uses.
+- [ch68:S14] §6.8.7 — 'not only ... but also' plus a 50-word sentence.
+- [ch68:S15] §6.8.9 — An 80-word semicolon chain. Replacement covers the sentence through 'reported and skipped.'
+- [ch68:S16] §6.8.9 — Colon chain with a parenthetical of two items. Replacement covers the sentence through '(token #1 revoked, token #2 not revoked).'
+- [ch68:S17] §6.8.11 — 'Taken together' is on the author's never-used list.
+- [ch68:S18] §6.8.11 — Semicolon chain and a 40-word compound sentence; rewritten one idea per sentence.
+- [ch68:S19] §6.8.11 — Dense nominal stack in a 35-word sentence followed by a 35-word participial sentence; rewritten in the author's plainer form.
+- [ch789:G23] §7.1 — 45-word sentence with a bracketed list of five citations used to make one point, which the author does not do. Split and attach the citations to what each study
+- [ch789:G24] §7.3 — Semicolon chain and a 48-word sentence; the author writes one idea per sentence.
+- [ch789:G25] §7.4 — One 70-word sentence joined by a semicolon and 'while'. Split into four plain sentences; facts and section references unchanged.
+- [ch789:G26] §7.5 — The paragraph contains two sentences of 45 and 75 words with colon and comma chains, which reads as machine-written. Rewritten into short sentences; all facts (
+- [ch789:G27] §7.6 — Colon-list sentences and the closing 'In summary', which the author does not use. Rewritten as plain sentences; content and cross-reference to Chapter 9 unchang
+- [ch789:G28] §9.1 — Two sentences of 50 and 60 words, one with a colon and a 'namely' list. Rewritten into short sentences; addresses, blocks and token numbers unchanged and verifi
+- [ch789:G29] §9.2 — Colon-list and 'namely' construction; a 40-word closing sentence. Rewritten in the author's voice with the same content.
+- [ch789:G30] §9.2 — 50-word sentence; split at the second 'and will'.
+- [ch789:G31] §9.2 — 55-word sentence carrying an inline formula and two clauses; the author states one idea per sentence.
+- [ch789:G32] §9.2 — Two long sentences built on parenthetical asides with three items each, which the author does not use. Rewritten as plain sentences; facts unchanged.
+- [long_ch2:L1] §2.2.4 — over-long sentence (heading or caption merged in the extraction; current is the sentence itself)
+- [long_ch2:L3] §2.3.4 — over-long sentence
+- [long_ch2:L4] §2.3.4 — over-long sentence
+- [long_ch2:L5] §2.3.6 — over-long sentence
+- [long_ch2:L6] §2.3.6 — over-long sentence (heading or caption merged in the extraction; current is the sentence itself)
+- [long_ch2:L7] §2.3.6 — over-long sentence
+- [long_ch2:L8] §2.3.7 — over-long sentence
+- [long_ch2:L9] §2.3.7 — over-long sentence
+- [long_ch2:L10] §2.3.7 — over-long sentence
+- [long_ch2:L15] §2.4.1 — over-long sentence (heading or caption merged in the extraction; current is the sentence itself)
+- [long_ch2:L16] §2.4.1 — over-long sentence
+- [long_ch2:L17] §2.4.1 — over-long sentence
+- [long_ch2:L20] §2.4.2 — over-long sentence
+- [long_ch2:L21] §2.4.2 — over-long sentence
+- [long_ch2:L22] §2.4.2 — over-long sentence
+- [long_ch2:L23] §2.4.2 — over-long sentence
+- [long_ch2:L26] §2.4.3 — over-long sentence
+- [long_ch2:L27] §2.4.3 — over-long sentence
+- [long_ch2:L28] §2.4.3 — over-long sentence
+- [long_ch2:L29] §2.4.3 — over-long sentence
+- [long_ch2:L30] §2.4.3 — over-long sentence
+- [long_ch2:L31] §2.4.3 — over-long sentence
+- [long_ch2:L32] §2.4.3 — over-long sentence
+- [long_ch2:L41] §2.4.4 — over-long sentence
+- [long_ch2:L42] §2.4.4 — over-long sentence
+- [long_ch2:L47] §2.4.5 — over-long sentence
+- [long_ch2:L48] §2.4.5 — over-long sentence
+- [long_ch2:L49] §2.4.5 — over-long sentence
+- [long_ch2:L50] §2.4.5 — over-long sentence (full sentence; the listing cut it at 'Madine et al.')
+- [long_ch2:L51] §2.4.5 — over-long sentence
+- [long_ch2:L56] §2.4.6 — over-long sentence
+- [long_ch2:L57] §2.4.6 — over-long sentence
+- [long_ch2:L58] §2.4.6 — over-long sentence
+- [long_ch2:L59] §2.4.6 — over-long sentence
+- [long_ch2:L64] §2.4.7 — over-long sentence
+- [long_ch2:L65] §2.4.7 — over-long sentence
+- [long_ch2:L66] §2.4.7 — over-long sentence
+- [long_ch2:L67] §2.5 — over-long sentence
+- [long_ch2:L68] §2.5.1 — over-long sentence
+- [long_ch2:L69] §2.5.1 — over-long sentence
+- [long_ch2:L71] §2.5.1 — over-long sentence
+- [long_ch2:L72] §2.6 — over-long sentence
+- [long_ch2:L73] §2.6 — over-long sentence
+- [long_other:M1] §front — over-long sentence
+- [long_other:M2] §front — over-long sentence
+- [long_other:M3] §ch1 — over-long sentence
+- [long_other:M4] §ch1 — over-long sentence
+- [long_other:M5] §ch1 — over-long sentence
+- [long_other:M6] §ch1 — over-long sentence
+- [long_other:M7] §ch1 — over-long sentence (the page number 12 printed inside this sentence in the built text is a page-break artefact and is not part of the sentence)
+- [long_other:M8] §ch3 — over-long sentence
+- [long_other:M9] §ch3 — over-long sentence; keep the displayed Equation (2) and its number exactly as typeset and change only the surrounding prose
+- [long_other:M10] §ch4 — over-long sentence; keep the displayed Equation (24) exactly as typeset and split only the where-clause (the page number 87 printed inside this sentence in the 
+- [long_other:M11] §ch5 — over-long sentence
+- [long_other:M12] §ch5 — over-long sentence (the page number 91 printed inside this sentence in the built text is a page-break artefact)
+- [long_other:M13] §ch5 — over-long sentence with a semicolon chain (the page number 92 printed inside this sentence in the built text is a page-break artefact)
+- [long_other:M14] §ch5 — over-long sentence; keep the displayed Equation (30) exactly as typeset and split only the where-clause
+- [long_other:M15] §ch5 — over-long sentence (the sentence follows Equation (32); the page number 99 printed inside it in the built text is a page-break artefact)
+- [long_other:M16] §ch5 — over-long sentence
+- [long_other:M17] §ch6 — over-long sentence; keep the displayed conjunction exactly as typeset and change only the where-clause
+- [long_other:M18] §ch6 — over-long sentence; keep the displayed Equation (59) exactly as typeset and change only the surrounding prose
+- [long_other:M19] §ch6 — over-long sentence with a semicolon chain (the sentence follows Equation (61))
+- [long_other:M20] §ch68 — over-long sentence
+- [long_other:M21] §ch68 — over-long sentence; keep the displayed tuple C = (I, A, P, T, L, E) exactly as typeset and split only the where-clause
+- [long_other:M22] §ch68 — over-long sentence
+- [long_other:M23] §ch68 — over-long sentence
+- [long_other:M24] §ch68 — over-long sentence with a 'not only ... but also' construction (the sentence follows the displayed chain of evidence, which is left unchanged)
+- [long_other:M25] §ch68 — over-long sentence with a semicolon chain
+- [long_other:M26] §ch68 — over-long sentence
+- [long_other:M27] §ch7 — over-long sentence
+- [long_other:M28] §ch9 — over-long sentence
+- [long_other:M29] §ch9 — over-long sentence
 
 ## GREEN / KEEP — cosmetic or optional; left as is
 
-- [ch1:F4] §Title page — The report is to be submitted at the end of September 2026; the title-page date should match the submission month (author to confirm the exact month required by the CA2 timetable).
-- [ch1:F5] §1.3 — The abstract and Section 1.3 refer to 'the consent object' but Chapter 1 never introduces the notation C = (I, A, P, T, L, E) used throughout Chapters 3 to 7.
-- [ch1:F6] §1.3 — An examiner expects the introduction to state the contributions explicitly; Chapter 1 currently states motivation and scope but no contribution statement.
-- [ch1:F7] §1.1 — The cited works cover blockchain surveys and DID/VC, but none of them addresses policy-based access control, which [28] (blockchain access control in healthcare) and [25] (RBAC/ABAC/context-aware acce
-- [ch1:F8] §1.1 — [9] is a nursing survey on confidentiality and care coordination and does not discuss guardians or institutional authorities in authorisation decisions; [31] (paediatric guardian access) supports the 
-- [ch1:F9] §Abstract — Chapter 7 grades RO5 as 'Largely Completed' (modification and delegation outstanding), which the abstract itself acknowledges in its final sentence; the wording should match Chapter 7.
-- [ch1:F10] §Contents — A thesis-style report with forty figures and fifteen tables is expected to carry lists of figures and tables; this is a front-matter addition rather than a sentence.
-- [ch2a:A14] §2.2.2 — The statement that DIDs and VCs enable identification without a central identity provider is a technical claim that the DID/VC survey [20] and the SSI review [16] directly support.
-- [ch2a:A15] §2.1 — The overview never states the size or the period of the corpus, so a reader of 2.1 does not learn until 2.3 that the chapter rests on 44 PRISMA-selected studies rather than on the background reference
-- [ch2a:A16] §2.3.8 (Figure 3 caption) — Section 2.3.8 and the 2.4 introduction say a study is placed in the stream of its principal contribution, whereas the caption says strongest coded requirement; the two rules are not identical (e.g. S1
-- [ch2a:A17] §2.3.1 — No version 'v1.1' of the protocol is recorded in the workbook files (searchlog, codebook, decision log); the version label cannot be traced and adds nothing.
-- [ch2a:A18] §2.3.3 — The printed master query is wrapped in an extra pair of double quotation marks (opening before the first parenthesis and closing after the last), which is not part of the string executed in IEEE Xplor
-- [ch2a:A19] §2.2.1–2.2.6 — The six sub-headings of 2.2 write 'Req: 1' to 'Req: 6' with a colon, whereas the rest of the chapter, Table 2 and Tables 3 to 9 write 'Req 1'; the same change applies to the other five headings.
-- [ch2b:B16] §2.4.7 — Gap 5 lists five studies with decision-time temporal enforcement; the comparative analysis lists three, which is inconsistent though not wrong.
-- [ch2b:B17] §2.6 — C = (I, A, P, T, L, E) has six components and Chapter 3 places the active or revoked state inside E; listing lifecycle state as a separate component gives eight items for a six-tuple.
-- [ch2b:B18] §2.5.1 — Section 2.6 and Chapter 3 call them sub-research questions (SRQ1 to SRQ6); apply the same change to RQ2 to RQ6 in Gaps 2 to 6 if the SRQ label is the one retained in Chapter 3.
-- [ch2b:B19] §2.4 — [17] (Li et al. 2026) is a TEE-enabled, Byzantine-resilient blockchain consensus paper for smart agriculture; 'data integrity' is a loose description of what it contributes.
-- [ch2b:B20] §2.4.3 — The paragraph above says the panel recorded Al Amin [38] as a candidate class only, so listing it inside one of the six ratified forms without qualification is mildly inconsistent.
-- [ch34:F13] §3.3.5 — Equation (17) names conceptual stages that differ from the six implemented states listed in Section 6.5.2; a mapping sentence prevents the examiner reading them as two different state machines.
-- [ch34:F14] §3.4 — Equation (29) is only defined later in Section 4.7, so the forward reference should say where it is.
-- [ch34:F15] §3.3 — Section 2.5.1 already refers to 'research question RQ1 of Chapter 3' etc., so the abbreviation is used before this sentence introduces it.
-- [ch34:F16] §4.3 — Sections 4.3 to 4.6 each open with an implementation-status paragraph before the objective itself is stated; the lead-in signals that the paragraph is a status note so the ordering reads as deliberate
-- [ch5:C12] §5.1 — The threshold itself is defined in Eq. (33)/(37) of Sections 5.2 and 5.3, Section 5.6 defines the verified approval set, and the EIP-712 verification is in Section 6.8.3, so the cross-references shoul
-- [ch5:C13] §5.1.2 — The preceding paragraph already states that lifecycle validity and revocation are evaluated within VA; the repetition in consecutive paragraphs reads as duplicated text.
-- [ch5:C14] §5.8 — Missing hyphen/space in 'roleverification' (verify in the source, since it may be a layout artefact).
-- [ch5:C15] §5.1.1 — The text later says the Controller 'is decomposed into six principal security functions'; the author should confirm that the Figure 7 image actually shows eight Controller functions, otherwise the cla
-- [ch5:C17] §5.4 — The View section never states how the View layer is realised in the prototype, whereas Sections 5.1 and 5.3 now link the Model and Controller to Section 6.8; the mapping is needed for consistency with
-- [ch5:C18] §5.9 — The architectural security properties are never linked to an evaluation criterion; Section 6.8.9 reports 23 automated tests covering per-dimension failures, and the link is what an examiner expects be
-- [ch6:C6-19] §6.4 — Eq. (59) uses VT and VL before they are defined (Eqs. (63) and (64)); a forward reference is needed.
-- [ch6:C6-20] §6.2.2 — 'This condition' has no clear referent because the paragraph is placed after Step 7 while 'the four conditions above' belong to Step 4.
-- [ch6:C6-21] §6.4.2 — Section 6.4.2 opens directly with the listing and reverses the procedure-then-algorithm order used in 6.1–6.3 and 6.5; a one-sentence lead-in removes the abrupt start.
-- [ch6:C6-22] §6.6.2 — Subscripts T and L collide with the temporal (T) and jurisdictional (L) components of C used throughout the chapter; N (threshold) and Q (lifecycle transition q) avoid the clash.
-- [ch6:C6-23] §6.4.3 — This paragraph repeats the RO3 statement of Section 6.3 inside the RO4 procedure without a cross-reference.
-- [ch6:C6-24] §6.1.1 — The component A of C is named the authorisation component elsewhere in Section 6.1; 'authority' is the RO2 notion.
-- [ch68:C5] §6.8.5 — The negative demonstration depends on a self-declared jurisdiction; stating the limitation where the evidence is presented pre-empts the obvious examiner objection (the limitation currently appears on
-- [ch68:C6] §6.8.11 — The blue VI sentence follows the performance paragraph, so 'in the same way' has no antecedent and reads as an insertion; the content itself is consistent with Section 7.2.
-- [ch68:C7] §6.8.9 — Chapter 5 states that 'the independent verifier verify_poc [is] described in Section 6.8', but Section 6.8 never names the tool, so the forward reference cannot be resolved by the reader.
-- [ch68:C8] §6.8 (introduction) — Figure 8 (trust-predicate evaluation), cited in the same sentence, is in Section 5.1.2, not in Chapter 6.
-- [ch68:C9] §6.8.4 — 'This section' is ambiguous (6.8.4 versus 6.8); Chapter 7 already cites Section 6.8.11 for the same limitation.
-- [ch68:C10] §6.8.6 — Section 6.1 defines E as authorisation evidence and Table 14 labels the row 'Authorisation Evidence / Revocation (E)'; 'Enforcement State Management' is a name used nowhere else.
-- [ch68:C11] §6.8.10 — The colon introduces nothing (a page break and then the Table 14 sentence follow), leaving a dangling sentence.
-- [ch68:C12] §7.4 (consistency with 6.8) — Section 6.8.4 states the non-empty-subset rule but shows no over-scope request being refused, so 'demonstrated' overstates what 6.8 presents (fix belongs to the Chapter 7 reviewer).
-- [ch68:C13] §6.8.1 — Optional: [28] (Tawfik et al., blockchain-based access control survey) supports the traceability role; the chapter's only citation, [20] for DIDs, is correct and sufficient otherwise.
-- [ch68:C14] §6.8.4 — Figure 28 reproduces Figure 8; making the repetition explicit avoids the impression of a new artefact (an examiner may prefer a cross-reference to a repeated figure).
-- [ch789:F10] §7.1 — The five studies are exactly the Req 1 = Yes evaluable consent objects of Chapter 2 and none has a guardian set or threshold, so the citation is correct; however [44], [58] and [66] already carry vali
-- [ch789:F11] §9.2 — Eq. (81) drops the time argument that Eq. (80), Eq. (59) and Eq. (65) carry, although the sentence that follows explicitly includes the temporal condition; the numbered equation should match the imple
-- [ch789:F12] §7.2 — The N-of-N limitation is stated in full both here (RO2 section) and at the end of Section 7.3; the RO2 section should only cross-refer, since the limitation belongs to RO3.
-- [ch789:F13] §7.1 — The component-by-component description of C omits T and L, which are then explained in a detached sentence after the paragraph's concluding statement; moving that sentence here keeps the six component
-- [ch789:F14] §7.1 — Dangling sentence after the section's concluding statement; it becomes redundant once F13 is applied (apply only together with F13).
-- [ch789:F15] §8 — The third planned paper is titled Formal Security and Lifecycle Analysis, but its thesis alignment names only Section 6.6; lifecycle trust is defined in Section 6.5.
-- [ch789:F16] §9.2 Table 16 — 'Benchmark datasets' is not an outcome planned anywhere else in the report (all evaluation uses synthetic records), whereas the performance metrics listed in the preceding paragraph are not reflected 
-- [ch789:F17] §9.2 — Table 16 lists the lifecycle extensions first, whereas the text schedules them last; a one-clause acknowledgement prevents an examiner reading the table order as the timeline.
-- [ch789:F18] §Appendix A — Caption is placed below the table whereas Tables 10 to 16 carry their captions above; move the caption above the table for consistency (text unchanged).
-- [ch789:F21] §8 — The publication plan describes the first paper as 'Almost Ready' while Chapter 7 records prototype limitations; a sentence tying the paper's claims to those limitations pre-empts an examiner's concern
-- [ch789:F22] §9.2 — Checked against S_full.txt: [13] (Khalid et al., dynamic consent management with decentralised controllers) and [24] (Narkhede et al., dynamic and granular consent frameworks) both support the phrase;
-- [global:G22] §1.3 — Section 1.3 opens with 'has also been extended' before the four foundational dimensions have been introduced, and the same RO5 content is repeated later in the section ('In addition, trust cannot be r
-- [global:G23] §3.2, 4.3-4.6, 5.1.1, 5.3 — In each of these sections the prototype status is stated before the research question, objective or model it refers to has been introduced, so the opening paragraph reads as an orphan ('therefore', 't
-- [global:G24] §2.3.1 / 2.3.6 / 2.3.7 / 2.4.6 — 'PRISMA 2020 master workbook' is a recognised way of describing the spreadsheet in which PRISMA screening records are kept and does not read as tooling; the repeated 'workbook requirements Req1 to Req
-- [global:G25] §2.4 / 2.4.3 — [34] is the PRISMA 2020 statement, not a background survey; the same range appears in 2.4.3 ('based on the background corpus [1]–[34]') and should also read [1]–[33].
-- [refs:F20] §References — Stray space inside a hyphenated initial (IEEE export artefact).
-- [refs:F21] §References — The visible inconsistencies between the blocks are: DOI present only in [35]–[81]; full given names in [1]–[34] versus initials in [35]–[81]; volume/issue/pages present in [1]–[34] but absent from alm
-- [refs:F22] §References — Mixed title-case and sentence-case titles are the most visible stylistic inconsistency in the list, but each title is copied as published and the fix is optional.
-- [refs:F23] §References — A series name without a conference or volume does not let a reader locate the paper without the DOI; the DOI mitigates this, so the fix is optional.
-- [refs:F24] §2.3 — The list is alphabetical within [1]–[34] and again within [35]–[81] with [34] (Page et al., PRISMA) appended out of order and [64] and [68] misfiled; a numbered list ordered this way is unusual but ha
+- [ch1:F2] §Abstract — Sentence of about 55 words with an en-dashed compound; the author writes 'MVC' elsewhere. Facts and predicate names unchanged.
+- [ch1:F3] §Abstract — Split one long evidence sentence into two; 'evidenced by' as a trailing participial clause reads machine-written. Numbers verified against Sections 6.8.9 and 7.6 (23 tests).
+- [ch1:F6] §1.3 — 'The Multi-Party Patient Consent research' reads as a leftover label; the author uses 'the proposed research' / 'the proposed framework' throughout. Cosmetic.
+- [ch1:S8] §1.3 — Three-part triad in one sentence; mild. Optional split.
+- [ch1:S9] §1.3 — Optional split of a 38-word sentence; reads acceptably as is.
+- [ch1:S10] §Abstract — Colon-introduced 60-word list; acceptable for an abstract, so KEEP. Optional split offered.
+- [ch2a:C2A7] §2.3.1 — The label 'Protocol v1.1' could not be traced in agentlog.txt, searchlog.txt or codebook.txt (the log refers only to 'Protocol §13', '§27', 'README v1.2'). If the protocol document does carry version 
+- [ch2a:C2A8] §2.1 — S_full.txt: [2], [3], [7], [26] and [30] are blockchain/data-governance surveys, none of them is 'multi-party trust research' ([30] is a smart-city environmental-data review, weakly related). The cita
+- [ch2a:C2A9] §2.3.8 — Layout only. Table 2 content was checked row by row against studies_brief.txt and elite.txt: all 44 labels S1-S44, reference numbers [35]-[78], streams (Req 1-6) and Role values (25 Analysed = 23 core
+- [ch2a:C2A10] §2.3.3 — In the built PDF the Figure 1 caption sits between 'reads as follows:' and the query string, so the colon points at a caption. Either move the figure or end the sentence with a full stop. Counts in th
+- [ch2a:C2A30] §2.2 — Minor: the colon introduces a sentence rather than a list; the author does not use colons this way. Otherwise Section 2.2 reads in the author's voice and should be left alone.
+- [ch2a:C2A31] §2.3.6 — Taste only; the 25 = 23 + [37] + [51] split and the QA 7.0 justification in this paragraph are verified against elite.txt and studies_brief.txt.
+- [ch2b:R11] §2.4 — [17] (Li et al. 2026) is a smart-agriculture TEE/Byzantine-resilient blockchain coordination paper; 'blockchain data integrity' is a loose label. Cosmetic, but a more accurate descriptor avoids a revi
+- [ch2b:R12] §2.4.5 — Workbook jargon ('both coded Partial', and '(Req7 Partial)' in the S20 row of Table 8) leaks the internal Req6/Req7 split into the tables, which otherwise use only the report's Req 1 to Req 6. Cosmeti
+- [ch34:R24] §3.3.6 — Equations (14), (22), (23) and (25) write the five-predicate decision as Decision(C, R, t), while (16), (17) and (18) write Decision(C, R). Harmless but inconsistent; if equations are touched, (16) an
+- [ch34:R25] §3.4 — Forward reference to Equation (24) without a section pointer; the equation appears three sections later. Cosmetic.
+- [ch34:R26] §3.3.5 — Conceptual lifecycle in (12) differs from the implemented states listed in Section 6.5.2 (PENDING_SIGNATURE, PENDING_TOKEN, NOT_STARTED, ACTIVE, EXPIRED, REVOKED). Acceptable as a conceptual abstracti
+- [ch34:S14] §3.1 — The 'not X. Rather, Y' pattern is used five times in Chapters 3 and 4 (3.1 twice, 3.4 twice, 4.7). Acceptable once; consider varying as shown.
+- [ch34:S15] §3.3.6 — 'while' contrast in a long sentence; the author prefers two sentences. Cosmetic.
+- [ch5:G10] §5.1.1 — Section 5.1 lists six Controller functions including 'request validation' plus audit evidence, whereas 5.1.1 defines the six as Identity Verification, Authority Verification, Approval Aggregation, Pol
+- [ch5:G11] §5.7 — [11] (Jiang, RQ-UCON risk model) and [25] (Nazir, IoT access-control survey) support the general claim about role/attribute/context models, but S_full notes [25] also discusses patient-centric archite
+- [ch5:G12] §5.11 — Citations are all appropriate (Tith, Albalwy, Eneh, Phuyal each have Req1 = Yes in studies_brief) but the bracket is not in numerical order, unlike the rest of the report.
+- [ch5:G13] §5.2/5.3/5.5/5.7 — Eq. (32) repeats Eq. (28), Eq. (37) repeats Eq. (30), and Eq. (43) repeats Eq. (29) verbatim. Not wrong, but a reader will notice three duplicated numbered equations within one chapter. Optional: keep
+- [ch5:G14] §5.1.2 / Table 13 — Stray space in 'V A' (pdftotext may have introduced it; check the source). Substantively the statement agrees with Section 6.5 (Eq. 59 commentary), although Algorithm 4 evaluates State(C) as a separat
+- [ch5:G27] §5.5 — 'More importantly' is an evaluative connector the author does not use; cosmetic.
+- [ch5:G28] §5.6 — Definition paragraph is appended after the interpretive discussion of Eq. (40); placing it immediately after Eq. (40) reads more naturally. No wording change; cosmetic ordering.
+- [ch5:G29] §5.10 — 'is what ... examine' cleft construction; minor.
+- [ch6:G19] §6.3.3 — state_service sets NOT_STARTED when the token exists but the start time has not been reached; the algorithm's unconditional ACTIVE is a simplification. Cosmetic unless a reader checks against 6.5.2's 
+- [ch6:G20] §6.4 — The decision rule uses ALLOW/DENY, Algorithm 3 uses ACTIVATED/PENDING, and the ledger and Section 6.8 use GRANTED/DENIED and PASS/FAIL. One sentence mapping the labels would prevent a reader treating 
+- [ch6:G21] §6.6 — Equations (54), (60), (61) and (65) are the same five-predicate rule, and (64) repeats the three-predicate form of (62). Renumbering two days out is risky, so keep the numbers but signal the restateme
+- [ch6:G22] §6.1.2 — Stage labels vary: 'production design', 'production behaviour', 'target design' (6.1.2, 6.2.2) versus 'next stage (CA3)' everywhere else in the report. Use one label; the same applies to 'is specified
+- [ch6:G40] §6.7 — 'moves from ... to' transition sentence reads as machine-written; mild.
+- [ch68:R5] §6.8.7 — The narrative only accounts for four DATA_ACCESS events in the two lifecycles (GRANTED, DENIED (SA) and post-revocation refusal for f050c29a; GRANTED for 04da25f5), not six. Verify the 6 + 3 split aga
+- [ch68:R6] §6.8.10 — Table 14 row 'Multi-party Consent' states 2-of-2 as the implemented condition, whereas Section 6.8.3 and Section 7.2 state N = |G| (N-of-N) with 2-of-2 as the demonstrated instance. Table cell; change
+- [ch68:R7] §6.8.4 — Figure 28 reproduces Figure 8 (Chapter 5). A duplicated figure adds a page without new information; the text already cites Figure 8. Cosmetic.
+- [ch68:R8] §6.8.4 — EIP-712, ERC-721, ERC-5484, Groth16 and Poseidon carry no citation anywhere in the chapter and the reference list [1]-[81] has no standards entries. The only included study that uses Groth16/Poseidon 
+- [ch68:R9] §6.8.1 — Compiler version cannot be checked from the audit files. Confirm '0.8.34' against evidence/sepolia_deploy_v3_2026-09-24.txt and the Etherscan verification page (Figure 19) before submission.
+- [ch68:R10] §6.8 — The intro lists four functions but Sections 6.8.2-6.8.7 then describe a 'fifth module' (revocation) and a 'sixth major module' (audit). Aligning the count avoids an obvious inconsistency; cosmetic.
+- [ch68:R11] §6.8.11 — 'V I' with a space is a subscript-rendering artefact (also 'V I' in Section 7.2); check the source uses the same VI typesetting as elsewhere in the chapter. Also splits a semicolon chain.
+- [ch68:S20] §6.8.2 — Semicolon join; minor.
+- [ch68:S21] §6.8.8 — Rhetorical triad with 'precisely'; minor.
+- [ch789:G10] §7.6 — Eq. (76) omits the time argument although the text immediately below it says the decision depends on temporal and lifecycle state, and Eq. (75) two pages earlier writes Decision(C, R, t). Equations ar
+- [ch789:G11] §7.5 — The same statement is made again in the paragraph after Eq. (74) ('The next stage will extend the implemented lifecycle mechanism towards consent modification, delegation, and guardian-set changes…').
+- [ch789:G22] §9.2 — The planned sequence (formal first, performance second, lifecycle last) differs from the row order of Table 16 (lifecycle first). Not a contradiction, but a one-clause note avoids the reader assuming 
+- [ch789:G33] §9.2 — 'not simply … but by' flourish at the chapter close; 47 words. The author does use 'not X but Y' occasionally, so KEEP, rewrite optional.
+- [ch789:G34] §8 — 'current stage work' / 'next stage work' is another trace of the stage-name replacement. Reads acceptably, so KEEP.
+- [global:G32] §Abstract — Style only (author_sample comparison): the sentence 'A systematic literature review of 44 primary studies, of which 25 were analysed in depth, structured by six requirements, shows that ...' stacks th
+- [global:G35] §References [44] — Spaced hyphenated initial (export debris).
+- [global:G36] §References [74] — Spaced hyphen inside a compound adjective (export debris).
+- [global:G37] §References [21], [48], [50], [56], [64] — Ordering only, no renumbering proposed: [21] Welzel sits between Mazzocca [20] and McClelland [22]; [48] Gao follows Hagström [47]; [50] Zhao and Su sits between Jaiman and Li; [56] Zhang sits between
+- [global:G38] §4.3–4.6 — Ordering leftover rather than an error: in 4.3, 4.4, 4.5 and 4.6 an implementation-status paragraph precedes the sentence that states the objective ('The third research objective is to ...'), whereas 
+- [global:G39] §whole report — Consistent everywhere (N = |G|, 2-of-2, k-of-n future work), but the same limitation is restated in 1.3, 3.3.5, 4.3, 5.3, 6.3, 6.4.3, 6.8.3, 7.2, 7.3, 7.6 and 9.1 (eleven times), and the 'prover and v
+- [global:G40] §Appendix A (Table 17) / 2.4.7 / 2.5.1 — Minor cosmetic points collected: Table 17 uses '§6.1' style while the rest of the report writes 'Section 6.1', and its RO2 row names only the first guardian's signer address (0x3Af549b0…) although two
+- [long_ch2:L2] §2.3.3 — artefact: pdftotext merged the master query string and the Figure 1 caption into one 167-word span; the prose sentences are 24 and 41 words and the search string must not be edited; no change proposed
+- [long_ch2:L11] §2.3.8 — not a prose sentence: pdftotext concatenation of Table 2 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L12] §2.3.8 — not a prose sentence: pdftotext concatenation of Table 2 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L13] §2.3.8 — not a prose sentence: pdftotext concatenation of Table 2 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L14] §2.3.8 — not a prose sentence: pdftotext concatenation of Table 2 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L18] §2.4.1 — not a prose sentence: pdftotext concatenation of Table 3 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L19] §2.4.1 — not a prose sentence: pdftotext concatenation of Table 3 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L24] §2.4.2 — not a prose sentence: pdftotext concatenation of Table 4 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L25] §2.4.2 — not a prose sentence: pdftotext concatenation of Table 4 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L33] §2.4.3 — not a prose sentence: pdftotext concatenation of Table 5 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L34] §2.4.3 — not a prose sentence: pdftotext concatenation of Table 5 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L35] §2.4.3 — not a prose sentence: pdftotext concatenation of Table 5 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L36] §2.4.3 — not a prose sentence: pdftotext concatenation of Table 5 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L37] §2.4.3 — not a prose sentence: pdftotext concatenation of Table 5 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L38] §2.4.3 — not a prose sentence: pdftotext concatenation of Table 5 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L39] §2.4.3 — not a prose sentence: pdftotext concatenation of Table 5 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L40] §2.4.3 — not a prose sentence: pdftotext concatenation of Table 5 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L43] §2.4.4 — not a prose sentence: pdftotext concatenation of Table 6 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L44] §2.4.4 — not a prose sentence: pdftotext concatenation of Table 6 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L45] §2.4.4 — not a prose sentence: pdftotext concatenation of Table 6 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L46] §2.4.4 — not a prose sentence: pdftotext concatenation of Table 6 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L52] §2.4.5 — not a prose sentence: pdftotext concatenation of Table 7 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L53] §2.4.5 — not a prose sentence: pdftotext concatenation of Table 7 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L54] §2.4.5 — not a prose sentence: pdftotext concatenation of Table 7 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L55] §2.4.5 — not a prose sentence: pdftotext concatenation of Table 7 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L60] §2.4.6 — not a prose sentence: pdftotext concatenation of Table 8 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L61] §2.4.6 — not a prose sentence: pdftotext concatenation of Table 8 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L62] §2.4.6 — not a prose sentence: pdftotext concatenation of Table 8 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L63] §2.4.6 — not a prose sentence: pdftotext concatenation of Table 8 cells; tables are excluded from style edits, no change proposed
+- [long_ch2:L70] §2.5.1 — artefact: pdftotext merged equation (1) with its lead-in and where-clause; the where-clause alone is 45 words; optional split offered
 
-## Needs the author personally before submission
+## Needs the author personally
 
-1. Reference [64]: DONE — authors confirmed on IEEE Xplore (Hema S., Goli Bulli Sai Reddy, Shalini R.).
-2. Reference [68]: DONE — six co-authors confirmed on IEEE Xplore.
-3. Reference [48]: DONE — author order confirmed on ACM DL (H. Gao, X. Wu, H. Huang, Q. Li, Y. Xing; ACM Trans. Web 20(1):1–29).
-4. Title page date 'August 2026' versus transaction evidence dated 24 September 2026.
-5. Main research question (Section 3.2): reviewers suggest adding 'verify'; left unchanged because it is the registered question.
-6. The review panel of Section 2.3.1 is described as a six-member panel with a chair — be ready to explain who performed the coding if asked.
-7. The full-text pool: 64 of 1,800 records assessed at the D-166 checkpoint (stated honestly in 2.3.6 and 2.6) — confirm with the supervisor that reporting 'as at checkpoint' is acceptable.
-8. Earlier standing items: Sepolia links open, PRISMA counts match the workbook (they do now), search logs archived, Welzel [21] read.
+1. Section 2.3.1/2.3.7 now say 'six review roles' (the workbook's Agent 1–6); be ready to explain who performed the coding.
+2. Title page date 'August 2026' vs transaction evidence dated 24 September 2026.
+3. Main research question (3.2) unchanged; reviewers suggested adding 'verify'.
+4. Reference list keeps two bibliographic styles ([1]–[34] full names, [35]–[81] initials + DOI); harmonising would touch 34 entries — decide with the supervisor.
+5. Supervisor to confirm reporting PRISMA numbers 'as at checkpoint D-166' and the 25-study analysed set (23 core + 2).
