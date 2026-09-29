@@ -1,0 +1,68 @@
+
+== Stream 1
+ANALYSED (in tables and prose):
+  S33 [67] S.L. Soohoo (2026) QA=7 core=CORE
+  S38 [72] G. Tremper (2026) QA=6.5 core=CORE
+SUPPORTING (cite only in one closing sentence per stream, not in the table):
+  S2 [36] S. Akter and T. F. Sanam (2025) QA=5
+  S5 [39] G. Bhalerao (2026) QA=5
+  S7 [41] S. Chockalingam (2026) QA=4
+  S8 [42] J. A. Dhanraj (2026) QA=4.5
+  S26 [60] M.S. Prashanth (2024) QA=3.5
+  S31 [65] N.M. Sawant and J. Gomes (2026) QA=5.5
+  S34 [68] T. A. V. Y. Ranaweera (2023) QA=5.5
+  S36 [70] A. Teeda and Y.V. Subba Rao (2026) QA=3.5
+  S40 [74] J. Wagner (2024) QA=5.5
+  S44 [78] L. Zhang (2022) QA=5.5
+
+== Stream 2
+ANALYSED (in tables and prose):
+  S24 [58] S. Phuyal (2026) QA=7.5 core=CORE
+  S25 [59] S. Phuyal (2026) QA=6.5 core=CORE
+  S39 [73] Tseng C.-H. (2025) QA=6.5 core=CORE
+SUPPORTING (cite only in one closing sentence per stream, not in the table):
+  S11 [45] J. C. Ferreira (2025) QA=5.5
+  S32 [66] M. Shanmugham and C. Senthilkumar (2026) QA=5.5
+
+== Stream 3
+ANALYSED (in tables and prose):
+  S1 [35] A. Abbasi (2026) QA=7 core=CORE
+  S4 [38] M. Al Amin (2023) QA=4.5 core=CORE
+  S9 [43] K. Ekholm (2025) QA=6 core=CORE
+  S13 [47] Hagström J. (2024) QA=6 core=CORE
+  S19 [53] M. M. Madine (2020) QA=6.5 core=CORE
+  S27 [61] A. Punia (2025) QA=6.5 core=CORE
+  S35 [69] Tan K.-L. (2024) QA=7 core=CORE
+  S41 [75] Y. Wu (2023) QA=5.5 core=CORE
+SUPPORTING (cite only in one closing sentence per stream, not in the table):
+
+== Stream 4
+ANALYSED (in tables and prose):
+  S3 [37] F. Albalwy (2021) QA=7 core=SUPPORTING
+  S15 [49] V. Jaiman and V. Urovi (2020) QA=6.5 core=CORE
+  S29 [63] I. Román-Martínez (2023) QA=7 core=CORE
+  S37 [71] D. Tith (2020) QA=6 core=CORE
+SUPPORTING (cite only in one closing sentence per stream, not in the table):
+  S12 [46] D. Ghosh (2026) QA=6.5
+
+== Stream 5
+ANALYSED (in tables and prose):
+  S10 [44] A. U. Eneh (2026) QA=6 core=CORE
+  S17 [51] H. Li (2026) QA=7 core=SUPPORTING
+  S23 [57] D.P. Panagoulias (2026) QA=7 core=CORE
+  S30 [64] Hema S. (2026) QA=6.5 core=CORE
+SUPPORTING (cite only in one closing sentence per stream, not in the table):
+  S43 [77] G. Xu (2023) QA=6.5
+
+== Stream 6
+ANALYSED (in tables and prose):
+  S16 [50] Zhao (2024) QA=6 core=CORE
+  S20 [54] V. Maruthi and K. Singh (2025) QA=7 core=CORE
+  S21 [55] L. Mei (2026) QA=6 core=CORE
+  S42 [76] Zuodong Wu and Dawei Zhang (2025) QA=7.5 core=CORE
+SUPPORTING (cite only in one closing sentence per stream, not in the table):
+  S6 [40] S. Cao (2025) QA=5
+  S14 [48] H. Gao (2026) QA=6
+  S18 [52] J. Luo (2025) QA=6
+  S22 [56] Zhang (2023) QA=6
+  S28 [62] J. Qiao (2025) QA=6

@@ -1,0 +1,181 @@
+[
+ {
+  "t": "h2",
+  "num": "2.4",
+  "title": "Review",
+  "newb": true
+ },
+ {
+  "t": "p",
+  "text": "⦃This section reviews the 44 primary studies that were shortlisted in Section 2.3.8. The review is organised by the six key requirements of Section 2.2, so that Sections 2.4.1 to 2.4.6 correspond to Req 1 to Req 6 respectively. It should be noted that the 44 included studies are not all discussed individually. Following the synthesis rule ratified by the coding panel (D-166), 23 studies were classified as core, because their full-text evidence contradicts, weakens or narrows the research gap or because they involve more than one authorising party (T3 graded Yes or Partial), and the remaining 21 were classified as supporting. The in-depth review in this section therefore covers 25 analysed studies, namely the 23 core studies together with the two supporting studies with the highest quality-assessment score, Albalwy et al. [37] and Li et al. [51], each scored 7.0 of 8. The other 19 supporting studies remain included in the review corpus and in Table 2, but they are cited only in a short closing paragraph of the stream to which they were assigned, which states in general terms what they corroborate. Each subsection reviews the analysed studies that were assigned to that stream, states their issues and limitations with respect to the requirement in question, and ends with a table that summarises the analysed studies and records their commitment to all six requirements, where √ denotes that the requirement is satisfied, ~ denotes that it is partially satisfied and × denotes that it is not satisfied, as coded from the full texts using the codebook described in Section 2.3. Each study is assigned to one stream only, according to the requirement to which its main contribution relates; a study assigned to one stream may nevertheless be discussed briefly in another subsection when its coding is relevant to that requirement. The background surveys and position papers [1]–[34] are used only for context and do not appear in the tables, which list the 25 analysed studies only. In addition, a small number of studies outside the healthcare consent domain, concerning archival record-keeping [8], blockchain data integrity [17], attested execution environments [23] and decentralised decision-making [29], were consulted as background for the supporting requirements of Section 2.2 and are not part of the review corpus.⦄"
+ },
+ {
+  "t": "h3",
+  "num": "2.4.1",
+  "title": "Consent Representation and Blockchain-Based Consent Governance",
+  "newb": true
+ },
+ {
+  "t": "p",
+  "text": "⦃This section reviews the two analysed studies whose main contribution is the representation and governance of patient consent, both of which are deployed platforms rather than research prototypes; the ten supporting studies assigned to this stream, most of which govern consent on a blockchain, are cited at the end of the section. Req 1 requires that consent is represented as a structured object whose components, namely the participating identities, the authority requirements, the permitted purpose and data scope, the temporal validity, the jurisdiction and the supporting evidence, can be evaluated at the time of each request. Earlier consent-management research represented consent as a permission indicating whether a party may perform an operation, and dynamic consent and consent receipts added the possibility of changing preferences over time and of retaining evidence of how consent was obtained [13, 10]. The question examined in this stream is whether the reviewed systems go beyond a stored consent record and make the consent itself an object that the access decision evaluates. The full-text coding shows that all twelve studies assigned to this stream, including the two analysed here, were graded Partial on Req 1 and that none was graded Yes. In this context, three situations recur across the stream: consent that is represented but absent from the decision, consent that is present in the decision but reduced to a boolean flag, and consent that is held in a registry whose status is displayed or queried but never enforced. The two analysed studies illustrate the first and the third of these situations in production settings.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃Soohoo et al. [67] describe the authentication and authorisation module of the iAgree patient-controlled data-sharing portal, deployed across three United States health systems, with OAuth2, SMART on FHIR and one-time-password identity that was tested with matched and unmatched accounts, and with a permissioned Ethereum audit contract. Consent is a preference matrix of data category by recipient type whose enforcement is outside the scope of the paper, so that the consent object is represented but absent from the access decision that the paper describes. A single patient decides, and the involvement of several institutions does not make the decision multi-party. Authorisation is OAuth2 delegation with no separate authority evidence for researchers, the one-hour window is a session token rather than a consent validity period, and revocation is append-only and untested. The evaluation consists of functional tests of identity matching and contains no formal method and no allow or deny correctness case for the preference matrix itself.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃Tremper et al. [72] report ten years of the Mainzelliste pseudonymisation, record-linkage and consent-management service, an open-source production tool in use since 2015, with multi-tenant role-based access control, per-request token validation, modular FHIR consent directives scoped by use type and an automated consent-check capability. The consent object is the richest in this stream, yet the paper specifies no check semantics, no term list and no allow or deny protocol, so that the way in which a directive is evaluated at the time of a request cannot be established from the publication. Consent withdrawal is implemented at the registry level through an API delete, with no downstream enforcement shown, and no temporal validity is evaluated. The reason for each request is captured for audit but not adjudicated. It should be noted that the secure multi-party computation parties of the service perform record linkage rather than authorisation, and that the security evidence is an independent penetration test and a secure development process rather than a formal analysis.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃Taken together, the two analysed studies show that the representation of consent and the evaluation of consent have been developed apart even in production systems. In both, the consent object is comparatively rich, a preference matrix of data category by recipient type in iAgree [67] and FHIR consent directives scoped by use type in Mainzelliste [72], yet in neither case does the paper specify the semantics by which an access decision evaluates that object: enforcement is out of scope in the first and unspecified in the second. In addition, neither study verifies its own authorisation decisions, since the functional tests of Soohoo et al. [67] and the penetration test of Tremper et al. [72] contain no allow or deny correctness case, and Req 6 is graded Partial for both. Neither study involves more than one authorising party, and Req 3 is graded No for both, as it is for all twelve studies assigned to this stream. The closest single-party analogues of the consent object C = (I, A, P, T, L, E) required by the proposed framework are found not here but in Section 2.4.2, in the on-chain consent object of Phuyal et al. [58], and in the patient-driven policy of Al Amin et al. [38] in Section 2.4.3. Therefore, Req 1 is partially addressed in this stream, but consent as an object that is evaluated on every request against identity, authority, purpose, scope, time and jurisdiction is not provided by either of the reviewed consent-governance platforms. Table 3 presents a summary of the analysed studies in this stream and their commitment to the key requirements.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃Supporting evidence. Ten further studies were assigned to this stream and coded but are not discussed individually [36], [39], [41], [42], [60], [65], [68], [70], [74], [78]. They corroborate the pattern described above rather than alter it: where consent enters the access decision it enters as a per-record boolean grant [36], [60]; where consent is bound to cryptographic operations, the conditions are fixed at encryption or key-issuance time and cannot be re-evaluated at the time of the request [70], [78]; where the consent object is rich, as in the gICS directives integrated into REDCap [74], its state is displayed and queried but no access decision depends on it; consent is absent from the formalised decision function of the largest measurement campaign in the stream [65] and is reduced to a logged event with a gas cost in [42]; the zero-knowledge and homomorphic-encryption workflow of [68] evaluates a free-text reason rather than a purpose term; and the two conceptual designs [39], [41] remain unimplemented. All ten supporting studies were graded Partial on Req 1 and No on Req 3, and none of them provides a formal security analysis, the closest being the threat model and simulated attacks of [65].⦄"
+ },
+ {
+  "t": "ntable",
+  "n": 3,
+  "caption": "Descriptions, issues and limitations of existing studies on consent representation and blockchain-based consent governance",
+  "header": [
+   "Study",
+   "Description",
+   "Issues / Limitations",
+   "Req 1",
+   "Req 2",
+   "Req 3",
+   "Req 4",
+   "Req 5",
+   "Req 6"
+  ],
+  "rows": [
+   [
+    "S33 [67]",
+    "The authentication and authorisation module of the iAgree patient-controlled data-sharing portal, deployed at three health systems, with OAuth2, SMART on FHIR and one-time-password identity, a patient preference matrix of data category by recipient type, and a permissioned Ethereum audit contract.",
+    "A single patient decides and multi-institution is not multi-party; authorisation is OAuth2 delegation with no separate authority evidence for researchers; enforcement of the preference matrix is out of scope; the one-hour window is a session token, not consent validity; revocation is append-only and untested; no formal methods; functional tests only.",
+    "~",
+    "~",
+    "×",
+    "~",
+    "~",
+    "~"
+   ],
+   [
+    "S38 [72]",
+    "Mainzelliste, an open-source pseudonymisation, record-linkage and consent-management service in production since 2015, with multi-tenant role-based access control, per-request token validation, modular FHIR consent directives scoped by use type, an automated consent-check capability and registry-level consent withdrawal.",
+    "The consent-check semantics, term list and allow or deny protocol are not specified in the paper; withdrawal is a registry operation whose downstream enforcement is not shown; no temporal validity; the secure multi-party computation parties perform record linkage, not authorisation; security evidence is a penetration test without formal analysis; no consent decision is verified.",
+    "~",
+    "~",
+    "×",
+    "~",
+    "~",
+    "~"
+   ]
+  ],
+  "widths": [
+   900,
+   2350,
+   2390,
+   620,
+   620,
+   620,
+   620,
+   620,
+   620
+  ],
+  "small": true,
+  "newb": true
+ },
+ {
+  "t": "h3",
+  "num": "2.4.2",
+  "title": "Decentralised Identity and Authority Trust",
+  "newb": true
+ },
+ {
+  "t": "p",
+  "text": "⦃This section reviews the three analysed studies whose main contribution is the decentralised verification of the participants in a consent decision; the two supporting studies assigned to this stream are cited at the end of the section. Req 2 requires that the patient, the guardians, the healthcare professional and the institution can be identified without a single central identity provider, and that establishing who a participant is (identity) is treated separately from establishing what that participant may do (authority), each with its own evidence. Decentralised identifiers and verifiable credentials provide the first capability [20, 33, 4, 16], and the reviewed studies apply them, or national equivalents, to healthcare data exchange. It should be noted that the coding distinguishes T1 (identity established by DID, VC, PKI or certificate) from T2 (case-specific authority verified separately from authentication). Across the 44 included studies, T2 was graded Yes in only 10 studies and Partial in 34; that is, in more than three quarters of the corpus a verified identity, a platform role or an administratively assigned attribute stands in for authority over a particular patient's data.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃Phuyal et al. [58] present the most integrated system in the corpus, a simulated Norwegian cross-institution exchange in which patients and professionals hold EUDI-compatible wallets with W3C decentralised identifiers and verifiable credentials, consent is an executable on-chain object carrying the patient identifier, the requester identifier, the data scope and an expiry together with an ACTIVE or REVOKED state on a Hyperledger Besu ledger, and access proofs are generated with Groth16 circuits. Identity verification checks the issuer registry, the signature and the credential expiry, and, importantly for Req 2, a licensing-body credential asserts the professional's role, specialisation and scope of practice, which the system verifies separately from authentication. This is the strongest Req 2 evidence in the corpus. Revocation is enforced at run time in 1.45 seconds and subsequent access returns an error, and allow and deny cases are tested over 100 runs per workflow. The limitations are equally precise: a single patient grants a bilateral data-sharing agreement and there is no multi-party approval, the expiry field is stored on the ledger but the access algorithm checks only state and proof, purpose exists only at the user-interface level, and there is no threat model, formal verification or adversarial test. The companion architecture of Phuyal et al. [59] extends the design to secondary use with a FHIR Consent resource carrying purpose, scope, actors and validity period, and specifies validation of these constraints at decision time; however, the authors state that nothing is implemented or evaluated, so every dimension is capped at Partial, and the proxy or guardian delegation mentioned as an option is substitution rather than joint approval.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃Tseng et al. [73] present EMR-Chain, an open-source decentralised medical record exchange that combines an Ethereum identity chain with a Hyperledger Fabric record chain. The identifier is a government-endorsed hashed national identity bound to a wallet, which the authors call a DID although it is not a W3C decentralised identifier; professional identities are X.509 certificates issued by the ministry certificate authority, and roles are granted by the health authority, so that authority is verified separately from authentication. The system is benchmarked against national exchange statistics and the code is public. Its limitations with respect to the later requirements are that the patient and requester co-signature on a request is bilateral authentication rather than independent approval, purpose is logged in the transaction record but never evaluated, scope is at the hospital level, the token expiry enforced at the validator is a session bound rather than a consent validity window, revocation of the access list does not invalidate tokens already issued, and the security discussion is narrative.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃In summary, identity is the strongest dimension of this stream, with T1 graded Yes in two of the three analysed studies and Partial in the design-only architecture of Phuyal et al. [59], and authority verified with its own evidence is found in Phuyal et al. [58] through licensing-body credentials and in Tseng et al. [73] through authority-issued roles. The remaining eight Yes gradings for T2 among the 44 included studies belong to other streams, and several of them do not use decentralised identifiers at all: Ekholm et al. [43] and Hagström et al. [47] verify legal guardianship against a national population register, Madine et al. [53] rely on a regulatory agency, and Punia et al. [61] bind roles, attributes and access tokens to their owners independently of the sender address. In addition, the analysed study that comes closest to an evaluable consent object, Phuyal et al. [58], is a single-party design, it is not formally assured, and it is the only one of the three analysed studies that verifies allow and deny outcomes. Therefore, the literature provides mature mechanisms for decentralised identity and increasingly for credential-based authority, but it does not yet combine separated identity and authority evidence with multi-party approval, policy evaluation and formal assurance in one decision. Table 4 presents a summary of the analysed studies in this stream and their commitment to the key requirements.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃Supporting evidence. Two further studies were assigned to this stream and corroborate these findings without altering them [45], [66]. Ferreira et al. [45] design the widest authorisation predicate in the corpus, in which a single call conjoins the subject, the purpose, the scope and the time over the current consent state, and Shanmugham and Senthilkumar [66] propose a consent token carrying an identifier, a role, a scope, a validity interval and a three-state lifecycle that is the closest single-party structural analogue of the consent object required by the proposed framework. In both, however, case-specific authority reduces to a credential together with the consent state, the guardians named in [45] are a key-recovery mechanism rather than co-authorisers, no denial after revocation or expiry is tested, and neither study is formally assured, so that both were graded Partial on Req 2 and No on Req 3.⦄"
+ },
+ {
+  "t": "ntable",
+  "n": 4,
+  "caption": "Descriptions, issues and limitations of existing studies on decentralised identity and authority trust",
+  "header": [
+   "Study",
+   "Description",
+   "Issues / Limitations",
+   "Req 1",
+   "Req 2",
+   "Req 3",
+   "Req 4",
+   "Req 5",
+   "Req 6"
+  ],
+  "rows": [
+   [
+    "S24 [58]",
+    "A simulated Norwegian cross-institution exchange with EUDI-compatible wallets, W3C DIDs and VCs, an executable on-chain consent object (patient DID, requester DID, scope, expiry, state) on Hyperledger Besu, Groth16 access proofs, licensing-body credentials asserting role and scope of practice, run-time revocation (1.45 s) and an openEHR to FHIR bridge; allow and deny outcomes tested over 100 runs.",
+    "A single patient grants a bilateral agreement with no multi-party approval; the expiry field is stored but the access algorithm checks only state and proof; purpose is at the user-interface level with no policy engine; no threat model, formal verification or adversarial test; simulation only with a node-count inconsistency.",
+    "√",
+    "√",
+    "×",
+    "~",
+    "~",
+    "√"
+   ],
+   [
+    "S25 [59]",
+    "A design-only architecture for dynamic and auditable consent in secondary use in which a FHIR Consent resource carrying purpose, scope, actors and validity period is anchored on an Ethereum-compatible ledger, requester credentials are validated in three steps at a gateway, and validation of purpose, scope and duration at decision time is specified.",
+    "Explicitly not implemented and not evaluated, so no dimension is enforced; proxy or guardian delegation is a substitution option rather than joint approval; revocation is specified but not implemented; the STRIDE-style threat table is declared non-exhaustive with no proof or verification; same author group as [58].",
+    "~",
+    "~",
+    "×",
+    "~",
+    "~",
+    "~"
+   ],
+   [
+    "S39 [73]",
+    "EMR-Chain, an open-source decentralised record exchange combining an Ethereum identity chain, on which a government-endorsed hashed national identity is bound to a wallet, with a Hyperledger Fabric record chain using X.509 identities from the ministry certificate authority, health-authority-granted roles, a patient-adjustable per-hospital access list and JWT validation, benchmarked against national exchange statistics.",
+    "The identifier is not a W3C DID; the patient and requester co-signature is bilateral authentication, not independent approval; purpose is logged but never evaluated and scope is hospital-level; JWT expiry is a session bound rather than consent validity; access-list revocation does not invalidate issued tokens; narrative security discussion only.",
+    "~",
+    "√",
+    "×",
+    "~",
+    "~",
+    "~"
+   ]
+  ],
+  "widths": [
+   900,
+   2350,
+   2390,
+   620,
+   620,
+   620,
+   620,
+   620,
+   620
+  ],
+  "small": true,
+  "newb": true
+ }
+]

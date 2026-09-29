@@ -70,7 +70,8 @@
    "S": "S1",
    "ref": 35,
    "Authors_fmt": "A. Abbasi, M. N. Humeidi, and Q. Wang",
-   "stream": 3
+   "stream": 3,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-0774",
@@ -142,7 +143,8 @@
    "S": "S2",
    "ref": 36,
    "Authors_fmt": "S. Akter and T. F. Sanam",
-   "stream": 1
+   "stream": 1,
+   "analysed": false
   },
   {
    "Study_ID": "SCOPUS-1964",
@@ -214,7 +216,8 @@
    "S": "S3",
    "ref": 37,
    "Authors_fmt": "F. Albalwy, A. Brass, and A. Davies",
-   "stream": 4
+   "stream": 4,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-1865",
@@ -286,7 +289,8 @@
    "S": "S4",
    "ref": 38,
    "Authors_fmt": "M. Al Amin, A. Altarawneh, and I. Ray",
-   "stream": 3
+   "stream": 3,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-0037",
@@ -358,7 +362,8 @@
    "S": "S5",
    "ref": 39,
    "Authors_fmt": "G. Bhalerao",
-   "stream": 1
+   "stream": 1,
+   "analysed": false
   },
   {
    "Study_ID": "IEEE-0359",
@@ -430,7 +435,8 @@
    "S": "S6",
    "ref": 40,
    "Authors_fmt": "S. Cao, L. Han, G. Liu, T. Zhang, X. Zhang, and X. Yang",
-   "stream": 6
+   "stream": 6,
+   "analysed": false
   },
   {
    "Study_ID": "SCOPUS-0156",
@@ -502,7 +508,8 @@
    "S": "S7",
    "ref": 41,
    "Authors_fmt": "S. Chockalingam, S. Pirbhulal, and H. Abie",
-   "stream": 1
+   "stream": 1,
+   "analysed": false
   },
   {
    "Study_ID": "IEEE-0125",
@@ -574,7 +581,8 @@
    "S": "S8",
    "ref": 42,
    "Authors_fmt": "J. A. Dhanraj, P. Dhongle, R.Tamilamuthan, M.Lakshmanan, N. Ashtankar, and S. R. Hole",
-   "stream": 1
+   "stream": 1,
+   "analysed": false
   },
   {
    "Study_ID": "PROQ-0484",
@@ -646,7 +654,8 @@
    "S": "S9",
    "ref": 43,
    "Authors_fmt": "K. Ekholm, A. Augustinsson, Sundström J., C. Johansen, Storgärds M., Ljöstad L., et al.",
-   "stream": 3
+   "stream": 3,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-0075",
@@ -718,7 +727,8 @@
    "S": "S10",
    "ref": 44,
    "Authors_fmt": "A. U. Eneh, L. A. C. Ahakonye, J. M. Lee, and D. -S. Kim",
-   "stream": 5
+   "stream": 5,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-0317",
@@ -790,7 +800,8 @@
    "S": "S11",
    "ref": 45,
    "Authors_fmt": "J. C. Ferreira, R. Correia, L. Rosário, and A. Vila",
-   "stream": 2
+   "stream": 2,
+   "analysed": false
   },
   {
    "Study_ID": "ACM-0005",
@@ -862,7 +873,8 @@
    "S": "S12",
    "ref": 46,
    "Authors_fmt": "D. Ghosh, A.K. Das, S. Prajapat, and B. Sikdar",
-   "stream": 4
+   "stream": 4,
+   "analysed": false
   },
   {
    "Study_ID": "SCOPUS-1067",
@@ -934,7 +946,8 @@
    "S": "S13",
    "ref": 47,
    "Authors_fmt": "Hagström J., Hägglund M., M. Holmroos, Lähteenmäki P., and Hörhammer I.",
-   "stream": 3
+   "stream": 3,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-0165",
@@ -1006,7 +1019,8 @@
    "S": "S14",
    "ref": 48,
    "Authors_fmt": "H. Gao, X. Wu, H. Huang, Q. Li, and Y. Xing",
-   "stream": 6
+   "stream": 6,
+   "analysed": false
   },
   {
    "Study_ID": "IEEE-1035",
@@ -1078,7 +1092,8 @@
    "S": "S15",
    "ref": 49,
    "Authors_fmt": "V. Jaiman and V. Urovi",
-   "stream": 4
+   "stream": 4,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-1208",
@@ -1150,7 +1165,8 @@
    "S": "S16",
    "ref": 50,
    "Authors_fmt": "Zhao, Jing and Su, Qianqian (corresponding)",
-   "stream": 6
+   "stream": 6,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-0283",
@@ -1222,7 +1238,8 @@
    "S": "S17",
    "ref": 51,
    "Authors_fmt": "H. Li, D. Li, G. Lv, N. Crespi, R. Minerva, W. Shao, et al.",
-   "stream": 5
+   "stream": 5,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-0624",
@@ -1294,7 +1311,8 @@
    "S": "S18",
    "ref": 52,
    "Authors_fmt": "J. Luo, P. Zeng, and X. Wang",
-   "stream": 6
+   "stream": 6,
+   "analysed": false
   },
   {
    "Study_ID": "IEEE-1069",
@@ -1366,7 +1384,8 @@
    "S": "S19",
    "ref": 53,
    "Authors_fmt": "M. M. Madine, K. Salah, R. Jayaraman, I. Yaqoob, Y. Al-Hammadi, S. Ellahham, et al.",
-   "stream": 3
+   "stream": 3,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-0675",
@@ -1438,7 +1457,8 @@
    "S": "S20",
    "ref": 54,
    "Authors_fmt": "V. Maruthi and K. Singh",
-   "stream": 6
+   "stream": 6,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-0202",
@@ -1510,7 +1530,8 @@
    "S": "S21",
    "ref": 55,
    "Authors_fmt": "L. Mei, K. Huang, X. Li, H. Wang, and X. Zhang",
-   "stream": 6
+   "stream": 6,
+   "analysed": true
   },
   {
    "Study_ID": "PROQ-0796",
@@ -1582,7 +1603,8 @@
    "S": "S22",
    "ref": 56,
    "Authors_fmt": "Zhang, Moli, Shao, Feijiao, Zheng, Ruijuan, Liu, Muhua, and Ji, Zhihang",
-   "stream": 6
+   "stream": 6,
+   "analysed": false
   },
   {
    "Study_ID": "PROQ-0030",
@@ -1654,7 +1676,8 @@
    "S": "S23",
    "ref": 57,
    "Authors_fmt": "D.P. Panagoulias, A.I. Damian, C. Stamate, V. Toderian, P. Butusina, A. De Franceschi, et al.",
-   "stream": 5
+   "stream": 5,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-0273",
@@ -1726,7 +1749,8 @@
    "S": "S24",
    "ref": 58,
    "Authors_fmt": "S. Phuyal, M. Bhandari, R. Bista, and J. C. Ferreira",
-   "stream": 2
+   "stream": 2,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-0160",
@@ -1798,7 +1822,8 @@
    "S": "S25",
    "ref": 59,
    "Authors_fmt": "S. Phuyal, M. Bhandari, R. Bista, and J.C. Ferreira",
-   "stream": 2
+   "stream": 2,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-1188",
@@ -1870,7 +1895,8 @@
    "S": "S26",
    "ref": 60,
    "Authors_fmt": "M.S. Prashanth, R. Karnati, M.S. Velpuru, and H. Venkateshwara Reddy",
-   "stream": 1
+   "stream": 1,
+   "analysed": false
   },
   {
    "Study_ID": "SCOPUS-0354",
@@ -1942,7 +1968,8 @@
    "S": "S27",
    "ref": 61,
    "Authors_fmt": "A. Punia, P. Gulia, N.S. Gill, D. Kaushik, N. Alduaiji, P.K. Shukla, et al.",
-   "stream": 3
+   "stream": 3,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-0686",
@@ -2014,7 +2041,8 @@
    "S": "S28",
    "ref": 62,
    "Authors_fmt": "J. Qiao, N. Wang, J. Fu, L. Deng, J. Wang, and J. Liu",
-   "stream": 6
+   "stream": 6,
+   "analysed": false
   },
   {
    "Study_ID": "IEEE-1411",
@@ -2086,7 +2114,8 @@
    "S": "S29",
    "ref": 63,
    "Authors_fmt": "I. Román-Martínez, J. Calvillo-Arbizu, V. J. Mayor-Gallego, G. Madinabeitia-Luque, A. J. Estepa-Alonso, and R. M. Estepa-Alonso",
-   "stream": 4
+   "stream": 4,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-0195",
@@ -2158,7 +2187,8 @@
    "S": "S30",
    "ref": 64,
    "Authors_fmt": "Hema S., Goli Bulli Sai Reddy, and Shalini R.",
-   "stream": 5
+   "stream": 5,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-0208",
@@ -2230,7 +2260,8 @@
    "S": "S31",
    "ref": 65,
    "Authors_fmt": "N.M. Sawant and J. Gomes",
-   "stream": 1
+   "stream": 1,
+   "analysed": false
   },
   {
    "Study_ID": "IEEE-0213",
@@ -2302,7 +2333,8 @@
    "S": "S32",
    "ref": 66,
    "Authors_fmt": "M. Shanmugham and C. Senthilkumar",
-   "stream": 2
+   "stream": 2,
+   "analysed": false
   },
   {
    "Study_ID": "SCOPUS-0123",
@@ -2374,7 +2406,8 @@
    "S": "S33",
    "ref": 67,
    "Authors_fmt": "S.L. Soohoo, M.S. Keller, Y. Chen, D. Hu, Huang S.-C., Kuo T.-T., et al.",
-   "stream": 1
+   "stream": 1,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-1589",
@@ -2446,7 +2479,8 @@
    "S": "S34",
    "ref": 68,
    "Authors_fmt": "T. A. V. Y. Ranaweera, H. N. H. Hewage, H. K. D. W. M. C. B. Hapuhinna, K. L. K. T. Preethilal, A. Senarathne, and L. Ruggahakotuwa",
-   "stream": 1
+   "stream": 1,
+   "analysed": false
   },
   {
    "Study_ID": "SCOPUS-1024",
@@ -2518,7 +2552,8 @@
    "S": "S35",
    "ref": 69,
    "Authors_fmt": "Tan K.-L., Chi C.-H., and Lam K.-Y.",
-   "stream": 3
+   "stream": 3,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-0244",
@@ -2590,7 +2625,8 @@
    "S": "S36",
    "ref": 70,
    "Authors_fmt": "A. Teeda and Y.V. Subba Rao",
-   "stream": 1
+   "stream": 1,
+   "analysed": false
   },
   {
    "Study_ID": "SCOPUS-2101",
@@ -2662,7 +2698,8 @@
    "S": "S37",
    "ref": 71,
    "Authors_fmt": "D. Tith, Lee J.-S., H. Suzuki, W.M.A.B. Wijesundara, N. Taira, T. Obi, et al.",
-   "stream": 4
+   "stream": 4,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-0224",
@@ -2734,7 +2771,8 @@
    "S": "S38",
    "ref": 72,
    "Authors_fmt": "G. Tremper, T. Brenner, M. Ben Amor, T. Kussel, and M. Lablans",
-   "stream": 1
+   "stream": 1,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-0565",
@@ -2806,7 +2844,8 @@
    "S": "S39",
    "ref": 73,
    "Authors_fmt": "Tseng C.-H., Hsieh Y.-H., Lin H.-Y., and Yuan S.-M.",
-   "stream": 2
+   "stream": 2,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-1169",
@@ -2878,7 +2917,8 @@
    "S": "S40",
    "ref": 74,
    "Authors_fmt": "J. Wagner, H. Schneiderheinze, M. Wurlitzer, Köckritz O., N. Dittberner, M. Bialke, et al.",
-   "stream": 1
+   "stream": 1,
+   "analysed": false
   },
   {
    "Study_ID": "SCOPUS-1721",
@@ -2950,7 +2990,8 @@
    "S": "S41",
    "ref": 75,
    "Authors_fmt": "Y. Wu, C. Liu, L. Sebald, P. Nguyen, and Y. Yesha",
-   "stream": 3
+   "stream": 3,
+   "analysed": true
   },
   {
    "Study_ID": "SCOPUS-0570",
@@ -3022,7 +3063,8 @@
    "S": "S42",
    "ref": 76,
    "Authors_fmt": "Zuodong Wu and Dawei Zhang",
-   "stream": 6
+   "stream": 6,
+   "analysed": true
   },
   {
    "Study_ID": "IEEE-1404",
@@ -3094,7 +3136,8 @@
    "S": "S43",
    "ref": 77,
    "Authors_fmt": "G. Xu, C. Qi, W. Dong, L. Gong, S. Liu, S. Chen, et al.",
-   "stream": 5
+   "stream": 5,
+   "analysed": false
   },
   {
    "Study_ID": "SCOPUS-1738",
@@ -3166,7 +3209,8 @@
    "S": "S44",
    "ref": 78,
    "Authors_fmt": "L. Zhang, H. Kan, and H. Huang",
-   "stream": 1
+   "stream": 1,
+   "analysed": false
   }
  ],
  "secondary": [
