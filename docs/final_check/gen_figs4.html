@@ -129,7 +129,7 @@ svg("gfig2b",940,712,s);
 /* ---------- gfig2c : synthesis / gap ---------- */
 {
 let s="";
-const streams=[["Consent representation","evaluable object: 12 of 25"],["Identity & authority","authority separated: 7 of 25"],["Multi-party authorisation","constitutive threshold: 6 of 25"],["Policy & context","purpose / scope bound: 10 of 25"],["Temporal & lifecycle","time inside decision: 8 of 25"],["Formal & empirical assurance","formal assurance: 4 of 25"]];
+const streams=[["Consent representation","evaluable object: 12 of 25"],["Identity & authority","authority separated: 7 of 25"],["Multi-party authorisation","constitutive threshold: 6 of 25"],["Policy & context","purpose / scope bound: 10 of 25"],["Temporal & lifecycle","time inside decision: 8 of 25"],["Formal & empirical assurance","assured decision: 9 of 25 (proof: 4)"]];
 streams.forEach((p,i)=>{ const y=50+i*76;
   s+=node({x:170,y,w:290,h:58,type:"box",lines:[p[0],p[1]],style:"fill:#E8F5E9;stroke:#43A047",fs:12.5,small:true});
   s+=`<path d="M 316 ${y} C 380 ${y}, 380 ${240}, 428 ${240+(y-240)*0.06}" style="stroke:#8a8a5a;stroke-width:1.4;fill:none" marker-end="url(#arr)"/>`; });
@@ -139,6 +139,7 @@ s+=node({x:868,y:240,w:250,h:110,type:"box",lines:["Assurance gap:","the studies
 s+=edge(`M 868 297 L 868 342`);
 s+=node({x:868,y:400,w:290,h:104,type:"round",lines:["Proposed framework:","consent as an evaluable object C","Decision(C, R, t) = ALLOW ⟺","V_I ∧ V_A ∧ V_P ∧ V_T ∧ V_L"],style:"fill:#1F3864;stroke:#1F3864",fs:12.5});
 for(const t of ["Proposed framework:","consent as an evaluable object C","Decision(C, R, t) = ALLOW ⟺","V_I ∧ V_A ∧ V_P ∧ V_T ∧ V_L"]) s=s.split(`fill:#1a1a1a">${t}`).join(`fill:#ffffff">${t}`);
+s=s.replace(/V_([IAPTL])/g,'V<tspan baseline-shift="sub" style="font-size:70%">$1</tspan>');
 svg("gfig2c",1040,500,s);
 }
 </script></body></html>

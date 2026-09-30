@@ -1,0 +1,63 @@
+[
+ {
+  "n": 7,
+  "caption": "Summary of Research Outputs and Publication Plan",
+  "header": [
+   "Research Output / Topic",
+   "Target Venue",
+   "Current Status",
+   "Thesis Alignment"
+  ],
+  "rows": [
+   [
+    "Trust-Centric Consent Framework: model architecture and multi-party authorisation policies",
+    "Elsevier/IEEE",
+    "Almost Ready",
+    "Core architectural contribution; ⦅addresses RQ1 to RQ4 (Sections 6.1 to 6.4).⦆"
+   ],
+   [
+    "HALAH Prototype & Validation: ⟪the decentralised implementation and the scenario-based validation are complete on the Sepolia public testnet; the performance evaluation remains outstanding⟫",
+    "Systems / Security Conference",
+    "In Progress",
+    "Empirical validation platform; addresses implementation and validation; ⟪the paper's empirical section can now draw upon the deployed contract, the two minted tokens and the verified transaction trail as delivered evidence⟫"
+   ],
+   [
+    "Formal Security & Lifecycle Analysis: verification of temporal constraints and state transitions",
+    "⟪Specialised⟫ Workshop / Journal",
+    "Planned",
+    "Next stage research extension; ⦅addresses formal security ⦅assurance (Sections 6.5 and⦆ 6.6).⦆"
+   ]
+  ]
+ },
+ {
+  "n": 8,
+  "caption": "Next Stage Research Activities, Methodological Focus, and Expected Outcomes",
+  "header": [
+   "Research Focus",
+   "Planned Activities",
+   "Expected Outcome"
+  ],
+  "rows": [
+   [
+    "⟪Consent Modification, Delegation and Lifecycle Extensions⟫",
+    "⦅Extend the implemented lifecycle mechanism to support consent modification, delegation and guardian-set changes, and formalise the state-transition model so that unauthorised transitions are excluded by construction.⦆ Evaluate access decisions under varying temporal and consent-state constraints.",
+    "A robust, dynamic consent management mechanism capable of validating whether an authorisation remains active at the precise point of access."
+   ],
+   [
+    "Formal Security Assurance\n(Properties & Verification)",
+    "Formally define critical security properties and analyse system behaviour under adverse conditions, including invalid identities, insufficient multi-party approvals, policy violations, expired/revoked states, and illegal transitions.",
+    "A rigorous formal security model and verification proof establishing explicit security guarantees for the trust-oriented authorisation framework."
+   ],
+   [
+    "Comprehensive Empirical Validation\n(HALAH Prototype Scenarios)",
+    "Scale and extend HALAH prototype experiments using representative positive and negative healthcare data-sharing scenarios. Measure and compare observed system runtime performance, overhead, and enforcement accuracy.",
+    "Empirical evidence and benchmark datasets demonstrating that the implementation consistently and efficiently enforces the proposed authorisation model."
+   ],
+   [
+    "Integrated Framework Evaluation\n(Synthesis & End-to-End)",
+    "Integrate temporal, lifecycle, formal verification, and empirical modules into a unified, cohesive framework. Evaluate cross-component interactions, scalability bottlenecks, and end-to-end feasibility in real-world settings.",
+    "A fully integrated, validated ⟪trust-oriented authorisation framework⟫ providing secure, multi-party patient consent and decentralised healthcare data sharing."
+   ]
+  ]
+ }
+]

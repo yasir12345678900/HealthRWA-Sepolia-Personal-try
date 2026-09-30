@@ -1,0 +1,31 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#fff;font-family:'Segoe UI',Calibri,Arial,sans-serif}
+.wrap{padding:10px;display:inline-block;background:#fff}
+</style></head><body><script>
+function sub(s){return s.replace(/V_([A-Z])/g,'V<tspan baseline-shift="sub" style="font-size:70%">$1</tspan>');}
+function st(x,y,name,note,fill,stroke){return `<rect x="${x-125}" y="${y-38}" width="250" height="76" rx="10" style="fill:${fill};stroke:${stroke};stroke-width:2"/>
+<text x="${x}" y="${y-6}" text-anchor="middle" style="font-family:'DejaVu Sans Mono',monospace;font-size:23px;font-weight:700;fill:#1a1a1a">${name}</text>
+<text x="${x}" y="${y+20}" text-anchor="middle" style="font-size:19px;fill:#333">${sub(note)}</text>`;}
+function arrow(d,red,dash){return `<path d="${d}" style="stroke:${red?'#C62828':'#555'};stroke-width:2.2;fill:none${dash?';stroke-dasharray:7 5':''}" marker-end="url(#${red?'arrR':'arr'})"/>`;}
+function lab(x,y,t,red,anchor){return t.split("\n").map((l,i)=>`<text x="${x}" y="${y+i*19}" text-anchor="${anchor||'middle'}" style="font-size:18px;font-weight:600;fill:${red?'#C62828':'#333'}">${sub(l)}</text>`).join("");}
+let s=`<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L9,5 L0,10 z" fill="#555"/></marker><marker id="arrR" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L9,5 L0,10 z" fill="#C62828"/></marker></defs>`;
+const Y=110, X=[190,470,750,1030], EX=1030, EY=310, RX=500, RY=330;
+s+=`<circle cx="30" cy="${Y}" r="12" fill="#1a1a1a"/>`+arrow(`M 42 ${Y} L ${X[0]-129} ${Y}`);
+s+=st(X[0],Y,"PENDING_SIGNATURE","consent created off-chain","#FFF8E1","#C9A227");
+s+=st(X[1],Y,"PENDING_TOKEN","mint submitted to Sepolia","#FFF8E1","#C9A227");
+s+=st(X[2],Y,"NOT_STARTED","now < notBefore","#ECEFF1","#607D8B");
+s+=st(X[3],Y,"ACTIVE","access may be granted","#E8F5E9","#2E7D32");
+s+=st(EX,EY,"EXPIRED","V_T fails","#ECEFF1","#607D8B");
+s+=st(RX,RY,"REVOKED","V_A fails permanently","#FFEBEE","#C62828");
+s+=arrow(`M ${X[0]+125} ${Y} L ${X[1]-129} ${Y}`)+lab((X[0]+X[1])/2,Y-58,"all |G| EIP-712\nsignatures verified");
+s+=arrow(`M ${X[1]+125} ${Y} L ${X[2]-129} ${Y}`,true)+lab((X[1]+X[2])/2,Y-58,"ONCHAIN_MINT\ntx confirmed",true);
+s+=arrow(`M ${X[2]+125} ${Y} L ${X[3]-129} ${Y}`)+lab((X[2]+X[3])/2,Y-52,"notBefore ≤ now");
+s+=arrow(`M ${X[3]+40} ${Y+38} L ${EX+40} ${EY-42}`)+lab(EX+50,EY-90,"now > expiry",false,"start");
+s+=arrow(`M ${X[3]-70} ${Y+38} C ${X[3]-110} ${Y+130}, ${RX+250} ${RY-80}, ${RX+129} ${RY-14}`,true)+lab(RX+150,RY-64,"revoke(tokenId) — ONCHAIN_REVOKE",true,"start");
+s+=arrow(`M ${X[2]-20} ${Y+38} C ${X[2]-40} ${Y+130}, ${RX+140} ${RY-120}, ${RX+90} ${RY-42}`,true);
+s+=arrow(`M ${X[1]+20} ${Y+38} C ${X[1]+30} ${Y+130}, ${RX-100} ${RY-120}, ${RX-60} ${RY-42}`,false,true);
+s+=arrow(`M ${X[0]} ${Y+38} C ${X[0]} ${Y+190}, ${RX-220} ${RY+10}, ${RX-129} ${RY+10}`,false,true);
+s+=arrow(`M ${EX-125} ${EY+10} C ${EX-250} ${EY+40}, ${RX+250} ${RY+50}, ${RX+129} ${RY+22}`,false,true);
+s+=lab(190,RY+60,"revoke before mint\n(off-chain only)",false,"start");
+document.write(`<div class="wrap" id="lifecycle_sm"><svg width="1220" height="420" viewBox="0 0 1220 420">${s}</svg></div>`);
+</script></body></html>

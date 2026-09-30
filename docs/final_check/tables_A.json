@@ -1,0 +1,102 @@
+[
+ {
+  "n": 1,
+  "caption": "Research Scope and Progression",
+  "header": [
+   "Stage",
+   "Research Dimension",
+   "Purpose and Core Objective"
+  ],
+  "rows": [
+   [
+    "Current",
+    "⦅RO1: Trust-Centric Consent Model⦆",
+    "Develop a structured and evaluable representation of patient consent as a trust-aware authorisation object that explicitly connects identity, authority requirements, policy constraints, and authorisation evidence."
+   ],
+   [
+    "Current",
+    "RO2: Decentralised Identity and Authority Trust",
+    "Establish trustworthy participants using decentralised identifiers and verifiable credentials while explicitly separating identity authentication from authorisation authority."
+   ],
+   [
+    "Current",
+    "RO3: Trustworthy Multi-Party Authorisation",
+    "Establish collective trust by requiring multiple independently verified participants to satisfy predefined authorisation conditions before sensitive healthcare data access can be granted."
+   ],
+   [
+    "Current",
+    "⦅RO4: Policy- and Context-Aware Access Control⦆",
+    "Ensure that authorised access remains consistent with the purpose, policy, and healthcare data scope specified by the consent, preventing valid identities and approvals from being used to obtain data beyond the authorised constraints."
+   ],
+   [
+    "⟪Current⟫",
+    "RO5: Temporal and Lifecycle Trust",
+    "Extend the authorisation model with validity periods, expiration, revocation, and controlled consent-state transitions to support dynamic and lifecycle-aware trust evaluation."
+   ],
+   [
+    "⟪Current (empirical) / Next (formal)⟫",
+    "RO6: Formal Security Assurance and Empirical Validation",
+    "Formally define and analyse the security and authorisation properties of the proposed framework and empirically evaluate the complete HALAH implementation using representative healthcare data-sharing, negative, and adversarial scenarios."
+   ]
+  ],
+  "widths": [
+   1300,
+   3200,
+   4860
+  ]
+ },
+ {
+  "n": 2,
+  "caption": "Comparison of Existing Research Approaches and the Proposed Framework",
+  "header": [
+   "Research Stream",
+   "Primary Contribution",
+   "Main Limitation for Authorisation",
+   "Representative References"
+  ],
+  "rows": [
+   [
+    "Healthcare consent and privacy governance",
+    "Patient autonomy, informed consent, and controlled data sharing",
+    "Consent is treated as permission rather than an evaluable authorisation object",
+    "[31, 22, 14, 24, 12, 13, 10]"
+   ],
+   [
+    "Blockchain-based data governance",
+    "Tamper-resistant records, distributed auditability, and transparency",
+    "Immutable records do not establish participant legitimacy, authority, or policy compliance",
+    "[1, 2, 7, 3, 30, 26, 8, 29]"
+   ],
+   [
+    "Decentralised identity and verifiable credentials",
+    "Self-controlled identity, verifiable attributes, and authentication",
+    "Identity and credential validity do not independently determine if access is authorised",
+    "[20, 33, 4, 16, 27, 5]"
+   ],
+   [
+    "Multi-party and decentralised governance",
+    "Collaborative participation and distributed verification or governance",
+    "Limited integration between collective approval thresholds, consent, and access decisions",
+    "[19, 4, 21, 9]"
+   ],
+   [
+    "Policy-based and healthcare access control",
+    "Fine-grained restriction based on attributes, risk, context, and constraints",
+    "Policy enforcement is separated from decentralised identity and multi-party consent",
+    "[32, 11, 28, 25]"
+   ],
+   [
+    "Trusted Computing and secure execution",
+    "Hardware-supported isolation, execution integrity, and attestation",
+    "Secure execution does not determine whether underlying authorisation conditions are sufficient",
+    "[23, 17, 18]"
+   ],
+   [
+    "Proposed Framework",
+    "Integrated evaluation of consent, identity, authority, multi-party approval, and policy compliance",
+    "⟪Lifecycle trust and empirical validation realised in the implemented prototype; formal security assurance requires further extension⟫",
+    "This research"
+   ]
+  ]
+ }
+]

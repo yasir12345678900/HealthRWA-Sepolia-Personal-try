@@ -61,7 +61,11 @@
   "t": "figure",
   "n": 3,
   "page": 36,
-  "caption": "Layered MVC Architecture and Component Decomposition of the HALAH Framework"
+  "caption": "Layered MVC architecture and component decomposition of the HALAH framework"
+ },
+ {
+  "t": "p",
+  "text": "⦃It should be noted that the seven Controller boxes of Figure 6 collapse to the six Controller functions of Figure 7, because request validation is the entry step of identity verification rather than a separate function.⦄"
  },
  {
   "t": "h3",
@@ -71,24 +75,14 @@
  },
  {
   "t": "p",
-  "text": "The three architectural layers are further decomposed into functional components, each corresponding to a distinct responsibility within the trust-oriented authorisation process. Figure 7 presents this decomposition. The View is decomposed according to the principal stakeholder",
+  "text": "The three architectural layers are further decomposed into functional components, each corresponding to a distinct responsibility within the trust-oriented authorisation process. Figure 7 presents this decomposition. The View is decomposed according to the principal stakeholder roles. The patient interface supports consent specification and consent-related actions. The guardian or other authorised-participant interface supports independent approval. The healthcare professional interface supports authorised data-access requests. The auditor interface supports inspection of authorisation evidence and audit history. These interfaces represent different interaction responsibilities but share the same architectural principle: none of them independently determines whether access should be granted. ⦅The Controller is decomposed into six principal security functions in the conceptual model, which the implemented prototype extends to the eight functions noted above.⦆ Identity Verification establishes whether a participant can be identified through the relevant decentralised identity mechanism. Authority Verification evaluates whether the participant possesses appropriate evidence concerning the required role or authority. Approval Aggregation determines whether independently verified approvals satisfy the predefined threshold. Policy Enforcement evaluates whether the requested purpose and data scope comply with the consent policy. Decision Engine combines the resulting predicates into the final authorisation decision. Finally, Audit Coordination records the relevant evidence and decision events. The Model is decomposed into seven principal state representations. ⦅The DID component represents decentralised identity information, and the VC component represents credential and authority evidence. The Consent component represents the structured patient authorisation object, the Approval component represents verified multi-party approval evidence, and the Policy component represents purpose and data-scope constraints. The Evidence component represents evidence generated throughout the authorisation process, and the Lifecycle component represents the current state of the consent object and its permissible transitions.⦆ This decomposition establishes an explicit distinction between state, interaction, and enforcement. The Model stores and represents security-relevant state, the View expresses stakeholder actions, and the Controller determines whether those actions satisfy the required trust conditions.",
   "page": 36
  },
  {
   "t": "figure",
   "n": 4,
   "page": 36,
-  "caption": "Functional Decomposition of the MVC Components"
- },
- {
-  "t": "p",
-  "text": "roles. The patient interface supports consent specification and consent-related actions. The guardian or other authorised-participant interface supports independent approval. The healthcare professional interface supports authorised data-access requests. The auditor interface supports inspection of authorisation evidence and audit history. These interfaces represent",
-  "page": 36
- },
- {
-  "t": "p",
-  "text": "different interaction responsibilities but share the same architectural principle: none of them independently determines whether access should be granted. ⦅The Controller is decomposed into six principal security functions in the conceptual model, which the implemented prototype extends to the eight functions noted above.⦆ Identity Verification establishes whether a participant can be identified through the relevant decentralised identity mechanism. Authority Verification evaluates whether the participant possesses appropriate evidence concerning the required role or authority. Approval Aggregation determines whether independently verified approvals satisfy the predefined threshold. Policy Enforcement evaluates whether the requested purpose and data scope comply with the consent policy. Decision Engine combines the resulting predicates into the final authorisation decision. Finally, Audit Coordination records the relevant evidence and decision events. The Model is decomposed into seven principal state representations. ⦅The DID component represents decentralised identity information, and the VC component represents credential and authority evidence. The Consent component represents the structured patient authorisation object, the Approval component represents verified multi-party approval evidence, and the Policy component represents purpose and data-scope constraints. The Evidence component represents evidence generated throughout the authorisation process, and the Lifecycle component represents the current state of the consent object and its permissible transitions.⦆ This decomposition establishes an explicit distinction between state, interaction, and enforcement. The Model stores and represents security-relevant state, the View expresses stakeholder actions, and the Controller determines whether those actions satisfy the required trust conditions.",
-  "page": 37
+  "caption": "Functional decomposition of the MVC components"
  },
  {
   "t": "h3",
@@ -122,7 +116,7 @@
   "t": "figure",
   "n": 5,
   "page": 38,
-  "caption": "Trust Predicate Evaluation and Authorisation Decision Flow"
+  "caption": "Trust predicate evaluation and authorisation decision flow"
  },
  {
   "t": "p",
@@ -182,16 +176,16 @@
   "page": 40
  },
  {
-  "t": "figure",
-  "n": 6,
-  "page": 41,
-  "caption": "End-to-End Workflow of Trust-Oriented Consent Authorisation Framework"
- },
- {
   "t": "eq",
   "text": "V~A~(C) = 1, |A~v~| ≥ N; 0, |A~v~| < N.",
   "num": 28,
   "page": 42
+ },
+ {
+  "t": "figure",
+  "n": 6,
+  "page": 41,
+  "caption": "End-to-end workflow of the trust-oriented consent authorisation framework"
  },
  {
   "t": "p",
@@ -199,7 +193,7 @@
  },
  {
   "t": "p",
-  "text": "⦅Figure 9 further shows the steps that follow the threshold check. Once all |G| guardians have signed and the N-of-N condition of Eq. (28) is satisfied, the consent token is minted in the local ledger, and a background job anchors the mint on Sepolia asynchronously. The temporal check V~T~ and the jurisdictional check V~L~ are then evaluated before the Authorisation Decision. A Groth16 proof is generated and verified before access is granted, and the audit evidence is recorded. The flow then continues through patient-initiated revocation and the corresponding on-chain revoke transaction. Finally, the auditor reviews the record, and the verification tool of Section 6.8.9 performs an independent verification.⦆"
+  "text": "⦅The steps that follow the threshold check are as follows. Once all |G| guardians have signed and the N-of-N condition of Eq. (28) is satisfied, the consent token is minted in the local ledger, and a background job anchors the mint on Sepolia asynchronously. The temporal check V~T~ and the jurisdictional check V~L~ are then evaluated before the Authorisation Decision. A Groth16 proof is generated and verified before access is granted, and the audit evidence is recorded. The flow then continues through patient-initiated revocation and the corresponding on-chain revoke transaction. Finally, the auditor reviews the record, and the verification tool of Section 6.8.9 performs an independent verification.⦆"
  },
  {
   "t": "p",

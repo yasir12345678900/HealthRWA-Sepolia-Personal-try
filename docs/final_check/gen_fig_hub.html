@@ -1,0 +1,61 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#fff}
+.wrap{padding:10px;display:inline-block;background:#fff}
+text{font-family:'DejaVu Serif','Liberation Serif',Georgia,serif;fill:#111}
+</style></head><body>
+<script>
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+function sub(l){ return esc(l).replace(/\b(id|[A-Za-z])_([A-Za-z])\b/g,(m,a,b)=>`${a}<tspan baseline-shift="sub" style="font-size:72%">${b}</tspan>`); }
+const K="#111";
+// ---- icons (monochrome, centred at cx,cy, ~48px) ----
+const ICON={
+ person:(x,y)=>`<circle cx="${x}" cy="${y-12}" r="11" fill="${K}"/><path d="M${x-19} ${y+22} Q${x-19} ${y+1} ${x} ${y+1} Q${x+19} ${y+1} ${x+19} ${y+22} Z" fill="${K}"/>`,
+ group:(x,y)=>[[-17,4,8],[17,4,8],[0,-2,10]].map(([dx,dy,r])=>`<circle cx="${x+dx}" cy="${y+dy-12}" r="${r}" fill="${K}"/><path d="M${x+dx-r*1.6} ${y+dy+16} Q${x+dx-r*1.6} ${y+dy-2} ${x+dx} ${y+dy-2} Q${x+dx+r*1.6} ${y+dy-2} ${x+dx+r*1.6} ${y+dy+16} Z" fill="${K}"/>`).join(""),
+ doc:(x,y)=>`<path d="M${x-17} ${y-24} H${x+7} L${x+17} ${y-14} V${y+24} H${x-17} Z" fill="none" stroke="${K}" stroke-width="4.5" stroke-linejoin="round"/>`+[-6,3,12].map(d=>`<line x1="${x-9}" y1="${y+d}" x2="${x+9-(d>10?6:0)}" y2="${y+d}" stroke="${K}" stroke-width="4" stroke-linecap="round"/>`).join(""),
+ clock:(x,y)=>`<circle cx="${x}" cy="${y}" r="22" fill="none" stroke="${K}" stroke-width="4.5"/><path d="M${x} ${y-12} V${y+1} L${x+9} ${y+9}" fill="none" stroke="${K}" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>`,
+ globe:(x,y)=>`<circle cx="${x}" cy="${y}" r="22" fill="none" stroke="${K}" stroke-width="4"/><ellipse cx="${x}" cy="${y}" rx="9" ry="22" fill="none" stroke="${K}" stroke-width="3"/><line x1="${x-22}" y1="${y}" x2="${x+22}" y2="${y}" stroke="${K}" stroke-width="3"/><path d="M${x-19} ${y-11} H${x+19} M${x-19} ${y+11} H${x+19}" stroke="${K}" stroke-width="2.4"/>`,
+ db:(x,y)=>{let o="";for(const d of [-14,0,14]) o+=`<ellipse cx="${x}" cy="${y+d+6}" rx="20" ry="7" fill="${K}"/><rect x="${x-20}" y="${y+d-2}" width="40" height="8" fill="${K}"/>`; return o+`<ellipse cx="${x}" cy="${y-16}" rx="20" ry="7" fill="${K}"/><ellipse cx="${x}" cy="${y-16}" rx="16" ry="4" fill="#fff"/>`;},
+ shielddoc:(x,y)=>`<path d="M${x-30} ${y-40} H${x+8} L${x+24} ${y-24} V${y+38} H${x-30} Z" fill="none" stroke="${K}" stroke-width="5" stroke-linejoin="round"/>`+[-18,-6,6].map(d=>`<line x1="${x-20}" y1="${y+d}" x2="${x+8}" y2="${y+d}" stroke="${K}" stroke-width="4.5" stroke-linecap="round"/>`).join("")+`<path d="M${x+18} ${y+6} L${x+36} ${y+12} V${y+26} Q${x+36} ${y+42} ${x+18} ${y+50} Q${x} ${y+42} ${x} ${y+26} V${y+12} Z" fill="${K}"/><path d="M${x+18} ${y+14} L${x+29} ${y+18} V${y+27} Q${x+29} ${y+37} ${x+18} ${y+42} Z" fill="#fff"/>`,
+};
+function box(x,y,w,h,letter,title,icon,lines,supplier){
+  let o=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="9" fill="#fff" stroke="${K}" stroke-width="2.6"/>`;
+  o+=`<rect x="${x+24}" y="${y+16}" width="46" height="46" rx="5" fill="#fff" stroke="${K}" stroke-width="2.4"/>`;
+  o+=`<text x="${x+47}" y="${y+50}" text-anchor="middle" style="font-size:29px;font-weight:700">${letter}</text>`;
+  o+=`<text x="${x+88}" y="${y+50}" style="font-size:27px;font-weight:700">${esc(title)}</text>`;
+  o+=ICON[icon](x+56,y+112);
+  lines.forEach((l,i)=>{ o+=`<text x="${x+104}" y="${y+96+i*28}" style="font-size:19.5px">${sub(l)}</text>`; });
+  o+=`<line x1="${x+24}" y1="${y+h-40}" x2="${x+w-24}" y2="${y+h-40}" stroke="#999" stroke-width="1" stroke-dasharray="4 3"/>`;
+  o+=`<text x="${x+24}" y="${y+h-15}" style="font-size:17px;font-style:italic;fill:#333">Supplied by: ${esc(supplier)}</text>`;
+  return o;
+}
+let s="";
+const W=1560, BW=500, H1=252, GAP=26, LX=20, RX=W-20-BW, Y0=20;
+const L=[["I","Identity","person",["Patient identity (DID)","Designated doctor","Guardian identities","Participant DID references"],"Patient"],
+         ["A","Authorisation","group",["Eligible guardian approvers G","Authority requirements","Approval threshold N = |G|","Example: two valid guardian approvals"],"Patient (G); System (N)"],
+         ["P","Policy","doc",["Permitted purpose","Permitted data scope:","Observation, Medication,","Condition, Procedure"],"Patient"]];
+const R=[["T","Temporal Conditions","clock",["Start time t_s","Expiry time t_e","Consent validity interval","[t_s, t_e]"],"Patient"],
+         ["L","Jurisdiction","globe",["Permitted jurisdiction","ISO alpha-2 code (e.g., AU)","Stored on-chain with the token","Checked at every request (V_L)"],"Patient"],
+         ["E","Evidence","db",["Verification and approval records","EIP-712 guardian signatures","Access-decision records","Lifecycle events and tx hashes"],"Audit layer; Guardians; Blockchain"]];
+const ys=[0,1,2].map(i=>Y0+i*(H1+GAP));
+L.forEach((b,i)=>s+=box(LX,ys[i],BW,H1,...b));
+R.forEach((b,i)=>s+=box(RX,ys[i],BW,H1,...b));
+// centre
+const CW=410, CH=470, CX=W/2-CW/2, CY=Y0+(3*H1+2*GAP)/2-CH/2;
+s+=`<rect x="${CX}" y="${CY}" width="${CW}" height="${CH}" rx="10" fill="#fff" stroke="${K}" stroke-width="3"/>`;
+s+=ICON.shielddoc(W/2-4,CY+70);
+s+=`<text x="${W/2}" y="${CY+168}" text-anchor="middle" style="font-size:32px;font-weight:700">Trust-Centric</text>`;
+s+=`<text x="${W/2}" y="${CY+206}" text-anchor="middle" style="font-size:32px;font-weight:700">Consent Object</text>`;
+s+=`<text x="${W/2}" y="${CY+262}" text-anchor="middle" style="font-size:36px;font-weight:700">C = (I, A, P, T, L, E)</text>`;
+s+=`<line x1="${CX+30}" y1="${CY+290}" x2="${CX+CW-30}" y2="${CY+290}" stroke="${K}" stroke-width="2"/>`;
+s+=`<text x="${W/2}" y="${CY+326}" text-anchor="middle" style="font-size:21px;font-weight:700">Consent ID: ${sub("id_C")}</text>`;
+s+=`<text x="${W/2}" y="${CY+354}" text-anchor="middle" style="font-size:18px">generated by the system (UUID)</text>`;
+s+=`<text x="${W/2}" y="${CY+396}" text-anchor="middle" style="font-size:21px;font-weight:700">Lifecycle state</text>`;
+s+=`<text x="${W/2}" y="${CY+424}" text-anchor="middle" style="font-size:16px">PENDING_SIGNATURE → PENDING_TOKEN → NOT_STARTED</text>`;
+s+=`<text x="${W/2}" y="${CY+450}" text-anchor="middle" style="font-size:16px">→ ACTIVE → REVOKED / EXPIRED</text>`;
+// connectors (elbow lines with dots)
+function conn(x1,y1,x2,y2,midx){ return `<path d="M${x1} ${y1} H${midx} V${y2} H${x2}" fill="none" stroke="${K}" stroke-width="2.6"/><circle cx="${x1}" cy="${y1}" r="6" fill="${K}"/><circle cx="${x2}" cy="${y2}" r="6" fill="${K}"/>`; }
+const cyL=[CY+95,CY+CH/2,CY+CH-95];
+ys.forEach((y,i)=>{ s+=conn(LX+BW,y+H1/2,CX,cyL[i],LX+BW+48); s+=conn(RX,y+H1/2,CX+CW,cyL[i],RX-48); });
+const HH=Y0+3*H1+2*GAP+20;
+document.write(`<div class="wrap" id="hub"><svg width="${W}" height="${HH}" viewBox="0 0 ${W} ${HH}">${s}</svg></div>`);
+</script></body></html>

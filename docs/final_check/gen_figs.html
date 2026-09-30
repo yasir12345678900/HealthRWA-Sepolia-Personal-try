@@ -1,0 +1,276 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#fff;font-family:'Segoe UI',Calibri,Arial,sans-serif}
+.wrap{padding:12px;display:inline-block;background:#fff}
+</style></head><body>
+<script>
+const MER = { box:"fill:#FFF8E1;stroke:#C9A227", round:"fill:#FFF8E1;stroke:#C9A227", diam:"fill:#FFF8E1;stroke:#C9A227" };
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+function node(n){
+  const {x,y,w,h,type,lines,style} = n;
+  const st = style || "fill:#FFF8E1;stroke:#C9A227";
+  let shape;
+  if(type==="round") shape=`<rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="${h/2}" style="${st};stroke-width:1.6"/>`;
+  else if(type==="diam") shape=`<polygon points="${x},${y-h/2} ${x+w/2},${y} ${x},${y+h/2} ${x-w/2},${y}" style="${st};stroke-width:1.6"/>`;
+  else shape=`<rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="4" style="${st};stroke-width:1.6"/>`;
+  const n0 = lines.length;
+  const fs = n.fs || 15.5;
+  const lh = fs + 4;
+  const y0 = y - (n0-1)*lh/2;
+  const txt = lines.map((l,i)=>`<text x="${x}" y="${y0+i*lh+fs*0.35}" text-anchor="middle" style="font-size:${i===0&&n0>1&&n.subFirst!==false&&n.bold1!==false?fs:'' }px"><tspan style="font-size:${(n.small&&i>0)?fs-2.5:fs}px;font-weight:600;fill:#1a1a1a">${esc(l)}</tspan></text>`).join("");
+  return shape+txt;
+}
+function edge(d,label,lx,ly){
+  let s=`<path d="${d}" style="stroke:#8a8a5a;stroke-width:1.5;fill:none" marker-end="url(#arr)"/>`;
+  if(label) s+=`<rect x="${lx-14}" y="${ly-11}" width="28" height="16" fill="#f2f2f2" opacity="0.9"/><text x="${lx}" y="${ly+2}" text-anchor="middle" style="font-size:14px;font-weight:600;fill:#333">${label}</text>`;
+  return s;
+}
+function svg(id,w,h,inner){
+  document.write(`<div class="wrap" id="${id}"><svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 z" fill="#8a8a5a"/></marker></defs>${inner}</svg></div>`);
+}
+const V = (x,y1,y2,label,ly)=>edge(`M ${x} ${y1} L ${x} ${y2-4}`,label,x+24,ly||((y1+y2)/2));
+</script>
+
+<script>
+/* ---------- FIG 7 : RO1 consent creation ---------- */
+{
+let s="";
+const cx=300;
+const chain=[["round","Patient Creates Consent",44],["box","Collect Patient DID",40],["box","Specify Authorised Doctor",40],
+ ["box","Specify Guardian DIDs",40],["box","Specify Data Scope (purpose fixed: Treatment)",40],["box","Specify Consent Validity",40]];
+let y=40;
+const ys=[];
+chain.forEach(([t,l,h],i)=>{ ys.push(y); s+=node({x:cx,y,w:t==="round"?230:(l.length>30?330:250),h,type:t,lines:[l],fs:l.length>30?13.5:undefined}); y+=h/2+52+h/2-((i===chain.length-1)?0:0); });
+for(let i=0;i<chain.length-1;i++) s+=V(cx,ys[i]+20,ys[i+1]-20);
+const dy=ys[5]+112; s+=V(cx,ys[5]+20,dy-52);
+s+=node({x:cx,y:dy,w:330,h:104,type:"diam",lines:["Consent Specification Valid?"]});
+const yL=dy+170, xL=170, xR=440;
+s+=edge(`M ${cx-80} ${dy+28} C ${xL} ${dy+80}, ${xL} ${yL-70}, ${xL} ${yL-24}`,"Yes",xL-6,dy+92);
+s+=edge(`M ${cx+80} ${dy+28} C ${xR} ${dy+80}, ${xR} ${yL-70}, ${xR} ${yL-24}`,"No",xR+6,dy+92);
+s+=node({x:xL,y:yL,w:260,h:44,type:"box",lines:["Create Trust-Aware Consent Object"],fs:14.5});
+s+=node({x:xR,y:yL,w:210,h:44,type:"box",lines:["Reject Consent Request"]});
+const rest=["Generate Consent Identifier","Persist Consent Record","Record Consent Creation Audit"];
+let yy=yL;
+rest.forEach(l=>{ const ny=yy+92; s+=V(xL,yy+22,ny-22); s+=node({x:xL,y:ny,w:240,h:44,type:"box",lines:[l]}); yy=ny; });
+svg("gfig7",620,yy+50,s);
+}
+/* ---------- FIG 8 : RO2 identity verification ---------- */
+{
+let s=""; const cx=330;
+s+=node({x:cx,y:44,w:250,h:56,type:"round",lines:["Participant Requests","Participation"]});
+s+=V(cx,72,116); s+=node({x:cx,y:140,w:220,h:44,type:"box",lines:["Resolve Participant DID"]});
+s+=V(cx,162,206); s+=node({x:cx,y:246,w:180,h:78,type:"diam",lines:["DID Valid?"]});
+s+=V(cx,285,330,"Yes",312); s+=node({x:cx+40,y:356,w:250,h:44,type:"box",lines:["Retrieve Verifiable Credential"]});
+s+=V(cx+40,378,424,"Yes",0); // placeholder replaced below
+s="";
+// rebuild carefully with explicit rows
+const rows=[];
+s+=node({x:cx,y:44,w:250,h:56,type:"round",lines:["Participant Requests","Participation"]});
+s+=V(cx,72,112);
+s+=node({x:cx,y:138,w:220,h:44,type:"box",lines:["Resolve Participant DID"]});
+s+=V(cx,160,204);
+s+=node({x:cx,y:248,w:190,h:80,type:"diam",lines:["DID Valid?"]});
+s+=edge(`M ${cx} ${288} L ${cx} ${330}`,"Yes",cx+26,312);
+s+=node({x:cx,y:356,w:250,h:44,type:"box",lines:["Retrieve Verifiable Credential"]});
+s+=V(cx,378,420);
+s+=node({x:cx,y:464,w:180,h:80,type:"diam",lines:["VC Valid?"]});
+s+=edge(`M ${cx} ${504} L ${cx} ${546}`,"Yes",cx+26,528);
+s+=node({x:cx,y:572,w:270,h:44,type:"box",lines:["Extract Role and Authority Claims"],fs:14.5});
+s+=V(cx,594,636);
+s+=node({x:cx,y:692,w:300,h:104,type:"diam",lines:["Authority Matches Consent?"],fs:14.5});
+s+=edge(`M ${cx+70} ${730} C ${cx+120} ${790}, ${cx+120} ${810}, ${cx+120} ${828}`,"Yes",cx+140,788);
+s+=node({x:cx+120,y:852,w:300,h:44,type:"box",lines:["Record Verification Evidence"],fs:14});
+s+=V(cx+120,874,916);
+s+=node({x:cx+120,y:940,w:300,h:44,type:"box",lines:["Return Verified Identity and Authority"],fs:14});
+// reject collector
+const rx=90;
+s+=edge(`M ${cx-95} ${248} C ${rx} ${260}, ${rx} ${700}, ${rx-10} ${826}`,"No",rx-24,540);
+s+=edge(`M ${cx-90} ${464} C ${rx+70} ${480}, ${rx+60} ${700}, ${rx+18} ${828}`,"No",rx+80,600);
+s+=edge(`M ${cx-95} ${730} C ${cx-160} ${790}, ${rx+80} ${800}, ${rx+52} ${832}`,"No",cx-160,788);
+s+=node({x:rx+30,y:852,w:190,h:44,type:"box",lines:["Reject Participant"]});
+svg("gfig8",660,990,s);
+}
+/* ---------- FIG 9 : RO3 threshold approval ---------- */
+{
+let s=""; const cx=300;
+s+=node({x:cx,y:46,w:260,h:56,type:"round",lines:["Consent Requires Multi-Party","Approval"]});
+s+=V(cx,74,114);
+s+=node({x:cx,y:138,w:250,h:44,type:"box",lines:["Identify Required Participants"]});
+s+=V(cx,160,200);
+s+=node({x:cx,y:224,w:250,h:44,type:"box",lines:["Participant Submits Approval"]});
+s+=V(cx,246,286);
+s+=node({x:cx,y:310,w:330,h:44,type:"box",lines:["Verify DID, VC and EIP-712 Signature"],fs:14});
+s+=V(cx,332,368);
+s+=node({x:cx,y:414,w:300,h:100,type:"diam",lines:["Approval Valid?","(g ∈ G, not duplicate)"],fs:13.5});
+s+=edge(`M ${cx-62} ${446} C ${150} ${490}, ${150} ${500}, ${150} ${516}`,"No",132,486);
+s+=node({x:150,y:540,w:220,h:44,type:"box",lines:["Reject Invalid Approval"]});
+s+=edge(`M ${cx+62} ${446} C ${430} ${490}, ${430} ${500}, ${430} ${516}`,"Yes",448,486);
+s+=node({x:430,y:540,w:210,h:44,type:"box",lines:["Record Valid Approval"]});
+s+=V(430,562,600);
+s+=node({x:430,y:624,w:220,h:44,type:"box",lines:["Update Approval Count"]});
+s+=V(430,646,684);
+s+=node({x:430,y:734,w:260,h:96,type:"diam",lines:["Threshold Satisfied?"]});
+s+=edge(`M ${430-66} ${766} C ${250} ${812}, ${250} ${820}, ${250} ${838}`,"No",232,808);
+s+=node({x:250,y:862,w:230,h:44,type:"box",lines:["Consent Remains Pending"]});
+s+=edge(`M ${430+66} ${766} C ${560} ${812}, ${560} ${820}, ${560} ${838}`,"Yes",578,808);
+s+=node({x:560,y:862,w:210,h:44,type:"box",lines:["Activate Authorisation"]});
+s+=V(560,884,922);
+s+=node({x:560,y:946,w:230,h:44,type:"box",lines:["Record Approval Evidence"]});
+s+=V(560,968,1006);
+s+=node({x:560,y:1030,w:300,h:44,type:"box",lines:["Issue Consent Token or Activation Record"],fs:13});
+svg("gfig9",760,1090,s);
+}
+/* ---------- FIG 10 : RO4 policy access ---------- */
+{
+let s=""; const cx=300; const dx=90;
+s+=node({x:cx,y:44,w:250,h:56,type:"round",lines:["Doctor Requests Patient","Data"]});
+s+=V(cx,72,112);
+s+=node({x:cx,y:136,w:230,h:44,type:"box",lines:["Retrieve Consent Object"]});
+s+=V(cx,158,198);
+s+=node({x:cx,y:222,w:310,h:44,type:"box",lines:["Verify Requesting Identity and Authority"],fs:14});
+s+=V(cx,244,282);
+s+=node({x:cx,y:322,w:250,h:84,type:"diam",lines:["Identity Valid and","Consent ACTIVE?"],fs:13.5});
+s+=edge(`M ${cx} ${360} L ${cx+60} ${402}`,"Yes",cx+62,382);
+s+=node({x:cx+60,y:426,w:270,h:44,type:"box",lines:["Verify Multi-Party Authorisation"],fs:14.5});
+s+=V(cx+60,448,486);
+s+=node({x:cx+60,y:530,w:250,h:88,type:"diam",lines:["Threshold Satisfied?"]});
+s+=edge(`M ${cx+60} ${574} L ${cx+110} ${616}`,"Yes",cx+112,596);
+s+=node({x:cx+110,y:640,w:250,h:44,type:"box",lines:["Evaluate Requested Purpose"]});
+s+=V(cx+110,662,700);
+s+=node({x:cx+110,y:740,w:200,h:80,type:"diam",lines:["Purpose Valid?"]});
+s+=edge(`M ${cx+110} ${780} L ${cx+160} ${822}`,"Yes",cx+162,802);
+s+=node({x:cx+160,y:846,w:270,h:44,type:"box",lines:["Evaluate Data Scope, Validity","Interval and Jurisdiction"],fs:13.5});
+s+=V(cx+160,868,906);
+s+=node({x:cx+160,y:950,w:300,h:96,type:"diam",lines:["Scope, Time and","Jurisdiction Valid?"],fs:13.5});
+s+=edge(`M ${cx+160} ${994} L ${cx+180} ${1036}`,"Yes",cx+182,1016);
+s+=node({x:cx+180,y:1060,w:300,h:44,type:"box",lines:["Generate Proof or Access Evidence"],fs:14});
+s+=V(cx+180,1082,1120);
+s+=node({x:cx+180,y:1144,w:200,h:44,type:"box",lines:["Grant Data Access"]});
+s+=V(cx+180,1166,1204);
+s+=node({x:cx+180,y:1228,w:230,h:44,type:"box",lines:["Record Granted Access"]});
+// deny collector
+const denyx=140, denyy=1060;
+s+=edge(`M ${cx-95} ${322} C ${denyx-40} ${340}, ${denyx-40} ${940}, ${denyx-30} ${1038}`,"No",denyx-58,700);
+s+=edge(`M ${cx+60-125} ${530} C ${denyx+20} ${560}, ${denyx+10} ${950}, ${denyx-8} ${1040}`,"No",denyx+38,760);
+s+=edge(`M ${cx+110-100} ${740} C ${denyx+80} ${790}, ${denyx+60} ${960}, ${denyx+16} ${1042}`,"No",denyx+96,860);
+s+=edge(`M ${cx+160-140} ${950} C ${denyx+120} ${990}, ${denyx+90} ${1010}, ${denyx+42} ${1046}`,"No",denyx+128,996);
+s+=node({x:denyx,y:1060,w:150,h:44,type:"box",lines:["Deny Access"]});
+s+=V(denyx,1082,1120);
+s+=node({x:denyx,y:1144,w:220,h:44,type:"box",lines:["Record Denied Access"]});
+svg("gfig10",700,1290,s);
+}
+/* ---------- FIG 11 : RO5 lifecycle ---------- */
+{
+let s=""; const cx=330;
+s+=node({x:cx,y:40,w:200,h:44,type:"round",lines:["Access Request"]});
+s+=V(cx,62,102);
+s+=node({x:cx,y:126,w:230,h:44,type:"box",lines:["Retrieve Consent State"]});
+s+=V(cx,148,188);
+s+=node({x:cx,y:212,w:290,h:44,type:"box",lines:["Check Consent Validity Interval"],fs:14.5});
+s+=V(cx,234,272);
+s+=node({x:cx,y:318,w:240,h:88,type:"diam",lines:["Within Valid Time?"]});
+s+=edge(`M ${cx} ${362} L ${cx+50} ${404}`,"Yes",cx+52,384);
+s+=node({x:cx+50,y:428,w:230,h:44,type:"box",lines:["Check Lifecycle State"]});
+s+=V(cx+50,450,488);
+s+=node({x:cx+50,y:534,w:270,h:90,type:"diam",lines:["State Permits Access?"],fs:14.5});
+s+=edge(`M ${cx+50} ${579} L ${cx+110} ${621}`,"Yes",cx+112,601);
+s+=node({x:cx+110,y:645,w:270,h:44,type:"box",lines:["Evaluate Revocation Status"],fs:14.5});
+s+=V(cx+110,667,705);
+s+=node({x:cx+110,y:748,w:170,h:80,type:"diam",lines:["Revoked?"]});
+s+=edge(`M ${cx+110} ${788} L ${cx+160} ${836}`,"No",cx+164,812);
+s+=node({x:cx+160,y:860,w:310,h:44,type:"box",lines:["Record STATE_CHECK Evidence"],fs:14});
+s+=V(cx+160,882,920);
+s+=node({x:cx+160,y:944,w:310,h:44,type:"box",lines:["Continue Authorisation Evaluation"],fs:14});
+// deny collector
+const dxx=140;
+s+=edge(`M ${cx-120} ${318} C ${dxx} ${340}, ${dxx} ${740}, ${dxx-4} ${836}`,"No",dxx-24,560);
+s+=edge(`M ${cx+50-135} ${534} C ${dxx+70} ${560}, ${dxx+40} ${760}, ${dxx+16} ${840}`,"No",dxx+86,650);
+s+=edge(`M ${cx+110-85} ${748} C ${dxx+140} ${790}, ${dxx+90} ${810}, ${dxx+44} ${844}`,"Yes",dxx+150,800);
+s+=node({x:dxx+10,y:860,w:150,h:44,type:"box",lines:["Deny Access"]});
+s+=V(dxx+10,882,920);
+s+=node({x:dxx+10,y:944,w:280,h:44,type:"box",lines:["Record Lifecycle-Based Denial"],fs:14});
+svg("gfig11",700,1010,s);
+}
+/* ---------- FIG 12 : RO6 validation ---------- */
+{
+let s=""; const cx=430;
+s+=node({x:cx,y:46,w:320,h:56,type:"round",lines:["Define Security and Authorisation","Properties"],fs:15});
+s+=V(cx,74,114);
+s+=node({x:cx,y:138,w:380,h:44,type:"box",lines:["Define Valid, Negative and Adversarial Scenarios"],fs:14});
+s+=V(cx,160,200);
+s+=node({x:cx,y:224,w:290,h:44,type:"box",lines:["Implement Validation Scenarios"],fs:15});
+s+=edge(`M ${cx-100} ${246} C ${170} ${290}, ${160} ${300}, ${158} ${312}`);
+s+=edge(`M ${cx+100} ${246} C ${690} ${290}, ${700} ${300}, ${700} ${312}`);
+s+=node({x:158,y:338,w:290,h:44,type:"box",lines:["Execute Valid Consent Workflow"],fs:14.5});
+s+=node({x:700,y:338,w:340,h:44,type:"box",lines:["Execute Negative and Adversarial Scenarios"],fs:13.5});
+s+=edge(`M ${158} ${360} C ${170} ${410}, ${280} ${420}, ${330} ${430}`);
+s+=edge(`M ${700} ${360} C ${690} ${410}, ${580} ${420}, ${530} ${430}`);
+s+=node({x:cx,y:452,w:300,h:44,type:"box",lines:["Collect Decision and Audit Evidence"],fs:14.5});
+s+=edge(`M ${cx-100} ${474} C ${200} ${518}, ${190} ${528}, ${188} ${540}`);
+s+=edge(`M ${cx+100} ${474} C ${660} ${518}, ${670} ${528}, ${672} ${540}`);
+s+=node({x:188,y:566,w:270,h:44,type:"box",lines:["Evaluate Security Properties"],fs:14.5});
+s+=node({x:672,y:566,w:360,h:44,type:"box",lines:["Compare Observed and Expected Decisions"],fs:13.5});
+s+=edge(`M ${188} ${588} C ${200} ${650}, ${330} ${660}, ${380} ${672}`);
+s+=edge(`M ${672} ${588} C ${660} ${650}, ${530} ${660}, ${480} ${672}`);
+s+=node({x:cx,y:716,w:280,h:92,type:"diam",lines:["Properties Satisfied?"]});
+s+=edge(`M ${cx-70} ${748} C ${210} ${800}, ${200} ${810}, ${198} ${822}`,"Yes",188,796);
+s+=node({x:198,y:848,w:300,h:44,type:"box",lines:["Document Evidence and Limitations"],fs:14});
+s+=edge(`M ${cx+70} ${748} C ${650} ${800}, ${660} ${810}, ${662} ${822}`,"No",672,796);
+s+=node({x:662,y:848,w:340,h:44,type:"box",lines:["Analyse the Failed Property"],fs:14});
+s+=edge(`M ${662} ${870} C ${660} ${920}, ${700} ${930}, ${720} ${938}`);
+s+=node({x:722,y:962,w:200,h:44,type:"box",lines:["Refine Framework"]});
+s+=edge(`M ${822} ${958} C ${880} ${880}, ${880} ${330}, ${577} ${230}`);
+svg("gfig12",920,1030,s);
+}
+/* ---------- FIG 1 : SLR search string ---------- */
+{
+let s="";
+const cats=[
+ {y:90,  cls:"fill:#E3F2FD;stroke:#1E88E5", name:["Multi-Party Trust","Management"], kw:["distributed trust","multiparty trust","decentralisation"], kcls:"fill:#EAF4FE;stroke:#1E88E5"},
+ {y:230, cls:"fill:#E8F5E9;stroke:#43A047", name:["Healthcare","Context"], kw:["healthcare","EHR","health data","medical data"], kcls:"fill:#EEF9EF;stroke:#43A047"},
+ {y:380, cls:"fill:#FFF8E1;stroke:#C9A227", name:["Consent","Management"], kw:["consent","patient consent","dynamic consent","consent management"], kcls:"fill:#FFFBEC;stroke:#C9A227"},
+ {y:560, cls:"fill:#FBE9E7;stroke:#E64A19", name:["Supporting","Requirements"], kw:["access control","authentication","DID","verifiable credential","privacy","auditability","interoperability"], kcls:"fill:#FDEFEC;stroke:#E64A19"},
+];
+s+=node({x:105,y:330,w:170,h:46,type:"round",lines:["SLR Search Query"],style:"fill:#1F3864;stroke:#1F3864"});
+s=s.replace('fill:#1a1a1a">SLR Search Query','fill:#ffffff">SLR Search Query');
+for(const c of cats){
+  s+=edge(`M 190 330 C 240 ${c.y+ (330>c.y?40:-40)}, 250 ${c.y}, 262 ${c.y}`);
+  s+=node({x:340,y:c.y,w:155,h:52,type:"box",lines:c.name,style:c.cls,fs:14.5});
+  s+=edge(`M 418 ${c.y} L 452 ${c.y}`);
+  const kh=c.kw.length*17+14;
+  s+=node({x:560,y:c.y,w:210,h:kh,type:"box",lines:c.kw,style:c.kcls,fs:13.5});
+  s+=edge(`M 666 ${c.y} L 700 ${c.y}`);
+  s+=`<polygon points="${726-24},${c.y} ${726-12},${c.y-16} ${726+12},${c.y-16} ${726+24},${c.y} ${726+12},${c.y+16} ${726-12},${c.y+16}" style="fill:#ECEFF1;stroke:#607D8B;stroke-width:1.4"/><text x="726" y="${c.y+4}" text-anchor="middle" style="font-size:13px;font-weight:600">OR</text>`;
+  s+=edge(`M 752 ${c.y} C 800 ${c.y}, 810 ${330+(c.y-330)*0.2}, 826 ${330+(c.y-330)*0.12}`);
+}
+s+=`<polygon points="${852-26},330 ${852-13},312 ${852+13},312 ${852+26},330 ${852+13},348 ${852-13},348" style="fill:#ECEFF1;stroke:#607D8B;stroke-width:1.4"/><text x="852" y="334" text-anchor="middle" style="font-size:13px;font-weight:600">AND</text>`;
+s+=edge(`M 880 330 L 918 330`);
+s+=node({x:1010,y:330,w:180,h:46,type:"round",lines:["Final Search Results"],style:"fill:#2E7D32;stroke:#2E7D32",fs:14.5});
+s=s.replace('fill:#1a1a1a">Final Search Results','fill:#ffffff">Final Search Results');
+svg("gfig1",1120,700,s);
+}
+/* ---------- FIG 2 : PRISMA ---------- */
+{
+let s="";
+const P="fill:#F8BBD0;stroke:#C2185B", O="fill:#FFE0B2;stroke:#EF6C00", B="fill:#BBDEFB;stroke:#1976D2", LB="fill:#E3F2FD;stroke:#1976D2", G="fill:#C8E6C9;stroke:#2E7D32";
+s+=node({x:430,y:56,w:420,h:76,type:"box",style:O,fs:12.5,lines:["Identification of studies via databases and registers","Records identified from:","Databases (n = 125)   Registers (n = 0)"]});
+s+=edge(`M 330 94 C 240 130, 220 140, 210 156`);
+s+=node({x:200,y:212,w:330,h:104,type:"box",style:P,fs:11.5,lines:["Records removed before screening:","Duplicate records removed (n = 35)","Records marked as ineligible by","automation tools (n = 7)","Records removed for other reasons (n = 0)"]});
+s+=edge(`M 530 94 C 600 130, 610 140, 616 156`);
+s+=node({x:620,y:186,w:210,h:52,type:"box",style:B,fs:12.5,lines:["Records screened","(n = 83)"]});
+s+=edge(`M 560 212 C 460 260, 420 270, 400 288`);
+s+=node({x:330,y:340,w:380,h:76,type:"box",style:P,fs:11.5,lines:["Records excluded (n = 40)","Reason: Unrelated to healthcare data sharing,","consent, or decentralized identity"]});
+s+=edge(`M 660 212 C 700 260, 705 270, 708 288`);
+s+=node({x:710,y:332,w:230,h:52,type:"box",style:LB,fs:12.5,lines:["Reports sought for retrieval","(n = 43)"]});
+s+=edge(`M 640 358 C 560 400, 540 410, 528 428`);
+s+=node({x:470,y:474,w:250,h:64,type:"box",style:P,fs:11.5,lines:["Reports not retrieved (n = 3)","Reason: Full-text inaccessible"]});
+s+=edge(`M 760 358 C 790 400, 793 410, 795 428`);
+s+=node({x:796,y:472,w:240,h:52,type:"box",style:G,fs:12.5,lines:["Reports assessed for eligibility","(n = 40)"]});
+s+=edge(`M 720 498 C 620 550, 590 560, 570 578`);
+s+=node({x:470,y:640,w:400,h:88,type:"box",style:P,fs:11.5,lines:["Reports excluded:","Reason 1: Insufficient technical/architectural detail (n = 3)","Reason 2: Scope mismatch with consent/DID integration (n = 4)"]});
+s+=edge(`M 860 498 C 900 550, 903 560, 905 578`);
+s+=node({x:906,y:640,w:260,h:64,type:"box",style:G,fs:12,lines:["Studies included in review (n = 33)","Reports of included studies (n = 33)"]});
+svg("gfig2",1080,740,s);
+}
+</script>
+</body></html>

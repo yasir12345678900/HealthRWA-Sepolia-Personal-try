@@ -49,7 +49,7 @@
  },
  {
   "t": "p",
-  "text": "⦃In the current interface the purpose is fixed to Treatment and is not selected by the patient. The purpose vocabulary check of Section 6.4.3 is therefore exercised by the automated tests rather than by the interface.⦄"
+  "text": "⦃In the current interface the purpose is fixed to Treatment and is not selected by the patient. The purpose vocabulary check of Section 6.4.3 is therefore exercised by the automated tests rather than by the interface. Figure 10 shows the resulting consent-creation workflow.⦄"
  },
  {
   "t": "figure",

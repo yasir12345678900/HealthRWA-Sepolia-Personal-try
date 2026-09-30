@@ -232,7 +232,7 @@ function nativeTable(t) {
       children: [new TextRun({ text: `Table ${shown}: `, bold: true, font: FONT, size: BODY - 3, color: capCol }), ...runs(t.caption, { font: FONT, size: BODY - 3, color: capCol })] }),
     new Table({ width: { size: 9360, type: WidthType.DXA }, columnWidths: widths,
       rows: [new TableRow({ tableHeader: true, children: t.header.map((h, i) => mk(h, i, true)) }),
-        ...t.rows.map(r => new TableRow({ cantSplit: true, children: r.map((c, i) => mk(c, i, false)) }))] }),
+        ...t.rows.map(r => new TableRow({ cantSplit: false, children: r.map((c, i) => mk(c, i, false)) }))] }),
     new Paragraph({ spacing: { after: 180 }, children: [] }),
   ];
 }
@@ -579,7 +579,7 @@ function pushImpl() {
         children: [new TextRun({ text: "Table 14: ", bold: true, font: FONT, size: BODY - 3, color: RED }), new TextRun({ text: "Correspondence between the HALAH framework components and the implemented subsystems", font: FONT, size: BODY - 3, color: RED })] }));
       C.push(new Table({ width: { size: 9360, type: WidthType.DXA }, columnWidths: widths,
         rows: [new TableRow({ tableHeader: true, children: ib.header.map((h, i) => mkc(h, i, true)) }),
-          ...ib.rows.map(r => new TableRow({ cantSplit: true, children: r.map((c, i) => mkc(c, i, false)) }))] }));
+          ...ib.rows.map(r => new TableRow({ cantSplit: false, children: r.map((c, i) => mkc(c, i, false)) }))] }));
       C.push(new Paragraph({ spacing: { after: 180 }, children: [] }));
     } else if (ib.t === "ifig") {
       implFigNo++;
@@ -739,7 +739,7 @@ function emitTraceTable() {
     children: [new TextRun({ text: "Table 17: ", bold: true, font: FONT, size: BODY - 3, color: RED }), new TextRun({ text: t.caption.replace(/\.$/, ""), font: FONT, size: BODY - 3, color: RED })] }));
   C.push(new Table({ width: { size: 9360, type: WidthType.DXA }, columnWidths: widths,
     rows: [new TableRow({ tableHeader: true, children: t.header.map((h, i) => mk(h, i, true)) }),
-      ...t.rows.map(r => new TableRow({ cantSplit: true, children: r.map((c, i) => mk(c, i, false)) }))] }));
+      ...t.rows.map(r => new TableRow({ cantSplit: false, children: r.map((c, i) => mk(c, i, false)) }))] }));
   C.push(new Paragraph({ spacing: { after: 180 }, children: [] }));
 }
 if (!appendixDone) pushAppendix();
