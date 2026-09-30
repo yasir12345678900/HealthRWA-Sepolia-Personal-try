@@ -50,7 +50,7 @@
  },
  {
   "t": "p",
-  "text": "⦃This chapter has presented a systematic literature review, conducted and reported in accordance with PRISMA 2020, of the studies that address the authorisation of patient consent in decentralised healthcare data sharing. Six requirements for a trustworthy multi-party consent authorisation framework were defined in Section 2.2 and used as the basis of comparison throughout the chapter. ⦅Seven frozen database searches, supplemented by a Google Scholar discovery arm, identified 9,256 records,⦆ of which 6,039 unique records were screened by title. After abstract screening, full-text assessment and quality appraisal, 44 primary studies published between 2020 and 2026 were retained, together with three secondary studies that were used as background only. The studies were reviewed in six streams corresponding to the six requirements, and each study was assessed against all six requirements in the tables of Section 2.4.⦄"
+  "text": "⦃This chapter has presented a systematic literature review, conducted and reported in accordance with PRISMA 2020, of the studies that address the authorisation of patient consent in decentralised healthcare data sharing. Six requirements for a trustworthy multi-party consent authorisation framework were defined in Section 2.2 and used as the basis of comparison throughout the chapter. ⦅Seven frozen database searches, supplemented by a Google Scholar discovery arm, identified 9,256 records,⦆ of which 6,039 unique records were screened by title. ⦅After abstract screening, full-text assessment and quality appraisal, 25 primary studies published between 2020 and 2026 were included, together with 19 supporting references retained outside the corpus and three secondary studies that were used as background only.⦆ The studies were reviewed in six streams corresponding to the six requirements, and each study was assessed against all six requirements in the tables of Section 2.4.⦄"
  },
  {
   "t": "p",
@@ -66,7 +66,7 @@
  },
  {
   "t": "p",
-  "text": "⦃Figure 5 summarises this synthesis, showing that each requirement is satisfied by some of the 44 studies while no study conjoins all six conditions in one assured access decision.⦄"
+  "text": "⦃Figure 5 summarises this synthesis, showing that ⦅each requirement is satisfied by some of the 25 studies⦆ while no study conjoins all six conditions in one assured access decision.⦄"
  },
  {
   "t": "h1",
@@ -82,7 +82,7 @@
  },
  {
   "t": "p",
-  "text": "⦅The systematic literature review of 44 primary studies presented in Chapter 2 (Section 2.5) indicates that substantial research⦆⦅ has been conducted⦆ on individual mechanisms for securing healthcare data sharing, including blockchain-based consent management, decentralised identity, verifiable credentials, cryptographic access control, ⦅policy-based authorisation, and multi-party approval. ⦅Representative examples are the blockchain EHR review of [1] and the dynamic consent model of [13], the DID and VC survey of [20], the attribute-based encryption scheme of [32], the access-control survey of [25] and the multi-party mechanisms of [53, 61, 69].⦆⦆⦅⦅⦆⦆ These approaches have demonstrated the value of decentralisation, tamper-resistant records, verifiable identity, fine-grained access control, and distributed decision-making in addressing different aspects of healthcare data security. However, the literature also reveals a significant conceptual and architectural fragmentation among these mechanisms. ⦅They are commonly investigated as independent technical solutions. The few studies that coordinate several of them in one decision⦆⦅ [58, 61, 45, 66, 57] do not make multi-party approval a standing condition of that decision and do not assure the conjunction formally or empirically.⦆",
+  "text": "⦅⦅The systematic literature review of 25 primary studies presented in Chapter 2⦆ (Section 2.5) indicates that substantial research⦆⦅ has been conducted⦆ on individual mechanisms for securing healthcare data sharing, including blockchain-based consent management, decentralised identity, verifiable credentials, cryptographic access control, ⦅policy-based authorisation, and multi-party approval. ⦅Representative examples are the blockchain EHR review of [1] and the dynamic consent model of [13], the DID and VC survey of [20], the attribute-based encryption scheme of [32], the access-control survey of [25] and the multi-party mechanisms of [53, 61, 69].⦆⦆⦅⦅⦆⦆ These approaches have demonstrated the value of decentralisation, tamper-resistant records, verifiable identity, fine-grained access control, and distributed decision-making in addressing different aspects of healthcare data security. However, the literature also reveals a significant conceptual and architectural fragmentation among these mechanisms. ⦅They are commonly investigated as independent technical solutions. The few studies that coordinate several of them in one decision⦆⦅ [58, 61, 45, 66, 57] do not make multi-party approval a standing condition of that decision and do not assure the conjunction formally or empirically.⦆",
   "page": 21
  },
  {

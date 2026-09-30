@@ -294,7 +294,7 @@
  },
  {
   "t": "p",
-  "text": "⦅The review corpus comprises the 44 primary studies [35]–[78] that were identified, screened and coded through the process described in the remainder of this section. Three secondary studies [79, 80, 81] were also retained, but for background only. These three studies are not counted as primary evidence.⦆⦃ All 44 primary studies were published between 2020 and 2026, which is the publication period fixed in the review protocol. Of the 44 studies, 19 were retrieved through IEEE Xplore, 21 through Scopus, three through ProQuest and one through the ACM Digital Library, after the duplicate records that these databases share with SpringerLink, ScienceDirect and Web of Science had been removed. In the remainder of this chapter, each primary study is referred to by the label Sn (S1 to S44) together with its reference number, so that the reader can move between the tables, the text and the reference list without ambiguity. Of these 44 studies, 25 are analysed in depth in Section 2.4 and 19 are retained as supporting evidence, as explained in Section 2.3.6.⦄"
+  "text": "⦅⦅The review corpus comprises the 25 primary studies that were identified, screened, coded and included through the process described in the remainder of this section. A further 19 reports passed the same screen and were coded in full, but they are not part of the corpus. They are retained as supporting references and are cited in the supporting-evidence paragraph of each review stream in Section 2.4. Together, the two groups are numbered [35]–[78] in the reference list.⦆ Three secondary studies [79, 80, 81] were also retained, but for background only. These three studies are not counted as primary evidence.⦆⦃ ⦅All 25 included studies were published between 2020 and 2026⦆, which is the publication period fixed in the review protocol. ⦅Of the 25 studies, 13 were retrieved through Scopus, 10 through IEEE Xplore and two through ProQuest,⦆ after the duplicate records that these databases share with SpringerLink, ScienceDirect and Web of Science had been removed. In the remainder of this chapter, ⦅each included study is referred to by the label Sn (S1 to S25)⦆ together with its reference number, so that the reader can move between the tables, the text and the reference list without ambiguity. ⦅The rule by which the 25 included studies were separated from the 19 supporting references is explained in Section 2.3.7.⦆⦄"
  },
  {
   "t": "h3",
@@ -527,7 +527,7 @@
  },
  {
   "t": "p",
-  "text": "⦃At the checkpoint, one full text could not be retrieved after five documented retrieval routes (EC8), and 64 full texts had been assessed for eligibility. ⦅Of these, 17 were excluded with reasons. Nine were excluded under EC9 for superficial healthcare or consent relevance, and several of these studies treated consent only as a clinical procedure or a machine-learning metric. The other eight were excluded under EC1 (outside healthcare, three), EC5 (non-peer-reviewed items, two), EC2 (no authorisation relevance, two) and EC4 (identity authentication only, one).⦆ Three studies were classified as secondary reviews under EC7 and retained for background [79, 80, 81]. The remaining 44 studies were included as primary studies and coded in full; of these, 23 are classified as core studies and 21 as supporting studies under the synthesis rule described in Section 2.3.7. Every included study also passed the quality gate described in Section 2.3.7, and the studies that fell exactly on the boundary of the gate were retained and tested in a sensitivity analysis rather than being excluded. For the in-depth review of Section 2.4, the 23 core studies are analysed together with the two highest-quality supporting studies, Albalwy et al. [37] and Li et al. [51], each with a quality score of 7.0, giving 25 analysed studies; the remaining 19 supporting studies are retained as reference evidence and are cited in the supporting-evidence paragraph of each review stream. This bound was adopted so that the review concentrates on the studies that bear most directly on the research gap while every included study remains traceable in Table 2 and in the reference list.⦄"
+  "text": "⦃At the checkpoint, one full text could not be retrieved after five documented retrieval routes (EC8), and 64 full texts had been assessed for eligibility. ⦅Of these, 17 were excluded with reasons. Nine were excluded under EC9 for superficial healthcare or consent relevance, and several of these studies treated consent only as a clinical procedure or a machine-learning metric. The other eight were excluded under EC1 (outside healthcare, three), EC5 (non-peer-reviewed items, two), EC2 (no authorisation relevance, two) and EC4 (identity authentication only, one).⦆ Three studies were classified as secondary reviews under EC7 and retained for background [79, 80, 81]. ⦅The remaining 44 reports were coded in full. Of these, 23 are classified as core studies and 21 as supporting studies under the synthesis rule described in Section 2.3.7.⦆ ⦅Every one of the 44 reports also passed the quality gate⦆ described in Section 2.3.7, and the studies that fell exactly on the boundary of the gate were retained and tested in a sensitivity analysis rather than being excluded. ⦅The 23 core studies, together with the two highest-quality supporting studies, Albalwy et al. [37] and Li et al. [51], each with a quality score of 7.0, form the 25 primary studies included in the review. The remaining 19 supporting studies are retained as supporting references outside the corpus and are cited in the supporting-evidence paragraph of each review stream. This bound was adopted so that the review concentrates on the studies that bear most directly on the research gap, while every retained report remains traceable in the reference list.⦆⦄"
  },
  {
   "t": "figure",
@@ -536,7 +536,7 @@
  },
  {
   "t": "p",
-  "text": "⦅Figure 2 presents the PRISMA 2020 flow diagram for this review. The diagram summarises the identification, screening, eligibility and inclusion stages described above. It also shows the records identified through the Google Scholar discovery arm, the pending-abstract records that were not advanced, the full text that could not be retrieved, and the reasons for exclusion at the full-text stage. The chain of counts in the diagram is internally consistent. The 9,256 identified records minus the 2,794 cross-database duplicates and the 423 within-source records give the 6,039 titles screened. The 6,039 titles minus the 2,910 title exclusions give the 3,129 records advanced to the abstract stage. The 3,129 records minus the 741 abstract exclusions and the 588 pending records give the 1,800 full texts sought. The 39 Tier A, 1,066 Tier B and 695 Tier C records add up to the same 1,800. The 64 full texts assessed comprise the 44 included primary studies, the three secondary studies and the 17 excluded reports.⦆"
+  "text": "⦅Figure 2 presents the PRISMA 2020 flow diagram for this review. The diagram summarises the identification, screening, eligibility and inclusion stages described above. It also shows the records identified through the Google Scholar discovery arm, the pending-abstract records that were not advanced, the full text that could not be retrieved, and the reasons for exclusion at the full-text stage. The chain of counts in the diagram is internally consistent. The 9,256 identified records minus the 2,794 cross-database duplicates and the 423 within-source records give the 6,039 titles screened. The 6,039 titles minus the 2,910 title exclusions give the 3,129 records advanced to the abstract stage. The 3,129 records minus the 741 abstract exclusions and the 588 pending records give the 1,800 full texts sought. The 39 Tier A, 1,066 Tier B and 695 Tier C records add up to the same 1,800. ⦅The 64 full texts assessed comprise the 25 included primary studies, the 19 supporting references, the three secondary studies and the 17 excluded reports.⦆⦆"
  },
  {
   "t": "h3",
@@ -562,7 +562,7 @@
  },
  {
   "t": "p",
-  "text": "⦃After the seven review questions had been answered for a study, the chair recorded a gap-impact verdict stating whether the study contradicts, weakens, narrows or supports the proposed research gap, or has no effect on it, followed by a rationale organised by the deficits identified in Section 2.5. On the basis of this verdict, the included studies were divided into core and supporting studies for the synthesis. The distinction was adopted at decision D-164 and tightened at decision D-166 to the following rule: a study is a core study if, and only if, its gap-impact verdict is contradicts, weakens or narrows, or its T3 coding is Yes or Partial. Under this rule, 23 of the 44 included studies are core studies and 21 are supporting studies. ⦅The distinction does not affect the PRISMA inclusion counts. Supporting studies are reviewed in Section 2.4 and are cited as corroboration, while the core studies carry the argument of the synthesis in Section 2.5.⦆⦄"
+  "text": "⦅After the seven review questions had been answered for a study, the chair recorded a gap-impact verdict stating whether the study contradicts, weakens, narrows or supports the proposed research gap, or has no effect on it, followed by a rationale organised by the deficits identified in Section 2.5. On the basis of this verdict, the 44 eligible reports were divided into core and supporting studies. The distinction was adopted at decision D-164 and tightened at decision D-166 to the following rule: a study is a core study if, and only if, its gap-impact verdict is contradicts, weakens or narrows, or its T3 coding is Yes or Partial. Under this rule, 23 of the 44 eligible reports are core studies and 21 are supporting studies. The 23 core studies and the two supporting studies with the highest quality score, Albalwy et al. [37] and Li et al. [51], are the 25 primary studies included in the review, and they carry the argument of Sections 2.4 and 2.5. The other 19 supporting studies are retained as supporting references, and they are cited only as corroboration in Section 2.4.⦆"
  },
  {
   "t": "p",
@@ -576,11 +576,11 @@
  },
  {
   "t": "p",
-  "text": "⦃Each of the 44 shortlisted studies was analysed according to its scope, topic, authors, year of publication and its contribution to the review questions. Based on this analysis, each study was assigned to one of six review streams, which correspond to the six key requirements of Section 2.2: consent representation and blockchain-based consent governance (Req 1); decentralised identity and authority (Req 2); multi-party authorisation (Req 3); policy- and context-aware access control (Req 4); temporal validity and consent lifecycle (Req 5); and formal security assurance and empirical validation (Req 6). ⦅A study was placed in the stream of the requirement on which it is coded most strongly, even though most studies touch on more than one requirement⦆, and the extent to which each study addresses every requirement is recorded in the study tables of Section 2.4. The studies are listed in Table 2 in the order of their labels S1 to S44, together with their reference numbers [35] to [78]. The studies in each stream are reviewed in the next section, and their issues and limitations with respect to the key requirements defined in Section 2.2 are discussed. The last column of Table 2 states whether the study is analysed in depth in Section 2.4 or retained as supporting evidence.⦄"
+  "text": "⦃⦅Each of the 25 included studies was analysed⦆ according to its scope, topic, authors, year of publication and its contribution to the review questions. Based on this analysis, each study was assigned to one of six review streams, which correspond to the six key requirements of Section 2.2: consent representation and blockchain-based consent governance (Req 1); decentralised identity and authority (Req 2); multi-party authorisation (Req 3); policy- and context-aware access control (Req 4); temporal validity and consent lifecycle (Req 5); and formal security assurance and empirical validation (Req 6). ⦅A study was placed in the stream of the requirement on which it is coded most strongly, even though most studies touch on more than one requirement⦆, and the extent to which each study addresses every requirement is recorded in the study tables of Section 2.4. ⦅The studies are listed in Table 2 in the order of their labels S1 to S25, together with their reference numbers.⦆ The studies in each stream are reviewed in the next section, and their issues and limitations with respect to the key requirements defined in Section 2.2 are discussed.⦄"
  },
  {
   "t": "p",
-  "text": "⦃Figure 3 profiles the 44 included studies by publication year and by review stream.⦄"
+  "text": "⦃⦅Figure 3 profiles the 25 included studies by publication year and by review stream.⦆⦄"
  },
  {
   "t": "ntable",
@@ -591,8 +591,7 @@
    "Authors (Year)",
    "Ref.",
    "Title",
-   "Review stream",
-   "Role"
+   "Review stream"
   ],
   "rows": [
    [
@@ -600,361 +599,183 @@
     "Abbasi et al. (2026)",
     "[35]",
     "Nexa: Enabling Secure, Scalable, and Decentralized Management of Electronic Health Records Using Threshold Cryptography and Public Blockchains",
-    "Multi-party authorisation (Req 3)",
-    "Analysed"
+    "Multi-party authorisation (Req 3)"
    ],
    [
     "S2",
-    "Akter and Sanam (2025)",
-    "[36]",
-    "A Blockchain Framework for Secure Healthcare Data Management Using Role-Based Access Control and Smart Contracts",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Supporting"
-   ],
-   [
-    "S3",
     "Albalwy et al. (2021)",
     "[37]",
     "A Blockchain-based dynamic consent architecture to support clinical genomic data sharing (ConsentChain): Proof-of-concept study",
-    "Policy- and context-aware access control (Req 4)",
-    "Analysed"
+    "Policy- and context-aware access control (Req 4)"
    ],
    [
-    "S4",
+    "S3",
     "Al Amin et al. (2023)",
     "[38]",
     "Informed Consent as Patient Driven Policy for Clinical Diagnosis and Treatment: A Smart Contract Based Approach",
-    "Multi-party authorisation (Req 3)",
-    "Analysed"
+    "Multi-party authorisation (Req 3)"
    ],
    [
-    "S5",
-    "Bhalerao (2026)",
-    "[39]",
-    "Decentralized Cryptographic Governance for Cloud-Based Medical Record Infrastructure: A Distributed Ledger Framework for Cyber-Resilient Healthcare Data Sovereignty",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Supporting"
-   ],
-   [
-    "S6",
-    "Cao et al. (2025)",
-    "[40]",
-    "A Privacy Set Intersection Protocol for Medical Data Security Sharing",
-    "Formal security assurance and empirical validation (Req 6)",
-    "Supporting"
-   ],
-   [
-    "S7",
-    "Chockalingam et al. (2026)",
-    "[41]",
-    "Improving Security and Privacy of Cognitive Digital Twins Through Dynamic Consent for Healthcare and Resilient Societies",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Supporting"
-   ],
-   [
-    "S8",
-    "Dhanraj et al. (2026)",
-    "[42]",
-    "Blockchain-Augmented Federated Learning for Secure and Healthcare Diagnosis from Distributed Electronic Health Records",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Supporting"
-   ],
-   [
-    "S9",
+    "S4",
     "Ekholm et al. (2025)",
     "[43]",
     "Implementing electronic informed consent in rare disease genomics",
-    "Multi-party authorisation (Req 3)",
-    "Analysed"
+    "Multi-party authorisation (Req 3)"
    ],
    [
-    "S10",
+    "S5",
     "Eneh et al. (2026)",
     "[44]",
     "Demo: EdgeConsent: On-Chain Attribute-Based Access Control for Data Consent Management",
-    "Temporal validity and consent lifecycle (Req 5)",
-    "Analysed"
+    "Temporal validity and consent lifecycle (Req 5)"
    ],
    [
-    "S11",
-    "Ferreira et al. (2025)",
-    "[45]",
-    "Blockchain Integration for Trust and Consent Management in MCP-Enabled FHIR Systems",
-    "Decentralised identity and authority (Req 2)",
-    "Supporting"
-   ],
-   [
-    "S12",
-    "Ghosh et al. (2026)",
-    "[46]",
-    "Blockchain-Enabled Hybrid Quantum-Safe Attribute-Based Access Control Scheme with Attribute Revocation Strategy for Smart Healthcare System",
-    "Policy- and context-aware access control (Req 4)",
-    "Supporting"
-   ],
-   [
-    "S13",
+    "S6",
     "Hagström et al. (2024)",
     "[47]",
     "Minors' and guardian access to and use of a national patient portal: A retrospective comparative case study of Sweden and Finland",
-    "Multi-party authorisation (Req 3)",
-    "Analysed"
+    "Multi-party authorisation (Req 3)"
    ],
    [
-    "S14",
-    "Gao et al. (2026)",
-    "[48]",
-    "A Blockchain-Assisted Revocable and Efficient ABSE Scheme for Secure Medical Data Sharing",
-    "Formal security assurance and empirical validation (Req 6)",
-    "Supporting"
-   ],
-   [
-    "S15",
+    "S7",
     "Jaiman and Urovi (2020)",
     "[49]",
     "A Consent Model for Blockchain-Based Health Data Sharing Platforms",
-    "Policy- and context-aware access control (Req 4)",
-    "Analysed"
+    "Policy- and context-aware access control (Req 4)"
    ],
    [
-    "S16",
+    "S8",
     "Zhao and Su (2024)",
     "[50]",
     "A threshold traceable delegation authorization scheme for data sharing in healthcare",
-    "Formal security assurance and empirical validation (Req 6)",
-    "Analysed"
+    "Formal security assurance and empirical validation (Req 6)"
    ],
    [
-    "S17",
+    "S9",
     "Li et al. (2026)",
     "[51]",
     "Privacy-Preserving Fine-Grained EMR Access Control for IoMT: A Hybrid RBAC-Smart Contract Scheme With Attribute-Based Authorization",
-    "Temporal validity and consent lifecycle (Req 5)",
-    "Analysed"
+    "Temporal validity and consent lifecycle (Req 5)"
    ],
    [
-    "S18",
-    "Luo et al. (2025)",
-    "[52]",
-    "Bilateral Privacy-Aware Proxy Re-Encryption With Traceability and Revocation for IoMT",
-    "Formal security assurance and empirical validation (Req 6)",
-    "Supporting"
-   ],
-   [
-    "S19",
+    "S10",
     "Madine et al. (2020)",
     "[53]",
     "Fully Decentralized Multi-Party Consent Management for Secure Sharing of Patient Health Records",
-    "Multi-party authorisation (Req 3)",
-    "Analysed"
+    "Multi-party authorisation (Req 3)"
    ],
    [
-    "S20",
+    "S11",
     "Maruthi and Singh (2025)",
     "[54]",
     "Enhancing Security and Privacy of IoMT Data for Unconscious Patient With Blockchain",
-    "Formal security assurance and empirical validation (Req 6)",
-    "Analysed"
+    "Formal security assurance and empirical validation (Req 6)"
    ],
    [
-    "S21",
+    "S12",
     "Mei et al. (2026)",
     "[55]",
     "Efficient Dual-Revocation CP-ABE for Secure and Fine-Grained Data Sharing in IoMT",
-    "Formal security assurance and empirical validation (Req 6)",
-    "Analysed"
+    "Formal security assurance and empirical validation (Req 6)"
    ],
    [
-    "S22",
-    "Zhang et al. (2023)",
-    "[56]",
-    "An Efficient Encryption Scheme with Fully Hidden Access Policy for Medical Data",
-    "Formal security assurance and empirical validation (Req 6)",
-    "Supporting"
-   ],
-   [
-    "S23",
+    "S13",
     "Panagoulias et al. (2026)",
     "[57]",
     "Blockchain-Enabled Trust and Compliance for Clinical AI: Decentralized Governance Without Decentralized Data Storage",
-    "Temporal validity and consent lifecycle (Req 5)",
-    "Analysed"
+    "Temporal validity and consent lifecycle (Req 5)"
    ],
    [
-    "S24",
+    "S14",
     "Phuyal et al. (2026)",
     "[58]",
     "Enabling Cross-Institution Health Data Sharing in Norway: EUDI Wallets, On-Chain Consent, and openEHR-FHIR Translation",
-    "Decentralised identity and authority (Req 2)",
-    "Analysed"
+    "Decentralised identity and authority (Req 2)"
    ],
    [
-    "S25",
+    "S15",
     "Phuyal et al. (2026)",
     "[59]",
     "A Blockchain-Based Architecture for Dynamic and Auditable Patient Consent in Secondary Use of Health Data",
-    "Decentralised identity and authority (Req 2)",
-    "Analysed"
+    "Decentralised identity and authority (Req 2)"
    ],
    [
-    "S26",
-    "Prashanth et al. (2024)",
-    "[60]",
-    "Enhancing Health Record Security and Privacy with Blockchain-Based Access Management",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Supporting"
-   ],
-   [
-    "S27",
+    "S16",
     "Punia et al. (2025)",
     "[61]",
     "An access control system for cloud-based healthcare systems driven by blockchain",
-    "Multi-party authorisation (Req 3)",
-    "Analysed"
+    "Multi-party authorisation (Req 3)"
    ],
    [
-    "S28",
-    "Qiao et al. (2025)",
-    "[62]",
-    "A Lightweight CP-ABE Scheme for EHR Over Cloud Based on Blockchain and Secure Multi-Party Computation",
-    "Formal security assurance and empirical validation (Req 6)",
-    "Supporting"
-   ],
-   [
-    "S29",
+    "S17",
     "Román-Martínez et al. (2023)",
     "[63]",
     "Blockchain-Based Service-Oriented Architecture for Consent Management, Access Control, and Auditing",
-    "Policy- and context-aware access control (Req 4)",
-    "Analysed"
+    "Policy- and context-aware access control (Req 4)"
    ],
    [
-    "S30",
+    "S18",
     "Hema et al. (2026)",
     "[64]",
     "Patient Centric Cryptographic Protection of Cloud Electronic Health Records",
-    "Temporal validity and consent lifecycle (Req 5)",
-    "Analysed"
+    "Temporal validity and consent lifecycle (Req 5)"
    ],
    [
-    "S31",
-    "Sawant and Gomes (2026)",
-    "[65]",
-    "A Decentralized Solution for Smarter and Safer Healthcare Systems with FabricMedChain",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Supporting"
-   ],
-   [
-    "S32",
-    "Shanmugham and Senthilkumar (2026)",
-    "[66]",
-    "Blockchain Enabled Self-Sovereign Identity and Consent Framework for Secure Healthcare Data Access",
-    "Decentralised identity and authority (Req 2)",
-    "Supporting"
-   ],
-   [
-    "S33",
+    "S19",
     "Soohoo et al. (2026)",
     "[67]",
     "Development of the authentication and authorization processes for the iAgree portal, a platform for patient-controlled data sharing across health systems",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Analysed"
+    "Consent representation and blockchain-based consent governance (Req 1)"
    ],
    [
-    "S34",
-    "Ranaweera et al. (2023)",
-    "[68]",
-    "Ensuring Electronic Health Record (EHR) Privacy using Zero Knowledge Proofs (ZKP) and Secure Encryption Schemes on Blockchain",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Supporting"
-   ],
-   [
-    "S35",
+    "S20",
     "Tan et al. (2024)",
     "[69]",
     "Secure and privacy-preserving sharing of personal health records with multi-party pre-authorization verification",
-    "Multi-party authorisation (Req 3)",
-    "Analysed"
+    "Multi-party authorisation (Req 3)"
    ],
    [
-    "S36",
-    "Teeda and Subba Rao (2026)",
-    "[70]",
-    "A Patient-Centric Blockchain Based Electronic Health Records for Data Privacy and Confidentiality",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Supporting"
-   ],
-   [
-    "S37",
+    "S21",
     "Tith et al. (2020)",
     "[71]",
     "Patient consent management by a purpose-based consent model for electronic health record based on blockchain technology",
-    "Policy- and context-aware access control (Req 4)",
-    "Analysed"
+    "Policy- and context-aware access control (Req 4)"
    ],
    [
-    "S38",
+    "S22",
     "Tremper et al. (2026)",
     "[72]",
     "Mainzelliste: Ten years of pseudonymization, record linkage, and informed consent management",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Analysed"
+    "Consent representation and blockchain-based consent governance (Req 1)"
    ],
    [
-    "S39",
+    "S23",
     "Tseng et al. (2025)",
     "[73]",
     "EMR-Chain: Decentralized Electronic Medical Record Exchange System",
-    "Decentralised identity and authority (Req 2)",
-    "Analysed"
+    "Decentralised identity and authority (Req 2)"
    ],
    [
-    "S40",
-    "Wagner et al. (2024)",
-    "[74]",
-    "Integration of Trusted Third Party Software into an EDC System for Data Protection - Compliant Identity Management, Consent Management and Pseudonymization in Medical Research Studies",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Supporting"
-   ],
-   [
-    "S41",
+    "S24",
     "Wu et al. (2023)",
     "[75]",
     "Apply Trust Computing and Privacy Preserving Smart Contracts to Manage, Share, and Analyze Multi-site Clinical Trial Data",
-    "Multi-party authorisation (Req 3)",
-    "Analysed"
+    "Multi-party authorisation (Req 3)"
    ],
    [
-    "S42",
+    "S25",
     "Wu and Zhang (2025)",
     "[76]",
     "HealthDID: An efficient and authorizable multi-party privacy-preserving EMR sharing system based on DID",
-    "Formal security assurance and empirical validation (Req 6)",
-    "Analysed"
-   ],
-   [
-    "S43",
-    "Xu et al. (2023)",
-    "[77]",
-    "A Privacy-Preserving Medical Data Sharing Scheme Based on Blockchain",
-    "Temporal validity and consent lifecycle (Req 5)",
-    "Supporting"
-   ],
-   [
-    "S44",
-    "Zhang et al. (2022)",
-    "[78]",
-    "Patient-centered cross-enterprise document sharing and dynamic consent framework using consortium blockchain and ciphertext-policy attribute-based encryption",
-    "Consent representation and blockchain-based consent governance (Req 1)",
-    "Supporting"
+    "Formal security assurance and empirical validation (Req 6)"
    ]
   ],
   "widths": [
    820,
-   1850,
+   1950,
    620,
-   3120,
-   1600,
-   1350
+   3970,
+   2000
   ],
   "small": true,
   "newb": true
@@ -967,7 +788,7 @@
  },
  {
   "t": "p",
-  "text": "⦃This section reviews the 44 primary studies that were shortlisted in Section 2.3.8. The review is organised by the six key requirements of Section 2.2, so that Sections 2.4.1 to 2.4.6 correspond to Req 1 to Req 6 respectively. It should be noted that the 44 included studies are not all discussed individually. ⦅Following the synthesis rule ratified by the coding panel (D-166), 23 studies were classified as core and the remaining 21 as supporting. A study was classified as core when its full-text evidence contradicts, weakens or narrows the research gap. A study was also classified as core when it involves more than one authorising party (T3 graded Yes or Partial).⦆ The in-depth review in this section therefore covers 25 analysed studies, namely the 23 core studies together with the two supporting studies with the highest quality-assessment score, Albalwy et al. [37] and Li et al. [51], each scored 7.0 of 8. The other 19 supporting studies remain included in the review corpus and in Table 2, but they are cited only in a short closing paragraph of the stream to which they were assigned, which states in general terms what they corroborate. Each subsection ⦅reviews the analysed studies that were assigned to that stream and states their issues and limitations with respect to the requirement in question. Each subsection ends with a table that summarises the analysed studies and records their commitment to all six requirements. In the tables,⦆ ✓ denotes that the requirement is satisfied, ~ denotes that it is partially satisfied and × denotes that it is not satisfied, as coded from the full texts using the codebook described in Section 2.3. Each study is assigned to one stream only, according to the requirement to which its main contribution relates; a study assigned to one stream may nevertheless be discussed briefly in another subsection when its coding is relevant to that requirement. The background surveys and position papers [1]–[34] are used only for context and do not appear in the tables, which list the 25 analysed studies only. In addition, a small number of studies outside the healthcare consent domain, ⦅concerning archival record-keeping [8], attested sensing with blockchain coordination [17], ledger immutability [18], attested execution environments [23] and decentralised decision-making [29], were consulted as background and are not part of the review corpus.⦆⦄"
+  "text": "⦅This section reviews the 25 primary studies that were included in Section 2.3.8. The review is organised by the six key requirements of Section 2.2, so that Sections 2.4.1 to 2.4.6 correspond to Req 1 to Req 6 respectively. It should be noted how the 25 studies were selected from the 44 reports that passed the full-text screen. Following the synthesis rule ratified by the coding panel (D-166), 23 reports were classified as core and the remaining 21 as supporting. A study was classified as core when its full-text evidence contradicts, weakens or narrows the research gap. A study was also classified as core when it involves more than one authorising party (T3 graded Yes or Partial). ⦅The review corpus therefore consists of the 23 core studies together with the two supporting studies with the highest quality-assessment score, Albalwy et al. [37] and Li et al. [51], each scored 7.0 of 8. The other 19 supporting reports are retained as supporting references. They are cited only in a short closing paragraph of the stream to which they were assigned, which states in general terms what they corroborate, and they do not appear in Table 2 or in the study tables. Each subsection reviews the included studies that were assigned to that stream⦆ and states their issues and limitations with respect to the requirement in question. ⦅Each subsection ends with a table that summarises the included studies⦆ and records their commitment to all six requirements. In the tables, ✓ denotes that the requirement is satisfied, ~ denotes that it is partially satisfied and × denotes that it is not satisfied, as coded from the full texts using the codebook described in Section 2.3. Each study is assigned to one stream only, according to the requirement to which its main contribution relates; a study assigned to one stream may nevertheless be discussed briefly in another subsection when its coding is relevant to that requirement. The background surveys and position papers [1]–[34] are used only for context and ⦅do not appear in the tables, which list the 25 included studies only.⦆ In addition, a small number of studies outside the healthcare consent domain, concerning archival record-keeping [8], attested sensing with blockchain coordination [17], ledger immutability [18], attested execution environments [23] and decentralised decision-making [29], were consulted as background and are not part of the review corpus.⦆"
  },
  {
   "t": "p",
@@ -981,7 +802,7 @@
  },
  {
   "t": "p",
-  "text": "⦅This section reviews the two analysed studies whose main contribution is the representation and governance of patient consent. Both are deployed platforms rather than research prototypes. The ten supporting studies assigned to this stream, most of which govern consent on a blockchain, are cited at the end of the section.⦆⦃ Req 1 requires that consent is represented as a structured object whose components, namely the participating identities, the authority requirements, the permitted purpose and data scope, the temporal validity, the jurisdiction and the supporting evidence, can be evaluated at the time of each request. Earlier consent-management research represented consent as a permission indicating whether a party may perform an operation, and dynamic consent and consent receipts added the possibility of changing preferences over time and of retaining evidence of how consent was obtained [13, 10]. The question examined in this stream is whether the reviewed systems go beyond a stored consent record and make the consent itself an object that the access decision evaluates. The full-text coding shows that all twelve studies assigned to this stream, including the two analysed here, were graded Partial on Req 1 and that none was graded Yes. ⦅In this context, three situations recur across the stream. In the first, consent is represented but absent from the decision. In the second, consent is present in the decision but reduced to a boolean flag. In the third, consent is held in a registry whose status is displayed or queried but never enforced.⦆ The two analysed studies illustrate the first and the third of these situations in production settings.⦄"
+  "text": "⦅⦅This section reviews the two included studies whose main contribution is the representation and governance of patient consent.⦆ Both are deployed platforms rather than research prototypes. ⦅The ten supporting references assigned to this stream, most of which govern consent on a blockchain, are cited at the end of the section.⦆⦆⦃ Req 1 requires that consent is represented as a structured object whose components, namely the participating identities, the authority requirements, the permitted purpose and data scope, the temporal validity, the jurisdiction and the supporting evidence, can be evaluated at the time of each request. Earlier consent-management research represented consent as a permission indicating whether a party may perform an operation, and dynamic consent and consent receipts added the possibility of changing preferences over time and of retaining evidence of how consent was obtained [13, 10]. The question examined in this stream is whether the reviewed systems go beyond a stored consent record and make the consent itself an object that the access decision evaluates. ⦅The full-text coding shows that both included studies of this stream, and all ten supporting references assigned to it, were graded Partial on Req 1 and that none was graded Yes.⦆ ⦅In this context, three situations recur across the stream. In the first, consent is represented but absent from the decision. In the second, consent is present in the decision but reduced to a boolean flag. In the third, consent is held in a registry whose status is displayed or queried but never enforced.⦆ ⦅The two included studies illustrate⦆ the first and the third of these situations in production settings.⦄"
  },
  {
   "t": "p",
@@ -993,11 +814,11 @@
  },
  {
   "t": "p",
-  "text": "⦅The two analysed studies show that the representation of consent and the evaluation of consent have been developed separately, even in production systems. In both studies the consent object is comparatively rich. In iAgree [67] it is a preference matrix of data category by recipient type, and in Mainzelliste [72] it is a set of FHIR consent directives scoped by use type. However, neither paper specifies the semantics by which an access decision evaluates that object. Enforcement is out of scope in the first study and unspecified in the second. In addition, neither study verifies its own authorisation decisions. The functional tests of Soohoo et al. [67] and the penetration test of Tremper et al. [72] contain no allow or deny correctness case, and Req 6 is graded Partial for both. Neither study involves more than one authorising party, and Req 3 is graded No for both, as it is for all twelve studies assigned to this stream. The closest single-party analogues of the consent object C = (I, A, P, T, L, E) required by the proposed framework are not found in this stream. They are found in the on-chain consent object of Phuyal et al. [58] in Section 2.4.2 and in the patient-driven policy of Al Amin et al. [38] in Section 2.4.3. Therefore, Req 1 is partially addressed in this stream. However, consent as an object that is evaluated on every request against identity, authority, purpose, scope, time and jurisdiction is not provided by either of the reviewed consent-governance platforms. Table 3 presents a summary of the analysed studies in this stream and their commitment to the key requirements.⦆"
+  "text": "⦅⦅The two included studies show⦆ that the representation of consent and the evaluation of consent have been developed separately, even in production systems. In both studies the consent object is comparatively rich. In iAgree [67] it is a preference matrix of data category by recipient type, and in Mainzelliste [72] it is a set of FHIR consent directives scoped by use type. However, neither paper specifies the semantics by which an access decision evaluates that object. Enforcement is out of scope in the first study and unspecified in the second. In addition, neither study verifies its own authorisation decisions. The functional tests of Soohoo et al. [67] and the penetration test of Tremper et al. [72] contain no allow or deny correctness case, and Req 6 is graded Partial for both. Neither study involves more than one authorising party, and Req 3 is graded No for both, as it is for all twelve studies assigned to this stream. The closest single-party analogues of the consent object C = (I, A, P, T, L, E) required by the proposed framework are not found in this stream. They are found in the on-chain consent object of Phuyal et al. [58] in Section 2.4.2 and in the patient-driven policy of Al Amin et al. [38] in Section 2.4.3. Therefore, Req 1 is partially addressed in this stream. However, consent as an object that is evaluated on every request against identity, authority, purpose, scope, time and jurisdiction is not provided by either of the reviewed consent-governance platforms. ⦅Table 3 presents a summary of the included studies in this stream⦆ and their commitment to the key requirements.⦆"
  },
  {
   "t": "p",
-  "text": "⦃Supporting evidence. Ten further studies were assigned to this stream and coded but are not discussed individually [36], [39], [41], [42], [60], [65], [68], [70], [74], [78]. ⦅They corroborate the pattern described above. Where consent enters the access decision, it enters as a per-record boolean grant [36], [60]. Where consent is bound to cryptographic operations, the conditions are fixed at encryption or key-issuance time and cannot be re-evaluated at the time of the request [70], [78]. Where the consent object is rich, as in the gICS directives integrated into REDCap [74], its state is displayed and queried but no access decision depends on it. Consent is absent from the formalised decision function of the largest measurement campaign in the stream [65] and is reduced to a logged event with a gas cost in [42]. The zero-knowledge and homomorphic-encryption workflow of [68] evaluates a free-text reason rather than a purpose term. The two conceptual designs [39], [41] remain unimplemented.⦆ All ten supporting studies were graded Partial on Req 1 and No on Req 3, and none of them provides a formal security analysis, the closest being the threat model and simulated attacks of [65].⦄"
+  "text": "⦃⦅Supporting references. Ten further reports were assigned to this stream and coded, but they are not part of the review corpus⦆ [36], [39], [41], [42], [60], [65], [68], [70], [74], [78]. ⦅They corroborate the pattern described above. Where consent enters the access decision, it enters as a per-record boolean grant [36], [60]. Where consent is bound to cryptographic operations, the conditions are fixed at encryption or key-issuance time and cannot be re-evaluated at the time of the request [70], [78]. Where the consent object is rich, as in the gICS directives integrated into REDCap [74], its state is displayed and queried but no access decision depends on it. Consent is absent from the formalised decision function of the largest measurement campaign in the stream [65] and is reduced to a logged event with a gas cost in [42]. The zero-knowledge and homomorphic-encryption workflow of [68] evaluates a free-text reason rather than a purpose term. The two conceptual designs [39], [41] remain unimplemented.⦆ ⦅All ten supporting references were graded Partial⦆ on Req 1 and No on Req 3, and none of them provides a formal security analysis, the closest being the threat model and simulated attacks of [65].⦄"
  },
  {
   "t": "ntable",
@@ -1016,7 +837,7 @@
   ],
   "rows": [
    [
-    "S33 [67]",
+    "S19 [67]",
     "The authentication and authorisation module of the iAgree patient-controlled data-sharing portal, deployed at three health systems, with OAuth2, SMART on FHIR and one-time-password identity, a patient preference matrix of data category by recipient type, and a permissioned Ethereum audit contract.",
     "A single patient decides and multi-institution is not multi-party; authorisation is OAuth2 delegation with no separate authority evidence for researchers; enforcement of the preference matrix is out of scope; the one-hour window is a session token, not consent validity; revocation is append-only and untested; no formal methods; functional tests only.",
     "~",
@@ -1027,7 +848,7 @@
     "~"
    ],
    [
-    "S38 [72]",
+    "S22 [72]",
     "Mainzelliste, an open-source pseudonymisation, record-linkage and consent-management service in production since 2015, with multi-tenant role-based access control, per-request token validation, modular FHIR consent directives scoped by use type, an automated consent-check capability and registry-level consent withdrawal.",
     "The consent-check semantics, term list and allow or deny protocol are not specified in the paper; withdrawal is a registry operation whose downstream enforcement is not shown; no temporal validity; the secure multi-party computation parties perform record linkage, not authorisation; security evidence is a penetration test without formal analysis; no consent decision is verified.",
     "~",
@@ -1060,7 +881,7 @@
  },
  {
   "t": "p",
-  "text": "⦃This section reviews the three analysed studies whose main contribution is the decentralised verification of the participants in a consent decision; the two supporting studies assigned to this stream are cited at the end of the section. ⦅Req 2 requires that the patient, the guardians, the healthcare professional and the institution can be identified without a single central identity provider. It also requires that establishing who a participant is (identity) is treated separately from establishing what that participant may do (authority). Each of the two is supported by its own evidence.⦆ Decentralised identifiers and verifiable credentials provide the first capability [20, 33, 4, 16], and the reviewed studies apply them, or national equivalents, to healthcare data exchange. It should be noted that the coding distinguishes T1 (identity established by DID, VC, PKI or certificate) from T2 (case-specific authority verified separately from authentication). ⦅Across the 44 included studies, T2 was graded Yes in only 10 studies and Partial in 34. That is, in more than three quarters of the corpus, authority over a particular patient's data is not established directly. A verified identity, a platform role or an administratively assigned attribute stands in for it instead.⦆⦄"
+  "text": "⦃⦅This section reviews the three included studies whose main contribution is the decentralised verification of the participants in a consent decision. The two supporting references assigned to this stream are cited at the end of the section.⦆ ⦅Req 2 requires that the patient, the guardians, the healthcare professional and the institution can be identified without a single central identity provider. It also requires that establishing who a participant is (identity) is treated separately from establishing what that participant may do (authority). Each of the two is supported by its own evidence.⦆ Decentralised identifiers and verifiable credentials provide the first capability [20, 33, 4, 16], and the reviewed studies apply them, or national equivalents, to healthcare data exchange. It should be noted that the coding distinguishes T1 (identity established by DID, VC, PKI or certificate) from T2 (case-specific authority verified separately from authentication). ⦅⦅Across the 25 included studies, T2 was graded Yes in only 10 studies and Partial in 15. That is, in three fifths of the corpus,⦆ authority over a particular patient's data is not established directly. A verified identity, a platform role or an administratively assigned attribute stands in for it instead.⦆⦄"
  },
  {
   "t": "p",
@@ -1072,11 +893,11 @@
  },
  {
   "t": "p",
-  "text": "⦅Identity is the strongest dimension of this stream. T1 is graded Yes in two of the three analysed studies and Partial in the design-only architecture of Phuyal et al. [59]. Authority verified with its own evidence is found in Phuyal et al. [58], through licensing-body credentials, and in Tseng et al. [73], through authority-issued roles. The remaining eight Yes gradings for T2 among the 44 included studies belong to other streams, and several of them do not use decentralised identifiers at all. Ekholm et al. [43] and Hagström et al. [47] verify legal guardianship against a national population register, Madine et al. [53] rely on a regulatory agency, and Punia et al. [61] bind roles, attributes and access tokens to their owners independently of the sender address. In addition, the analysed study that comes closest to an evaluable consent object, Phuyal et al. [58], is a single-party design and is not formally assured. It is also the only one of the three analysed studies that verifies allow and deny outcomes. Therefore, the literature provides mature mechanisms for decentralised identity and, increasingly, for credential-based authority. However, it does not yet combine separated identity and authority evidence with multi-party approval, policy evaluation and formal assurance in one decision. Table 4 presents a summary of the analysed studies in this stream and their commitment to the key requirements.⦆"
+  "text": "⦅Identity is the strongest dimension of this stream. ⦅T1 is graded Yes in two of the three included studies⦆ and Partial in the design-only architecture of Phuyal et al. [59]. Authority verified with its own evidence is found in Phuyal et al. [58], through licensing-body credentials, and in Tseng et al. [73], through authority-issued roles. ⦅The remaining eight Yes gradings for T2 among the 25 included studies belong to other streams⦆, and several of them do not use decentralised identifiers at all. Ekholm et al. [43] and Hagström et al. [47] verify legal guardianship against a national population register, Madine et al. [53] rely on a regulatory agency, and Punia et al. [61] bind roles, attributes and access tokens to their owners independently of the sender address. ⦅In addition, the included study that comes closest⦆ to an evaluable consent object, Phuyal et al. [58], is a single-party design and is not formally assured. ⦅It is also the only one of the three included studies⦆ that verifies allow and deny outcomes. Therefore, the literature provides mature mechanisms for decentralised identity and, increasingly, for credential-based authority. However, it does not yet combine separated identity and authority evidence with multi-party approval, policy evaluation and formal assurance in one decision. ⦅Table 4 presents a summary of the included studies in this stream⦆ and their commitment to the key requirements.⦆"
  },
  {
   "t": "p",
-  "text": "⦃Supporting evidence. Two further studies were assigned to this stream and corroborate these findings without altering them [45], [66]. Ferreira et al. ⦅[45] design the widest authorisation predicate in the corpus, in which a single call conjoins the subject, the purpose, the scope and the time over the current consent state. Shanmugham and Senthilkumar [66] propose a consent token carrying an identifier, a role, a scope, a validity interval and a three-state lifecycle. This token is the closest single-party structural analogue of the consent object required by the proposed framework.⦆ ⦅In both, however, case-specific authority reduces to a credential together with the consent state, and the guardians named in [45] are a key-recovery mechanism rather than co-authorisers. No denial after revocation or expiry is tested, and neither study is formally assured. Consequently, both were graded Partial on Req 2 and No on Req 3.⦆⦄"
+  "text": "⦃⦅Supporting references. Two further reports were assigned to this stream and coded. They are not part of the review corpus, but they corroborate these findings without altering them [45], [66].⦆ Ferreira et al. ⦅[45] design the widest authorisation predicate in the corpus, in which a single call conjoins the subject, the purpose, the scope and the time over the current consent state. Shanmugham and Senthilkumar [66] propose a consent token carrying an identifier, a role, a scope, a validity interval and a three-state lifecycle. This token is the closest single-party structural analogue of the consent object required by the proposed framework.⦆ ⦅In both, however, case-specific authority reduces to a credential together with the consent state, and the guardians named in [45] are a key-recovery mechanism rather than co-authorisers. No denial after revocation or expiry is tested, and neither study is formally assured. Consequently, both were graded Partial on Req 2 and No on Req 3.⦆⦄"
  },
  {
   "t": "ntable",
@@ -1095,7 +916,7 @@
   ],
   "rows": [
    [
-    "S24 [58]",
+    "S14 [58]",
     "A simulated Norwegian cross-institution exchange with EUDI-compatible wallets, W3C DIDs and VCs, an executable on-chain consent object (patient DID, requester DID, scope, expiry, state) on Hyperledger Besu, Groth16 access proofs, licensing-body credentials asserting role and scope of practice, run-time revocation (1.45 s) and an openEHR to FHIR bridge; allow and deny outcomes tested over 100 runs.",
     "A single patient grants a bilateral agreement with no multi-party approval; the expiry field is stored but the access algorithm checks only state and proof; purpose is at the user-interface level with no policy engine; no threat model, formal verification or adversarial test; simulation only with a node-count inconsistency.",
     "✓",
@@ -1106,7 +927,7 @@
     "✓"
    ],
    [
-    "S25 [59]",
+    "S15 [59]",
     "A design-only architecture for dynamic and auditable consent in secondary use in which a FHIR Consent resource carrying purpose, scope, actors and validity period is anchored on an Ethereum-compatible ledger, requester credentials are validated in three steps at a gateway, and validation of purpose, scope and duration at decision time is specified.",
     "Explicitly not implemented and not evaluated, so no dimension is enforced; proxy or guardian delegation is a substitution option rather than joint approval; revocation is specified but not implemented; the STRIDE-style threat table is declared non-exhaustive with no proof or verification; same author group as [58].",
     "~",
@@ -1117,7 +938,7 @@
     "~"
    ],
    [
-    "S39 [73]",
+    "S23 [73]",
     "EMR-Chain, an open-source decentralised record exchange combining an Ethereum identity chain, on which a government-endorsed hashed national identity is bound to a wallet, with a Hyperledger Fabric record chain using X.509 identities from the ministry certificate authority, health-authority-granted roles, a patient-adjustable per-hospital access list and JWT validation, benchmarked against national exchange statistics.",
     "The identifier is not a W3C DID; the patient and requester co-signature is bilateral authentication, not independent approval; purpose is logged but never evaluated and scope is hospital-level; JWT expiry is a session bound rather than consent validity; access-list revocation does not invalidate issued tokens; narrative security discussion only.",
     "~",
@@ -1150,7 +971,7 @@
  },
  {
   "t": "p",
-  "text": "⦃This section reviews the eight analysed studies of stream 3, whose main contribution involves the participation of more than one party in a consent or access decision. ⦅Req 3 applies where a single party cannot lawfully authorise access on its own. In that case, a predefined number of designated parties must each provide an independently verifiable approval. This threshold condition must be represented within the consent object, and it must be possible for any party to check it at a later time.⦆ ⦅The background surveys and position papers [1]–[34] reviewed in Section 2.3 give the impression that multi-party joint authorisation of patient data access has not been realised in the literature. The full-text coding of the included studies does not support that impression.⦆ The full-text coding of the present corpus does not support that statement, and it is withdrawn. Across the 44 included studies, T3 (at least two distinct independent participants must approve) was graded Yes in 6 studies, Partial in 4 and No in 34, and the coding panel ratified six distinct mechanism classes of multi-party authorisation. ⦅It should be noted that the coding applied a strict word-sense discipline. Blockchain consensus, endorsement policies, multi-authority attribute-based encryption, secure multi-party computation parties, requester co-signatures and social key-recovery guardians were not counted as multi-party authorisation, because none of them adds an independent authoriser to the decision.⦆ The purpose of this section is therefore to state precisely which forms of multi-party authorisation exist and which form does not.⦄"
+  "text": "⦃⦅This section reviews the eight included studies of stream 3⦆, whose main contribution involves the participation of more than one party in a consent or access decision. ⦅Req 3 applies where a single party cannot lawfully authorise access on its own. In that case, a predefined number of designated parties must each provide an independently verifiable approval. This threshold condition must be represented within the consent object, and it must be possible for any party to check it at a later time.⦆ ⦅The background surveys and position papers [1]–[34] reviewed in Section 2.3 give the impression that multi-party joint authorisation of patient data access has not been realised in the literature. The full-text coding of the included studies does not support that impression.⦆ The full-text coding of the present corpus does not support that statement, and it is withdrawn. ⦅Across the 25 included studies, T3 (at least two distinct independent participants must approve) was graded Yes in 6 studies, Partial in 4 and No in 15,⦆ and the coding panel ratified six distinct mechanism classes of multi-party authorisation. ⦅It should be noted that the coding applied a strict word-sense discipline. Blockchain consensus, endorsement policies, multi-authority attribute-based encryption, secure multi-party computation parties, requester co-signatures and social key-recovery guardians were not counted as multi-party authorisation, because none of them adds an independent authoriser to the decision.⦆ The purpose of this section is therefore to state precisely which forms of multi-party authorisation exist and which form does not.⦄"
  },
  {
   "t": "p",
@@ -1158,7 +979,7 @@
  },
  {
   "t": "p",
-  "text": "⦃The second class places the threshold on the institution side. Wu et al. [75] present Soteria, a clinical-trial data platform on Hyperledger Fabric with trusted-execution chaincode in which a (t, n) threshold signature runs over named investigators. ⦅The threshold does not apply to all operations in the same way. The admission of a trial record to the ledger requires a majority of investigators and the revocation of a consent requires half of them, whereas the consent grant itself is submitted unilaterally by the patient.⦆ ⦅In addition, each investigator's vote consists of recomputing and confirming the hash of the message,⦆ so the threshold is a threshold of integrity verifiers rather than of authorisers, and the voters act for the institution rather than for the patient. The third class is institutional custodian approval conjoined with a policy engine. ⦅Punia et al. [61] implement MedXBlock, a permissioned Ethereum access-control system. In this system, an M-of-N multi-signature contract over registered doctors and administrators, for example two of three, governs high-sensitivity and cross-departmental requests. An implemented hybrid attribute- and role-based policy engine evaluates a conjunctive grant predicate with deny-by-default over a stateful policy store.⦆ This is the only study among the 44 included studies in which multi-party approval and an enforced policy predicate co-occur. ⦅Even so, the threshold applies only to high-sensitivity and cross-departmental requests, since ordinary access is token-only, and it can be bypassed by a single emergency officer. In addition, it is implemented outside the grant predicate as a separate layer.⦆⦅ The patient enters the predicate as a boolean consent attribute rather than as an authoriser, and no purpose term exists. The assurance is a threat table and an asserted safety property, and the 100 measured transactions include no executed authorisation test.⦆⦄"
+  "text": "⦃The second class places the threshold on the institution side. Wu et al. [75] present Soteria, a clinical-trial data platform on Hyperledger Fabric with trusted-execution chaincode in which a (t, n) threshold signature runs over named investigators. ⦅The threshold does not apply to all operations in the same way. The admission of a trial record to the ledger requires a majority of investigators and the revocation of a consent requires half of them, whereas the consent grant itself is submitted unilaterally by the patient.⦆ ⦅In addition, each investigator's vote consists of recomputing and confirming the hash of the message,⦆ so the threshold is a threshold of integrity verifiers rather than of authorisers, and the voters act for the institution rather than for the patient. The third class is institutional custodian approval conjoined with a policy engine. ⦅Punia et al. [61] implement MedXBlock, a permissioned Ethereum access-control system. In this system, an M-of-N multi-signature contract over registered doctors and administrators, for example two of three, governs high-sensitivity and cross-departmental requests. An implemented hybrid attribute- and role-based policy engine evaluates a conjunctive grant predicate with deny-by-default over a stateful policy store.⦆ ⦅This is the only study among the 25 included studies in which⦆ multi-party approval and an enforced policy predicate co-occur. ⦅Even so, the threshold applies only to high-sensitivity and cross-departmental requests, since ordinary access is token-only, and it can be bypassed by a single emergency officer. In addition, it is implemented outside the grant predicate as a separate layer.⦆⦅ The patient enters the predicate as a boolean consent attribute rather than as an authoriser, and no purpose term exists. The assurance is a threat table and an asserted safety property, and the 100 measured transactions include no executed authorisation test.⦆⦄"
  },
  {
   "t": "p",
@@ -1170,7 +991,7 @@
  },
  {
   "t": "p",
-  "text": "⦅The position of the literature with respect to Req 3 can therefore be stated precisely. What exists is multi-party authorisation in six forms. The first two are joint approval on a contingency path when the principal is absent [53, 69], and guardian or bilateral co-consent at the time of consent registration [43, 47, 38]. The next two are institution-side thresholds over record admission and consent revocation [75], and custodial M-of-N approval around, but not inside, a policy predicate [61]. The last two are a patient-appointed witness threshold welded to key release [69], and threshold key custody or delegation among custodians, relatives or clinicians [35, 54, 50]. In this context, the sentence that multi-party authorisation does not exist in the literature is no longer defensible and is not made in this review. What does not exist in any of the 44 included studies is a threshold predicate over the guardian set G with threshold N that is constitutive of the access decision. Such a predicate would be evaluated on every access request in a decentralised exchange. It would be a conjunct of the same predicate that evaluates the policy conditions of purpose and data scope, the temporal validity and the jurisdiction of the consent object C. It would also be supported by allow and deny correctness evidence and by formal assurance of the conjunction. The coding supports each element of this statement. Only Punia et al. [61] combine T3 = Yes with an enforced policy predicate, and there the threshold is outside the predicate, the patient is an attribute and purpose is absent. ⦅Every T3-positive study in this stream is graded No or Partial on Req 6, except the observational study of Hagström et al. [47], whose Req 6 tick rests on empirical evidence alone. The two T3-positive studies elsewhere that carry a proof [50, 54] prove the threshold gate or confidentiality in isolation. Therefore, the broadest multi-party systems carry the weakest assurance.⦆ In addition, the deployed guardian mechanisms [43, 47] establish guardian authority through a state register, which is the attestation pattern against which the guardian credentials of the proposed framework must be compared. Table 5 presents a summary of the eight analysed studies in this stream and their commitment to the key requirements.⦆"
+  "text": "⦅The position of the literature with respect to Req 3 can therefore be stated precisely. What exists is multi-party authorisation in six forms. The first two are joint approval on a contingency path when the principal is absent [53, 69], and guardian or bilateral co-consent at the time of consent registration [43, 47, 38]. The next two are institution-side thresholds over record admission and consent revocation [75], and custodial M-of-N approval around, but not inside, a policy predicate [61]. The last two are a patient-appointed witness threshold welded to key release [69], and threshold key custody or delegation among custodians, relatives or clinicians [35, 54, 50]. In this context, the sentence that multi-party authorisation does not exist in the literature is no longer defensible and is not made in this review. ⦅What does not exist in any of the 25 included studies⦆ is a threshold predicate over the guardian set G with threshold N that is constitutive of the access decision. Such a predicate would be evaluated on every access request in a decentralised exchange. It would be a conjunct of the same predicate that evaluates the policy conditions of purpose and data scope, the temporal validity and the jurisdiction of the consent object C. It would also be supported by allow and deny correctness evidence and by formal assurance of the conjunction. The coding supports each element of this statement. Only Punia et al. [61] combine T3 = Yes with an enforced policy predicate, and there the threshold is outside the predicate, the patient is an attribute and purpose is absent. ⦅Every T3-positive study in this stream is graded No or Partial on Req 6, except the observational study of Hagström et al. [47], whose Req 6 tick rests on empirical evidence alone. The two T3-positive studies elsewhere that carry a proof [50, 54] prove the threshold gate or confidentiality in isolation. Therefore, the broadest multi-party systems carry the weakest assurance.⦆ In addition, the deployed guardian mechanisms [43, 47] establish guardian authority through a state register, which is the attestation pattern against which the guardian credentials of the proposed framework must be compared. ⦅Table 5 presents a summary of the eight included studies in this stream⦆ and their commitment to the key requirements.⦆"
  },
  {
   "t": "ntable",
@@ -1200,7 +1021,7 @@
     "~"
    ],
    [
-    "S4 [38]",
+    "S3 [38]",
     "Informed consent represented as a patient-driven policy IC = (U, O, OP, CON) with hash integrity and contextual conditions (time, date, day, location, network address, frequency) that an authorisation module conjoins with organisational and regulatory policies; a Solidity consent-management contract is deployed on the Goerli testnet.",
     "The only multi-party element is a two-of-two multi-signature wallet in the test harness that gates consent registration, with unnamed members and no place in the model; no purpose term; lifecycle operations described but not specified; enforcement mechanisms explicitly not included; no measured result or allow or deny case; assumptions only, no security analysis.",
     "✓",
@@ -1211,7 +1032,7 @@
     "~"
    ],
    [
-    "S9 [43]",
+    "S4 [43]",
     "Deployed electronic informed consent for rare disease genomics at three Swedish genomic medicine centres on a commercial platform: a minor's consent is valid only when all legal guardians sign, guardianship is verified in real time against the national Population Register, authentication uses the national electronic identity, and adoption is reported for 2,244 invited participants.",
     "The guardian condition applies at consent registration, not to the access decision; the only decision-time touchpoint answers whether a valid consent exists, without purpose, scope or time; study-level broad consent with no policy; withdrawal effect not described; centralised research platform described in little technical detail; no formal or authorisation-correctness evidence; vendor conflict of interest declared.",
     "~",
@@ -1222,7 +1043,7 @@
     "~"
    ],
    [
-    "S13 [47]",
+    "S6 [47]",
     "A retrospective comparative case study of the Swedish and Finnish national patient portals in which guardian proxy access to a minor's record is gated jointly by a healthcare professional's capacity assessment and the minor's own consent, with register-verified guardianship and age windows whose enforcement is evidenced by no use within blocked windows and 95.8 per cent of capable minors consenting to disclosure.",
     "The collective condition is documentation-time governance in centralised national systems rather than a decision-time predicate in a decentralised exchange; consent is not an evaluable object with its own scope or purpose; the study is observational and offers no security analysis or formal assurance.",
     "~",
@@ -1233,7 +1054,7 @@
     "✓"
    ],
    [
-    "S19 [53]",
+    "S10 [53]",
     "A fully decentralised multi-party consent scheme on Ethereum in which incapacitated-path access requires regulatory-agency approvals and at least min(ceil(0.7g), 5) guardian approvals on one request, emergency access requires agency approval and hospital admission confirmation, attestation expiry is enforced inside the decision, and claims and guardians can be revoked; a testnet prototype with gas costs is reported.",
     "On the normal path a single patient key authorises, so joint approval is a contingency fallback rather than a condition of every decision; guardians hold no key shares and the regulatory agency can decrypt alone, so the joint guarantee is contract-level only; no policy, purpose or data-category model; no formal analysis, dataset, attack test or allow or deny matrix.",
     "✓",
@@ -1244,7 +1065,7 @@
     "~"
    ],
    [
-    "S27 [61]",
+    "S16 [61]",
     "MedXBlock, a permissioned Ethereum access-control system with an implemented hybrid attribute- and role-based policy engine evaluating a conjunctive deny-by-default predicate over a stateful policy store, an M-of-N multi-signature contract over registered doctors and administrators for high-sensitivity and cross-departmental requests, token expiry checked at access, and 100 instrumented transactions.",
     "The threshold is institution-side, scoped to sensitive requests, bypassable by a single emergency officer and outside the grant predicate; patient consent is a boolean attribute, not an evaluable object with its own scope, validity or lifecycle; no purpose term; a threat table and an asserted safety property only; systems metrics with no executed authorisation, denial or attack test; gas figures internally inconsistent.",
     "~",
@@ -1255,7 +1076,7 @@
     "~"
    ],
    [
-    "S35 [69]",
+    "S20 [69]",
     "Personal health record sharing with multi-party pre-authorisation verification in which the patient appoints n verifiers and a threshold t; each verifier checks the patient-issued grant, its expiry and the revocation list before releasing a share of the decryption key, so that t validated shares are needed to obtain the record; the secure multi-party computation layer is implemented in Go on ten machines.",
     "The joint approval is a pre-delegated contingency for an incapable patient; verifiers evaluate identity, grant, time and revocation but not purpose or data scope (attribute policy is future work); the identity, wallet, credential and ledger layers are not implemented; no authorisation test, no expired or revoked credential rejection test; STRIDE and LINDDUN enumeration with no proof over the protocol.",
     "✓",
@@ -1266,7 +1087,7 @@
     "~"
    ],
    [
-    "S41 [75]",
+    "S24 [75]",
     "Soteria, a multi-site clinical-trial data platform on Hyperledger Fabric with trusted-execution chaincode in which a (t, n) threshold signature over named investigators gates the admission of trial records to the ledger and the revocation of a consent, consents carry enumerated states with start and end times and a study-number binding validated at an endpoint, and fourteen endpoints are timed on a managed deployment.",
     "The consent grant is unilateral and the threshold governs record admission and revocation rather than the patient's access decision; each vote is a hash-integrity check by institution-side investigators; time is a stored attribute not shown to gate the decision; no policy engine; no theorem, proof or adversary model; performance only with borrowed latency figures and no correctness or attack evaluation.",
     "~",
@@ -1299,7 +1120,7 @@
  },
  {
   "t": "p",
-  "text": "⦃Healthcare access-control research has developed a broad range of mechanisms for restricting access according to roles, attributes, risk conditions and usage constraints. Attribute-based encryption and decentralised key management protect healthcare data through cryptographic access policies [32], risk-aware usage-control models incorporate dynamic conditions beyond role-based permissions [11], and recent surveys of blockchain-based and IoT healthcare access control emphasise fine-grained, dynamic and privacy-preserving enforcement [28, 25]. This section reviews the four analysed studies of stream 4 against Req 4. ⦅The question asked of each study is not whether a policy exists. It is whether purpose, data scope, requester role and contextual constraints influence the decision at the time of access. It is also whether the evaluated policy is bound to the consent object rather than to the requester alone.⦆ It should be noted that, under the coding rules of Section 2.3, a policy that is described in prose or stored on a ledger without being consulted by the decision does not satisfy Req 4.⦄"
+  "text": "⦃Healthcare access-control research has developed a broad range of mechanisms for restricting access according to roles, attributes, risk conditions and usage constraints. Attribute-based encryption and decentralised key management protect healthcare data through cryptographic access policies [32], risk-aware usage-control models incorporate dynamic conditions beyond role-based permissions [11], and recent surveys of blockchain-based and IoT healthcare access control emphasise fine-grained, dynamic and privacy-preserving enforcement [28, 25]. ⦅This section reviews the four included studies of stream 4⦆ against Req 4. ⦅The question asked of each study is not whether a policy exists. It is whether purpose, data scope, requester role and contextual constraints influence the decision at the time of access. It is also whether the evaluated policy is bound to the consent object rather than to the requester alone.⦆ It should be noted that, under the coding rules of Section 2.3, a policy that is described in prose or stored on a ledger without being consulted by the decision does not satisfy Req 4.⦄"
  },
  {
   "t": "p",
@@ -1311,11 +1132,11 @@
  },
  {
   "t": "p",
-  "text": "⦅Across the 44 included studies, T4 is coded Yes in 16, Partial in 22 and No in 6. A policy or attribute condition therefore influences the access decision in a substantial share of the reviewed systems, and the requirement cannot be described as unaddressed. However, the nature of the policy is narrower than Req 4 demands. In most of the T4-positive studies the evaluated policy is bound to the requester, that is, to a role, a department, an institution or an attribute set. This is the case in Punia et al. [61], in Li et al. [51], in the attribute-based access control of Ghosh et al. [46] and in the attribute-based encryption schemes of stream 6. Purpose-of-use enters the evaluated decision in only seven of the 44 included studies [37, 44, 45, 49, 57, 63, 71]. Purpose and data scope are jointly present in the decision by design in fewer still, in Albalwy et al. [37], Eneh et al. [44], Tith et al. [71] and the supporting study [45]. ⦅Jurisdiction appears as a rule field only in Eneh et al. [44]; other contextual conditions are limited to the duty-hours term of Punia et al. [61] and the location and network-address conditions specified but not enforced by Al Amin et al. [38].⦆ The gap verdicts recorded by the coding panel repeatedly note the absence of a purpose or data-category policy from the decision. Madine et al. [53] contain no purpose or policy term in the body of the paper, Tan et al. [69] defer attribute-based scope to future work, Punia et al. [61] evaluate role, department, record type and duty hours but no purpose, and Hema et al. [64] scope keys by role and workflow but carry no purpose-of-use term in the consent token. It should also be noted that every purpose-bearing study is coded T3 No. The single study which conjoins an implemented policy engine with a threshold approval, Punia et al. [61], consumes patient consent as a boolean attribute rather than as a consent object with its own scope. ⦅Therefore, the residual deficit for Req 4 is not the absence of a policy engine. The deficit is that purpose-of-use and data-scope constraints are not carried by the consent object C itself⦆ and evaluated together with the identity, authority and multi-party conditions, with evidence that requests outside the authorised scope are refused. Table 6 presents a summary of the four analysed studies of stream 4 and their commitment to the key requirements.⦆"
+  "text": "⦅⦅Across the 25 included studies, T4 is coded Yes in 11, Partial in 10 and No in 4.⦆ A policy or attribute condition therefore influences the access decision in a substantial share of the reviewed systems, and the requirement cannot be described as unaddressed. However, the nature of the policy is narrower than Req 4 demands. In most of the T4-positive studies the evaluated policy is bound to the requester, that is, to a role, a department, an institution or an attribute set. This is the case in Punia et al. [61], in Li et al. [51], in the attribute-based access control of Ghosh et al. [46] and in the attribute-based encryption schemes of stream 6. ⦅Purpose-of-use enters the evaluated decision in only six of the 25 included studies [37, 44, 49, 57, 63, 71], and in one supporting reference [45].⦆ Purpose and data scope are jointly present in the decision by design in fewer still, in Albalwy et al. [37], Eneh et al. [44], ⦅Tith et al. [71] and the supporting reference [45].⦆ ⦅Jurisdiction appears as a rule field only in Eneh et al. [44]; other contextual conditions are limited to the duty-hours term of Punia et al. [61] and the location and network-address conditions specified but not enforced by Al Amin et al. [38].⦆ The gap verdicts recorded by the coding panel repeatedly note the absence of a purpose or data-category policy from the decision. Madine et al. [53] contain no purpose or policy term in the body of the paper, Tan et al. [69] defer attribute-based scope to future work, Punia et al. [61] evaluate role, department, record type and duty hours but no purpose, and Hema et al. [64] scope keys by role and workflow but carry no purpose-of-use term in the consent token. It should also be noted that every purpose-bearing study is coded T3 No. The single study which conjoins an implemented policy engine with a threshold approval, Punia et al. [61], consumes patient consent as a boolean attribute rather than as a consent object with its own scope. ⦅Therefore, the residual deficit for Req 4 is not the absence of a policy engine. The deficit is that purpose-of-use and data-scope constraints are not carried by the consent object C itself⦆ and evaluated together with the identity, authority and multi-party conditions, with evidence that requests outside the authorised scope are refused. ⦅Table 6 presents a summary of the four included studies of stream 4⦆ and their commitment to the key requirements.⦆"
  },
  {
   "t": "p",
-  "text": "⦃Supporting evidence. One further included study of stream 4 was coded but is not discussed individually. The quantum-safe attribute-based access control scheme of Ghosh et al. ⦅[46] corroborates the finding that an attribute policy can operate inside the access decision and be enforced cryptographically, with attribute revocation checked at every access. It also confirms the residual deficit. The policy carries no purpose-of-use or data-scope term, one fully trusted authority issues and verifies both identity and authority, and the security analysis is argued without a theorem or tool.⦆⦄"
+  "text": "⦃⦅Supporting reference. One further report of stream 4 was coded and retained outside the corpus.⦆ The quantum-safe attribute-based access control scheme of Ghosh et al. ⦅[46] corroborates the finding that an attribute policy can operate inside the access decision and be enforced cryptographically, with attribute revocation checked at every access. It also confirms the residual deficit. The policy carries no purpose-of-use or data-scope term, one fully trusted authority issues and verifies both identity and authority, and the security analysis is argued without a theorem or tool.⦆⦄"
  },
  {
   "t": "ntable",
@@ -1346,7 +1167,7 @@
   "small": true,
   "rows": [
    [
-    "S3 [37]",
+    "S2 [37]",
     "ConsentChain represents genomic-data consent as a machine-readable object of data type, role and purpose combined into an access-policy tree that is hashed and evaluated by a checkConsent function on a permissioned Ethereum network; the proof of concept is deployed with measured throughput and open source code.",
     "Policy evaluation is a rigid hash exact-match rather than a policy engine; the requester role is self-submitted without credential verification; the consent tuple has no validity interval and time is enforced only at the delivery layer; revocation is a binary status; a single patient consents; the security analysis is qualitative and no adversarial or allow-and-deny suite is reported.",
     "✓",
@@ -1357,7 +1178,7 @@
     "✓"
    ],
    [
-    "S15 [49]",
+    "S7 [49]",
     "A consent model for blockchain-based health data sharing platforms in which the requester's purpose is matched inside the smart contract against the patient's consent through DUO and ADA-M ontology terms, with denial tested across several requester profiles.",
     "Security assurance is explicitly outside the scope of the paper; the consent is granted by a single patient without guardian or threshold approval; temporal validity and lifecycle states are not enforced in the decision; identity and authority verification is only partially addressed.",
     "✓",
@@ -1368,7 +1189,7 @@
     "✓"
    ],
    [
-    "S29 [63]",
+    "S17 [63]",
     "A blockchain-based service-oriented architecture for consent management, access control and auditing in which FHIR Consent purpose-of-use limits are evaluated per resource by an XACML policy decision point over Hyperledger Fabric, with supervisory audit services.",
     "No withdrawal or expiry path exists anywhere in the architecture; the authors state that the experiments validate the blockchain component only, so the authorisation decision is not verified; no multi-party approval, identity and authority only partially verified, and no formal security argument.",
     "✓",
@@ -1379,7 +1200,7 @@
     "~"
    ],
    [
-    "S37 [71]",
+    "S21 [71]",
     "A purpose-based consent model for EHRs on Hyperledger Fabric in which consent is an evaluable tuple of role, doctor identifiers, action and intended purpose, matched by chaincode at request time against a purpose tree of allowed and prohibited purposes with per-datum scope.",
     "The consent tuple has no temporal element; withdrawal is implemented but its effect on later access is untested and there is no state machine; identity relies on Fabric membership certificates without DIDs, VCs or authority credentials; consensus endorsement is not multi-party consent; no formal verification or threat model; the four-node prototype reports functional targets without quantitative results or attack cases.",
     "✓",
@@ -1400,7 +1221,7 @@
  },
  {
   "t": "p",
-  "text": "⦃Req 5 requires that the validity interval of a consent and its lifecycle state are technically enforced inside the authorisation decision. Two distinctions from the codebook of Section 2.3 govern the reading of this stream. First, a timestamp that is written to a log or stored in a consent record is not temporal authorisation; the decision itself must read the clock. Second, a mention of revocation, or an operation that changes a status field, is not an implemented lifecycle unless the state is consulted by the decision and the transitions are constrained. This section reviews the four analysed studies of stream 5, namely Eneh et al. [44], Li et al. [51], Panagoulias et al. [57] and Hema et al. [64], and draws on the lifecycle evidence recorded for the analysed studies of the other streams.⦄"
+  "text": "⦃Req 5 requires that the validity interval of a consent and its lifecycle state are technically enforced inside the authorisation decision. Two distinctions from the codebook of Section 2.3 govern the reading of this stream. First, a timestamp that is written to a log or stored in a consent record is not temporal authorisation; the decision itself must read the clock. Second, a mention of revocation, or an operation that changes a status field, is not an implemented lifecycle unless the state is consulted by the decision and the transitions are constrained. ⦅This section reviews the four included studies of stream 5⦆, namely Eneh et al. [44], Li et al. [51], Panagoulias et al. [57] and Hema et al. [64], and draws on the lifecycle evidence ⦅recorded for the included studies of the other streams⦆.⦄"
  },
  {
   "t": "p",
@@ -1408,15 +1229,15 @@
  },
  {
   "t": "p",
-  "text": "⦃The fourth analysed study illustrates a pattern that the coding panel describes as displacement, in which time is enforced on an artefact issued to the requester rather than on the consent itself. Li et al. ⦅[51] presented a hybrid role-based and smart-contract scheme with attribute-based authorisation for IoMT records. The expiry of a signed credential is compared with the current time at every sharing interaction, and a grant ledger records authorisations. The credential window is therefore enforced. However, the consent or authorisation object itself carries no enforced validity window, and there is no consent state machine.⦆ The same displacement is observed in the short-lived tokens of Tseng et al. [73] in stream 2, whose expiry is checked by the token validator while revocation of the access-control list does not invalidate tokens already issued. In both cases the enforced time belongs to a credential or a token, and the consent object is left without a validity interval of its own.⦄"
+  "text": "⦃⦅The fourth included study illustrates⦆ a pattern that the coding panel describes as displacement, in which time is enforced on an artefact issued to the requester rather than on the consent itself. Li et al. ⦅[51] presented a hybrid role-based and smart-contract scheme with attribute-based authorisation for IoMT records. The expiry of a signed credential is compared with the current time at every sharing interaction, and a grant ledger records authorisations. The credential window is therefore enforced. However, the consent or authorisation object itself carries no enforced validity window, and there is no consent state machine.⦆ The same displacement is observed in the short-lived tokens of Tseng et al. [73] in stream 2, whose expiry is checked by the token validator while revocation of the access-control list does not invalidate tokens already issued. In both cases the enforced time belongs to a credential or a token, and the consent object is left without a validity interval of its own.⦄"
  },
  {
   "t": "p",
-  "text": "⦅Across the 44 included studies, T5 is coded Yes in 10 and T6 in 11. Req 5, which requires enforcement in the decision, is Yes in 8. Among the 25 analysed studies the corresponding counts are 8, 7 and 8, so that every study coded Yes on Req 5 belongs to the analysed set.⦆⦃ The distinction between recorded and enforced time explains most of the Partial codes. Albalwy et al. [37], for example, store a struct timestamp in the consent record and apply time only to the download link, so that the consent tuple itself has no validity interval. A parallel distinction separates named state machines from ad hoc revocation flags. Named states with constrained transitions appear in Phuyal et al. [58] (active and revoked with an audited emergency override), Wu et al. [75] (approved, pending, completed and revoked with investigator-verified transitions) and Punia et al. [61], although in the last case the states belong to policies and tokens rather than to the consent. By contrast, Abbasi et al. [35] enforce a role status without consent states, and even Madine et al. [53], with four transitions that affect the decision, define no named state set. Where revocation is enforced at scheme level, as in the immediate ciphertext update of Mei et al. [55], its cost is measured but its effect on a revoked requester is not exercised; among the analysed studies a post-revocation denial is actually demonstrated only by Phuyal et al. [58], Panagoulias et al. [57] and Eneh et al. [44]. In this context, the residual deficit for Req 5 is not the absence of decision-time temporal enforcement, which Eneh et al. [44], Hema et al. [64] and Panagoulias et al. [57] each achieve in isolation. ⦅The deficit is that temporal and lifecycle enforcement at the level of the consent object has not been verified in a deployed multi-institution exchange.⦆⦅ In addition, the three stream-5 systems which enforce time inside the decision are all single-party. Of the eight analysed studies coded Yes on Req 5, including the multi-party designs of Madine et al. [53] and Punia et al. [61], only the encryption scheme of Mei et al. [55] carries a formal proof. That proof concerns the static encryption predicate rather than the consent decision.⦆ Table 7 presents a summary of the analysed stream-5 studies and their commitment to the key requirements.⦄"
+  "text": "⦅⦅Across the 25 included studies, T5 is coded Yes in 8 and T6 in 7. Req 5, which requires enforcement in the decision, is Yes in 8.⦆⦆⦃ The distinction between recorded and enforced time explains most of the Partial codes. Albalwy et al. [37], for example, store a struct timestamp in the consent record and apply time only to the download link, so that the consent tuple itself has no validity interval. A parallel distinction separates named state machines from ad hoc revocation flags. Named states with constrained transitions appear in Phuyal et al. [58] (active and revoked with an audited emergency override), Wu et al. [75] (approved, pending, completed and revoked with investigator-verified transitions) and Punia et al. [61], although in the last case the states belong to policies and tokens rather than to the consent. By contrast, Abbasi et al. [35] enforce a role status without consent states, and even Madine et al. [53], with four transitions that affect the decision, define no named state set. Where revocation is enforced at scheme level, as in the immediate ciphertext update of Mei et al. [55], its cost is measured but its effect on a revoked requester is not exercised; ⦅among the included studies a post-revocation denial⦆ is actually demonstrated only by Phuyal et al. [58], Panagoulias et al. [57] and Eneh et al. [44]. In this context, the residual deficit for Req 5 is not the absence of decision-time temporal enforcement, which Eneh et al. [44], Hema et al. [64] and Panagoulias et al. [57] each achieve in isolation. ⦅The deficit is that temporal and lifecycle enforcement at the level of the consent object has not been verified in a deployed multi-institution exchange.⦆⦅ In addition, the three stream-5 systems which enforce time inside the decision are all single-party. ⦅Of the eight included studies coded Yes on Req 5⦆, including the multi-party designs of Madine et al. [53] and Punia et al. [61], only the encryption scheme of Mei et al. [55] carries a formal proof. That proof concerns the static encryption predicate rather than the consent decision.⦆ ⦅Table 7 presents a summary of the included stream-5 studies⦆ and their commitment to the key requirements.⦄"
  },
  {
   "t": "p",
-  "text": "⦃Supporting evidence. One further included study of stream 5 was coded but is not discussed individually. ⦅The revocable attribute-based encryption scheme of Xu et al. [77], organised in key epochs for hospital-to-hospital sharing, corroborates the displacement pattern. Revocation is realised by key rollover, so that a revoked user retains access until the epoch ends. The word consent does not appear, and keyword matching is a discovery mechanism rather than an approval.⦆ ⦅The distinction between recorded and enforced time is likewise corroborated by supporting studies of the other streams. In several of them a timestamp is stored, logged or used only as a replay window without being read by the decision [46], [60], [62], [78]. In others, automatic expiry is claimed without specifying where the clock is read [68], [70]. Outside the analysed set, a post-revocation denial is reported only in results captioned as illustrative [45] or in a single narrated scenario [68]. Named consent states gating the decision appear in one further supporting study [66].⦆⦄"
+  "text": "⦃⦅Supporting reference. One further report of stream 5 was coded and retained outside the corpus.⦆ ⦅The revocable attribute-based encryption scheme of Xu et al. [77], organised in key epochs for hospital-to-hospital sharing, corroborates the displacement pattern. Revocation is realised by key rollover, so that a revoked user retains access until the epoch ends. The word consent does not appear, and keyword matching is a discovery mechanism rather than an approval.⦆ ⦅The distinction between recorded and enforced time is likewise ⦅corroborated by the supporting references of the other streams⦆. In several of them a timestamp is stored, logged or used only as a replay window without being read by the decision [46], [60], [62], [78]. In others, automatic expiry is claimed without specifying where the clock is read [68], [70]. ⦅Among the supporting references, a post-revocation denial⦆ is reported only in results captioned as illustrative [45] or in a single narrated scenario [68]. Named consent states gating the decision appear ⦅in one further supporting reference [66]⦆.⦆⦄"
  },
  {
   "t": "ntable",
@@ -1435,7 +1256,7 @@
   ],
   "rows": [
    [
-    "S10 [44]",
+    "S5 [44]",
     "EdgeConsent implements an on-chain attribute-based access control engine in which consent rules with not-before and not-after bounds, purposes, data categories, sensitivity levels and jurisdictions are evaluated by checkAccess against the requester attributes and the current timestamp, with deny-by-default; revocation is enforced at the next block and every decision is logged.",
     "Lifecycle limited to an active flag and temporal bounds without pending, suspended or renewed states; wallet-address identity with unspecified attribute issuance and no DIDs or VCs; single-patient rules with no threshold; no threat model or formal properties; two-page demonstration on a local network with gas measurements but no adversarial or correctness suite.",
     "✓",
@@ -1446,7 +1267,7 @@
     "~"
    ],
    [
-    "S17 [51]",
+    "S9 [51]",
     "A hybrid RBAC and smart-contract scheme with attribute-based authorisation for IoMT records in which the expiry of a signed credential is checked against the current time at every sharing interaction and authorisations are recorded on a grant ledger.",
     "Time is enforced on the requester's credential rather than on the consent or authorisation object, which carries no validity window; no consent state machine; no multi-party approval; neither a formal proof of the authorisation decision nor decision-level correctness evidence is reported (both coded Partial).",
     "~",
@@ -1457,7 +1278,7 @@
     "~"
    ],
    [
-    "S23 [57]",
+    "S13 [57]",
     "A blockchain-enabled governance overlay for clinical AI pipelines in which a formal policy object with roles, purposes, a validity window, a revoked flag and a version is evaluated so that access is allowed only if the policy is valid at time t and the role and purpose hold; mid-stream revocation is verified at scale through a consent-drift metric, with denials ledgered and the artefact publicly archived.",
     "Interval-bound denials are not separately exercised and the lifecycle is a binary active or revoked state; single-node hash-chain ledger without consensus; identity inherited from an existing clinical identity provider; single policy administrator with no multi-party approval; purpose is requester-declared set membership without attestation or scope; the authors declare that no formal verification was performed.",
     "✓",
@@ -1468,7 +1289,7 @@
     "✓"
    ],
    [
-    "S30 [64]",
+    "S18 [64]",
     "A patient-centric cryptographic protection scheme for cloud EHRs in which the patient's signed consent token, the requester role, the expiry time and delegation are inputs to key derivation, so that an expired or revoked consent makes the decryption key unreachable without re-encryption and role-scoped keys separate authority from identity.",
     "No explicit lifecycle state machine; consent issued by a single patient key although the construction could accept a threshold; identity relies on a commercial authentication service and device keys without credentials; adversary model with a probabilistic statement but no proof or tool; only operation latency is measured, with literature values as baselines.",
     "✓",
@@ -1501,7 +1322,7 @@
  },
  {
   "t": "p",
-  "text": "⦃Req 6 has two components. ⦅The first is that the security properties of the authorisation mechanism are formally defined and demonstrated. This may be done through a security proof, a model, a verification tool or an explicit adversary model with a theorem. Under the codebook, the statement that a system is secure is not evidence, and a threat discussion alone is coded Partial.⦆ The second is that the mechanism is validated empirically, through a prototype, a dataset, allow-and-deny test cases, attack cases or audit evidence; architecture diagrams alone are not empirical validation. In the workbook these two components are coded separately as Req6 and Req7, and they are combined into the report's Req 6 in the tables of this chapter. Stream 6 gathers the four analysed studies in which formal argument is a principal contribution, namely Zhao and Su [50], Maruthi and Singh [54], Mei et al. [55] and Wu and Zhang [76], all of them cryptographic constructions published in security and network journals.⦄"
+  "text": "⦃Req 6 has two components. ⦅The first is that the security properties of the authorisation mechanism are formally defined and demonstrated. This may be done through a security proof, a model, a verification tool or an explicit adversary model with a theorem. Under the codebook, the statement that a system is secure is not evidence, and a threat discussion alone is coded Partial.⦆ The second is that the mechanism is validated empirically, through a prototype, a dataset, allow-and-deny test cases, attack cases or audit evidence; architecture diagrams alone are not empirical validation. In the workbook these two components are coded separately as Req6 and Req7, and they are combined into the report's Req 6 in the tables of this chapter. ⦅Stream 6 gathers the four included studies⦆ in which formal argument is a principal contribution, namely Zhao and Su [50], Maruthi and Singh [54], Mei et al. [55] and Wu and Zhang [76], all of them cryptographic constructions published in security and network journals.⦄"
  },
  {
   "t": "p",
@@ -1509,15 +1330,15 @@
  },
  {
   "t": "p",
-  "text": "⦅Two observations follow at corpus level. The first concerns formal assurance in the sense of the workbook's Req6. It is coded Yes in only 4 of the 25 analysed studies, all of them in this stream, and in 6 of the 44 included studies, the remaining two being supporting encryption schemes of this stream. In every case the proven property attaches to a narrow predicate. It is an identity-and-authority fragment in HealthDID [76], a threshold gate in Zhao and Su [50] and Maruthi and Singh [54], and a static attribute policy in the encryption scheme of Mei et al. [55]. By contrast, the studies with the broadest decision predicates carry the weakest assurance. Punia et al. [61], with six of seven dimensions positive, offer a threat table and an asserted safety property. Madine et al. [53], the strongest multi-party system, contain no adversary model, property statement or proof. Panagoulias et al. [57], whose decision is the best verified in the corpus, state that no formal method was applied. The coding panel records this as an inverse relation between predicate breadth and assurance strength, and the quadrant in which a broad conjunctive predicate is also formally assured is empty. Structured threat models in the STRIDE or LINDDUN style, as in Tan et al. [69], Phuyal et al. [59] and Panagoulias et al. [57], are useful, but they were coded Partial because they enumerate threats without demonstrating properties.⦆"
+  "text": "⦅Two observations follow at corpus level. The first concerns formal assurance in the sense of the workbook's Req6. ⦅It is coded Yes in only 4 of the 25 included studies, all of them in this stream. Two supporting references of this stream, both encryption schemes, also carry a proof.⦆ In every case the proven property attaches to a narrow predicate. It is an identity-and-authority fragment in HealthDID [76], a threshold gate in Zhao and Su [50] and Maruthi and Singh [54], and a static attribute policy in the encryption scheme of Mei et al. [55]. By contrast, the studies with the broadest decision predicates carry the weakest assurance. Punia et al. [61], with six of seven dimensions positive, offer a threat table and an asserted safety property. Madine et al. [53], the strongest multi-party system, contain no adversary model, property statement or proof. Panagoulias et al. [57], whose decision is the best verified in the corpus, state that no formal method was applied. The coding panel records this as an inverse relation between predicate breadth and assurance strength, and the quadrant in which a broad conjunctive predicate is also formally assured is empty. Structured threat models in the STRIDE or LINDDUN style, as in Tan et al. [69], Phuyal et al. [59] and Panagoulias et al. [57], are useful, but they were coded Partial because they enumerate threats without demonstrating properties.⦆"
  },
  {
   "t": "p",
-  "text": "⦅The second observation concerns empirical validation in the sense of the workbook's Req7. It is coded Yes in only 5 of the 44 included studies, Partial in 35 and No in 4. All five Yes codes fall within the analysed set, where the distribution is Yes in 5 of the 25, Partial in 19 and No in 1. In the large majority of the Partial cases, evaluation means throughput, latency, gas cost, block time or encryption timing. Abbasi et al. [35] measure hundreds to a thousand transactions per operation on a public test network with a published repository and a Synthea-generated dataset, but execute no allow-or-deny test. Punia et al. [61] instrument 100 transactions and describe, but do not run, the single denial scenario. The four cryptographic studies of this stream report benchmarks of their primitives without exercising a single denial. The coding panel describes this pattern as built and measured but never validated as an authorisation decision, and it is the dominant form of evidence in the corpus. Negative validation of the decision, that is, evidence that requests without sufficient authority, outside the authorised scope or after revocation are refused, is found in a small minority. Panagoulias et al. [57] report a blocked rate of 1.000 for unauthorised attempts and zero post-revocation drift across 43,500 attempts, in a single-node simulation. Phuyal et al. [58] test allow and deny paths over 100 runs per workflow and show that revocation yields a refused access within about 1.5 seconds, in a simulated hospital without adversarial tests. Jaiman and Urovi [49] test denial across requester profiles, Albalwy et al. [37] deploy a proof of concept with open code but without adversarial tests, and Hagström et al. [47] show that age windows in a national portal are enforced in practice. No study executes an adversarial campaign against the authorisation decision itself. Where adversarial testing exists, it targets ledger integrity, as in Panagoulias et al. [57], or the software surface through penetration testing, as in Tremper et al. [72]. Therefore, the residual deficit for Req 6 is the combination, within one system, of a formal argument over the conjoined identity, authority, multi-party, policy and temporal conditions and an audited set of allow and deny cases that includes the negative cases. Table 8 presents a summary of the analysed stream-6 studies and their commitment to the key requirements.⦆"
+  "text": "⦅The second observation concerns empirical validation in the sense of the workbook's Req7. ⦅It is coded Yes in only 5 of the 25 included studies, Partial in 19 and No in 1.⦆ In the large majority of the Partial cases, evaluation means throughput, latency, gas cost, block time or encryption timing. Abbasi et al. [35] measure hundreds to a thousand transactions per operation on a public test network with a published repository and a Synthea-generated dataset, but execute no allow-or-deny test. Punia et al. [61] instrument 100 transactions and describe, but do not run, the single denial scenario. The four cryptographic studies of this stream report benchmarks of their primitives without exercising a single denial. The coding panel describes this pattern as built and measured but never validated as an authorisation decision, and it is the dominant form of evidence in the corpus. Negative validation of the decision, that is, evidence that requests without sufficient authority, outside the authorised scope or after revocation are refused, is found in a small minority. Panagoulias et al. [57] report a blocked rate of 1.000 for unauthorised attempts and zero post-revocation drift across 43,500 attempts, in a single-node simulation. Phuyal et al. [58] test allow and deny paths over 100 runs per workflow and show that revocation yields a refused access within about 1.5 seconds, in a simulated hospital without adversarial tests. Jaiman and Urovi [49] test denial across requester profiles, Albalwy et al. [37] deploy a proof of concept with open code but without adversarial tests, and Hagström et al. [47] show that age windows in a national portal are enforced in practice. No study executes an adversarial campaign against the authorisation decision itself. Where adversarial testing exists, it targets ledger integrity, as in Panagoulias et al. [57], or the software surface through penetration testing, as in Tremper et al. [72]. Therefore, the residual deficit for Req 6 is the combination, within one system, of a formal argument over the conjoined identity, authority, multi-party, policy and temporal conditions and an audited set of allow and deny cases that includes the negative cases. ⦅Table 8 presents a summary of the included stream-6 studies⦆ and their commitment to the key requirements.⦆"
  },
  {
   "t": "p",
-  "text": "⦃Supporting evidence. Five further included studies of stream 6 were coded but are not discussed individually. ⦅Two remaining studies among the 44 included studies are coded Yes on formal assurance. These are the revocable attribute-based searchable encryption scheme of Gao et al. [48] and the bilateral proxy re-encryption scheme of Luo et al. [52]. They corroborate the first observation, since each proof concerns a static encryption predicate. The threshold among authorisation nodes in [48] is key-management resilience rather than approval, and the bilateral matching in [52] is policy symmetry rather than co-approval.⦆ The private set intersection protocol of Cao et al. [40], the lightweight multi-authority CP-ABE scheme of Qiao et al. [62] and the policy-hiding encryption scheme of Zhang et al. [56] were coded Partial on formal assurance because their proofs do not reach the authorisation decision, and all five corroborate the second observation, since their evaluations are timing benchmarks or simulations without allow-and-deny or attack tests.⦄"
+  "text": "⦅Supporting references. Five further reports of stream 6 were coded and retained outside the corpus. Two of them are coded Yes on formal assurance. These are the revocable attribute-based searchable encryption scheme of Gao et al. [48] and the bilateral proxy re-encryption scheme of Luo et al. [52]. They corroborate the first observation, since each proof concerns a static encryption predicate. The threshold among authorisation nodes in [48] is key-management resilience rather than approval, and the bilateral matching in [52] is policy symmetry rather than co-approval. The private set intersection protocol of Cao et al. [40], the lightweight multi-authority CP-ABE scheme of Qiao et al. [62] and the policy-hiding encryption scheme of Zhang et al. [56] were coded Partial on formal assurance because their proofs do not reach the authorisation decision, and all five corroborate the second observation, since their evaluations are timing benchmarks or simulations without allow-and-deny or attack tests.⦆"
  },
  {
   "t": "ntable",
@@ -1536,7 +1357,7 @@
   ],
   "rows": [
    [
-    "S16 [50]",
+    "S8 [50]",
     "A threshold traceable delegation authorisation scheme in which the data owner delegates to l of d already-authorised users, each running a private-key-bound authorisation algorithm before an out-of-policy requester can restore the data, with IND-CPA security reduced to the bilinear Diffie-Hellman assumption and unforgeability argued by reference.",
     "Delegates are consumer-side clinicians rather than patient-side stakeholders and the owner's own decision is unilateral; identity is an escrowed identity-based key without authentication protocol or credentials; no purpose term and out-of-policy requesters bypass the policy by delegation; no time, expiry, revocation or states; accountability signature verifiable by the owner only; Java benchmark against the authors' own baseline with no system prototype or allow-and-deny tests.",
     "~",
@@ -1547,7 +1368,7 @@
     "✓"
    ],
    [
-    "S20 [54]",
+    "S11 [54]",
     "A blockchain scheme for IoMT data of unconscious patients in which t of n patient-designated relatives contribute to threshold proxy re-encryption without the key being reassembled at any single point, the hospital and relatives are authenticated on chain through non-interactive zero-knowledge proofs, IND-CCA security is proven and a Solidity implementation is reported.",
     "No policy, purpose or data-scope condition and no temporal validity in the decision; lifecycle limited to the emergency path without consent states; the proof covers the threshold and encryption predicate only; empirical validation is limited to an in-paper implementation (Req7 Partial) without a verified allow-and-deny suite.",
     "~",
@@ -1558,7 +1379,7 @@
     "✓"
    ],
    [
-    "S21 [55]",
+    "S12 [55]",
     "A dual-revocation ciphertext-policy attribute-based encryption scheme for IoMT in which a direct mode terminates access immediately through a ciphertext update, motivated by patient consent withdrawal, with user-level and attribute-level granularity and an IND-CPA reduction under the q-BDHE assumption.",
     "No audit element; attribute policy without a consent object; no multi-party approval; identity and authority only partially established; the proof concerns the static encryption predicate; scheme-level revocation is measured for cost, and enforcement at the consent object in a multi-institution exchange is not shown.",
     "~",
@@ -1569,7 +1390,7 @@
     "✓"
    ],
    [
-    "S42 [76]",
+    "S25 [76]",
     "HealthDID, a DID-based EMR sharing system in which a zero-knowledge authorisation proof binds the data subject's commitment to a specific queryer's public key, separating authorisation from authentication, with three game-based definitions and three reduction theorems for anonymity, unforgeability and search privacy, and a reproducible performance evaluation with a public repository.",
     "The theorems cover the identity and authority fragment only and no theorem states the conditions under which access is granted; no purpose, role or data-category policy; no time value is read by any algorithm; no revocation, withdrawal or states; multi-party denotes multiple stakeholders' privacy, not joint authorisation; no allow-and-deny suite, executed attacks or dataset, and self-scored feature tables.",
     "✓",
@@ -1610,12 +1431,12 @@
  },
  {
   "t": "p",
-  "text": "⦃Table 9 summarises the position of the 25 analysed studies against the six key requirements and positions the proposed framework relative to the existing literature. ⦅The analysed studies are the 23 core studies ratified by the coding panel, together with the two highest-quality supporting studies, Albalwy et al. [37] and Li et al. [51]. The core studies are those whose coding narrows, weakens or contradicts one of the deficits of the gap statement. Studies that carry a multi-party signal (T3 Yes or Partial) are also core studies.⦆ The 19 remaining supporting studies are cited in the supporting-evidence paragraphs of Sections 2.4.1 to 2.4.6 and are excluded from the matrix so that the comparison rests on the studies closest to the research problem. The ticks are taken from the coding of Section 2.3, with Req 6 combining the coding scheme's formal-assurance and empirical-validation codes as explained in Section 2.4.6.⦄"
+  "text": "⦃⦅Table 9 summarises the position of the 25 included studies⦆ against the six key requirements and positions the proposed framework relative to the existing literature. ⦅⦅The included studies are the 23 core studies⦆ ratified by the coding panel, together with the two highest-quality supporting studies, Albalwy et al. [37] and Li et al. [51]. The core studies are those whose coding narrows, weakens or contradicts one of the deficits of the gap statement. Studies that carry a multi-party signal (T3 Yes or Partial) are also core studies.⦆ ⦅The 19 supporting references are cited in the supporting-reference paragraphs of Sections 2.4.1 to 2.4.6 and are outside the corpus, so that the comparison rests on the studies closest to the research problem.⦆ The ticks are taken from the coding of Section 2.3, with Req 6 combining the coding scheme's formal-assurance and empirical-validation codes as explained in Section 2.4.6.⦄"
  },
  {
   "t": "ntable",
   "n": 9,
-  "caption": "Comparison of the analysed studies and the proposed framework against the key requirements",
+  "caption": "Comparison of the included studies and the proposed framework against the key requirements",
   "header": [
    "Study",
    "Req 1",
@@ -1636,7 +1457,7 @@
     "~"
    ],
    [
-    "S3 [37] Albalwy et al. (2021)",
+    "S2 [37] Albalwy et al. (2021)",
     "✓",
     "~",
     "×",
@@ -1645,7 +1466,7 @@
     "✓"
    ],
    [
-    "S4 [38] Al Amin et al. (2023)",
+    "S3 [38] Al Amin et al. (2023)",
     "✓",
     "~",
     "~",
@@ -1654,7 +1475,7 @@
     "~"
    ],
    [
-    "S9 [43] Ekholm et al. (2025)",
+    "S4 [43] Ekholm et al. (2025)",
     "~",
     "✓",
     "✓",
@@ -1663,7 +1484,7 @@
     "~"
    ],
    [
-    "S10 [44] Eneh et al. (2026)",
+    "S5 [44] Eneh et al. (2026)",
     "✓",
     "~",
     "×",
@@ -1672,7 +1493,7 @@
     "~"
    ],
    [
-    "S13 [47] Hagström et al. (2024)",
+    "S6 [47] Hagström et al. (2024)",
     "~",
     "✓",
     "~",
@@ -1681,7 +1502,7 @@
     "✓"
    ],
    [
-    "S15 [49] Jaiman and Urovi (2020)",
+    "S7 [49] Jaiman and Urovi (2020)",
     "✓",
     "~",
     "×",
@@ -1690,7 +1511,7 @@
     "✓"
    ],
    [
-    "S16 [50] Zhao and Su (2024)",
+    "S8 [50] Zhao and Su (2024)",
     "~",
     "~",
     "✓",
@@ -1699,7 +1520,7 @@
     "✓"
    ],
    [
-    "S17 [51] Li et al. (2026)",
+    "S9 [51] Li et al. (2026)",
     "~",
     "~",
     "×",
@@ -1708,7 +1529,7 @@
     "~"
    ],
    [
-    "S19 [53] Madine et al. (2020)",
+    "S10 [53] Madine et al. (2020)",
     "✓",
     "✓",
     "✓",
@@ -1717,7 +1538,7 @@
     "~"
    ],
    [
-    "S20 [54] Maruthi and Singh (2025)",
+    "S11 [54] Maruthi and Singh (2025)",
     "~",
     "~",
     "✓",
@@ -1726,7 +1547,7 @@
     "✓"
    ],
    [
-    "S21 [55] Mei et al. (2026)",
+    "S12 [55] Mei et al. (2026)",
     "~",
     "~",
     "×",
@@ -1735,7 +1556,7 @@
     "✓"
    ],
    [
-    "S23 [57] Panagoulias et al. (2026)",
+    "S13 [57] Panagoulias et al. (2026)",
     "✓",
     "~",
     "×",
@@ -1744,7 +1565,7 @@
     "✓"
    ],
    [
-    "S24 [58] Phuyal et al. (2026)",
+    "S14 [58] Phuyal et al. (2026)",
     "✓",
     "✓",
     "×",
@@ -1753,7 +1574,7 @@
     "✓"
    ],
    [
-    "S25 [59] Phuyal et al. (2026)",
+    "S15 [59] Phuyal et al. (2026)",
     "~",
     "~",
     "×",
@@ -1762,7 +1583,7 @@
     "~"
    ],
    [
-    "S27 [61] Punia et al. (2025)",
+    "S16 [61] Punia et al. (2025)",
     "~",
     "~",
     "✓",
@@ -1771,7 +1592,7 @@
     "~"
    ],
    [
-    "S29 [63] Román-Martínez et al. (2023)",
+    "S17 [63] Román-Martínez et al. (2023)",
     "✓",
     "~",
     "×",
@@ -1780,7 +1601,7 @@
     "~"
    ],
    [
-    "S30 [64] Hema et al. (2026)",
+    "S18 [64] Hema et al. (2026)",
     "✓",
     "~",
     "×",
@@ -1789,7 +1610,7 @@
     "~"
    ],
    [
-    "S33 [67] Soohoo et al. (2026)",
+    "S19 [67] Soohoo et al. (2026)",
     "~",
     "~",
     "×",
@@ -1798,7 +1619,7 @@
     "~"
    ],
    [
-    "S35 [69] Tan et al. (2024)",
+    "S20 [69] Tan et al. (2024)",
     "✓",
     "✓",
     "✓",
@@ -1807,7 +1628,7 @@
     "~"
    ],
    [
-    "S37 [71] Tith et al. (2020)",
+    "S21 [71] Tith et al. (2020)",
     "✓",
     "~",
     "×",
@@ -1816,7 +1637,7 @@
     "~"
    ],
    [
-    "S38 [72] Tremper et al. (2026)",
+    "S22 [72] Tremper et al. (2026)",
     "~",
     "~",
     "×",
@@ -1825,7 +1646,7 @@
     "~"
    ],
    [
-    "S39 [73] Tseng et al. (2025)",
+    "S23 [73] Tseng et al. (2025)",
     "~",
     "✓",
     "×",
@@ -1834,7 +1655,7 @@
     "~"
    ],
    [
-    "S41 [75] Wu et al. (2023)",
+    "S24 [75] Wu et al. (2023)",
     "~",
     "~",
     "~",
@@ -1843,7 +1664,7 @@
     "~"
    ],
    [
-    "S42 [76] Wu and Zhang (2025)",
+    "S25 [76] Wu and Zhang (2025)",
     "✓",
     "✓",
     "×",
@@ -1875,7 +1696,7 @@
  },
  {
   "t": "p",
-  "text": "⦅The matrix supports four observations. First, counting only full satisfaction, Req 1 is met by 12 of the 25 analysed studies, Req 2 by 7, Req 3 by 6, Req 4 by 10, Req 5 by 8 and Req 6 by 9. No requirement is unaddressed. However, none is met by a majority of the analysed studies, and Req 1, at 12 of 25, comes closest. Second, no study satisfies all six requirements together. The largest number of requirements fully satisfied by a single study is four. This number is reached by Madine et al. [53] on Req 1, Req 2, Req 3 and Req 5 and by Panagoulias et al. [57] on Req 1, Req 4, Req 5 and Req 6. Six studies, namely Abbasi et al. [35], Al Amin et al. [38], Hagström et al. [47], Madine et al. [53], Punia et al. [61] and Wu et al. [75], carry no cross in any column, but each of them relies on Partial codes for at least two requirements. Five studies, namely Abbasi et al. [35], Phuyal et al. [59], Soohoo et al. [67], Tremper et al. [72] and Wu et al. [75], fully satisfy no requirement at all. Third, the pair of requirements that co-occurs most often is Req 1 with Req 4, which is found in seven studies (Albalwy et al. [37], Eneh et al. [44], Jaiman and Urovi [49], Panagoulias et al. [57], Román-Martínez et al. [63], Hema et al. [64] and Tith et al. [71]). The next most frequent pair is Req 4 with Req 5, which is found in six studies (Eneh et al. [44], Li et al. [51], Mei et al. [55], Panagoulias et al. [57], Punia et al. [61] and Hema et al. [64]). These two pairs reflect the maturity of single-party consent objects with purpose and time conditions. In contrast, Req 2 and Req 4 never co-occur in full. Req 3 co-occurs with Req 4 only in Punia et al. [61]. Req 3 co-occurs with Req 6 only in the two cryptographic threshold schemes of Zhao and Su [50] and Maruthi and Singh [54], neither of which has policy or temporal enforcement. Two triples are the most frequent, and each is found in three studies. The first is Req 1 with Req 4 and Req 5, in Eneh et al. [44], Panagoulias et al. [57] and Hema et al. [64], all of them single-party systems. The second is Req 1 with Req 4 and Req 6, in Albalwy et al. [37], Jaiman and Urovi [49] and Panagoulias et al. [57], all of them single-party systems whose Req 6 tick rests on empirical validation rather than a formal proof. The triples that include Req 3 are fewer. Req 1, Req 2 and Req 3 co-occur in Madine et al. [53] and in Tan et al. [69], neither of which enforces purpose or data scope or provides a formal argument; the quadruple of Madine et al. [53] also yields Req 1 or Req 2 with Req 3 and Req 5. Req 3, Req 4 and Req 5 co-occur in Punia et al. [61], where the threshold lies outside the policy predicate and no purpose term exists. Fourth, the two quadruples among the analysed studies share only Req 1 and Req 5 and are otherwise complementary in the way that the gap predicts. Madine et al. [53] combine multi-party approval with identity, consent representation and time, but not with policy or assurance. Panagoulias et al. [57] combine consent representation, policy, time and validation, but not with multi-party approval or identity depth.⦆"
+  "text": "⦅The matrix supports four observations. First, counting only full satisfaction, ⦅Req 1 is met by 12 of the 25 included studies⦆, Req 2 by 7, Req 3 by 6, Req 4 by 10, Req 5 by 8 and Req 6 by 9. No requirement is unaddressed. However, ⦅none is met by a majority of the included studies⦆, and Req 1, at 12 of 25, comes closest. Second, no study satisfies all six requirements together. The largest number of requirements fully satisfied by a single study is four. This number is reached by Madine et al. [53] on Req 1, Req 2, Req 3 and Req 5 and by Panagoulias et al. [57] on Req 1, Req 4, Req 5 and Req 6. Six studies, namely Abbasi et al. [35], Al Amin et al. [38], Hagström et al. [47], Madine et al. [53], Punia et al. [61] and Wu et al. [75], carry no cross in any column, but each of them relies on Partial codes for at least two requirements. Five studies, namely Abbasi et al. [35], Phuyal et al. [59], Soohoo et al. [67], Tremper et al. [72] and Wu et al. [75], fully satisfy no requirement at all. Third, the pair of requirements that co-occurs most often is Req 1 with Req 4, which is found in seven studies (Albalwy et al. [37], Eneh et al. [44], Jaiman and Urovi [49], Panagoulias et al. [57], Román-Martínez et al. [63], Hema et al. [64] and Tith et al. [71]). The next most frequent pair is Req 4 with Req 5, which is found in six studies (Eneh et al. [44], Li et al. [51], Mei et al. [55], Panagoulias et al. [57], Punia et al. [61] and Hema et al. [64]). These two pairs reflect the maturity of single-party consent objects with purpose and time conditions. In contrast, Req 2 and Req 4 never co-occur in full. Req 3 co-occurs with Req 4 only in Punia et al. [61]. Req 3 co-occurs with Req 6 only in the two cryptographic threshold schemes of Zhao and Su [50] and Maruthi and Singh [54], neither of which has policy or temporal enforcement. Two triples are the most frequent, and each is found in three studies. The first is Req 1 with Req 4 and Req 5, in Eneh et al. [44], Panagoulias et al. [57] and Hema et al. [64], all of them single-party systems. The second is Req 1 with Req 4 and Req 6, in Albalwy et al. [37], Jaiman and Urovi [49] and Panagoulias et al. [57], all of them single-party systems whose Req 6 tick rests on empirical validation rather than a formal proof. The triples that include Req 3 are fewer. Req 1, Req 2 and Req 3 co-occur in Madine et al. [53] and in Tan et al. [69], neither of which enforces purpose or data scope or provides a formal argument; the quadruple of Madine et al. [53] also yields Req 1 or Req 2 with Req 3 and Req 5. Req 3, Req 4 and Req 5 co-occur in Punia et al. [61], where the threshold lies outside the policy predicate and no purpose term exists. Fourth, ⦅the two quadruples among the included studies⦆ share only Req 1 and Req 5 and are otherwise complementary in the way that the gap predicts. Madine et al. [53] combine multi-party approval with identity, consent representation and time, but not with policy or assurance. Panagoulias et al. [57] combine consent representation, policy, time and validation, but not with multi-party approval or identity depth.⦆"
  },
  {
   "t": "p",
@@ -1889,7 +1710,7 @@
  },
  {
   "t": "p",
-  "text": "⦅This section synthesises the review of Section 2.4 against the six requirements defined in Section 2.2. It should be noted that the synthesis draws on the coding of all 44 included studies, whereas the in-depth discussion of Section 2.4 concentrated on the 25 analysed studies. The counts stated in this section therefore refer to the 44 included studies ⦅unless stated otherwise.⦆⦆⦃⦄⦃ Across the corpus, the requirement that is most often satisfied is the representation of consent as an evaluable authorisation object (Req 1), which 14 studies satisfy fully and 30 satisfy in part. ⦅Policy- and context-aware enforcement (Req 4) is satisfied fully by 13 studies, in part by 25 and not at all by 6. Temporal validity and lifecycle control (Req 5) is satisfied fully by 8 studies, in part by 26 and not at all by 10.⦆ Decentralised verification of identity and authority (Req 2) is satisfied fully by 7 studies and in part by 35, and only 2 studies describe no identity mechanism at all. Multi-party authorisation through a verifiable threshold (Req 3) is the least satisfied requirement: 6 studies satisfy it fully, 4 satisfy it in part and 34 do not address it. With respect to Req 6, formal security assurance of the authorisation decision is provided by 6 studies and argued informally by 17, while 21 studies offer no security analysis beyond assertion; empirical validation is complete in 5 studies, partial in 35 and absent in 4. It should be noted that these proportions are consistent with ⦅the signal prevalence in the wider full-text pool of 1,800 records described in Section 2.3.6, as recorded by the signal detectors of the screening workbook, in which only 8% of the records carry a multi-party signal,⦆⦅⦆ 2% a temporal-validity signal and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment. The scarcity observed among the included studies is therefore a property of the field and not an artefact of the selection.⦄"
+  "text": "⦅This section synthesises the review of Section 2.4 against the six requirements defined in Section 2.2. The counts stated in this section refer to the 25 included studies. Across the corpus, the requirement that is most often satisfied is the representation of consent as an evaluable authorisation object (Req 1), which 12 studies satisfy fully and 13 satisfy in part. Policy- and context-aware enforcement (Req 4) is satisfied fully by 10 studies, in part by 11 and not at all by 4. Temporal validity and lifecycle control (Req 5) is satisfied fully by 8 studies, in part by 13 and not at all by 4. Decentralised verification of identity and authority (Req 2) is satisfied fully by 7 studies and in part by 18, and no included study is without an identity mechanism. Multi-party authorisation through a verifiable threshold (Req 3) is the least satisfied requirement: 6 studies satisfy it fully, 4 satisfy it in part and 15 do not address it. With respect to Req 6, formal security assurance of the authorisation decision is provided by 4 studies and argued informally by 9, while 12 studies offer no security analysis beyond assertion; empirical validation is complete in 5 studies, partial in 19 and absent in 1. It should be noted that these proportions are consistent with the signal prevalence in the wider full-text pool of 1,800 records described in Section 2.3.6, as recorded by the signal detectors of the screening workbook, in which only 8% of the records carry a multi-party signal, 2% a temporal-validity signal and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment. The scarcity observed among the included studies is therefore a property of the field and not an artefact of the selection.⦆"
  },
  {
   "t": "p",
@@ -1901,7 +1722,7 @@
  },
  {
   "t": "p",
-  "text": "⦃Formal assurance of the authorisation decision is almost absent, and where it exists it is narrow. The six studies with a formal proof, Wu and Zhang [76], Zhao and Su [50], Maruthi and Singh [54], Mei et al. [55], Gao et al. [48] and Luo et al. [52], prove anonymity, unforgeability, confidentiality or revocation properties of a cryptographic gate over one or two conditions. None of them contains a theorem stating that access is granted only if a conjunction of identity, authority, policy, temporal and lifecycle conditions holds, because none of them implements such a conjunction. Conversely, the studies with the broadest decision predicates, Punia et al. [61], Madine et al. [53], Ferreira et al. [45], Phuyal et al. [58], Shanmugham and Senthilkumar [66] and Panagoulias et al. [57], provide at most a threat table or a structured adversary model. Across the corpus, therefore, the breadth of the decision predicate and the strength of its assurance vary inversely, and no study occupies the position in which a broad predicate is formally proved. The empirical evidence shows the same pattern from the other side. Five studies report a complete empirical evaluation [37, 47, 49, 57, 58], and only Panagoulias et al. [57] and Phuyal et al. [58] verify ALLOW and DENY outcomes systematically, the former in a single-node simulation and the latter without adversarial tests. ⦅A larger group of studies builds and measures a decision path without verifying a single authorisation decision [61, 35, 65, 72, 78, 36]. Sawant and Gomes [65] run the broadest measurement campaign in the corpus. They report no outcome for the access-control function that they formalise.⦆ When the formal and empirical halves of Req 6 are combined, ⦅eleven of the 44 included studies would reach a tick in the combined Req 6 column, nine of them among the 25 analysed studies shown in the tables of Section 2.4⦆, but no study combines a formal proof of its decision with a systematic empirical test of that decision.⦄"
+  "text": "⦅Formal assurance of the authorisation decision is almost absent, and where it exists it is narrow. The four included studies with a formal proof, Wu and Zhang [76], Zhao and Su [50], Maruthi and Singh [54] and Mei et al. [55], together with the two supporting references that carry a proof, Gao et al. [48] and Luo et al. [52], prove anonymity, unforgeability, confidentiality or revocation properties of a cryptographic gate over one or two conditions. None of them contains a theorem stating that access is granted only if a conjunction of identity, authority, policy, temporal and lifecycle conditions holds, because none of them implements such a conjunction. Conversely, the studies with the broadest decision predicates, Punia et al. [61], Madine et al. [53], Ferreira et al. [45], Phuyal et al. [58], Shanmugham and Senthilkumar [66] and Panagoulias et al. [57], provide at most a threat table or a structured adversary model. Across the corpus, therefore, the breadth of the decision predicate and the strength of its assurance vary inversely, and no study occupies the position in which a broad predicate is formally proved. The empirical evidence shows the same pattern from the other side. Five studies report a complete empirical evaluation [37, 47, 49, 57, 58], and only Panagoulias et al. [57] and Phuyal et al. [58] verify ALLOW and DENY outcomes systematically, the former in a single-node simulation and the latter without adversarial tests. A larger group of studies builds and measures a decision path without verifying a single authorisation decision [61, 35, 65, 72, 78, 36]. Sawant and Gomes [65] run the broadest measurement campaign in the corpus. They report no outcome for the access-control function that they formalise. When the formal and empirical halves of Req 6 are combined, nine of the 25 included studies would reach a tick in the combined Req 6 column of the tables of Section 2.4, but no study combines a formal proof of its decision with a systematic empirical test of that decision.⦆"
  },
  {
   "t": "p",
@@ -1915,11 +1736,11 @@
  },
  {
   "t": "p",
-  "text": "⦃Gap 1 (Req 1): The strongest evaluable consent objects in the reviewed studies are the purpose-based tuple of Tith et al. [71], the ontology object of Albalwy et al. [37], the on-chain consent object of Phuyal et al. [58], the consent token of Shanmugham and Senthilkumar [66], the rule structure of Eneh et al. [44] and the policy object of Panagoulias et al. [57]. Each of them carries a subset of the required components: Tith et al. [71] and Albalwy et al. [37] carry no temporal component, Eneh et al. [44] and Shanmugham and Senthilkumar [66] carry no authority requirement beyond the single patient, and Phuyal et al. [58] store an expiry that the decision algorithm does not read. In the 30 studies coded as partial, the consent is a Boolean flag, a logged event or a status that is displayed rather than evaluated [36, 60, 65, 74], and in Punia et al. [61] the object that carries a lifecycle is the policy rather than the consent. What remains open is a consent object that represents the participating identities, the authority requirement including the guardian set and the threshold, the purpose and data scope, the validity interval, the jurisdiction, the lifecycle state and the evidence as separately evaluable components. This gap corresponds to research question RQ1 of Chapter 3.⦄"
+  "text": "⦃Gap 1 (Req 1): The strongest evaluable consent objects in the reviewed studies are the purpose-based tuple of Tith et al. [71], the ontology object of Albalwy et al. [37], the on-chain consent object of Phuyal et al. [58], the consent token of Shanmugham and Senthilkumar [66], the rule structure of Eneh et al. [44] and the policy object of Panagoulias et al. [57]. Each of them carries a subset of the required components: Tith et al. [71] and Albalwy et al. [37] carry no temporal component, Eneh et al. [44] and Shanmugham and Senthilkumar [66] carry no authority requirement beyond the single patient, and Phuyal et al. [58] store an expiry that the decision algorithm does not read. ⦅In the 13 included studies coded as partial, and in the supporting references, the consent is⦆ a Boolean flag, a logged event or a status that is displayed rather than evaluated [36, 60, 65, 74], and in Punia et al. [61] the object that carries a lifecycle is the policy rather than the consent. What remains open is a consent object that represents the participating identities, the authority requirement including the guardian set and the threshold, the purpose and data scope, the validity interval, the jurisdiction, the lifecycle state and the evidence as separately evaluable components. This gap corresponds to research question RQ1 of Chapter 3.⦄"
  },
  {
   "t": "p",
-  "text": "⦃Gap 2 (Req 2): ⦅The clearest separations of identity from authority are found in five places. In Ekholm et al. [43] and Hagström et al. [47] guardianship is verified against a national population register independently of the eID login. In Phuyal et al. [58] a licensing-body credential asserts role and scope of practice separately from the wallet identity. In Wu and Zhang [76] a zero-knowledge proof binds the owner's authorisation to a specific requester key. Separate authority evidence is also found in Tan et al. [69], Madine et al. [53] and Tseng et al. [73].⦆ In the 35 studies coded as partial the identity is a wallet address or a platform certificate, the role is administratively assigned or self-selected at login [36, 44], and the authority to act on behalf of a patient is not evidenced at all. The register-based guardian verification of [43, 47] is centralised, and the DID and VC designs [58, 45, 66] carry no guardian credential. What remains open is decentralised evidence of both identity and authority for every participant in a consent, including the guardians, with the two conditions evaluated separately. This gap corresponds to research question RQ2 of Chapter 3.⦄"
+  "text": "⦃Gap 2 (Req 2): ⦅The clearest separations of identity from authority are found in five places. In Ekholm et al. [43] and Hagström et al. [47] guardianship is verified against a national population register independently of the eID login. In Phuyal et al. [58] a licensing-body credential asserts role and scope of practice separately from the wallet identity. In Wu and Zhang [76] a zero-knowledge proof binds the owner's authorisation to a specific requester key. Separate authority evidence is also found in Tan et al. [69], Madine et al. [53] and Tseng et al. [73].⦆ ⦅In the 18 included studies coded as partial the identity is⦆ a wallet address or a platform certificate, the role is administratively assigned or self-selected at login [36, 44], and the authority to act on behalf of a patient is not evidenced at all. The register-based guardian verification of [43, 47] is centralised, and the DID and VC designs [58, 45, 66] carry no guardian credential. What remains open is decentralised evidence of both identity and authority for every participant in a consent, including the guardians, with the two conditions evaluated separately. This gap corresponds to research question RQ2 of Chapter 3.⦄"
  },
  {
   "t": "p",

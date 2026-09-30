@@ -42,3 +42,13 @@ Twelve reviewer passes were run over the previous build (figures, algorithms, eq
 ## Checks on the final build
 
 - Marker leaks 0; references [1]–[81] all cited; Table/Figure captions 1–17 / 1–40 exactly once each; equations (1)–(76) without gaps; no vendor or tool names; docx validation passed for both copies; submission copy contains only black (000000) and the grey (555555) used for table notes.
+
+## Addendum — corpus restated as 25 included studies (author's instruction)
+
+- The review corpus is now the 25 primary studies (23 core + Albalwy [37] + Li [51]). The other 19 reports that passed the full-text screen are "supporting references": coded, cited in the supporting-reference paragraph of each stream, kept in the reference list, but outside the corpus and outside Tables 2–9.
+- Figure 2 (PRISMA): final box now reads 25 included, 19 supporting references, 3 secondary. All upstream counts unchanged (64 assessed − 17 excluded = 47).
+- Figure 3: year distribution and stream counts recomputed over the 25 (2020: 3, 2021: 1, 2023: 3, 2024: 3, 2025: 5, 2026: 10; streams 2/3/8/4/4/4; sources Scopus 13, IEEE Xplore 10, ProQuest 2).
+- Figure 5: requirement counts recomputed over the 25 (Req 1: 12, Req 2: 7, Req 3: 6, Req 4: 10, Req 5: 8, Req 6: 4).
+- Table 2: 25 rows, labels S1–S25, Role column removed. Tables 3–9: study labels renumbered S1–S25 to match.
+- All coding counts in 2.4 and 2.5 recomputed over the 25 (T2 10/15; T3 6/4/15; T4 11/10/4; T5 8, T6 7; Req 1 12/13; Req 2 7/18; Req 4 10/11/4; Req 5 8/13/4; Req 6 4/9/12; Req 7 5/19/1; combined Req 6 tick 9; purpose-of-use in the decision 6 of 25 plus one supporting reference).
+- Abstract, Section 2.6 conclusion and Section 3.1 now say 25 primary studies. The number 44 remains only where it means the 44 reports that passed the full-text screen.

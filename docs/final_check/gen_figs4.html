@@ -80,34 +80,34 @@ s+=node({x:MX,y:708,w:MW,h:80,type:"box",style:G,fs:F,lines:["Full texts assesse
 s+=edge(`M ${MX+MW/2} 708 L ${SX-SW/2-6} 708`);
 s+=node({x:SX,y:708,w:SW,h:104,type:"box",style:P,fs:FS,lines:["Full texts excluded (n = 17):","EC9 superficial relevance 9; EC1 outside healthcare 3;","EC5 non-peer-reviewed 2; EC2 no authorisation relevance 2;","EC4 authentication only 1"]});
 s+=edge(`M ${MX} 748 L ${MX} 796`);
-s+=node({x:MX,y:840,w:MW,h:80,type:"box",style:G,fs:F,lines:["Primary studies included in the review (n = 44)","23 core and 21 supporting studies","Secondary studies retained for background (n = 3)"]});
-svg("gfig2",990,900,s);
+s+=node({x:MX,y:846,w:MW,h:98,type:"box",style:G,fs:F,lines:["Primary studies included in the review (n = 25)","23 core studies and the 2 highest-quality supporting studies","Supporting references retained outside the corpus (n = 19)","Secondary studies retained for background (n = 3)"]});
+svg("gfig2",990,915,s);
 }
 /* ---------- gfig2a : corpus profile ---------- */
 {
 let s="";
 const ink="#1a1a1a", mut="#6b6b6b", axis="#c9c9c9";
-const yrs=[["2020",3],["2021",1],["2022",1],["2023",6],["2024",5],["2025",10],["2026",18]];
-const x0=70,y0=300,bw=34,gap=26,hmax=200,vmax=20;
-s+=`<text x="${x0-10}" y="46" style="font-size:15px;font-weight:600;fill:${ink}">Included primary studies by publication year (n = 44)</text>`;
+const yrs=[["2020",3],["2021",1],["2022",0],["2023",3],["2024",3],["2025",5],["2026",10]];
+const x0=60,y0=300,bw=40,gap=22,hmax=190,vmax=12;
+s+=`<text x="${x0-10}" y="46" style="font-size:19px;font-weight:600;fill:${ink}">Included primary studies by publication year (n = 25)</text>`;
 yrs.forEach(([lb,v],i)=>{ const x=x0+i*(bw+gap), h=v/vmax*hmax, yb=y0-h;
   s+=`<path d="M ${x} ${y0} L ${x} ${yb+4} Q ${x} ${yb} ${x+4} ${yb} L ${x+bw-4} ${yb} Q ${x+bw} ${yb} ${x+bw} ${yb+4} L ${x+bw} ${y0} Z" fill="#1E88E5"/>`;
-  s+=`<text x="${x+bw/2}" y="${yb-8}" text-anchor="middle" style="font-size:13px;font-weight:600;fill:${ink}">${v}</text>`;
-  s+=`<text x="${x+bw/2}" y="${y0+20}" text-anchor="middle" style="font-size:12.5px;fill:${mut}">${lb}</text>`; });
+  s+=`<text x="${x+bw/2}" y="${yb-8}" text-anchor="middle" style="font-size:16.5px;font-weight:600;fill:${ink}">${v}</text>`;
+  s+=`<text x="${x+bw/2}" y="${y0+20}" text-anchor="middle" style="font-size:16px;fill:${mut}">${lb}</text>`; });
 s+=`<line x1="${x0-12}" y1="${y0}" x2="${x0+7*(bw+gap)}" y2="${y0}" stroke="${axis}" stroke-width="1.2"/>`;
-s+=`<text x="${x0-10}" y="${y0+44}" style="font-size:11.5px;fill:${mut}">Sources: IEEE Xplore 19, Scopus 21, ProQuest 3, ACM Digital Library 1</text>`;
-const px=520;
-const streams=[["2.4.1 Consent representation & governance (Req 1)",12,2],["2.4.2 Decentralised identity & authority (Req 2)",5,3],["2.4.3 Multi-party authorisation (Req 3)",8,8],["2.4.4 Policy- & context-aware access (Req 4)",5,4],["2.4.5 Temporal validity & lifecycle (Req 5)",5,4],["2.4.6 Formal & empirical assurance (Req 6)",9,4]];
-s+=`<text x="${px}" y="46" style="font-size:15px;font-weight:600;fill:${ink}">Studies per review stream (included / analysed in depth)</text>`;
-const bx=px+330, bh=22, vg=18, wmax=160, smax=12;
+s+=`<text x="${x0-10}" y="${y0+44}" style="font-size:14.5px;fill:${mut}">Sources: Scopus 13, IEEE Xplore 10, ProQuest 2</text>`;
+const px=560;
+const streams=[["2.4.1 Consent representation & governance (Req 1)",2,2],["2.4.2 Decentralised identity & authority (Req 2)",3,3],["2.4.3 Multi-party authorisation (Req 3)",8,8],["2.4.4 Policy- & context-aware access (Req 4)",4,4],["2.4.5 Temporal validity & lifecycle (Req 5)",4,4],["2.4.6 Formal & empirical assurance (Req 6)",4,4]];
+s+=`<text x="${px}" y="46" style="font-size:19px;font-weight:600;fill:${ink}">Included studies per review stream (n = 25)</text>`;
+const bx=px+400, bh=24, vg=16, wmax=150, smax=8;
 streams.forEach(([lb,v,a],i)=>{ const y=84+i*(bh+vg), w=v/smax*wmax, wa=a/smax*wmax;
-  s+=`<text x="${bx-10}" y="${y+bh/2+4}" text-anchor="end" style="font-size:12px;fill:${ink}">${lb}</text>`;
+  s+=`<text x="${bx-10}" y="${y+bh/2+4}" text-anchor="end" style="font-size:15px;fill:${ink}">${lb}</text>`;
   s+=`<path d="M ${bx} ${y} L ${bx+w-4} ${y} Q ${bx+w} ${y} ${bx+w} ${y+4} L ${bx+w} ${y+bh-4} Q ${bx+w} ${y+bh} ${bx+w-4} ${y+bh} L ${bx} ${y+bh} Z" fill="#BBDEFB"/>`;
   s+=`<path d="M ${bx} ${y} L ${bx+wa-4} ${y} Q ${bx+wa} ${y} ${bx+wa} ${y+4} L ${bx+wa} ${y+bh-4} Q ${bx+wa} ${y+bh} ${bx+wa-4} ${y+bh} L ${bx} ${y+bh} Z" fill="#1E88E5"/>`;
-  s+=`<text x="${bx+w+8}" y="${y+bh/2+4}" style="font-size:13px;font-weight:600;fill:${ink}">${v} / ${a}</text>`; });
+  s+=`<text x="${bx+w+8}" y="${y+bh/2+4}" style="font-size:16.5px;font-weight:600;fill:${ink}">${v}</text>`; });
 s+=`<line x1="${bx}" y1="78" x2="${bx}" y2="${84+6*(bh+vg)-vg+6}" stroke="${axis}" stroke-width="1.2"/>`;
-s+=`<text x="${px}" y="${84+6*(bh+vg)+18}" style="font-size:11.5px;fill:${mut}">Light bar: included studies; dark bar: analysed in depth (23 core + 2 highest-quality supporting = 25)</text>`;
-svg("gfig2a",1100,380,s);
+s+=`<text x="${px}" y="${84+6*(bh+vg)+18}" style="font-size:14.5px;fill:${mut}">Stream = requirement on which the study is coded most strongly (23 core + 2 supporting)</text>`;
+svg("gfig2a",1180,380,s);
 }
 /* ---------- gfig2b : review questions -> sections ---------- */
 {
@@ -129,7 +129,7 @@ svg("gfig2b",940,712,s);
 /* ---------- gfig2c : synthesis / gap ---------- */
 {
 let s="";
-const streams=[["Consent representation","evaluable object: 14 of 44"],["Identity & authority","authority separated: 7 of 44"],["Multi-party authorisation","constitutive threshold: 6 of 44"],["Policy & context","purpose / scope bound: 13 of 44"],["Temporal & lifecycle","time inside decision: 8 of 44"],["Formal & empirical assurance","formal assurance: 6 of 44"]];
+const streams=[["Consent representation","evaluable object: 12 of 25"],["Identity & authority","authority separated: 7 of 25"],["Multi-party authorisation","constitutive threshold: 6 of 25"],["Policy & context","purpose / scope bound: 10 of 25"],["Temporal & lifecycle","time inside decision: 8 of 25"],["Formal & empirical assurance","formal assurance: 4 of 25"]];
 streams.forEach((p,i)=>{ const y=50+i*76;
   s+=node({x:170,y,w:290,h:58,type:"box",lines:[p[0],p[1]],style:"fill:#E8F5E9;stroke:#43A047",fs:12.5,small:true});
   s+=`<path d="M 316 ${y} C 380 ${y}, 380 ${240}, 428 ${240+(y-240)*0.06}" style="stroke:#8a8a5a;stroke-width:1.4;fill:none" marker-end="url(#arr)"/>`; });
