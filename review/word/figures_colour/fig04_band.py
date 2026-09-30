@@ -18,7 +18,7 @@ L += [f'subgraph cluster_c {{ label="CONTROLLER"; {CL} {bb(0.05, 2.95, 9.6, 4.05
 L += [f'c{i} [label="{l}", {P(x, 3.4)}];' for i, (l, x) in enumerate(ctrl)] + ['}']
 L += [f'subgraph cluster_m {{ label="MODEL"; {CL} {bb(0.05, 0.9, 7.45, 1.95)};']
 L += [f'm{i} [label="{l}", {P(x, 1.35)}];' for i, (l, x) in enumerate(model)] + ['}']
-L += [f'subgraph cluster_r {{ label="PROTECTED RESOURCE"; labelloc=b; {CL} {bb(7.65, 0.75, 9.6, 1.95)};', f'hd [label="Healthcare Data", {P(8.625, 1.5)}];', '}']
+L += [f'subgraph cluster_r {{ label="PROTECTED RESOURCE"; {CL} {bb(7.65, 0.75, 9.6, 1.95)};', f'hd [label="Healthcare Data", {P(8.625, 1.3)}];', '}']
 pt = lambda n, x, y: f'{n} [shape=point, width=0.01, style=invis, {P(x, y)}];'
 L += [pt("a1", 2.8, 4.75), pt("a2", 2.8, 4.05), pt("b1", 2.0, 2.95), pt("b2", 2.0, 1.95), pt("r1", 8.625, 2.95), pt("r2", 8.625, 1.95)]
 L += ["a1 -> a2; b1 -> b2 [dir=both]; r1 -> r2 [dir=both];", "}"]

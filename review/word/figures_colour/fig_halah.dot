@@ -16,12 +16,12 @@ subgraph cluster_g { label="Guardian view (Section 7.3)"; style="filled,dashed";
   g2 [label="Mint consent SBT\n(local ID + Sepolia anchor)"]; }
 subgraph cluster_d { label="Doctor view (Section 7.4)"; style="filled,dashed"; fillcolor="#FFFFDE"; color="#AAAA33"; fontcolor="#333333"; fontsize=12; labeljust=l;
   d1 [label="Doctor enters consent ID\nand selects EMR modules"];
-  dv [label=<State = ACTIVE and<BR/>S<SUB>R</SUB> ⊆ S<SUB>C</SUB> ?>, shape=diamond, margin="0.05,0.04"];
+  dv [label=<State = ACTIVE, access proof valid<BR/>and S<SUB>R</SUB> ⊆ S<SUB>C</SUB> ?>, shape=diamond, margin="0.05,0.04"];
   dg [label="ACCESS GRANTED\nrelease Synthea modules", shape=box, style="rounded,filled,bold"]; dd [label="ACCESS DENIED", shape=box, style="rounded,filled,bold"]; }
-A [label="Audit log (Section 7.5)\nCREATE_CONSENT • SIGN_CONSENT • MINT_SBT\nSTATE_CHECK • DATA_ACCESS (GRANTED / DENIED)", shape=cylinder, penwidth=1.6];
+A [label="Audit log (Section 7.5)\nCREATE_CONSENT • SIGN_CONSENT • MINT_SBT • ONCHAIN_MINT\nSTATE_CHECK • DATA_ACCESS (GRANTED / DENIED)", shape=cylinder, penwidth=1.6];
 p1 -> pv; pv -> p2 [label=" Yes"]; pv -> pr [label=" No"];
 p2 -> g1 -> gv; gv -> gt [label=" Yes"]; gv -> gr [label=" No"]; gt -> g1 [label=" No: wait for\n next guardian", style=dashed, constraint=false];
 gt -> g2 [label=" Yes"]; g2 -> d1 [label=" consent ACTIVE"]; d1 -> dv; dv -> dg [label=" Yes"]; dv -> dd [label=" No"];
-{p2 g2 dg dd} -> A [style=dotted, arrowhead=vee];
+{p2 g1 g2 dv dg dd} -> A [style=dotted, arrowhead=vee];
 
 }

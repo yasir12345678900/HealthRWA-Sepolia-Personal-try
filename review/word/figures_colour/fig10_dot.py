@@ -7,7 +7,7 @@ L = ['digraph G {', 'graph [bgcolor=white, dpi=300, splines=ortho, pad=0.15];',
      'node [shape=box, style="filled", fillcolor="#FFF2CC", color="#D6B656", fontcolor="#000000", fontname="Trebuchet MS Bold", fontsize=13, penwidth=1.5, margin="0.16,0.08"];',
      'edge [color="#D6B656", penwidth=1.6, arrowsize=0.8];']
 XP, XQ, XD = 2.3, 5.4, 7.7
-rows = [("C", "Verify Requesting Identity\\nand Authority", "Q1", "Identity\\nValid?", 8.55),
+rows = [("C", "Verify Requesting Identity\\nand Authority", "Q1", "Identity and\\nAuthority Valid?", 8.55),
         ("Dn", "Evaluate Consent State", "Q2", "Consent\\nActive?", 7.45),
         ("En", "Verify Multi-Party Authorisation", "Q3", "Threshold\\nSatisfied?", 6.35),
         ("F", "Evaluate Requested Purpose", "Q4", "Purpose\\nValid?", 5.25),
@@ -15,7 +15,7 @@ rows = [("C", "Verify Requesting Identity\\nand Authority", "Q1", "Identity\\nVa
 L += [f'A [label="Doctor Requests\\nPatient Data", style="rounded,filled", {P(XP, 10.3)}];', f'B [label="Retrieve Consent Object", {P(XP, 9.5)}];']
 for p, pl, q, ql, y in rows:
     L += [f'{p} [label="{pl}", {P(XP, y)}];', f'{q} [label="{ql}", shape=diamond, margin="0.02,0.02", {P(XQ, y)}];']
-L += [f'H [label="Generate Proof or\\nAccess Evidence", {P(XP, 3.0)}];', f'I [label="Grant Data Access", {P(XP, 2.15)}];',
+L += [f'H [label="Generate or Verify\\nAccess Evidence", {P(XP, 3.0)}];', f'I [label="Grant Data Access", {P(XP, 2.15)}];',
       f'J [label="Record Granted Access", style="rounded,filled", {P(XP, 1.35)}];',
       f'X [label="Deny Access", {P(XD, 3.0)}];', f'Y [label="Record Denied Access", style="rounded,filled", {P(XD, 2.15)}];']
 # small text labels for the branches

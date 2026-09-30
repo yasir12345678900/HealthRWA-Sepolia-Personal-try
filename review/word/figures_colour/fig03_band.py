@@ -20,16 +20,17 @@ L = ['digraph G {', f'splines={SPL}; outputorder=edgesfirst;',
 L += [f'{n} [label="{l}", {P(x, 9.72)}];' for n, l, x in vw] + ['}']
 L += [f'subgraph cluster_c {{ label=""; style=filled; fillcolor="#FFFFDE"; color="#AAAA33"; {bb(1.95, 3.7, 9.75, 9.05)};']
 L += [f'{n} [label="{l}", {P(x, y)}];' for n, l, x, y in ct] + ['}']
-L += [f'subgraph cluster_m {{ label="MODEL LAYER — Trust & Governance State"; labelloc=b; style=filled; fillcolor="#FFFFDE"; color="#AAAA33"; {bb(0.05, 1.55, 9.75, 3.05)};']
+L += [f'subgraph cluster_m {{ label=""; style=filled; fillcolor="#FFFFDE"; color="#AAAA33"; {bb(0.05, 1.55, 9.75, 3.05)};']
 L += [f'{n} [label="{l}", {P(x, 2.55)}];' for n, l, x in md] + ['}']
 L += [f'{n} [label="{l}", {P(x, 11.3)}];' for n, l, x in st]
 L += [f'lv [label="VIEW LAYER\\nStakeholder Interaction", shape=plaintext, style="", fontsize=12.5, {P(7.4, 10.28)}];',
-      f'lc [label="CONTROLLER LAYER\\nTrust & Authorisation Enforcement", shape=plaintext, style="", fontsize=12.5, {P(7.05, 7.6)}];']
+      f'lc [label="CONTROLLER LAYER\\nTrust & Authorisation Enforcement", shape=plaintext, style="", fontsize=12.5, {P(7.05, 7.6)}];',
+      f'lm [label="MODEL LAYER\\nTrust & Governance State", shape=plaintext, style="", fontsize=12.5, {P(4.9, 1.78)}];']
 L += [f'D [label="Protected\\nHealthcare Data", {P(0.85, 4.85)}];']
-L += ["sP -> vP; sG -> vG; sH -> vH; sA -> vA; vP -> c1; vG -> c1; vH -> c1; vA -> c7;",
+L += ["sP -> vP; sG -> vG; sH -> vH; sA -> vA; vP -> c1; vG -> c1; vH -> c1; c7 -> vA;",
       "c1 -> c2 -> c3 -> c4 -> c5 -> c6; c6 -> c7; c6 -> D;",
-      "c2 -> m7 [dir=both]; c3 -> m6 [dir=both]; c4 -> m5 [dir=both]; c4 -> m4 [dir=both]; c5 -> m3 [dir=both];",
+      "c2 -> m7 [dir=both]; c2 -> m6 [dir=both]; c3 -> m6 [dir=both]; c4 -> m5 [dir=both]; c4 -> m4 [dir=both]; c5 -> m3 [dir=both];",
       "c6 -> m1 [dir=both]; c6 -> m2 [dir=both]; c7 -> m2;", "}"]
 open(f"{D}/fig03b.dot", "w").write("\n".join(L))
 for fmt in ("png", "pdf", "svg"):
-    subprocess.run(["neato", "-n2", f"-T{fmt}"] + (["-Gdpi=72"] if fmt != "png" else []) + [ f"{D}/fig03b.dot", "-o", f"{D}/fig03b.{fmt}"], check=True)
+    subprocess.run(["neato", "-n2", f"-T{fmt}", f"{D}/fig03b.dot", "-o", f"{D}/fig03b.{fmt}"], check=True)
