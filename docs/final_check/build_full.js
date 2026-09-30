@@ -445,7 +445,7 @@ function redEditParas(e) {
 
 // ---------- figure file mapping ----------
 const FIGFILE = {
-  1: [path.join(RFIG, FINAL ? "gfig1f.png" : "gfig1b.png"), 600], 2: [path.join(RFIG, "gfig2.png"), 600],
+  1: [path.join(RFIG, FINAL ? "gfig1f.png" : "gfig1b.png"), 624], 2: [path.join(RFIG, "gfig2.png"), 624],
   3: [path.join(DIAG, "fig3.png"), 600], 4: [path.join(DIAG, "fig4.png"), 600],
   5: [path.join(DIAG, "fig5.png"), 380], 6: [path.join(DIAG, "fig6.png"), 420],
   7: [path.join(RFIG, "gfig7.png"), 380], 8: [path.join(RFIG, "gfig8.png"), 420],
@@ -599,19 +599,19 @@ for (let i = 0; i < blocks.length; i++) {
   if (b.t === "h2" && b.num === "2.4" && !fig2aDone) {
     fig2aDone = true;
     if (!FINAL) C.push(BTAG("[ADDED FIGURE 2a — profile of the review corpus]"));
-    C.push(...image(path.join(RFIG, "gfig2a.png"), 600,
+    C.push(...image(path.join(RFIG, "gfig2a.png"), 624,
       "Figure 3: Profile of the 44 included primary studies: distribution by publication year and by review stream, showing for each stream the number of included studies and the number analysed in depth in Section 2.4 (25 in total). Each study is assigned to the stream of its strongest coded requirement.", NEWB));
   }
   if (b.t === "h3" && b.num === "2.4.1" && !fig2bDone) {
     fig2bDone = true;
     if (!FINAL) C.push(BTAG("[ADDED FIGURE 2b — review questions mapped to review sections]"));
-    C.push(...image(path.join(RFIG, "gfig2b.png"), 560,
+    C.push(...image(path.join(RFIG, "gfig2b.png"), 600,
       "Figure 4: Correspondence between the seven review questions of Section 2.3.2 and the sections of the review in which they are addressed, ending in the synthesis that leads to the research questions of Chapter 3.", NEWB));
   }
   if (b.t === "h1" && b.num === "3" && !fig2cDone) {
     fig2cDone = true;
     if (!FINAL) C.push(BTAG("[ADDED FIGURE 2c — synthesis of the review and the research gap]"));
-    C.push(...image(path.join(RFIG, "gfig2c.png"), 600,
+    C.push(...image(path.join(RFIG, "gfig2c.png"), 624,
       "Figure 5: Synthesis of the review: each of the six requirements is satisfied by some of the 44 studies, but no study conjoins all six conditions in one access decision (conjunction gap) and the strongest mechanisms lack formal assurance (assurance gap); the proposed framework addresses both by treating consent as an evaluable authorisation object.", NEWB));
   }
   const exactEdits = (edits.get(i) || []).filter(e => e.exact && !APPLIED_MARK.has(e.no));

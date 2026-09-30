@@ -1,0 +1,144 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#fff;font-family:'Segoe UI',Calibri,Arial,sans-serif}
+.wrap{padding:12px;display:inline-block;background:#fff}
+</style></head><body>
+<script>
+const MER = { box:"fill:#FFF8E1;stroke:#C9A227", round:"fill:#FFF8E1;stroke:#C9A227", diam:"fill:#FFF8E1;stroke:#C9A227" };
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;");}
+function node(n){
+  const {x,y,w,h,type,lines,style} = n;
+  const st = style || "fill:#FFF8E1;stroke:#C9A227";
+  let shape;
+  if(type==="round") shape=`<rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="${h/2}" style="${st};stroke-width:1.6"/>`;
+  else if(type==="diam") shape=`<polygon points="${x},${y-h/2} ${x+w/2},${y} ${x},${y+h/2} ${x-w/2},${y}" style="${st};stroke-width:1.6"/>`;
+  else shape=`<rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="4" style="${st};stroke-width:1.6"/>`;
+  const n0 = lines.length;
+  const fs = n.fs || 14.5;
+  const lh = fs + 4;
+  const y0 = y - (n0-1)*lh/2;
+  const txt = lines.map((l,i)=>`<text x="${x}" y="${y0+i*lh+fs*0.35}" text-anchor="middle" style="font-size:${i===0&&n0>1&&n.subFirst!==false&&n.bold1!==false?fs:'' }px"><tspan style="font-size:${(n.small&&i>0)?fs-2.5:fs}px;font-weight:${i===0||n.allBold? '600':'400'};fill:#1a1a1a">${esc(l)}</tspan></text>`).join("");
+  return shape+txt;
+}
+function edge(d,label,lx,ly){
+  let s=`<path d="${d}" style="stroke:#8a8a5a;stroke-width:1.5;fill:none" marker-end="url(#arr)"/>`;
+  if(label) s+=`<rect x="${lx-14}" y="${ly-11}" width="28" height="16" fill="#f2f2f2" opacity="0.9"/><text x="${lx}" y="${ly+2}" text-anchor="middle" style="font-size:13px;font-weight:600;fill:#333">${label}</text>`;
+  return s;
+}
+function svg(id,w,h,inner){
+  document.write(`<div class="wrap" id="${id}"><svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+  <defs><marker id="arr" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 z" fill="#8a8a5a"/></marker></defs>${inner}</svg></div>`);
+}
+const V = (x,y1,y2,label,ly)=>edge(`M ${x} ${y1} L ${x} ${y2-4}`,label,x+24,ly||((y1+y2)/2));
+</script>
+
+<script>
+/* ---------- gfig1f : master search string (workbook, 3 concept blocks) ---------- */
+{
+let s="";
+const cats=[
+ {y:110, cls:"fill:#E8F5E9;stroke:#43A047", name:["Block A","Healthcare context"], kw:["healthcare / health care","health data / medical data / patient data","electronic health record / EHR","electronic medical record / EMR"], kcls:"fill:#EEF9EF;stroke:#43A047"},
+ {y:300, cls:"fill:#FFF8E1;stroke:#C9A227", name:["Block B","Consent and authorisation"], kw:["patient consent","consent management","dynamic consent","authorisation / authorization","access control"], kcls:"fill:#FFFBEC;stroke:#C9A227"},
+ {y:520, cls:"fill:#E3F2FD;stroke:#1E88E5", name:["Block C","Trust, multi-party and","decentralised technologies"], kw:["trust / trustworthy / trusted","multi-party / joint consent / guardian / threshold","decentralised / blockchain / smart contract","decentralized identifier / verifiable credential","self-sovereign identity"], kcls:"fill:#EAF4FE;stroke:#1E88E5"},
+];
+s+=node({x:105,y:310,w:170,h:46,type:"round",lines:["Master query (v2/v3)"],style:"fill:#1F3864;stroke:#1F3864",fs:13});
+s=s.replace('fill:#1a1a1a">Master query (v2/v3)','fill:#ffffff">Master query (v2/v3)');
+for(const c of cats){
+  s+=edge(`M 190 310 C 230 ${c.y+(310>c.y?40:-40)}, 236 ${c.y}, 244 ${c.y}`);
+  s+=node({x:345,y:c.y,w:200,h:c.name.length*19+18,type:"box",lines:c.name,style:c.cls,fs:14});
+  s+=edge(`M 446 ${c.y} L 462 ${c.y}`);
+  const kh=c.kw.length*18+14;
+  s+=node({x:640,y:c.y,w:356,h:kh+6,type:"box",lines:c.kw,style:c.kcls,fs:13.5});
+  s+=edge(`M 815 ${c.y} C 860 ${c.y}, 866 ${310+(c.y-310)*0.2}, 876 ${310+(c.y-310)*0.12}`);
+}
+s+=`<polygon points="${902-26},310 ${902-13},292 ${902+13},292 ${902+26},310 ${902+13},328 ${902-13},328" style="fill:#ECEFF1;stroke:#607D8B;stroke-width:1.4"/><text x="902" y="314" text-anchor="middle" style="font-size:13px;font-weight:600">AND</text>`;
+s+=edge(`M 930 310 L 962 310`);
+s+=node({x:1075,y:310,w:210,h:96,type:"box",lines:["IEEE Xplore, Scopus,","Web of Science, ProQuest,","SpringerLink, ScienceDirect,","ACM DL (+ Google Scholar","discovery arm), 2020–2026"],style:"fill:#2E7D32;stroke:#2E7D32",fs:13});
+for(const t of ["IEEE Xplore, Scopus,","Web of Science, ProQuest,","SpringerLink, ScienceDirect,","ACM DL (+ Google Scholar","discovery arm), 2020–2026"]) s=s.split(`fill:#1a1a1a">${t}`).join(`fill:#ffffff">${t}`);
+svg("gfig1f",1200,660,s);
+}
+/* ---------- gfig2 : PRISMA 2020 (audited counts) ---------- */
+{
+let s="";
+const P="fill:#F8BBD0;stroke:#C2185B", O="fill:#FFE0B2;stroke:#EF6C00", B="fill:#BBDEFB;stroke:#1976D2", LB="fill:#E3F2FD;stroke:#1976D2", G="fill:#C8E6C9;stroke:#2E7D32";
+const MX=290, SX=770, MW=470, SW=400, F=14, FS=13.5;
+s+=node({x:MX,y:72,w:MW,h:124,type:"box",style:O,fs:F,lines:["Identification of studies via databases","Records identified (n = 9,256):","IEEE Xplore 1,806; SpringerLink 2,895;","Scopus 2,133; Web of Science 1,137;","ProQuest 1,180; ScienceDirect 65; ACM DL 40"]});
+s+=node({x:SX,y:72,w:SW,h:124,type:"box",style:O,fs:F,lines:["Identification via other methods","Google Scholar discovery arm","(≈ 8,160 results; first 100 screened by","relevance, stopping rule pre-declared)","Not summed into the database total"]});
+s+=edge(`M ${MX} 134 L ${MX} 174`);
+s+=node({x:MX,y:216,w:MW,h:80,type:"box",style:P,fs:F,lines:["Records removed before screening:","Cross-database duplicates removed (n = 2,794)","Within-source duplicates removed (n = 423)"]});
+s+=edge(`M ${MX} 256 L ${MX} 296`);
+s+=node({x:MX,y:328,w:MW,h:60,type:"box",style:B,fs:F,lines:["Records screened by title","(n = 6,039)"]});
+s+=edge(`M ${MX+MW/2} 328 L ${SX-SW/2-6} 328`);
+s+=node({x:SX,y:328,w:SW,h:104,type:"box",style:P,fs:FS,lines:["Records excluded at title stage (n = 2,910):","EC9 no authorisation signal 1,396;","EC1 outside healthcare 1,268;","EC7 secondary review 199; EC5 non-peer-reviewed 47"]});
+s+=edge(`M ${MX} 358 L ${MX} 406`);
+s+=node({x:MX,y:448,w:MW,h:80,type:"box",style:B,fs:F,lines:["Records advancing to abstract stage (n = 3,129)","Abstracts screened (n = 2,541)","Abstract pending, not advanced (n = 588)"]});
+s+=edge(`M ${MX+MW/2} 448 L ${SX-SW/2-6} 448`);
+s+=node({x:SX,y:448,w:SW,h:64,type:"box",style:P,fs:FS,lines:["Records excluded at abstract stage (n = 741)","EC2, EC7, EC9 and one EC6 duplicate publication"]});
+s+=edge(`M ${MX} 488 L ${MX} 536`);
+s+=node({x:MX,y:578,w:MW,h:80,type:"box",style:LB,fs:F,lines:["Full texts sought and prioritised (n = 1,800)","Tier A 39; Tier B 1,066; Tier C 695","Full text not retrievable (n = 1)"]});
+s+=edge(`M ${MX} 618 L ${MX} 666`);
+s+=node({x:MX,y:708,w:MW,h:80,type:"box",style:G,fs:F,lines:["Full texts assessed for eligibility","at the reporting checkpoint (n = 64)","(all Tier A; Tier B and C coding continues)"]});
+s+=edge(`M ${MX+MW/2} 708 L ${SX-SW/2-6} 708`);
+s+=node({x:SX,y:708,w:SW,h:104,type:"box",style:P,fs:FS,lines:["Full texts excluded (n = 17):","EC9 superficial relevance 9; EC1 outside healthcare 3;","EC5 non-peer-reviewed 2; EC2 no authorisation relevance 2;","EC4 authentication only 1"]});
+s+=edge(`M ${MX} 748 L ${MX} 796`);
+s+=node({x:MX,y:840,w:MW,h:80,type:"box",style:G,fs:F,lines:["Primary studies included in the review (n = 44)","23 core and 21 supporting studies","Secondary studies retained for background (n = 3)"]});
+svg("gfig2",990,900,s);
+}
+/* ---------- gfig2a : corpus profile ---------- */
+{
+let s="";
+const ink="#1a1a1a", mut="#6b6b6b", axis="#c9c9c9";
+const yrs=[["2020",3],["2021",1],["2022",1],["2023",6],["2024",5],["2025",10],["2026",18]];
+const x0=70,y0=300,bw=34,gap=26,hmax=200,vmax=20;
+s+=`<text x="${x0-10}" y="46" style="font-size:15px;font-weight:600;fill:${ink}">Included primary studies by publication year (n = 44)</text>`;
+yrs.forEach(([lb,v],i)=>{ const x=x0+i*(bw+gap), h=v/vmax*hmax, yb=y0-h;
+  s+=`<path d="M ${x} ${y0} L ${x} ${yb+4} Q ${x} ${yb} ${x+4} ${yb} L ${x+bw-4} ${yb} Q ${x+bw} ${yb} ${x+bw} ${yb+4} L ${x+bw} ${y0} Z" fill="#1E88E5"/>`;
+  s+=`<text x="${x+bw/2}" y="${yb-8}" text-anchor="middle" style="font-size:13px;font-weight:600;fill:${ink}">${v}</text>`;
+  s+=`<text x="${x+bw/2}" y="${y0+20}" text-anchor="middle" style="font-size:12.5px;fill:${mut}">${lb}</text>`; });
+s+=`<line x1="${x0-12}" y1="${y0}" x2="${x0+7*(bw+gap)}" y2="${y0}" stroke="${axis}" stroke-width="1.2"/>`;
+s+=`<text x="${x0-10}" y="${y0+44}" style="font-size:11.5px;fill:${mut}">Sources: IEEE Xplore 19, Scopus 21, ProQuest 3, ACM Digital Library 1</text>`;
+const px=520;
+const streams=[["2.4.1 Consent representation & governance (Req 1)",12,2],["2.4.2 Decentralised identity & authority (Req 2)",5,3],["2.4.3 Multi-party authorisation (Req 3)",8,8],["2.4.4 Policy- & context-aware access (Req 4)",5,4],["2.4.5 Temporal validity & lifecycle (Req 5)",5,4],["2.4.6 Formal & empirical assurance (Req 6)",9,4]];
+s+=`<text x="${px}" y="46" style="font-size:15px;font-weight:600;fill:${ink}">Studies per review stream (included / analysed in depth)</text>`;
+const bx=px+330, bh=22, vg=18, wmax=160, smax=12;
+streams.forEach(([lb,v,a],i)=>{ const y=84+i*(bh+vg), w=v/smax*wmax, wa=a/smax*wmax;
+  s+=`<text x="${bx-10}" y="${y+bh/2+4}" text-anchor="end" style="font-size:12px;fill:${ink}">${lb}</text>`;
+  s+=`<path d="M ${bx} ${y} L ${bx+w-4} ${y} Q ${bx+w} ${y} ${bx+w} ${y+4} L ${bx+w} ${y+bh-4} Q ${bx+w} ${y+bh} ${bx+w-4} ${y+bh} L ${bx} ${y+bh} Z" fill="#BBDEFB"/>`;
+  s+=`<path d="M ${bx} ${y} L ${bx+wa-4} ${y} Q ${bx+wa} ${y} ${bx+wa} ${y+4} L ${bx+wa} ${y+bh-4} Q ${bx+wa} ${y+bh} ${bx+wa-4} ${y+bh} L ${bx} ${y+bh} Z" fill="#1E88E5"/>`;
+  s+=`<text x="${bx+w+8}" y="${y+bh/2+4}" style="font-size:13px;font-weight:600;fill:${ink}">${v} / ${a}</text>`; });
+s+=`<line x1="${bx}" y1="78" x2="${bx}" y2="${84+6*(bh+vg)-vg+6}" stroke="${axis}" stroke-width="1.2"/>`;
+s+=`<text x="${px}" y="${84+6*(bh+vg)+18}" style="font-size:11.5px;fill:${mut}">Light bar: included studies; dark bar: analysed in depth (23 core + 2 highest-quality supporting = 25)</text>`;
+svg("gfig2a",1100,380,s);
+}
+/* ---------- gfig2b : review questions -> sections ---------- */
+{
+let s="";
+const qs=[["SLR-RQ1  Consent representation",["2.4.1"]],["SLR-RQ2  Identity and authority mechanisms",["2.4.2"]],["SLR-RQ3  Joint / multi-party authorisation",["2.4.3"]],["SLR-RQ4  Policy, purpose, scope and context",["2.4.4"]],["SLR-RQ5  Temporal validity, states, revocation",["2.4.5"]],["SLR-RQ6  Security properties and formal validation",["2.4.6"]],["SLR-RQ7  Implementation and empirical evaluation",["2.4.6","2.4.7"]]];
+const secs=["2.4.1","2.4.2","2.4.3","2.4.4","2.4.5","2.4.6","2.4.7","2.5"];
+const nm={"2.4.1":"Consent Representation & Governance (Req 1)","2.4.2":"Decentralised Identity & Authority (Req 2)","2.4.3":"Multi-Party Authorisation (Req 3)","2.4.4":"Policy- & Context-Aware Access (Req 4)","2.4.5":"Temporal Validity & Lifecycle (Req 5)","2.4.6":"Formal & Empirical Assurance (Req 6)","2.4.7":"Comparative Analysis","2.5":"Synthesis and Research Gap"};
+const secY={}; secs.forEach((k,i)=>secY[k]=60+i*74); const qY=i=>66+i*84;
+qs.forEach(([lb],i)=>{ s+=node({x:210,y:qY(i),w:400,h:52,type:"box",lines:[lb],style:"fill:#E3F2FD;stroke:#1E88E5",fs:13.5}); });
+secs.forEach(k=>{ const st=k==="2.5"?"fill:#FBE9E7;stroke:#E64A19":(k==="2.4.7"?"fill:#FFF8E1;stroke:#C9A227":"fill:#E8F5E9;stroke:#43A047");
+  s+=node({x:725,y:secY[k],w:350,h:50,type:"box",lines:["§"+k+"  "+nm[k]],style:st,fs:13}); });
+qs.forEach(([lb,tg],i)=>{ for(const k of tg) s+=`<path d="M 405 ${qY(i)} C 480 ${qY(i)}, 470 ${secY[k]}, 553 ${secY[k]}" style="stroke:#8a8a5a;stroke-width:1.3;fill:none" marker-end="url(#arr)"/>`; });
+s+=`<path d="M 887 ${secY["2.4.7"]} C 930 ${secY["2.4.7"]}, 930 ${secY["2.5"]}, 887 ${secY["2.5"]}" style="stroke:#8a8a5a;stroke-width:1.3;fill:none" marker-end="url(#arr)"/>`;
+s+=`<path d="M 887 ${secY["2.5"]} C 935 ${secY["2.5"]}, 935 ${secY["2.5"]+58}, 887 ${secY["2.5"]+58}" style="stroke:#8a8a5a;stroke-width:1.5;fill:none" marker-end="url(#arr)"/>`;
+s+=node({x:720,y:secY["2.5"]+70,w:330,h:44,type:"round",lines:["Research Questions RQ1–RQ6  (Chapter 3)"],style:"fill:#1F3864;stroke:#1F3864",fs:13});
+s=s.replace('fill:#1a1a1a">Research Questions RQ1–RQ6  (Chapter 3)','fill:#ffffff">Research Questions RQ1–RQ6  (Chapter 3)');
+svg("gfig2b",940,712,s);
+}
+/* ---------- gfig2c : synthesis / gap ---------- */
+{
+let s="";
+const streams=[["Consent representation","evaluable object: 14 of 44"],["Identity & authority","authority separated: 7 of 44"],["Multi-party authorisation","constitutive threshold: 6 of 44"],["Policy & context","purpose / scope bound: 13 of 44"],["Temporal & lifecycle","time inside decision: 8 of 44"],["Formal & empirical assurance","formal assurance: 6 of 44"]];
+streams.forEach((p,i)=>{ const y=50+i*76;
+  s+=node({x:170,y,w:290,h:58,type:"box",lines:[p[0],p[1]],style:"fill:#E8F5E9;stroke:#43A047",fs:12.5,small:true});
+  s+=`<path d="M 316 ${y} C 380 ${y}, 380 ${240}, 428 ${240+(y-240)*0.06}" style="stroke:#8a8a5a;stroke-width:1.4;fill:none" marker-end="url(#arr)"/>`; });
+s+=node({x:560,y:240,w:250,h:110,type:"box",lines:["Conjunction gap:","each requirement is met by","some study, but no study","conjoins all six conditions","in one access decision"],style:"fill:#FFF8E1;stroke:#C9A227",fs:12.5});
+s+=edge(`M 688 240 L 736 240`);
+s+=node({x:868,y:240,w:250,h:110,type:"box",lines:["Assurance gap:","the studies with the strongest","multi-party or policy mechanisms","provide no formal assurance of","the authorisation decision"],style:"fill:#FBE9E7;stroke:#E64A19",fs:12.5});
+s+=edge(`M 868 297 L 868 342`);
+s+=node({x:868,y:400,w:290,h:104,type:"round",lines:["Proposed framework:","consent as an evaluable object C","Decision(C, R, t) = ALLOW ⟺","V_I ∧ V_A ∧ V_P ∧ V_T ∧ V_L"],style:"fill:#1F3864;stroke:#1F3864",fs:12.5});
+for(const t of ["Proposed framework:","consent as an evaluable object C","Decision(C, R, t) = ALLOW ⟺","V_I ∧ V_A ∧ V_P ∧ V_T ∧ V_L"]) s=s.split(`fill:#1a1a1a">${t}`).join(`fill:#ffffff">${t}`);
+svg("gfig2c",1040,500,s);
+}
+</script></body></html>
