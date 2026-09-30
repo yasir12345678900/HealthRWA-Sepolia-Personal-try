@@ -10,6 +10,8 @@ Since the previous version I have:
 - redrawn the workflow figures so that each matches its procedure and algorithm, and recaptured the prototype screenshots from the current version;
 - applied chapter-based numbering to figures and tables and checked every cross-reference, equation number and citation.
 
+I have also attached a 43-slide presentation of the report with speaker notes (Yasir_Alyoubi_CA2_Presentation.pptx). It follows the chapter order, and the workflow figures in it are redrawn so they can be read on screen.
+
 The report is 10 chapters (about 40,000 words). I would be grateful for your comments, in particular on the requirement-based gap analysis in Section 2.5 and on the integrated decision condition in Section 6.7.
 
 Kind regards,

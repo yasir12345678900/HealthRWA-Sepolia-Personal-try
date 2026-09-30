@@ -1,0 +1,403 @@
+[
+ {
+  "id": 1,
+  "layout": "title",
+  "group": "A",
+  "spec": "Title slide. Fixed text, no drafting needed except speaker notes (opening: who I am, what the talk covers, 30 s)."
+ },
+ {
+  "id": 2,
+  "layout": "agenda",
+  "group": "A",
+  "spec": "Five parts of the talk: A Background and literature (Ch 1-2); B Research design (Ch 3-4); C Architecture and proposed solution (Ch 5-6); D HALAH prototype and evidence (Ch 7); E Progress and research plan (Ch 8-10). items[5] {head<=34, sub<=70}."
+ },
+ {
+  "id": 3,
+  "layout": "divider",
+  "group": "A",
+  "spec": "Part A divider: Background and literature. line<=110 summarising what Part A shows.",
+  "part": "A",
+  "chapters": "Chapters 1–2"
+ },
+ {
+  "id": 5,
+  "layout": "cards",
+  "group": "A",
+  "spec": "Research context (1.1): who shares healthcare data and under which Australian rules. intro<=150. cards[6] {head<=30, body<=105}: patients, guardians/authorised parties, healthcare professionals, institutions/auditors, plus two cards for the regulatory instruments named in 1.1 (Privacy Act 1988 / APPs, My Health Records Act 2012, Healthcare Identifiers Act 2010) -- use only facts in the chapter."
+ },
+ {
+  "id": 4,
+  "layout": "statement",
+  "group": "A",
+  "spec": "The core problem (Section 1.2). statement<=70 chars: the key idea that a valid identity is not valid authority / consent is recorded but not evaluated. support[3] {head<=28, body<=115}: the three failure points the problem statement names."
+ },
+ {
+  "id": 6,
+  "layout": "stages",
+  "group": "A",
+  "spec": "Research scope and progression (Table 1.1, Section 1.3). Two columns: current stage (CA2) RO1-RO4 and next stage (CA3) RO5-RO6. stages[2] {label<=26, items[] {ro<=6, name<=46}}; takeaway<=140."
+ },
+ {
+  "id": 7,
+  "layout": "process_fig",
+  "group": "A",
+  "spec": "SLR method (2.3): four steps. steps[4] {head<=30, body<=100}: Step 1 searching (7 databases, 2022-2026, search day), Step 2 inclusion/exclusion, Step 3 screening and quality QA1-QA5, Step 4 extraction and categorisation. Figure 2.1 (search string) is placed on the right.",
+  "figure": "f2_1.png",
+  "caption": "Figure 2.1: SLR search string definition",
+  "diagram": "f2_1"
+ },
+ {
+  "id": 8,
+  "layout": "funnel",
+  "group": "A",
+  "spec": "PRISMA selection (Figure 2.2 / Table 2.2). funnel values fixed: 125 identified, 83 screened, 43 sought, 40 assessed, 33 included. Draft labels[5] <=34 each and side notes[3] {head<=26, body<=100} explaining the removals (42 duplicates/automation, 40 excluded at title-abstract, 3 not retrieved, 7 excluded at full text)."
+ },
+ {
+  "id": 9,
+  "layout": "cards",
+  "group": "A",
+  "spec": "Five key requirements (Section 2.2). intro<=150. cards[5] {head: 'Req 1 ...' <=34, body<=110}."
+ },
+ {
+  "id": 10,
+  "layout": "chart",
+  "group": "A",
+  "spec": "33 studies in six categories (Table 2.3). Bar chart data fixed: Healthcare consent and privacy governance 9; Blockchain-based healthcare data governance 5; Decentralised identity and verifiable credentials 7; Multi-party and decentralised governance 4; Policy-based and healthcare access control 7; Trusted Computing and secure execution 1. Draft points[3] {head<=26, body<=110} on what the distribution means (from 2.3.6 / 2.4)."
+ },
+ {
+  "id": 11,
+  "layout": "matrix",
+  "group": "A",
+  "spec": "Requirement coverage (Tables 2.4-2.9). Matrix fixed (studies addressing each requirement): rows categories A-F, cols Req1-5: A(9 studies) 7,1,0,1,5; B(5) 1,0,0,4,5; C(7) 0,7,1,2,1; D(4) 1,2,2,3,2; E(7) 0,1,0,7,5; F(1) 0,0,0,0,0; total 9,11,3,17,18. No single study addresses more than three of the five requirements (S7, S22, S24 reach three). Draft takeaway<=160 and points[2] {head<=26, body<=110}."
+ },
+ {
+  "id": 12,
+  "layout": "gaps",
+  "group": "A",
+  "spec": "Research gaps per requirement (Section 2.5). rows[5] {req 'Req 1'..'Req 5', head<=34, gap<=120}. closing<=130: the gaps map to RO1-RO5, RO6 validates."
+ },
+ {
+  "id": 13,
+  "layout": "table",
+  "group": "A",
+  "spec": "Comparison of research streams (Table 2.10) condensed. header ['Research stream','Main contribution','Limitation for authorisation']; rows[7] (six streams + Proposed framework), each cell <=70 chars, faithful to Table 2.10."
+ },
+ {
+  "id": 14,
+  "layout": "divider",
+  "group": "B",
+  "spec": "Part B divider: Research design. line<=110.",
+  "part": "B",
+  "chapters": "Chapters 3–4"
+ },
+ {
+  "id": 15,
+  "layout": "statement",
+  "group": "B",
+  "spec": "Research gap (3.1) and main research question (3.2). statement = the main RQ shortened to <=140 chars, faithful to 3.2. support[3] {head<=28, body<=115}: three elements of the gap from 3.1."
+ },
+ {
+  "id": 16,
+  "layout": "table",
+  "group": "B",
+  "spec": "Six SRQs mapped to six ROs with stage (Chapters 3-4, Tables 4.1-4.2). header ['SRQ','Question focus','Objective','Stage']; rows[6]: SRQ n | focus <=60 | 'RO n: name' <=46 | 'Current (CA2)' or 'Next (CA3)'."
+ },
+ {
+  "id": 17,
+  "layout": "equation",
+  "group": "B",
+  "spec": "The integrated decision condition. Fixed equations: C = (I, A, P, E) (Eq. 7); Decision(C,R) = ALLOW <=> V_I(u) and V_A(C) and V_P(C,R) (Eq. 6, current stage); extended Decision(C,R,t) adds V_T(C,t) and V_L(C) (Eq. 24, next stage). Draft predicates[5] {sym:'V_I'..'V_L', name<=30, meaning<=90} and takeaway<=140 (identity is not authorisation, Eq. 1)."
+ },
+ {
+  "id": 18,
+  "layout": "divider",
+  "group": "C",
+  "spec": "Part C divider: Architecture and proposed solution. line<=110.",
+  "part": "C",
+  "chapters": "Chapters 5–6"
+ },
+ {
+  "id": 19,
+  "layout": "diagram_wide",
+  "group": "C",
+  "spec": "MVC research architecture (Section 5.1, Figure 5.1). points[3] {head: 'View' / 'Controller' / 'Model' <=28, body<=115}.",
+  "figure": "f5_1.png",
+  "caption": "Figure 5.1: Layered MVC architecture and component decomposition of the HALAH framework",
+  "diagram": "f5_1",
+  "dw": 12.0,
+  "dh": 3.6
+ },
+ {
+  "id": 20,
+  "layout": "diagram",
+  "group": "C",
+  "spec": "Trust predicate evaluation (Figure 5.3, Section 5.1.2) and security properties (Section 5.9, Table 5.1). points[4] {head<=28, body<=105}: pick the four most important Table 5.1 properties.",
+  "figure": "f5_3.png",
+  "caption": "Figure 5.3: Trust predicate evaluation and authorisation decision flow",
+  "diagram": "f5_3"
+ },
+ {
+  "id": 21,
+  "layout": "diagram",
+  "group": "C",
+  "spec": "End-to-end workflow (Section 5.2, Figure 5.4). points[4] {head<=28, body<=105}: consent specification, identity/authority verification, multi-party approval, policy evaluation and decision with audit.",
+  "figure": "f5_4.png",
+  "caption": "Figure 5.4: End-to-end workflow of the trust-oriented consent authorisation framework",
+  "diagram": "f5_4"
+ },
+ {
+  "id": 22,
+  "layout": "diagram",
+  "group": "C",
+  "spec": "RO1 trust-centric consent model (Section 6.1, Figure 6.1, Algorithm 1). points[4] {head<=28, body<=105}. Mention what Algorithm 1 returns and the prototype status paragraph in 6.1.2 (faithfully).",
+  "figure": "f6_1.png",
+  "caption": "Figure 6.1: RO1 workflow for trust-centric consent creation",
+  "diagram": "f6_1"
+ },
+ {
+  "id": 23,
+  "layout": "diagram",
+  "group": "C",
+  "spec": "RO2 decentralised identity and authority (Section 6.2, Figure 6.2, Algorithm 2). points[4] {head<=28, body<=105}; include the prototype status (EIP-712 approval signatures; W3C VC verification scheduled for Stage 2).",
+  "figure": "f6_2.png",
+  "caption": "Figure 6.2: RO2 workflow for decentralised identity and authority verification",
+  "diagram": "f6_2"
+ },
+ {
+  "id": 24,
+  "layout": "diagram",
+  "group": "C",
+  "spec": "RO3 threshold-based multi-party authorisation (Section 6.3, Figure 6.3, Algorithm 3). points[4] {head<=28, body<=105}; include invalid/unauthorised/duplicate handling, threshold N, prototype 2-of-2.",
+  "figure": "f6_3.png",
+  "caption": "Figure 6.3: RO3 workflow for threshold-based multi-party authorisation",
+  "diagram": "f6_3"
+ },
+ {
+  "id": 25,
+  "layout": "diagram",
+  "group": "C",
+  "spec": "RO4 policy- and context-aware access (Section 6.4, Figure 6.4, Algorithm 4). points[4] {head<=28, body<=105}; include S_R subset of S_C (Eq. 25) and the prototype status of V_P (scope enforced; purpose binding Stage 2).",
+  "figure": "f6_4.png",
+  "caption": "Figure 6.4: RO4 workflow for policy- and context-aware access control",
+  "diagram": "f6_4"
+ },
+ {
+  "id": 26,
+  "layout": "diagram",
+  "group": "C",
+  "spec": "RO5 temporal and lifecycle trust -- planned (Section 6.5, Figure 6.5, Algorithm 5). points[4] {head<=28, body<=105}; include the prototype's first version (state order, revocation) and what remains for Stage 2.",
+  "figure": "f6_5.png",
+  "caption": "Figure 6.5: RO5 planned workflow for temporal and consent lifecycle trust",
+  "diagram": "f6_5"
+ },
+ {
+  "id": 27,
+  "layout": "diagram",
+  "group": "C",
+  "spec": "RO6 formal assurance and empirical validation -- planned (Section 6.6, Figure 6.6, Algorithm 6). points[4] {head<=28, body<=105}; valid/negative/adversarial scenarios, the six properties, observed vs expected decision.",
+  "figure": "f6_6.png",
+  "caption": "Figure 6.6: RO6 planned workflow for formal security assurance and empirical validation",
+  "diagram": "f6_6"
+ },
+ {
+  "id": 28,
+  "layout": "table",
+  "group": "C",
+  "spec": "Six algorithms at a glance (Section 6.7). header ['Algorithm','Objective','Input','Output','Predicate']; rows[6], cells <=40 chars, faithful to Algorithms 1-6 Require/Ensure lines."
+ },
+ {
+  "id": 29,
+  "layout": "divider",
+  "group": "D",
+  "spec": "Part D divider: HALAH prototype and evidence. line<=110.",
+  "part": "D",
+  "chapters": "Chapter 7"
+ },
+ {
+  "id": 30,
+  "layout": "diagram_wide",
+  "group": "D",
+  "spec": "HALAH system overview (7.1, 7.8-7.10, Figure 7.6). points[4] {head<=28, body<=105}: the four subsystems (patient, guardian, doctor, auditor) and what each implements.",
+  "figure": "f7_6.png",
+  "caption": "Figure 7.6: HALAH prototype workflow from consent creation to audited access decision",
+  "diagram": "f7_6",
+  "dw": 12.1,
+  "dh": 3.9,
+  "compact": true
+ },
+ {
+  "id": 31,
+  "layout": "two_figs",
+  "group": "D",
+  "spec": "Patient and guardian subsystems (Sections 7.2-7.3, Figures 7.1-7.2). Two screenshots side by side, each with a short label<=40 and body<=120 under it.",
+  "figures": [
+   "f7_1c.png",
+   "f7_2c.png"
+  ],
+  "captions": [
+   "Figure 7.1 (cropped): Patient subsystem – Create Smart Consent Contract",
+   "Figure 7.2 (cropped): Guardian subsystem – Guardian Cryptographic Approval"
+  ],
+  "hl": [
+   [
+    [
+     28,
+     675,
+     752,
+     755,
+     "Scope: Medication, Procedure",
+     "below"
+    ],
+    [
+     784,
+     465,
+     1506,
+     780,
+     "Validity window",
+     "below"
+    ]
+   ],
+   [
+    [
+     28,
+     723,
+     1506,
+     837,
+     "Verified 2/2",
+     "inside"
+    ],
+    [
+     28,
+     890,
+     1506,
+     1133,
+     "SBT minted",
+     "insideTop"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": 32,
+  "layout": "two_figs",
+  "group": "D",
+  "spec": "Doctor subsystem (Section 7.4, Figures 7.3-7.4). Two screenshots, labels<=40, body<=120.",
+  "figures": [
+   "f7_3c.png",
+   "f7_4c.png"
+  ],
+  "captions": [
+   "Figure 7.3 (cropped): Doctor subsystem – consent information, state and authorised scope",
+   "Figure 7.4 (cropped): Doctor subsystem – requested modules, access decision and records"
+  ],
+  "hl": [
+   [
+    [
+     20,
+     694,
+     1510,
+     808,
+     "State: ACTIVE",
+     "inside"
+    ],
+    [
+     20,
+     1036,
+     1510,
+     1262,
+     "Authorised scope",
+     "inside"
+    ]
+   ],
+   [
+    [
+     25,
+     309,
+     1510,
+     421,
+     "Requested scope",
+     "inside"
+    ],
+    [
+     25,
+     581,
+     1510,
+     694,
+     "Access granted",
+     "inside"
+    ]
+   ]
+  ]
+ },
+ {
+  "id": 33,
+  "layout": "figure_wide",
+  "group": "D",
+  "spec": "Auditor subsystem (Sections 7.5-7.7, Figure 7.5). takeaway<=160 and points[3] {head<=26, body<=100}: lifecycle reconstruction, event-level records, ledger integrity.",
+  "figure": "f7_5g.png",
+  "caption": "Figure 7.5 (event blocks arranged in time order): Auditor subsystem – Blockchain Audit & Consent Lifecycle",
+  "chips": "f7_5g.json"
+ },
+ {
+  "id": 34,
+  "layout": "table",
+  "group": "D",
+  "spec": "Implementation mapping (Section 7.10, Table 7.2). header ['Layer','HALAH module(s)','Responsibility']; rows up to 8, cells <=62 chars, faithful to Table 7.2 (merge the two Model rows if needed)."
+ },
+ {
+  "id": 35,
+  "layout": "stats_table",
+  "group": "D",
+  "spec": "Automated test evidence (Section 7.11, Table 7.3). stats fixed: 16 passed, 2 skipped, 0 failed. Draft rows[9] {id 'T1'..'T9', scenario<=34, predicate<=10, result<=16} faithful to Table 7.3, and note<=150 (blockchain mocked; not yet the full RO6 scenario set)."
+ },
+ {
+  "id": 36,
+  "layout": "onchain",
+  "group": "D",
+  "spec": "On-chain evidence (Section 7.12, Table 7.4). Fixed facts: Ethereum Sepolia, chain ID 11155111, ConsentSBTv2 contract at 0xb0dA0440Abd6bd74bE0aebE226D593492124A6e7, four tokens #1-#4 at blocks 11750525, 11750632, 11750702, 11750722. Draft points[3] {head<=26, body<=110} and note<=140 on what anchoring shows and does not show (from 7.12)."
+ },
+ {
+  "id": 37,
+  "layout": "cards",
+  "group": "D",
+  "spec": "Implementation status and limitations (Section 7.13). intro<=140. cards[6] {head<=30, body<=105}: faithful to the limitation bullets of 7.13."
+ },
+ {
+  "id": 38,
+  "layout": "divider",
+  "group": "E",
+  "spec": "Part E divider: Progress and research plan. line<=110.",
+  "part": "E",
+  "chapters": "Chapters 8–10"
+ },
+ {
+  "id": 39,
+  "layout": "status",
+  "group": "E",
+  "spec": "Progress per objective (Chapter 8). rows[6] {ro 'RO1'..'RO6', name<=40, status exactly as the chapter's Status line shortened to <=40, evidence<=95}."
+ },
+ {
+  "id": 40,
+  "layout": "table",
+  "group": "E",
+  "spec": "Publications plan (Chapter 9, Table 9.1). header ['Research output','Target venue','Status']; rows[3], cells <=60 chars, faithful to Table 9.1."
+ },
+ {
+  "id": 41,
+  "layout": "timeline",
+  "group": "E",
+  "spec": "Next-stage research plan (Section 10.2, Table 10.1). steps[4] {head<=30, body<=110} for the four focuses in order, in plain wording (no marketing adjectives)."
+ },
+ {
+  "id": 42,
+  "layout": "cards",
+  "group": "E",
+  "spec": "Contributions and conclusion (Chapters 1, 5, 10 and 2.6). intro<=150. cards[4] {head<=30, body<=110}: conceptual model, architecture, HALAH implementation, evidence and path to CA3."
+ },
+ {
+  "id": 43,
+  "layout": "closing",
+  "group": "E",
+  "spec": "Closing slide: 'Thank you' + 'Questions and feedback'. Fixed; draft only speaker notes (thank the panel, invite questions, name two points where feedback is most useful: Section 2.5 gap analysis and Section 6.7 integrated decision)."
+ }
+]
