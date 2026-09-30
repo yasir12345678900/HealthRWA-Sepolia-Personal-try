@@ -446,8 +446,8 @@ function redEditParas(e) {
 // ---------- figure file mapping ----------
 const FIGFILE = {
   1: [path.join(RFIG, FINAL ? "gfig1f.png" : "gfig1b.png"), 624], 2: [path.join(RFIG, "gfig2.png"), 624],
-  3: [path.join(DIAG, "fig3.png"), 600], 4: [path.join(DIAG, "fig4.png"), 600],
-  5: [path.join(DIAG, "fig5.png"), 380], 6: [path.join(DIAG, "fig6.png"), 420],
+  3: [path.join(RFIG, "arch6.png"), 624], 4: [path.join(RFIG, "arch7.png"), 624],
+  5: [path.join(RFIG, "arch8.png"), 380], 6: [path.join(RFIG, "arch9.png"), 440],
   7: [path.join(RFIG, "gfig7.png"), 380], 8: [path.join(RFIG, "gfig8.png"), 420],
   9: [path.join(RFIG, "gfig9.png"), 440], 10: [path.join(RFIG, "gfig10.png"), 400],
   11: [path.join(RFIG, "gfig11.png"), 430], 12: [path.join(RFIG, "gfig12.png"), 500],

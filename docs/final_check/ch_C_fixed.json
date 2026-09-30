@@ -64,10 +64,6 @@
   "caption": "Layered MVC architecture and component decomposition of the HALAH framework"
  },
  {
-  "t": "p",
-  "text": "⦃It should be noted that the seven Controller boxes of Figure 6 collapse to the six Controller functions of Figure 7, because request validation is the entry step of identity verification rather than a separate function.⦄"
- },
- {
   "t": "h3",
   "num": "5.1.1",
   "title": "MVC Component Decomposition",
@@ -193,7 +189,7 @@
  },
  {
   "t": "p",
-  "text": "⦅The steps that follow the threshold check are as follows. Once all |G| guardians have signed and the N-of-N condition of Eq. (28) is satisfied, the consent token is minted in the local ledger, and a background job anchors the mint on Sepolia asynchronously. The temporal check V~T~ and the jurisdictional check V~L~ are then evaluated before the Authorisation Decision. A Groth16 proof is generated and verified before access is granted, and the audit evidence is recorded. The flow then continues through patient-initiated revocation and the corresponding on-chain revoke transaction. Finally, the auditor reviews the record, and the verification tool of Section 6.8.9 performs an independent verification.⦆"
+  "text": "⦅Figure 9 further shows the steps that follow the threshold check. Once all |G| guardians have signed and the N-of-N condition of Eq. (28) is satisfied, the consent token is minted in the local ledger, and a background job anchors the mint on Sepolia asynchronously. The temporal check V~T~ and the jurisdictional check V~L~ are then evaluated before the Authorisation Decision. A Groth16 proof is generated and verified before access is granted, and the audit evidence is recorded. The flow then continues through patient-initiated revocation and the corresponding on-chain revoke transaction. Finally, the auditor reviews the record, and the verification tool of Section 6.8.9 performs an independent verification.⦆"
  },
  {
   "t": "p",
