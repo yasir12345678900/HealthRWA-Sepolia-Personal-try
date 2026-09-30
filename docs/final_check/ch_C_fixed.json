@@ -1,0 +1,549 @@
+[
+ {
+  "t": "p",
+  "text": "⦅The overall research argument is that trustworthy patient consent should not be understood as a single technological artefact or as the outcome of a single access-control operation. It should be understood as a security decision that results from a set of independently verifiable conditions. The contribution of the research is therefore a trust-oriented authorisation framework through which these conditions can be represented, evaluated, enforced and validated in a decentralised healthcare data-sharing environment. For the foundational current stage model, the authorisation decision is expressed as⦆",
+  "page": 34
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R),",
+  "num": 24,
+  "page": 34
+ },
+ {
+  "t": "p",
+  "text": "where VI (u) represents the validity of the requesting participant’s identity and authority evidence, VA (C) represents satisfaction of the required multi-party authorisation threshold, and VP (C, R) represents compliance between the access request and the consent policy. ⦅The implemented decision model incorporates the temporal and jurisdictional conditions as follows⦆",
+  "page": 34
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R, t) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R) ∧ V~T~(C, t) ∧ V~L~(C),",
+  "num": 25,
+  "page": 34
+ },
+ {
+  "t": "p",
+  "text": "⦅where V~T~ (C, t) represents temporal validity and V~L~ (C) represents jurisdictional compliance, while the lifecycle state and its transitions are evaluated within V~A~ (C), as stated in Section 3.4 and Section 6.5.⦆ ⦅This formulation provides a consistent connection between the foundational objectives RO1 to RO4, the operational lifecycle controls of RO5 and the assurance objective RO6, whose formal component is planned for the next stage of the research.⦆",
+  "page": 34
+ },
+ {
+  "t": "h1",
+  "num": "5",
+  "title": "Research Architecture: MVC",
+  "page": 34
+ },
+ {
+  "t": "p",
+  "text": "The proposed research architecture adopts a Model–View–Controller (MVC) design to provide a structured implementation foundation for the trusted multi-party consent management framework. However, the MVC architecture is not used merely as a conventional software engineering pattern for separating data, interfaces, and application logic. Within the proposed framework, MVC is extended to support a more fundamental separation between the representation of consent, the interaction of independent stakeholders, and the enforcement of security-critical authorisation decisions. This separation is particularly important in decentralised healthcare data-sharing environments. A healthcare consent decision may involve patients, guardians, healthcare professionals, auditors, and other authorised entities, each of whom may possess different identities, authorities, responsibilities, and interests. Consequently, the system cannot rely on a single user authentication event or a static permission entry to determine whether access should be granted. Instead, the authorisation decision must emerge from the coordinated evaluation of independently verifiable security conditions. The proposed architecture therefore distinguishes three complementary responsibilities. The Model represents the security and governance state of the system, including identities, credentials, consent objects, authorisation requirements, policies, approval evidence, and healthcare data scopes. The View provides controlled interaction mechanisms through which independent participants can create, inspect, approve, or exercise consent-related operations. The Controller acts as the trusted decision coordination layer responsible for validating identity,",
+  "page": 34
+ },
+ {
+  "t": "p",
+  "text": "evaluating authority, aggregating multi-party approval evidence, enforcing policy constraints, and determining whether a requested healthcare data operation should be permitted. The architectural significance of this design is that the View cannot directly modify the authorisation outcome, while the existence of a Model object does not automatically imply that access is permitted. Instead, every sensitive access decision must pass through the Controller, which evaluates the relevant trust predicates associated with the consent and the access request. This provides a clear separation between what consent represents, how stakeholders interact with it, and how trust is enforced.",
+  "page": 35
+ },
+ {
+  "t": "h2",
+  "num": "5.1",
+  "title": "MVC Layered Architecture and Component Decomposition",
+  "page": 35
+ },
+ {
+  "t": "p",
+  "text": "The proposed HALAH framework adopts a layered Model–View–Controller (MVC) architecture to provide a clear separation between consent representation, stakeholder interaction, and security-critical authorisation enforcement. ⦅The purpose of this architectural decomposition is not simply to follow a conventional software engineering pattern. Its purpose is to establish explicit boundaries between the information that represents trust and the interfaces through which participants express their actions. It also separates both of these from the mechanisms that determine whether those actions should result in an authorisation decision.⦆ At the highest level, the architecture consists of three complementary layers: the View Layer, the Controller Layer, and the Model Layer. The View Layer represents the interaction boundary with independent healthcare stakeholders. The Controller Layer represents the security decision and coordination boundary. The Model Layer represents the persistent trust, consent, policy, and authorisation state. Sensitive healthcare data are treated as protected resources whose access is mediated by the Controller rather than directly exposed to the View. Figure 6 illustrates the conceptual relationship among these layers with the architectural separation between stakeholder interaction, trust enforcement, and persistent governance state. The View Layer contains role-specific interaction interfaces through which patients, guardians or other authorised participants, healthcare professionals, and auditors submit or inspect system operations. These interfaces are intentionally separated from the security decision mechanism: an action submitted through the View represents a request or claim rather than a trusted authorisation outcome. The Controller Layer constitutes the principal security enforcement boundary. It receives requests from the View and coordinates the evaluation of the relevant trust conditions. These include request validation, decentralised identity verification, credential and authority verification, multi-party approval evaluation, policy and data-scope evaluation, and final authorisation. The Controller also generates audit evidence associated with the resulting decision. Consequently, the Controller acts as the coordination point through which sensitive operations must pass before protected healthcare data can be accessed. The Model Layer maintains the persistent security and governance state required by these evaluations. It includes identity and DID information, credential and authority evidence, consent objects, approval evidence, policy and data-scope constraints, authorisation evidence, and lifecycle state. The Model therefore provides the information required for the Controller to evaluate an access request, but the existence of a Model object does not itself imply that access is permitted. The protected healthcare data are deliberately positioned outside the three MVC layers as a protected resource. ⦅This distinction is important because healthcare data should not be treated as ordinary application state that can be directly manipulated by the View; instead, access to the protected resource is mediated by the Controller after the relevant trust conditions have been evaluated.⦆",
+  "page": 35
+ },
+ {
+  "t": "p",
+  "text": "⦅MVC was selected in preference to a purely on-chain design for two reasons. First, the authorisation decision must combine the identity, threshold, policy, temporal and jurisdictional evaluation performed by the Controller with the anchoring of consent state on the blockchain. Second, the pattern allows each stakeholder interface to be replaced without altering the enforcement logic. This is necessary if the trust predicates are to be ⦅evaluated independently of any particular user interface.⦆⦆⦃ without altering the enforcement logic, which is necessary for evaluating the trust predicates independently of any particular user interface.⦄"
+ },
+ {
+  "t": "figure",
+  "n": 3,
+  "page": 36,
+  "caption": "Layered MVC Architecture and Component Decomposition of the HALAH Framework"
+ },
+ {
+  "t": "h3",
+  "num": "5.1.1",
+  "title": "MVC Component Decomposition",
+  "page": 36
+ },
+ {
+  "t": "p",
+  "text": "The three architectural layers are further decomposed into functional components, each corresponding to a distinct responsibility within the trust-oriented authorisation process. Figure 7 presents this decomposition. The View is decomposed according to the principal stakeholder",
+  "page": 36
+ },
+ {
+  "t": "figure",
+  "n": 4,
+  "page": 36,
+  "caption": "Functional Decomposition of the MVC Components"
+ },
+ {
+  "t": "p",
+  "text": "roles. The patient interface supports consent specification and consent-related actions. The guardian or other authorised-participant interface supports independent approval. The healthcare professional interface supports authorised data-access requests. The auditor interface supports inspection of authorisation evidence and audit history. These interfaces represent",
+  "page": 36
+ },
+ {
+  "t": "p",
+  "text": "different interaction responsibilities but share the same architectural principle: none of them independently determines whether access should be granted. ⦅The Controller is decomposed into six principal security functions in the conceptual model, which the implemented prototype extends to the eight functions noted above.⦆ Identity Verification establishes whether a participant can be identified through the relevant decentralised identity mechanism. Authority Verification evaluates whether the participant possesses appropriate evidence concerning the required role or authority. Approval Aggregation determines whether independently verified approvals satisfy the predefined threshold. Policy Enforcement evaluates whether the requested purpose and data scope comply with the consent policy. Decision Engine combines the resulting predicates into the final authorisation decision. Finally, Audit Coordination records the relevant evidence and decision events. The Model is decomposed into seven principal state representations. ⦅The DID component represents decentralised identity information, and the VC component represents credential and authority evidence. The Consent component represents the structured patient authorisation object, the Approval component represents verified multi-party approval evidence, and the Policy component represents purpose and data-scope constraints. The Evidence component represents evidence generated throughout the authorisation process, and the Lifecycle component represents the current state of the consent object and its permissible transitions.⦆ This decomposition establishes an explicit distinction between state, interaction, and enforcement. The Model stores and represents security-relevant state, the View expresses stakeholder actions, and the Controller determines whether those actions satisfy the required trust conditions.",
+  "page": 37
+ },
+ {
+  "t": "h3",
+  "num": "5.1.2",
+  "title": "Trust Evaluation Across the MVC Layers",
+  "page": 37
+ },
+ {
+  "t": "p",
+  "text": "The architectural layers cooperate through a controlled authorisation sequence rather than through unrestricted direct communication. ⦅The relationship between the MVC components and the trust predicates introduced by SRQ1–SRQ5 is illustrated in Figure 8.⦆⦅⦆ Figure 8 provides the logical relationship between the architectural components and the integrated trust model. A healthcare data-access request is not evaluated according to a single authentication event. Instead, the Controller coordinates a sequence of trust predicates representing the conditions established by SRQ1–SRQ5. The first condition, VI (u), determines whether the requesting participant possesses valid identity and authority evidence. The second condition, VA (C), determines whether the required independently verified participants have collectively satisfied the authorisation threshold. The third condition, VP (C, R), determines whether the requested operation complies with the consent policy, including purpose and data-scope restrictions. The fourth condition, VT (C, t), determines whether the consent remains valid at the time of the request. The fifth condition, ⟪V~L~(C), determines whether the jurisdictional constraint recorded in the consent is satisfied; lifecycle validity and revocation are evaluated within V~A~⟫. ⦅The integrated decision can therefore be expressed as Eq. (26).⦆",
+  "page": 37
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R, t) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R) ∧ V~T~(C, t) ∧ V~L~(C).",
+  "num": 26,
+  "page": 37
+ },
+ {
+  "t": "p",
+  "text": "The Controller does not itself create these trust conditions. Instead, it evaluates evidence represented by the Model and coordinates the resulting decision. This distinction is important for the interpretation of the architecture: the Controller is a decision-enforcement mechanism, whereas the Model is a representation of trust and governance state. If any required predicate evaluates to false, the decision is",
+  "page": 37
+ },
+ {
+  "t": "eq",
+  "text": "¬(V~I~ ∧ V~A~ ∧ V~P~ ∧ V~T~ ∧ V~L~) ⟹ Decision(C, R, t) = DENY.",
+  "num": 27,
+  "page": 37
+ },
+ {
+  "t": "figure",
+  "n": 5,
+  "page": 38,
+  "caption": "Trust Predicate Evaluation and Authorisation Decision Flow"
+ },
+ {
+  "t": "p",
+  "text": "Both successful and unsuccessful decisions are subsequently associated with authorisation evidence. ⦅This ensures that the architecture supports accountability and subsequent verification in addition to access enforcement.⦆",
+  "page": 39
+ },
+ {
+  "t": "h3",
+  "num": "5.1.3",
+  "title": "Relationship Between MVC Layers and Research Questions",
+  "page": 39
+ },
+ {
+  "t": "p",
+  "text": "The MVC decomposition provides an implementation-oriented mapping of the six sub-research questions. SRQ1 is primarily represented by the Model through the trust-aware consent object. SRQ2 is implemented through the interaction between the Model and Controller, where decentralised identities and verifiable credentials are represented and verified. SRQ3 is primarily enforced by the Controller through verified multi-party approval and threshold evaluation. SRQ4 is implemented through the interaction between the consent and policy representations in the Model and the policy-enforcement functions of the Controller. SRQ5 extends the Model and Controller with temporal and lifecycle information. Temporal conditions and lifecycle state are represented in the Model, while their validity is evaluated by the Controller before an access decision is produced. SRQ6 operates across the complete architecture rather than being confined to a single MVC layer. Formal security assurance evaluates the logical properties of the integrated model, while empirical validation evaluates whether the implementation consistently realises those properties. The relationship can therefore be summarised as ⟪follows⟫",
+  "page": 39
+ },
+ {
+  "t": "eq",
+  "text": "SRQ1 → Model; SRQ2 → Model + Controller; SRQ3 → Controller; SRQ4 → Model + Controller; SRQ5 → Model + Controller; SRQ6 → Model + View + Controller.",
+  "page": 39
+ },
+ {
+  "t": "p",
+  "text": "This mapping demonstrates that MVC functions as the implementation architecture through which the conceptual research questions are operationalised. It does not replace the trust model; rather, it provides the structural boundaries through which the trust model can be implemented, evaluated, and validated.",
+  "page": 39
+ },
+ {
+  "t": "h3",
+  "num": "5.1.4",
+  "title": "Architectural Boundary and Trust Assumptions",
+  "page": 39
+ },
+ {
+  "t": "p",
+  "text": "The layered architecture also establishes explicit trust boundaries. The View is considered an interaction boundary and therefore cannot be treated as a trusted source of authorisation decisions. Participant actions originating from the View must be independently verified by the Controller. The Controller represents the security enforcement boundary. It is responsible for applying the authorisation rules consistently and for preventing direct access to protected healthcare data when the required trust conditions are not satisfied. The Model represents the security-state boundary. Its records provide the evidence and state required for authorisation evaluation, but stored state alone does not constitute permission. In particular, the presence of a consent record, credential, or approval record cannot independently produce an access decision.",
+  "page": 39
+ },
+ {
+  "t": "p",
+  "text": "The protected healthcare data represent the final resource boundary. Access is permitted only through the authorisation path enforced by the Controller. This separation reduces the possibility that presentation-layer operations or stored records can bypass the security decision mechanism. These boundaries are important for interpreting the security contribution of the architecture. The proposed framework does not claim that MVC itself provides security. Instead, security arises from the explicit placement of trust-sensitive operations within the Controller, the structured representation of security state within the Model, and the prevention of direct security decisions at the View layer. Accordingly, the MVC architecture provides the structural foundation for implementing the trust-oriented authorisation model. The subsequent sections describe each layer in greater detail, beginning with the Model representation of trust-aware consent and authorisation state, followed by the View interaction mechanisms and Controller-based enforcement mechanisms.",
+  "page": 40
+ },
+ {
+  "t": "p",
+  "text": "⦃It should also be noted that, in the present prototype, the Controller is realised as a single trusted server that both evaluates the predicates and writes the audit ledger. Therefore, the on-chain anchoring of consent state ⦅and the independent verification tool described in Section 6.8.9 provide⦆ the external evidence against which the Controller's own records can be checked.⦄"
+ },
+ {
+  "t": "h2",
+  "num": "5.2",
+  "title": "Trust-Oriented Consent Authorisation Workflow",
+  "page": 40
+ },
+ {
+  "t": "p",
+  "text": "Figure 9 presents the end-to-end workflow of the proposed trust-oriented patient consent ⟪authorisation⟫ framework. ⦅The workflow operationalises the central premise of this research⦆ that trustworthy healthcare data access cannot be established by a single mechanism, such as a blockchain record or an authenticated identity. Instead, an access decision should be established through the coordinated verification of consent specifications, participant identity and authority, multi-party ⟪authorisation⟫, and policy compliance. Accordingly, the proposed workflow transforms a patient’s consent from a static permission record into an evaluable ⟪authorisation⟫ object that can be verified before healthcare data are released. The workflow begins when the patient creates a consent request and specifies the conditions under which healthcare data may be accessed. The consent specification defines the intended purpose, permitted data scope, and other ⟪authorisation⟫ conditions. This step establishes what the patient intends to ⦅authorise⦆ and provides the policy context against which subsequent access requests can be evaluated. Therefore, consent is not represented merely as an approval flag, but as a structured object containing the information required for subsequent ⟪authorisation⟫ decisions. The next stage performs ⟪decentralised⟫ identity and authority verification ⦅using Decentralised Identifiers (DIDs) and Verifiable Credentials (VCs) [20].⦆⟪⟫ The purpose of this stage is to establish both the identity of the participant and the evidence supporting the participant’s claimed role or authority. ⦅It should be noted that the framework explicitly separates identity authentication from authorisation.⦆⟪⟫ A successfully verified DID or VC demonstrates that a participant can be identified and that relevant credentials are valid; it does not, by itself, grant permission to access patient data. This distinction is fundamental to the proposed trust model because an authenticated participant should not automatically be considered an ⦅authorise⦆d participant. After identity and authority verification, the framework identifies the participants required to establish the consent decision. The ⟪authorisation⟫ requirement may involve multiple independent participants, such as a patient together with one or more guardians or other ⦅authorise⦆d parties. The framework then collects their independent approvals and evaluates whether the predefined ⟪authorisation⟫ threshold has been satisfied. Let Av denote the set of successfully verified approvals and let N denote the required ⟪authorisation⟫ threshold. ⦅Multi-party authorisation is satisfied when the threshold condition of Eq. (28) holds.⦆⟪⟫",
+  "page": 40
+ },
+ {
+  "t": "figure",
+  "n": 6,
+  "page": 41,
+  "caption": "End-to-End Workflow of Trust-Oriented Consent Authorisation Framework"
+ },
+ {
+  "t": "eq",
+  "text": "V~A~(C) = 1, |A~v~| ≥ N; 0, |A~v~| < N.",
+  "num": 28,
+  "page": 42
+ },
+ {
+  "t": "p",
+  "text": "⦅In the implemented prototype the threshold is fixed at N = |G|, so that every listed guardian must provide a valid approval before activation; the evaluated configuration is therefore 2-of-2. Configurable k-of-n thresholds constitute a direct generalisation that is deferred to future work.⦆"
+ },
+ {
+  "t": "p",
+  "text": "⦅Figure 9 further shows the steps that follow the threshold check. Once all |G| guardians have signed and the N-of-N condition of Eq. (28) is satisfied, the consent token is minted in the local ledger, and a background job anchors the mint on Sepolia asynchronously. The temporal check V~T~ and the jurisdictional check V~L~ are then evaluated before the Authorisation Decision. A Groth16 proof is generated and verified before access is granted, and the audit evidence is recorded. The flow then continues through patient-initiated revocation and the corresponding on-chain revoke transaction. Finally, the auditor reviews the record, and the verification tool of Section 6.8.9 performs an independent verification.⦆"
+ },
+ {
+  "t": "p",
+  "text": "If the required threshold is not satisfied, the ⟪authorisation⟫ process terminates with a denial decision. This prevents a single participant from unilaterally establishing ⟪authorisation⟫ when the consent policy requires collective approval. When the ⟪authorisation⟫ threshold is satisfied, the workflow proceeds to policy evaluation. At this stage, the requested access is evaluated against the purpose and data-scope constraints defined in the consent object. This step addresses an important limitation of identity-based and approval-based access control: a legitimate participant may still request data that fall outside the scope of the patient’s consent. For example, if a consent permits access to Observation, Medication, a request additionally containing Procedure should not be ⦅authorise⦆d because",
+  "page": 42
+ },
+ {
+  "t": "eq",
+  "text": "S~R~ ⊈ S~C~,",
+  "num": 29,
+  "page": 42
+ },
+ {
+  "t": "p",
+  "text": "where SR represents the requested data scope and SC represents the consent-⦅authorise⦆d scope. Similarly, the requested purpose must be consistent with the purpose specified in the consent. Consequently, a valid identity and sufficient multi-party approval are necessary but not sufficient conditions for access. The final ⟪authorisation⟫ decision is therefore determined by the conjunction of identity and authority verification, multi-party ⟪authorisation⟫, and policy compliance. ⦅For the foundational authorisation core established by RO1–RO4, the decision can be expressed, as in Equation (24), as⦆⦅⦆",
+  "page": 42
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R),",
+  "num": 30,
+  "page": 42
+ },
+ {
+  "t": "p",
+  "text": "where VI (u) represents the validity of the requesting participant’s identity and authority evidence, VA (C) represents satisfaction of the required multi-party ⟪authorisation⟫ threshold, and VP (C, R) represents compliance between the access request and the consent policy. If any of these conditions is false, the request is denied. Only when all required conditions are satisfied is healthcare data access granted. Finally, the framework records the resulting ⟪authorisation⟫ evidence in the audit layer. ⦅It should be noted that both successful and denied decisions should be recorded. A trustworthy authorisation framework requires accountability for the data that were released and also for the access attempts that were rejected.⦆⟪⟫ The audit evidence can therefore provide a traceable record of the ⟪authorisation⟫ decision, including the relevant consent, participants, policy evaluation, decision outcome, and associated evidence. In this manner, the workflow connects consent specification with identity trust, collective ⟪authorisation⟫, policy enforcement, and accountability, providing the operational foundation of the proposed trust-oriented ⟪authorisation⟫ framework.",
+  "page": 42
+ },
+ {
+  "t": "p",
+  "text": "⦃It should be noted that Eq. (30) expresses the foundational core only. In the complete model, the temporal predicate V~T~(C, t) and the jurisdictional predicate V~L~(C) introduced by RO5 are conjoined with these three conditions, as shown in Eq. (26), and the implemented Controller evaluates all five predicates at every access request.⦄"
+ },
+ {
+  "t": "h2",
+  "num": "5.3",
+  "title": "Model: Trust-Aware Consent and Authorisation Representation",
+  "page": 42
+ },
+ {
+  "t": "p",
+  "text": "The Model layer represents the persistent security state of the proposed consent-management framework. Rather than treating consent as a simple binary permission, the framework models consent as a structured authorisation object that captures the security conditions under which healthcare data may be accessed. For the ⟪current stage⟫ scope, the core consent object is represented as",
+  "page": 42
+ },
+ {
+  "t": "eq",
+  "text": "C = (I, A, P, E),",
+  "num": 31,
+  "page": 43
+ },
+ {
+  "t": "p",
+  "text": "⦅In this representation, I represents identity-related information associated with the relevant participants, and A represents the authorisation requirements that must be satisfied before access can be granted. P represents the policy conditions governing purpose and healthcare data scope, and E represents the evidence generated throughout the authorisation process.⦆⦅⦆ The identity component I does not simply store a username or centrally issued account identifier. It represents decentralised identities and the associated evidence required to establish the legitimacy of participating entities. This allows patients, guardians, healthcare professionals, and other participants to be represented as independently identifiable actors rather than as entries controlled exclusively by a central authority. The authorisation component A defines the conditions under which a consent object may become operational. In particular, it specifies whether a single participant is sufficient or whether multiple independent entities are required to jointly authorise a sensitive healthcare data operation. ⦅Let A~v~ denote the set of approvals submitted by participants whose identities and authority have been successfully verified,⦆ and let N denote the minimum required approval threshold. ⦅The authorisation condition can then be represented, as in Eq. (28), as⦆",
+  "page": 43
+ },
+ {
+  "t": "eq",
+  "num": 32,
+  "page": 43,
+  "text": "V~A~(C) = 1, |A~v~| ≥ N; 0, |A~v~| < N."
+ },
+ {
+  "t": "p",
+  "text": "⦅This mechanism differs from the reviewed systems. In those systems joint approval is a contingency path [53], a witness or notary threshold [69], a registration-time co-consent [43, 47], an institution-side admission gate [75], a custodial M-of-N signature [61] or a key-share reconstruction [35, 54]. In a single-owner model, the compromise, error or misuse of one privileged account may be sufficient to produce an authorisation decision. In the proposed framework, trust is instead distributed across multiple independently verified participants. A sensitive access decision becomes valid only when the defined collective authorisation condition has been satisfied.⦆",
+  "page": 43
+ },
+ {
+  "t": "p",
+  "text": "⦃The policy component P represents the contextual restrictions associated with the consent. These restrictions may include the intended purpose of access and the healthcare data categories that are permitted to be disclosed. Therefore, the existence of a valid identity and sufficient approval evidence does not automatically authorise unrestricted access to all patient information. Let S~C~ denote the healthcare data scope authorised by the consent object and S~R~ denote the scope requested by an entity. Policy compliance requires⦄"
+ },
+ {
+  "t": "eq",
+  "text": "S~R~ ⊆ S~C~.",
+  "num": 33,
+  "page": 43
+ },
+ {
+  "t": "p",
+  "text": "⦃It should be noted that the lifecycle state of the consent, State(C), is not an element of the tuple itself but is maintained by the Lifecycle component of the Model alongside C, and it is evaluated within V~A~(C), as stated in Section 6.5.⦄"
+ },
+ {
+  "t": "p",
+  "text": "If the requested data exceeds the authorised scope, the request must be rejected even if the requester has successfully authenticated and the required number of participants has approved the consent. The evidence component E represents the verifiable information generated during the authorisation process. This may include identity-verification results, credential-verification results, approval records, policy-evaluation outcomes, access decisions, and audit events. The purpose of E is not merely to record that a decision occurred, but to provide evidence concerning why the decision was produced.",
+  "page": 43
+ },
+ {
+  "t": "p",
+  "text": "This distinction is particularly important for trustworthy consent governance. ⦅A conventional immutable record may demonstrate that a transaction was stored [2, 28],⦆⦅⦆ whereas the proposed model seeks to preserve evidence concerning the conditions that justified the resulting authorisation decision. Consequently, the Model acts as a security-bearing representation of the consent lifecycle rather than as a passive permission database.",
+  "page": 44
+ },
+ {
+  "t": "p",
+  "text": "⦅The implemented prototype described in Section 6.8 realises the consent representation defined in this section in full, including temporal validity, expiration, on-chain revocation and an explicit lifecycle state machine. Formal verification of the associated security properties, however, remains a matter for future work.⦆"
+ },
+ {
+  "t": "h2",
+  "num": "5.4",
+  "title": "View: Controlled Interaction Among Independent Participants",
+  "page": 44
+ },
+ {
+  "t": "p",
+  "text": "The View layer provides the interaction environment through which independent stakeholders participate in the consent-management process. In the HALAH prototype, these stakeholders may include patients, guardians, healthcare professionals, and auditors. Although these participants interact with different functions of the system, their interfaces do not directly determine the security outcome of an authorisation request. This separation is essential because user interaction and security enforcement should not be treated as equivalent. For example, a healthcare professional may successfully submit an access request through the interface, but this interaction alone does not establish the right to access patient information. Similarly, a guardian may submit an approval, but the approval does not become effective unless the corresponding identity and authority conditions have been verified and the required multi-party threshold has been satisfied. The View therefore functions as a controlled mechanism for expressing requests and authorisation intent. A patient may create a consent specification and identify the relevant healthcare participant, authorised purpose, permitted data categories, and required approval conditions. Guardians or other authorised participants may subsequently submit their approval. Healthcare professionals may submit data-access requests, while auditors may inspect the resulting evidence and authorisation history. The separation between interaction and enforcement prevents the user interface from becoming the source of trust. A request submitted through the View represents an input to the authorisation process, rather than an authorisation decision itself. The actual security decision remains the responsibility of the Controller. This distinction is particularly important in decentralised environments where different stakeholders may not fully trust one another. The proposed architecture therefore treats each user action as a claim that must be independently evaluated rather than as an automatically trusted system operation.",
+  "page": 44
+ },
+ {
+  "t": "h2",
+  "num": "5.5",
+  "title": "Controller: Trusted Multi-Party Authorisation Enforcement",
+  "page": 44
+ },
+ {
+  "t": "p",
+  "text": "The Controller represents the central decision coordination mechanism of the proposed framework. Its responsibility is to transform consent specifications, participant credentials, approval evidence, and access requests into a deterministic authorisation decision. The Controller first evaluates whether the requesting entity and relevant authorisation participants possess valid identities and credentials. Identity verification can be represented as",
+  "page": 44
+ },
+ {
+  "t": "eq",
+  "text": "V~I~(u) = VerifyDID(u) ∧ VerifyVC(u),",
+  "num": 34,
+  "page": 45
+ },
+ {
+  "t": "p",
+  "text": "where V erif yDID(u) determines whether the decentralised identity of participant u can be verified and V erif yV C(u) determines whether the associated credential provides valid evidence of the relevant authority or role. A central principle of the proposed architecture is that identity verification and authorisation authority are not equivalent. A participant may possess a valid identity while lacking the authority required to access a particular patient’s healthcare information. Therefore,",
+  "page": 45
+ },
+ {
+  "t": "eq",
+  "text": "Identity ≠ Authorisation.",
+  "num": 35,
+  "page": 45
+ },
+ {
+  "t": "p",
+  "text": "This distinction prevents successful authentication from being incorrectly interpreted as unrestricted permission. After identity and authority conditions have been evaluated, the Controller determines whether the multi-party authorisation requirements associated with the consent object have been satisfied. Only independently verified participants can contribute to the authorisation evidence set Av . If the number of valid approvals is below the required threshold N , the consent cannot produce an effective authorisation decision. The Controller then evaluates the relationship between the access request R and the policy conditions contained within the consent object. This process determines whether the requested healthcare data, operation, and intended purpose remain within the permitted authorisation boundary. The corresponding policy predicate can be represented as",
+  "page": 45
+ },
+ {
+  "t": "eq",
+  "text": "V~P~(C, R) = Policy(C, R).",
+  "num": 36,
+  "page": 45
+ },
+ {
+  "t": "p",
+  "text": "⦅The foundational authorisation decision for RO1–RO4 is therefore determined by the conjunction of the three core trust conditions, to which the temporal and jurisdictional predicates of Eq. (26) are added in the complete model. This is the rule of Eq. (30), restated here in the Controller context as⦆⦅⦆",
+  "page": 45
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R).",
+  "num": 37,
+  "page": 45
+ },
+ {
+  "t": "p",
+  "text": "Equivalently, the decision can be represented as",
+  "page": 45
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R) = ALLOW, V~I~(u) = 1 ∧ V~A~(C) = 1 ∧ V~P~(C, R) = 1; DENY, otherwise.",
+  "num": 38,
+  "page": 45
+ },
+ {
+  "t": "p",
+  "text": "The security significance of this formulation is that no individual condition is sufficient to produce an access decision. A valid identity without sufficient multi-party approval does not result in access. Similarly, sufficient approval without policy compliance cannot authorise disclosure beyond the permitted healthcare data scope. This creates a conjunctive trust model in which the failure of any required condition prevents the final authorisation decision. More importantly, the Controller provides a single security-enforcement point through which all sensitive operations must be evaluated. This reduces the risk that different components independently interpret consent conditions and produce inconsistent access decisions.",
+  "page": 45
+ },
+ {
+  "t": "h2",
+  "num": "5.6",
+  "title": "Multi-Party Consent as Distributed Trust Establishment",
+  "page": 46
+ },
+ {
+  "t": "p",
+  "text": "A central contribution of the proposed architecture is the treatment of multi-party consent as a distributed trust-establishment mechanism rather than as a simple collection of multiple signatures. ⦅In the reviewed approval mechanisms, multiple signatures may be appended at consent registration [38, 43] or collected as hash-integrity confirmations on a ledger transaction [75].⦆ However, the presence of multiple approvals does not necessarily establish that the approving entities were legitimate, possessed the appropriate authority, or approved the same policy conditions. The proposed framework therefore associates each approval with independently verifiable identity and authority information. An approval contributes to the effective authorisation condition only when the corresponding participant satisfies the identity and credential requirements defined by the framework. Let the set of submitted approvals be denoted by",
+  "page": 46
+ },
+ {
+  "t": "eq",
+  "text": "A~s~ = {a~1~, a~2~, . . . , a~m~}.",
+  "num": 39,
+  "page": 46
+ },
+ {
+  "t": "p",
+  "text": "The verified approval set is then derived as",
+  "page": 46
+ },
+ {
+  "t": "eq",
+  "text": "A~v~ = {a~i~ ∈ A~s~ | V~I~(a~i~) = 1 ∧ Authority(a~i~) = Valid}.",
+  "num": 40,
+  "page": 46
+ },
+ {
+  "t": "p",
+  "text": "Only the verified set Av contributes to the threshold condition. Consequently, an arbitrary number of unverified or unauthorised approvals cannot satisfy the multi-party authorisation requirement. This mechanism provides resistance against several classes of authorisation failure. A compromised or unauthorised participant cannot independently activate access when the threshold has not been satisfied. Similarly, an invalid identity cannot increase the approval count merely by submitting an approval action through the user interface. The architectural contribution therefore lies in the combination of identity verification and collective decision making. Trust is not assumed to reside in a single privileged entity. Instead, it emerges from the coordinated satisfaction of independently verifiable requirements across multiple participants.",
+  "page": 46
+ },
+ {
+  "t": "p",
+  "text": "⦃In Eq. (40), V~I~(ai) denotes the identity predicate V~I~(u) of Eq. (34) evaluated for the participant u who submitted approval ai, and Authority(ai) = Valid denotes that the role of that participant matches the role required by the consent, corresponding to the Authority(u, C) condition of Section 6.2.⦄"
+ },
+ {
+  "t": "h2",
+  "num": "5.7",
+  "title": "Policy-Aware Consent Enforcement",
+  "page": 46
+ },
+ {
+  "t": "p",
+  "text": "Another important feature of the architecture is the explicit separation between approval validity and access scope validity. Even when all required participants have approved a consent request, the resulting authorisation remains bounded by the policy encoded within the consent object. Suppose that a consent permits access to the following healthcare data categories⟪:⟫",
+  "page": 46
+ },
+ {
+  "t": "eq",
+  "text": "S~C~ = {Observation, Medication}.",
+  "num": 41,
+  "page": 46
+ },
+ {
+  "t": "p",
+  "text": "If a healthcare professional subsequently requests",
+  "page": 46
+ },
+ {
+  "t": "eq",
+  "text": "S~R~ = {Observation, Medication, Procedure},",
+  "num": 42,
+  "page": 46
+ },
+ {
+  "t": "p",
+  "text": "the request exceeds the authorised data scope because",
+  "page": 46
+ },
+ {
+  "t": "eq",
+  "text": "S~R~ ⊈ S~C~.",
+  "num": 43,
+  "page": 46
+ },
+ {
+  "t": "p",
+  "text": "The Controller must therefore return",
+  "page": 47
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R) = DENY.",
+  "num": 44,
+  "page": 47
+ },
+ {
+  "t": "p",
+  "text": "This property is important because conventional authentication and role-based access control mechanisms may determine that an entity is generally authorised to access a category of healthcare information ⦅without adequately considering the specific policy conditions associated with an individual patient’s consent [11, 25].⦆ The proposed architecture instead binds the access decision to the consent policy itself. Consent therefore becomes an active authorisation constraint rather than a historical indication that a participant was once granted permission. This policy-centric approach also provides a basis for future extensions. While the current stage implementation focuses on purpose and healthcare data scope, the same mechanism can subsequently incorporate additional contextual conditions, including location, organisation, treatment relationship, emergency status, temporal restrictions, and other regulatory constraints.",
+  "page": 47
+ },
+ {
+  "t": "h2",
+  "num": "5.8",
+  "title": "Authorisation Evidence and Auditability",
+  "page": 47
+ },
+ {
+  "t": "p",
+  "text": "The proposed architecture further distinguishes between making an authorisation decision and demonstrating how that decision was made. For this reason, the Controller generates evidence associated with each relevant stage of the authorisation process. Conceptually, an authorisation evidence record can be represented as",
+  "page": 47
+ },
+ {
+  "t": "eq",
+  "text": "E~R~ = {ID, Credential, Approval, Policy, Decision, Audit}.",
+  "num": 45,
+  "page": 47
+ },
+ {
+  "t": "p",
+  "text": "where ID represents identity-verification evidence, ⦅Credential represents authority or role-verification evidence, Approval represents the verified multi-party approval state⦆, P olicy represents the result of policy evaluation, Decision represents the final access outcome, and Audit represents the associated event record. The resulting audit trail provides a stronger governance capability than a simple record of successful access. ⦅An auditor can examine whether access occurred. The auditor can also examine whether the requester possessed a valid identity, whether the required authorisation threshold was satisfied, whether the requested data complied with the authorised scope, and which conditions produced the final decision.⦆ However, the blockchain itself is not treated as the source of trust. ⦅Its role is to strengthen integrity, non-repudiation, and auditability of the evidence generated by the authorisation process [2, 28].⦆ The trustworthiness of the access decision instead originates from the coordinated enforcement of identity, authority, multi-party approval, and policy conditions.",
+  "page": 47
+ },
+ {
+  "t": "p",
+  "text": "⦅The record ER is the per-request instance of the evidence component E of the consent object C. In the implementation it corresponds to the event rows of the audit ledger. For on-chain events these rows additionally carry the Sepolia transaction hash and block number, as described in Section 6.8.8.⦆⦃⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦅In the implementation, consent activation and revocation are anchored on the Sepolia blockchain through the ConsentSBTv3 soulbound contract. This anchoring is performed asynchronously, and the audit ledger records the transaction hash and block number of each anchoring operation, thereby providing tamper-resistant evidence of the consent state.⦆"
+ },
+ {
+  "t": "h2",
+  "num": "5.9",
+  "title": "Architectural Security Properties",
+  "page": 47
+ },
+ {
+  "t": "p",
+  "text": "The proposed MVC architecture provides several foundational security properties for the current stage. These properties emerge from the interaction between the Model, View, and Controller rather than from any single technology.",
+  "page": 47
+ },
+ {
+  "t": "p",
+  "text": "First, the architecture provides identity-dependent participation. A participant cannot contribute to the authorisation process solely by interacting with the system interface. The corresponding identity and credential must satisfy the verification requirements. Second, the architecture provides authority separation. Possession of a valid identity does not automatically result in permission to access patient data. Identity verification provides evidence concerning who an entity is, whereas authority verification determines whether that entity may perform a particular role within the authorisation process. Third, the architecture provides collective authorisation integrity. Sensitive healthcare data access can be configured to require multiple independently verified participants. Therefore, a single participant cannot unilaterally activate access when the defined authorisation threshold has not been reached. Fourth, the architecture provides policy-bounded access. A valid requester with sufficient approval evidence cannot access healthcare information beyond the purpose or data scope defined by the consent object. Finally, the architecture provides decision accountability. The system maintains evidence concerning the conditions that produced an authorisation decision, thereby supporting auditing and subsequent verification. ⦅These properties are summarised in Table 12 together with the separation of interaction and enforcement established in Section 5.1.4. In Table 12, collective authorisation integrity is listed as multi-party authorisation integrity and decision accountability is listed as authorisation evidence.⦆⦅⦆",
+  "page": 48
+ },
+ {
+  "t": "h2",
+  "num": "5.10",
+  "title": "MVC Architecture and the Research Objectives",
+  "page": 48
+ },
+ {
+  "t": "p",
+  "text": "The MVC architecture also provides a direct implementation structure for the research objectives. RO1 is primarily represented in the Model through the development of the trust-aware consent object. RO2 is implemented through the identity and authority verification mechanisms coordinated by the Controller. RO3 is realised through the multi-party approval and threshold evaluation process. RO4 is implemented through the policy evaluation mechanisms that constrain the authorised purpose and healthcare data scope. As shown in Table 13, the View provides the operational environment through which these mechanisms are exercised by independent participants. ⦅It should be noted that the View does not determine whether an operation is authorised.⦆ Instead, it captures participant actions and forwards them to the Controller, which evaluates the security predicates defined by the Model.",
+  "page": 48
+ },
+ {
+  "t": "p",
+  "text": "⦃RO5 is realised through the temporal and lifecycle state held in the Model and the corresponding predicates V~T~ and V~L~ evaluated by the Controller before any access decision is produced. RO6 operates across all three layers, since the evidence generated by the Controller and stored in the Model is what the empirical validation and the independent verifier examine.⦄"
+ },
+ {
+  "t": "h2",
+  "num": "5.11",
+  "title": "Architectural Contribution and Scope",
+  "page": 48
+ },
+ {
+  "t": "p",
+  "text": "The principal contribution of the proposed architecture is not the use of MVC itself, but the way in which MVC is employed to operationalise a trust-oriented authorisation model. The Model provides a structured representation of the conditions that define valid consent. The View enables multiple independent stakeholders to express consent-related intentions without directly determining security outcomes. The Controller coordinates independently verifiable trust conditions and produces the final authorisation decision. This design transforms multi-party consent management from a conventional record-management problem into a distributed security-governance problem. ⦅The key innovation is not the evaluable consent object as such, since the literature already provides such an object [71, 37, 44, 58]. The innovation is the conjunction in which the effectiveness of the consent depends on the joint satisfaction of identity, authority, collective approval, policy, temporal and jurisdictional conditions. This conjunction is evaluated on every access decision, and the assurance of that conjunction is also part of the contribution.⦆⦅⦆ For the current stage, the ⦅architecture therefore establishes the mechanisms required to answer RQ1–RQ5, while RQ6 is addressed empirically through the prototype evaluation in Section 6.8 and formally in the next stage.⦆ ",
+  "page": 48
+ },
+ {
+  "t": "table",
+  "n": 5,
+  "page": 49,
+  "caption": "Security Properties Supported by the Proposed MVC-Based Consent Architecture"
+ },
+ {
+  "t": "table",
+  "n": 6,
+  "page": 50,
+  "caption": "Mapping Between Research Objectives and MVC Components"
+ }
+]

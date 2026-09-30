@@ -1,0 +1,276 @@
+h_algo:H19 NOMATCH Figure 10 describes the behaviour of consent creation. Figur
+h_algo:H24 OK-pink H62
+h_eqs:E6 OK-pink E46.text
+h_eqs:E12 OK-pink E84.text
+h_eqs:E15 OK-pink H26
+h_refs:H2 NOMATCH nor tested as an authorisation decision. identity, authority
+h_refs:H3 OK-pink A147.text
+h_style_a:C2 NOMATCH approval, policy, temporal and lifecycle conditions are conj
+h_style_b:H1 OK-pink A147.text
+h_style_b:H4 OK-pink B7.text
+h_style_b:H5 OK-pink B8.text
+h_style_c:R6 OK-pink H21
+h_style_e:A4 NOMATCH SR, and the request is rejected whenever S R is not a subset
+h_style_e:A8 OK-pink F1.text
+h_style_e:B2 NOMATCH approval, policy, temporal and lifecycle conditions are conj
+h_style_e:B5 OK-pink A147.text
+h_style_e:B6 NOMATCH trust-centric consent modelling, decentralised identity and 
+h_figs1:F6 NOMATCH and the blockchain as the consent progresses. of the resulti
+h_figs1:F7 OK-pink C10.text
+h_figs1:F8 NOMATCH as isolated technologies. is answered only after the seven q
+h_figs1:F9 OK-pink A76.text
+h_figs1:F10 OK-pink A178.text
+h_figs1:F11 OK-pink H62
+h_algo:H1 OK-pink D77.text
+h_algo:H2 NOMATCH 21: state ← PENDING_TOKEN
+h_algo:H3 NOMATCH 23: on confirmation: state ← ACTIVE; record the token identi
+h_algo:H4 OK-pink I85.text
+h_algo:H5 OK-blue D77.text
+h_algo:H6 OK-pink E50.text
+h_algo:H7 OK-pink H59
+h_algo:H8 OK-pink H59
+h_algo:H9 OK-pink D52.require
+h_algo:H10 NOMATCH 3: Verify identity and authority of g (Algorithm 2; structur
+h_algo:H11 NOMATCH background job; reconciled on next lookup
+h_algo:H12 OK-pink H40
+h_algo:H13 OK-blue D8.text
+h_algo:H14 OK-blue H50
+h_algo:H15 OK-blue H42
+h_algo:H16 OK-blue H58
+h_algo:H17 OK-pink D31.text
+h_algo:H18 NOMATCH Algorithms 1 and 3 to 5 are realised in the current prototyp
+h_algo:H20 OK-pink D15.text
+h_algo:H21 NOMATCH For example, if Figure 14 presents this workflow.
+h_algo:H22 OK-pink H55
+h_algo:H23 OK-pink H56
+h_algo:H25 NOMATCH Finally, the consent is revoked by the patient. the term use
+h_algo:H26 OK-pink I38.text
+h_algo:H27 NOMATCH does not exceed the expiry. and whose private witnesses are 
+h_algo:H28 NOMATCH rather than assumed. the checks are recorded in the audit le
+h_algo:H29 NOMATCH reported and skipped. and checks that the transaction exists
+h_algo:H30 NOMATCH #2 is not revoked. every recorded transaction was found on S
+h_eqs:E1 NOMATCH |Av| < N ⟹ Decision(C, R) = DENY. (10)
+h_eqs:E2 OK-blue C49.text
+h_eqs:E3 OK-pink D63.text
+h_eqs:E4 OK-blue D62.text
+h_eqs:E5 NOMATCH per-dimension failures of the decision matrix, invalid EIP-7
+h_eqs:E7 OK-blue E50.text
+h_eqs:E8 OK-pink E44.text
+h_eqs:E9 OK-pink E81.text
+h_eqs:E10 OK-pink E82.text
+h_eqs:E11 NOMATCH VP(C, R) = Policy(C, R). (73)
+h_eqs:E13 NOMATCH consistently. [ts, te] within which the consent may be exerc
+h_eqs:E14 NOMATCH With respect to identity verification, VI in the prototype p
+h_eqs:E16 NOMATCH t < ts ∨ t > te ⟹ Decision(C, R) = DENY. (11)
+h_eqs:E17 NOMATCH ¬ (VI ∧ VA ∧ VP ∧ VT ∧ VL) ⟹ Decision(C, R) = DENY, (16)
+h_eqs:E18 NOMATCH t ∉ [ts, te] ⟹ Decision(C, R) = DENY. (18)
+h_eqs:E19 NOMATCH Decision(C, R) = ALLOW (76)
+h_eqs:E20 OK-pink C40.text
+h_eqs:E21 OK-pink C47.text
+h_eqs:E22 OK-pink C65.text
+h_eqs:E23 OK-pink D59.text
+h_eqs:E24 OK-pink E4.text
+h_eqs:E25 OK-pink E48.text
+h_eqs:E26 OK-pink E56.text
+h_eqs:E27 OK-pink E63.text
+h_eqs:E28 NOMATCH The authorisation condition is VA(C) = 1, |Av| ≥ N; 0, |Av| 
+h_eqs:E29 OK-pink H67
+h_eqs:E30 OK-pink E92.text
+h_eqs:E31 OK-blue H57
+h_refs:H1 NOMATCH assured. and even where it is represented as an evaluable ob
+h_refs:H4 OK-pink B17.text
+h_refs:H5 OK-pink A179.text
+h_refs:H6 OK-pink A153.text
+h_refs:H7 OK-pink A125.text
+h_refs:H8 OK-pink A6.text
+h_refs:H9 OK-pink F30.text
+h_refs:H10 OK-pink F72.text
+h_refs:H11 OK-pink F102.text
+h_refs:H12 OK-pink F93.text
+h_style_a:F1 NOMATCH Student ID: 24724078 August 2026
+h_style_a:C1 NOMATCH and even where it is represented as an evaluable object [71,
+h_style_a:C3 NOMATCH the combination does not make multi-party approval a standin
+h_style_a:C4 NOMATCH rather than only at registration or in an emergency. at the 
+h_style_a:C5 NOMATCH which is deferred to the next stage. and the security proper
+h_style_a:D1 OK-pink A69.text
+h_style_a:D2 NOMATCH executed, and this is declared as a documented deviation fro
+h_style_b:H2 OK-pink A147.text
+h_style_b:H3 NOMATCH This section synthesises the review of the 44 primary studie
+h_style_b:H6 OK-pink A142.text
+h_style_b:H7 OK-pink A179.text
+h_style_b:H8 OK-pink A147.text
+h_style_b:H9 OK-pink A158.text
+h_style_b:H10 OK-pink B5.text
+h_style_c:R1 NOMATCH Temporal validity is defined as |Av| < N ⟹ Decision(C, R) = 
+h_style_c:R2 OK-pink H18
+h_style_c:R3 NOMATCH against the constraints defined by the consent. and rejects 
+h_style_c:R4 NOMATCH transitions are correctly enforced. the temporal validity wi
+h_style_c:R5 OK-pink B145.text
+h_style_c:R7 OK-pink B149.text
+h_style_c:R8 NOMATCH This is necessary if the trust predicates are to be evaluate
+h_style_c:R9 OK-blue C49.text
+h_style_c:R10 OK-pink B129.text
+h_style_d:D1 NOMATCH as the consent progresses. of the resulting consent object. 
+h_style_d:D2 NOMATCH identifier idC are generated by the system; and the evidence
+h_style_d:D3 NOMATCH The identifier is not supplied by any participant: it is The
+h_style_d:D4 NOMATCH For example, if Figure 14 presents this workflow. SC = {Obse
+h_style_d:D5 NOMATCH rather than over a requester-declared P R. keccak256(purpose
+h_style_d:D6 NOMATCH validity layer: The lifecycle validation mechanism can there
+h_style_d:D7 NOMATCH per-dimension failures of the decision matrix, invalid EIP-7
+h_style_d:D8 NOMATCH Finally, the consent is revoked by the patient. the term use
+h_style_d:D9 NOMATCH threshold condition of Eq. (49). the demonstrated 2-of-2 cer
+h_style_d:D10 NOMATCH does not exceed the expiry. and whose private witnesses are 
+h_style_d:D11 NOMATCH rather than assumed. the checks are recorded in the audit le
+h_style_d:D12 NOMATCH is reported and skipped. and checks that the transaction exi
+h_style_d:D13 NOMATCH Token #1 is revoked and token #2 is not revoked. every recor
+h_figs2:H1 NOMATCH Finally, the consent is revoked by the patient. the term use
+h_figs2:H2 NOMATCH threshold condition of Eq. (49). the demonstrated 2-of-2 cer
+h_figs2:H3 NOMATCH does not exceed the expiry. and whose private witnesses are 
+h_figs2:H4 NOMATCH rather than assumed. the checks are recorded in the audit le
+h_figs2:H5 NOMATCH is reported and skipped. and checks that the transaction exi
+h_figs2:H6 NOMATCH Token #1 is revoked and token #2 is not revoked. every recor
+h_figs2:H7 NOMATCH which is deferred to the next stage. and the security proper
+h_figs2:H8 NOMATCH validity layer: The lifecycle validation mechanism can there
+h_figs2:H15 OK-pink I85.text
+h_style_e:A1 NOMATCH evaluated consistently. [ts, te] within which the consent ma
+h_style_e:A2 OK-pink E66.text
+h_style_e:A3 NOMATCH With respect to identity verification, VI in the prototype p
+h_style_e:A5 NOMATCH The proposed policy predicate is where Policy(C, R) denotes 
+h_style_e:A6 NOMATCH Each access request declares a purpose and a requested data 
+h_style_e:A7 NOMATCH 7.5 Progress of RO5: Temporal and Lifecycle Trust
+h_style_e:A9 OK-pink H69
+h_style_e:B1 NOMATCH and even where it is represented as an evaluable object [71,
+h_style_e:B3 NOMATCH and the security properties of the framework are demonstrate
+h_style_e:B4 NOMATCH executed, and this is declared as a documented deviation fro
+h_style_e:B7 NOMATCH jointly establish a trustworthy consent decision. and requir
+h_style_e:B8 NOMATCH and rejects any request whose data scope is not a non-empty 
+h_style_e:B9 NOMATCH transitions are correctly enforced. the temporal validity wi
+h_style_e:B10 NOMATCH signature rejection and proof tampering; a live out-of-juris
+h_style_e:B11 OK-pink C101.text
+h_style_e:B12 NOMATCH of the resulting consent object. It shows each of the six co
+h_style_e:B13 NOMATCH rather than over a requester-declared P R. keccak256(purpose
+h_style_e:B14 NOMATCH per-dimension failures of the decision matrix, invalid EIP-7
+h_style_e:B15 NOMATCH the term used by the implementation for the electronic healt
+h_style_e:B16 NOMATCH the demonstrated 2-of-2 ceremony is consequently an N-of-N i
+h_style_e:B17 NOMATCH and whose private witnesses are a secret and the expiry time
+h_style_e:B18 NOMATCH the checks are recorded in the audit ledger as STATE_CHECK e
+h_style_e:B19 NOMATCH and checks that the transaction exists, succeeded, and was i
+h_style_e:B20 NOMATCH every recorded transaction was found on Sepolia in its recor
+h_style_b:H33 OK-para A175.text
+h_style_d:D14 OK-para D2.text
+h_style_d:D22 OK-para H51
+h_style_b:H13 OK-pink A128.text
+h_style_b:H14 OK-pink A130.text
+h_style_b:H15 OK-pink A132.text
+h_style_b:H17 OK-pink A136.text
+h_style_b:H18 OK-pink A142.text
+h_style_b:H19 OK-pink A143.text
+h_style_b:H20 OK-pink A144.text
+h_style_b:H21 OK-pink A144.text
+h_style_b:H22 OK-pink A146.text
+h_style_b:H23 OK-pink A146.text
+h_style_b:H24 OK-pink A147.text
+h_style_b:H25 OK-pink A151.text
+h_style_b:H26 OK-pink A153.text
+h_style_b:H27 OK-pink A158.text
+h_style_b:H28 OK-pink A158.text
+h_style_b:H29 OK-pink A160.text
+h_style_b:H30 OK-pink A165.text
+h_style_b:H31 OK-pink A165.text
+h_style_b:H32 OK-pink A165.text
+h_style_b:H34 OK-pink A179.text
+h_style_b:H35 OK-pink A180.text
+h_style_b:H37 OK-pink A185.text
+h_style_b:H38 OK-pink A187.text
+h_style_b:H39 OK-pink A189.text
+h_style_b:H40 OK-pink B7.text
+h_style_d:D15 NOMATCH where T represents the temporal validity window of the conse
+h_style_d:D16 OK-pink D6.text
+h_style_d:D17 NOMATCH In the target design the retrieved VC is cryptographically a
+h_style_d:D18 OK-pink H41
+h_style_d:D19 NOMATCH the access-evidence step (Step 8) is realised by generating 
+h_style_d:D20 OK-pink E2.text
+h_style_d:D21 OK-pink E6.text
+h_style_d:D23 OK-pink H58
+h_style_d:D24 OK-pink E15.text
+h_style_d:D25 NOMATCH Its checks are executed at every access request and recorded
+h_style_d:D26 OK-pink E44.text
+h_style_d:D27 NOMATCH Section 6.8 presents the implemented HALAH system and its li
+h_style_d:D28 OK-pink I14.text
+h_style_d:D29 OK-pink I16.text
+h_style_d:D30 OK-pink I27.text
+h_style_d:D31 OK-pink I27.text
+h_style_d:D32 OK-pink I90.text
+h_style_d:D33 OK-pink I100.text
+h_style_d:D34 OK-pink I100.text
+h_style_d:D35 OK-pink I113.text
+h_style_d:D36 OK-pink I124.text
+h_style_d:D37 OK-pink I124.text
+h_long_a:LA1 NOMATCH Six research objectives are addressed: a trust-centric conse
+h_long_a:LA2 NOMATCH The framework is realised through a Model– View–Controller a
+h_long_a:LA3 OK-pink A14.text
+h_long_a:LA4 OK-pink A35.text
+h_long_a:LA5 OK-pink A42.text
+h_long_a:LA6 OK-pink A55.text
+h_long_a:LA7 OK-pink A59.text
+h_long_a:LA8 OK-pink A59.text
+h_long_a:LA9 OK-pink A71.text
+h_long_a:LA10 OK-pink A79.text
+h_long_a:LA11 OK-pink A107.text
+h_long_a:LA12 OK-pink A108.text
+h_long_a:LA13 OK-pink A110.text
+h_long_a:LA14 OK-pink A117.text
+h_long_a:LA15 OK-pink A117.text
+h_long_a:LA16 OK-pink A119.text
+h_long_a:LA17 OK-pink A125.text
+h_long_a:LA18 NOMATCH In this context, three situations recur across the stream: c
+h_long_a:LA19 NOMATCH The consent object is the richest in this stream, yet the pa
+h_long_a:LA20 OK-pink A135.text
+h_long_a:LA21 OK-pink A135.text
+h_long_a:LA22 OK-pink A136.text
+h_long_a:LA23 OK-pink A139.text
+h_long_a:LA24 OK-pink A142.text
+h_long_a:LA25 NOMATCH It should be noted that the coding applied a strict word-sen
+h_long_a:LA26 OK-pink A144.text
+h_long_a:LA27 OK-pink A145.text
+h_long_a:LA28 NOMATCH Its locus is, however, the registration of consent and not t
+h_long_a:LA29 NOMATCH Such a predicate would be evaluated on every access request 
+h_long_a:LA30 OK-pink A147.text
+h_long_a:LA31 OK-pink A150.text
+h_long_a:LA32 NOMATCH However, the consent tuple carries no temporal element, with
+h_long_a:LA33 OK-pink A151.text
+h_long_a:LA34 OK-pink A158.text
+h_long_a:LA35 OK-pink A158.text
+h_long_a:LA36 NOMATCH The temporal conjunct is implemented but interval-bound deni
+h_long_a:LA37 OK-pink A160.text
+h_long_a:LA38 OK-pink A161.text
+h_long_a:LA39 OK-pink A164.text
+h_long_a:LA40 NOMATCH The authorisation proof is a non-interactive zero-knowledge 
+h_long_a:LA41 OK-pink A168.text
+h_long_a:LA42 OK-pink A173.text
+h_long_a:LA43 NOMATCH Third, the pairs of requirements that co-occur most often ar
+h_long_a:LA44 OK-pink A178.text
+h_long_a:LA45 OK-pink A179.text
+h_long_a:LA46 OK-pink A180.text
+h_long_a:LA47 OK-pink A181.text
+h_long_a:LA48 OK-pink A182.text
+h_long_a:LA49 OK-pink A187.text
+h_long_a:LA50 OK-pink B12.text
+h_long_a:LA51 OK-pink B13.text
+h_long_b:LB1 OK-pink B18.text
+h_long_b:LB2 OK-pink B23.text
+h_long_b:LB3 OK-pink B145.text
+h_long_b:LB4 OK-pink H60
+h_long_b:LB5 OK-pink C9.text
+h_long_b:LB6 OK-pink C47.text
+h_long_b:LB7 OK-pink C101.text
+h_long_b:LB8 OK-pink D15.text
+h_long_b:LB9 OK-pink D77.text
+h_long_b:LB10 NOMATCH In the HALAH implementation, the access-evidence step (Step 
+h_long_b:LB11 NOMATCH In particular, the Consent Engine evaluates t s ≤ t ≤ te at 
+h_long_b:LB12 NOMATCH As shown in the figure above, the deployment is an ordinary 
+h_long_b:LB13 OK-pink I51.text
+h_long_b:LB14 OK-pink F1.text
+h_long_b:LB15 OK-pink F15.text
+h_long_b:LB16 OK-pink F27.text
+written

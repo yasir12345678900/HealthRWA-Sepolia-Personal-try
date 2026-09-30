@@ -1,0 +1,669 @@
+[
+ {
+  "t": "p",
+  "text": "⦅The final access decision can be formally expressed as ALLOW ⟺ Identity ∧ Consent ∧ Authority ∧ Threshold ∧ Purpose ∧ Scope ∧ Time ∧ Jurisdiction ∧ Evidence where the individual conditions are defined as follows. Identity, Consent, Authority and Threshold represent verified participant identity, active consent, sufficient authority and satisfied multi-party approval, respectively. Purpose, Scope, Time, Jurisdiction and Evidence represent compatible purpose, authorised data scope, temporal validity, jurisdictional match and sufficient decision evidence, respectively.⦆⦅⦆⦅⦆ This procedure establishes an important distinction between authentication, consent, and authorisation. A successfully authenticated participant is not automatically granted access. Instead, authentication provides identity evidence, consent provides patient-defined permission constraints, multi-party approval provides distributed authority evidence, and policy evaluation determines whether the particular request satisfies all applicable conditions. The procedure also implements the principle of least privilege through the explicit scope-containment condition that S~R~ ⊆ S~C~. Consequently, even when a participant possesses a valid DID, a valid VC, and sufficient authority, the participant cannot retrieve healthcare resources outside the scope explicitly authorised by the consent. Similarly, a valid consent cannot be used for an incompatible purpose or before the required multi-party authorisation threshold has been reached. From an architectural perspective, Algorithm 4 therefore acts as the final policy-enforcement layer of the proposed authorisation lifecycle. Algorithm 1 establishes the consent constraints, Algorithm 2 establishes trustworthy identity and authority evidence, and Algorithm 3 establishes collective authorisation evidence. Algorithm 4 integrates these evidence sources with the specific access request and determines whether the requested healthcare data can actually be released. The resulting end-to-end authorisation lifecycle can be summarised as",
+  "page": 76
+ },
+ {
+  "t": "eq",
+  "text": "Consent Creation ⟶ Identity Verification ⟶ Multi-Party Auth ⟶ Policy Decision",
+  "page": 76
+ },
+ {
+  "t": "p",
+  "text": "⦅In this context, healthcare data access is not a simple credential-based permission check. It is an evidence-based authorisation process in which identity, consent, authority, distributed approval, purpose, scope and audit evidence jointly determine the final access decision.⦆",
+  "page": 76
+ },
+ {
+  "t": "h2",
+  "num": "6.5",
+  "title": "Temporal and Lifecycle Trust for RO5",
+  "page": 76
+ },
+ {
+  "t": "p",
+  "text": "RO5 addresses RQ5 and extends the foundational ⟪current-stage⟫ authorisation model with temporal validity and consent lifecycle controls. ⦅This objective was originally planned for the next stage (CA3). It has, however, been realised in the current prototype. The objective investigates how an authorisation remains trustworthy as time passes and as the consent state changes.⦆⦅⦆ ⦅The foundational model of Equation (37) evaluates identity, collective authorisation and policy compliance.⦆⦅ RO5 extends this model by introducing temporal and lifecycle conditions, and the extended rule is the one enforced by the prototype.⦆⦅ The temporal condition is defined as⦆",
+  "page": 76
+ },
+ {
+  "t": "eq",
+  "text": "V~T~(C, t) = 1, t~s~ ≤ t ≤ t~e~; 0, otherwise.",
+  "page": 76,
+  "num": 58
+ },
+ {
+  "t": "p",
+  "text": "⦅The jurisdictional condition can be expressed as⦆",
+  "page": 76
+ },
+ {
+  "t": "eq",
+  "text": "V~L~(C) = ValidState(C) ∧ ValidTransition(C).",
+  "page": 76,
+  "num": 59
+ },
+ {
+  "t": "p",
+  "text": "The extended authorisation decision is therefore",
+  "page": 77
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R, t) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R) ∧ V~T~(C, t) ∧ V~L~(C).",
+  "page": 77,
+  "num": 60
+ },
+ {
+  "t": "p",
+  "text": "The purpose of RO5 is not simply to add an expiry field. It is to ensure that the validity of a consent depends on both its temporal interval and its current lifecycle state. A consent that has expired or been revoked must not remain usable merely because its original approval threshold was satisfied.",
+  "page": 77
+ },
+ {
+  "t": "h3",
+  "num": "6.5.1",
+  "title": "RO5 Temporal and Lifecycle Workflow",
+  "page": 77
+ },
+ {
+  "t": "p",
+  "text": "The ⟪implemented⟫ workflow evaluates the consent’s temporal interval, lifecycle state, and revocation status before the system proceeds with the remaining authorisation conditions. This design ensures that a consent is not treated as permanently valid after it has expired or entered a state that no longer permits access.",
+  "page": 77
+ },
+ {
+  "t": "h3",
+  "num": "6.5.2",
+  "title": "Procedure for Temporal and Lifecycle Validation",
+  "page": 69
+ },
+ {
+  "t": "p",
+  "text": "The Temporal and Lifecycle Validation procedure determines whether a consent object remains temporally valid and whether the requested operation is permitted under its current lifecycle state. Unlike static authorisation checks, this procedure explicitly considers the temporal validity, revocation status, and state-transition rules of the consent object. It therefore ensures that a previously valid consent cannot be treated as permanently valid after expiration, revocation, or an unauthorised lifecycle transition. 1. Step 1 – Retrieve the Consent Validity Interval. The system retrieves the start time t~s~ and expiry time t~e~ associated with consent object C. These temporal attributes define the period during which the consent is potentially valid. The consent validity interval is represented as T~C~ = [t~s~, t~e~]. The system uses the current time t to determine whether the consent is currently within its defined validity period. 2. Step 2 – Validate the Current Time. The system compares the current time t with the consent validity interval. Temporal validity requires t~s~ ≤ t ≤ t~e~. If t < t~s~ or t > t~e~, the consent is considered temporally invalid. The system records the temporal invalidity evidence and returns INVALID. This step prevents a consent from being used before its effective start time or after its expiration time. 3. Step 3 – Retrieve the Current Lifecycle State. If the temporal condition is satisfied, the system retrieves the current lifecycle state of consent object C. Typical lifecycle states may include CREATED, PENDING, ACTIVE, SUSPENDED, REVOKED, and EXPIRED, depending on the system configuration. The current state is used to determine whether the requested operation can legally and logically be performed. 4. Step 4 – Validate State-Dependent Operations. The system evaluates whether the current lifecycle state permits the requested operation q. Different operations may be permitted only in specific lifecycle states. For example, activation may require a consent to be in a pending state, while data access may require the consent to be active.",
+  "page": 69
+ },
+ {
+  "t": "p",
+  "text": "The state transition condition can be represented as State(C) |= q. If the current state does not permit operation q, the system records an invalid lifecycle-state event and returns INVALID. 5. Step 5 – Check Revocation Status. The system explicitly checks whether consent object C has been revoked. Revocation represents a deliberate termination of the previously granted consent and must therefore override an otherwise valid temporal interval. Formally, Revoked(C) = false must hold for the consent to remain usable. If Revoked(C) = true, the system records revocation-based invalidity and returns INVALID. 6. Step 6 – Validate the Requested Lifecycle Transition. If the consent is temporally valid, in an appropriate lifecycle state, and has not been revoked, the system validates the requested transition q. The transition is evaluated against the predefined lifecycle-transition policy: State(C) →^q^ State′(C). The transition is valid only when q is explicitly permitted from the current state. If the transition is not permitted, the system records an unauthorised state-transition event and returns INVALID. 7. Step 7 – Establish Temporal and Lifecycle Consistency. After all individual checks have succeeded, the system establishes that the consent is simultaneously valid in terms of time, lifecycle state, revocation status, and requested transition. The overall lifecycle-validity condition can therefore be expressed as ⟪V~S~(C, t, q)⟫ = TimeValid(C, t) ∧ StateValid(C, q) ∧ ¬Revoked(C) ∧ TransitionValid(C, q). Only when all four conditions are satisfied can the consent proceed to the subsequent operation. 8. Step 8 – Record Temporal and Lifecycle Evidence. The system records evidence associated with the successful validation. The evidence may include the consent identifier, current timestamp, validity interval, current lifecycle state, revocation status, requested transition, and validation result. This evidence establishes an auditable relationship between the consent’s lifecycle state and the operation performed at a particular point in time. ⦅It should be noted that the symbol V~S~ in this section denotes the lifecycle predicate V~S~(C) of Eq. (13), extended here with the temporal condition V~T~(C, t). The implementation evaluates this predicate within V~A~. It must not be confused with the data-scope predicate V~S~(C, R) of Eq. (52). For this reason the lifecycle predicate is always written with three arguments, V~S~(C, t, q), in this section. It is distinct from the jurisdictional predicate V~L~(C) of the decision rule, which is evaluated separately.⦆",
+  "page": 70
+ },
+ {
+  "t": "p",
+  "text": "9. Step 9 – Return the Lifecycle Validation Result. If all temporal and lifecycle conditions are satisfied, the system returns ⟪V~S~(C, t, q)⟫ = VALID. If any mandatory condition fails, the procedure returns ⟪V~S~(C, t, q)⟫ = INVALID. The overall validation process can therefore be represented as C → T~C~ → t → State(C) → Revocation → q → Lifecycle Validation → Evidence → { VALID; INVALID }. The complete lifecycle-validity condition can be summarised as VALID ⟺ (t~s~ ≤ t ≤ t~e~) ∧ State(C) |= q ∧ ¬Revoked(C) ∧ TransitionPermitted(q) This procedure establishes that consent validity is not a static property. Instead, the validity of consent is a function of both time and lifecycle state that Validity(C) = f(t, State(C), Revocation(C)). Consequently, a consent that was valid at time t~1~ may become invalid at a later time t~2~ because it has expired, been revoked, suspended, or otherwise transitioned into a state that does not permit the requested operation. The explicit lifecycle validation also introduces an important distinction between consent existence and consent usability. The existence of a consent record in the system does not imply that the consent remains effective. Similarly, a consent that has successfully passed identity and authority verification may still be unusable if its validity period has expired or if it has subsequently been revoked. This temporal property can be represented as: ConsentExists(C) ⇏ ConsentUsable(C, t). Instead, ConsentUsable(C, t) ⇒ TimeValid(C, t) ∧ StateValid(C) ∧ ¬Revoked(C). The procedure therefore provides the lifecycle control required to connect the initial consent creation process with subsequent access decisions. Algorithm 1 establishes the consent object and its validity interval, Algorithm 2 verifies the identity and authority of participating entities, Algorithm 3 establishes multi-party approval, and Algorithm 4 evaluates the specific access request. Algorithm 5 complements these mechanisms by ensuring that the consent and its associated authorisation remain valid throughout their operational lifecycle. From the perspective of the overall HALAH architecture, the overall flow can therefore be summarised as Consent → Identity → Authority → Policy → Temporal/Lifecycle Validation → Access",
+  "page": 71
+ },
+ {
+  "t": "p",
+  "text": "Rather than treating authorisation as a one-time event, this approach enables the system to determine whether authorisation remains valid at the precise time an operation is requested. This is particularly important ⦅for dynamic consent environments [13, 24] in which permissions may expire, be revoked, suspended, renewed, or otherwise modified⦆ during the lifecycle of a healthcare data-sharing relationship.",
+  "page": 72
+ },
+ {
+  "t": "h3",
+  "num": "6.5.3",
+  "title": "Algorithm 5: Temporal and Lifecycle Validation",
+  "page": 77
+ },
+ {
+  "t": "algo",
+  "n": 5,
+  "title": "Temporal and Lifecycle Validation",
+  "require": "Consent object C, current time t, requested transition q",
+  "ensure": "Lifecycle validity result",
+  "lines": [
+   [
+    0,
+    "Retrieve consent start time t~s~ and expiry time t~e~"
+   ],
+   [
+    0,
+    "**if** t < t~s~ or t > t~e~ **then**"
+   ],
+   [
+    1,
+    "Record temporal invalidity"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Retrieve current lifecycle state of C"
+   ],
+   [
+    0,
+    "**if** current state does not permit the requested operation **then**"
+   ],
+   [
+    1,
+    "Record invalid lifecycle state"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Check whether C has been revoked"
+   ],
+   [
+    0,
+    "**if** C is revoked **then**"
+   ],
+   [
+    1,
+    "Record revocation-based invalidity"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Validate requested transition q"
+   ],
+   [
+    0,
+    "**if** transition q is not permitted **then**"
+   ],
+   [
+    1,
+    "Record unauthorised state transition"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Record valid temporal and lifecycle evidence"
+   ],
+   [
+    0,
+    "**return** VALID"
+   ]
+  ],
+  "page": 77
+ },
+ {
+  "t": "figure",
+  "n": 11,
+  "page": 78,
+  "caption": "RO5 workflow for temporal and consent lifecycle trust"
+ },
+ {
+  "t": "p",
+  "text": "⦅Algorithm 5 therefore ensures that consent validity in the demonstrated decision process is dynamic rather than permanent.⦆⟪⟫",
+  "page": 79
+ },
+ {
+  "t": "h2",
+  "num": "6.6",
+  "title": "Formal Security Assurance and Empirical Validation for RO6",
+  "page": 79
+ },
+ {
+  "t": "p",
+  "text": "RO6 addresses RQ6 by formally analysing and empirically evaluating whether the proposed trust-oriented authorisation framework satisfies its defined security and authorisation properties. The objective combines two complementary forms of assurance. Formal security assurance specifies the conditions under which the authorisation mechanism should be considered secure and consistent. Empirical validation evaluates whether the implemented system behaves according to those conditions under representative healthcare data-sharing scenarios. ⦅The formal decision model is expressed in Equation (61) below.⦆",
+  "page": 79
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R, t) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R) ∧ V~T~(C, t) ∧ V~L~(C).",
+  "page": 79,
+  "num": 61
+ },
+ {
+  "t": "p",
+  "text": "For current stage, the primary validation conditions are",
+  "page": 79
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R) = ALLOW ⇒ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R).",
+  "page": 79,
+  "num": 62
+ },
+ {
+  "t": "p",
+  "text": "This implication expresses the soundness requirement that every granted request must satisfy the identity, authorisation, and policy conditions. Conversely, if any mandatory condition is violated, the request must be denied:",
+  "page": 79
+ },
+ {
+  "t": "eq",
+  "text": "¬V~I~(u) ∨ ¬V~A~(C) ∨ ¬V~P~(C, R) ⇒ Decision(C, R) = DENY.",
+  "page": 79,
+  "num": 63
+ },
+ {
+  "t": "h3",
+  "num": "6.6.1",
+  "title": "RO6 Assurance and Validation Workflow",
+  "page": 79
+ },
+ {
+  "t": "p",
+  "text": "The validation process begins by defining the security and authorisation properties that the framework is expected to satisfy. These properties include identity validity, threshold correctness, policy compliance, denial of unauthorised requests, and consistency between the authorisation decision and the audit evidence. The HALAH prototype provides the implementation basis for this evaluation. The current system includes separate patient, guardian, doctor, and auditor interfaces. It also records consent creation, guardian approval, token minting, state checks, and data-access events.",
+  "page": 79
+ },
+ {
+  "t": "h3",
+  "num": "6.6.2",
+  "title": "Procedure for Formal and Empirical Authorisation Validation",
+  "page": 79
+ },
+ {
+  "t": "p",
+  "text": "The Formal and Empirical Authorisation Validation procedure evaluates whether the proposed framework F correctly implements the intended authorisation model under normal, invalid, and adversarial conditions. Rather than validating the framework only through successful",
+  "page": 79
+ },
+ {
+  "t": "figure",
+  "n": 12,
+  "page": 80,
+  "caption": "RO6 workflow for formal security assurance and empirical validation"
+ },
+ {
+  "t": "p",
+  "text": "execution cases, the procedure systematically evaluates both positive and negative behaviours and examines whether observed authorisation decisions are consistent with the formally defined security properties. The procedure therefore combines scenario-based empirical testing with property-oriented validation of authorisation correctness, denial behaviour, threshold enforcement, policy and scope compliance, and audit consistency. 1. Step 1 – Define the Expected Authorisation Properties. The first step is to define the security and authorisation properties P that the framework is expected to satisfy. These properties provide the formal evaluation criteria against which the observed system behaviour will subsequently be compared. The properties may include authorisation soundness, correct denial of unauthorised requests, threshold correctness, ⦅policy compliance, scope enforcement, and audit consistency. Formally, P = {Psound, Pdeny, Pthreshold, Ppolicy, Pscope, Paudit}.⦆ 2. Step 2 – Define Valid Scenarios. The system defines a set of valid scenarios S~valid~, representing legitimate healthcare data-access workflows. These scenarios should contain valid patient identities, valid credentials, active consent, sufficient authority, satisfied multi-party approval, compatible purposes, and authorised data scopes. The purpose of these scenarios is to verify that legitimate requests are successfully authorised and that the framework does not incorrectly reject valid operations. 3. Step 3 – Define Negative Scenarios. The system defines a set of negative scenarios S~negative~, representing requests that violate one or more authorisation conditions. Examples include invalid identities, expired consent, revoked consent, insufficient approval, unauthorised roles, incompatible purposes, and requests for data outside the consent scope. These scenarios test whether the framework correctly prevents access when an authorisation requirement is not satisfied. 4. Step 4 – Define Adversarial Scenarios. The system defines adversarial scenarios S~adv~, representing attempts to circumvent or manipulate the authorisation process. Such scenarios may include replayed approvals, duplicate approvals, unauthorised participants attempting to satisfy a threshold, invalid or forged credentials, attempts to access data outside the authorised scope, and attempts to use a revoked or expired consent object. ⦅The adversarial test set is particularly important because it is not sufficient for a framework to show that legitimate requests succeed. The framework must also resist foreseeable attempts to bypass its security controls.⦆ 5. Step 5 – Construct the Complete Validation Scenario Set. The three scenario classes are combined into the complete validation set: S = S~valid~ ∪ S~negative~ ∪ S~adv~.",
+  "page": 81
+ },
+ {
+  "t": "p",
+  "text": "Each scenario s ∈ S is associated with an expected authorisation outcome and the security properties that it is intended to evaluate. 6. Step 6 – Execute Each Scenario Using the Framework. The system executes each scenario s using the implemented framework F. During execution, the framework performs the corresponding consent, identity, authority, threshold, policy, scope, and lifecycle checks. The execution process is treated as an empirical observation of the implemented authorisation model that F(s) → D~obs~, where D~obs~ denotes the observed authorisation decision. 7. Step 7 – Collect the Observed Authorisation Decision. After each scenario has been executed, the system records the resulting authorisation decision. Depending on the operation, the observed result may be ALLOW, DENY, PENDING, or another explicitly defined lifecycle state. The observed decision is stored together with the corresponding scenario identifier to enable subsequent comparison with the expected outcome. 8. Step 8 – Collect Supporting Authorisation Evidence. In addition to the final decision, the system collects the evidence generated during the authorisation process. This evidence may include identity verification results, VC validation results, participant approvals, threshold status, consent state, purpose evaluation, scope evaluation, timestamps, and audit records. The collected evidence can therefore be represented as E~s~ = {E~I~, E~A~, E~C~, E~T~, E~P~, E~S~, E~L~}, where the individual components represent identity, authority, consent, threshold, policy, scope, and lifecycle evidence. 9. Step 9 – Compare Observed and Expected Decisions. The observed decision is compared with the expected decision defined for scenario s. Let D~exp~(s) denote the expected decision and D~obs~(s) denote the observed decision. The scenario passes when D~obs~(s) = D~exp~(s). Otherwise, the scenario is classified as a validation failure.",
+  "page": 82
+ },
+ {
+  "t": "p",
+  "text": "10. Step 10 – Record the Scenario Result. The system records whether each scenario has passed or failed. For each failure, the corresponding condition, observed behaviour, expected behaviour, and supporting evidence are retained for subsequent analysis. This enables validation results to be traced from the final decision back to the individual authorisation conditions that produced that decision. 11. Step 11 – Evaluate Authorisation Soundness. The system evaluates the soundness property to determine whether every granted request satisfies the required authorisation conditions. Formally, D~obs~(s) = ALLOW ⇒ Authorised(s) = TRUE. A sound framework should not grant access when one or more mandatory authorisation conditions are violated. 12. Step 12 – Evaluate Denial Correctness. The system evaluates whether invalid or unauthorised requests are correctly denied. The denial property can be represented as Authorised(s) = FALSE ⇒ D~obs~(s) ≠ ALLOW. This evaluation is particularly important for negative and adversarial scenarios because successful operation under valid conditions alone cannot demonstrate that unauthorised access is reliably prevented. 13. Step 13 – Evaluate Threshold Correctness. The system evaluates whether multi-party authorisation is activated only when the required threshold condition is satisfied. ⦅The expected threshold property is Authorisation(C) = ACTIVATED ⇒ |A~v~| ≥ N.⦆ The evaluation should also verify that invalid, duplicate, or unauthorised approvals do not contribute to A~v~. This ensures that the threshold cannot be artificially satisfied by repeated or illegitimate approval submissions. 14. Step 14 – Evaluate Policy and Scope Enforcement. The system evaluates whether every granted request satisfies the consent-defined policy and data-scope constraints. In particular, the scope enforcement property is D~obs~(s) = ALLOW ⇒ S~R~ ⊆ S~C~.",
+  "page": 83
+ },
+ {
+  "t": "p",
+  "text": "The evaluation should verify that a participant cannot obtain healthcare resources outside the scope authorised by the patient’s consent, even when the participant possesses a valid identity and authority credential. Purpose compatibility is evaluated similarly: D~obs~(s) = ALLOW ⇒ P~R~ ⊨ P~C~. 15. Step 15 – Evaluate Audit Consistency. The system evaluates whether the recorded audit evidence is consistent with the actual authorisation decision and the underlying verification events. For an access event e, the audit record should provide sufficient evidence to establish a relationship between the request, requester, consent, policy evaluation, authorisation result, and timestamp. Therefore, Audit(e) ⊨ Decision(e). An audit inconsistency occurs when the recorded evidence does not correspond to the actual system decision or when critical authorisation evidence is missing. 16. Step 16 – Analyse Failures and Limitations. Any failed scenario is analysed to determine the source and significance of the failure. The analysis distinguishes between implementation defects, policy-definition errors, integration problems, incomplete security controls, and limitations of the experimental environment. The purpose of this step is not to conceal unsuccessful cases but to determine whether observed failures represent violations of the intended security properties or limitations that should be addressed in future work. 17. Step 17 – Consolidate the Validation Results. Finally, the individual scenario results and property-level evaluations are consolidated into an overall validation result. The resulting evidence includes: V = {R~scenario~, R~sound~, R~deny~, R~threshold~, R~policy~, R~scope~, R~audit~}. The framework is considered empirically consistent with the specified authorisation model when the observed decisions satisfy the expected outcomes across the defined validation scenarios and no critical security property is violated. The overall validation process can therefore be represented as",
+  "page": 84
+ },
+ {
+  "t": "eq",
+  "text": "P → S~valid~ ∪ S~negative~ ∪ S~adv~ → F(s) → D~obs~ → E~s~ → D~obs~ ?= D~exp~ → Property Evaluation → Failure Analysis → Validation Evidence",
+  "page": 84
+ },
+ {
+  "t": "p",
+  "text": "The fundamental scenario-level validation criterion is Pass(s) ⟺ D~obs~(s) = D~exp~(s) while the framework-level validation can be expressed as: Valid(F) ⇒ P~sound~ ∧ P~deny~ ∧ P~threshold~ ∧ P~policy~ ∧ P~scope~ ∧ P~audit~ This procedure establishes a distinction between functional correctness and security correctness. A system may successfully execute an access request and return data without necessarily demonstrating that the request should have been authorised. The proposed validation therefore does not treat successful execution as sufficient evidence of correctness. Instead, the observed decision must be consistent with the formally specified authorisation conditions. The use of three complementary scenario classes is particularly important. Valid scenarios establish that legitimate users can obtain authorised access, negative scenarios establish that invalid requests are correctly rejected, and adversarial scenarios examine whether security controls can resist deliberate attempts to circumvent the authorisation process. Together, these scenarios provide a more balanced evaluation of both the positive security property of granting legitimate access and the negative security property of preventing illegitimate access. The validation procedure also provides traceability between the final access decision and its supporting evidence. For each scenario, the decision can be interpreted as: Decision(s) = f(Identity, Authority, Consent, Threshold, Purpose, Scope, Lifecycle, Evidence). Consequently, validation does not merely determine whether the final output is ALLOW or DENY ; it also determines whether the underlying evidence is consistent with the decision. This is particularly important for a trust-aware framework because a correct decision without sufficient supporting evidence cannot provide strong assurance regarding how the decision was reached. The relationship between the six algorithms can therefore be represented as Algorithm 1 : Create Consent Algorithm 2 : Verify Identity and Authority Algorithm 3 : Establish Multi-Party Authorisation Algorithm 4 : Evaluate Access Request Algorithm 5 : Validate Temporal and Lifecycle State Algorithm 6 : Validate the Complete Framework Algorithm 6 therefore operates at the highest level of the proposed methodology. Algorithms 1–5 define the operational authorisation lifecycle, whereas Algorithm 6 evaluates whether the complete lifecycle behaves according to its intended security properties. This creates a closed methodological loop Design → Implementation → Execution → Observation → Verification → Validation ⦅Therefore, the validation methodology provides empirical evidence that the proposed authorisation model can be enforced and tested in practice under legitimate, invalid and adversarial conditions, ⦅rather than remaining a conceptual definition only.⦆⦆",
+  "page": 85
+ },
+ {
+  "t": "algo",
+  "n": 6,
+  "title": "Formal and Empirical Authorisation Validation",
+  "require": "Framework implementation F, validation scenarios S, security properties P",
+  "ensure": "Validation evidence and evaluation results",
+  "lines": [
+   [
+    0,
+    "Define expected authorisation properties P"
+   ],
+   [
+    0,
+    "Define valid scenarios S~valid~"
+   ],
+   [
+    0,
+    "Define negative scenarios S~negative~"
+   ],
+   [
+    0,
+    "Define adversarial scenarios S~adv~"
+   ],
+   [
+    0,
+    "**for** each scenario s in S~valid~ ∪ S~negative~ ∪ S~adv~ **do**"
+   ],
+   [
+    1,
+    "Execute s using framework F"
+   ],
+   [
+    1,
+    "Collect authorisation decision"
+   ],
+   [
+    1,
+    "Collect identity, approval, policy, and audit evidence"
+   ],
+   [
+    1,
+    "Compare observed decision with expected decision"
+   ],
+   [
+    1,
+    "Record pass or failure result"
+   ],
+   [
+    0,
+    "**end for**"
+   ],
+   [
+    0,
+    "Evaluate soundness property"
+   ],
+   [
+    0,
+    "Evaluate denial property"
+   ],
+   [
+    0,
+    "Evaluate threshold correctness"
+   ],
+   [
+    0,
+    "Evaluate policy-scope enforcement"
+   ],
+   [
+    0,
+    "Evaluate audit consistency"
+   ],
+   [
+    0,
+    "Analyse failures and limitations"
+   ],
+   [
+    0,
+    "**return** Validation results"
+   ]
+  ],
+  "page": 86
+ },
+ {
+  "t": "h3",
+  "num": "6.6.3",
+  "title": "Algorithm 6: Formal and Empirical Authorisation Validation",
+  "page": 86
+ },
+ {
+  "t": "p",
+  "text": "Algorithm 6 provides a structured method for evaluating the framework. It does not assume that successful execution of a consent workflow is sufficient evidence of security. Instead, it requires the system to demonstrate that invalid conditions produce appropriate denial decisions and that the recorded evidence is consistent with the decision. The formal and empirical components are complementary. Formal reasoning defines what the framework should guarantee, while empirical testing examines whether the implementation satisfies those guarantees in representative operational scenarios. This combination is necessary because a system may be conceptually correct but incorrectly implemented, or may pass functional tests while failing under invalid or adversarial conditions.",
+  "page": 86
+ },
+ {
+  "t": "h2",
+  "num": "6.7",
+  "title": "Algorithms and the Research Objectives",
+  "page": 86
+ },
+ {
+  "t": "p",
+  "text": "The six algorithms correspond directly to the six research objectives and provide a progressive development structure for the proposed framework. Algorithm 1 establishes the consent representation, while Algorithm 2 verifies the identity and authority information contained in that representation. Algorithm 3 then establishes collective authorisation through independently verified approvals. Algorithm 4 evaluates whether a specific access request satisfies the consent policy before healthcare data are released. The final two algorithms extend this foundational mechanism. Algorithm 5 introduces temporal and lifecycle validity, while Algorithm 6 provides formal and empirical assurance of the complete framework. ⦅This structure reflects the staged research design. The current stage establishes the foundational authorisation mechanisms together with their dynamic validity. CA3 completes their formal security assurance and their practical evaluation.⦆⦅⦅⦆⦆",
+  "page": 86
+ },
+ {
+  "t": "p",
+  "text": "⦅security assurance and comprehensive practical evaluation.⦆ The overall trust-oriented authorisation process can therefore be summarised as Trustworthy Access with ⟪1) Identity Trust,⟫ ⟪2)⟫ Authority Trust, ⟪3)⟫ Collective Authorisation, ⦅4) Policy Compliance, 5) Temporal, Jurisdictional and Lifecycle Trust, and 6) Formal and Empirical Assurance of the complete decision.⦆⟪⟫⟪⟫ ⦅For the current stage implementation, the operational decision was originally based on the three-predicate rule of Equation (64), which the five-predicate rule of Equation (65) now supersedes in the implemented system.⦆",
+  "page": 87
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R).",
+  "page": 87,
+  "num": 64
+ },
+ {
+  "t": "p",
+  "text": "⦅The extended rule, originally planned for CA3 and now enforced by the implemented system, incorporates temporal, jurisdictional and lifecycle conditions, as already stated in Equations (54), (60) and (61), such that⦆⦅⦆⟪⟫",
+  "page": 87
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R, t) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R) ∧ V~T~(C, t) ∧ V~L~(C).",
+  "page": 87,
+  "num": 65
+ },
+ {
+  "t": "p",
+  "page": 0,
+  "text": "⦅Under Equation (65) access is granted only when all five predicates hold, ⦅revocation is evaluated within V~A~, and every decision evaluated against an active consent, whether granted or denied, is logged together with the full decision matrix.⦆⦆⟪⟫"
+ },
+ {
+  "t": "p",
+  "text": "⦃Algorithms 1, 3 and 4 are realised in the current prototype. Algorithm 5 is realised except for its transition check (lines 16 to 20). Algorithm 2 is realised in its structural form as a DID-format check without cryptographic VC validation. The empirical branch of Algorithm 6 has been executed against the prototype. Consequently, only the formal-assurance branch, together with configurable k-of-n thresholds and authenticated requesters, remains for the next stage.⦄"
+ },
+ {
+  "t": "p",
+  "text": "These equations demonstrate that trust is not provided by blockchain alone. ⦅Blockchain contributes integrity, tamper resistance, persistence, and auditability [2], [18].⦆ DID and VC mechanisms contribute identity and authority evidence. Multi-party authorisation contributes collective decision-making. Policy evaluation contributes contextual compliance. Temporal and lifecycle controls contribute dynamic validity. The proposed framework integrates these mechanisms into a coherent authorisation process in which access is granted only when the required trust conditions are satisfied.",
+  "page": 87
+ },
+ {
+  "t": "h1",
+  "num": "7",
+  "title": "Current Progress Status",
+  "page": 87
+ },
+ {
+  "t": "h2",
+  "num": "7.1",
+  "title": "Progress of RO1: Trust-Centric Consent Model",
+  "page": 87
+ },
+ {
+  "t": "p",
+  "text": "Status: Completed",
+  "page": 87
+ },
+ {
+  "t": "p",
+  "text": "RO1 has been completed at the conceptual and prototype-design level. The main contribution of RO1 is the transformation of consent from a static permission record into a structured authorisation object. Instead of storing only whether a patient has granted access, the consent object explicitly records the conditions that determine whether access should be permitted. ⦅The proposed representation, defined in Eq. (46), is⦆",
+  "page": 87
+ },
+ {
+  "t": "eq",
+  "text": "⟪C = (I, A, P, T, L, E).⟫",
+  "page": 87,
+  "num": 66
+ },
+ {
+  "t": "p",
+  "text": "Identity information establishes the relevant participants. Authorisation requirements define who must approve the consent. ⦅Policy information specifies the purpose and permitted data scope. Temporal information defines the validity interval [t~s~, t~e~] within which the consent may be exercised, and the jurisdiction component records the legal territory in which access is permitted.⦆ Authorisation evidence records the information required to demonstrate how the consent decision was established. The model provides the foundation for the remaining objectives because the identity, multiparty approval, and policy mechanisms can all be evaluated against the same consent object. ⦅The current result demonstrates that consent can be represented as an evaluable authorisation object that, unlike the objects reported in the literature [71, 37, 44, 58, 66], carries the guardian set and threshold together with the purpose, data scope, validity interval, jurisdiction and lifecycle state.⦆ This provides a conceptual basis for dynamic access decisions and allows subsequent authorisation conditions to be evaluated consistently.",
+  "page": 87
+ },
+ {
+  "t": "h2",
+  "num": "7.2",
+  "title": "⦅Progress of RO2: Decentralised Identity and Authority Trust⦆",
+  "page": 88
+ },
+ {
+  "t": "p",
+  "text": "Status: Completed",
+  "page": 88
+ },
+ {
+  "t": "p",
+  "text": "RO2 has been completed at the conceptual and prototype level. The proposed framework explicitly separates identity authentication from authorisation authority⟪, such⟫ that",
+  "page": 88
+ },
+ {
+  "t": "eq",
+  "text": "Identity ≠ Authorisation.",
+  "page": 88,
+  "num": 67
+ },
+ {
+  "t": "p",
+  "text": "A decentralised identifier is used to establish the identity of a participant, while verifiable credentials provide evidence concerning the participant’s role or authority. ⦅The identity verification condition is represented, as in Eq. (48), as⦆",
+  "page": 88
+ },
+ {
+  "t": "eq",
+  "text": "V~I~(u) = VerifyDID(u) ∧ VerifyVC(u).",
+  "page": 88,
+  "num": 68
+ },
+ {
+  "t": "p",
+  "text": "Successful identity verification therefore does not automatically grant access to healthcare information. Instead, identity and credential validity become trusted inputs to the subsequent authorisation process. The current implementation demonstrates the separation between participant identity and authorisation authority. A valid healthcare participant identity can be verified independently from the question of whether that participant is authorised to access a particular patient’s data.",
+  "page": 88
+ },
+ {
+  "t": "p",
+  "page": 0,
+  "text": "⦅It should be noted that the identity verification V~I~ in the current prototype performs identifier- and credential-format validation only. Cryptographic DID resolution against a registry and authentication of the requester are acknowledged limitations and are reserved for the next stage.⦆⦅ ⦆⟪ "
+ },
+ {
+  "t": "h2",
+  "num": "7.3",
+  "title": "Progress of RO3: Trustworthy Multi-Party Authorisation",
+  "page": 88
+ },
+ {
+  "t": "p",
+  "text": "Status: Completed",
+  "page": 88
+ },
+ {
+  "t": "p",
+  "text": "RO3 has been completed at the conceptual and prototype level. The framework introduces threshold-based multi-party authorisation to prevent a single participant from unilaterally establishing sensitive healthcare data access. Let A~v~ represent the set of independently verified authorisation participants and N represent the required approval threshold. The authorisation condition⦅, defined in Eq. (49),⦆ is",
+  "page": 88
+ },
+ {
+  "t": "eq",
+  "text": "V~A~(C) = 1, |A~v~| ≥ N; 0, |A~v~| < N.",
+  "page": 88,
+  "num": 69
+ },
+ {
+  "t": "p",
+  "text": "If the threshold is not satisfied,",
+  "page": 88
+ },
+ {
+  "t": "eq",
+  "text": "|A~v~| < N ⟹ Decision(C, R) = DENY.",
+  "page": 88,
+  "num": 70
+ },
+ {
+  "t": "p",
+  "text": "This mechanism allows the framework to distinguish between insufficient and sufficient collective authorisation. The prototype demonstrates that a consent object remains unable to establish valid authorisation until the required number of independently verified participants has approved it. For example, where two approvals are required,",
+  "page": 88
+ },
+ {
+  "t": "eq",
+  "text": "|A~v~| = 2 ⟹ V~A~(C) = 1,",
+  "page": 88,
+  "num": 71
+ },
+ {
+  "t": "p",
+  "text": "whereas",
+  "page": 88
+ },
+ {
+  "t": "eq",
+  "text": "|A~v~| = 1 ⟹ V~A~(C) = 0.",
+  "page": 88,
+  "num": 72
+ },
+ {
+  "t": "p",
+  "text": "This provides preliminary evidence that the proposed framework can enforce collective rather than unilateral authorisation.",
+  "page": 88
+ },
+ {
+  "t": "p",
+  "text": "⦅It should be noted that the implemented threshold is derived from the designated guardian set as N = |G|. Therefore, the prototype currently enforces an N-of-N instantiation of Eq. (69), and it has been evaluated in the 2-of-2 configuration. Configurable k-of-n thresholds are reserved for the next stage.⦆⦃⦄"
+ },
+ {
+  "t": "h2",
+  "num": "7.4",
+  "title": "⦅Progress of RO4: Policy- and Context-Aware Access Control⦆",
+  "page": 89
+ },
+ {
+  "t": "p",
+  "text": "⦅Status: Completed⦆",
+  "page": 89
+ },
+ {
+  "t": "p",
+  "text": "⦅RO4 represents the third layer of the foundational framework, beyond identity⦆ and multi-party approval. The objective is to ensure that an otherwise valid requester cannot access healthcare information outside the purpose and data scope authorised by the consent. ⦅The proposed policy predicate is written, as in Eq. (36), as⦆",
+  "page": 89
+ },
+ {
+  "t": "eq",
+  "text": "V~P~(C, R) = Policy(C, R).",
+  "page": 89,
+  "num": 73
+ },
+ {
+  "t": "p",
+  "text": "⦃where Policy(C, R) denotes the conjunction of the purpose check V~U~(C, R) and the scope check V~S~(C, R) defined in Eq. (53).⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦅For example, if S~C~ = {Observation, Medication} and the requester asks for S~R~ = {Observation, Medication, Procedure}, the request exceeds the authorised scope. In this case V~P~ evaluates to 0 and the request is denied with V~P~ named as the failed check. This over-scope denial is exercised by the per-dimension failure tests described in Section 6.8.9. Section 6.8.4 shows the requested-subset rule enforced on the live system.⦆",
+  "page": 89
+ },
+ {
+  "t": "p",
+  "text": "⦅The policy predicate is evaluated as one term of the complete decision matrix V~I~ ∧ V~A~ ∧ V~P~ ∧ V~T~ ∧ V~L~. Every denial names the failed checks explicitly in both the interface and the audit ledger.⦆ In addition, input validation on consent creation and access requests prevents malformed identifiers, scopes and jurisdictions from reaching the decision logic. Consequently, policy-aware access control is an enforced property of the running system rather than an expected outcome."
+ },
+ {
+  "t": "h2",
+  "num": "7.5",
+  "title": "Progress of RO5: Temporal and Lifecycle Trust",
+  "page": 89
+ },
+ {
+  "t": "p",
+  "text": "Status: In Progress",
+  "page": 89
+ },
+ {
+  "t": "eq",
+  "text": "V~T~(C, t) = (t~s~ ≤ t ≤ t~e~).",
+  "page": 89,
+  "num": 74
+ },
+ {
+  "t": "p",
+  "text": "⟪The next stage will extend the implemented lifecycle mechanism towards consent modification, delegation, and guardian-set changes, and will formalise the state-transition model so that unauthorised lifecycle transitions can be excluded by construction.⟫",
+  "page": 89
+ },
+ {
+  "t": "h2",
+  "num": "7.6",
+  "title": "⦅Progress of RO6: Formal Security Assurance and Empirical Validation⦆",
+  "page": 89
+ },
+ {
+  "t": "p",
+  "text": "⦅Status: Partially Completed (scenario-based empirical validation complete; formal assurance and performance study outstanding)⦆⟪⟫",
+  "page": 89
+ },
+ {
+  "t": "p",
+  "text": "RO6 is partially completed through the implementation and initial scenario-based validation of the HALAH prototype. The current prototype provides a practical environment for evaluating the trust-oriented authorisation model using synthetic healthcare records. The system represents patients and healthcare participants using decentralised identities and provides mechanisms for consent creation, participant ⦅verification, multi-party approval, and access-control evaluation. ⦅The decision rule enforced by the prototype at every access request is the rule of Eq. (65), written in piecewise form as⦆⦆",
+  "page": 89
+ },
+ {
+  "t": "eq",
+  "text": "⦅Decision(C, R, t) = ALLOW, V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R) ∧ V~T~(C, t) ∧ V~L~(C); DENY, otherwise.⦆",
+  "page": 89,
+  "num": 75
+ }
+]

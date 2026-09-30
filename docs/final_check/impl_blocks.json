@@ -1,0 +1,825 @@
+[
+ {
+  "t": "h2",
+  "num": "6.8",
+  "title": "Implementation and Live Demonstration of the Proposed Solution",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The HALAH implementation provides a role-based patient consent management environment that operationalises the proposed multi-party healthcare data-sharing framework. The subsystem is organised around four principal functions: patient consent creation, guardian cryptographic approval, authorised doctor data access, and independent audit of the consent lifecycle. Rather than treating consent as a single approval event, the implementation represents consent as a lifecycle in which a consent request is created, independently authorised by designated parties, and cryptographically activated on a public blockchain. ⦅The consent is then checked for validity at every request and is used to control access to specific electronic medical record (EMR) modules. EMR is the term used by the implementation for the electronic health record (EHR) components discussed in the earlier chapters. ",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The activation and revocation of a consent are not confined to the application. Instead, they are executed as real transactions on the **Ethereum Sepolia** test network. Consequently, the essential state changes of a consent can be verified by any third party on a public block explorer. The overall workflow implemented by the system is therefore consistent with the proposed authorisation model as",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "Create Consent → Guardian Approval → Multi-signature Validation → On-chain Consent Activation",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "→ Doctor Access → Consent Revocation → Independent Audit",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "This sequence provides an end-to-end demonstration of how the conceptual consent model is translated into an operational healthcare data-sharing process. Each stage is documented below with a screenshot of the running system and, where the stage produces a blockchain transaction, with the corresponding transaction on Sepolia Etherscan.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅This operational sequence realises the trust-oriented authorisation model developed in the preceding sections of this chapter. The consent object of Eq. (46), the identity and authority verification of Algorithm 2, the threshold-based multi-party authorisation of Algorithm 3 and the trust-predicate evaluation of Figure 8 are each exercised in this workflow. In addition, the resulting activation and revocation are anchored by real transactions on the Ethereum Sepolia test network. Consequently, the conceptual model and the running system can be verified against one another.⦆",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.1",
+  "title": "The HALAH System",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The main HALAH subsystem presents itself as a Patient Consent Management Platform for History Access by Authorised Healthcare Providers. The subsystem provides a role-oriented environment in which different participants interact with the same consent lifecycle according to their respective authorisation responsibilities.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The implementation does not expose the underlying blockchain and cryptographic mechanisms as isolated technical components. Instead, these mechanisms are incorporated into the user workflow. Consequently, the subsystem presents the system from the perspective of the healthcare participants while the underlying implementation performs identity verification, consent-state checking, multi-party approval, cryptographic validation, on-chain anchoring and audit recording.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "This design corresponds to the overall HALAH architecture, in which ⦅decentralised identifiers (DIDs) [20] provide identity pointers⦆, the consent object defines the authorisation conditions, cryptographic signatures provide evidence of approval, and the blockchain-based ledger provides lifecycle traceability.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "n_compile",
+  "caption": "Compilation of ConsentSBTv3 in Remix: the compiler reports a successful compilation and the contract is selected for deployment.",
+  "w": 600,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅As shown in the figure above, the consent token contract, ConsentSBTv3, was first compiled in Remix without errors. The deployment record lists solc 0.8.34 with the optimiser enabled. The contract was then deployed to the Sepolia test network from the project test wallet through MetaMask. The contract implements a soulbound ERC-721 token, and transfers between accounts are blocked. Consequently, an activated consent can never be traded or moved. Burning is possible only through the ERC-5484 consensual-burn interface. Each token stores the pseudonymous patient and requester addresses, a hash of the purpose, the validity window, a two-letter jurisdiction code and a revocation flag. The contract stores the purpose only as a keccak256 hash, and no medical content is written to the chain. It should be noted, however, that the plaintext purpose is passed as a parameter of the mint transaction and is therefore visible in the public transaction input. The EMR data remain in the application.⦆",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "g_deploy",
+  "caption": "Deployment of ConsentSBTv3 from Remix through MetaMask on the Sepolia network.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅As shown in the figure above, the deployment is an ordinary Ethereum transaction that the wallet owner must explicitly confirm. The project test wallet, displayed as BNHP Ministry Test Wallet, shows the target network (Sepolia), the estimated network fee and the account nonce before the contract is created.⦆ This is important because it demonstrates that consent activation in HALAH ultimately rests on the same transaction-signing discipline as any other blockchain operation.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "n_verified",
+  "caption": "Remix after deployment: the contract appears under Deployed Contracts and the source verification service reports Verification Successful.",
+  "w": 580,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the deployed instance is listed in Remix under Deployed Contracts, and the source code was submitted for verification, which completed with Verification Successful. ⦅This is important because it ties the published bytecode on Sepolia to the Solidity source. Consequently, any party can confirm which rules the consent registry enforces.⦆",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "g_etherscan",
+  "caption": "The deployed contract on Sepolia Etherscan, with the creator wallet, the MedicalConsent (CONSENT) token tracker and the first mint transaction.",
+  "w": 620,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the deployed contract is publicly listed at 0x0EC3617581DEC63A7f2bb162DC14d088916ADc73 on Sepolia Etherscan, together with its creator wallet and the token tracker MedicalConsent (CONSENT). Consequently, the existence of the consent registry itself, and every activation or revocation recorded on it, can be inspected independently of the HALAH application.",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.2",
+  "title": "Create Smart Consent Contract: Patient Subsystem",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The first functional subsystem is the Create Smart Consent Contract module. This module represents the patient-side initiation of a consent transaction and corresponds directly to the construction of the proposed consent object.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The subsystem requires the patient to specify the Patient DID, Authorised Doctor DID, Data Access Scope, Designated Guardian DIDs, the Jurisdiction, and the temporal validity of the consent. These fields collectively operationalise the proposed consent representation:",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "C = (I, A, P, T, L, E)",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅where the identity of the patient is represented through a DID and the authorised actor is explicitly specified. The permitted data scope is constrained to selected EMR modules. The temporal fields define when the authorisation becomes valid and when it expires. The jurisdiction field constrains where the consent may be exercised. The evidence component E records the authorisation evidence, including whether the consent remains active or has been revoked.⦆",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The form fields therefore instantiate the consent object defined in Section 6.1. ⟮The demonstrated representation realises the six-component object C = (I, A, P, T, L, E) of Eq. (46) and Figure 11⟯, in which the temporal validity window T, captured through the Start Time and Expiry Time fields, and the jurisdiction L are stored on-chain by the deployed ConsentSBTv3 contract and evaluated at every access decision.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "M1",
+  "caption": "The patient subsystem after consent creation: four EMR modules, two designated guardians, jurisdiction AU, and the state PENDING_SIGNATURE.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the Patient DID provides the identity pointer for the data subject, while the Authorised Doctor DID limits the intended healthcare recipient. This is important because the implementation does not represent consent as a general permission to access a patient's medical information. Instead, the authorisation is bound to a specific identity and therefore supports subject-specific and actor-specific access control.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The Data Access Scope is particularly important to the proposed framework. ⦅Instead of granting access to the complete EMR, the patient selects particular modules. In the demonstrated transaction all four modules (Observation, Medication, Condition and Procedure) were selected.⦆ This implements the principle of purpose- and scope-limited consent and corresponds to the P component of the consent object. ⦅In addition, the implementation validates the input before the consent is stored. A consent with an empty data scope is rejected, and every guardian entry must be a well-formed DID.⦆",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The Designated Guardian DIDs establish the additional parties required to participate in the authorisation process. Their presence in the consent-creation subsystem demonstrates that multi-party consent is incorporated at the point at which the consent contract is constructed rather than being added after authorisation.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "Finally, the Start Time and Expiry Time implement temporal constraints on the consent, and the Jurisdiction field records the legal territory (AU in the demonstrated transaction). Consequently, authorisation is not represented as a permanent or universal permission. Instead, the consent has a defined lifecycle and territory and can subsequently be evaluated by the Consent Engine according to both. At this point the consent exists only in the application ledger, in the state PENDING_SIGNATURE; nothing is written to the blockchain until the guardians have approved.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅Two consent lifecycles appear in the demonstration and should be distinguished. The evaluated consent, f050c29a, was carried through the complete lifecycle. It was activated as token #1, it was granted access, it was refused access and it was finally revoked. All transaction evidence in this chapter follows this consent. The creation and approval stages of the evaluated consent were not captured before it was revoked, and a revoked consent cannot be returned to those states. Therefore, the screenshots of consent creation, guardian approval and granted access were captured from a second lifecycle with the same configuration. This second lifecycle used the same four-module scope, the same guardians, the same jurisdiction, the same purpose and the same doctor. It was executed for a different demonstration patient as consent 04da25f5, which is anchored as token #2 in block 11,771,581. The two lifecycles were executed with the same code and the same contract.⦆",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "From a system perspective, this module therefore corresponds primarily to **Consent Object Construction and Patient Initiation**.",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.3",
+  "title": "Guardian Cryptographic Approval",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The second part is the Guardian Cryptographic Approval. As shown in the figure below, it operationalises the multi-party authorisation component of the proposed framework.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "n_guardA",
+  "caption": "The guardian subsystem at the first approval: the EIP-712 signature of did:parent:A is verified and the multi-signature count is 1/2.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the first guardian (did:parent:A) approves the consent and the subsystem reports EIP-712 signature verified (signer 0x3Af549b0…) with the multi-signature count 1/2. The consent remains pending, because the approval condition has not yet been satisfied. The second guardian then repeats the same procedure.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "M2",
+  "caption": "The guardian subsystem at the moment of the second approval: the EIP-712 signature is verified, the 2/2 threshold is reached, the SBT is minted in the local ledger and the Sepolia anchoring starts in the background.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅As shown in the figure above, the guardian first enters the target Consent ID. The system then retrieves the corresponding active transaction and displays the associated patient DID. The guardian then selects their own Guardian DID identity and approves the consent with an EIP-712 typed-data signature. The signature binds the approval to this specific consent, to this guardian and to this network (chainId 11155111). The system verifies each signature by recovering the signer address and comparing it with the address associated with that guardian DID. A signature produced for another consent, another guardian or another chain is rejected. In addition, the interface refuses a second signature from the same guardian.⦆",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "Each approval is evaluated by the procedure formalised in Algorithm 3. ⦅In the implemented configuration the authorisation threshold is derived from the designated guardian set as N = |G|. Therefore, every listed guardian must produce a valid EIP-712 signature before activation. The demonstrated 2-of-2 approval is consequently an N-of-N case of the threshold condition ⦅of Eq. (49).⦆⦆",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The subsystem subsequently reports:",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "EIP-712 signature verified (signer 0x39B12b87…). Multi-sig: 2/2",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "This is an important implementation-level demonstration because the consent is not activated merely because the patient created it. Instead, the system requires the predefined guardian approval condition to be satisfied. ⦅The guardian approval establishes the V~A~ conjunct of the logical authorisation rule that the implementation enforces at every subsequent access request:⦆",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "ALLOW = VI ∧ VA ∧ VP ∧ VT ∧ VL",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "where identity verification, authorisation verification, purpose verification, temporal verification and jurisdictional verification must all be satisfied before access can be granted. For the demonstrated two-guardian configuration, the approval process can also be represented as:",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "Σ g∈G  Sign(g, C)  ≥  |G| = 2",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "where G represents the designated guardians and every listed guardian must provide a valid signature for activation. Once the required signatures have been obtained, the subsystem displays SBT MINTED together with the Soulbound Token identifier, and a background job submits the mint transaction to Sepolia. While the background job is running, the subsystem reports the intermediate state explicitly.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "n_anchoring",
+  "caption": "The guardian subsystem while the mint transaction is pending: the 2/2 threshold is reached but not yet anchored, the anchoring runs in the background, and a repeated signature from the same guardian is refused.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the subsystem reports that the threshold has been reached but the consent is not yet anchored, offers a manual synchronisation with the chain, and refuses a second signature from the same guardian. This is important because the one-signature-per-guardian rule prevents a single guardian from satisfying the multi-signature threshold alone. When the guardian later re-enters the Consent ID, the subsystem reports Already anchored on Sepolia together with the on-chain token number (token #2 for the photographed lifecycle, token #1 for the evaluated consent).",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "M2b",
+  "caption": "The guardian subsystem revisited after the background job has completed: 'Already anchored on Sepolia - token #2'.",
+  "w": 540,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the anchored state persists across sessions and navigation, because it is read back from the ledger rather than from the page. This provides a visible representation of the transition from a pending consent transaction to an activated, publicly recorded consent state. The SBT therefore functions in the implementation as a persistent cryptographic representation of the completed consent authorisation rather than as a transferable asset.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "M3",
+  "caption": "The anchoring transaction of the evaluated consent on Sepolia Etherscan: status Success, block 11,771,243, 'Mint 1 of MedicalConsent' to the pseudonymous patient address (function selector 0x1e1e7c76, mintConsentV3).",
+  "w": 620,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅As shown in the figure above, the anchoring of the evaluated consent (token #1) is an ordinary, publicly verifiable transaction. Etherscan reports the status Success, the block number 11,771,243 and the transaction fee. It also shows the transfer of one MedicalConsent token to the pseudonymous patient address derived from the patient DID.⦆ The transaction can be inspected on Sepolia Etherscan (mint transaction 0x8be1b99e…daf13d, listed in the verification links of Section 6.8.12). This provides an implementation-level demonstration that consent activation can be verified independently of the application.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The guardian subsystem consequently corresponds to **Multi-Party Approval, Cryptographic Verification and Consent Activation** in the proposed architecture.",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.4",
+  "title": "Secure Patient Data Access for the Doctor",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The third module is the Secure Patient Data Access module and represents the healthcare-provider side of the authorisation process.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The doctor enters an authorised Consent ID, after which the system retrieves and displays the associated consent information. The subsystem shows the patient DID, Consent ID, purpose, and current consent state:",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "State = ACTIVE",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "This is important because the doctor does not directly access patient data based solely on possession of a Consent ID. The system first evaluates whether the underlying authorisation remains valid, and it does so for every component of the consent object. The decision matrix displayed to the doctor reports the outcome of each check individually.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "g_doc_au",
+  "caption": "The doctor subsystem with requester jurisdiction AU (the evaluated consent f050c29a, captured before its revocation): all five checks report PASS, ALLOW = PASS, and the consent state is ACTIVE.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the five checks VI (identity), VA (authorisation), VP (purpose), VT (time) and VL (jurisdiction) all report PASS, and consequently ALLOW = PASS. The subsystem then presents the Authorised Data Scope, showing that only the EMR modules specified in the original consent are available. In the demonstrated transaction, the authorised modules are:",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "Scope = { Observation, Medication, Condition, Procedure }",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅The five columns of the decision matrix are the operational form of the decision rule Decision(C, R, t) = ALLOW⦆ ⟺ VI(u) ∧ VA(C) ∧ VP(C, R) ∧ VT(C, t) ∧ VL(C), ⦅which is the complete decision rule of Eq. (54) and Eq. (60), extending the three-predicate rule of Eq. (64) with the temporal and jurisdictional verdicts⦆. ⦅In the prototype every consent records a jurisdiction, so the jurisdiction predicate of Eq. (59) reduces to the condition that the requester's declared jurisdiction equals the jurisdiction recorded in the consent,⦆ which the jurisdiction-violation demonstration below confirms empirically.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦃Figure 28 shows the predicate evaluation flow of Figure 8 as it is enforced by the implemented Consent Engine.⦄"
+ },
+ {
+  "t": "ifig",
+  "file": "predicate_flow",
+  "caption": "⦅Trust Predicate Evaluation and Authorisation Decision Flow of Figure 8, as enforced by the implemented Consent Engine.⦆",
+  "w": 360,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The doctor must subsequently select the modules to request; the request must be a non-empty subset of the authorised scope. The system displays the requested modules and performs cryptographic verification before granting access. ⦅In this version, the verification also generates and verifies a Groth16 zero-knowledge proof. The public inputs of the proof are a Poseidon commitment and the current time. The private witnesses are a secret and the expiry time. Because the prover and the verifier currently run on the same server, the proof demonstrates the integration of the zero-knowledge toolchain rather than an additional privacy guarantee (see the limitations discussed at the end of this section). The audit ledger records the proof mode (groth16) with every access granted in the demonstrated lifecycles, and the subsystem then shows the message Cryptographic Verification Successful — Access Granted.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "M4",
+  "caption": "The doctor subsystem after verification (the photographed lifecycle 04da25f5 introduced earlier): access granted and the authorised medical records displayed per EMR module; the Observation module's Download CSV control is visible.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "M4b",
+  "caption": "The remaining authorised modules of the same request: the Condition and Procedure records, with the Condition module's export control visible.",
+  "w": 540,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅The two figures above demonstrate the transition from consent verification to data-access authorisation. The checks are recorded in the audit ledger as STATE_CHECK events, one for every evaluated access request. This distinction is central to the HALAH design. Consent and data access are not treated as identical events. Instead, the flow proceeds as follows:",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "Consent → Verification → AccessDecision",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The doctor is therefore authorised only when the requested resources are consistent with the consent object and the consent remains active. The final Authorised Medical Records section presents the actual data modules available to the doctor. Because the subsystem separates the OBSERVATION, MEDICATION, CONDITION and PROCEDURE modules, it provides a direct visual demonstration of fine-grained EMR access control.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦃It should be noted that all medical records displayed in the demonstration are synthetic; no real patient data were used at any stage of the implementation or evaluation.⦄"
+ },
+ {
+  "t": "p",
+  "text": "Thus, the doctor subsystem corresponds to **Consent-State Validation, Scope Enforcement and Authorised Data Access**.",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.5",
+  "title": "Negative Demonstration: Jurisdiction Violation",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The fourth part is the negative demonstration. ⦅This is important because a consent framework must be evaluated on whether it grants legitimate access and on whether it refuses illegitimate access.⦆ The same doctor therefore repeated the request for the evaluated consent while declaring the requester jurisdiction as SA, whereas the consent was issued for AU.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "g_doc_sa",
+  "caption": "The doctor subsystem with requester jurisdiction SA: VL reports FAIL and consequently ALLOW = FAIL, although the consent state remains ACTIVE.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the decision matrix immediately reports VL = FAIL and consequently ALLOW = FAIL, even though the consent itself is still ACTIVE, the guardian signatures remain valid and all other checks pass. This is important because it demonstrates that the access decision is taken over the complete consent tuple rather than over the consent state alone.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "g_denied",
+  "caption": "The refused request: 'Security Exception: Access Denied by ZK-Policy. Failed checks: VL'.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, when the doctor submits the request, access is refused and the failed check is named explicitly. The corresponding audit-ledger entry records the result DENIED together with the complete decision matrix, so that the refusal is itself auditable. This is important because the jurisdiction check is included in the access decision rather than merely displayed.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "This demonstration corresponds to **Jurisdictional Constraint Enforcement and Fail-Closed Access Control**.",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.6",
+  "title": "Consent Revocation",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The fifth module is the Consent Revocation module. ⦅This module operationalises the revocation dimension of the evidence component E of the consent object, which requires⦆ that a patient can withdraw consent and that the withdrawal takes effect for every subsequent request. In the patient's My Consents view, each consent is listed with its state, signature count and token. The patient then selects Revoke, after which the system updates the application state and submits a revoke transaction to the contract on Sepolia.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "g_revoking",
+  "caption": "The patient subsystem during revocation: 'Revoking on Sepolia - waiting for block confirmation…'.",
+  "w": 540,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the withdrawal is submitted as a blockchain transaction and the subsystem waits for the block confirmation before reporting the final state.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "g_revoked",
+  "caption": "The patient subsystem after revocation: the evaluated consent f050c29a is REVOKED with token #1 (displayed as SBT-1). The other rows are earlier trial consents.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the revoked consent is displayed as REVOKED together with its on-chain token number. The revocation was confirmed on Sepolia in block 11,771,307, and from that point the contract itself reports the token as no longer valid, so any verifier that reads the chain observes the withdrawal.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅The demonstrated revocation completes the consent lifecycle anticipated by the temporal and lifecycle model of Section 6.5. ⦅The consent progresses through the controlled states PENDING_SIGNATURE, ACTIVE and REVOKED of the six-state lifecycle defined there. The PENDING_TOKEN state is passed within the same interaction, because a local token identifier is recorded as soon as the threshold is reached.⦆ ⦅The EXPIRED state is not reached in the demonstration. The NOT_STARTED state applies only while the current time precedes the start time of the consent and is left as soon as the start time is reached.⦆ The activating and revoking transitions are themselves verifiable Sepolia transactions, in blocks 11,771,243 and 11,771,307 respectively. Therefore, trust is not treated as permanently established at the moment a consent is created, which is the lifecycle-trust principle stated in Section 6.5.⦆",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦃Figure 35 summarises the implemented lifecycle and its anchored transitions.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦅It should be noted that the expiry path is not shown in the live demonstration. In this path the temporal predicate V~T~ fails once the current time exceeds t~e~ and the consent enters the EXPIRED state. This path is exercised by the automated tests reported in Section 6.8.9. A consent with a validity window long enough to be photographed cannot be allowed to expire within the demonstration period.⦆"
+ },
+ {
+  "t": "ifig",
+  "file": "lifecycle_sm",
+  "caption": "The implemented consent lifecycle: every consent progresses through controlled states, and the activating and revoking transitions are anchored as verifiable Sepolia transactions.",
+  "w": 620,
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "M5",
+  "caption": "The doctor subsystem after revocation: VA reports FAIL and the consent is reported as 'not active. Current state: REVOKED'.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, when the doctor subsequently enters the same Consent ID, the authorisation check VA fails and the subsystem reports that the consent is not active. ⦅Consequently, revocation is not merely a change of display. It removes the authorisation on which every later access decision depends.⦆",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "M6",
+  "caption": "The revocation transaction on Sepolia Etherscan: status Success, block 11,771,307, decoded input 'Function: revoke(uint256 tokenId)' with tokenId = 1.",
+  "w": 620,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the revocation is again a publicly verifiable transaction, whose decoded input names the contract function revoke and the token identifier. The transaction can be inspected on Sepolia Etherscan (revoke transaction 0x017efb9d…dceaa, listed in the verification links of Section 6.8.12). The revocation subsystem therefore corresponds to **Enforcement State Management and Consent Withdrawal**.",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.7",
+  "title": "Blockchain Audit and Consent Lifecycle for the Auditor",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The sixth major module is the Blockchain Audit & Consent Lifecycle module. This subsystem provides an independent view of the complete consent process and corresponds to the auditability and accountability component of the HALAH framework.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "n_lifecycle",
+  "caption": "The Consent Lifecycle reconstruction for the evaluated consent: the guardian signatures, MINT_SBT and ONCHAIN_MINT on the left, and the STATE_CHECK, DENIED, REVOKE_CONSENT and ONCHAIN_REVOKE events on the right.",
+  "w": 580,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the lifecycle view presents each event as a card with its timestamp, actor, role, action and result, so the chronological sequence of the authorisation process can be read directly.",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "M7",
+  "caption": "The auditor subsystem with the evaluated consent selected: aggregate indicators and the Detailed Audit Records, in which the on-chain events carry their transaction hashes and block numbers.",
+  "w": 620,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "As shown in the figure above, the system first provides aggregate indicators including:",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "Total Events = 60    Consent Events = 8    Access Requests = 9    On-chain Anchors = 5",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "These indicators give the auditor an immediate overview of the recorded system activity and of how many events are anchored on the public chain. ⦅The five anchors comprise the mint and revocation of the evaluated consent (token #1) and the mint of the photographed lifecycle (token #2). They also include the mint and revocation of an earlier trial consent on the previous contract. The nine access requests comprise the six granted and refused requests recorded across the two lifecycles together with three granted requests recorded for the earlier trial consents.⦆ ⦅In addition, the Consent Lifecycle section reconstructs the sequence of events associated with a particular consent.⦆ ⦅The reconstructed records include CREATE_CONSENT performed by the patient, followed by SIGN_CONSENT performed by each guardian, followed by MINT_SBT and ONCHAIN_MINT performed by the smart contract. In the figure the detailed table is scrolled to the on-chain events, whose rows carry the transaction hashes.⦆ The subsequent STATE_CHECK system events demonstrate that the Consent Engine continuously evaluates the state of the authorisation. The doctor then generates DATA_ACCESS with the result GRANTED, later DATA_ACCESS with the result DENIED when the jurisdiction check fails, and finally the patient generates REVOKE_CONSENT followed by ONCHAIN_REVOKE performed by the smart contract.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅This audit reconstruction, together with the independent verification of every recorded transaction against the public chain, constitutes the empirical component of the security-assurance objective RO6 of Section 6.6. Representative valid, invalid and adversarial scenarios have been executed against the running prototype, and the recorded evidence is consistent with the public chain. The formal component, that is, proofs and model checking of the stated properties, remains next-stage work.⦆",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "This produces an explicit chain of evidence as",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "Patient → Guardian_A → Guardian_B → SmartContract(mint) → ConsentEngine → Doctor(GRANTED)",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "→ Doctor(DENIED) → Patient(revoke) → SmartContract(revoke)",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅The audit subsystem therefore allows an auditor to reconstruct who accessed the data and why that access was permitted or refused. Each access event can be associated with the preceding consent creation, guardian approvals, on-chain activation and state checks, and with the decision matrix that was in force at that moment.⦆",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "This corresponds to the proposed requirement for **traceability, accountability and non-repudiable consent evidence**.",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.8",
+  "title": "Detailed Audit Records",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The Detailed Audit Records component provides a lower-level view of the events represented in the lifecycle subsystem.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "Where the lifecycle view is primarily designed to communicate the chronological sequence of the authorisation process, the detailed audit view provides the underlying event-level evidence. Each event can be associated with attributes such as actor, role, action, result, timestamp, consent context and, for on-chain events, the transaction hash and block number. As shown in the auditor figure above, the ONCHAIN_MINT and ONCHAIN_REVOKE rows carry the hashes of the two Sepolia transactions presented in Sections 6.8.3 and 6.8.6, so the ledger and the public chain describe the same events.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "This separation is useful because different stakeholders require different levels of information. A clinician may only need to know that a consent is active and valid, whereas an auditor may need to establish precisely when an approval occurred, which identity performed it, and what authorisation decision followed.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "The subsystem therefore implements the distinction between operational access information and forensic/audit information.",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.9",
+  "title": "Complete Audit Ledger and Independent Verification",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅The Complete Blockchain Audit Ledger provides the most complete representation of the recorded consent history.⦆ This component demonstrates that the audit mechanism is not limited to successful data-access events. Instead, the system records the broader lifecycle of the consent, including creation, signatures, state validation, smart-contract actions, refused requests and revocations. Consequently, the ledger provides the evidentiary foundation for evaluating several properties of the proposed framework:",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "Accountability + Traceability + Integrity + Non-repudiation",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "A ledger kept by the application could in principle contain fabricated entries. Consequently, the implementation provides an independent verification tool. ⦅The tool re-reads the ledger. For every event that carries a transaction hash, it fetches the corresponding receipt directly from Sepolia and checks that the transaction exists, succeeded, and was included in the recorded block. For every consent anchored on the current contract, it then reads the token back and compares the on-chain revocation state with the local state. ",
+  "impl": true
+ },
+ {
+  "t": "ifig",
+  "file": "M8_clean",
+  "caption": "The final verdict of the independent verification, re-executed after the second lifecycle: RESULT: ALL CHECKS PASSED.",
+  "w": 560,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅As shown in the figure above, the verification was re-executed after the second lifecycle and reports ALL CHECKS PASSED. Every recorded transaction was found on Sepolia in its recorded block. For both tokens on the current contract, the revocation state stored by the application matches the state stored by the contract. Accordingly, the demonstrated sequence shows that the doctor receives a GRANTED result only while the consent is in the ACTIVE state, and a DENIED or 'not active' result otherwise. This provides an implementation-level demonstration that access decisions are linked to the consent lifecycle rather than being independent application events, and that the recorded lifecycle is consistent with the public chain.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦃In addition to the live demonstration, the same decision logic is exercised by a suite of 23 automated tests covering per-dimension failures of the decision matrix, rejection of invalid EIP-712 guardian signatures and tampered or expired zero-knowledge proofs. The live Sepolia evidence and the automated tests together constitute the empirical validation reported in Section 7.6.⦄"
+ },
+ {
+  "t": "h3",
+  "num": "6.8.10",
+  "title": "Correspondence Between the Subsystems and the Framework",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅The subsystems collectively implement the principal stages of the proposed framework.⦆",
+  "impl": true
+ },
+ {
+  "t": "itable",
+  "impl": true,
+  "header": [
+   "HALAH Framework Component",
+   "Implementation Subsystem",
+   "Main Function"
+  ],
+  "rows": [
+   [
+    "Consent Object Construction",
+    "Create Smart Consent Contract",
+    "Defines patient, authorised doctor, data scope, guardians, jurisdiction and temporal validity"
+   ],
+   [
+    "Identity & Authorisation",
+    "Guardian Cryptographic Approval",
+    "Verifies guardian identities and EIP-712 signatures"
+   ],
+   [
+    "Multi-party Consent",
+    "Guardian Cryptographic Approval",
+    "Implements the 2-of-2 approval condition"
+   ],
+   [
+    "Consent Activation",
+    "Guardian Cryptographic Approval",
+    "Mints the SBT on Sepolia and marks the consent as fully activated"
+   ],
+   [
+    "Consent-State Management",
+    "Secure Patient Data Access",
+    "Checks whether the consent is ACTIVE"
+   ],
+   [
+    "Scope Enforcement",
+    "Secure Patient Data Access",
+    "Restricts access to authorised EMR modules"
+   ],
+   [
+    "Cryptographic Access Control",
+    "Secure Patient Data Access",
+    "Verifies the request, including a Groth16 proof, before granting data"
+   ],
+   [
+    "Jurisdictional Constraint (L)",
+    "Secure Patient Data Access",
+    "Refuses requests whose declared jurisdiction differs from the consent"
+   ],
+   [
+    "Healthcare Data Access",
+    "Secure Patient Data Access",
+    "Provides the authorised Observation, Medication, Condition and Procedure records"
+   ],
+   [
+    "⦅Authorisation Evidence / Revocation (E)⦆",
+    "My Consents (Patient)",
+    "Revokes the consent locally and on-chain"
+   ],
+   [
+    "Lifecycle Traceability",
+    "Blockchain Audit & Consent Lifecycle",
+    "Reconstructs the chronological consent process"
+   ],
+   [
+    "Accountability",
+    "Detailed Audit Records",
+    "Provides event-level evidence with transaction hashes"
+   ],
+   [
+    "Ledger Integrity",
+    "Complete Ledger + independent verification",
+    "Confirms the recorded history against Sepolia"
+   ]
+  ]
+ },
+ {
+  "t": "p",
+  "text": "This mapping demonstrates that the implementation is not merely a collection of independent user-subsystem modules. Rather, the modules correspond to successive stages of the proposed authorisation protocol.",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.11",
+  "title": "Overall System Demonstration",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅The subsystems collectively demonstrate an end-to-end implementation of the proposed HALAH authorisation workflow on a public blockchain.⦆ The patient first establishes the consent conditions through the Smart Consent Contract subsystem. The designated guardians then independently authenticate and provide the required cryptographic approvals. Once the multi-signature condition is satisfied, the consent is activated and represented by an SBT minted on Sepolia. The authorised doctor subsequently submits an access request, which is evaluated against the patient's identity, consent state, authorised data scope, temporal validity and jurisdiction. ⦅Only when these conditions are satisfied does the system provide access to the specified EMR modules. An out-of-jurisdiction request is refused and the failed check is named.⦆ ⦅The patient finally revokes the consent and the revocation is recorded on-chain. The complete sequence is then exposed through the auditor subsystem and re-verified independently against the chain.⦆",
+  "impl": true
+ },
+ {
+  "t": "eq",
+  "text": "C → MS → SBT_chain → StateCheck → AccessDecision → EMR → Revoke_chain → Audit → Verify",
+  "num": null,
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "where C denotes consent creation, MS multi-signature approval, SBT_chain on-chain consent activation, StateCheck lifecycle validation, AccessDecision authorisation enforcement over the full consent tuple, EMR authorised medical-record access, Revoke_chain on-chain revocation, Audit immutable lifecycle recording, and Verify independent verification against Sepolia.",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦅The demonstrated prototype makes several simplifications that are acceptable for a research demonstration but would require strengthening before deployment. The guardian signing keys are derived deterministically from the guardian DIDs so that the prototype can sign without wallets. In production, each guardian would sign the same typed data with a wallet-held key registered against their DID. The doctor's identity and jurisdiction are declared in the interface rather than authenticated. In addition, the Groth16 proof is generated and verified by the same server. Therefore, it currently demonstrates the integration of the zero-knowledge toolchain rather than an additional privacy guarantee. These aspects define the immediate future work of the project.⦆",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "⦃In addition, this section reports functional evidence only. Transaction latency, gas cost and throughput have not been measured, and a systematic performance and overhead study is reserved for the next stage, as set out in Section 9.2.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃It should be noted that, in the same way, the identity predicate V~I~ in the prototype performs identifier- and credential-format validation only; cryptographic resolution of DIDs against a registry and authentication of the requester are reserved for the next stage, as stated in Section 7.2.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦅From a research-implementation perspective, the most significant feature of the presented subsystems is the continuity of the workflow. Consent specification, multi-party authorisation, public on-chain activation and revocation, access enforcement and independently verifiable audit evidence form one continuous process. The user subsystems provide a visible representation of this continuity. Consequently, the proposed HALAH model can be demonstrated as an operational authorisation workflow on a public network rather than only as a conceptual framework.⦆",
+  "impl": true
+ },
+ {
+  "t": "h3",
+  "num": "6.8.12",
+  "title": "Verification Links",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "Contract: https://sepolia.etherscan.io/address/0x0EC3617581DEC63A7f2bb162DC14d088916ADc73",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "Consent activation (mint of token #1): https://sepolia.etherscan.io/tx/0x8be1b99e9b7054d427bdee0a0b5cc56ae99030a399f4b11d3629ed5d98daf13d",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "Consent activation (mint of token #2, photographed lifecycle): https://sepolia.etherscan.io/tx/0x25ef5e2f0046735dcb01ff7b68875b760bdf88ad0fa3fedc9bfb910769d4c210",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "Consent revocation (token #1): https://sepolia.etherscan.io/tx/0x017efb9dc6acad9733fa05c19408c0166c9c0645e83b6ffdc41c4b3b85ddceaa",
+  "impl": true
+ },
+ {
+  "t": "p",
+  "text": "Full audit-ledger export: `evidence/sepolia_audit_ledger_2026-09-24.csv`; deployment and run record: `evidence/sepolia_deploy_v3_2026-09-24.txt` preserved in the project evidence records.",
+  "impl": true
+ }
+]

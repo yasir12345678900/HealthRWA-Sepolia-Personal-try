@@ -1,0 +1,560 @@
+[
+ {
+  "t": "p",
+  "text": "At the current stage, the experimental evidence primarily demonstrates ⦅the consistency between the implemented consent, identity, policy, temporal, jurisdictional and⦆ multi-party authorisation mechanisms and their corresponding research questions.",
+  "page": 90
+ },
+ {
+  "t": "p",
+  "text": "⦅⦆  or expired zero-knowledge proofs. ⦅Live validation on the Sepolia testnet includes a negative demonstration in which a request declaring jurisdiction SA is made against a consent issued for AU. The request is denied, with V~L~ named as the failed check. It also includes a revocation scenario in which the same consent, once revoked on-chain, is subsequently denied through V~A~.⦆ Furthermore, an independent verification tool re-checks every ledger transaction hash against Sepolia receipts and reads each token back from the contract, reporting ALL CHECKS PASSED, and every granted access is accompanied by a real Groth16 proof generated and verified at request time. ⦅The implemented decision rule is therefore exactly Eq. (75).⦆ Formal security analysis and a systematic performance study remain for the next stage. ⦃It should be noted that the prover and the verifier currently run on the same server, so the proof demonstrates the integration of the zero-knowledge toolchain rather than an additional privacy guarantee, as discussed in Section 6.8.11.⦄"
+ },
+ {
+  "t": "p",
+  "text": "The remaining security assurance and comprehensive empirical evaluation will be conducted in next stage. These activities will include policy-violation scenarios, temporal expiration, revocation, invalid lifecycle transitions, formal security properties, and broader experimental validation.",
+  "page": 90
+ },
+ {
+  "t": "h1",
+  "num": "8",
+  "title": "Publications Summary",
+  "page": 90
+ },
+ {
+  "t": "p",
+  "text": "The publication activities associated with this research are organised according to their current development status and their structural contribution to the thesis chapters and research questions.",
+  "page": 90
+ },
+ {
+  "t": "p",
+  "text": "⦃It should be noted that no manuscript has been submitted at the time of writing. The first paper is intended for submission early in the next stage, so that it can present the consent model together with the deployed contract and its verified transaction evidence.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃Table 15 summarises the planned research outputs, their target venues, their current status and their alignment with the research questions.⦄"
+ },
+ {
+  "t": "table",
+  "page": 90,
+  "n": 7,
+  "caption": "Summary of Research Outputs and Publication Plan",
+  "header": [
+   "Research Output / Topic",
+   "Target Venue",
+   "Current Status",
+   "Thesis Alignment"
+  ],
+  "rows": [
+   [
+    "Trust-Centric Consent Framework\nModel architecture and multi-party authorisation policies",
+    "Elsevier/IEEE",
+    "Almost Ready",
+    "Core architectural contribution; ⦅addresses RQ1 to RQ4 (Sections 6.1 to 6.4).⦆"
+   ],
+   [
+    "HALAH Prototype & Validation\nDecentralised implementation and performance evaluation",
+    "Systems / Security Conference",
+    "In Progress",
+    "Empirical validation platform; addresses implementation and evaluation (Chapter 5)."
+   ],
+   [
+    "Formal Security & Lifecycle Analysis\nVerification of temporal constraints and state transitions",
+    "Specialized Workshop / Journal",
+    "Planned",
+    "Next stage research extension; ⦅addresses formal security ⦅assurance (Sections 6.5 and⦆ 6.6).⦆"
+   ]
+  ]
+ },
+ {
+  "t": "p",
+  "text": "The publication strategy is aligned with the progression of the research. The current stage work establishes the conceptual and technical foundation, while the next stage work will strengthen the framework through formal analysis and comprehensive empirical validation.",
+  "page": 90
+ },
+ {
+  "t": "h1",
+  "num": "9",
+  "title": "Research Plan",
+  "page": 90
+ },
+ {
+  "t": "p",
+  "text": "⦅The research plan is divided into two major stages, the current stage and the next stage.⦆",
+  "page": 90
+ },
+ {
+  "t": "h2",
+  "num": "9.1",
+  "title": "Current Stage: Completed and Current Work",
+  "page": 91
+ },
+ {
+  "t": "p",
+  "text": "The current stage focuses on establishing the foundational trust-oriented authorisation framework. ⦅The main activities are the development of the trust-centric consent model, decentralised identity and authority verification, multi-party authorisation, and policy-aware access control. Temporal and lifecycle enforcement, originally planned for the next stage, has also been implemented in the current stage, as reported in Section 7.5.⦆",
+  "page": 91
+ },
+ {
+  "t": "h2",
+  "num": "9.2",
+  "title": "Next Stage: Planned Work",
+  "page": 91
+ },
+ {
+  "t": "p",
+  "text": "The next stage will build upon the foundational trust-oriented ⦅authorisation framework established during the current stage and extend the research towards dynamic consent governance [13, 24], formal security assurance, and comprehensive empirical validation.⦆⦅⦆ ⦅The current stage focuses on establishing the core mechanisms required to construct a trustworthy authorisation decision. The next stage will investigate whether this trust can be maintained over time, formally justified, and reliably demonstrated in practical healthcare data-sharing scenarios.⦆",
+  "page": 91
+ },
+ {
+  "t": "p",
+  "text": "⦃The next stage activities are planned sequentially. ⦅The formal specification of the security properties will be undertaken first, since the empirical experiments are to be designed against those properties. The performance and adversarial evaluation will follow in the second half of the stage. The lifecycle extensions and integrated evaluation will be completed last, once the formal model is stable.⦆⦄"
+ },
+ {
+  "t": "p",
+  "text": "The ⟪first⟫ focus is formal security assurance. The current stage framework establishes the conceptual relationship between identity verification, collective authorisation, and policy enforcement. ⟪The next⟫ stage will investigate these relationships more rigorously by defining the security properties that the framework is expected to satisfy. The analysis will consider conditions such as invalid identities, insufficient authorisation, policy violations, expired consent, revoked consent, and unauthorised lifecycle transitions. The purpose of this work is not merely to demonstrate that the prototype works under normal conditions, but to establish explicit security properties and determine whether the proposed authorisation model provides the expected protection when relevant security conditions are violated.",
+  "page": 91
+ },
+ {
+  "t": "p",
+  "text": "The ⟪second⟫ focus is comprehensive empirical validation. The HALAH prototype provides the experimental environment for evaluating the proposed framework using synthetic healthcare data and representative multi-party consent scenarios. ⦅The next stage will extend the current prototype-based evaluation to include both successful and adversarial access requests.⦆ The experiments will examine whether the implementation consistently produces an ALLOW decision only when the required trust conditions are satisfied and produces a DENY decision when one or more required conditions are violated. Particular attention will be given to the relationship between the formal security model and the observed behaviour of the implemented system. The major next stage activities and their expected outcomes are summarised in Table 16.",
+  "page": 91
+ },
+ {
+  "t": "p",
+  "text": "⦅The performance study will measure the gas cost of the mint and revoke transactions, the block-confirmation latency on Sepolia, the Groth16 proof generation and verification time, and the end-to-end decision latency per access request. In addition, it will report enforcement accuracy as the proportion of adversarial requests that are correctly denied.⦆⦃⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦅The formal component will state two properties. The first is the soundness property Decision(C, R, t) = ALLOW ⇒ V~I~ ∧ V~A~ ∧ V~P~ ∧ V~T~ ∧ V~L~. The second is the lifecycle invariant that no REVOKED or EXPIRED consent can re-enter the ACTIVE state. These properties will be verified by model checking of the state machine or by proof over the predicate definitions of Chapter 6.⦆⦃ The evaluation criterion for this component is that every property is either verified or refuted by an explicit counterexample.⦄"
+ },
+ {
+  "t": "table",
+  "page": 92,
+  "n": 8,
+  "caption": "Next Stage Research Activities, Methodological Focus, and Expected Outcomes",
+  "header": [
+   "Research Focus",
+   "Planned Activities",
+   "Expected Outcome"
+  ],
+  "rows": [
+   [
+    "Temporal and Lifecycle Trust\n(Dynamic Consent States)",
+    "⦅Extend the implemented lifecycle mechanism to support consent modification, delegation and guardian-set changes, and formalise the state-transition model so that unauthorised transitions are excluded by construction.⦆ Evaluate access decisions under varying temporal and consent-state constraints.",
+    "A robust, dynamic consent management mechanism capable of validating whether an authorisation remains active at the precise point of access."
+   ],
+   [
+    "Formal Security Assurance\n(Properties & Verification)",
+    "Formally define critical security properties and analyse system behaviour under adverse conditions, including invalid identities, insufficient multi-party approvals, policy violations, expired/revoked states, and illegal transitions.",
+    "A rigorous formal security model and verification proof establishing explicit security guarantees for the trust-oriented authorisation framework."
+   ],
+   [
+    "Comprehensive Empirical Validation\n(HALAH Prototype Scenarios)",
+    "Scale and extend HALAH prototype experiments using representative positive and negative healthcare data-sharing scenarios. Measure and compare observed system runtime performance, overhead, and enforcement accuracy.",
+    "Empirical evidence and benchmark datasets demonstrating that the implementation consistently and efficiently enforces the proposed authorisation model."
+   ],
+   [
+    "Integrated Framework Evaluation\n(Synthesis & End-to-End)",
+    "Integrate temporal, lifecycle, formal verification, and empirical modules into a unified, cohesive framework. Evaluate cross-component interactions, scalability bottlenecks, and end-to-end feasibility in real-world settings.",
+    "A fully integrated, validated Trust Computing framework providing secure, multi-party patient consent and decentralised healthcare data sharing."
+   ]
+  ]
+ },
+ {
+  "t": "p",
+  "text": "⦅An important analytical objective of the next stage is to examine the relationship between the different forms of trust established throughout the framework.⦆ Temporal validity, for example, should not be treated as an independent access-control feature. Instead, it should act as an additional condition on an already established authorisation relationship. Similarly, revocation should invalidate a previously established consent rather than merely create a new record indicating that the consent has changed. This perspective allows the research to investigate trust as a dynamic property rather than as a one-time outcome of authentication or approval.",
+  "page": 93
+ },
+ {
+  "t": "p",
+  "text": "⦅The complete authorisation model developed across the current stage and the next stage will therefore be evaluated as a conjunction of independently verifiable conditions.⦆⟪⟫ Conceptually, the final decision can be expressed as",
+  "page": 93
+ },
+ {
+  "t": "eq",
+  "text": "⦅Decision(C, R, t)⦆ = ALLOW",
+  "num": 76,
+  "page": 93
+ },
+ {
+  "t": "p",
+  "text": "only when the identity and authority of the requester are valid, the required multi-party authorisation has been established, the requested operation satisfies the consent policy, and the consent remains valid according to its temporal and lifecycle state. If any required condition is violated, the framework should produce a denial decision and preserve sufficient evidence to explain the reason for that decision.",
+  "page": 93
+ },
+ {
+  "t": "p",
+  "text": "From a research perspective, this represents an important transition from static consent management to dynamic trustworthy authorisation. The objective is not to add a collection of independent security mechanisms, but to investigate how these mechanisms jointly contribute to the establishment, maintenance, and verification of trust throughout the consent lifecycle.",
+  "page": 93
+ },
+ {
+  "t": "p",
+  "text": "⦅By the completion of the next stage, the research is expected to provide three complementary forms of contribution.⦆ First, the research will provide a conceptual Trust Computing model that explains how trustworthy multi-party consent can be established and maintained. Second, it will provide a technical implementation through the HALAH prototype demonstrating how the proposed trust conditions can be enforced in a decentralised healthcare environment. Third, it will provide formal and empirical evidence concerning the security and practical effectiveness of the proposed framework.",
+  "page": 93
+ },
+ {
+  "t": "p",
+  "text": "⦅Consequently, the next stage will complete the transition from the foundational authorisation mechanisms established in the current stage to a dynamically managed, formally reasoned, and empirically validated⦆⟪⟫ ⟪trust-oriented authorisation framework⟫. ⦅The final contribution will not be assessed simply by whether consent can be recorded or whether access can be granted. It will be assessed by whether the system can provide a defensible basis for determining why an access decision should be trusted. It must also determine when that trust should no longer apply.⦆",
+  "page": 93
+ },
+ {
+  "t": "h1",
+  "num": "",
+  "title": "References",
+  "page": 93
+ },
+ {
+  "t": "p",
+  "text": "[1] Abdullah Al Mamun, Sami Azam, and Clementine Gritti. ⦅Blockchain-based electronic health records management: A comprehensive review and future research direction.⦆ IEEE Access, 10:5768–5789, 2022.",
+  "page": 93
+ },
+ {
+  "t": "p",
+  "text": "⦅[2] J. Andrew, Deva Priya Isravel, K. Martin Sagayam, Bharat Bhushan, Yuichi Sei, and Jennifer Eunice.⦆ Blockchain for healthcare systems: Architecture, security challenges, trends and future directions. Journal of Network and Computer Applications, 215:103633, 2023.",
+  "page": 93
+ },
+ {
+  "t": "p",
+  "text": "⦅[3] Mohammad Salar Arbabi, Chhagan Lal, Narasimha Raghavan Veeraragavan, Dusica Marijan, Jan F. Nygård, and Roman Vitenberg⦆. A survey on blockchain for healthcare: Challenges, benefits, and future directions. ⟦IEEE Communications Surveys & Tutorials⟧, 25(1):386–424, ⟪2023⟫.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "[4] Haotian Deng, Jinwen Liang, Chuan Zhang, Ximeng Liu, Liehuang Zhu, and Song Guo. ⟪FutureDID⟫: A fully decentralized identity system with multi-party verification. IEEE Transactions on Computers, 73(8):2051–2065, 2024.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "[5] Andrea Flamini, Giada Sciarretta, Mario Scuro, Amir Sharif, Alessandro Tomasi, and Silvio Ranise. On cryptographic mechanisms for the selective disclosure of verifiable credentials. Journal of Information Security and Applications, 83:103789, 2024.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "[6] Abdul Ghafoor, Iraklis Symeonidis, Anna Rydberg, Cecilia Lindahl, and Abdul Qadus Abbasi. Towards empowering stakeholders through decentralized trust and secure livestock data sharing. Cryptography, 9(3):52, 2025.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "[7] Pranto Kumar Ghosh, Arindom Chakraborty, Mehedi Hasan, Khalid Rashid, and Abdul Hasib Siddique. ⦅Blockchain application in healthcare systems: A review.⦆ Systems, 11(1):38, 2023.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "⦅[8] Remy Hellstern, Daniel C. Park, Victoria Lemieux, and Guldana Salimjan⦆. Leveraging blockchain-based archival solutions for sensitive documentation: A ⟦Xinjiang⟧ case study. Digital Society, 1(1):4, 2022.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "⦅[9] Ateya Megahed Ibrahim, Hassanat Ramadan Abdel-Aziz, Heba Ali Hamed Mohamed, Donia Elsaid Fathi Zaghamir, Nadia Mohamed Ibrahim Wahba, Ghada A. Hassan, Mostafa Shaban, Mohammad El-Nablaway, Ohoud Naif Aldughmi, and Taghreed Hussien Aboelola⦆. Balancing confidentiality and care coordination: challenges in patient privacy. ⟦BMC Nursing⟧, 23(1):564, 2024.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "⦅[10] Vitor Jesus and Harshvardhan J. Pandit⦆. Consent receipts for a usable and auditable web of personal data. ⟦IEEE Access⟧, 10:28545–28563, 2022.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "[11] Rong Jiang, Xue Chen, Yimin Yu, Ying Zhang, and Weiping Ding. Risk and ⟪UCON⟫-based access control model for healthcare big data. Journal of Big Data, 10(1):104, 2023.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "⦅[12] Katya Kaplow, Max Downey, Darren Stewart, Allan B. Massie, Jennifer D. Motter, Lauren Taylor, John Massarelli, Taylor Matalon, Carolyn Sidoti, Macey L. Levan, et al⦆. Data professionals’ attitudes on data privacy, sharing, and consent in healthcare and research. ⟪Digital Health⟫, 10:20552076241290964, 2024.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "[13] Muhammad Irfan Khalid, Mansoor Ahmed, Markus Helfert, and Jungsuk Kim. Privacy-first paradigm for dynamic consent management systems: empowering data subjects through decentralized data controllers and privacy-preserving techniques. Electronics, 12(24):4973, 2023.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "[14] Alexander Kharlamov, Roland Hohmann, and ⟪Glenn⟫ Parry. Data sharing decisions: perceptions and intentions in healthcare. Strategic Change, 32(6):223–237, 2023.",
+  "page": 94
+ },
+ {
+  "t": "p",
+  "text": "[15] Behnam Khayer, Siamak Mirzaei, Hooman Alavizadeh, and Ahmad Salehi Shahraki. Blockchain for secure ⟦IoT⟧: A review of identity management, access control, and trust mechanisms. IoT, 6(4):65, 2025.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "⦅[16] Chalima Dimitra Nassar Kyriakidou, Athanasia Maria Papathanasiou, and George C. Polyzos⦆. Decentralized identity with applications to security and privacy for the internet of things. Computer Networks and Communications, ⟦1(2):⟧244–271, 2023.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "⦅[17] Lanlan Li, Charles Z. Liu, Kejia Huang, Ruiyi Deng, Majed Abdullah Alrowaily, Mansoor Alghamdi, Ibrahim S. Alkhazi, and Malek Alrashidi⦆. Trust-aware environmental state consensus for smart agriculture with ⟪TEE⟫-enabled sensing and ⟪Byzantine⟫-resilient blockchain coordination. Sensors, 26(14):4577, 2026.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "⦅[18] Lanlan Li, Charles Z. Liu, and Sanjeeb Shrestha⦆. Analytical entropy approach for measuring blockchain immutability and tamper-resilient trust. Entropy, 28(6):690, 2026.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "⦅[19] Richard K. Lomotey, Sandra Kumi, and Ralph Deters⦆. Data trusts as a service: Providing a platform for multi-party data sharing. International Journal of Information Management Data Insights, 2(1):100075, 2022.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "[20] Carlo Mazzocca, Abbas Acar, Selcuk Uluagac, Rebecca Montanari, Paolo Bellavista, and Mauro Conti. A survey on decentralized identifiers and verifiable credentials. IEEE Communications Surveys & Tutorials, ⟪27:3641–3671,⟫ 2025.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "[21] ⟪Cindy Welzel, Max Ostermann, Hannah Louise Smith, Timo Minssen, Toralf Kirsten, and Stephen Gilbert. Enabling secure and self determined health data sharing and consent management. npj Digital Medicine, 8(1):560, 2025.⟫",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "⦅[22] Roy McClelland and Colin M. Harper⦆. ⦅Information privacy in healthcare: The vital role of informed consent.⦆ ⟦European Journal of Health Law⟧, 30(4):469–480, ⟪2023⟫.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "[23] Jämes Ménétrey, Christian Göttel, Anum Khurshid, Marcelo Pasin, Pascal Felber, Valerio Schiavoni, and Shahid Raza. Attestation mechanisms for trusted execution environments demystified. In IFIP International Conference on Distributed Applications and Interoperable Systems, pages 95–113. Springer, 2022.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "⦅[24] Minal R. Narkhede, Nilesh I. Wankhede, and Akanksha M. Kamble⦆. ⦅Enhancing patient autonomy in data ownership: Privacy models and consent frameworks for healthcare.⦆ Journal of Digital Health, ⟪4(1):⟫1–23, 2025.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "[25] Aleena Nazir, Mubashir Husain Rehmani, Bernard Butler, and Donna O’Shea. Access control in healthcare ⟦IoT⟧: A comprehensive survey. Engineering Reports, 8(4):e70766, 2026.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "[26] Thanh Linh Nguyen, Lam Nguyen, Thong Hoang, Dilum Bandara, Qin Wang, Qinghua Lu, Xiwei Xu, Liming Zhu, and Shiping Chen. Blockchain-empowered trustworthy data sharing: Fundamentals, applications, and challenges. ACM Computing Surveys, 57(8):1–36, 2025.",
+  "page": 95
+ },
+ {
+  "t": "p",
+  "text": "[27] Rohini Poolat Parameswarath, Prosanta Gope, and Biplab Sikdar. User-empowered privacy-preserving authentication protocol for electric vehicle charging based on decentralized identity and verifiable credential. ⦅ACM Transactions on Management Information Systems, 13(4):1–21, 2022.⦆",
+  "page": 96
+ },
+ {
+  "t": "p",
+  "text": "⦅[28] Ahmed M. Tawfik, Ayman Al-Ahwal, Adly S. Tag Eldien, and Hala H. Zayed⦆. ⦅Blockchain-based access control and privacy preservation in healthcare: A comprehensive survey.⦆ Cluster Computing, 28(8):529, 2025.",
+  "page": 96
+ },
+ {
+  "t": "p",
+  "text": "[29] Leonidas Theodorakopoulos, Alexandra Theodoropoulou, and Constantinos Halkiopoulos. Enhancing decentralized decision-making with big data and blockchain technology: A comprehensive review. Applied Sciences, 14(16):7007, 2024.",
+  "page": 96
+ },
+ {
+  "t": "p",
+  "text": "[30] Mohammad Nawab Turan, Irshad Ahmed Hashimzai, and Mohammad Qaseem Qiam. A blockchain-based framework for secure and transparent environmental data sharing in smart cities: Enhancing trust, integrity, and interoperability in urban sustainability systems. Nata Palemahan: Journal of Environmental Engineering Innovations, 2(2):70–79, 2025.",
+  "page": 96
+ },
+ {
+  "t": "p",
+  "text": "⦅[31] Emily C. Webber, David Brick, James P. Scibilia, Peter Dehnel, Council on Clinical Information Technology, et al⦆. Electronic communication of the health record and information with pediatric patients and their guardians. ⟦Pediatrics, 144(1):e20191359, 2019⟧.",
+  "page": 96
+ },
+ {
+  "t": "p",
+  "text": "[32] Hongjian Yin, Yiming Zhao, Lei Zhang, Baojun Qiao, Wenbo Chen, and Huaqing Wang. Attribute-based searchable encryption with decentralized key management for healthcare data sharing. ⟦Journal of Systems Architecture⟧, 148:103081, 2024.",
+  "page": 96
+ },
+ {
+  "t": "p",
+  "text": "[33] Jie Yin, Yang Xiao, Qian Chen, Xuefeng Liu, Qingqi Pei, Jianying Zhou, et al. ⟪DP-DID⟫: A dynamic and proactive decentralized identity system. IEEE Transactions on Information Forensics and Security, ⟦20:⟧4999–5014, 2025.",
+  "page": 96
+ },
+ {
+  "t": "p",
+  "page": 0,
+  "text": "[34] ⟪⦅Matthew J. Page, Joanne E. McKenzie, Patrick M. Bossuyt, Isabelle Boutron, Tammy C. Hoffmann, Cynthia D. Mulrow, et al⦆. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ, 372:n71, 2021.⟫"
+ },
+ {
+  "t": "p",
+  "text": "⦃[35] A. Abbasi, M. N. Humeidi, and Q. Wang. Nexa: Enabling Secure, Scalable, and Decentralized Management of Electronic Health Records Using Threshold Cryptography and Public Blockchains. IEEE Access, 2026. doi:10.1109/ACCESS.2026.3677499⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[36] S. Akter and T. F. Sanam. A Blockchain Framework for Secure Healthcare Data Management Using Role-Based Access Control and Smart Contracts. 2025 International Conference on Electrical, Computer and Communication Engineering (ECCE), 2025. doi:10.1109/ECCE64574.2025.11013162⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[37] F. Albalwy, A. Brass, and A. Davies. A Blockchain-based dynamic consent architecture to support clinical genomic data sharing (ConsentChain): Proof-of-concept study. JMIR Medical Informatics, 2021. doi:10.2196/27816⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[38] M. Al Amin, A. Altarawneh, and I. Ray. Informed Consent as Patient Driven Policy for Clinical Diagnosis and Treatment: A Smart Contract Based Approach. Proceedings of the International Conference on Security and Cryptography, 2023. doi:10.5220/0012090600003555⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[39] G. Bhalerao. Decentralized Cryptographic Governance for Cloud-Based Medical Record Infrastructure: A Distributed Ledger Framework for Cyber-Resilient Healthcare Data Sovereignty. 2026 2nd International Conference on Emerging and Intelligent Technologies and Systems (EITS), 2026. doi:10.1109/EITS70066.2026.11609600⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[40] S. Cao, L. Han, G. Liu, T. Zhang, X. Zhang, and X. Yang. A Privacy Set Intersection Protocol for Medical Data Security Sharing. 2025 IEEE International Conference on Big Data (BigData), 2025. doi:10.1109/BigData66926.2025.11402158⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[41] S. Chockalingam, S. Pirbhulal, and H. Abie. Improving Security and Privacy of Cognitive Digital Twins Through Dynamic Consent for Healthcare and Resilient Societies. Lecture Notes in Computer Science, 2026. doi:10.1007/978-3-032-12801-0_20⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[42] ⦅J. A. Dhanraj, P. Dhongle, R. Tamilamuthan, M. Lakshmanan, N. Ashtankar, and S. R. Hole.⦆ Blockchain-Augmented Federated Learning for Secure and Healthcare Diagnosis from Distributed Electronic Health Records. 2026 1st International Conference on Emerging Trends in ⦅Advancements and Applications of Computational Intelligence Techniques (ETAACT), 2026.⦆ doi:10.1109/ETAACT69135.2026.11541890⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[43] ⦅K. Ekholm, A. Augustinsson, J. Sundström, C. Johansen, M. Storgärds, L. Ljöstad, et al.⦆⦅⦆ Implementing electronic informed consent in rare disease genomics. ⦅Scientific Reports, 2025.⦆ doi:10.1038/s41598-025-32740-1⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦅[44] A. U. Eneh, L. A. C. Ahakonye, J. M. Lee, and D.-S. Kim.⦆⦃ Demo: EdgeConsent: On-Chain Attribute-Based Access Control for Data Consent Management. 2026 IEEE International Conference on Blockchain and Cryptocurrency (ICBC), 2026. doi:10.1109/ICBC67748.2026.11575534⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[45] J. C. Ferreira, R. Correia, L. Rosário, and A. Vila. Blockchain Integration for Trust and Consent Management in MCP-Enabled FHIR Systems. 2025 IEEE International Conference on Distributed Ledger Technologies (ICDLT), 2025. doi:10.1109/ICDLT66400.2025.11466653⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[46] D. Ghosh, A.K. Das, S. Prajapat, and B. Sikdar. Blockchain-Enabled Hybrid Quantum-Safe Attribute-Based Access Control Scheme with Attribute Revocation Strategy for Smart Healthcare System. ⦅Distributed Ledger Technologies: Research and Practice, 2026.⦆ doi:10.1145/3827623⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[47] ⦅J. Hagström, M. Hägglund, M. Holmroos, P. Lähteenmäki, and I. Hörhammer.⦆ Minors’ and guardian access to and use of a national patient portal: A retrospective comparative case study of Sweden and Finland. International Journal of Medical Informatics, 2024. doi:10.1016/j.ijmedinf.2024.105465⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦅[48] H. Gao, X. Wu, H. Huang, Q. Li, and Y. Xing. A Blockchain-Assisted Revocable and Efficient ABSE Scheme for Secure Medical Data Sharing. ACM Transactions on the Web, 20(1):1–29, 2026. doi:10.1145/3771992⦆"
+ },
+ {
+  "t": "p",
+  "text": "⦃[49] V. Jaiman and V. Urovi. A Consent Model for Blockchain-Based Health Data Sharing Platforms. IEEE Access, 2020. doi:10.1109/ACCESS.2020.3014565⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[50] ⦅J. Zhao and Q. Su. A threshold traceable delegation authorization scheme for data sharing in healthcare. Computers & Security, 139:103686, 2024.⦆ doi:10.1016/j.cose.2023.103686⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[51] H. Li, D. Li, G. Lv, N. Crespi, R. Minerva, W. Shao, ⦅et al.⦆ Privacy-Preserving Fine-Grained EMR Access Control for IoMT: A Hybrid RBAC-Smart Contract Scheme With Attribute-Based Authorization. IEEE Internet of Things Journal, 2026. doi:10.1109/JIOT.2025.3633504⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[52] J. Luo, P. Zeng, and X. Wang. Bilateral Privacy-Aware Proxy Re-Encryption With Traceability and Revocation for IoMT. IEEE Internet of Things Journal, 2025. doi:10.1109/JIOT.2025.3616987⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[53] M. M. Madine, K. Salah, R. Jayaraman, I. Yaqoob, Y. Al-Hammadi, S. Ellahham, ⦅et al.⦆ Fully Decentralized Multi-Party Consent Management for Secure Sharing of Patient Health Records. IEEE Access, 2020. doi:10.1109/ACCESS.2020.3045048⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[54] V. Maruthi and K. Singh. Enhancing Security and Privacy of IoMT Data for Unconscious Patient With Blockchain. IEEE Transactions on Network and Service Management, 2025. doi:10.1109/TNSM.2025.3602117⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[55] L. Mei, K. Huang, X. Li, H. Wang, and X. Zhang. Efficient Dual-Revocation CP-ABE for Secure and Fine-Grained Data Sharing in IoMT. IEEE Internet of Things Journal, 2026. doi:10.1109/JIOT.2026.3685269⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[56] ⦅M. Zhang, F. Shao, R. Zheng, M. Liu, and Z. Ji.⦆ An Efficient Encryption Scheme with Fully Hidden Access Policy for Medical Data. Electronics, 2023. doi:10.3390/electronics12132930⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[57] D.P. Panagoulias, A.I. Damian, C. Stamate, V. Toderian, P. Butusina, A. De Franceschi, ⦅et al.⦆ Blockchain-Enabled Trust and Compliance for Clinical AI: Decentralized Governance Without Decentralized Data Storage. Electronics, 2026. doi:10.3390/electronics15143046⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[58] S. Phuyal, M. Bhandari, R. Bista, and J. C. Ferreira. Enabling Cross-Institution Health Data Sharing in Norway: EUDI Wallets, On-Chain Consent, and openEHR↔FHIR Translation. IEEE Access, 2026. doi:10.1109/ACCESS.2026.3661642⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[59] S. Phuyal, M. Bhandari, R. Bista, and J.C. Ferreira. A Blockchain-Based Architecture for Dynamic and Auditable Patient Consent in Secondary Use of Health Data. Blockchain in Healthcare Today, 2026. doi:10.30953/bhty.v9.491⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[60] M.S. Prashanth, R. Karnati, M.S. Velpuru, and H. Venkateshwara Reddy. Enhancing Health Record Security and Privacy with Blockchain-Based Access Management. Lecture Notes of the Institute for Computer Sciences, Social-Informatics and Telecommunications Engineering, LNICST, 2024. doi:10.1007/978-3-031-66044-3_13⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[61] A. Punia, P. Gulia, N.S. Gill, D. Kaushik, N. Alduaiji, P.K. Shukla, ⦅et al.⦆ An access control system for cloud-based healthcare systems driven by blockchain. Journal of Cloud Computing, 2025. doi:10.1186/s13677-025-00831-z⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[62] J. Qiao, N. Wang, J. Fu, L. Deng, J. Wang, and J. Liu. A Lightweight CP-ABE Scheme for EHR Over Cloud Based on Blockchain and Secure Multi-Party Computation. Transactions on Emerging Telecommunications Technologies, 2025. doi:10.1002/ett.70053⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[63] I. Román-Martínez, J. Calvillo-Arbizu, V. J. Mayor-Gallego, G. Madinabeitia-Luque, A. J. Estepa-Alonso, and R. M. Estepa-Alonso. Blockchain-Based Service-Oriented Architecture for Consent Management, Access Control, and Auditing. IEEE Access, 2023. doi:10.1109/ACCESS.2023.3242605⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦅[64] Hema S., Goli Bulli Sai Reddy, and Shalini R. Patient Centric Cryptographic Protection of Cloud Electronic Health Records. 2026 6th International Conference on Expert Clouds and Applications (ICOECA), 2026. doi:10.1109/ICOECA68095.2026.11485301⦆"
+ },
+ {
+  "t": "p",
+  "text": "⦃[65] N.M. Sawant and J. Gomes. A Decentralized Solution for Smarter and Safer Healthcare Systems with FabricMedChain. ⦅Iranian Journal of Science and Technology, Transactions of Electrical Engineering, 2026.⦆ doi:10.1007/s40998-025-00994-0⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[66] M. Shanmugham and C. Senthilkumar. Blockchain Enabled Self-Sovereign Identity and Consent Framework for Secure Healthcare Data Access. 2026 3rd International Conference on Emerging Trends in Engineering and Medical Sciences (ICETEMS), 2026. doi:10.1109/ICETEMS66917.2026.11469586⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[67] ⦅S. L. Soohoo, M. S. Keller, Y. Chen, D. Hu, S.-C. Huang, T.-T. Kuo, et al.⦆⦅⦆ Development of the authentication and authorization processes for the iAgree portal, a platform for patient-controlled data sharing across health systems. JAMIA Open, 2026. doi:10.1093/jamiaopen/ooag111⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦅[68] T. A. V. Y. Ranaweera, H. N. H. Hewage, H. K. D. W. M. C. B. Hapuhinna, K. L. K. T. Preethilal, A. Senarathne, and L. Ruggahakotuwa. Ensuring Electronic Health Record (EHR) Privacy using Zero Knowledge Proofs (ZKP) and Secure Encryption Schemes on Blockchain. 2023 5th International Conference on Advancements in Computing (ICAC), 2023. doi:10.1109/ICAC60630.2023.10417417⦆"
+ },
+ {
+  "t": "p",
+  "text": "⦃[69] ⦅K.-L. Tan, C.-H. Chi, and K.-Y. Lam.⦆ Secure and privacy-preserving sharing of personal health records with multi-party pre-authorization verification. Wireless Networks, 2024. doi:10.1007/s11276-022-03114-6⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[70] A. Teeda and Y.V. Subba Rao. A Patient-Centric Blockchain Based Electronic Health Records for Data Privacy and Confidentiality. Lecture Notes in Networks and Systems, 2026. doi:10.1007/978-3-032-08246-6_15⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[71] ⦅D. Tith, J.-S. Lee, H. Suzuki, W. M. A. B. Wijesundara, N. Taira, T. Obi, et al.⦆⦅⦆ Patient consent management by a purpose-based consent model for electronic health record based on blockchain technology. Healthcare Informatics Research, 2020. doi:10.4258/hir.2020.26.4.265⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[72] G. Tremper, T. Brenner, M. Ben Amor, T. Kussel, and M. Lablans. Mainzelliste: Ten years of pseudonymization, record linkage, and informed consent management. Patterns, 2026. doi:10.1016/j.patter.2025.101432⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[73] ⦅C.-H. Tseng, Y.-H. Hsieh, H.-Y. Lin, and S.-M. Yuan.⦆ EMR-Chain: Decentralized Electronic Medical Record Exchange System. Technologies, 2025. doi:10.3390/technologies13100446⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[74] ⦅J. Wagner, H. Schneiderheinze, M. Wurlitzer, O. Köckritz, N. Dittberner, M. Bialke, et al.⦆⦅⦆ Integration of Trusted Third Party Software ⦅into an EDC System for Data Protection-Compliant Identity Management, Consent Management and Pseudonymization in Medical Research Studies.⦆ Studies in Health Technology and Informatics, 2024. doi:10.3233/SHTI240840⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[75] Y. Wu, C. Liu, L. Sebald, P. Nguyen, and Y. Yesha. Apply Trust Computing and Privacy Preserving Smart Contracts to Manage, Share, and Analyze Multi-site Clinical Trial Data. ⦅In Proceedings of the International Conference on Deep Learning, Big Data and Blockchain (DBB 2022), Lecture Notes in Networks and Systems, vol. 541, pages 3–14. Springer, 2023.⦆ doi:10.1007/978-3-031-16035-6_1⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[76] ⦅Z. Wu and D. Zhang. HealthDID: An efficient and authorizable multi-party privacy-preserving EMR sharing system based on DID. Computer Standards & Interfaces, 93:103967, 2025.⦆ doi:10.1016/j.csi.2024.103967⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[77] G. Xu, C. Qi, W. Dong, L. Gong, S. Liu, S. Chen, ⦅et al.⦆ A Privacy-Preserving Medical Data Sharing Scheme Based on Blockchain. IEEE Journal of Biomedical and Health Informatics, 2023. doi:10.1109/JBHI.2022.3203577⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[78] L. Zhang, H. Kan, and H. Huang. Patient-centered cross-enterprise document sharing and dynamic consent framework using consortium blockchain and ciphertext-policy attribute-based encryption. ACM International Conference Proceeding Series, 2022. doi:10.1145/3528416.3530228⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[79] S. Phuyal, M. Bhandari, R. Bista, and J.C. Ferreira. HL7 FHIR consent for healthcare data sharing: challenges, opportunities and integrity implications. International Journal of Medical Informatics, 2026. doi:10.1016/j.ijmedinf.2026.106405⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[80] ⦅S. Phuyal, M. Bhandari, R. Correia Bezerra, R. Bista, and J. C. Ferreira. Dynamic Consent for Secondary Use of Health Data: Challenges and Opportunities Under European Law. JMIR Medical Informatics,⦆ 2026. doi:10.2196/93348⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃[81] J. Vinnakota, T. Raheem, and G. Hossain. Secure AI-Driven eConsent Platforms: Enhancing Trust, Compliance, and Participation in Clinical Research. 2026 IEEE 2nd International Conference on Secure IoT, Assured and Trusted Computing (SATC), 2026. doi:10.1109/SATC69565.2026.11542223⦄"
+ }
+]

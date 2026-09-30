@@ -1,0 +1,827 @@
+[
+ {
+  "t": "p",
+  "text": "environment in which these mechanisms can be instantiated and evaluated through representative healthcare data-sharing scenarios. The subsequent ⦅stage will extend the assurance of the architecture rather than its mechanisms.⦆ ⦅The consent Model already includes temporal validity, expiration, revocation, and controlled lifecycle transitions, as defined in Section 5.3 and realised in the implemented prototype described in Section 6.8.⦆ ⦅The Controller therefore already evaluates the corresponding temporal predicate V~T~(C, t) and jurisdictional predicate V~L~(C) within the authorisation decision, as expressed in Eq. (26) and enforced in the prototype.⦆ In addition, the complete decision model will be subjected to formal security analysis and broader empirical validation. ⦅Accordingly, the current stage architecture establishes the foundational security core of the research. The next stage will investigate whether this core can maintain trust dynamically over time beyond the lifecycle mechanisms already demonstrated in the prototype. It will also investigate whether the core can satisfy formally defined security properties and consistently enforce the complete trust-oriented authorisation model under representative and adversarial healthcare data-sharing conditions.⦆⟪⟫⟪⟫",
+  "page": 51
+ },
+ {
+  "t": "h1",
+  "num": "6",
+  "title": "Proposed Solution",
+  "page": 51
+ },
+ {
+  "t": "p",
+  "text": "⦅This chapter presents the proposed solution as six mechanisms, one for each research objective. Sections 6.1 to 6.6 define, for each objective, the formal condition, the workflow, the step-wise procedure and the corresponding algorithm. Each section also states which part of the mechanism is exercised by the current prototype and which part is reserved for the next stage. Section 6.7 relates the six algorithms to the research objectives. Section 6.8 presents the implementation and the live demonstration of the framework on the Ethereum Sepolia testnet. Throughout the chapter, C denotes the consent object, G the guardian set, N the approval threshold, D the authorised doctor, R an access request and t the evaluation time.⦆"
+ },
+ {
+  "t": "h2",
+  "num": "6.1",
+  "title": "Trust-Centric Consent Model for RO1",
+  "page": 51
+ },
+ {
+  "t": "p",
+  "text": "RO1 addresses RQ1 by developing a trust-aware consent model that represents patient consent as a structured and evaluable authorisation object. The purpose of this objective is to establish a formal representation of what the patient intends to authorise, who is permitted to participate in the authorisation process, which healthcare data may be accessed, and under what conditions access may be granted. The proposed consent object is represented as",
+  "page": 51
+ },
+ {
+  "t": "eq",
+  "text": "C = (I, A, P, E),",
+  "num": 46,
+  "page": 51
+ },
+ {
+  "t": "p",
+  "text": "⦅The identity component identifies the patient and relevant participants.⦆ The authorisation component defines the required participants and approval threshold. The policy component specifies the permitted purpose and healthcare data scope. The evidence component records the information required to support subsequent verification and audit. The consent model therefore separates the specification of consent from the final access decision. A consent object does not automatically imply that every subsequent request is authorised. Instead, the object provides the conditions against which a request can be evaluated.",
+  "page": 51
+ },
+ {
+  "t": "h3",
+  "num": "6.1.1",
+  "title": "RO1 Consent Creation Workflow",
+  "page": 51
+ },
+ {
+  "t": "p",
+  "text": "The following workflow describes the creation of a trust-aware consent object. The process begins with a patient request and ends with a structured consent record that can be verified by subsequent authorisation services. The workflow first collects the patient identity and the intended healthcare participants. It then specifies the purpose and data scope of the consent. In the HALAH implementation, the patient interface allows the patient to select a patient DID, specify an authorised doctor, identify guardian DIDs, and select healthcare data modules such as Observation, Medication, Condition, and Procedure. The implementation also collects the start and expiry time of the consent.",
+  "page": 51
+ },
+ {
+  "t": "p",
+  "text": "⦃In the current interface the purpose is fixed to Treatment and is not selected by the patient. The purpose vocabulary check of Section 6.4.3 is therefore exercised by the automated tests rather than by the interface.⦄"
+ },
+ {
+  "t": "figure",
+  "n": 7,
+  "page": 52,
+  "caption": "RO1 workflow for trust-centric consent creation"
+ },
+ {
+  "t": "p",
+  "text": "The specification is accepted only when the required fields are valid. For example, the expiry time must be later than the start time. After validation, the system creates the consent object, assigns a consent identifier, persists the record, and records the creation event in the audit layer. This process ensures that the consent object contains sufficient information for subsequent identity verification, multi-party authorisation, policy evaluation, and auditability.",
+  "page": 53
+ },
+ {
+  "t": "h3",
+  "num": "6.1.2",
+  "title": "Procedure for Trust-Aware Consent Creation",
+  "page": 53
+ },
+ {
+  "t": "p",
+  "text": "The Trust-Aware Consent Creation procedure establishes a valid and auditable consent object by sequentially validating the participating entities, consent purpose, data scope, and temporal constraints before the consent is persisted. The procedure consists of the following steps. 1. Step 1 – Validate Patient Identity. The system first validates the patient’s identity I~p~. The identity is checked against the available identity and credential verification mechanisms to ensure that the consent request originates from a recognised patient entity. If I~p~ cannot be successfully validated, the procedure terminates immediately and returns REJECT. 2. Step 2 – Validate the Authorised Doctor. The system validates the identity and authorisation status of the designated doctor D. This step determines whether the doctor is a recognised healthcare participant and whether the presented credentials are sufficient for participation in the requested consent relationship. An invalid or unauthorised doctor results in rejection of the consent request. 3. Step 3 – Validate Guardian or Proxy Participants. If a guardian or proxy is specified, the system validates the guardian set G. Each guardian is checked to determine whether the individual or entity possesses the required authority to participate in consent-related decisions. This step prevents an arbitrary third party from being treated as an authorised representative of the patient. 4. Step 4 – Validate the Intended Purpose. The intended data-use purpose P~u~ is validated to ensure that the purpose is explicitly specified and conforms to the supported healthcare-use policies. The purpose is subsequently bound to the consent object so that authorisation is not interpreted as unrestricted access to the patient’s healthcare information. 5. Step 5 – Validate the Data Scope. The requested data scope S~C~ is validated to determine precisely which healthcare resources may be accessed under the consent. The scope may represent specific resource categories, such as observations, medications, procedures, or other FHIR resources. This step establishes the principle of least privilege by ensuring that consent is associated with explicitly defined data resources rather than the patient’s entire healthcare record. 6. Step 6 – Validate the Consent Validity Interval. The system validates the temporal validity interval T = (t~s~, t~e~), where t~s~ represents the consent start time and t~e~ represents the expiration time. The system verifies that the interval is logically valid by requiring t~e~ > t~s~. If this condition is not satisfied, the consent request is rejected.",
+  "page": 53
+ },
+ {
+  "t": "p",
+  "text": "⦅Step 6 also validates the declared jurisdiction L as a well-formed ISO alpha-2 territory code and binds it to the consent object, as described in Section 6.1.1, so that the subsequent jurisdictional check V~L~ can be evaluated against it.⦆⦃⦄"
+ },
+ {
+  "t": "p",
+  "text": "7. Step 7 – Define the Authorisation Requirement. After all input elements have been validated, the system defines the authorisation requirement A. This requirement specifies the conditions that must subsequently be satisfied before access can be granted. Depending on the system configuration, A may incorporate patient approval, guardian approval, doctor authority, role requirements, multi-party approval, scope restrictions, purpose restrictions, and temporal constraints. 8. Step 8 – Generate a Unique Consent Identifier. The system generates a unique consent identifier id~C~. ⦅The identifier is not supplied by any participant.⦆⟮⦅ It is generated by the Consent Service as a universally unique identifier (UUID) when the patient submits the consent.⦆ It is then displayed to the patient, who shares it with the designated guardians and the authorised doctor so that they can approve the consent or request access. Possession of the identifier alone grants no access, because every subsequent request is evaluated by the complete decision rule, and the on-chain token identifier is assigned separately by the smart contract only when the consent is activated.⟯ This identifier provides a persistent reference to the consent object and enables subsequent operations, including consent verification, access authorisation, modification, revocation, and audit. 9. Step 9 – Construct the Consent Object. ⦅The validated information is combined to construct the consent object C = (I, A, P, T, L, E). In this object, I represents the verified identity information and A represents the authorisation requirements. P represents the consent purpose and associated permissions, and E represents the evidence associated with the consent decision.⦆⟪⟫ ⦅The resulting object therefore records the patient’s preference together with the evidence required to support subsequent authorisation decisions.⦆ 10. Step 10 – Persist the Consent Object. The constructed consent object C is persisted in the consent-management infrastructure. The persistence mechanism provides a stable representation of the consent state that can subsequently be referenced by the access-control and authorisation components. 11. Step 11 – Record Consent Creation Evidence. Finally, the system records evidence associated with the creation event, including the consent identifier, participating entities, relevant timestamps, and the resulting consent state. This evidence provides an auditable record that can be used to reconstruct and verify the consent lifecycle. 12. Step 12 – Return the Consent Result. If all validation and construction operations are completed successfully, the system returns the newly created consent object C. If any mandatory validation fails during the process, the system terminates the procedure and returns REJECT. The overall procedure can therefore be represented as a sequential trust establishment process ⟪such⟫ that I~p~ → D → G → P~u~ → S~C~ → T → ⟪L → ⟫A → id~C~ → C → E. This sequence ensures that consent is created only after the relevant identity, authority, purpose, scope, and temporal constraints have been validated. ⦅Consequently, the resulting consent object is a structured authorisation artefact rather than a simple record of patient preference, and it provides the evidence required for subsequent healthcare data-access decisions.⦆",
+  "page": 54
+ },
+ {
+  "t": "algo",
+  "n": 1,
+  "title": "Trust-Aware Consent Creation",
+  "require": "⦅Patient identity I~p~, authorised doctor D, guardian set G, purpose P~u~, data scope S~C~, validity interval T, jurisdiction L⦆",
+  "ensure": "Consent object C or rejection",
+  "lines": [
+   [
+    0,
+    "Validate I~p~"
+   ],
+   [
+    0,
+    "**if** I~p~ is invalid **then**"
+   ],
+   [
+    1,
+    "**return** REJECT"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Validate authorised doctor D"
+   ],
+   [
+    0,
+    "Validate guardian set G"
+   ],
+   [
+    0,
+    "Validate purpose P~u~"
+   ],
+   [
+    0,
+    "Validate data scope S~C~"
+   ],
+   [
+    0,
+    "Validate validity interval T = (t~s~, t~e~)"
+   ],
+   [
+    0,
+    "**if** t~e~ ≤ t~s~ **then**"
+   ],
+   [
+    1,
+    "**return** REJECT"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "⦅Validate jurisdiction L; define authorisation requirement A⦆"
+   ],
+   [
+    0,
+    "Generate consent identifier id~C~"
+   ],
+   [
+    0,
+    "Construct C = (I, A, P, E)"
+   ],
+   [
+    0,
+    "Persist C"
+   ],
+   [
+    0,
+    "Record consent creation evidence"
+   ],
+   [
+    0,
+    "**return** C"
+   ]
+  ],
+  "page": 55
+ },
+ {
+  "t": "h3",
+  "num": "6.1.3",
+  "title": "Algorithm 1: Trust-Aware Consent Creation",
+  "page": 55
+ },
+ {
+  "t": "p",
+  "text": "Algorithm 1 formalises the creation process. The algorithm does not grant data access directly. Instead, it creates a consent object that can later be evaluated by the authorisation mechanism. This distinction is important because the research treats consent as a structured policy-bound object rather than as a simple Boolean permission. The algorithm also establishes the relationship between RO1 and the remaining objectives. RO2 uses the identity and authority information contained in I, RO3 evaluates the authorisation requirements contained in A, and RO4 evaluates the policy constraints contained in P. Consequently, RO1 provides the data structure upon which the subsequent trust-oriented authorisation mechanisms operate.",
+  "page": 55
+ },
+ {
+  "t": "h2",
+  "num": "6.2",
+  "title": "Decentralised Identity and Authority Trust for RO2",
+  "page": 55
+ },
+ {
+  "t": "p",
+  "text": "RO2 addresses RQ2 by developing a decentralised identity and authority verification mechanism using Decentralised Identifiers and Verifiable Credentials. The objective is to establish trustworthy participants while explicitly separating identity authentication from authorisation authority. The central principle of RO2 is",
+  "page": 55
+ },
+ {
+  "t": "eq",
+  "text": "Identity ≠ Authorisation.",
+  "num": 47,
+  "page": 55
+ },
+ {
+  "t": "p",
+  "text": "⦅A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant’s role, authority, or other relevant attribute [20].⦆ Neither mechanism should automatically grant access to patient data. Instead, the verified identity and authority information become inputs to the subsequent authorisation process. The identity verification condition can be expressed as",
+  "page": 55
+ },
+ {
+  "t": "eq",
+  "text": "V~I~(u) = VerifyDID(u) ∧ VerifyVC(u),",
+  "num": 48,
+  "page": 56
+ },
+ {
+  "t": "p",
+  "text": "where u is the requesting participant. The DID verification process establishes whether the identity reference is valid. The VC verification process establishes whether the participant possesses valid authority evidence. The final authorisation decision remains dependent on the consent requirements and access policy.",
+  "page": 56
+ },
+ {
+  "t": "h3",
+  "num": "6.2.1",
+  "title": "RO2 Identity and Authority Verification Workflow",
+  "page": 56
+ },
+ {
+  "t": "p",
+  "text": "The workflow begins when a participant attempts to participate in the consent process or requests access to healthcare data. The system resolves and verifies the participant’s DID and then retrieves the associated VC. The credential is checked for validity and its claims are examined to determine whether the participant possesses the authority required by the consent. The output of RO2 is not an access-grant decision. It is a verified identity and authority result that can be consumed by RO3 and RO4. This separation prevents a participant from obtaining access merely by presenting a valid identity credential.",
+  "page": 56
+ },
+ {
+  "t": "p",
+  "text": "⦃Figure 12 presents this workflow.⦄"
+ },
+ {
+  "t": "h3",
+  "num": "6.2.2",
+  "title": "Procedure for DID and VC Identity and Authority Verification",
+  "page": 56
+ },
+ {
+  "t": "p",
+  "text": "The DID and VC Identity and Authority Verification procedure determines whether a participant possesses a valid decentralised identity and sufficient verifiable authority to participate in the consent-defined authorisation process. The procedure establishes a verifiable relationship between the participant u, the identity information represented by the DID, the attributes contained in the associated VC, and the authority requirements specified by the consent object C. The procedure consists of the following steps. 1. Step 1 – Resolve the Participant’s DID. The system first resolves the decentralised identifier (DID) associated with participant u. DID resolution retrieves the DID-related information required to establish the participant’s decentralised identity and identify the corresponding DID document. If the DID cannot be successfully resolved, the verification process terminates and returns INVALID. 2. Step 2 – Verify the DID Document. After successful resolution, the system verifies the DID document and its associated identity information. The verification process determines whether the document is structurally valid and whether the relevant cryptographic information, such as verification methods and public keys, can be trusted for subsequent credential verification. A failed DID verification results in an INVALID outcome.",
+  "page": 56
+ },
+ {
+  "t": "figure",
+  "n": 8,
+  "page": 57,
+  "caption": "RO2 workflow for decentralised identity and authority verification"
+ },
+ {
+  "t": "p",
+  "text": "3. Step 3 – Retrieve the Participant’s Verifiable Credential. The system retrieves the verifiable credential (VC) associated with participant u. The VC provides machine-verifiable claims concerning the participant, such as professional role, organisational affiliation, or delegated authority. If an appropriate VC cannot be retrieved, the participant cannot establish the required authority and the verification process returns INVALID. 4. Step 4 – Verify the Verifiable Credential. ⟪In the target design the retrieved VC is cryptographically and semantically validated. ⦅The current prototype performs a structural check of the participant's DID string only. Full cryptographic validation is specified as the production behaviour.⦆⟫ The system verifies the credential signature, issuer, subject, and validity conditions. In particular, the system determines whether the credential was issued by an acceptable issuer, whether it refers to the current participant, whether its signature is valid, and whether the credential remains within its validity period. Formally, the credential can be considered valid only when VC~valid~ = Sig~VC~ ∧ Issuer~valid~ ∧ Subject~match~ ∧ Time~valid~. If any of these conditions fails, the verification process returns INVALID. 5. Step 5 – Extract Role and Authority Claims. Once the VC has been successfully verified, the system extracts the relevant role and authority claims associated with participant u. Depending on the healthcare scenario, these claims may identify a doctor, guardian, researcher, auditor, or another authorised participant. The extracted claims provide the evidence required for determining whether the participant satisfies the authority requirements of the consent object. 6. Step 6 – Compare Authority Claims with Consent Requirements. The extracted role and authority claims are compared against the authorisation requirements A specified in the consent object C. The purpose of this step is to ensure that possession of a valid identity or credential is not automatically interpreted as permission to access healthcare information. The authority verification condition can therefore be represented as Authority(u, C) = Claims(u) |= A~C~, where Claims(u) denotes the verified claims associated with participant u, and A~C~ denotes the authority requirements defined by consent object C. If the participant’s claims do not satisfy the required authority conditions, the system returns INVALID. 7. Step 7 – Establish Identity–Authority Binding. After the claims have satisfied the consent requirements, the system establishes the binding between the verified participant identity and the corresponding authority. This step ensures that the authority being exercised is associated with the same participant whose DID and VC have been successfully verified, thereby reducing the possibility of an unrelated credential being used to obtain access.",
+  "page": 58
+ },
+ {
+  "t": "p",
+  "text": "8. Step 8 – Record Identity and Authority Evidence. The system records the evidence generated during the verification process. The evidence may include the resolved DID, verification status, credential identifier, issuer information, relevant authority claims, verification timestamp, and the relationship between the verified claims and the consent requirements. This evidence provides an auditable basis for subsequent access-authorisation decisions. 9. Step 9 – Return the Verification Result. If DID resolution, DID verification, VC retrieval, VC verification, and authority validation are all successfully completed, the system returns V~I~(u) = VALID. Otherwise, the procedure terminates at the first failed mandatory verification condition and returns V~I~(u) = INVALID. The overall verification process can therefore be represented as: DID~resolve~ → DID~verify~ → VC~retrieve~ → VC~verify~ → Claims~extract~ → Authority~match~ → Evidence~record~ → V~I~(u). The procedure establishes an important separation between identity verification and authority verification. A participant is not considered valid merely because a DID can be resolved or because a VC has a valid cryptographic signature. Instead, the participant must demonstrate that the verified credential claims satisfy the authority requirements associated with the specific consent object C. Consequently, the procedure can be interpreted as a two-layer verification mechanism Identity(u) ∧ CredentialValidity(u) ∧ Authority(u, C) ⇒ V~I~(u) = VALID. This distinction is important for the proposed framework because a valid healthcare identity does not imply unrestricted access to healthcare data. DID and VC mechanisms provide trustworthy identity and attribute evidence, while the consent object provides the context against which those claims are evaluated. The resulting verification evidence can then be consumed by the subsequent policy, scope, and access-authorisation stages.",
+  "page": 59
+ },
+ {
+  "t": "h3",
+  "num": "6.2.3",
+  "title": "Algorithm 2: DID and VC Identity and Authority Verification",
+  "page": 59
+ },
+ {
+  "t": "p",
+  "text": "Algorithm 2 establishes that identity verification and authority verification are related but distinct operations. A participant may possess a valid DID while lacking the authority required by the consent. Similarly, a credential may be structurally valid but irrelevant to the specific authorisation requirement. Therefore, the algorithm verifies both credential validity and authority relevance. This mechanism contributes to the trust-oriented framework by converting identity and authority claims into verifiable evidence. However, it does not independently establish collective consent or policy compliance. Those conditions are evaluated by RO3 and RO4.",
+  "page": 59
+ },
+ {
+  "t": "algo",
+  "n": 2,
+  "title": "DID and VC Identity and Authority Verification",
+  "require": "Participant u, consent object C",
+  "ensure": "Verification result V~I~(u)",
+  "lines": [
+   [
+    0,
+    "Resolve DID of u"
+   ],
+   [
+    0,
+    "**if** DID resolution fails **then**"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Verify DID document and associated identity information"
+   ],
+   [
+    0,
+    "**if** DID verification fails **then**"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Retrieve VC associated with u"
+   ],
+   [
+    0,
+    "**if** VC retrieval fails **then**"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Verify VC signature, issuer, subject, and validity"
+   ],
+   [
+    0,
+    "**if** VC verification fails **then**"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Extract role and authority claims from VC"
+   ],
+   [
+    0,
+    "**if** claims do not satisfy the authority requirements of C **then**"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Record identity and authority verification evidence"
+   ],
+   [
+    0,
+    "**return** VALID"
+   ]
+  ],
+  "page": 60
+ },
+ {
+  "t": "h2",
+  "num": "6.3",
+  "title": "Trustworthy Multi-Party Authorisation for RO3",
+  "page": 61
+ },
+ {
+  "t": "p",
+  "text": "RO3 addresses RQ3 by developing a threshold-based multi-party authorisation mechanism. The objective is to ensure that sensitive healthcare data cannot be accessed through unilateral approval when the consent requires participation from multiple independently verified parties. Let A~v~ denote the set of valid approvals and let N denote the required authorisation threshold. The threshold condition is defined as",
+  "page": 61
+ },
+ {
+  "t": "eq",
+  "text": "V~A~(C) = { 1, |A~v~| ≥ N; 0, |A~v~| < N }.",
+  "num": 49,
+  "page": 61
+ },
+ {
+  "t": "p",
+  "text": "⦅The threshold mechanism establishes collective authorisation. It follows the threshold-committee principle used in decentralised identity systems [4, 33], but applies it to consent approval rather than to credential issuance.⦆ For example, a consent may require two valid guardian approvals. In this case, one valid approval is insufficient, whereas two valid approvals satisfy the threshold.",
+  "page": 61
+ },
+ {
+  "t": "h3",
+  "num": "6.3.1",
+  "title": "RO3 Multi-Party Authorisation Workflow",
+  "page": 61
+ },
+ {
+  "t": "p",
+  "text": "The workflow first identifies the participants required by the consent. Each participant must submit an approval that can be independently verified. Invalid approvals are rejected and must not contribute to the threshold count. Valid approvals are recorded and the current approval count is updated. The authorisation becomes active only when the number of valid approvals reaches the required threshold. In the HALAH implementation, the Guardian workflow verifies the guardian VC, appends the guardian DID to the consent signatures, and displays the current approval count relative to the threshold. When the threshold is reached, the implementation assigns an SBT identifier and records the corresponding minting event. The SBT should be interpreted as an activation or representation mechanism for the consent state rather than as the fundamental source of trust. The trust decision is established by the verification of participants and the satisfaction of the authorisation threshold. The blockchain or token layer provides persistence, traceability, and evidence of the resulting state.",
+  "page": 61
+ },
+ {
+  "t": "p",
+  "text": "⦃Figure 13 presents the RO3 workflow.⦄"
+ },
+ {
+  "t": "h3",
+  "num": "6.3.2",
+  "title": "Procedure for Threshold-Based Multi-Party Authorisation",
+  "page": 61
+ },
+ {
+  "t": "p",
+  "text": "The Threshold-Based Multi-Party Authorisation procedure determines whether a consent-defined authorisation requirement has received sufficient valid approvals from the designated participants. Rather than relying on a single approval authority, the procedure requires a predefined number of eligible participants to independently provide valid approvals. This mechanism reduces reliance on a single decision-maker and provides an auditable basis for activating consent-related authorisation. 1. Step 1 – Retrieve the Required Participant Set. The system first retrieves the required participant set G associated with the consent object C. The set G defines which participants are eligible to contribute an approval to the authorisation process. Depending on the consent configuration, G may contain healthcare professionals, guardians, institutional representatives, or other authorised parties.",
+  "page": 61
+ },
+ {
+  "t": "figure",
+  "n": 9,
+  "page": 62,
+  "caption": "RO3 workflow for threshold-based multi-party authorisation"
+ },
+ {
+  "t": "p",
+  "text": "2. Step 2 – Define the Authorisation Threshold. The system obtains the threshold value N, which specifies the minimum number of valid and distinct approvals required to activate the authorisation. The threshold must satisfy 1 ≤ N ≤ |G|. The threshold therefore determines how many eligible participants must independently approve the consent before the authorisation becomes active. 3. Step 3 – Receive a Participant Approval. A participant submits an approval a associated with consent object C. The approval is treated as a candidate authorisation contribution and is not considered valid until the identity and authority of the submitting participant have been verified. 4. Step 4 – Verify the Identity and Authority of the Approving Participant. The system verifies the identity and authority of the participant submitting a. The verification process may invoke the DID and VC verification procedure described in Algorithm 2. The system therefore determines whether the participant possesses a valid identity and whether the associated authority claims satisfy the requirements of consent object C. If the verification fails, the approval is classified as invalid. The system records the invalid approval event and returns DENY for that approval attempt. 5. Step 5 – Verify Participant Eligibility. If the participant’s identity and authority are successfully verified, the system determines whether the participant belongs to the required participant set G. Formally, u ∈ G. If the participant is not a member of G, the approval cannot contribute to the threshold. The system records the event as an unauthorised approval attempt and returns DENY. 6. Step 6 – Check for Duplicate Approval. The system checks whether the participant has already approved consent object C. This prevents a single participant from submitting multiple approvals and artificially satisfying the threshold. ⦅Formally, no approval already contained in the valid approval set A~v~ may originate from participant u.⦆ If the participant has already submitted a valid approval, the system records a duplicate approval event and rejects the additional approval. 7. Step 7 – Record the Valid Approval. If the participant is both authorised and eligible, and no previous approval from that participant exists, the system records the approval a as valid. The corresponding participant is added to the valid approval set A~v~. The approval set is therefore updated according to A~v~ ← A~v~ ∪ {a}. Each valid approval becomes an independent piece of authorisation evidence associated with consent object C. 8. Step 8 – Evaluate the Approval Threshold. The system evaluates the number of valid approvals currently associated with the consent: |A~v~| ≥ N. This comparison determines whether the minimum number of required participants has been reached. ⦅It should be noted that only approvals that have passed the identity, authority, membership and duplicate checks are included in A~v~.⦆ 9. Step 9 – Activate the Authorisation if the Threshold Is Satisfied. If |A~v~| ≥ N, the required threshold has been satisfied. The system activates the authorisation associated with consent object C. The activation indicates that the consent has obtained sufficient valid multi-party approval to proceed to the subsequent access-control or data-access stage. 10. Step 10 – Generate Activation Evidence. Following successful threshold satisfaction, the system generates activation or token evidence associated with the authorisation decision. The evidence may include the consent identifier, threshold value N, identities of the approving participants, approval timestamps, and the resulting authorisation state. This evidence provides a verifiable representation of how the authorisation was activated and which participants contributed to the decision. 11. Step 11 – Record the Threshold-Satisfied Event. The system records a threshold-satisfied event in the audit infrastructure. This event provides an immutable or otherwise tamper-evident record of the transition from a pending consent state to an active authorisation state. 12. Step 12 – Maintain Pending State if the Threshold Is Not Satisfied. If |A~v~| < N, the consent does not yet satisfy the required multi-party authorisation condition. The system therefore maintains the consent in a PENDING state rather than activating access. The system records a threshold-pending event so that the current authorisation state and the remaining approval requirement can be reconstructed during subsequent verification or audit.",
+  "page": 63
+ },
+ {
+  "t": "p",
+  "text": "13. Step 13 – Return the Authorisation Result. The final result is determined according to the threshold condition: ⦅Authorisation(C) = { ACTIVATED, |A~v~| ≥ N; PENDING, |A~v~| < N }⦆. Invalid, unauthorised, or duplicate approval attempts are rejected and do not contribute to the valid approval count. The overall procedure can therefore be represented as:",
+  "page": 65
+ },
+ {
+  "t": "eq",
+  "text": "G → N → a → Identity/Authority → Eligibility → Duplicate Check → A~v~ → ⦅|A~v~| ≥ N → { ACTIVATED; PENDING }⦆",
+  "num": 50,
+  "page": 65
+ },
+ {
+  "t": "p",
+  "text": "The threshold condition can be expressed more explicitly as [∀u~i~ ∈ A~v~, Identity(u~i~) ∧ Authority(u~i~, C) ∧ (u~i~ ∈ G)] ∧ ⦅|A~v~| ≥ N ⇒ Authorisation(C) = ACTIVATED.⦆ This formulation is important because the threshold is not calculated from the number of submitted approvals alone. Instead, only valid, authorised, eligible, and non-duplicate approvals contribute to the threshold. Consequently, the procedure prevents a participant from satisfying the authorisation requirement merely by submitting multiple approvals or by presenting a valid identity without possessing the required authority. The procedure also introduces a clear distinction between approval and authorisation. An individual approval represents one participant’s contribution to the decision, whereas authorisation is activated only when the collective evidence satisfies the predefined threshold. This provides a distributed decision mechanism in which no single participant necessarily has unilateral authority to activate the consent. From a trust perspective, the procedure can therefore be interpreted as",
+  "page": 65
+ },
+ {
+  "t": "eq",
+  "text": "Individual Trust Evidence → Collective Approval Evidence → Threshold Satisfaction → Authorisation Activation",
+  "num": 51,
+  "page": 65
+ },
+ {
+  "t": "h3",
+  "num": "6.3.3",
+  "title": "Algorithm 3: Threshold-Based Multi-Party Authorisation",
+  "page": 65
+ },
+ {
+  "t": "p",
+  "text": "Algorithm 3 explicitly distinguishes between invalid, duplicate, and valid approvals. This distinction is important because simply counting submitted signatures could incorrectly treat unauthorised or repeated approvals as independent evidence. The algorithm also demonstrates why multi-party authorisation is a trust mechanism rather than merely a user-interface feature. The final decision depends on independently verified participants and a predefined collective requirement. Therefore, a single participant cannot unilaterally activate the consent when the threshold has not been satisfied. This mechanism complements the DID/VC verification procedure in Algorithm 2. Algorithm 2 establishes whether an individual participant possesses a valid identity and sufficient authority, whereas Algorithm 3 determines whether a sufficient number of independently verified participants have collectively satisfied the consent-defined authorisation requirement. The resulting activation evidence can subsequently be consumed by the policy and scope enforcement layer before healthcare data are released.",
+  "page": 65
+ },
+ {
+  "t": "algo",
+  "n": 3,
+  "title": "Threshold-Based Multi-Party Authorisation",
+  "require": "⦅Consent object C with identifier id~C~, purpose P~u~, interval (t~s~, t~e~) and jurisdiction L; patient and requester addresses addr~p~, addr~r~; EIP-712 domain; ⦅approval a = (g, siga) submitted by guardian g; threshold N = |G|; burn authority burnAuth (Both in the prototype)⦆⦆",
+  "ensure": "Authorisation result",
+  "lines": [
+   [
+    0,
+    "Retrieve required participant set G"
+   ],
+   [
+    0,
+    "Verify identity and authority of participant submitting a"
+   ],
+   [
+    0,
+    "**if** verification fails **then**"
+   ],
+   [
+    1,
+    "Record invalid approval"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "**if** participant is not in G **then**"
+   ],
+   [
+    1,
+    "Record unauthorised approval attempt"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "**if** participant has already approved C **then**"
+   ],
+   [
+    1,
+    "Record duplicate approval"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Record valid approval a"
+   ],
+   [
+    0,
+    "Update valid approval set A~v~"
+   ],
+   [
+    0,
+    "**if** |A~v~| ≥ N **then**"
+   ],
+   [
+    1,
+    "Activate authorisation"
+   ],
+   [
+    1,
+    "Generate activation or token evidence"
+   ],
+   [
+    1,
+    "Record threshold-satisfied event"
+   ],
+   [
+    1,
+    "**return** ALLOW"
+   ],
+   [
+    0,
+    "**else**"
+   ],
+   [
+    1,
+    "Keep consent in pending state"
+   ],
+   [
+    1,
+    "Record threshold-pending event"
+   ],
+   [
+    1,
+    "**return** PENDING"
+   ],
+   [
+    0,
+    "**end if**"
+   ]
+  ],
+  "page": 66
+ },
+ {
+  "t": "h2",
+  "num": "6.4",
+  "title": "Policy- and Context-Aware Access Control for RO4",
+  "page": 67
+ },
+ {
+  "t": "p",
+  "text": "RO4 addresses RQ4 by developing a policy-aware authorisation mechanism that evaluates the purpose and data scope of a requested operation against the constraints defined by the consent. The objective is based on the observation that a valid identity and sufficient approval do not necessarily imply that every requested operation is permitted. A doctor may be a legitimate participant and may possess a valid consent, but the requested data may exceed the authorised scope or the requested purpose may not match the purpose specified by the patient. Let S~C~ denote the data scope authorised by the consent and S~R~ denote the data scope requested by the participant. The scope condition is",
+  "page": 67
+ },
+ {
+  "t": "eq",
+  "text": "V~S~(C, R) = 1 ⟺ S~R~ ⊆ S~C~.",
+  "num": 52,
+  "page": 67
+ },
+ {
+  "t": "p",
+  "text": "The policy condition can therefore be expressed as",
+  "page": 67
+ },
+ {
+  "t": "eq",
+  "text": "V~P~(C, R) = V~U~(C, R) ∧ V~S~(C, R),",
+  "num": 53,
+  "page": 67
+ },
+ {
+  "t": "p",
+  "text": "where V~U~(C, R) represents purpose compatibility and V~S~(C, R) represents data-scope compatibility. ⦅The complete authorisation decision enforced by the implemented system is, as stated in Equation (26),⦆⦅⦆⟪⟫",
+  "page": 67
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R).",
+  "num": 54,
+  "page": 67
+ },
+ {
+  "t": "h3",
+  "num": "6.4.1",
+  "title": "RO4 Policy-Aware Access Workflow",
+  "page": 67
+ },
+ {
+  "t": "p",
+  "text": "The workflow begins when a doctor submits a request for patient data. The system retrieves the relevant consent object and verifies the requesting participant. It then checks whether the required multi-party authorisation has been established. After the identity and authorisation conditions are satisfied, the system evaluates the requested purpose and data scope. A request is permitted only when the purpose is compatible with the consent and the requested data scope is contained within the authorised scope. The HALAH implementation provides a concrete basis for this objective. The Doctor interface retrieves a consent, evaluates its state, allows a requested scope to be selected from the consent scope, generates a proof, checks the requested scope, and invokes the authorisation function before returning data. ⦃Figure 14 presents this workflow.⦄ For example, if",
+  "page": 67
+ },
+ {
+  "t": "p",
+  "text": "⦃⦄"
+ },
+ {
+  "t": "eq",
+  "text": "⦅S~C~ = {Observation, Medication},⦆",
+  "num": 55,
+  "page": 67
+ },
+ {
+  "t": "p",
+  "text": "and",
+  "page": 67
+ },
+ {
+  "t": "eq",
+  "text": "⦅S~R~ = {Observation, Medication, Procedure},⦆",
+  "num": 56,
+  "page": 67
+ },
+ {
+  "t": "p",
+  "text": "then",
+  "page": 67
+ },
+ {
+  "t": "eq",
+  "text": "S~R~ ⊈ S~C~,",
+  "num": 57,
+  "page": 67
+ },
+ {
+  "t": "p",
+  "text": "and the request must be denied. This rule prevents a legitimate participant from obtaining data outside the patient’s authorised scope.",
+  "page": 67
+ },
+ {
+  "t": "figure",
+  "n": 10,
+  "page": 68,
+  "caption": "RO4 workflow for policy- and context-aware access control"
+ },
+ {
+  "t": "h3",
+  "num": "6.4.2",
+  "title": "Algorithm 4: Policy-Aware Access Decision",
+  "page": 72
+ },
+ {
+  "t": "algo",
+  "n": 4,
+  "title": "Policy-Aware Access Decision",
+  "require": "⦅Consent object C, access request R = (u, P~R~, S~R~, Jur(R)), requesting participant u, current time t⦆",
+  "ensure": "Access decision",
+  "lines": [
+   [
+    0,
+    "Verify DID and VC of u"
+   ],
+   [
+    0,
+    "**if** identity or authority verification fails **then**"
+   ],
+   [
+    1,
+    "Record denied decision"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Evaluate consent state"
+   ],
+   [
+    0,
+    "**if** consent is not active **then**"
+   ],
+   [
+    1,
+    "Record denied decision"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Verify multi-party authorisation"
+   ],
+   [
+    0,
+    "**if** threshold is not satisfied **then**"
+   ],
+   [
+    1,
+    "Record denied decision"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Evaluate requested purpose"
+   ],
+   [
+    0,
+    "**if** purpose is incompatible with consent **then**"
+   ],
+   [
+    1,
+    "Record denied decision"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Evaluate requested data scope"
+   ],
+   [
+    0,
+    "**if** S~R~ ⊈ S~C~ **then**"
+   ],
+   [
+    1,
+    "Record denied decision"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Generate or verify access evidence"
+   ],
+   [
+    0,
+    "Retrieve authorised healthcare data"
+   ],
+   [
+    0,
+    "Record granted decision"
+   ],
+   [
+    0,
+    "**return** ALLOW"
+   ]
+  ],
+  "page": 72
+ },
+ {
+  "t": "p",
+  "text": "Algorithm 4 demonstrates that policy evaluation is performed after identity and multi-party authorisation verification but before data release. This ordering is important because it prevents the system from treating identity validity or collective approval as unrestricted permission.",
+  "page": 72
+ },
+ {
+  "t": "p",
+  "text": "The algorithm also establishes the connection between the proposed framework and the HALAH access-control implementation. ⦅The system must determine whether a consent exists, and it must also evaluate whether the current request satisfies the scope and purpose constraints of that consent.⦆ Both granted and denied requests should be recorded to support accountability and auditability.",
+  "page": 73
+ },
+ {
+  "t": "h3",
+  "num": "6.4.3",
+  "title": "Procedure for Policy-Aware Access Decision",
+  "page": 73
+ },
+ {
+  "t": "p",
+  "text": "⦅The Policy-Aware Access Decision procedure determines whether a specific healthcare data-access request should be authorised. It does so by jointly evaluating the requesting participant’s identity and authority, the current consent state, and the required multi-party authorisation condition. It also evaluates the intended purpose and the requested data scope.⦆ Rather than treating successful authentication as sufficient for access, the procedure evaluates the complete set of conditions defined by the consent and applicable access-control policies. The procedure consists of the following steps. 1. Step 1 – Receive and Parse the Access Request. The system receives an access request R from requesting participant u. The request specifies the healthcare resources requested by the participant and the intended purpose of access. The requested data scope is denoted by S~R~, while the purpose associated with the request is denoted by P~R~. The access request can therefore be ⦅represented as R = (u, P~R~, S~R~, Jur(R)), where Jur(R) is the jurisdiction declared by the requester⦆. The system associates R with the relevant consent object C before continuing with the authorisation process. 2. Step 2 – Verify the Requesting Participant’s DID and VC. The system verifies the DID and VC associated with participant u. This step invokes the identity and authority verification procedure defined in Algorithm 2. The system determines whether the participant possesses a valid decentralised identity and whether the associated verifiable credentials provide sufficient authority for the requested healthcare interaction. If identity or authority verification fails, the request is denied and the denial event is recorded. Formally, V~I~(u) = VALID must hold before the request can proceed to the subsequent authorisation stages. 3. Step 3 – Evaluate the Current Consent State. After successful identity verification, the system evaluates the current state of consent object C. The system determines whether the consent is active and whether it remains within its defined validity period. In particular, the system verifies that the consent has not expired, been revoked, or otherwise transitioned into an inactive state. If State(C) ≠ ACTIVE, the access request is denied and the decision is recorded.",
+  "page": 73
+ },
+ {
+  "t": "p",
+  "text": "4. Step 4 – Verify Multi-Party Authorisation. The system verifies whether the multi-party authorisation requirement associated with consent object C has been satisfied. The valid approval set A~v~ is evaluated against the required threshold N. The authorisation condition is expressed as |A~v~| ≥ N. If the threshold has not been satisfied, the consent cannot be used to authorise the requested access. The system therefore records a denied decision and returns DENY. 5. Step 5 – Evaluate the Requested Purpose. The system compares the purpose specified in the access request P~R~ with the purpose permitted by the consent object P~C~. The purpose compatibility condition can be represented as ⦅P~R~ ⊨ P~C~, which means the requested⦆⟪ purpose is required to satisfy the privacy constraint P~C~ before access can proceed.⟫ ⦅The evaluation is designed so that a request violating the privacy constraint is refused before any data are released. A formal proof of this property forms part of the next-stage security analysis.⦆⟪⟫ If the requested purpose is incompatible with the patient’s consent, the request is denied. This step prevents a participant from using otherwise valid credentials and consent to access healthcare information for a purpose that was not authorised by the patient. 6. Step 6 – Evaluate the Requested Data Scope. The system evaluates whether the requested data scope S~R~ is contained within the data scope authorised by the consent, denoted by S~C~. The required containment relationship is S~R~ ⊆ S~C~. If S~R~ ⊈ S~C~, the requested access exceeds the patient’s authorised data scope. The system records a denied decision and returns DENY. This step is particularly important for fine-grained healthcare data access because authorisation to access one category of healthcare information does not imply authorisation to access all categories of the patient’s record. 7. Step 7 – Evaluate the Complete Authorisation Policy. After the individual conditions have been successfully evaluated, the system performs the final policy evaluation. The decision is ⦅based on the conjunction of identity validity, active consent, sufficient multi-party approval, purpose compatibility, scope containment, temporal validity and jurisdictional match.⦆ The overall authorisation condition can be represented as Authorised(R, C, u) = V~I~(u) ∧ Active(C) ∧ (|A~v~| ≥ N) ∧ ⦅PurposeMatch(P~R~, P~C~) ∧ ScopeMatch(S~R~, S~C~) ∧ (t~s~ ≤ t ≤ t~e~) ∧ (Jur(R) = Jur(C))⦆. Access can proceed only when all required conditions evaluate to true. 8. Step 8 – Generate or Verify Access Evidence. If the policy evaluation succeeds, the system generates or verifies the evidence supporting the access decision. The evidence may include the consent identifier, requesting participant DID, relevant VC claims, consent state, approval threshold, approving participants, requested purpose, requested scope, and decision timestamp. This evidence provides an auditable relationship between the access request and the conditions that justified the resulting authorisation. 9. Step 9 – Retrieve the Authorised Healthcare Data. Once the request has been successfully authorised, the system retrieves only the healthcare data satisfying the authorised scope S~R~. The retrieval operation must enforce the same scope constraints that were evaluated during the policy decision. Thus, Data~returned~ ⊆ S~C~. This prevents a mismatch between the policy decision and the actual data returned to the requester. 10. Step 10 – Record the Granted Decision. The system records the successful access-authorisation event. The recorded evidence may include the request identifier, consent identifier, requester identity, authorised purpose, authorised data scope, authorisation result, and relevant timestamp. The resulting event provides an auditable record of why and under which conditions access was granted. 11. Step 11 – Return the Final Access Decision. If all mandatory conditions have been satisfied, the system returns AccessDecision = ALLOW. If any mandatory condition fails during the evaluation process, the system records the corresponding denial evidence and returns AccessDecision = DENY. The overall decision process can therefore be represented as ⦅R → DID/VC → Consent State → Threshold → Purpose → Scope → Time → Jurisdiction → Policy Eval. → Evidence → Data Retr. →⦆ { ALLOW; DENY }",
+  "page": 74
+ },
+ {
+  "t": "p",
+  "text": "⦅In the HALAH implementation, the access-evidence step (Step 8) is realised by generating and verifying a Groth16 zero-knowledge proof. The proof shows that the prover knows the secret and the expiry time behind a Poseidon commitment held in the application's consent record, and that the consent has not expired at time t. The proof mode is recorded with the decision in the audit ledger. Therefore, the proof constitutes the access evidence required by Algorithm 4 (line 28) before any data are retrieved.⦆"
+ },
+ {
+  "t": "p",
+  "text": "⦃It should be noted that the denial of lines 7 to 10 of Algorithm 4, for a consent that is not ACTIVE, is reported in the doctor interface but is not written to the audit ledger in the current prototype. Only requests evaluated against an ACTIVE consent produce the STATE_CHECK and DATA_ACCESS records, and the refusal that follows revocation is therefore evidenced by the interface (Figure 36) and by the automated tests rather than by a ledger row.⦄"
+ }
+]

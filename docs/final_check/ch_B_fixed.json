@@ -1,0 +1,872 @@
+[
+ {
+  "t": "p",
+  "text": "The proposed research addresses this gap by developing a trusted multi-party consent governance framework in which consent is represented as an evaluable authorisation object rather than simply as a database entry, consent receipt, or blockchain transaction. Decentralised identifiers and verifiable credentials are used to establish trusted identity and authority inputs. Multi-party authorisation mechanisms determine whether the required independent participants have collectively satisfied the authorisation condition. Policy-aware access control evaluates whether a requested operation remains within the authorised purpose and data scope.",
+  "page": 21
+ },
+ {
+  "t": "p",
+  "text": "The foundational authorisation decision investigated in the current stage of the research can therefore be represented as",
+  "page": 21
+ },
+ {
+  "t": "eq",
+  "num": 1,
+  "page": 0,
+  "text": "⟪Decision(C, R, t) = ALLOW ⟺ V~I~ ∧ V~A~ ∧ V~P~ ∧ V~T~ ∧ V~L~⟫"
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R),",
+  "num": null,
+  "page": 21
+ },
+ {
+  "t": "p",
+  "text": "where V~I~(u) represents the validity of the identity and relevant authority evidence associated with participant u, V~A~(C) represents the satisfaction of the required multi-party authorisation condition for consent C, and V~P~(C, R) represents compliance between the consent and the requested operation R.",
+  "page": 21
+ },
+ {
+  "t": "p",
+  "page": 0,
+  "text": "⦅V~T~(C, t) represents the temporal validity of the request instant and V~L~(C) represents the jurisdictional constraint. This is the rule enforced by the implemented Consent Engine, in which every access request is evaluated over the complete tuple. All five predicates are enforced in the implemented Consent Engine and are evaluated empirically in the later chapters of this report.⦆"
+ },
+ {
+  "t": "p",
+  "text": "This formulation represents the principal conceptual contribution of the current research stage. It shifts the focus from determining whether consent has merely been recorded towards determining whether a data-access decision has been generated under sufficient and independently verifiable trust conditions.",
+  "page": 21
+ },
+ {
+  "t": "p",
+  "text": "⦅In this context, the principal research opportunity identified by the literature is not the development of another isolated blockchain consent mechanism or identity-management system. ⦅Instead, the opportunity lies in constructing a coherent trust-oriented authorisation model in which the different security mechanisms contribute to a common and explainable authorisation decision.⦆ Trustworthy healthcare data sharing can then be evaluated not simply according to whether a consent record exists, but ⦅according to whether the combined identity, authority, collective authorisation, policy, temporal and jurisdictional conditions required for access have been satisfied⦆.",
+  "page": 21
+ },
+ {
+  "t": "h2",
+  "num": "2.6",
+  "title": "Conclusion",
+  "page": 0,
+  "blue": true
+ },
+ {
+  "t": "p",
+  "text": "⦃This chapter has presented a systematic literature review, conducted and reported in accordance with PRISMA 2020, of the studies that address the authorisation of patient consent in decentralised healthcare data sharing. Six requirements for a trustworthy multi-party consent authorisation framework were defined in Section 2.2 and used as the basis of comparison throughout the chapter. ⦅Seven frozen database searches, supplemented by a Google Scholar discovery arm, identified 9,256 records,⦆ of which 6,039 unique records were screened by title. After abstract screening, full-text assessment and quality appraisal, 44 primary studies published between 2020 and 2026 were retained, together with three secondary studies that were used as background only. The studies were reviewed in six streams corresponding to the six requirements, and each study was assessed against all six requirements in the tables of Section 2.4.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃It should be noted that the review has limitations. The 588 pending-abstract records described in Section 2.3.6 were not screened, the full-text pool of 1,800 records was read in a prioritised order under the saturation rule rather than exhaustively, and the coding was performed by a single panel, so that a small number of relevant studies may have been missed. The consistency between the coding of the included studies and the signal prevalence of the wider pool, reported in Section 2.5, limits but does not remove this risk.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦅The review found that the individual conditions of a trustworthy authorisation decision are each represented in the literature. Evaluable consent objects have existed since 2020. Purpose-based and attribute-based policy engines operate inside the decision in a number of systems, and temporal validity and revocation are enforced at decision time in a few. Identity and authority are separated most clearly where guardianship or professional licensing is verified against an external register or credential. Multi-party approval exists in six mechanism classes. The review also found that these conditions are not conjoined. ⦅Multi-party approval does not appear as a standing condition of every access decision. It appears instead as joint approval on a contingency path with key-share reconstruction, an institution-side gate or a consumer-side delegated threshold. In other studies it appears as a patient-appointed witness threshold, a custodial M-of-N around a policy engine, or a guardian co-consent at consent registration.⦆ The purpose and data-scope policy is never conjoined with multi-party approval. Temporal and lifecycle enforcement at the consent level is rarely verified. Formal assurance, where it exists, covers a narrow cryptographic predicate, while the broadest predicates are neither proved nor tested. The research gap is therefore a conjunction gap and an assurance gap, as stated in Section 2.5 and decomposed by requirement in Section 2.5.1.⦆"
+ },
+ {
+  "t": "p",
+  "text": "⦃These two gaps define the research undertaken in the remainder of this report. ⦅The conjunction gap motivates a consent object whose components are evaluated as separate predicates. These components are the participating identities, the guardian set G and the threshold N, the purpose and data scope, and the validity interval. They also include the jurisdiction, the lifecycle state and the evidence, and the conjunction of these predicates determines every access decision.⦆ The assurance gap motivates the formal definition of the security properties of that conjunction and their empirical validation in the HALAH prototype. In this context, the six requirements of Section 2.2 and the six gaps of Section 2.5.1 correspond one to one to the six sub-research questions and the six research objectives that follow. Chapter 3 defines the key terms and states the research questions.⦄"
+ },
+ {
+  "t": "p",
+  "text": "⦃Figure 5 summarises this synthesis, showing that each requirement is satisfied by some of the 44 studies while no study conjoins all six conditions in one assured access decision.⦄"
+ },
+ {
+  "t": "h1",
+  "num": "3",
+  "title": "Research Gaps and Questions",
+  "page": 21
+ },
+ {
+  "t": "h2",
+  "num": "3.1",
+  "title": "Research Gap",
+  "page": 21
+ },
+ {
+  "t": "p",
+  "text": "⦅The systematic literature review of 44 primary studies presented in Chapter 2 (Section 2.5) indicates that substantial research⦆⦅ has been conducted⦆ on individual mechanisms for securing healthcare data sharing, including blockchain-based consent management, decentralised identity, verifiable credentials, cryptographic access control, ⦅policy-based authorisation, and multi-party approval. ⦅Representative examples are the blockchain EHR review of [1] and the dynamic consent model of [13], the DID and VC survey of [20], the attribute-based encryption scheme of [32], the access-control survey of [25] and the multi-party mechanisms of [53, 61, 69].⦆⦆⦅⦅⦆⦆ These approaches have demonstrated the value of decentralisation, tamper-resistant records, verifiable identity, fine-grained access control, and distributed decision-making in addressing different aspects of healthcare data security. However, the literature also reveals a significant conceptual and architectural fragmentation among these mechanisms. ⦅They are commonly investigated as independent technical solutions. The few studies that coordinate several of them in one decision⦆⦅ [58, 61, 45, 66, 57] do not make multi-party approval a standing condition of that decision and do not assure the conjunction formally or empirically.⦆",
+  "page": 21
+ },
+ {
+  "t": "p",
+  "text": "The central gap is therefore not the absence of technologies for recording consent, verifying identity, or restricting data access. Rather, it is the absence of a sufficiently integrated model explaining how these mechanisms collectively establish a trustworthy authorisation decision. ⦅In particular, many consent-oriented approaches still treat consent primarily as a record or a Boolean flag [36, 60, 65], and even the evaluable consent objects reported since 2020 [71, 37, 44, 58, 66] carry only a subset of the conditions and ⦅are issued by a single party, as established in Section 2.5⦆.⦆ Once the permission has been created and stored, subsequent access control may depend predominantly on the existence of the consent record and the successful authentication of the requester. ⦅Such a model establishes evidence that a consent decision occurred. It does not necessarily establish that the requester possesses the required authority, or that all required parties have independently approved the access. It also does not establish that the requested operation is consistent with the purpose and data scope originally authorised by the patient.⦆",
+  "page": 22
+ },
+ {
+  "t": "p",
+  "text": "This distinction is important because recording consent and enforcing trustworthy authorisation represent fundamentally different security problems. ⦅A blockchain may provide an immutable representation of a consent event [2, 28], but immutability does not establish the legitimacy of the entities involved in that event.⦆ ⦅Similarly, a valid decentralised identity can establish who a participant is [20], but it does not necessarily establish what that participant is authorised to do.⦆ ⦅Multi-party approval can strengthen collective decision-making, but in the reviewed studies it is never conjoined with a purpose or data-scope condition [61, 53, 69], and approval alone does not guarantee that the resulting access request conforms to the patient’s authorised purpose or data scope.⦆ Consequently, trust cannot be attributed to any individual mechanism in isolation.",
+  "page": 22
+ },
+ {
+  "t": "p",
+  "text": "⦅From a Trust Computing perspective, this leads to a more fundamental research problem. Trustworthy access should be understood as the outcome of several independent conditions that are each verified and that are all satisfied together. The relevant conditions are the legitimacy of the participating identities, the authority associated with those identities, the satisfaction of the required collective approval and the compliance of the requested operation with the policy defined by the consent. In this context, the research does not treat trust as a static attribute of a particular entity or technology. It treats trust as a property of a verifiable authorisation process.⦆",
+  "page": 22
+ },
+ {
+  "t": "p",
+  "text": "This perspective also introduces an important distinction between authentication, authorisation, and trustworthy access. Authentication determines whether an entity can be identified and verified. Authorisation determines whether the entity is permitted to perform a particular operation. Trustworthy access requires an additional consideration: whether the authorisation decision itself has been established through sufficient, verifiable, and policy-compliant conditions. The research consequently investigates how these layers can be connected within a single framework without reducing trust to any individual credential, transaction, or access-control rule.",
+  "page": 22
+ },
+ {
+  "t": "p",
+  "text": "⦅The identified gap can therefore be stated as follows. Existing healthcare consent and access-control research provides many of the necessary technological building blocks. However, there remains a need for an authorisation framework in which the consent object carries identity, authority, threshold, policy, temporal, jurisdictional and lifecycle conditions. In this framework, multi-party approval must be a standing condition of every access decision, and the conjunction of these conditions must be formally and empirically assured.⦆⦅⦆⟪⟫ Such a framework should be capable of representing the relevant trust conditions, verifying the participating entities and their authority, establishing collective authorisation where required, and enforcing the policy and data-scope constraints associated with the consent.",
+  "page": 22
+ },
+ {
+  "t": "p",
+  "text": "⦃In the terms of Section 2.5, these two requirements correspond to the conjunction gap and the assurance gap respectively. ⦅It should be noted that the approving set must be defined by the patient rather than by an institution. In the reviewed studies, the approving set is either defined on the institutional or delegate side [61, 50, 75], or it is appointed by the patient [69, 54]. In the latter case, it is evaluated only as a contingency path or as a key-custody threshold rather than on every access request.⦆⦅⦆⦄"
+ },
+ {
+  "t": "p",
+  "text": "The research addresses this gap by developing a trust-oriented authorisation model in which consent is not simply evidence that permission was granted, but the basis for evaluating whether a particular access request should be trusted. The resulting research direction places Trust Computing at the centre of the investigation, while treating blockchain, decentralised identity, verifiable credentials, and policy mechanisms as enabling technologies supporting the broader trust model.",
+  "page": 23
+ },
+ {
+  "t": "p",
+  "text": "⦃For clarity, the following terms are used throughout the remaining chapters. The patient is the data subject who creates the consent object C. The guardian set G is the set of designated participants whose independent approval is required, and the threshold N is the number of valid guardian approvals needed for activation. The authorised doctor D is the requester whose access request R is evaluated against C.⦄"
+ },
+ {
+  "t": "h2",
+  "num": "3.2",
+  "title": "Main Research Question",
+  "page": 23
+ },
+ {
+  "t": "p",
+  "text": "Based on the identified research gap, the overarching research question is formulated as follows:",
+  "page": 23
+ },
+ {
+  "t": "p",
+  "text": "How can a trust-oriented computing framework establish and enforce trustworthy multi-party consent for decentralised healthcare data sharing under identity, authority, and policy constraints?",
+  "page": 23,
+  "quote": true
+ },
+ {
+  "t": "p",
+  "text": "The formulation of this question deliberately emphasises trust-oriented computing rather than any individual implementation technology. The terms establish and enforce represent two complementary aspects of the research problem. Establishment concerns how trustworthy participants, authority relationships, and collective consent decisions are created. Enforcement concerns how these established conditions are evaluated when a healthcare data-access request is made.",
+  "page": 23
+ },
+ {
+  "t": "p",
+  "text": "The main research question therefore encompasses both the conceptual and technical dimensions of the research. At the conceptual level, it investigates how trust should be represented and reasoned about within a multi-party consent environment. At the technical level, it investigates how these trust conditions can be operationalised through decentralised identities, verifiable credentials, multi-party authorisation, and policy-aware access control. The question consequently provides the basis for both the proposed framework and its subsequent implementation and evaluation.",
+  "page": 23
+ },
+ {
+  "t": "p",
+  "text": "For ⟪the⟫ current stage, the investigation is deliberately focused on the foundational conditions required to establish trustworthy authorisation. These conditions are represented through ⟪the first four of the six interconnected sub-research questions presented in Section 3.3, concerning⟫ consent modelling, identity and authority trust, multi-party authorisation, and policy-aware access control. ⟪The remaining two sub-questions, addressing temporal and lifecycle trust and formal security assurance, complete the six-question structure; the fifth is operationalised in the current prototype, and the formal component of the sixth is carried into the next stage of the research.⟫",
+  "page": 23
+ },
+ {
+  "t": "h2",
+  "num": "3.3",
+  "title": "Sub-Research Questions",
+  "page": 23
+ },
+ {
+  "t": "p",
+  "text": "The research objectives are operationalised through six corresponding sub-research questions. Each sub-research question addresses a distinct dimension of the proposed trust-oriented healthcare authorisation framework, while the six questions collectively establish a progression from consent modelling and participant trust to collective authorisation, policy enforcement, temporal and lifecycle control, and finally formal security assurance and empirical validation.",
+  "page": 23
+ },
+ {
+  "t": "p",
+  "text": "⦃Each sub-research question corresponds to one of the six requirements defined in Section 2.2 (Req 1 to Req 6) and to the associated gap identified in Section 2.5, so that SRQ1 to SRQ6 address, respectively, the representation, identity, threshold, policy, lifecycle and assurance requirements that no reviewed study satisfies together. For brevity, the sub-research questions SRQ1 to SRQ6 ⦅are referred to as RQ1 to RQ6 in Chapter 4 and in the remaining chapters, except in Section 5.1, where the full label SRQ is retained in the mapping of each sub-research question to the MVC layers.⦆⦄"
+ },
+ {
+  "t": "h3",
+  "num": "3.3.1",
+  "title": "SRQ1: Trust-Centric Consent Modelling",
+  "page": 24
+ },
+ {
+  "t": "p",
+  "text": "The first sub-research question is:",
+  "page": 24
+ },
+ {
+  "t": "p",
+  "text": "How can patient consent be modelled as a trust-aware authorisation object that explicitly represents identity, authority requirements, policy constraints, and authorisation evidence?",
+  "page": 24,
+  "quote": true
+ },
+ {
+  "t": "p",
+  "text": "The purpose of this question is to establish the conceptual foundation of the framework. Rather than representing consent as a simple association between a patient, a requester, and a permission, the proposed model represents consent as a structured and evaluable authorisation object ⟪such⟫ that",
+  "page": 24
+ },
+ {
+  "t": "eq",
+  "text": "C = (I, A, P, E),",
+  "num": 2,
+  "page": 24
+ },
+ {
+  "t": "p",
+  "text": "where I represents identity information, A represents authority and authorisation requirements, P represents policy and data-scope constraints, and E represents authorisation evidence.",
+  "page": 24
+ },
+ {
+  "t": "p",
+  "text": "⦅This formulation changes the role of consent from a passive record into an evaluable authorisation object. The security significance of the consent is not determined merely by the existence of a consent record. It is determined by whether the associated trust, authority, policy and evidence conditions remain valid when an access request is evaluated.⦆",
+  "page": 24
+ },
+ {
+  "t": "p",
+  "text": "SRQ1 therefore establishes the conceptual representation required by the subsequent identity, multi-party authorisation, policy, and security-assurance mechanisms.",
+  "page": 24
+ },
+ {
+  "t": "h3",
+  "num": "3.3.2",
+  "title": "SRQ2: Decentralised Identity and Authority Trust",
+  "page": 24
+ },
+ {
+  "t": "p",
+  "text": "The second sub-research question is:",
+  "page": 24
+ },
+ {
+  "t": "p",
+  "text": "How can decentralised identities and verifiable credentials establish trustworthy participants while explicitly separating identity authentication from authorisation authority?",
+  "page": 24,
+  "quote": true
+ },
+ {
+  "t": "p",
+  "text": "A fundamental principle of the proposed framework is that identity and authorisation should not be treated as equivalent. A valid decentralised identifier establishes the identity of a participant, ⦅while a verifiable credential provides evidence concerning the participant’s role or authority [20, 16].⦆ ⟪Therefore, Identity⟫ ≠ Authorisation. The identity and authority validity condition is represented as",
+  "page": 24
+ },
+ {
+  "t": "eq",
+  "text": "V~I~(u) = VerifyDID(u) ∧ VerifyVC(u).",
+  "num": 3,
+  "page": 24
+ },
+ {
+  "t": "p",
+  "text": "This separation prevents successful authentication from being interpreted as automatic authorisation. For example, authenticating a healthcare professional identified by a DID does not by itself establish that the professional is authorised to access a particular patient’s data. Identity and authority verification instead provide trusted inputs to the subsequent authorisation evaluation process.",
+  "page": 24
+ },
+ {
+  "t": "p",
+  "text": "SRQ2 therefore addresses how trustworthy participants can be established before their participation in collective authorisation decisions.",
+  "page": 24
+ },
+ {
+  "t": "h3",
+  "num": "3.3.3",
+  "title": "SRQ3: Trustworthy Multi-Party Authorisation",
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "The third sub-research question is:",
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "How can multiple independently verified participants jointly establish a trustworthy consent decision without allowing a single participant to unilaterally authorise sensitive healthcare data access?",
+  "page": 25,
+  "quote": true
+ },
+ {
+  "t": "p",
+  "text": "This question addresses the collaborative authorisation problem. Let A~v~ ⦅denote the set of independently verified authorisation participants and let N denote the required authorisation threshold. In this context, A~v~ is the subset of the guardian set G whose approvals have been independently verified, so that A~v~ ⊆ G and 1 ≤ N ≤ |G|.⦆ Multi-party authorisation is defined as",
+  "page": 25
+ },
+ {
+  "t": "eq",
+  "text": "V~A~(C) = { 1, |A~v~| ≥ N;  0, |A~v~| < N. }",
+  "num": 4,
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "Consequently,",
+  "page": 25
+ },
+ {
+  "t": "eq",
+  "text": "|A~v~| < N ⟹ Decision(C, R) = DENY.",
+  "num": 5,
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "⦃In the implemented framework, N is instantiated as |G|, the number of designated guardians, so that activation requires the approval of every listed guardian. Configurable k-of-n thresholds are identified as future work (Section 9.2), and the evaluated configuration is 2-of-2.⦄"
+ },
+ {
+  "t": "p",
+  "text": "This formulation allows the framework to distinguish explicitly between sufficient and insufficient collective participation. It also reduces reliance on a single authorising participant where a predefined threshold of independent approvals is required.",
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "⦅In this context, SRQ3 changes the interpretation of trust. Trust is no longer an assumption about a single trusted entity. It is a property that is established when several independently verified participants have jointly satisfied the authorisation requirement.⦆",
+  "page": 25
+ },
+ {
+  "t": "h3",
+  "num": "3.3.4",
+  "title": "SRQ4: Policy- and Context-Aware Access Control",
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "The fourth sub-research question is",
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "How can policy, purpose, and data-scope constraints be incorporated into authorisation decisions so that valid identities and sufficient approvals cannot be used to obtain unauthorised healthcare data?",
+  "page": 25,
+  "quote": true
+ },
+ {
+  "t": "p",
+  "text": "Multi-party approval alone does not guarantee that a data-access request is legitimate. A requester may possess a valid identity and the required approvals while requesting information beyond the authorised scope. The framework therefore introduces an explicit policy predicate",
+  "page": 25
+ },
+ {
+  "t": "eq",
+  "text": "V~P~(C, R) = Policy(C, R),",
+  "num": 6,
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "which evaluates whether the requested operation satisfies the purpose and data-scope constraints defined by the consent object.",
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "⦅The consent object against which this predicate is evaluated is the six-component object⦆",
+  "page": 25
+ },
+ {
+  "t": "eq",
+  "text": "⦅S~C~ = {Observation, Medication},⦆",
+  "num": 7,
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "while the request contains",
+  "page": 25
+ },
+ {
+  "t": "eq",
+  "text": "⦅S~R~ = {Observation, Medication, Procedure},⦆",
+  "num": 8,
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "the request must be rejected when",
+  "page": 25
+ },
+ {
+  "t": "eq",
+  "text": "S~R~ ⊈ S~C~.",
+  "num": 9,
+  "page": 25
+ },
+ {
+  "t": "p",
+  "text": "Similarly, a request may be rejected when its declared purpose is inconsistent with the purpose specified in the consent.",
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "⦅Therefore, trustworthy authorisation requires trusted participants and sufficient approvals, and in addition it requires compliance between the requested operation and the authorisation policy.⦆",
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "SRQ4 therefore completes the foundational access-control mechanisms by connecting participant trust and collective authorisation with the actual operation being requested.",
+  "page": 26
+ },
+ {
+  "t": "h3",
+  "num": "3.3.5",
+  "title": "SRQ5: Temporal and Lifecycle Trust",
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "The fifth sub-research question is",
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "How can temporal validity and consent lifecycle controls ensure that an authorisation remains valid only within its permitted time interval and lifecycle state, and is rejected after expiration, revocation, or an unauthorised state transition?",
+  "page": 26,
+  "quote": true
+ },
+ {
+  "t": "p",
+  "text": "Trustworthy authorisation is inherently dynamic. A consent that is valid at one point in time ⦅cannot necessarily be assumed to remain valid indefinitely, as recognised in the dynamic consent literature [24, 13].⦆ Let the validity interval of a consent object be [t~s~, t~e~]. Temporal validity is defined as",
+  "page": 26
+ },
+ {
+  "t": "eq",
+  "text": "⦅V~T~(C, t) = 1, t~s~ ≤ t ≤ t~e~; 0, otherwise.⦆",
+  "num": 10,
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "Consequently,",
+  "page": 26
+ },
+ {
+  "t": "eq",
+  "text": "t < t~s~ ∨ t > t~e~ ⟹ ⦅Decision(C, R, t)⦆ = DENY.",
+  "num": 11,
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "Temporal validity must also be evaluated together with the lifecycle state of the consent. The lifecycle can be represented as",
+  "page": 26
+ },
+ {
+  "t": "eq",
+  "text": "Specification → Verification → Approval → Active → Expiration/Revocation.",
+  "num": 12,
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "The lifecycle validity predicate ⟬V~S~⟭ can therefore be represented as",
+  "page": 26
+ },
+ {
+  "t": "eq",
+  "text": "⟬V~S~(C)⟭ = ValidState(C) ∧ ValidTransition(C).",
+  "num": 13,
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "An authorisation decision consequently requires both temporal and lifecycle validity. A consent that has expired, has been revoked, or has entered an invalid state must not be treated as an active authorisation even when its original identity, authority, and approval conditions were valid. ⦅In the implemented framework, the state and revocation conditions of V~S~ are evaluated as part of the collective authorisation predicate V~A~, whereas Section 6.5 additionally evaluates V~S~ as a composite temporal and lifecycle predicate V~S~(C, t, q) that includes the temporal condition of V~T~.⦆⟬ This is important because only a consent in the ACTIVE state can satisfy the authorisation condition. ⦅It should also be noted that the symbol V~L~ is reserved for the⦆ jurisdictional predicate, which corresponds to the component L of the consent object.⟭",
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "⦃It should be noted that Section 6.4 also writes the data-scope condition of Equation (9) as V~S~(C, R); for this reason the lifecycle predicate is written with three arguments, V~S~(C, t, q), wherever the two could be confused.⦄"
+ },
+ {
+  "t": "p",
+  "text": "SRQ5 therefore extends the foundational authorisation model into a dynamic consent environment in which trust is continuously evaluated according to both temporal conditions and lifecycle state.",
+  "page": 26
+ },
+ {
+  "t": "h3",
+  "num": "3.3.6",
+  "title": "SRQ6: Formal Security Assurance and Empirical Validation",
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "The sixth sub-research question is",
+  "page": 26
+ },
+ {
+  "t": "p",
+  "text": "How can the security properties of the proposed trust-oriented authorisation mechanism be formally defined and empirically evaluated to demonstrate that the implemented framework correctly enforces authorised and unauthorised healthcare data-access decisions?",
+  "page": 26,
+  "quote": true
+ },
+ {
+  "t": "p",
+  "text": "This question integrates the formal security analysis and empirical validation of the proposed framework. ⦅The purpose is to determine whether the prototype can execute valid consent workflows. In addition, the purpose is to establish whether the implemented mechanism conforms to the security properties defined by the conceptual model.⦆",
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "The overall authorisation decision is defined as a conjunction of independently evaluated predicates",
+  "page": 27
+ },
+ {
+  "t": "eq",
+  "text": "⦅Decision(C, R, t) = { ALLOW, V~I~ ∧ V~A~ ∧ V~P~ ∧ V~T~ ∧ V~L~; DENY, otherwise. }⦆",
+  "num": 14,
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "The corresponding security properties include identity correctness, which can be formulated as",
+  "page": 27
+ },
+ {
+  "t": "eq",
+  "text": "u ∈ A~v~ ⟹ V~I~(u) = 1,",
+  "num": 15,
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "authorisation integrity",
+  "page": 27
+ },
+ {
+  "t": "eq",
+  "text": "¬ (V~I~ ∧ V~A~ ∧ V~P~ ∧ V~T~ ∧ V~L~) ⟹ ⦅Decision(C, R, t)⦆ = DENY,",
+  "num": 16,
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "threshold security, formulated as",
+  "page": 27
+ },
+ {
+  "t": "eq",
+  "text": "|A~v~| < N ⟹ Decision(C, R) = DENY,",
+  "num": 17,
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "and temporal safety, formulated as",
+  "page": 27
+ },
+ {
+  "t": "eq",
+  "text": "t ∉ [t~s~, t~e~] ⟹ ⦅Decision(C, R, t)⦆ = DENY.",
+  "num": 18,
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "Lifecycle safety additionally requires that unauthorised state transitions be rejected",
+  "page": 27
+ },
+ {
+  "t": "eq",
+  "text": "IllegalTransition(C) ⟹ Reject.",
+  "num": 19,
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "The formal analysis provides a theoretical assurance layer that is independent of the empirical execution of the prototype. Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable.",
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "The empirical component evaluates whether the implemented HALAH framework realises these defined properties in representative decentralised healthcare data-sharing scenarios. ⟪Synthetic demonstration records, containing no real patient data, are used⟫ to construct representative consent workflows. The evaluation considers both successful and unsuccessful authorisation scenarios, including valid identity and credential verification, invalid identity or credential submission, insufficient multi-party approval, valid threshold-based approval, unauthorised data-scope requests, purpose violations, expired consent, revoked consent, and invalid lifecycle transitions.",
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "For a representative multi-party consent scenario, if two authorised participants are required, then it yields",
+  "page": 27
+ },
+ {
+  "t": "eq",
+  "text": "|A~v~| = 2 ⟹ V~A~ = 1,",
+  "num": 20,
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "whereas",
+  "page": 27
+ },
+ {
+  "t": "eq",
+  "text": "|A~v~| = 1 ⟹ V~A~ = 0.",
+  "num": 21,
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "The prototype evaluation therefore examines whether the implemented framework correctly transitions a consent from an unapproved state to an active authorisation state only when all required conditions are satisfied, and whether subsequent access requests are rejected when any required trust condition is violated.",
+  "page": 27
+ },
+ {
+  "t": "p",
+  "text": "Audit records are generated throughout the workflow to provide evidence of consent creation, participant verification, approval events, authorisation-state evaluation, data-access decisions, and relevant lifecycle transitions.",
+  "page": 28
+ },
+ {
+  "t": "p",
+  "text": "The empirical evaluation is therefore not primarily intended as a high-throughput performance benchmark. Instead, it assesses functional security correctness and consistency between the conceptual model, formal security properties, and implemented authorisation behaviour.",
+  "page": 28
+ },
+ {
+  "t": "p",
+  "text": "⦅SRQ6 therefore represents the final assurance stage of the research programme. It connects formal security reasoning with evidence from the implementation. Together, these two forms of analysis provide evidence that the proposed framework is conceptually defined and that it can also enforce the intended trust-oriented authorisation properties in representative healthcare data-sharing scenarios.⦆",
+  "page": 28
+ },
+ {
+  "t": "h2",
+  "num": "3.4",
+  "title": "Research Questions as an Integrated Research Problem",
+  "page": 28
+ },
+ {
+  "t": "p",
+  "text": "⦅The six sub-research questions are not independent technical questions. They represent successive and interdependent trust conditions within a single healthcare data authorisation problem.⦆ Collectively, they investigate how patient consent can be transformed from a static permission record into a trustworthy, evaluable, and enforceable authorisation mechanism.",
+  "page": 28
+ },
+ {
+  "t": "p",
+  "text": "SRQ1 establishes the conceptual object against which trust and authorisation can be evaluated by modelling patient consent as a structured authorisation object. SRQ2 establishes the trustworthiness of the participants by verifying their decentralised identities and authority evidence while explicitly separating identity from authorisation. SRQ3 then extends this participant-level trust into a collective decision by requiring independently verified participants to satisfy a predefined authorisation threshold. SRQ4 determines whether the resulting authorisation is applicable to the specific data-access request by evaluating purpose and data-scope constraints. SRQ5 further introduces the dynamic dimension of trust by determining whether the authorisation remains valid with respect to its temporal conditions and lifecycle state. Finally, SRQ6 establishes the assurance layer by formally defining the resulting security properties and empirically evaluating whether the implemented framework enforces them correctly.",
+  "page": 28
+ },
+ {
+  "t": "p",
+  "text": "The integrated authorisation condition can therefore be expressed as",
+  "page": 28
+ },
+ {
+  "t": "eq",
+  "text": "Decision(C, R, t) = ALLOW ⟺ V~I~(u) ∧ V~A~(C) ∧ V~P~(C, R) ∧ V~T~(C, t) ∧ V~L~(C).",
+  "num": 22,
+  "page": 28
+ },
+ {
+  "t": "p",
+  "text": "where V~I~ represents identity and authority validity, V~A~ represents collective authorisation validity, V~P~ represents policy and contextual compliance, V~T~ represents temporal validity, and V~L~ represents ⟬jurisdictional compliance, while lifecycle validity V~S~ is evaluated within V~A~⟭. ⦅This five-predicate conjunction constitutes the decision rule of the implemented Consent Engine; the three-predicate formulation of Equation (24) represents the foundational core of RO1 to RO4, which the implemented rule extends with the temporal and jurisdictional predicates.⦆",
+  "page": 28
+ },
+ {
+  "t": "p",
+  "text": "⦃The jurisdictional predicate V~L~ is satisfied when the jurisdiction declared in the access request R matches the jurisdiction L recorded in the consent object, or when no jurisdiction is recorded; its formal definition is given in Equation (59) in Section 6.5.⦄"
+ },
+ {
+  "t": "p",
+  "text": "This formulation provides the central logical relationship among SRQ1–SRQ5. A valid authorisation decision requires the simultaneous satisfaction of all relevant trust conditions. Consequently, failure of any individual condition results in denial⟪, such⟫ that",
+  "page": 28
+ },
+ {
+  "t": "eq",
+  "text": "¬ (V~I~ ∧ V~A~ ∧ V~P~ ∧ V~T~ ∧ V~L~) ⟹ Decision(C, R, t) = DENY.",
+  "num": 23,
+  "page": 28
+ },
+ {
+  "t": "p",
+  "text": "The formulation also clarifies the role of SRQ6. Formal security assurance does not constitute another authorisation condition to be evaluated at runtime. Instead, it provides a means of specifying, analysing, and verifying the security properties of the integrated authorisation mechanism. Empirical validation subsequently examines whether the implemented system realises these properties under representative valid, invalid, and adversarial healthcare data-sharing scenarios. Thus, SRQ6 operates as an assurance layer over the mechanisms established by SRQ1–SRQ5 rather than as an additional access-control predicate.",
+  "page": 28
+ },
+ {
+  "t": "p",
+  "text": "⦅The research questions are ordered so that each one builds on the previous one. SRQ1 establishes the consent representation. SRQ2 establishes participant trust on that representation. SRQ3 uses trusted participants to establish collective authorisation, and SRQ4 adds policy enforcement to the resulting decision. SRQ5 adds temporal and lifecycle control over the decision, and SRQ6 provides security assurance and validation of the whole. In this way the questions connect the interaction of the participants with the authorisation checks that the system performs.⦆",
+  "page": 29
+ },
+ {
+  "t": "p",
+  "text": "⦅This progression provides a research pathway from the representation of consent to the enforcement and assurance of trustworthy data access. It also clarifies that decentralised identifiers, verifiable credentials, threshold authorisation, policy enforcement and lifecycle controls are not independent blockchain or security features. In the proposed framework they are complementary mechanisms within a single trust-oriented authorisation model.⦆",
+  "page": 29
+ },
+ {
+  "t": "p",
+  "text": "⦅Accordingly, the contribution of the research is not simply the implementation of a blockchain-based consent prototype. The research investigates how multiple trust conditions can be represented explicitly, evaluated independently and enforced jointly in a decentralised healthcare data-sharing environment, and how the resulting decision can be reasoned about formally and validated empirically. The six research questions therefore define the integrated research problem together, and they correspond directly to the six research objectives.⦆",
+  "page": 29
+ },
+ {
+  "t": "h1",
+  "num": "4",
+  "title": "Research Objectives",
+  "page": 29
+ },
+ {
+  "t": "p",
+  "text": "The research objectives are derived from the research questions and translate the identified research gap into concrete research and development activities. The objectives are intentionally broader than individual implementation tasks. Each objective represents a research contribution that can be examined conceptually, technically, and, where appropriate, empirically. The complete research programme consists of six research objectives, corresponding to six research questions. ⦅The first four objectives establish the foundational trust-oriented authorisation mechanisms investigated during the current stage, ⦅RO5 has been operationalised in the current prototype. The empirical component of RO6 has been partially delivered, so that the formal component of RO6 and the remaining empirical work are carried into the next stage.⦆⦆⟪⟫⟪⟫",
+  "page": 29
+ },
+ {
+  "t": "h2",
+  "num": "4.1",
+  "title": "RO1 - Trust-Centric Consent Model",
+  "page": 29
+ },
+ {
+  "t": "p",
+  "text": "The first research objective is to develop a trust-aware consent model that represents patient consent as a structured and evaluable authorisation object. The model will incorporate identity information, authority requirements, policy constraints, and authorisation evidence so that a consent decision can be evaluated when a subsequent data-access request is made.",
+  "page": 29
+ },
+ {
+  "t": "p",
+  "text": "RO1 directly addresses RQ1 and establishes the conceptual foundation for the remaining objectives. In particular, it defines the information that must be represented before consent can be interpreted as an authorisation decision rather than merely as a static approval record.",
+  "page": 29
+ },
+ {
+  "t": "h2",
+  "num": "4.2",
+  "title": "RO2 - Decentralised Identity and Authority Trust",
+  "page": 30
+ },
+ {
+  "t": "p",
+  "text": "The second research objective is to develop a decentralised identity and authority verification mechanism using decentralised identifiers and verifiable credentials. The objective is to establish trustworthy participants while explicitly separating identity authentication from authorisation authority.",
+  "page": 30
+ },
+ {
+  "t": "p",
+  "text": "RO2 addresses RQ2 and provides the trust inputs required by the subsequent multi-party authorisation process. The objective is based on the principle that successful identity verification does not automatically imply permission to access healthcare data. Instead, identity and authority must be verified as distinct but related conditions of trustworthy authorisation.",
+  "page": 30
+ },
+ {
+  "t": "h2",
+  "num": "4.3",
+  "title": "RO3 - Trustworthy Multi-Party Authorisation",
+  "page": 30
+ },
+ {
+  "t": "p",
+  "text": "⦅In the implemented framework, the designated guardians are defined at consent creation, each EIP-712 approval is verified through signature recovery, and a valid signature is required from every listed guardian. Consequently, the threshold equals |G|, an N-of-N condition demonstrated in the 2-of-2 configuration.⦆",
+  "page": 30
+ },
+ {
+  "t": "p",
+  "text": "The objective is to prevent unilateral authorisation where collective approval is required and to provide an explicit mechanism for distinguishing sufficient from insufficient participation.",
+  "page": 30
+ },
+ {
+  "t": "p",
+  "text": "RO3 directly addresses RQ3 and extends the consent model from an individual permission statement to a collective authorisation decision.",
+  "page": 30
+ },
+ {
+  "t": "h2",
+  "num": "4.4",
+  "title": "RO4 - Policy- and Context-Aware Access Control",
+  "page": 30
+ },
+ {
+  "t": "p",
+  "text": "⦅In the implemented framework, the policy mechanism evaluates whether the requested purpose is consistent with the consent and rejects any request whose data scope is not a non-empty subset of the authorised EMR modules.⦆",
+  "page": 30
+ },
+ {
+  "t": "p",
+  "text": "The objective is to ensure that a valid identity and sufficient multi-party approval cannot be used to obtain healthcare information outside the authorised scope.",
+  "page": 30
+ },
+ {
+  "t": "p",
+  "text": "RO4 directly addresses RQ4 and completes the foundational authorisation model investigated during ⟪the⟫ current stage. Together, RO1–RO4 establish the representation, verification, collective authorisation, and policy-enforcement mechanisms required for a trust-oriented healthcare data-sharing decision.",
+  "page": 30
+ },
+ {
+  "t": "h2",
+  "num": "4.5",
+  "title": "RO5 - Temporal and Lifecycle Trust",
+  "page": 30
+ },
+ {
+  "t": "p",
+  "text": "⦅This objective has been substantially realised in the current implementation. ⦅In particular, the prototype enforces the temporal validity window at every access decision through the predicate V~T~, and records notBefore and expiry on-chain within the consent token. It also implements end-to-end revocation, including an on-chain revoke transaction, and manages the consent through an explicit lifecycle state machine.⦆ The remaining work therefore concerns hardening these controls and extending them to ⦅consent modification, delegation and guardian-set changes (Section 9.2), rather than introducing them.⦆⦆",
+  "page": 30
+ },
+ {
+  "t": "p",
+  "text": "RO5 addresses RQ5 and extends the foundational current stage authorisation model into a dynamic consent environment. ⦅Whereas the current stage establishes whether an authorisation can be considered valid⦆ under the defined identity, approval, and policy conditions, RO5 investigates whether that authorisation remains valid as time passes and as the consent state changes.",
+  "page": 30
+ },
+ {
+  "t": "h2",
+  "num": "4.6",
+  "title": "RO6 - Formal Security Assurance and Empirical Validation",
+  "page": 31
+ },
+ {
+  "t": "p",
+  "text": "The sixth research objective is to formally analyse and empirically evaluate whether the implemented framework satisfies its defined trust and authorisation properties under representative healthcare data-sharing scenarios.",
+  "page": 31
+ },
+ {
+  "t": "p",
+  "text": "⦅RO6 addresses RQ6 and combines formal security assurance with empirical validation of the proposed framework. The formal component, which is planned for the next stage, will specify and analyse the security properties, consistency requirements and soundness conditions of the trust-oriented authorisation mechanism. The empirical component evaluates the implementation through representative consent workflows, negative and adversarial scenarios and testing of the HALAH prototype.⦆ ",
+  "page": 31
+ },
+ {
+  "t": "p",
+  "text": "⦅The objective is to establish that the prototype can execute valid consent workflows. In addition, the objective is to establish that the prototype behaves correctly when one or more trust conditions are violated.⦆ For example, the evaluation should examine whether access is denied when identity verification fails, when the required authorisation threshold is not satisfied, or when the requested purpose or data scope violates the consent policy.",
+  "page": 31
+ },
+ {
+  "t": "p",
+  "text": "RO6 therefore represents the transition from establishing the authorisation model to providing evidence for its security and practical effectiveness.",
+  "page": 31
+ },
+ {
+  "t": "h2",
+  "num": "4.7",
+  "title": "Relationship Between Research Questions and Objectives",
+  "page": 31
+ },
+ {
+  "t": "p",
+  "text": "⦅The formal component of RO6 constitutes the principal research agenda for the next stage of the research, whereas RO5 has already been operationalised in the current prototype.⦆ RO5 extends the authorisation model with temporal and lifecycle trust, while RO6 provides formal security assurance and comprehensive empirical validation. The distinction between ⟪the⟫ current stage and ⟪the⟫ next stage is therefore based on research scope and maturity rather than on a different set of research questions or objectives. ⦅The current stage establishes the foundational mechanisms, their conceptual relationships and their operational lifecycle controls, ⦅whereas the next stage investigates whether these mechanisms satisfy the formally defined security properties and whether their security can be formally demonstrated, building on the empirical evidence already obtained.⦆⦅⦆⦆",
+  "page": 31
+ },
+ {
+  "t": "table",
+  "n": 3,
+  "page": 32,
+  "caption": "⦅Research Questions, Research Objectives, and Report Sections (RQ1 to RQ3)⦆",
+  "header": [
+   "RQ",
+   "Research Objective",
+   "Research Focus and Scope",
+   "⦅Report Section⦆"
+  ],
+  "rows": [
+   [
+    "RQ1",
+    "RO1: Trust-Centric Consent Model",
+    "Develop a structured and evaluable consent representation that treats patient consent as a policy-bound authorisation object containing identity information, authority requirements, policy constraints, and authorisation evidence.",
+    "⦅Section 6.1 (progress in Section 7.1)⦆"
+   ],
+   [
+    "RQ2",
+    "RO2: Decentralised Identity and Authority Trust",
+    "Establish trustworthy participants using DIDs and VCs while explicitly separating identity authentication from authorisation authority.",
+    "⦅Section 6.2 (progress in Section 7.2)⦆"
+   ],
+   [
+    "RQ3",
+    "RO3: Trustworthy Multi-Party Authorisation",
+    "Establish collective authorisation through independently verified participants and threshold-based approval mechanisms, thereby preventing unilateral authorisation when collective approval is required.",
+    "⦅Section 6.3 (progress in Section 7.3)⦆"
+   ]
+  ]
+ },
+ {
+  "t": "table",
+  "n": 4,
+  "page": 33,
+  "caption": "⦅Research Questions, Research Objectives, and Report Sections (RQ4 to RQ6)⦆",
+  "header": [
+   "RQ",
+   "Research Objective",
+   "Research Focus and Scope",
+   "⦅Report Section⦆"
+  ],
+  "rows": [
+   [
+    "RQ4",
+    "RO4: Policy- and Context-Aware Access Control",
+    "Enforce purpose and healthcare data-scope constraints as explicit and evaluable conditions of access, ensuring that valid identities and sufficient approvals cannot be used outside the authorised scope.",
+    "⦅Section 6.4 (progress in Section 7.4)⦆"
+   ],
+   [
+    "RQ5",
+    "RO5: Temporal and Lifecycle Trust",
+    "Extend the authorisation model with temporal validity, expiration, revocation, and controlled consent-state transitions.",
+    "⦅Section 6.5 (progress in Section 7.5)⦆"
+   ],
+   [
+    "RQ6",
+    "RO6: Formal Security Assurance and Empirical Validation",
+    "Formally analyse the security and consistency properties of the trust-oriented authorisation mechanism and empirically evaluate the complete framework through the HALAH prototype, representative healthcare scenarios, and negative or adversarial testing.",
+    "⦅Section 6.6 (progress in Section 7.6)⦆"
+   ]
+  ]
+ }
+]
