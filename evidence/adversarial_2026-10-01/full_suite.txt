@@ -1,1 +1,45 @@
-36 passed in 8.19s
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/user/HealthRWA-Sepolia-Personal-try
+plugins: anyio-4.15.1
+collecting ... collected 36 items
+
+tests/test_adversarial.py::test_baseline_allows PASSED                   [  2%]
+tests/test_adversarial.py::test_A1_signer_outside_G_is_not_counted PASSED [  5%]
+tests/test_adversarial.py::test_A2_replayed_signature_is_rejected PASSED [  8%]
+tests/test_adversarial.py::test_A3_duplicate_approval_does_not_reach_threshold PASSED [ 11%]
+tests/test_adversarial.py::test_A4_over_scope_request_is_rejected PASSED [ 13%]
+tests/test_adversarial.py::test_A5_empty_scope_is_rejected PASSED        [ 16%]
+tests/test_adversarial.py::test_A6_outside_validity_interval_is_denied PASSED [ 19%]
+tests/test_adversarial.py::test_A7_jurisdiction_mismatch_is_denied PASSED [ 22%]
+tests/test_adversarial.py::test_A8_revoked_consent_is_denied PASSED      [ 25%]
+tests/test_adversarial.py::test_A9_tampered_proof_fails_verification PASSED [ 27%]
+tests/test_adversarial.py::test_A10_expired_consent_cannot_be_proven PASSED [ 30%]
+tests/test_adversarial.py::test_A11_ledger_tampering_is_detected PASSED  [ 33%]
+tests/test_adversarial.py::test_A12_non_owner_cannot_mint_or_revoke PASSED [ 36%]
+tests/test_halah.py::test_did_to_address_is_deterministic_and_checksummed PASSED [ 38%]
+tests/test_halah.py::test_not_configured_without_env PASSED              [ 41%]
+tests/test_halah.py::test_audit_offchain_event_has_no_fake_tx_hash PASSED [ 44%]
+tests/test_halah.py::test_audit_onchain_event_keeps_real_tx_hash PASSED  [ 47%]
+tests/test_halah.py::test_v2_abi_has_consent_functions PASSED            [ 50%]
+tests/test_halah.py::test_no_fake_placeholders_left_in_app PASSED        [ 52%]
+tests/test_phase_red.py::test_revoked_consent_state_is_REVOKED PASSED    [ 55%]
+tests/test_phase_red.py::test_consent_persists_across_reload PASSED      [ 58%]
+tests/test_phase_red.py::test_revoke_persists_and_flags PASSED           [ 61%]
+tests/test_phase_red.py::test_audit_persists_across_reload PASSED        [ 63%]
+tests/test_phase_red.py::test_ui_labels_are_honest PASSED                [ 66%]
+tests/test_phase_yellow_green.py::test_eip712_roundtrip_and_rejections PASSED [ 69%]
+tests/test_phase_yellow_green.py::test_matrix_all_pass_and_each_dimension_fails_independently PASSED [ 72%]
+tests/test_phase_yellow_green.py::test_e2e_lifecycle_with_mocked_chain PASSED [ 75%]
+tests/test_phase_yellow_green.py::test_service_routes_to_v3_when_supported PASSED [ 77%]
+tests/test_regressions.py::test_discard_available_for_v3_receipt_decoding PASSED [ 80%]
+tests/test_regressions.py::test_reconcile_reads_v3_expiry_field PASSED   [ 83%]
+tests/test_regressions.py::test_v3_contract_compat_mint_does_not_use_external_self_call PASSED [ 86%]
+tests/test_regressions.py::test_jurisdiction_mismatch_denies PASSED      [ 88%]
+tests/test_regressions.py::test_partially_corrupted_csv_is_salvaged PASSED [ 91%]
+tests/test_zk.py::test_placeholder_mode_is_labelled_honestly PASSED      [ 94%]
+tests/test_zk.py::test_real_groth16_roundtrip_and_tamper PASSED          [ 97%]
+tests/test_zk.py::test_expired_consent_cannot_be_proven PASSED           [100%]
+
+============================== 36 passed in 9.60s ==============================

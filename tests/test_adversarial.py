@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from models.consent import Consent
 from models.access import AccessRequest
 from services.access_service import evaluate_allow, check_scope
+from services.state_service import evaluate_state
 from services.identity_service import sign_consent, verify_signature, verify_vc
 from services import zk_service as zk
 from database import audit_db
@@ -35,6 +36,7 @@ def test_A1_signer_outside_G_is_not_counted():
     sig, addr = sign_consent("did:parent:Z", c.consent_id)          # cryptographically valid, but Z is not in G
     c.signatures.append("did:parent:Z"); c.signature_data["did:parent:Z"] = {"signer": addr, "signature": sig}
     m = decide(c); assert m["VA"] is False and m["ALLOW"] is False
+    assert evaluate_state(c) == "PENDING_SIGNATURE"                 # the lifecycle does not count Z either
 
 # A2 - replay of a guardian's signature for a different consent
 def test_A2_replayed_signature_is_rejected():
@@ -47,16 +49,21 @@ def test_A2_replayed_signature_is_rejected():
 def test_A3_duplicate_approval_does_not_reach_threshold():
     c = consent(); c.signatures = ["did:parent:A", "did:parent:A"]; del c.signature_data["did:parent:B"]
     m = decide(c); assert m["VA"] is False and m["ALLOW"] is False
+    assert evaluate_state(c) == "PENDING_SIGNATURE"                 # nor does the lifecycle count A twice
 
 # A4 - requested scope exceeds the authorised scope (S_R not a subset of S_C)
 def test_A4_over_scope_request_is_rejected():
     c = consent()
+    ok = AccessRequest("did:hospital:001", c.patient_did, ["Observation"], "Treatment", datetime.now().isoformat())
+    assert check_scope(c, ok) is True                                 # positive control: a subset is accepted
     r = AccessRequest("did:hospital:001", c.patient_did, ["Observation", "Procedure"], "Treatment", datetime.now().isoformat())
     assert check_scope(c, r) is False
 
 # A5 - empty request scope
 def test_A5_empty_scope_is_rejected():
     c = consent()
+    ok = AccessRequest("did:hospital:001", c.patient_did, ["Observation", "Medication"], "Treatment", datetime.now().isoformat())
+    assert check_scope(c, ok) is True                                 # positive control: the full authorised scope is accepted
     r = AccessRequest("did:hospital:001", c.patient_did, [], "Treatment", datetime.now().isoformat())
     assert check_scope(c, r) is False
 
@@ -88,7 +95,7 @@ def test_A9_tampered_proof_fails_verification():
 # A10 - proof for an expired consent cannot even be generated (circuit constraint now <= expiry)
 def test_A10_expired_consent_cannot_be_proven():
     if not zk.zk_available(): pytest.skip("zk build missing")
-    with pytest.raises(RuntimeError):
+    with pytest.raises(RuntimeError, match=r"(?i)assert"):            # the circuit constraint now <= expiry fails, not the tooling
         zk.generate_proof(consent(expiry_date=(datetime.now() - timedelta(days=1)).isoformat()))
 
 # A11 - modification of a recorded audit event is detected by its digest

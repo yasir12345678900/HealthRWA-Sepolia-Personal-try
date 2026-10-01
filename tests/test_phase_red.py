@@ -11,7 +11,7 @@ def _consent(cid="c-1"):
 
 def test_revoked_consent_state_is_REVOKED():
     from services.state_service import evaluate_state
-    c = _consent(); c.signatures = ["a", "b"]; c.token_id = "SBT-9"
+    c = _consent(); c.signatures = ["did:parent:A", "did:parent:B"]; c.token_id = "SBT-9"
     assert evaluate_state(c) == "ACTIVE"
     c.revoked = True
     assert evaluate_state(c) == "REVOKED"

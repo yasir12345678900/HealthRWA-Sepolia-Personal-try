@@ -278,7 +278,7 @@ if role == "Guardian":
         _anchored = _tid.startswith("SBT-") and _tid[4:].isdigit()
         if _anchored:
             st.success(f"Already anchored on {onchain_ui.network_label()} - token #{_tid[4:]}")
-        elif len(consent.signatures) >= consent.threshold:
+        elif len(guardian_approvals(consent)) >= consent.threshold:
             st.warning(f"Threshold {len(consent.signatures)}/{consent.threshold} reached but NOT anchored on {onchain_ui.network_label()} yet (token: {consent.token_id or '-'}). "
                        "Click below and wait ~30 s without touching anything.")
             _c1, _c2 = st.columns(2)
@@ -340,7 +340,7 @@ if role == "Guardian":
                 st.success(f"EIP-712 signature verified (signer {_addr[:10]}...). Multi-sig: {len(consent.signatures)}/{consent.threshold}")
 
                 # 如果多签满足阈值，铸造SBT令牌
-                if len(consent.signatures) == consent.threshold:
+                if len(guardian_approvals(consent)) == consent.threshold:
                     consent.token_id = f"SBT-LOCAL-{consent.consent_id[:8]}"
                     consent_db.update(consent)
                     mint_log = audit_db.log(

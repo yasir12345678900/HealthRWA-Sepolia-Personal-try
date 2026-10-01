@@ -5,6 +5,7 @@ Authors: Charles, Yasir, Daniel, Kejia, Yasmin, Farookh
 Date: 2026-06-22, 2026-08-01
 '''
 from datetime import datetime
+from services.access_service import guardian_approvals
 
 def evaluate_state(consent):
     if getattr(consent, "revoked", False):
@@ -16,7 +17,8 @@ def evaluate_state(consent):
     expiry = datetime.fromisoformat(consent.expiry_date)
 
 
-    if len(consent.signatures) < consent.threshold:
+    # count distinct approvals from members of G only, as in the decision function
+    if len(guardian_approvals(consent)) < consent.threshold:
         consent.state = "PENDING_SIGNATURE"
         return consent.state
 

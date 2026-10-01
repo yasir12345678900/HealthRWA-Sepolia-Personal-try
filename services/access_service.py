@@ -5,6 +5,12 @@ Authors: Charles, Yasir, Daniel, Kejia, Yasmin, Farookh
 Date: 2026-06-10
 '''
 
+def guardian_approvals(consent):
+    """Distinct approvals from members of the guardian set G (a signer outside G, or the same
+    guardian twice, does not advance the count towards the threshold N)."""
+    return {g for g in (consent.signatures or []) if g in (consent.guardian_dids or [])}
+
+
 def check_scope(consent, request):
     requested = set(request.scope)
     allowed = set(consent.scope)
@@ -41,9 +47,8 @@ def evaluate_allow(consent, requester_jurisdiction="AU", now=None, verify_sig=No
     vi = vdid(consent.requester_did) and vdid(consent.patient_did) and len(consent.signatures) > 0
     if verify_sig is not None:
         vi = vi and all(g in sigs and verify_sig(g, consent.consent_id, sigs[g].get("signature")) for g in consent.signatures)
-    # Only distinct approvals from members of the guardian set G count towards the threshold N
-    # (a signer outside G, or the same guardian twice, does not advance the count).
-    approvers = {g for g in consent.signatures if g in (consent.guardian_dids or [])}
+    # Only distinct approvals from members of the guardian set G count towards the threshold N.
+    approvers = guardian_approvals(consent)
     va = (len(approvers) >= consent.threshold) and bool(consent.token_id) and not getattr(consent, "revoked", False)
     vp = consent.purpose in ALLOWED_PURPOSES
     try:

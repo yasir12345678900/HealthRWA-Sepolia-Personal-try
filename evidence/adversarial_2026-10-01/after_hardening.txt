@@ -1,3 +1,10 @@
+============================= test session starts ==============================
+platform linux -- Python 3.11.15, pytest-9.1.1, pluggy-1.6.0 -- /usr/local/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/user/HealthRWA-Sepolia-Personal-try
+plugins: anyio-4.15.1
+collecting ... collected 13 items
+
 tests/test_adversarial.py::test_baseline_allows PASSED                   [  7%]
 tests/test_adversarial.py::test_A1_signer_outside_G_is_not_counted PASSED [ 15%]
 tests/test_adversarial.py::test_A2_replayed_signature_is_rejected PASSED [ 23%]
@@ -11,4 +18,5 @@ tests/test_adversarial.py::test_A9_tampered_proof_fails_verification PASSED [ 76
 tests/test_adversarial.py::test_A10_expired_consent_cannot_be_proven PASSED [ 84%]
 tests/test_adversarial.py::test_A11_ledger_tampering_is_detected PASSED  [ 92%]
 tests/test_adversarial.py::test_A12_non_owner_cannot_mint_or_revoke PASSED [100%]
-============================== 13 passed in 4.74s ==============================
+
+============================== 13 passed in 5.24s ==============================
