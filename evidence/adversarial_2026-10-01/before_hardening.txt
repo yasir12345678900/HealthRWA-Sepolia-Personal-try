@@ -16,8 +16,8 @@ tests/test_adversarial.py::test_A6_outside_validity_interval_is_denied PASSED [ 
 tests/test_adversarial.py::test_A7_jurisdiction_mismatch_is_denied PASSED [ 61%]
 tests/test_adversarial.py::test_A8_revoked_consent_is_denied PASSED      [ 69%]
 tests/test_adversarial.py::test_A9_tampered_proof_fails_verification PASSED [ 76%]
-tests/test_adversarial.py::test_A10_expired_consent_cannot_be_proven PASSED [ 84%]
-tests/test_adversarial.py::test_A11_ledger_tampering_is_detected PASSED  [ 92%]
+tests/test_adversarial.py::test_A10_honest_prover_cannot_prove_expired_consent PASSED [ 84%]
+tests/test_adversarial.py::test_A11_rewritten_event_changes_its_digest PASSED [ 92%]
 tests/test_adversarial.py::test_A12_non_owner_cannot_mint_or_revoke PASSED [100%]
 
 =================================== FAILURES ===================================
@@ -50,11 +50,11 @@ _______________________ test_A5_empty_scope_is_rejected ________________________
         r = AccessRequest("did:hospital:001", c.patient_did, [], "Treatment", datetime.now().isoformat())
 >       assert check_scope(c, r) is False
 E       AssertionError: assert True is False
-E        +  where True = check_scope(Consent(consent_id='adv-1', patient_did='did:patient:x', requester_did='did:hospital:001', guardian_dids=['did:parent:A', 'did:parent:B'], purpose='Treatment', scope=['Observation', 'Medication'], threshold=2, signatures=['did:parent:A', 'did:parent:B'], start_date='2026-09-30T08:39:49.546136', expiry_date='2026-10-31T08:39:49.546148', state='ACTIVE', token_id='SBT-1', revoked=False, jurisdiction='AU', zk_secret=None, zk_commitment=None, signature_data={'did:parent:A': {'signer': '0x3Af549b08FcEF6981c7CC5B84cFca76D106ac570', 'signature': '0xacfba1f56363eb8fba3045c404ba568b1e081542625b560faca30e9ddbbfc92f6b5dae9e71e96dc12557b36793779400bc24b3f6affa64411708f71be41307041c'}, 'did:parent:B': {'signer': '0x39B12b879DA1CAc454b408AcAb447d0Df282C90d', 'signature': '0x0fbb3c2e4e49a704b5da6daa10771e5334f2e45eaf70582847a40e1ad75b57be24e6742610843940901bc65532b12877d6199e23ec3dfe36dfc1f1b24b97e87e1b'}}), AccessRequest(doctor_did='did:hospital:001', patient_did='did:patient:x', scope=[], purpose='Treatment', request_time='2026-10-01T08:39:49.557558'))
+E        +  where True = check_scope(Consent(consent_id='adv-1', patient_did='did:patient:x', requester_did='did:hospital:001', guardian_dids=['did:parent:A', 'did:parent:B'], purpose='Treatment', scope=['Observation', 'Medication'], threshold=2, signatures=['did:parent:A', 'did:parent:B'], start_date='2026-09-30T09:12:27.606856', expiry_date='2026-10-31T09:12:27.606872', state='ACTIVE', token_id='SBT-1', revoked=False, jurisdiction='AU', zk_secret=None, zk_commitment=None, signature_data={'did:parent:A': {'signer': '0x3Af549b08FcEF6981c7CC5B84cFca76D106ac570', 'signature': '0xacfba1f56363eb8fba3045c404ba568b1e081542625b560faca30e9ddbbfc92f6b5dae9e71e96dc12557b36793779400bc24b3f6affa64411708f71be41307041c'}, 'did:parent:B': {'signer': '0x39B12b879DA1CAc454b408AcAb447d0Df282C90d', 'signature': '0x0fbb3c2e4e49a704b5da6daa10771e5334f2e45eaf70582847a40e1ad75b57be24e6742610843940901bc65532b12877d6199e23ec3dfe36dfc1f1b24b97e87e1b'}}), AccessRequest(doctor_did='did:hospital:001', patient_did='did:patient:x', scope=[], purpose='Treatment', request_time='2026-10-01T09:12:27.619086'))
 
 tests/test_adversarial.py:68: AssertionError
 =========================== short test summary info ============================
 FAILED tests/test_adversarial.py::test_A1_signer_outside_G_is_not_counted - a...
 FAILED tests/test_adversarial.py::test_A3_duplicate_approval_does_not_reach_threshold
 FAILED tests/test_adversarial.py::test_A5_empty_scope_is_rejected - Assertion...
-========================= 3 failed, 10 passed in 7.13s =========================
+========================= 3 failed, 10 passed in 6.82s =========================

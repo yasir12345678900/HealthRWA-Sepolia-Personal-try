@@ -15,8 +15,8 @@ tests/test_adversarial.py::test_A6_outside_validity_interval_is_denied PASSED [ 
 tests/test_adversarial.py::test_A7_jurisdiction_mismatch_is_denied PASSED [ 22%]
 tests/test_adversarial.py::test_A8_revoked_consent_is_denied PASSED      [ 25%]
 tests/test_adversarial.py::test_A9_tampered_proof_fails_verification PASSED [ 27%]
-tests/test_adversarial.py::test_A10_expired_consent_cannot_be_proven PASSED [ 30%]
-tests/test_adversarial.py::test_A11_ledger_tampering_is_detected PASSED  [ 33%]
+tests/test_adversarial.py::test_A10_honest_prover_cannot_prove_expired_consent PASSED [ 30%]
+tests/test_adversarial.py::test_A11_rewritten_event_changes_its_digest PASSED [ 33%]
 tests/test_adversarial.py::test_A12_non_owner_cannot_mint_or_revoke PASSED [ 36%]
 tests/test_halah.py::test_did_to_address_is_deterministic_and_checksummed PASSED [ 38%]
 tests/test_halah.py::test_not_configured_without_env PASSED              [ 41%]
@@ -42,4 +42,4 @@ tests/test_zk.py::test_placeholder_mode_is_labelled_honestly PASSED      [ 94%]
 tests/test_zk.py::test_real_groth16_roundtrip_and_tamper PASSED          [ 97%]
 tests/test_zk.py::test_expired_consent_cannot_be_proven PASSED           [100%]
 
-============================== 36 passed in 9.60s ==============================
+============================== 36 passed in 8.35s ==============================

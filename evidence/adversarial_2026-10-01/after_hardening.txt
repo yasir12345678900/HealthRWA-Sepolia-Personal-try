@@ -15,8 +15,8 @@ tests/test_adversarial.py::test_A6_outside_validity_interval_is_denied PASSED [ 
 tests/test_adversarial.py::test_A7_jurisdiction_mismatch_is_denied PASSED [ 61%]
 tests/test_adversarial.py::test_A8_revoked_consent_is_denied PASSED      [ 69%]
 tests/test_adversarial.py::test_A9_tampered_proof_fails_verification PASSED [ 76%]
-tests/test_adversarial.py::test_A10_expired_consent_cannot_be_proven PASSED [ 84%]
-tests/test_adversarial.py::test_A11_ledger_tampering_is_detected PASSED  [ 92%]
+tests/test_adversarial.py::test_A10_honest_prover_cannot_prove_expired_consent PASSED [ 84%]
+tests/test_adversarial.py::test_A11_rewritten_event_changes_its_digest PASSED [ 92%]
 tests/test_adversarial.py::test_A12_non_owner_cannot_mint_or_revoke PASSED [100%]
 
-============================== 13 passed in 5.24s ==============================
+============================== 13 passed in 5.13s ==============================

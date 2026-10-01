@@ -92,14 +92,14 @@ def test_A9_tampered_proof_fails_verification():
     bad2 = json.loads(json.dumps(p)); bad2["proof"]["pi_a"][0] = str(int(bad2["proof"]["pi_a"][0]) + 1)
     assert zk.verify_proof(bad2) is False
 
-# A10 - proof for an expired consent cannot even be generated (circuit constraint now <= expiry)
-def test_A10_expired_consent_cannot_be_proven():
+# A10 - the honest prover (server clock, stored expiry) cannot generate a proof for an expired consent
+def test_A10_honest_prover_cannot_prove_expired_consent():
     if not zk.zk_available(): pytest.skip("zk build missing")
     with pytest.raises(RuntimeError, match=r"(?i)assert"):            # the circuit constraint now <= expiry fails, not the tooling
         zk.generate_proof(consent(expiry_date=(datetime.now() - timedelta(days=1)).isoformat()))
 
-# A11 - modification of a recorded audit event is detected by its digest
-def test_A11_ledger_tampering_is_detected():
+# A11 - rewriting a digested field of an audit event changes its digest (detectable only against a separately held copy)
+def test_A11_rewritten_event_changes_its_digest():
     e = {"actor_did": "did:hospital:001", "action": "DATA_ACCESS", "patient_did": "did:patient:x", "consent_id": "adv-1",
          "result": "DENIED", "timestamp": datetime.now().isoformat()}
     e["event_digest"] = audit_db.event_digest(e)
