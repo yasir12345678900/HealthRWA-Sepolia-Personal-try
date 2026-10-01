@@ -1,4 +1,4 @@
-"""Adversarial evaluation of the HALAH authorisation decision (CA2 report, Section 6.8.14).
+"""Adversarial evaluation of the HALAH authorisation decision (CA2 report, Section 6.8.13).
 Twelve attack scenarios A1-A12, each aimed at one component of C = (I, A, P, T, L, E) or at the contract.
 Every scenario must end in a refusal. No Sepolia transaction is sent: A12 runs the real ConsentSBTv3
 bytecode on an in-memory EVM (eth-tester), and A7/A8 are additionally evidenced on-chain by tools/verify_poc."""
