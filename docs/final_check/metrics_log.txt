@@ -1,0 +1,181 @@
+{
+ "collected_at": "2026-10-01T08:11:20.572288+00:00",
+ "n_runs": 20,
+ "ledger": {
+  "events": 60,
+  "by_action": {
+   "CREATE_CONSENT": 8,
+   "SIGN_CONSENT": 10,
+   "MINT_SBT": 5,
+   "STATE_CHECK": 18,
+   "DATA_ACCESS": 9,
+   "REVOKE_CONSENT": 5,
+   "ONCHAIN_MINT": 3,
+   "ONCHAIN_REVOKE": 2
+  }
+ },
+ "anchor_latency_from_ledger": [
+  {
+   "consent_id": "011bbb21",
+   "op": "ONCHAIN_MINT",
+   "submit_to_confirm_s": 11.482563
+  },
+  {
+   "consent_id": "011bbb21",
+   "op": "ONCHAIN_REVOKE",
+   "submit_to_confirm_s": 13.465244
+  },
+  {
+   "consent_id": "f050c29a",
+   "op": "ONCHAIN_MINT",
+   "submit_to_confirm_s": 4.854149
+  },
+  {
+   "consent_id": "f050c29a",
+   "op": "ONCHAIN_REVOKE",
+   "submit_to_confirm_s": 10.38026
+  },
+  {
+   "consent_id": "04da25f5",
+   "op": "ONCHAIN_MINT",
+   "submit_to_confirm_s": 22.148325
+  }
+ ],
+ "chain": {
+  "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+  "chain_id": 11155111,
+  "head_block": 11820541,
+  "contract": "0x0EC3617581DEC63A7f2bb162DC14d088916ADc73"
+ },
+ "onchain_tx": [
+  {
+   "action": "ONCHAIN_MINT",
+   "consent_id": "011bbb21",
+   "tx_hash": "0x5f9b2f14a3c061ef6a7bbb5959fcecab4d4c393025d96f8440d67e946bc24994",
+   "block": 11757272,
+   "status": 1,
+   "gas_used": 156589,
+   "gas_limit": 158999,
+   "effective_gas_price_gwei": 1.066678937,
+   "fee_eth": 0.000167030188065893,
+   "block_time_utc": "2026-09-22T10:21:24+00:00",
+   "to": "0xb0dA0440Abd6bd74bE0aebE226D593492124A6e7"
+  },
+  {
+   "action": "ONCHAIN_REVOKE",
+   "consent_id": "011bbb21",
+   "tx_hash": "0x2adf73d854071e90101d19974b996d29291e9cc2e537b1e3cd2474b606044048",
+   "block": 11757344,
+   "status": 1,
+   "gas_used": 46226,
+   "gas_limit": 46608,
+   "effective_gas_price_gwei": 1.10221801,
+   "fee_eth": 5.095112973026e-05,
+   "block_time_utc": "2026-09-22T10:35:48+00:00",
+   "to": "0xb0dA0440Abd6bd74bE0aebE226D593492124A6e7"
+  },
+  {
+   "action": "ONCHAIN_MINT",
+   "consent_id": "f050c29a",
+   "tx_hash": "0x8be1b99e9b7054d427bdee0a0b5cc56ae99030a399f4b11d3629ed5d98daf13d",
+   "block": 11771243,
+   "status": 1,
+   "gas_used": 196406,
+   "gas_limit": 199132,
+   "effective_gas_price_gwei": 1.061716776,
+   "fee_eth": 0.000208527545107056,
+   "block_time_utc": "2026-09-24T09:51:12+00:00",
+   "to": "0x0EC3617581DEC63A7f2bb162DC14d088916ADc73"
+  },
+  {
+   "action": "ONCHAIN_REVOKE",
+   "consent_id": "f050c29a",
+   "tx_hash": "0x017efb9dc6acad9733fa05c19408c0166c9c0645e83b6ffdc41c4b3b85ddceaa",
+   "block": 11771307,
+   "status": 1,
+   "gas_used": 32980,
+   "gas_limit": 33336,
+   "effective_gas_price_gwei": 1.038980598,
+   "fee_eth": 3.426558012204e-05,
+   "block_time_utc": "2026-09-24T10:04:00+00:00",
+   "to": "0x0EC3617581DEC63A7f2bb162DC14d088916ADc73"
+  },
+  {
+   "action": "ONCHAIN_MINT",
+   "consent_id": "04da25f5",
+   "tx_hash": "0x25ef5e2f0046735dcb01ff7b68875b760bdf88ad0fa3fedc9bfb910769d4c210",
+   "block": 11771581,
+   "status": 1,
+   "gas_used": 179306,
+   "gas_limit": 181896,
+   "effective_gas_price_gwei": 1.054963483,
+   "fee_eth": 0.000189161282282798,
+   "block_time_utc": "2026-09-24T10:58:48+00:00",
+   "to": "0x0EC3617581DEC63A7f2bb162DC14d088916ADc73"
+  }
+ ],
+ "zk_available": true,
+ "groth16_verify_ok": true,
+ "zk_artifacts": {
+  "pot10_final.ptau": 1181099,
+  "consent_validity.r1cs": 127304,
+  "consent_validity_js": 4096,
+  "verification_key.json": 3292,
+  "cv_0000.zkey": 188472,
+  "pot10_0000.ptau": 393424,
+  "pot10_0001.ptau": 394939,
+  "consent_validity.sym": 29714,
+  "consent_validity.zkey": 188877
+ },
+ "timing_summary": {
+  "onchain_checkValid_s": {
+   "n": 20,
+   "mean_ms": 587.4473395498171,
+   "median_ms": 573.4556039997187,
+   "min_ms": 568.177614999513,
+   "max_ms": 715.4590820000521,
+   "stdev_ms": 37.395095558796065
+  },
+  "onchain_checkValidAt_s": {
+   "n": 20,
+   "mean_ms": 592.7231509499507,
+   "median_ms": 574.6497360000831,
+   "min_ms": 568.1715419996181,
+   "max_ms": 745.5862530005106,
+   "stdev_ms": 46.2468621732535
+  },
+  "decision_rule_s": {
+   "n": 1000,
+   "mean_ms": 0.0025986390146499616,
+   "median_ms": 0.0023749998945277184,
+   "min_ms": 0.0023239999791258015,
+   "max_ms": 0.03158899926347658,
+   "stdev_ms": 0.0015094109377540676
+  },
+  "eip712_recover_s": {
+   "n": 20,
+   "mean_ms": 11.666788500087932,
+   "median_ms": 10.93393150040356,
+   "min_ms": 10.548838999966392,
+   "max_ms": 15.641674000107741,
+   "stdev_ms": 1.452729016373951
+  },
+  "groth16_prove_s": {
+   "n": 20,
+   "mean_ms": 1596.9802968498243,
+   "median_ms": 1401.0716459997639,
+   "min_ms": 1342.7685299993755,
+   "max_ms": 5349.615628999345,
+   "stdev_ms": 883.955473157751
+  },
+  "groth16_verify_s": {
+   "n": 20,
+   "mean_ms": 472.5439744000141,
+   "median_ms": 465.2939494999373,
+   "min_ms": 440.98451399986516,
+   "max_ms": 525.0552989991775,
+   "stdev_ms": 25.6572284352947
+  }
+ }
+}
+written docs/final_check/metrics.json
