@@ -1,0 +1,360 @@
+{
+ "edits": [
+  {
+   "id": "C1",
+   "decision": "modify",
+   "current": "The current stage delivers RO1 to RO5 in operational form together with the empirical component of RO6, evidenced by 23 automated tests, a live jurisdiction-based denial, an on-chain revocation followed by refusal and an independent verification of every recorded transaction.",
+   "replacement": "The current stage delivers RO1 to RO5 in operational form together with the empirical component of RO6. This component is evidenced by 36 automated tests, a live jurisdiction-based denial, an on-chain revocation followed by refusal and an independent verification of every recorded transaction. The tests include twelve attack scenarios, all of which are refused after a hardening of the service layer. The five anchored transactions consumed between 32,980 and 196,406 gas and were confirmed between 4.9 and 22.1 s after submission.",
+   "reason": "The span is verbatim and unique in SUBMIT.txt. The figures check out: full_suite.txt reports 36 passed, gas_used runs from 32,980 to 196,406, and submit_to_confirm_s runs from 4.854 (4.9) to 22.148 (22.1). Only the last sentence changes, because 'Each of the five anchored transactions consumed between X and Y gas' is awkward and suggests every single transaction spans that range. It now gives the range across the five transactions.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C2",
+   "decision": "keep",
+   "current": "The formal component of RO6, together with consent modification, delegation and a performance study, constitutes the next stage of the research.",
+   "replacement": "The formal component of RO6, together with consent modification, delegation and a full performance and scalability study, constitutes the next stage of the research.",
+   "reason": "Verbatim and unique. Preliminary measurements now exist, so the next stage holds the full study. The wording matches C19, C26 and C31.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C3",
+   "decision": "keep",
+   "current": "This testing covers per-dimension denial scenarios, guardian signature-rejection tests and tests of tampered and expired zero-knowledge proofs.",
+   "replacement": "This testing covers per-dimension denial scenarios, guardian signature-rejection tests, tests of tampered and expired zero-knowledge proofs and twelve attack scenarios against the consent object and the contract (Section 6.8.13).",
+   "reason": "Verbatim and unique (1.3, human_all.json). It is accurate, because A1 to A11 target components of C and A12 targets the contract. The following sentence, which says formal analysis is not yet undertaken, still holds.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C4",
+   "decision": "keep",
+   "current": "Temporal and lifecycle trust has been operationalised in the current prototype, and empirical validation has been partially completed through automated and live negative testing.",
+   "replacement": "Temporal and lifecycle trust has been operationalised in the current prototype. Empirical validation has been partially completed through automated and live negative testing and through an adversarial evaluation of twelve attack scenarios.",
+   "reason": "Verbatim and unique (3.2 scope note). The edit is true and does not overclaim, since 'partially completed' is kept. The split into two sentences matches the author's one-idea-per-sentence style.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C5",
+   "decision": "keep",
+   "current": "The automated tests cover signature rejection and proof tampering.",
+   "replacement": "The 36 automated tests cover signature rejection, proof tampering and twelve attack scenarios against the components of C and the contract. In addition, preliminary measurements of on-chain cost, confirmation latency and processing time are reported in Section 6.8.13.",
+   "reason": "Verbatim and unique (4.6). The count matches full_suite.txt. The next sentence of 4.6 still leaves the formal analysis to the next stage, so nothing is overclaimed.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C6",
+   "decision": "modify",
+   "current": "together with the systematic performance study and the identified prototype hardening (Sections 7.6 and 9.2).",
+   "replacement": "together with a full performance and scalability study, which extends the preliminary measurements of Section 6.8.13, and the remaining prototype hardening (Sections 7.6 and 9.2).",
+   "reason": "Verbatim and unique (4.7). As proposed, 'a study that extends the preliminary measurements of Section 6.8.13 and the identified prototype hardening' can be read as the study extending the hardening too. A non-restrictive clause removes that reading. Elsewhere the report now describes the hardening of 1 October 2026 as already done, so 'identified prototype hardening' becomes 'remaining prototype hardening' to make clear that the N-of-N rule, the server-derived keys and the unauthenticated requester are what is left.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C7",
+   "decision": "keep",
+   "current": "Section 6.8 presents the implementation and the live demonstration of the framework on the Ethereum Sepolia testnet.",
+   "replacement": "Section 6.8 presents the implementation and the live demonstration of the framework on the Ethereum Sepolia testnet. It closes with the measured performance and the adversarial evaluation of the prototype in Section 6.8.13.",
+   "reason": "Verbatim and unique (Chapter 6 roadmap, ch_D_fixed.json). This matches the fixed placement of 6.8.13 at the end of Section 6.8.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C8",
+   "decision": "keep",
+   "current": "The first part is the 23 automated tests, which exercise per-dimension failures of the decision matrix, invalid EIP-712 guardian signatures, and tampered or expired proofs.",
+   "replacement": "The first part is the suite of 36 automated tests. Its 23 functional and regression tests exercise per-dimension failures of the decision matrix, invalid EIP-712 guardian signatures, and tampered or expired proofs. Its 13 adversarial tests cover a baseline and twelve attack scenarios.",
+   "reason": "Verbatim and unique once EIP-\\n712 is joined. full_suite.txt lists 13 test_adversarial tests and 23 others (test_halah 6, test_phase_red 5, test_phase_yellow_green 4, test_regressions 5, test_zk 3). The 'three parts' structure is kept.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C9",
+   "decision": "keep",
+   "current": "The third part is the independent re-verification of every recorded transaction against the chain.",
+   "replacement": "The third part is the independent re-verification of every recorded transaction against the chain. In addition, Section 6.8.13 reports preliminary measurements of the on-chain cost, the confirmation latency and the processing time of the decision components.",
+   "reason": "Verbatim and unique. 'All of which are presented in Section 6.8' still holds, because 6.8.13 sits inside Section 6.8. The measurements are correctly kept outside the three-part count.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C10",
+   "decision": "keep",
+   "current": "In particular, 23 automated tests cover per-dimension failures of the decision matrix, rejection of invalid EIP-712 signatures, and zero-knowledge tamper and expiry cases.",
+   "replacement": "In particular, 36 automated tests cover per-dimension failures of the decision matrix, rejection of invalid EIP-712 signatures, and zero-knowledge tamper and expiry cases. Twelve of these tests are attack scenarios against the components of C and the contract, as reported in Section 6.8.13.",
+   "reason": "Verbatim and unique once zero-\\nknowledge is joined. The count is correct (36 passed, of which 12 are A1 to A12).",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C11",
+   "decision": "keep",
+   "current": "The current stage establishes the foundational authorisation mechanisms together with their dynamic validity. CA3 completes their formal security assurance and their practical evaluation.",
+   "replacement": "The current stage establishes the foundational authorisation mechanisms together with their dynamic validity, their scenario-based validation and a preliminary adversarial and performance evaluation. CA3 completes their formal security assurance and a full performance and scalability study.",
+   "reason": "Verbatim and unique (6.7, ch_E_fixed.json). It no longer assigns all practical evaluation to CA3. Both 'preliminary' and the outstanding formal assurance are kept.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C12",
+   "decision": "keep",
+   "current": "security assurance and comprehensive practical evaluation. The overall trust-oriented authorisation process can therefore be summarised as Trustworthy Access with",
+   "replacement": "The overall trust-oriented authorisation process can therefore be summarised as Trustworthy Access with",
+   "reason": "Verbatim and unique. In ch_E_fixed.json the orphan is the opening of its own block ('⦅security assurance and comprehensive practical evaluation.⦆ The overall ...'), and it renders as a broken sentence after C11's span. Deleting it also removes 'comprehensive' and the outdated deferral. C11 and C12 do not overlap.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C13",
+   "decision": "keep",
+   "current": "The empirical branch of Algorithm 6 has been executed against the prototype.",
+   "replacement": "The empirical branch of Algorithm 6 has been executed against the prototype, including an adversarial scenario set S~adv~ of twelve attack scenarios (Section 6.8.13).",
+   "reason": "Verbatim and unique. S~adv~ matches the Step 4 / line 4 notation of Algorithm 6. The following sentence ('only the formal-assurance branch ... remains') is still correct.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C14",
+   "decision": "keep",
+   "current": "In addition to the live demonstration, the same decision logic is exercised by a suite of 23 automated tests covering per-dimension failures of the decision matrix, rejection of invalid EIP-712 guardian signatures and tampered or expired zero-knowledge proofs. The live Sepolia evidence and the automated tests together constitute the empirical validation reported in Section 7.6.",
+   "replacement": "In addition to the live demonstration, the same decision logic is exercised by a suite of 36 automated tests. The 23 functional and regression tests passed at the demonstration of 24 September 2026. They cover per-dimension failures of the decision matrix, rejection of invalid EIP-712 guardian signatures and tampered or expired zero-knowledge proofs. The 13 adversarial tests were added on 1 October 2026 and comprise a baseline and twelve attack scenarios, which are reported in Section 6.8.13. The live Sepolia evidence and the automated tests together constitute the empirical validation reported in Section 7.6.",
+   "reason": "Verbatim and unique. The impl_blocks.json block holds exactly these two sentences, so whole_paragraph=true loses nothing. evidence/poc_2026-09-24/pytest.txt shows '23 passed' and full_suite.txt shows '36 passed', so the dates and counts are correct.",
+   "whole_paragraph": true
+  },
+  {
+   "id": "C15",
+   "decision": "keep",
+   "current": "In addition, this section reports functional evidence only. Transaction latency, gas cost and throughput have not been measured, and a systematic performance and overhead study is reserved for the next stage, as set out in Section 9.2.",
+   "replacement": "In addition, the demonstration described in this subsection provides functional evidence only. The gas cost and confirmation latency of the anchored transactions and the processing time of the decision components are measured separately in Section 6.8.13. Throughput and scalability under load have not been measured, and a full performance and scalability study is reserved for the next stage, as set out in Section 9.2.",
+   "reason": "Verbatim and unique. The impl_blocks.json block is exactly these two sentences, and the following 'It should be noted that, in the same way, the identity predicate ...' is a separate block, so whole_paragraph=true is safe. The old statement that latency and gas cost were not measured is contradicted by Tables 15 and 17. The replacement keeps throughput as unmeasured.",
+   "whole_paragraph": true
+  },
+  {
+   "id": "C16",
+   "decision": "keep",
+   "current": "deployment and run record: evidence/sepolia_deploy_v3_2026-09-24.txt preserved in the project evidence records.",
+   "replacement": "deployment and run record: `evidence/sepolia_deploy_v3_2026-09-24.txt`; adversarial test record: `evidence/adversarial_2026-10-01/` preserved in the project evidence records.",
+   "reason": "Verbatim and unique in the rendered report. In impl_blocks.json the source form is 'deployment and run record: `evidence/sepolia_deploy_v3_2026-09-24.txt` preserved in the project evidence records.' with backticks, so the applier must match that form. The evidence directory exists and holds before_hardening.txt, after_hardening.txt and full_suite.txt.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C17",
+   "decision": "modify",
+   "current": "Configurable k-of-n thresholds are reserved for the next stage.",
+   "replacement": "Configurable k-of-n thresholds are reserved for the next stage. The adversarial evaluation of Section 6.8.13 includes two attacks on the threshold, namely an approval from a signer outside G (A1) and a repeated approval from the same guardian (A3). Before the hardening of 1 October 2026, both attacks were blocked only by the interface. Since that hardening, the decision rule and the lifecycle evaluation count only distinct approvals from members of G towards N, and both attacks are refused.",
+   "reason": "Verbatim and unique (7.3). As proposed, 'confirms that ... do not count towards N' hides the fact that A1 and A3 succeeded against the service layer before 1 October, and that should be stated plainly. The fix covers both evaluate_allow and the lifecycle: guardian_approvals() in access_service.py is used by state_service.py, and tests A1 and A3 assert evaluate_state == PENDING_SIGNATURE. The RO3 'Completed' status is untouched.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C18",
+   "decision": "modify",
+   "current": "This over-scope denial is exercised by the per-dimension failure tests described in Section 6.8.9.",
+   "replacement": "This over-scope denial is exercised by the per-dimension failure tests described in Section 6.8.9 and by attack scenario A4 of Section 6.8.13. In addition, an empty request scope (scenario A5) was blocked only by the interface before the hardening of 1 October 2026. Since that hardening, it is also refused by the scope check itself.",
+   "reason": "Verbatim and unique (7.4). before_hardening.txt shows test_A5 failing, because check_scope returned True for an empty scope, and the doctor page refused the empty selection. The proposed 'confirms ... since the hardening' omits that pre-hardening weakness. The rewording states it honestly in the same order as C17 and C22.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C19",
+   "decision": "keep",
+   "current": "Status: Partially Completed (scenario-based empirical validation complete; formal assurance and performance study outstanding)",
+   "replacement": "Status: Partially Completed (scenario-based empirical validation, preliminary measurements and adversarial evaluation complete; formal assurance and a full performance and scalability study outstanding)",
+   "reason": "Verbatim and unique once the line break is joined (ch_E_fixed.json). It keeps 'Partially Completed' and the outstanding formal assurance, and it matches C2, C26 and C31.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C20",
+   "decision": "keep",
+   "current": "RO6 is partially completed through the implementation and initial scenario-based validation of the HALAH prototype.",
+   "replacement": "RO6 is partially completed through the implementation and scenario-based validation of the HALAH prototype, together with preliminary measurements and an adversarial evaluation of twelve attack scenarios (Section 6.8.13).",
+   "reason": "Verbatim and unique in the rendered 7.6 and in ch_E_fixed.json. It is accurate, and it is consistent with the status line in C19.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C21",
+   "decision": "keep",
+   "current": "or expired zero-knowledge proofs. Live validation on the Sepolia testnet includes a negative demonstration in which a request declaring jurisdiction SA is made against a consent issued for AU.",
+   "replacement": "A suite of 36 automated tests exercises per-dimension failures of the decision matrix, rejection of invalid EIP-712 guardian signatures, tampered or expired zero-knowledge proofs and twelve attack scenarios. Live validation on the Sepolia testnet includes a negative demonstration in which a request declaring jurisdiction SA is made against a consent issued for AU.",
+   "reason": "Verbatim and unique. The source block in ch_F_fixed.json is '⦅⦆  or expired zero-knowledge proofs. ⦅Live validation ...', and ch_F_pre7.json confirms the lost opening was 'A suite of 23 automated tests exercises ...'. The sentence is restored with the current count.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C22",
+   "decision": "keep",
+   "current": "Formal security analysis and a systematic performance study remain for the next stage.",
+   "replacement": "In the adversarial evaluation of Section 6.8.13, all twelve attack scenarios are refused after the hardening of 1 October 2026. Before that hardening, three scenarios succeeded against the service layer, although the interface already blocked them. These were an approval from a signer outside G (A1), a repeated approval from the same guardian (A3) and an empty request scope (A5). Formal security analysis and a full performance and scalability study remain for the next stage.",
+   "reason": "Verbatim and unique (ch_F_fixed.json, after 'exactly Eq. (75).'). It matches before_hardening.txt ('3 failed ... A1, A3, A5') and after_hardening.txt ('13 passed'). The A1, A3 and A5 failures are reported honestly, and the formal analysis stays outstanding.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C23",
+   "decision": "modify",
+   "current": "Policy-violation scenarios, temporal expiration, revocation and invalid lifecycle transitions have now been demonstrated empirically. Jurisdiction violation and revocation followed by denial were demonstrated in the live Sepolia deployment. Policy violation and temporal expiration were demonstrated in the automated test suite, and unauthorised lifecycle transitions remain to be examined in the next stage.",
+   "replacement": "Policy-violation scenarios, temporal expiration and revocation have now been demonstrated empirically. Jurisdiction violation and revocation followed by denial were demonstrated in the live Sepolia deployment. Policy violation and temporal expiration were demonstrated in the automated test suite, including attack scenarios A4 to A6. Unauthorised lifecycle transitions have been examined only in part. Scenario A12 runs the ConsentSBTv3 bytecode on an in-memory Ethereum virtual machine and shows that an account other than the contract owner can neither mint nor revoke a token. Scenarios A1 and A3 show that an approval from outside G or a repeated approval does not move a consent beyond the PENDING_SIGNATURE state. The transition check of Algorithm 5 is not yet implemented, and the remaining unauthorised transitions therefore remain to be examined in the next stage.",
+   "reason": "Verbatim and unique (human_all.json). The proposed text says transitions were examined 'only at the contract level', but tests A1 and A3 also assert evaluate_state == PENDING_SIGNATURE, which is an application-level check, so that claim is inaccurate. It also does not say that A12 runs off Sepolia. The rewording keeps the contradiction fix and ties the remaining gap to the unimplemented transition check (lines 16 to 20 of Algorithm 5, as stated in 6.5 and 6.7). 'Including A4 to A6' replaces 'again in', because the attack scenarios are part of the automated suite.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C24",
+   "decision": "keep",
+   "current": "performance and overhead study, and the removal of prototype limitations such as the N-of-N approval rule",
+   "replacement": "performance and scalability study that extends the preliminary measurements of Section 6.8.13, and the removal of prototype limitations such as the N-of-N approval rule",
+   "reason": "Verbatim and unique once the page break after 'a systematic' is dropped. The resulting sentence reads correctly with the preceding 'a systematic'.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C25",
+   "decision": "modify",
+   "current": "Overall, RO1 to RO4 are completed at the conceptual and prototype level, RO5 is largely completed with its temporal and revocation controls enforced and anchored on-chain, and RO6 is partially completed through its empirical component.",
+   "replacement": "At the current stage, RO1 to RO4 are completed at the conceptual and prototype level, and RO5 is largely completed with its temporal and revocation controls enforced and anchored on-chain. RO6 is partially completed through its empirical component, which includes the preliminary measurements and the adversarial evaluation of Section 6.8.13.",
+   "reason": "Verbatim and unique. Removing 'Overall,' is correct. The only change to the proposal is 'the measurements' to 'the preliminary measurements', so the wording matches every other edit and does not overstate the performance evidence.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C26",
+   "decision": "keep",
+   "current": "Therefore, the next stage of the research is defined by the formal component of RO6, the performance study and the dynamic lifecycle extensions of RO5, as set out in Chapter 9.",
+   "replacement": "Therefore, the next stage of the research is defined by the formal component of RO6, the full performance and scalability study and the dynamic lifecycle extensions of RO5, as set out in Chapter 9.",
+   "reason": "Verbatim and unique. The wording matches C2, C19 and C31.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C27",
+   "decision": "keep",
+   "current": "Table 15 summarises the planned research outputs, their target venues, their current status and their alignment with the research questions.",
+   "replacement": "Table 19 summarises the planned research outputs, their target venues, their current status and their alignment with the research questions.",
+   "reason": "Verbatim and unique in the rendered SUBMIT.txt. ch_F_fixed.json already reads 'Table 19 summarises ...', so this is a no-op in the source. It is correct under the fixed renumbering.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C28",
+   "decision": "modify",
+   "current": "the decentralised implementation and the scenario-based validation are complete on the Sepolia public testnet; the performance evaluation remains outstanding",
+   "replacement": "the decentralised implementation and the scenario-based validation are complete on the Sepolia public testnet, and a preliminary performance and adversarial evaluation has been carried out; a full performance and scalability study remains outstanding",
+   "reason": "This is a table cell, so it is not linear in SUBMIT.txt, but it is verbatim inside ⟪...⟫ in tables_F.json. The proposed text puts the adversarial and performance evaluation 'complete on the Sepolia public testnet'. That overclaims, because the attack tests run locally, A12 runs on an in-memory EVM, and the processing times were taken in the cloud development container. Only the gas and latency figures come from Sepolia, so the evaluation is now stated without a location.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C29",
+   "decision": "keep",
+   "current": "the paper's empirical section can now draw upon the deployed contract, the two minted tokens and the verified transaction trail as delivered evidence",
+   "replacement": "the paper's empirical section can now draw upon the deployed contract, the two minted tokens, the verified transaction trail, the measured cost and latency and the twelve attack scenarios as delivered evidence",
+   "reason": "This is a table cell. It is verbatim inside ⟪...⟫ in tables_F.json but not linear in the rendered text. The content is accurate.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C30",
+   "decision": "modify",
+   "current": "RO1 to RO4 have been implemented and validated in the HALAH prototype, and RO5 is largely complete.",
+   "replacement": "RO1 to RO4 have been implemented and validated in the HALAH prototype, and RO5 is largely complete. The scenario-based empirical component of RO6 has also been delivered through 36 automated tests, which include twelve attack scenarios. In addition, preliminary measurements of on-chain cost, confirmation latency and processing time are reported in Section 6.8.13.",
+   "reason": "Verbatim and unique (9.1). The proposal says the scenario-based component was delivered 'through ... the measured cost and latency'. Measurements are performance evidence, not scenario-based validation, and they also cover processing time. Splitting this into its own sentence keeps the claim accurate and gives one idea per sentence.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C31",
+   "decision": "keep",
+   "current": "The remaining work is defined by the formal component of RO6, the systematic performance and overhead study, and the identified prototype limitations.",
+   "replacement": "The remaining work is defined by the formal component of RO6, a full performance and scalability study that extends the preliminary measurements of Section 6.8.13, and the identified prototype limitations.",
+   "reason": "Verbatim and unique. It is accurate, and the following sentence still lists the limitations correctly.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C32",
+   "decision": "keep",
+   "current": "Consequently, the next stage concentrates on formal security assurance and on comprehensive empirical validation, including performance measurement.",
+   "replacement": "Consequently, the next stage concentrates on formal security assurance and on the extension of the empirical validation, including a full performance and scalability study.",
+   "reason": "Verbatim and unique. It is accurate, and it removes 'comprehensive'.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C33",
+   "decision": "modify",
+   "current": "The performance and adversarial evaluation will follow in the second half of the stage.",
+   "replacement": "A preliminary performance and adversarial evaluation has already been carried out and is reported in Section 6.8.13. The full performance and scalability study and the extended adversarial evaluation will follow in the second half of the stage.",
+   "reason": "Verbatim and unique. The proposed second sentence schedules only the performance study, but C36 and C37 also plan an extended adversarial scenario set for the next stage. Naming it here keeps the sequencing paragraph consistent with them.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C34",
+   "decision": "keep",
+   "current": "The next stage will extend the current prototype-based evaluation to include both successful and adversarial access requests.",
+   "replacement": "The current prototype-based evaluation already includes successful access requests and twelve attack scenarios, as reported in Section 6.8.13. The next stage will extend this evaluation to a larger number of consents, guardians and access requests.",
+   "reason": "Verbatim and unique. It is accurate, because the GRANTED DATA_ACCESS events and A1 to A12 exist. It is also consistent with the k-of-n extension.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C35",
+   "decision": "keep",
+   "current": "The major next stage activities and their expected outcomes are summarised in Table 16.",
+   "replacement": "The major next stage activities and their expected outcomes are summarised in Table 20.",
+   "reason": "Verbatim and unique in SUBMIT.txt. ch_F_fixed.json already carries 'Table 20', so this is a no-op in the source.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C36",
+   "decision": "keep",
+   "current": "The performance study will measure the gas cost of the mint and revoke transactions, the block-confirmation latency on Sepolia, the Groth16 proof generation and verification time, and the end-to-end decision latency per access request. In addition, it will report enforcement accuracy as the proportion of adversarial requests that are correctly denied.",
+   "replacement": "Preliminary performance measurements are reported in Section 6.8.13. They cover the gas cost of the three mint and two revoke transactions, the submit-to-confirmation latency on Sepolia, the Groth16 proof generation and verification time, and the processing time of the decision components. The full performance study of the next stage will repeat these measurements over a larger number of consents and access requests. It will also measure the end-to-end decision latency under concurrent load. In addition, it will report enforcement accuracy over an extended adversarial scenario set that builds on the twelve attack scenarios of Section 6.8.13.",
+   "reason": "Verbatim and unique. The ch_F_fixed.json block is exactly these two sentences, so whole_paragraph=true is safe. The counts are right (ledger_by_action ONCHAIN_MINT 3, ONCHAIN_REVOKE 2). 'Submit-to-confirmation' correctly replaces 'block-confirmation', because the latency is derived from the ledger timestamps.",
+   "whole_paragraph": true
+  },
+  {
+   "id": "C37",
+   "decision": "keep",
+   "current": "Scale and extend HALAH prototype experiments using representative positive and negative healthcare data-sharing scenarios. Measure and compare observed system runtime performance, overhead, and enforcement accuracy.",
+   "replacement": "Scale and extend the HALAH prototype experiments, including the twelve attack scenarios of Section 6.8.13, to larger sets of positive, negative and adversarial healthcare data-sharing scenarios. Extend the preliminary measurements of runtime performance, overhead and enforcement accuracy to operation under load.",
+   "reason": "This is a table cell. It is verbatim in tables_F.json (no markup) but wrapped across columns in the rendered text. The content is accurate.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C38",
+   "decision": "keep",
+   "current": "At the time of writing, the status of the activities in Table 16 is as follows.",
+   "replacement": "At the time of writing, the status of the activities in Table 20 is as follows.",
+   "reason": "Verbatim and unique in SUBMIT.txt. human_all.json already reads 'Table 20 is as follows', so this is a no-op in the source.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C39",
+   "decision": "keep",
+   "current": "Comprehensive Empirical Validation is partially delivered through the 23 automated tests, the live jurisdiction denial and revocation-then-denial on Sepolia, and the independent chain verification reporting ALL CHECKS PASSED. Performance and overhead measurement remains outstanding.",
+   "replacement": "The third activity, empirical validation with the HALAH prototype scenarios, is partially delivered. Its evidence consists of the 36 automated tests with their twelve attack scenarios, the live jurisdiction denial and revocation-then-denial on Sepolia, and the independent chain verification reporting ALL CHECKS PASSED. Preliminary measurements of gas cost, confirmation latency and processing time are reported in Section 6.8.13, whereas a full performance and scalability study remains outstanding.",
+   "reason": "Verbatim and unique. It is accurate, and the third row of the next-stage table is indeed this activity. 'Partially delivered' is kept.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C40",
+   "decision": "keep",
+   "current": "Table 17 summarises how each formal artefact of this report is realised in the implemented HALAH subsystem presented in Section 6.8, and which publicly verifiable evidence supports it.",
+   "replacement": "Table 21 summarises how each formal artefact of this report is realised in the implemented HALAH subsystem presented in Section 6.8, and which publicly verifiable evidence supports it.",
+   "reason": "Verbatim and unique in SUBMIT.txt. build_full.js line 547 already reads 'Table 21 summarises ...' in both the FINAL and the draft branch, so this is a no-op in the source.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C41",
+   "decision": "keep",
+   "current": "Table 17: Traceability from the formal artefacts of this report to the implemented mechanisms and their on-chain evidence",
+   "replacement": "Table 21: Traceability from the formal artefacts of this report to the implemented mechanisms and their on-chain evidence",
+   "reason": "Verbatim and unique in SUBMIT.txt. In emitTraceTable (build_full.js line 756) the prefix is already the hard-coded TextRun 'Table 21: ', so this is a no-op in the source.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C42",
+   "decision": "keep",
+   "current": "Auditor subsystem and the independent verifier re-checking every transaction receipt",
+   "replacement": "Auditor subsystem, the independent verifier re-checking every transaction receipt, and the suite of 36 automated tests including twelve attack scenarios (Section 6.8.13)",
+   "reason": "This is a table cell. It is verbatim in the emitTraceTable rows of build_full.js but not linear in the rendered text. The content is accurate.",
+   "whole_paragraph": false
+  },
+  {
+   "id": "C43",
+   "decision": "keep",
+   "current": "60-event ledger; RESULT: ALL CHECKS PASSED; token #2, block 11,771,581",
+   "replacement": "60-event ledger; RESULT: ALL CHECKS PASSED; token #2, block 11,771,581; 36 tests passed, attack scenarios A1 to A12 refused (Section 6.8.13)",
+   "reason": "This is a table cell. It is verbatim in build_full.js. The content matches full_suite.txt (36 passed) and after_hardening.txt (13 passed). This column already includes off-chain ledger evidence, so adding the test record is consistent.",
+   "whole_paragraph": false
+  }
+ ],
+ "missing": [
+  {
+   "current": "Furthermore, an independent verification tool re-checks every ledger transaction hash against Sepolia receipts and reads each token back from the contract, reporting ALL CHECKS PASSED, and every granted access is accompanied by a real Groth16 proof generated and verified at request time.",
+   "replacement": "In addition, an independent verification tool re-checks every ledger transaction hash against Sepolia receipts and reads each token back from the contract, reporting ALL CHECKS PASSED. Every granted access is accompanied by a real Groth16 proof generated and verified at request time.",
+   "reason": "This sentence is in the 7.6 paragraph that C21 and C22 rewrite (ch_F_fixed.json, between the two spans). It is the only 'Furthermore' in the report, a word the author's voice excludes, and it chains two ideas. It is verbatim and unique in SUBMIT.txt."
+  },
+  {
+   "current": "Chapter 6 presents the proposed solution, its algorithms and the live HALAH demonstration.",
+   "replacement": "Chapter 6 presents the proposed solution, its algorithms, the live HALAH demonstration and its measured and adversarial evaluation.",
+   "reason": "This is the report-structure paragraph of Chapter 1 (ch_A_fixed.json), verbatim and unique. C7 updates the Chapter 6 roadmap to mention Section 6.8.13, so the report-level roadmap should also mention the new evaluation subsection. This is low severity."
+  }
+ ]
+}

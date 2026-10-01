@@ -1,0 +1,527 @@
+{
+ "blocks": [
+  {
+   "t": "h3",
+   "num": "6.8.13",
+   "title": "Preliminary Measurements and Unit-Level Adversarial Tests"
+  },
+  {
+   "t": "p",
+   "text": "⦃Sections 6.8.1 to 6.8.12 demonstrate the implemented workflow. In this workflow, the access decisions are taken by the application, and the activation and revocation of each consent are anchored on the public Sepolia test network. This subsection adds two forms of preliminary evidence that those sections do not provide. The first is the measured cost and time of the decision components and of the on-chain anchoring. The second is a set of twelve unit-level adversarial tests of the decision functions, the proof verifier, the digest function of the audit ledger and the contract. In Chapter 2, the empirical component of Req 6 was graded on whether a study reports evidence such as allow-and-deny test cases and attack cases. Therefore, the same standard is applied here to HALAH. The data are taken from four sources. The first two are the exported 60-event audit ledger and the receipts of the five anchored Sepolia transactions. The third is a series of repeated runs on 1 October 2026 in the cloud development container used for the demonstration. The fourth is the output of the adversarial tests, recorded before and after a hardening of the service layer on the same day.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃Table 15 presents the on-chain cost and the confirmation latency of the five anchored transactions. Two of them belong to the earlier trial consent 011bbb21, which was minted as token #8 on the previous contract deployment and later revoked. The other three belong to the current ConsentSBTv3 deployment. They are the mint and the revocation of token #1 for the evaluated consent f050c29a and the mint of token #2 for consent 04da25f5 of the independently reproduced lifecycle. Gas used, gas price and fee are read from the transaction receipts. The submit-to-confirmation time is the interval between the ledger timestamp of the MINT_SBT or REVOKE_CONSENT event and that of the corresponding ONCHAIN_MINT or ONCHAIN_REVOKE event. Because both events are logged by the application, this interval includes the signing and submission of the transaction as well as the wait for its receipt.⦄"
+  },
+  {
+   "t": "itable",
+   "key": "T15",
+   "caption": "On-chain cost and submit-to-confirmation latency of the five anchored Sepolia transactions",
+   "header": [
+    "Transaction",
+    "Consent and token",
+    "Block",
+    "Gas used",
+    "Gas price (gwei)",
+    "Fee (ETH)",
+    "Submit-to-confirmation (s)"
+   ],
+   "rows": [
+    [
+     "Mint, previous deployment",
+     "011bbb21, token #8",
+     "11,757,272",
+     "156,589",
+     "1.07",
+     "0.000167",
+     "11.5"
+    ],
+    [
+     "Revoke, previous deployment",
+     "011bbb21, token #8",
+     "11,757,344",
+     "46,226",
+     "1.10",
+     "0.000051",
+     "13.5"
+    ],
+    [
+     "Mint, ConsentSBTv3",
+     "f050c29a, token #1",
+     "11,771,243",
+     "196,406",
+     "1.06",
+     "0.000209",
+     "4.9"
+    ],
+    [
+     "Revoke, ConsentSBTv3",
+     "f050c29a, token #1",
+     "11,771,307",
+     "32,980",
+     "1.04",
+     "0.000034",
+     "10.4"
+    ],
+    [
+     "Mint, ConsentSBTv3",
+     "04da25f5, token #2",
+     "11,771,581",
+     "179,306",
+     "1.05",
+     "0.000189",
+     "22.1"
+    ]
+   ],
+   "widths": [
+    1900,
+    1500,
+    1300,
+    1100,
+    1100,
+    1260,
+    1200
+   ]
+  },
+  {
+   "t": "p",
+   "text": "⦃Figure 41 compares the gas used by the five transactions. The mint transactions are shown in blue and the revoke transactions in orange, and each bar is labelled with its gas and its fee in ETH.⦄"
+  },
+  {
+   "t": "ifig",
+   "key": "F41",
+   "caption": "Gas used by the five anchored Sepolia transactions: mint transactions in blue and revoke transactions in orange, each labelled with its gas and its fee in ETH"
+  },
+  {
+   "t": "p",
+   "text": "⦃As shown in Figure 41, a mint costs considerably more gas than a revocation. On the current contract, the mint of token #1 used 196,406 gas, whereas its revocation used 32,980 gas, which is about one sixth of the mint. This is because a mint creates a token and writes a complete consent record, while a revocation changes only a single flag of an existing record. The two mints on the current contract also used more gas than the mint of 156,589 gas on the previous deployment. The gas of a mint depends mainly on whether a storage slot is written for the first time. The difference of 17,100 gas between the two mints on the current contract is consistent with the token counter being written from zero at the first mint only. In the same way, the holder of token #8 already held earlier tokens on the previous deployment, so its token balance was not written from zero. In contrast, both holders on the current contract received their first token there. In addition, the current contract emits two events at each mint that the previous deployment did not emit. The notBefore time, the jurisdiction and the burn authorisation share one storage slot with the expiry, so they add little gas.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃The gas price remained between 1.04 and 1.10 gwei, so no fee exceeded 0.00021 ETH. However, Sepolia ether has no monetary value. Therefore, the portable measure of cost is the gas used and not the fee. The fee on another network is the same gas multiplied by the gas price of that network.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃Confirmation took between 4.9 s and 22.1 s. The guardian subsystem does not wait for the mint confirmation, because the mint is submitted by a background job, as described in Section 6.8.3. Consequently, the confirmation time determines when the consent becomes verifiable on the public chain, but it does not delay the guardians or the doctor. The consent becomes ACTIVE in the local store as soon as the local token is assigned, and the access decision does not consult the chain. The revocation is different, because the patient subsystem waits for the block confirmation before it reports the final state, as shown in Figure 33. For the revocation of token #1, this wait was 10.4 s.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃Table 16 presents the access decisions recorded in the audit ledger. The ledger holds 18 STATE_CHECK events and nine DATA_ACCESS events. Six of the STATE_CHECK events carry the complete decision matrix, and all six were recorded on 24 September 2026 for consents f050c29a and 04da25f5. Each of them is listed with the DATA_ACCESS event that followed it and with the proof mode recorded for that access. The remaining 12 STATE_CHECK events record only the consent state. The three DATA_ACCESS events of 22 September 2026 predate the logging of the matrix and of the proof mode, so they are summarised in a single row. In the table, n/l denotes a value that was not logged. The ledger rows are numbered by the index column of the exported ledger, which starts at 0.⦄"
+  },
+  {
+   "t": "itable",
+   "key": "T16",
+   "caption": "Access decisions recorded in the audit ledger, with the decision matrix of each logged evaluation and the access result that followed",
+   "header": [
+    "Ledger rows",
+    "Date and time",
+    "Consent",
+    "V~I~",
+    "V~A~",
+    "V~P~",
+    "V~T~",
+    "V~L~",
+    "Decision",
+    "Access result",
+    "Proof mode"
+   ],
+   "rows": [
+    [
+     "41, 42",
+     "24 Sep 09:51:36",
+     "f050c29a",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "ALLOW",
+     "GRANTED",
+     "groth16"
+    ],
+    [
+     "43, 44",
+     "24 Sep 09:51:39",
+     "f050c29a",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "ALLOW",
+     "GRANTED",
+     "groth16"
+    ],
+    [
+     "45, 46",
+     "24 Sep 10:02:50",
+     "f050c29a",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "FAIL",
+     "DENY",
+     "DENIED",
+     "n/l"
+    ],
+    [
+     "54, 55",
+     "24 Sep 11:02:52",
+     "04da25f5",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "ALLOW",
+     "GRANTED",
+     "groth16"
+    ],
+    [
+     "56, 57",
+     "24 Sep 11:04:16",
+     "04da25f5",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "ALLOW",
+     "GRANTED",
+     "groth16"
+    ],
+    [
+     "58, 59",
+     "24 Sep 11:04:26",
+     "04da25f5",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "PASS",
+     "ALLOW",
+     "GRANTED",
+     "groth16"
+    ],
+    [
+     "8, 21, 32",
+     "22 Sep 10:07 to 10:21",
+     "f5a8ad89, cd9a24bd, 011bbb21",
+     "n/l",
+     "n/l",
+     "n/l",
+     "n/l",
+     "n/l",
+     "n/l",
+     "GRANTED (3)",
+     "n/l"
+    ]
+   ],
+   "widths": [
+    760,
+    1360,
+    1100,
+    700,
+    700,
+    700,
+    700,
+    700,
+    700,
+    1060,
+    880
+   ]
+  },
+  {
+   "t": "p",
+   "text": "⦃As shown in Table 16, each of the five logged ALLOW decisions was followed by a GRANTED access, and all five accesses record the proof mode groth16. The single logged DENY is the jurisdiction demonstration of Section 6.8.5, in which the requester declared the jurisdiction SA for a consent issued for AU. In this evaluation, V~L~ failed while the other four predicates passed, and the access that followed was DENIED. The ledger row of this refusal records the proof check as passed and the scope as valid. Therefore, the refusal was produced by the decision matrix alone. Consequently, each of the six logged matrices agrees with the access result that followed it. The three earlier grants of 22 September record the proof check as passed, the scope as valid and the state as ACTIVE, but neither the matrix nor the proof mode. For this reason, the ledger does not show whether these three grants used a Groth16 proof or the SHA-256 integrity digest that replaces the proof when the zero-knowledge build is unavailable.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃It should be noted that the refusal after revocation shown in Figure 36 does not appear as a ledger row. Once the consent is no longer ACTIVE, the doctor subsystem stops the request before it can be submitted, so no STATE_CHECK or DATA_ACCESS event is written. The evidence for that refusal is therefore the screenshot of Figure 36. The refusal follows from the revocation flag in the local store, because the doctor subsystem does not read the chain. The on-chain state of token #1 corroborates the revocation separately. The independent verification of Section 6.8.9 reports checkValid as false for this token after its revocation in block 11,771,307.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃Table 17 summarises the processing time of the decision components. The decision rule was timed over 1,000 evaluations of the five predicates on a consent object that was already loaded, without signature recovery. EIP-712 signature recovery was timed for a single signature. The Groth16 proof generation time includes the start-up of the proving process. The checkValid and checkValidAt measurements are read-only calls to the contract through the public Sepolia RPC endpoint. Signature recovery, proof generation, proof verification and the two read calls were each repeated 20 times. All of these measurements were taken on 1 October 2026 in the cloud development container used for the demonstration, before the hardening described later in this subsection. The hardening adds only the selection of distinct approvals from members of G to the decision rule. The anchoring confirmation row summarises the submit-to-confirmation times of the five transactions in Table 15.⦄"
+  },
+  {
+   "t": "itable",
+   "key": "T17",
+   "caption": "Processing time of the decision components, measured in the cloud development container used for the demonstration, with the anchoring confirmation taken from Table 15",
+   "header": [
+    "Component",
+    "Median",
+    "Mean",
+    "Minimum",
+    "Maximum",
+    "n"
+   ],
+   "rows": [
+    [
+     "Decision rule, five predicates",
+     "2.37 µs",
+     "2.60 µs",
+     "2.32 µs",
+     "31.59 µs",
+     "1,000"
+    ],
+    [
+     "EIP-712 signature recovery, one signature",
+     "10.93 ms",
+     "11.67 ms",
+     "10.55 ms",
+     "15.64 ms",
+     "20"
+    ],
+    [
+     "Groth16 proof generation",
+     "1,401.1 ms",
+     "1,597.0 ms",
+     "1,342.8 ms",
+     "5,349.6 ms",
+     "20"
+    ],
+    [
+     "Groth16 proof verification",
+     "465.3 ms",
+     "472.5 ms",
+     "441.0 ms",
+     "525.1 ms",
+     "20"
+    ],
+    [
+     "On-chain checkValid read",
+     "573.5 ms",
+     "587.4 ms",
+     "568.2 ms",
+     "715.5 ms",
+     "20"
+    ],
+    [
+     "On-chain checkValidAt read",
+     "574.6 ms",
+     "592.7 ms",
+     "568.2 ms",
+     "745.6 ms",
+     "20"
+    ],
+    [
+     "Anchoring confirmation",
+     "11.5 s",
+     "12.5 s",
+     "4.9 s",
+     "22.1 s",
+     "5"
+    ]
+   ],
+   "widths": [
+    3160,
+    1240,
+    1240,
+    1240,
+    1240,
+    1240
+   ]
+  },
+  {
+   "t": "p",
+   "text": "⦃Figure 42 places the components of Table 17 on a logarithmic time axis, except the checkValid read, whose times are almost identical to those of the checkValidAt read. For each component, the dot marks the median and the line extends from the minimum to the maximum. A logarithmic axis is required because the medians range from 2.37 µs for the decision rule to 11.5 s for anchoring confirmation.⦄"
+  },
+  {
+   "t": "ifig",
+   "key": "F42",
+   "caption": "Processing time of the decision components on a logarithmic axis: the dot marks the median and the line spans the minimum to the maximum, with n = 1,000 for the decision rule, n = 5 for anchoring confirmation and n = 20 for the other components"
+  },
+  {
+   "t": "p",
+   "text": "⦃As shown in Figure 42, the time taken to evaluate the decision rule is negligible, with a median of 2.37 µs. Signature recovery takes about 11 ms per guardian, or approximately 22 ms for the two signatures required under the N-of-N rule with N = |G| = 2. The Groth16 proof dominates the interactive path of an access request, with medians of 1,401.1 ms for generation and 465.3 ms for verification. It should be noted that each generation and each verification starts a separate process, so these times include process start-up as well as cryptographic work. In addition, the prover and the verifier run on the same server, as stated in Section 6.8.11. Therefore, this cost is incurred for the integration of the zero-knowledge toolchain rather than for an additional privacy guarantee. The maximum generation time of 5,349.6 ms was recorded in the first run of the series, whereas the other 19 runs remained close to the median. Because every run starts a new process, process start-up alone does not explain this delay. The delay is therefore attributed to the first loading of the proving files. This run also raises the mean generation time to 1,597.0 ms. At the median, the decision rule, the two signature recoveries and the proof generation and verification of one access request take about 1.9 s in total. More than 98 per cent of this time is spent on the proof.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃The checkValidAt read, which an external verifier can use to confirm a token, has a median of 574.6 ms. It is not consulted by the access decision of the prototype. Because the contract function only reads stored values, this time consists mainly of the network round trip to the public endpoint. Anchoring confirmation is the slowest step, with a median of 11.5 s. However, it does not lie on the access path of the doctor, because the mint is confirmed in the background.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃The adversarial tests assume honest infrastructure and exercise the decision functions and the contract at unit level. The adversary considered tries to obtain or keep access without satisfying a condition of C. This adversary may be an outside requester or a participant of the consent. It can supply crafted inputs to the decision functions, alter the bits of a Groth16 proof or its public signals, and send transactions to the contract from an account that is not its owner. The tests also consider an attempt to rewrite a recorded audit event after the decision, in which the adversary does not recompute the digest of that event.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃Several capabilities are outside the scope of this evaluation, because the prototype does not defend against them. The interface authenticates no role, so any user can act as a listed guardian or as the doctor and can declare any requester jurisdiction. Each guardian signing key is derived from the public guardian DID, so any party that knows a guardian DID can produce a valid approval for that guardian. Apart from the rewriting of an audit event described above, the adversary is assumed to have no write access to the consent or audit store. The adversary is also assumed to have no control of the server clock. In addition, the consent terms are assumed not to change after approval, and the prover of the Groth16 proof is assumed to be honest. Finally, compromise of the contract owner key, network-level attacks, denial of service and any behaviour of the Sepolia network itself are excluded.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃Table 18 summarises the twelve scenarios A1 to A12. Each scenario is implemented as an automated unit test that applies the attack directly to the service functions, the proof verifier, the digest function of the audit ledger or the contract. None of the tests drives the running application, its data store or the Sepolia deployment. For each scenario, the table gives the targeted component of C or the contract and the expected outcome. It also gives the observed outcome before and after the service layer was hardened on 1 October 2026.⦄"
+  },
+  {
+   "t": "itable",
+   "key": "T18",
+   "caption": "Unit-level adversarial tests A1 to A12, their targeted component and their outcome before the hardening (commit b1468b7) and after the hardening of 1 October 2026",
+   "header": [
+    "ID",
+    "Attack",
+    "Target",
+    "Expected",
+    "Before hardening",
+    "After hardening",
+    "Evidence"
+   ],
+   "rows": [
+    [
+     "A1",
+     "Approval signed by a signer outside G",
+     "A",
+     "Refused",
+     "Accepted at unit level (blocked in the interface)",
+     "Refused",
+     "test_A1_signer_outside_G_is_not_counted"
+    ],
+    [
+     "A2",
+     "Guardian signature replayed from another consent",
+     "I",
+     "Refused",
+     "Refused",
+     "Refused",
+     "test_A2_replayed_signature_is_rejected"
+    ],
+    [
+     "A3",
+     "Same guardian approves twice to reach N",
+     "A",
+     "Refused",
+     "Accepted at unit level (blocked in the interface)",
+     "Refused",
+     "test_A3_duplicate_approval_does_not_reach_threshold"
+    ],
+    [
+     "A4",
+     "Requested scope exceeds the authorised scope",
+     "P (scope check)",
+     "Refused",
+     "Refused",
+     "Refused",
+     "test_A4_over_scope_request_is_rejected"
+    ],
+    [
+     "A5",
+     "Request with an empty scope",
+     "P (scope check)",
+     "Refused",
+     "Accepted at unit level (blocked in the interface)",
+     "Refused",
+     "test_A5_empty_scope_is_rejected"
+    ],
+    [
+     "A6",
+     "Request before notBefore or after expiry",
+     "T",
+     "Refused",
+     "Refused",
+     "Refused",
+     "test_A6_outside_validity_interval_is_denied"
+    ],
+    [
+     "A7",
+     "Requester declares a different jurisdiction",
+     "L",
+     "Refused",
+     "Refused",
+     "Refused",
+     "test_A7_jurisdiction_mismatch_is_denied; live application decision, 24 Sep: Figure 32"
+    ],
+    [
+     "A8",
+     "Access after revocation",
+     "E (via V~A~)",
+     "Refused",
+     "Refused",
+     "Refused",
+     "test_A8_revoked_consent_is_denied (local flag); separate on-chain revocation, Sepolia block 11,771,307, 24 Sep"
+    ],
+    [
+     "A9",
+     "Tampered Groth16 proof or public signal",
+     "E",
+     "Refused",
+     "Refused",
+     "Refused",
+     "test_A9_tampered_proof_fails_verification"
+    ],
+    [
+     "A10",
+     "Honest proof generation for an expired consent",
+     "T",
+     "Refused",
+     "Refused",
+     "Refused",
+     "tests/test_adversarial.py, A10 (honest prover only)"
+    ],
+    [
+     "A11",
+     "Result field of a recorded audit event rewritten",
+     "E",
+     "Digest differs",
+     "Digest differs",
+     "Digest differs",
+     "tests/test_adversarial.py, A11 (digest recomputation only)"
+    ],
+    [
+     "A12",
+     "Mint or revoke by a non-owner, or token transfer",
+     "Contract",
+     "Refused",
+     "Refused",
+     "Refused",
+     "test_A12_non_owner_cannot_mint_or_revoke (in-memory EVM, not Sepolia)"
+    ]
+   ],
+   "widths": [
+    560,
+    1900,
+    1000,
+    900,
+    1300,
+    900,
+    2800
+   ]
+  },
+  {
+   "t": "p",
+   "text": "⦃It should be noted that, in the implementation, V~I~ combines the structural DID check of Section 6.7 with the verification of each listed guardian's EIP-712 signature. A2 therefore exercises the signature part of V~I~ rather than DID resolution. The scope tested by A4 and A5 is checked by a separate scope check at request time and is not one of the five logged predicates of the decision matrix. For A11, the table reports only that the recomputed digest of the modified event differs from the stored digest, and no component of the prototype performs this comparison. For A12, a refusal means that the contract reverts the transaction on an in-memory Ethereum virtual machine. For A7 and A8, the Evidence column also cites the live demonstration of 24 September 2026, which predates the tests. The A7 refusal of Figure 32 was decided by the application rather than by the contract. The A8 entry cites the separate on-chain revocation in Sepolia block 11,771,307, whereas the A8 test evaluates only the revocation flag of the local store.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃Figure 43 presents the same results as an evaluation matrix. Each row is a scenario, and the columns I, A, P, T, L, E and Contract mark the component that the scenario targets. The last two columns show the unit-level outcome before and after the hardening, with an icon and a label for each refusal or acceptance. An acceptance before the hardening means that the service function accepted the attack when it was called directly, not that the running application did. For A11, a refusal in the figure denotes only that the digest of the modified event differs, as explained for Table 18.⦄"
+  },
+  {
+   "t": "ifig",
+   "key": "F43",
+   "caption": "Adversarial evaluation matrix: the component of C or the contract targeted by each of the unit-level scenarios A1 to A12, and its outcome before and after the hardening of 1 October 2026"
+  },
+  {
+   "t": "p",
+   "text": "⦃As shown in Figure 43, three scenarios succeeded before the hardening, when the service functions of commit b1468b7 were called directly in unit tests. Consequently, three of the 13 adversarial tests failed at that version. In A1, evaluate_allow counted an approval from a signer outside G towards N. In A3, evaluate_allow counted two approvals from the same guardian and so reached the threshold. In A5, check_scope accepted a request with an empty scope. None of the three was reachable through the interface as used in the demonstration of 24 September 2026. The guardian selector offers only the DIDs listed in G, the guardian subsystem refuses a second signature from the same DID, and the doctor subsystem refuses an empty selection. However, the guardian selector restricts only the choice of DID, because the interface does not authenticate guardians. In addition, the empty-selection guard was added on 24 September 2026, before the demonstration, and an empty request was granted through the interface before that date. Such a grant released no records, because a query over an empty scope returns nothing. A4 was rejected by check_scope both before and after the hardening, and it was also unreachable through the interface, which offers only the authorised modules. Therefore, the three results represent a gap in defence in depth rather than a demonstrated breach of the deployed system.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃A direct call to the service layer would nevertheless have bypassed these interface checks. Consequently, the same checks were added to the service layer itself, and the interface checks were retained. The decision function evaluate_allow now counts only distinct approvals from members of G, and check_scope now requires a non-empty request within the authorised scope. A follow-up change on the same day applied the same counting rule to the lifecycle state evaluation and to the mint trigger of the guardian subsystem. Both had still counted every listed signature. After these changes, all 13 adversarial tests pass. The full suite of 36 tests also passes in the cloud development container used for the demonstration. It consists of the 23 earlier functional and regression tests and 13 adversarial tests, which are a baseline test and one test for each of the twelve scenarios. One earlier test was adjusted, because its fixture used signer labels that were not members of G. The test outputs before and after the change are preserved in the project evidence records.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃The evaluation has six limitations. First, A12 runs the compiled ConsentSBTv3 artifact of the project repository on an in-memory Ethereum virtual machine provided by the eth-tester library, and no Sepolia transaction was sent. The contract deployed on Sepolia was compiled separately in Remix, as described in Section 6.8.1. Therefore, A12 shows the behaviour of the contract source but did not test the deployed bytecode. Its result also holds only while the single owner key remains uncompromised, and the test does not exercise burn, safeTransferFrom or the ownership functions. Second, A11 shows only that a change to one of the six digested fields changes the digest of that event. Such a change can be detected only by comparison with a copy of the digest held separately, and no component of the prototype performs this comparison. The SHA-256 digest is neither keyed nor chained to the previous event, and it is stored in the same row. In addition, the digest covers the actor, action, patient, consent, result and timestamp of an event but not its scope, purpose, actor role, transaction hash or metadata. Consequently, the recorded decision matrix is not protected by the digest. The ledger is therefore not tamper-evident against a party with write access to the store. Deleted or reordered events are not detected, and the access events are not anchored on the chain.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃Third, A2 shows that replay across consent identifiers is rejected. The signed message covers only the consent identifier, the guardian and the network. Consequently, a change of scope, purpose, requester, expiry or jurisdiction after approval is not detected. Signature checking also applies only on the code path that supplies the signature verifier, which the interface does. Fourth, A6 relies on the server clock, A7 on the jurisdiction declared by the requester, and A8 on the revocation flag of the local store. A requester who declares a false jurisdiction therefore passes V~L~. A party who can write to the consent store can also reverse a revocation for the access decision. For an anchored consent, this mismatch would be reported only when the independent verification of Section 6.8.9 is next run.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃Fifth, A9 shows that the Groth16 verifier rejects bit-level tampering with a proof or its public signals. This result holds under the development trusted setup of the prototype, which was generated by a single party. The verifier checks neither the commitment against a registered value nor the freshness of the public time, and the prover and the verifier run on the same server. Therefore, A10 shows only that the honest prover, using the server clock and the stored expiry, cannot generate a proof for an expired consent. A prover that backdates the time or substitutes the expiry produces a proof that verifies. Sixth, the measurements come from a single container and five transactions. Consequently, they are indicative only and do not constitute the systematic performance and overhead study of Section 9.2, which remains outstanding.⦄"
+  },
+  {
+   "t": "p",
+   "text": "⦃These results extend the empirical half of RO6, which nevertheless remains partially completed, as stated in Section 7.6. The empirical evidence previously consisted of the allow-and-deny cases of Sections 6.8.4 to 6.8.6, the 23 automated tests and the independent verification of Section 6.8.9. It now also includes preliminary cost and timing measurements and twelve unit-level adversarial tests of the decision functions, the proof verifier, the ledger digest and the contract. Therefore, HALAH now reports both allow-and-deny test cases and attack cases under the empirical component of Req 6. This is the empirical standard against which the reviewed studies were graded in Chapter 2. However, these tests are not a penetration test of the deployed system, and the systematic performance and adversarial evaluation of Section 9.2 remains for the next stage. The formal half of RO6 also remains for the next stage. It consists of the proof or model checking of the soundness property and of the lifecycle invariant stated in Section 9.2.⦄"
+  }
+ ],
+ "notes": "WHAT CHANGED\n- Title (honesty RED): changed to \"Preliminary Measurements and Unit-Level Adversarial Tests\". This goes against the \"fixed\" title in the placement spec. I applied it because Sections 7.6 and 9.2 still list \"the performance and adversarial evaluation\" as outstanding, so the old title contradicted the report. The number 6.8.13, the placement and all keys are unchanged. If the build or a cross-reference needs the old title, revert this one field.\n- Block 1 (honesty RED and voice): says access decisions are taken by the application and only activation and revocation are anchored. Uses \"preliminary evidence\" and \"twelve unit-level adversarial tests\". Uses the empirical component of Req 6. Lists four sources in split sentences. \"Namely\", \"deliberate attack campaign\" and \"local runs\" are gone.\n- Block 2: \"independently reproduced lifecycle\". The submit-to-confirmation interval is stated directly, and it is noted that the interval includes signing, submission and the wait for the receipt (checked against the app's logging order).\n- Gas paragraph (numbers YELLOW): the explanation now rests on first-time storage writes. The 17,100 gas difference matches the token counter. The token #8 holder already held earlier tokens on the previous deployment (same patient DID fe621c76 as token #1, address 0x789997BF). It also covers the two extra events, and notes that notBefore, jurisdiction and burnAuth are packed into the expiry slot (checked in ConsentSBTv3.sol). I split the gas-price sentences into their own paragraph.\n- Confirmation paragraph: adds that the consent is ACTIVE locally once the local token is assigned, and that the access decision does not consult the chain.\n- Table 16 and its prose: the ALLOW column is now \"Decision\" with ALLOW/DENY values. Explains the 0-based ledger index. Uses \"nine\" and \"12\". The conclusion now follows the six-matrix evidence. Adds that the 22 September grants cannot be shown to be Groth16 rather than the SHA-256 placeholder digest.\n- Revocation-refusal paragraph (RED): the refusal is attributed to the local revocation flag. The on-chain checkValid=false is kept apart as separate corroboration.\n- Table 17 intro (RED): the 1,000 versus 20 repetitions are stated correctly. The timings were taken before the hardening (metrics at 08:11 UTC, hardening commit at 08:18 UTC). The caption no longer implies the anchoring row was measured in the container.\n- Figure 42 intro: says the checkValid row is left out of the figure.\n- Figure 42 discussion: N-of-N with N = |G| = 2. Adds the qualification that prover and verifier run on the same server (Section 6.8.11). The first-run outlier is now attributed to first loading of the proving files, not process start-up. The 1.9 s total names its components. Adds that checkValidAt is not consulted by the access decision. Split into two paragraphs.\n- Threat model (RED): honest infrastructure and unit level. States the adversary's capabilities, with A11 covered as a rewrite without digest recomputation. Lists the exclusions: unauthenticated roles, DID-derived guardian keys, write access to the store, server clock, terms changed after approval, malicious prover, and owner key, network and Sepolia. Two paragraphs.\n- Table 18 intro and qualifications (RED): unit tests only, with no app, store or Sepolia. The hardening is defined. A post-table paragraph explains that V~I~ includes signature verification (A2), that scope sits outside the five predicates (A4, A5), that A11 means only \"digest differs\" and nothing compares digests, that A12 runs on an in-memory EVM, and that the A7 and A8 live evidence is dated 24 Sep and separate.\n- Table 18 cells (RED and YELLOW): A1, A3 and A5 read \"Accepted at unit level (blocked in the interface)\". A4 and A5 read \"P (scope check)\". A8 reads \"E (via V~A~)\". A7 and A8 evidence is qualified. A10 is reworded for the honest prover. A11 reads \"Digest differs\". A12 adds \"in-memory EVM, not Sepolia\". The caption names baseline commit b1468b7, which is in the header of before_hardening.txt. Widths were rebalanced and still sum to 9360.\n- Figure 43 intro and caption: unit-level outcome. Acceptance means a direct function call. A11's \"refused\" in the figure means only that the digest differs.\n- Hardening paragraphs (RED, voice RED, numbers YELLOW): the attacks succeeded at function level against b1468b7, with 3 of 13 failing. The interface guards are described, with the caveat that guardians are not authenticated. The A5 guard dates from 24 Sep, and an earlier empty grant released no records. A4 was never a weakness. \"Moved\" became \"added ... and the interface checks were retained\". The follow-up change on the same day hardened the state machine and the mint trigger (verified in commit 96cd2d1). The 36 tests pass in one environment. The adjusted earlier test is disclosed.\n- Limitations (RED): now six limitations across three paragraphs. A12 used the repository artifact while the Sepolia build came from Remix (Section 6.8.1). The owner key is a single point of trust. A11 covers only six fields, is unkeyed and unchained, and is never compared. A2 binds only the consent ID, guardian and network. A6, A7 and A8 depend on trusted inputs. A9 relies on a single-party development setup, and A10 shows only that the honest prover behaves. The measurements are not the Section 9.2 study.\n- RO6 paragraph (RED): RO6 remains partially completed. The tests are not a penetration test, and the systematic evaluation of Section 9.2 is still to come. The 23 earlier tests are now listed among the prior evidence.\n\nLEFT OUT OR UNCERTAIN\n- I left out numbers that do not trace to the permitted data: 1,458.0 ms (metrics.json, checked, replaced by \"remained close to the median\"), solc 0.8.24/0.8.34, app.py line numbers, commit IDs 4627a1d and 96cd2d1 (described by date instead), and v2 tokens #1 to #3 (replaced by \"earlier tokens\").\n- I did not apply the YELLOW asking to renumber the existing Tables 15 to 17 in the text. The build handles that renumbering.\n- Figure images I cannot edit: the Figure 41 legend \"Mint (mintConsentV3)\" should read \"Mint\", because the token #8 bar is a ConsentSBTv2 mintConsent call. The Figure 43 labels should ideally read \"Accepted at unit level\", and A11 should read \"digest differs\". The text explains both points in case the figure is not regenerated.\n- Other parts of the report need changing to match. In 6.8.11, \"Transaction latency, gas cost and throughput have not been measured\" should point to 6.8.13. The Abstract, 4.6, 6.6, 6.8.9, 7.6 and 9.2 cite only \"23 automated tests\". In 9.2, \"Performance and overhead measurement remains outstanding\" should become \"systematic\". The Appendix A RO6 row should add evidence/adversarial_2026-10-01. The \"Integrity + Non-repudiation\" claim in 6.8.9 and the \"Ledger Integrity\" row of Table 14 are now qualified by the A11 limitation. 6.8.12 still says \"photographed lifecycle\".\n- \"Initial loading of the proving files\" as the cause of the first-run outlier is an inference, not something measured."
+}

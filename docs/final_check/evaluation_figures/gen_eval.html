@@ -21,7 +21,7 @@ function hbar(x0,y,len,h,fill){const r=Math.min(4,len/2);return `<path d="M ${x0
 <script>
 /* ---------- Figure 41: gas used per anchored transaction ---------- */
 {
-const W=1000, X0=318, XW=420, rowH=66, barH=30, max=200000, GH=40;
+const W=1000, X0=342, XW=400, rowH=68, barH=30, max=200000, GH=40;
 const sx=v=>X0+v/max*XW;
 const groups=[{t:"Previous deployment, 22 September 2026",rows:[0,1]},{t:"Current ConsentSBTv3 deployment, 24 September 2026",rows:[2,3,4]}];
 let s="", y=54; const ry=[], heads=[];
@@ -31,17 +31,17 @@ s+=`<rect x="${X0}" y="12" width="16" height="16" rx="2" fill="${BLUE}"/>`+T(X0+
 s+=`<rect x="${X0+100}" y="12" width="16" height="16" rx="2" fill="${ORANGE}"/>`+T(X0+124,26,"Revocation",{fs:18,c:INK2});
 groups.forEach((g,gi)=>{ const y1=heads[gi]+GH-4, y2=ry[g.rows[g.rows.length-1]]+rowH;
   for(let v=0;v<=max;v+=50000){const x=sx(v);s+=`<line x1="${x}" y1="${y1}" x2="${x}" y2="${y2}" stroke="${v===0?AXIS:GRID}" stroke-width="${v===0?1.5:1}"/>`;} });
-for(let v=0;v<=max;v+=50000){const x=sx(v); s+=T(x,bottom+24,v===0?"0":fmt(v),{a:"middle",fs:16,c:INK2});}
+for(let v=0;v<=max;v+=50000){const x=sx(v); s+=T(x,bottom+24,v===0?"0":fmt(v),{a:"middle",fs:17,c:INK2});}
 s+=T(X0+XW/2,bottom+52,"Gas used",{a:"middle",fs:17,c:INK2,w:600});
 groups.forEach((g,gi)=>{ if(gi>0) s+=`<line x1="14" y1="${heads[gi]-5}" x2="${W-14}" y2="${heads[gi]-5}" stroke="${AXIS}" stroke-dasharray="4 4"/>`;
   s+=T(14,heads[gi]+24,g.t,{fs:17,c:INK2,w:700}); });
 TX.forEach((t,i)=>{
   const yb=ry[i]+(rowH-barH)/2;
   s+=T(X0-12,yb+12,`${t.op}, token ${t.token}`,{a:"end",fs:19,w:600});
-  s+=T(X0-12,yb+33,`consent ${t.consent}, block ${fmt(t.block)}`,{a:"end",fs:16,c:INK2});
+  s+=T(X0-12,yb+33,`consent ${t.consent}, block ${fmt(t.block)}`,{a:"end",fs:17,c:INK2});
   s+=hbar(X0,yb,sx(t.gas)-X0,barH,t.op==="Mint"?BLUE:ORANGE);
   s+=T(sx(t.gas)+10,yb+12,`${fmt(t.gas)} gas`,{fs:18,w:600,halo:1});
-  s+=T(sx(t.gas)+10,yb+33,`${t.fee.toFixed(6)} ETH at ${t.gwei.toFixed(2)} gwei`,{fs:16,c:INK2,halo:1});
+  s+=T(sx(t.gas)+10,yb+33,`${t.fee.toFixed(6)} ETH at ${t.gwei.toFixed(2)} gwei`,{fs:17,c:INK2,halo:1});
 });
 svg("f41",W,bottom+64,s);
 }
@@ -59,7 +59,7 @@ let s="";
 s+=`<circle cx="${X0+7}" cy="22" r="7" fill="${BLUE}" stroke="${SURF}" stroke-width="2"/>`+T(X0+20,28,"median",{fs:17,c:INK2});
 s+=`<line x1="${X0+110}" y1="22" x2="${X0+154}" y2="22" stroke="${BLUE}" stroke-width="2"/><line x1="${X0+110}" y1="15" x2="${X0+110}" y2="29" stroke="${BLUE}" stroke-width="2"/><line x1="${X0+154}" y1="15" x2="${X0+154}" y2="29" stroke="${BLUE}" stroke-width="2"/>`+T(X0+164,28,"minimum to maximum",{fs:17,c:INK2});
 const H=rowH*COMP.length;
-for(let k=lo;k<=hi;k++){const x=sx(Math.pow(10,k));s+=`<line x1="${x}" y1="${top-6}" x2="${x}" y2="${top+H}" stroke="${GRID}"/>`;s+=T(x,top+H+24,tick[k-lo],{a:"middle",fs:16,c:INK2});}
+for(let k=lo;k<=hi;k++){const x=sx(Math.pow(10,k));s+=`<line x1="${x}" y1="${top-6}" x2="${x}" y2="${top+H}" stroke="${GRID}"/>`;s+=T(x,top+H+24,tick[k-lo],{a:"middle",fs:16.5,c:INK2});}
 s+=`<line x1="${X0}" y1="${top+H}" x2="${X0+XW}" y2="${top+H}" stroke="${AXIS}" stroke-width="1.5"/>`;
 s+=T(X0+XW/2,top+H+52,"Time per operation (logarithmic scale)",{a:"middle",fs:17,c:INK2,w:600});
 const bgY=top+rowH*5;
@@ -67,7 +67,7 @@ s+=`<line x1="14" y1="${bgY}" x2="${W-14}" y2="${bgY}" stroke="${AXIS}" stroke-d
 COMP.forEach((c,i)=>{
   const y=top+i*rowH+rowH/2;
   s+=T(X0-16,y-2,c.name,{a:"end",fs:18,w:600});
-  s+=T(X0-16,y+19,c.n,{a:"end",fs:16,c:INK2});
+  s+=T(X0-16,y+20,c.n,{a:"end",fs:17,c:INK2});
   const x1=sx(c.mn), x2=sx(c.mx), xm=sx(c.med);
   s+=`<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="${BLUE}" stroke-width="2"/>`;
   s+=`<line x1="${x1}" y1="${y-7}" x2="${x1}" y2="${y+7}" stroke="${BLUE}" stroke-width="2"/><line x1="${x2}" y1="${y-7}" x2="${x2}" y2="${y+7}" stroke="${BLUE}" stroke-width="2"/>`;
@@ -101,6 +101,7 @@ s+=T(OX+OW*1.5,top-44,"After",{a:"middle",fs:17,w:700})+T(OX+OW*1.5,top-24,"hard
 s+=T(14,top-24,"Scenario",{fs:17,w:700});
 s+=`<line x1="10" y1="${top-12}" x2="${W-10}" y2="${top-12}" stroke="${AXIS}" stroke-width="1.5"/>`;
 const ok=(x,y)=>`<circle cx="${x}" cy="${y}" r="10" fill="${GOOD}"/><path d="M ${x-5} ${y} L ${x-1.2} ${y+4.2} L ${x+5.5} ${y-4.2}" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>`;
+const neu=(x,y)=>`<circle cx="${x}" cy="${y}" r="10" fill="#8a8984"/><rect x="${x-5.5}" y="${y-1.3}" width="11" height="2.6" fill="#fff"/>`;
 const bad=(x,y)=>`<path d="M ${x} ${y-11} L ${x+11} ${y+9} L ${x-11} ${y+9} Z" fill="${CRIT}" stroke-linejoin="round"/><rect x="${x-1.3}" y="${y-4.5}" width="2.6" height="7.5" fill="#fff"/><rect x="${x-1.3}" y="${y+4.6}" width="2.6" height="2.4" fill="#fff"/>`;
 ATT.forEach((a,i)=>{
   const y=top+i*rowH+rowH/2-6;
@@ -108,18 +109,20 @@ ATT.forEach((a,i)=>{
   s+=T(14,y+6,a.id,{fs:18,w:700});
   s+=T(62,y+6,SHORT[a.id]||a.name,{fs:17.5});
   cols.forEach((c,j)=>{ if(a.comp.includes(c)) s+=`<circle cx="${cx(j)}" cy="${y}" r="8" fill="${INK2}"/>`; else s+=`<circle cx="${cx(j)}" cy="${y}" r="2.2" fill="${AXIS}"/>`; });
-  const outc=(x,v)=> /^Accepted/.test(v)? bad(x-52,y)+T(x-36,y+6,"Accepted*",{fs:17,w:700}) : ok(x-52,y)+T(x-36,y+6,/^Digest/.test(v)?"Differs†":"Refused",{fs:17});
+  const outc=(x,v)=> /^Accepted/.test(v)? bad(x-52,y)+T(x-36,y+6,"Accepted*",{fs:17,w:700}) : (/^Digest/.test(v)? neu(x-52,y)+T(x-36,y+6,"Differs†",{fs:17}) : ok(x-52,y)+T(x-36,y+6,"Refused",{fs:17}));
   s+=outc(OX+OW/2,a.before);
   s+=outc(OX+OW*1.5,a.after);
 });
 const yb=top+ATT.length*rowH-6;
 s+=`<line x1="10" y1="${yb}" x2="${W-10}" y2="${yb}" stroke="${AXIS}" stroke-width="1.5"/>`;
-s+=T(14,yb+26,"I identity, A authority, P policy and scope, T time, L jurisdiction, E evidence and its revocation dimension.",{fs:16,c:INK2});
-s+=T(14,yb+48,"Contract denotes ConsentSBTv3 executed on an in-memory EVM.",{fs:16,c:INK2});
-s+=T(14,yb+70,"* Accepted at unit level, when the service function of commit b1468b7 was called directly.",{fs:16,c:INK2});
-s+=T(14,yb+92,"   The interface of the 24 September demonstration already refused it.",{fs:16,c:INK2});
-s+=T(14,yb+114,"† The recomputed digest of the rewritten event differs from the stored digest.",{fs:16,c:INK2});
-svg("f43",W,yb+126,s);
+const notes=["I identity, A authority, P policy and scope, T time, L jurisdiction, E evidence and its",
+ "revocation dimension. Contract denotes ConsentSBTv3 executed on an in-memory EVM.",
+ "* Accepted at unit level, when the service function of commit b1468b7 was called",
+ "  directly. The interface of the 24 September demonstration already refused it.",
+ "† The recomputed digest of the rewritten event differs from the stored digest, but no",
+ "  component of the prototype compares the two, so a neutral marker is used."];
+notes.forEach((l,k)=>{ s+=T(14,yb+28+k*24,l,{fs:18,c:INK2}); });
+svg("f43",W,yb+28+6*24,s);
 }
 </script>
 </body></html>

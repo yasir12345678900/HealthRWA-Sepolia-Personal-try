@@ -1,0 +1,353 @@
+{
+ "environment": {
+  "chain": {
+   "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+   "chain_id": 11155111,
+   "head_block": 11820541,
+   "contract": "0x0EC3617581DEC63A7f2bb162DC14d088916ADc73"
+  },
+  "collected_at": "2026-10-01T08:11:20.572288+00:00",
+  "n_runs": 20,
+  "note": "timings measured in the cloud development container used for the demonstration; on-chain reads over the public Sepolia RPC endpoint"
+ },
+ "ledger_by_action": {
+  "CREATE_CONSENT": 8,
+  "SIGN_CONSENT": 10,
+  "MINT_SBT": 5,
+  "STATE_CHECK": 18,
+  "DATA_ACCESS": 9,
+  "REVOKE_CONSENT": 5,
+  "ONCHAIN_MINT": 3,
+  "ONCHAIN_REVOKE": 2
+ },
+ "ledger_events": 60,
+ "onchain_tx": [
+  {
+   "action": "ONCHAIN_MINT",
+   "consent_id": "011bbb21",
+   "tx_hash": "0x5f9b2f14a3c061ef6a7bbb5959fcecab4d4c393025d96f8440d67e946bc24994",
+   "block": 11757272,
+   "status": 1,
+   "gas_used": 156589,
+   "gas_limit": 158999,
+   "effective_gas_price_gwei": 1.066678937,
+   "fee_eth": 0.000167030188065893,
+   "block_time_utc": "2026-09-22T10:21:24+00:00",
+   "to": "0xb0dA0440Abd6bd74bE0aebE226D593492124A6e7"
+  },
+  {
+   "action": "ONCHAIN_REVOKE",
+   "consent_id": "011bbb21",
+   "tx_hash": "0x2adf73d854071e90101d19974b996d29291e9cc2e537b1e3cd2474b606044048",
+   "block": 11757344,
+   "status": 1,
+   "gas_used": 46226,
+   "gas_limit": 46608,
+   "effective_gas_price_gwei": 1.10221801,
+   "fee_eth": 5.095112973026e-05,
+   "block_time_utc": "2026-09-22T10:35:48+00:00",
+   "to": "0xb0dA0440Abd6bd74bE0aebE226D593492124A6e7"
+  },
+  {
+   "action": "ONCHAIN_MINT",
+   "consent_id": "f050c29a",
+   "tx_hash": "0x8be1b99e9b7054d427bdee0a0b5cc56ae99030a399f4b11d3629ed5d98daf13d",
+   "block": 11771243,
+   "status": 1,
+   "gas_used": 196406,
+   "gas_limit": 199132,
+   "effective_gas_price_gwei": 1.061716776,
+   "fee_eth": 0.000208527545107056,
+   "block_time_utc": "2026-09-24T09:51:12+00:00",
+   "to": "0x0EC3617581DEC63A7f2bb162DC14d088916ADc73"
+  },
+  {
+   "action": "ONCHAIN_REVOKE",
+   "consent_id": "f050c29a",
+   "tx_hash": "0x017efb9dc6acad9733fa05c19408c0166c9c0645e83b6ffdc41c4b3b85ddceaa",
+   "block": 11771307,
+   "status": 1,
+   "gas_used": 32980,
+   "gas_limit": 33336,
+   "effective_gas_price_gwei": 1.038980598,
+   "fee_eth": 3.426558012204e-05,
+   "block_time_utc": "2026-09-24T10:04:00+00:00",
+   "to": "0x0EC3617581DEC63A7f2bb162DC14d088916ADc73"
+  },
+  {
+   "action": "ONCHAIN_MINT",
+   "consent_id": "04da25f5",
+   "tx_hash": "0x25ef5e2f0046735dcb01ff7b68875b760bdf88ad0fa3fedc9bfb910769d4c210",
+   "block": 11771581,
+   "status": 1,
+   "gas_used": 179306,
+   "gas_limit": 181896,
+   "effective_gas_price_gwei": 1.054963483,
+   "fee_eth": 0.000189161282282798,
+   "block_time_utc": "2026-09-24T10:58:48+00:00",
+   "to": "0x0EC3617581DEC63A7f2bb162DC14d088916ADc73"
+  }
+ ],
+ "anchor_latency_s": [
+  {
+   "consent_id": "011bbb21",
+   "op": "ONCHAIN_MINT",
+   "submit_to_confirm_s": 11.482563
+  },
+  {
+   "consent_id": "011bbb21",
+   "op": "ONCHAIN_REVOKE",
+   "submit_to_confirm_s": 13.465244
+  },
+  {
+   "consent_id": "f050c29a",
+   "op": "ONCHAIN_MINT",
+   "submit_to_confirm_s": 4.854149
+  },
+  {
+   "consent_id": "f050c29a",
+   "op": "ONCHAIN_REVOKE",
+   "submit_to_confirm_s": 10.38026
+  },
+  {
+   "consent_id": "04da25f5",
+   "op": "ONCHAIN_MINT",
+   "submit_to_confirm_s": 22.148325
+  }
+ ],
+ "timing_summary": {
+  "onchain_checkValid_s": {
+   "n": 20,
+   "mean_ms": 587.4473,
+   "median_ms": 573.4556,
+   "min_ms": 568.1776,
+   "max_ms": 715.4591,
+   "stdev_ms": 37.3951
+  },
+  "onchain_checkValidAt_s": {
+   "n": 20,
+   "mean_ms": 592.7232,
+   "median_ms": 574.6497,
+   "min_ms": 568.1715,
+   "max_ms": 745.5863,
+   "stdev_ms": 46.2469
+  },
+  "decision_rule_s": {
+   "n": 1000,
+   "mean_ms": 0.0026,
+   "median_ms": 0.0024,
+   "min_ms": 0.0023,
+   "max_ms": 0.0316,
+   "stdev_ms": 0.0015
+  },
+  "eip712_recover_s": {
+   "n": 20,
+   "mean_ms": 11.6668,
+   "median_ms": 10.9339,
+   "min_ms": 10.5488,
+   "max_ms": 15.6417,
+   "stdev_ms": 1.4527
+  },
+  "groth16_prove_s": {
+   "n": 20,
+   "mean_ms": 1596.9803,
+   "median_ms": 1401.0716,
+   "min_ms": 1342.7685,
+   "max_ms": 5349.6156,
+   "stdev_ms": 883.9555
+  },
+  "groth16_verify_s": {
+   "n": 20,
+   "mean_ms": 472.544,
+   "median_ms": 465.2939,
+   "min_ms": 440.9845,
+   "max_ms": 525.0553,
+   "stdev_ms": 25.6572
+  }
+ },
+ "decision_rule_us": {
+  "mean_us": 2.6,
+  "median_us": 2.37,
+  "min_us": 2.32,
+  "max_us": 31.59
+ },
+ "groth16_verify_ok": true,
+ "zk_artifact_bytes": {
+  "pot10_final.ptau": 1181099,
+  "consent_validity.r1cs": 127304,
+  "consent_validity_js": 4096,
+  "verification_key.json": 3292,
+  "cv_0000.zkey": 188472,
+  "pot10_0000.ptau": 393424,
+  "pot10_0001.ptau": 394939,
+  "consent_validity.sym": 29714,
+  "consent_validity.zkey": 188877
+ },
+ "decision_events": [
+  {
+   "row": "8",
+   "ts": "2026-09-22T10:07:30.702007",
+   "consent": "f5a8ad89",
+   "type": "DATA_ACCESS",
+   "result": "GRANTED",
+   "proof_mode": null,
+   "zk_proof_verified": true
+  },
+  {
+   "row": "21",
+   "ts": "2026-09-22T10:14:30.028256",
+   "consent": "cd9a24bd",
+   "type": "DATA_ACCESS",
+   "result": "GRANTED",
+   "proof_mode": null,
+   "zk_proof_verified": true
+  },
+  {
+   "row": "32",
+   "ts": "2026-09-22T10:21:57.940298",
+   "consent": "011bbb21",
+   "type": "DATA_ACCESS",
+   "result": "GRANTED",
+   "proof_mode": null,
+   "zk_proof_verified": true
+  },
+  {
+   "row": "41",
+   "ts": "2026-09-24T09:51:36.232885",
+   "consent": "f050c29a",
+   "type": "STATE_CHECK",
+   "VI": true,
+   "VA": true,
+   "VP": true,
+   "VT": true,
+   "VL": true,
+   "ALLOW": true
+  },
+  {
+   "row": "42",
+   "ts": "2026-09-24T09:51:38.844118",
+   "consent": "f050c29a",
+   "type": "DATA_ACCESS",
+   "result": "GRANTED",
+   "proof_mode": "groth16",
+   "zk_proof_verified": true
+  },
+  {
+   "row": "43",
+   "ts": "2026-09-24T09:51:39.310675",
+   "consent": "f050c29a",
+   "type": "STATE_CHECK",
+   "VI": true,
+   "VA": true,
+   "VP": true,
+   "VT": true,
+   "VL": true,
+   "ALLOW": true
+  },
+  {
+   "row": "44",
+   "ts": "2026-09-24T09:51:41.159213",
+   "consent": "f050c29a",
+   "type": "DATA_ACCESS",
+   "result": "GRANTED",
+   "proof_mode": "groth16",
+   "zk_proof_verified": true
+  },
+  {
+   "row": "45",
+   "ts": "2026-09-24T10:02:50.025638",
+   "consent": "f050c29a",
+   "type": "STATE_CHECK",
+   "VI": true,
+   "VA": true,
+   "VP": true,
+   "VT": true,
+   "VL": false,
+   "ALLOW": false
+  },
+  {
+   "row": "46",
+   "ts": "2026-09-24T10:02:51.661961",
+   "consent": "f050c29a",
+   "type": "DATA_ACCESS",
+   "result": "DENIED",
+   "proof_mode": null,
+   "zk_proof_verified": true
+  },
+  {
+   "row": "54",
+   "ts": "2026-09-24T11:02:52.471725",
+   "consent": "04da25f5",
+   "type": "STATE_CHECK",
+   "VI": true,
+   "VA": true,
+   "VP": true,
+   "VT": true,
+   "VL": true,
+   "ALLOW": true
+  },
+  {
+   "row": "55",
+   "ts": "2026-09-24T11:02:54.526599",
+   "consent": "04da25f5",
+   "type": "DATA_ACCESS",
+   "result": "GRANTED",
+   "proof_mode": "groth16",
+   "zk_proof_verified": true
+  },
+  {
+   "row": "56",
+   "ts": "2026-09-24T11:04:16.911339",
+   "consent": "04da25f5",
+   "type": "STATE_CHECK",
+   "VI": true,
+   "VA": true,
+   "VP": true,
+   "VT": true,
+   "VL": true,
+   "ALLOW": true
+  },
+  {
+   "row": "57",
+   "ts": "2026-09-24T11:04:18.764962",
+   "consent": "04da25f5",
+   "type": "DATA_ACCESS",
+   "result": "GRANTED",
+   "proof_mode": "groth16",
+   "zk_proof_verified": true
+  },
+  {
+   "row": "58",
+   "ts": "2026-09-24T11:04:26.638615",
+   "consent": "04da25f5",
+   "type": "STATE_CHECK",
+   "VI": true,
+   "VA": true,
+   "VP": true,
+   "VT": true,
+   "VL": true,
+   "ALLOW": true
+  },
+  {
+   "row": "59",
+   "ts": "2026-09-24T11:04:28.450450",
+   "consent": "04da25f5",
+   "type": "DATA_ACCESS",
+   "result": "GRANTED",
+   "proof_mode": "groth16",
+   "zk_proof_verified": true
+  }
+ ],
+ "adversarial": {
+  "failed_before_hardening": [
+   "A1",
+   "A3",
+   "A5"
+  ],
+  "before": "3 failed (A1, A3, A5), 10 passed (baseline + 9 attacks)",
+  "after": "13 passed (baseline + A1-A12)",
+  "full_suite_after": "36 passed (23 functional/regression tests + 13 adversarial tests)",
+  "file": "tests/test_adversarial.py",
+  "evidence": "evidence/adversarial_2026-10-01/"
+ }
+}

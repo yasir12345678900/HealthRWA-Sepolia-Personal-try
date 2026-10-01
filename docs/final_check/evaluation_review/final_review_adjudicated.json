@@ -1,0 +1,1024 @@
+{
+ "decisions": [
+  {
+   "n": 0,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "numbers",
+   "location": "Abstract, SUBMIT.txt line 47",
+   "current": "The tests include twelve attack scenarios, all of which are refused after a hardening of the service layer.",
+   "replacement": "Duplicate of n=90; no separate edit.",
+   "reason": "This is the same A11 overclaim in the abstract as n=90, which is kept with the merged wording."
+  },
+  {
+   "n": 1,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "numbers",
+   "location": "7.6 Progress of RO6, SUBMIT.txt lines 7975-7978 (edit C22)",
+   "current": "all twelve attack scenarios are refused after the hardening of 1 October 2026. Before that hardening, three scenarios were accepted by the service-layer functions when these were called directly, although the interface already blocked them.",
+   "replacement": "eleven of the twelve unit-level attack scenarios are refused after the hardening of 1 October 2026. In the twelfth, A11, a rewritten audit event changes its digest, but no component of the prototype compares the digest. Before that hardening, three scenarios were accepted by the service-layer functions when these were called directly, although the interface already blocked them.",
+   "reason": "Verified. Table 18 and Figure 43 give A11 as 'Digest differs' in the expected, before and after columns. The second limitation in 6.8.13 says that no component performs the comparison. test_A11_rewritten_event_changes_its_digest only asserts that event_digest changes, so after_hardening.txt shows 13 passes, not twelve refusals. The replacement reads on from the existing lead-in 'In the adversarial evaluation of Section 6.8.13,'. This merges n=14, 57, 77 and 91."
+  },
+  {
+   "n": 2,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "numbers",
+   "location": "Appendix A, Table 21, RO6 row, evidence cell (source cell text; pdftotext interleaves the columns at SUBMIT.txt lines 8326-8332)",
+   "current": "36 tests passed, attack scenarios A1 to A12 refused (Section 6.8.13)",
+   "replacement": "36 tests passed; attack scenarios A1 to A10 and A12 refused, A11 digest differs (Section 6.8.13)",
+   "reason": "Edit C43 introduced 'A1 to A12 refused', which contradicts Table 18 and Figure 43, where A11 is 'Digest differs'. full_suite.txt confirms '36 passed', so only the refusal claim changes. The current is the exact substring of the cell in SUBMIT.docx, which I checked. It cannot be contiguous in the layout dump. This merges n=15, 59, 78 and 95."
+  },
+  {
+   "n": 3,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "numbers",
+   "location": "7.4 Progress of RO4, SUBMIT.txt lines 7892-7895 (edit C18)",
+   "current": "In this case VP evaluates to 0 and the request is denied with VP named as the failed check. This over-scope denial is exercised by the per-dimension failure tests described in Section 6.8.9 and by attack scenario A4 of Section 6.8.13.",
+   "replacement": "In the formal model, VP evaluates to 0 in this case. In the prototype, the scope condition is enforced by a separate scope check at request time rather than within the logged predicate VP. Consequently, an over-scope request is refused with the scope named as the failed check, and the interface itself offers only the authorised modules. This refusal is exercised by attack scenario A4 of Section 6.8.13.",
+   "reason": "Checked in the code. evaluate_allow sets vp = consent.purpose in ALLOWED_PURPOSES and takes no scope input. When check_scope fails, app.py appends 'scope', not VP, to the failed checks. The only per-dimension VP test, test_matrix_all_pass_and_each_dimension_fails_independently, fails VP through purpose='Marketing', and none of the 23 earlier tests calls check_scope. 6.8.13 itself says that the scope is 'not one of the five logged predicates'. The replacement keeps the formal statement and the A4 evidence and drops the false per-dimension claim. It also reads on correctly into the next sentence about A5 and the scope check. This merges n=16 and 55."
+  },
+  {
+   "n": 4,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "numbers",
+   "location": "7.6 Progress of RO6, SUBMIT.txt lines 7966-7970 (edit M1)",
+   "current": "In addition, an independent verification tool re-checks every ledger transaction hash against Sepolia receipts and reads each token back from the contract, reporting ALL CHECKS PASSED. Every granted access is accompanied by a real Groth16 proof generated and verified at request time.",
+   "replacement": "In addition, an independent verification tool re-checks every ledger transaction hash against Sepolia receipts and reads each token of the current contract back from the chain, reporting ALL CHECKS PASSED. Every access granted on 24 September 2026 was accompanied by a real Groth16 proof generated and verified at request time, as recorded in the audit ledger. The three earlier grants of 22 September do not record the proof mode (Table 16).",
+   "reason": "Ledger rows 8, 21 and 32, the grants of 22 September, carry no proof_mode (see decision_events in facts.json). The discussion of Table 16 says that the ledger cannot show whether they used Groth16 or the SHA-256 placeholder, and 6.8.4 already limits the claim to the demonstrated lifecycles. verify_poc_output.txt skips token #8 on the older deployment 0xb0dA..., so the tool reads back only the tokens of the current contract, as 6.8.9 states. This merges n=94."
+  },
+  {
+   "n": 5,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "numbers",
+   "location": "6.8.13, SUBMIT.txt lines 7710-7711",
+   "current": "After these changes, all 13 adversarial tests pass. The full suite of 36 tests also passes in the cloud development container used for the demonstration.",
+   "replacement": "After these changes, all 13 adversarial tests pass. The full suite of 36 tests also passes.",
+   "reason": "The pass counts are correct: after_hardening.txt shows 13 passed and full_suite.txt shows 36 passed. However, full_suite.txt reports rootdir /home/user/HealthRWA-Sepolia-Personal-try, and before_hardening.txt reports a scratch directory. The author's own metrics run (commit d67c401, metrics_log.txt) ran under /workspaces/HealthRWA-Sepolia-Personal-try. Nothing therefore supports the claim that the suite ran in the demonstration container. Dropping the location clause loses no fact. The text stays as two sentences so that the next sentence, 'It consists of', still refers to the full suite. This merges n=39."
+  },
+  {
+   "n": 6,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "numbers",
+   "location": "6.8.13, Table 18 caption, SUBMIT.txt lines 7582-7584",
+   "current": "Table 18: Unit-level adversarial tests A1 to A12, their targeted component and their outcome before the hardening (commit b1468b7) and after the hardening of 1 October 2026",
+   "replacement": "Duplicate of n=80; no separate edit.",
+   "reason": "This is the same ID-column wrapping problem. n=80 is kept because it gives the concrete grid change."
+  },
+  {
+   "n": 7,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "numbers",
+   "location": "6.8.13, SUBMIT.txt lines 7693-7695",
+   "current": "and an empty request was granted through the interface before that date. Such a grant released no records, because a query over an empty scope returns nothing.",
+   "replacement": "and before that date an empty request could have been granted through the interface. Such a grant would have released no records, because a query over an empty scope returns nothing.",
+   "reason": "The git history confirms that the guard was commented out at 546d464, 0b30b44 and ce8d853 and enabled only in 4627a1d (24 Sep, 08:23 UTC). The pre-hardening check_scope also accepted an empty set, so such a grant was possible. However, all nine DATA_ACCESS rows of the exported ledger request the four modules, and no empty-scope grant is recorded anywhere. 'Was granted' therefore asserts an event for which there is no evidence."
+  },
+  {
+   "n": 8,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "numbers",
+   "location": "6.8.13, SUBMIT.txt lines 7534-7537",
+   "current": "Because every run starts a new process, process start-up alone does not explain this delay. The delay is therefore attributed to the first loading of the proving files.",
+   "replacement": "Because every run starts a new process, process start-up alone does not explain this delay. The delay is most probably caused by the first, uncached loading of the proving library and the proving files, although this cause was not measured separately.",
+   "reason": "metrics.json confirms that run 1 took 5,349.6 ms and that runs 2 to 20 took between 1,342.8 and 1,458.0 ms. The cause, however, was not measured. zk_service.generate_proof starts 'node prove.js' on every run, so a cold first run also loads Node and snarkjs from disk. The replacement keeps the author's first sentence and hedges only the inferred cause."
+  },
+  {
+   "n": 9,
+   "decision": "skip",
+   "severity": "YELLOW",
+   "lens": "numbers",
+   "location": "Abstract, SUBMIT.txt lines 48-50",
+   "current": "The five anchored transactions consumed between 32,980 and 196,406 gas and were confirmed between 4.9 and 22.1 s after submission.",
+   "replacement": "(no change)",
+   "reason": "The numbers are verified: 32,980 and 196,406 gas, and 4.854 and 22.148 s. 'After submission' matches the report's own defined measure, 'submit-to-confirmation', in the Table 15 heading and its definition in 6.8.13. Changing only the abstract would make it disagree with Table 15. The signing step adds little to the interval."
+  },
+  {
+   "n": 10,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "numbers",
+   "location": "6.5 (text after Algorithm 5), SUBMIT.txt lines 6108-6111 (edit X1)",
+   "current": "The lifecycle state is derived at each evaluation from the distinct approvals of the members of G, the token identifier and the revocation flag, and revocation is accepted from any state that is not already REVOKED.",
+   "replacement": "The lifecycle state is derived at each evaluation from the distinct approvals of the members of G, the token identifier, the revocation flag and the current time relative to the validity interval. Revocation is accepted from any state that is not already REVOKED.",
+   "reason": "state_service.evaluate_state also compares datetime.now() with start_date and expiry_date to return NOT_STARTED or EXPIRED. The next sentence relies on expiration conditioning the decision. With the addition, the single sentence would run to 45 words, so it is split."
+  },
+  {
+   "n": 11,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "numbers",
+   "location": "7.6, SUBMIT.txt lines 7990-7992",
+   "current": "Scenario A12 runs the ConsentSBTv3 bytecode on an in-memory Ethereum virtual machine and shows that an account other than the contract owner can neither mint nor revoke a token.",
+   "replacement": "Duplicate of n=30; no separate edit.",
+   "reason": "This is the same A12 qualification. n=30 is kept because its wording is shorter."
+  },
+  {
+   "n": 12,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "numbers",
+   "location": "6.8.13, sixth limitation, SUBMIT.txt lines 7760-7762",
+   "current": "Consequently, they are indicative only and do not constitute the systematic performance and overhead study of Section 9.2, which remains outstanding.",
+   "replacement": "Consequently, they are indicative only and do not constitute the full performance and scalability study of Section 9.2, which remains outstanding.",
+   "reason": "Edits C2, C6, C15, C26, C31 to C33 and C39 renamed the outstanding work 'full performance and scalability study'. Section 9.2 no longer contains a 'performance and overhead study', and this is the last instance of the retired name. This merges n=24, 65, 87 and 99."
+  },
+  {
+   "n": 13,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "Abstract, SUBMIT.txt line 47",
+   "current": "The tests include twelve attack scenarios, all of which are refused after a hardening of the service layer.",
+   "replacement": "Duplicate of n=90; no separate edit.",
+   "reason": "This is the same A11 overclaim, handled by n=90."
+  },
+  {
+   "n": 14,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "7.6, SUBMIT.txt lines 7975-7978",
+   "current": "all twelve attack scenarios are refused after the hardening of 1 October 2026. Before that hardening, three scenarios were accepted by the service-layer functions when these were called directly, although the interface already blocked them.",
+   "replacement": "Duplicate of n=1; no separate edit.",
+   "reason": "This is the same A11 overclaim in 7.6, handled by n=1."
+  },
+  {
+   "n": 15,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "Appendix A, Table 21, RO6 evidence cell",
+   "current": "36 tests passed, attack scenarios A1 to A12 refused (Section 6.8.13)",
+   "replacement": "Duplicate of n=2; no separate edit.",
+   "reason": "This is the same cell edit, handled by n=2."
+  },
+  {
+   "n": 16,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "7.4, SUBMIT.txt lines 7892-7895",
+   "current": "In this case VP evaluates to 0 and the request is denied with VP named as the failed check. This over-scope denial is exercised by the per-dimension failure tests described in Section 6.8.9 and by attack scenario A4 of Section 6.8.13.",
+   "replacement": "Duplicate of n=3; no separate edit.",
+   "reason": "This is the same VP and scope contradiction, handled by n=3."
+  },
+  {
+   "n": 17,
+   "decision": "apply",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "7.2 Progress of RO2, SUBMIT.txt lines 7833-7836",
+   "current": "It should be noted that the identity verification VI in the current prototype performs identifier- and credential-format validation only. Cryptographic DID resolution against a registry and authentication of the requester are acknowledged limitations and are reserved for the next stage.",
+   "replacement": "It should be noted that the identity verification VI in the current prototype combines identifier- and credential-format validation with the EIP-712 signature check of each listed guardian. Cryptographic DID resolution against a registry and authentication of the requester are acknowledged limitations and are reserved for the next stage.",
+   "reason": "evaluate_allow ANDs verify_sig over every listed signature into vi, app.py passes verify_sig=verify_signature, and test_A2 asserts that m['VI'] is False. 6.8.13 (page 174) and 6.3 (line 5421) both state that VI includes the EIP-712 signature check, so 'format validation only' now contradicts the new subsection. The replacement keeps the stated limitations."
+  },
+  {
+   "n": 18,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "6.8.11, SUBMIT.txt lines 7289-7292",
+   "current": "It should be noted that, in the same way, the identity predicate V I in the prototype performs identifier- and credential-format validation only; cryptographic resolution of DIDs against a registry and authentication of the requester are reserved for the next stage, as stated in Section 7.2.",
+   "replacement": "It should be noted that the identity predicate VI in the prototype combines identifier- and credential-format validation with the EIP-712 signature check of each listed guardian. Cryptographic resolution of DIDs against a registry and authentication of the requester are also reserved for the next stage, as stated in Section 7.2.",
+   "reason": "This makes the same 'format validation only' claim that the code and 6.8.13 contradict (see n=17). The current text is also one 46-word sentence joined by a semicolon. 'In the same way' is moved into 'also', because the first sentence now describes what VI does rather than a limitation."
+  },
+  {
+   "n": 19,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "Appendix A, Table 21, RO2 row, 'Realised by' cell (source cell text; the columns are interleaved at SUBMIT.txt lines 8302-8309)",
+   "current": "performs identifier- and credential-format validation only; DID resolution is reserved for the next stage)",
+   "replacement": "combines identifier- and credential-format validation with the EIP-712 signature check of each listed guardian; DID resolution is reserved for the next stage)",
+   "reason": "The source cell reads '... per guardian DID (VI itself performs identifier- and credential-format validation only; DID resolution ...)', which I checked in SUBMIT.docx. This is the same contradiction with evaluate_allow and 6.8.13 as in n=17. The wording is aligned with n=17."
+  },
+  {
+   "n": 20,
+   "decision": "apply",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "6.3, end of the RO3 implementation paragraph, SUBMIT.txt lines 5421-5424",
+   "current": "At access time the recovery is repeated for every recorded signature within the identity predicate VI, whereas VA counts the recorded approvals against N and checks the token identifier and the revocation flag.",
+   "replacement": "At access time the recovery is repeated for every recorded signature within the identity predicate VI. VA then counts only the distinct approvals of the members of G against N and checks the token identifier and the revocation flag.",
+   "reason": "At b1468b7, VA was len(consent.signatures) >= threshold, that is, it counted recorded approvals. Since 0dd2652 and 96cd2d1, VA uses guardian_approvals(), the distinct members of G. 6.5 (X1), 7.3, 7.4 and 6.8.13 all state the new rule, so 6.3 is the one stale description of the implementation left."
+  },
+  {
+   "n": 21,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "4.6, SUBMIT.txt lines 3871-3873",
+   "current": "jurisdiction request was refused on the deployed Sepolia contract, and an independent tool re-verified every recorded transaction against the chain.",
+   "replacement": "Duplicate of n=50; no separate edit.",
+   "reason": "This is the same contradiction with the A7 note in 6.8.13. n=50 is kept because its current avoids the hyphen line break in 'out-of-jurisdiction'."
+  },
+  {
+   "n": 22,
+   "decision": "apply",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "7.6 status line, SUBMIT.txt lines 7940-7942 (edit C19)",
+   "current": "Status: Partially Completed (scenario-based empirical validation, preliminary measurements and adversarial evaluation complete; formal assurance and a full performance and scalability study outstanding)",
+   "replacement": "Status: Partially Completed (scenario-based empirical validation, preliminary measurements and unit-level adversarial tests complete; formal assurance, a full performance and scalability study and the extended adversarial evaluation outstanding)",
+   "reason": "The closing paragraph of 6.8.13 says that the tests 'are not a penetration test of the deployed system' and that the adversarial evaluation of Section 9.2 remains for the next stage. 9.2 (C33) says that 'the extended adversarial evaluation will follow'. Calling the adversarial evaluation complete in the status contradicts both. 'Unit-level' is the term used in the 6.8.13 title and the Table 18 caption. This merges n=69 and 93."
+  },
+  {
+   "n": 23,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "voice",
+   "location": "6.8.13, Table 18, rows A10 to A12, page 174",
+   "current": "A1 Honest proof T Refused Refused Refused test_A10_honest_prover_",
+   "replacement": "Duplicate of n=80; no separate edit.",
+   "reason": "This is the same ID-column wrap, handled by the grid change in n=80."
+  },
+  {
+   "n": 24,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, sixth limitation, SUBMIT.txt lines 7761-7762",
+   "current": "do not constitute the systematic performance and overhead study of Section 9.2, which remains outstanding.",
+   "replacement": "Duplicate of n=12; no separate edit.",
+   "reason": "This is the same renaming, handled by n=12."
+  },
+  {
+   "n": 25,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, closing paragraph, SUBMIT.txt lines 7773-7776",
+   "current": "the systematic performance and adversarial evaluation of Section 9.2 remains for the next stage. The formal half of RO6 also remains for the next stage. It consists of the proof or model checking of the soundness property and of the lifecycle invariant stated in Section 9.2.",
+   "replacement": "the full performance and scalability study and the extended adversarial evaluation of Section 9.2 remain for the next stage. The formal half of RO6 is also left for that stage. It consists of the proof or model checking of the soundness property and of the lifecycle invariant stated in Section 9.2.",
+   "reason": "9.2 (C33) names these items 'the full performance and scalability study and the extended adversarial evaluation'. 'Systematic performance and adversarial evaluation' appears nowhere else in the report. In addition, two consecutive sentences end with 'remains for the next stage'. This merges n=67, 88 and the renaming part of n=98."
+  },
+  {
+   "n": 26,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "7.6, final paragraph, SUBMIT.txt lines 7995-7998 (edit C23)",
+   "current": "The transition check of Algorithm 5 is not yet implemented, and the remaining unauthorised transitions therefore remain to be examined in the next stage. The remaining work for the next stage is therefore considerably narrower.",
+   "replacement": "The transition check of Algorithm 5 is not yet implemented, so the other unauthorised transitions are left for the next stage. Nevertheless, the remaining work for the next stage is considerably narrower.",
+   "reason": "Edit C23 created 'remaining ... remain ... remaining' and placed a mid-sentence 'therefore' in two consecutive sentences. In addition, 'therefore considerably narrower' no longer follows from the sentence just before it, which lists outstanding work. 'Nevertheless' restores the intended contrast. This does not overlap n=27, which edits the next sentence."
+  },
+  {
+   "n": 27,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "7.6, final paragraph, SUBMIT.txt lines 7998-8003",
+   "current": "It consists of the formal definition and verification of the security properties, a systematic performance and scalability study that extends the preliminary measurements of Section 6.8.13, and the removal of prototype limitations such as the N-of-N approval rule, the server-derived guardian keys and the unauthenticated requester role.",
+   "replacement": "It consists of the formal definition and verification of the security properties and a full performance and scalability study that extends the preliminary measurements of Section 6.8.13. It also includes the removal of prototype limitations such as the N-of-N approval rule, the server-derived guardian keys and the unauthenticated requester role.",
+   "reason": "This is a single 47-word sentence, and it calls the study 'systematic' while the last sentence of the same paragraph and 9.2 say 'full performance and scalability study'. The split keeps every item."
+  },
+  {
+   "n": 28,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "4.7, SUBMIT.txt lines 3902-3906 (edit C6)",
+   "current": "Consequently, the principal remaining agenda for CA3 is the formal component of RO6, namely the formal specification and analysis of the security properties, together with a full performance and scalability study, which extends the preliminary measurements of Section 6.8.13, and the remaining prototype hardening (Sections 7.6 and 9.2).",
+   "replacement": "Consequently, the principal remaining agenda for CA3 is the formal component of RO6, namely the formal specification and analysis of the security properties. It also includes a full performance and scalability study, which extends the preliminary measurements of Section 6.8.13, and the removal of the identified prototype limitations (Sections 7.6 and 9.2).",
+   "reason": "This is a 48-word sentence with 'remaining ... remaining'. 'Remaining prototype hardening' now clashes with 'the hardening', which the abstract, 6.8.13, 7.3, 7.4 and 7.6 use for the service-layer change of 1 October 2026. 9.1 calls this work 'the identified prototype limitations'. This does not overlap n=61, which edits the preceding sentence."
+  },
+  {
+   "n": 29,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "3.2, SUBMIT.txt lines 3368-3371",
+   "current": "of twelve attack scenarios. The formal component of security assurance therefore forms the remaining research scope and is developed in the next stage of the research (Section 9.2).",
+   "replacement": "of twelve attack scenarios. The formal component of security assurance, together with a full performance and scalability study, therefore forms the principal remaining research scope and is developed in the next stage of the research (Section 9.2).",
+   "reason": "The abstract (C2), 4.7, 6.7, 7.6, 9.1 and 9.2 all list the full performance and scalability study as next-stage work, and the abstract also lists consent modification and delegation. Only 3.2 presents the formal component as the whole remaining scope. 'Principal' is added so that the RO5 extensions are not excluded."
+  },
+  {
+   "n": 30,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "7.6, SUBMIT.txt lines 7990-7992 (edit C23)",
+   "current": "Scenario A12 runs the ConsentSBTv3 bytecode on an in-memory Ethereum virtual machine and shows that an account other than the contract owner can neither mint nor revoke a token.",
+   "replacement": "Scenario A12 runs ConsentSBTv3, compiled from the project source, on an in-memory Ethereum virtual machine and shows that an account other than the contract owner can neither mint nor revoke a token.",
+   "reason": "test_A12 deploys blockchain/abi/ConsentSBTv3.json on eth-tester. 6.8.13 states that the Sepolia contract 'was compiled separately in Remix' and that A12 'did not test the deployed bytecode'. Unqualified, 'the ConsentSBTv3 bytecode' reads as the deployed bytecode. This merges n=11 and 71."
+  },
+  {
+   "n": 31,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, after Table 16, SUBMIT.txt lines 7458-7460",
+   "current": "Therefore, the refusal was produced by the decision matrix alone. Consequently, each of the six logged matrices agrees with the access result that followed it.",
+   "replacement": "Therefore, the refusal was produced by the decision matrix alone, and each of the six logged matrices agrees with the access result that followed it.",
+   "reason": "The agreement of the six matrices follows from the whole paragraph, that is, five ALLOW decisions followed by GRANTED and one DENY followed by DENIED. It does not follow from the refusal sentence alone, so the second causal opener links the logic wrongly. The merged sentence keeps both facts."
+  },
+  {
+   "n": 32,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, after Figure 43, SUBMIT.txt lines 7680-7682",
+   "current": "As shown in Figure 43, three scenarios succeeded before the hardening, when the service functions of commit b1468b7 were called directly in unit tests.",
+   "replacement": "As shown in Figure 43, three attacks were accepted before the hardening, when the service functions of commit b1468b7 were called directly in unit tests.",
+   "reason": "'Three scenarios succeeded' can be read as three tests passing, yet the next sentence says that three tests failed. Table 18 ('Accepted at unit level') and Figure 43 ('Accepted*') use 'accepted'."
+  },
+  {
+   "n": 33,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, first limitation, SUBMIT.txt lines 7717-7719",
+   "current": "First, A12 runs the compiled ConsentSBTv3 artifact of the project repository on an in-memory Ethereum virtual machine provided by the eth-tester library, and no Sepolia transaction was sent.",
+   "replacement": "First, A12 runs the compiled ConsentSBTv3 artefact of the project repository on an in-memory Ethereum virtual machine provided by the eth-tester library, and no Sepolia transaction was sent.",
+   "reason": "This is the only 'artifact' in SUBMIT.txt. The report uses the Australian spelling 'artefact' at lines 278, 2328, 2899, 4003, 5131 and 8292."
+  },
+  {
+   "n": 34,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, first limitation, SUBMIT.txt lines 7721-7722",
+   "current": "Therefore, A12 shows the behaviour of the contract source but did not test the deployed bytecode.",
+   "replacement": "Therefore, A12 shows the behaviour of the contract source but not that of the deployed bytecode.",
+   "reason": "The tense shifts within one sentence ('shows ... but did not test'). The fix is grammatical and loses no fact. This does not overlap n=33, because the Remix sentence lies between the two spans."
+  },
+  {
+   "n": 35,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, third limitation, SUBMIT.txt lines 7740-7741",
+   "current": "Signature checking also applies only on the code path that supplies the signature verifier, which the interface does.",
+   "replacement": "In addition, signatures are checked only when the caller supplies the signature verifier, as the interface does.",
+   "reason": "evaluate_allow checks signatures only 'if verify_sig is not None', and app.py passes verify_sig=verify_signature. The trailing 'which the interface does' leaves unclear what the interface does."
+  },
+  {
+   "n": 36,
+   "decision": "skip",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, second limitation, SUBMIT.txt lines 7733-7735",
+   "current": "Consequently, the recorded decision matrix is not protected by the digest. The ledger is therefore not tamper-evident against a party with write access to the store.",
+   "replacement": "(no change)",
+   "reason": "This is not a defect. The 'therefore' in the second sentence follows from the earlier statements that the digest is neither keyed nor chained and is stored in the same row, not from the matrix coverage. Merging it into the 'Consequently' sentence would wrongly present tamper-evidence as a consequence of what the digest covers."
+  },
+  {
+   "n": 37,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, closing paragraph, SUBMIT.txt lines 7763-7764",
+   "current": "These results extend the empirical half of RO6, which nevertheless remains partially completed, as stated in Section 7.6.",
+   "replacement": "Duplicate of n=66; no separate edit.",
+   "reason": "This span lies inside n=66, which applies the same split together with the test-suite label."
+  },
+  {
+   "n": 38,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, after Figure 43, SUBMIT.txt lines 7715-7716",
+   "current": "The test outputs before and after the change are preserved in the project evidence records.",
+   "replacement": "The test outputs before and after the hardening are preserved in the project evidence records.",
+   "reason": "'The change' follows directly after 'One earlier test was adjusted', so it can be read as that adjustment. The preserved files are evidence/adversarial_2026-10-01/before_hardening.txt and after_hardening.txt, so 'the hardening' is the accurate referent."
+  },
+  {
+   "n": 39,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, SUBMIT.txt lines 7710-7711",
+   "current": "The full suite of 36 tests also passes in the cloud development container used for the demonstration.",
+   "replacement": "Duplicate of n=5; no separate edit.",
+   "reason": "This span lies inside n=5. Its proposed 'in the same container' would keep the claim about the test location, which the evidence does not support (see n=5)."
+  },
+  {
+   "n": 40,
+   "decision": "skip",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, opening paragraph, SUBMIT.txt lines 7339-7341",
+   "current": "The fourth is the output of the adversarial tests, recorded before and after a hardening of the service layer on the same day.",
+   "replacement": "(no change)",
+   "reason": "'A hardening' is a grammatical first mention, and the definite form is used after it. The change is taste only."
+  },
+  {
+   "n": 41,
+   "decision": "skip",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, opening paragraph, SUBMIT.txt lines 7333-7336",
+   "current": "In Chapter 2, the empirical component of Req 6 was graded on whether a study reports evidence such as allow-and-deny test cases and attack cases. Therefore, the same standard is applied here to HALAH.",
+   "replacement": "(no change)",
+   "reason": "'Therefore' expresses a defensible methodological consequence: the grading standard of Chapter 2 is applied to HALAH for comparability. The change is taste only."
+  },
+  {
+   "n": 42,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "9.1, SUBMIT.txt lines 8073-8077 (edit C30)",
+   "current": "The scenario-based empirical component of RO6 has also been delivered through 36 automated tests, which include twelve attack scenarios. Section 6.8.13 also reports preliminary measurements of gas cost, confirmation latency and processing time.",
+   "replacement": "The scenario-based empirical component of RO6 has also been delivered through 36 automated tests, which include twelve attack scenarios. In addition, Section 6.8.13 reports preliminary measurements of gas cost, confirmation latency and processing time.",
+   "reason": "'Also' appears in two consecutive sentences. The intended C30 wording opened the second sentence with 'In addition,'."
+  },
+  {
+   "n": 43,
+   "decision": "skip",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, Figure 41 caption, SUBMIT.txt lines 7380-7381",
+   "current": "Gas used by the five anchored Sepolia transactions: mint transactions in blue and revoke transactions in orange, each labelled with its gas and its fee in ETH.",
+   "replacement": "(no change)",
+   "reason": "The report uses 'revoke transaction' throughout (Table 15 'Revoke', 7.5 and 9.2), and the caption is clear next to the 'Revocation' legend. Changing only the caption would also leave the lead-in at line 7375 out of step. The change is taste only."
+  },
+  {
+   "n": 44,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "6.8.13, Figure 43 lead-in, SUBMIT.txt lines 7666-7668",
+   "current": "The last two columns show the unit-level outcome before and after the hardening, with an icon and a label for each refusal or acceptance.",
+   "replacement": "The last two columns show the unit-level outcome before and after the hardening, with an icon and a label for each refusal or acceptance and a neutral marker for the digest result of A11.",
+   "reason": "This pairs with the figure change in n=79. In submit-175.png, A11 'Differs†' carries the green tick of a refusal, although 6.8.13 says that no component compares the digest. Once the figure uses a neutral marker, the lead-in must describe it. This merges n=101."
+  },
+  {
+   "n": 45,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "Appendix A, Table 21, RO4 row, evidence cell (source cell text; the columns are interleaved at SUBMIT.txt lines 8313-8318)",
+   "current": "STATE_CHECK and DATA_ACCESS events recording VP = PASS for the four-module scope of consents f050c29a and 04da25f5",
+   "replacement": "STATE_CHECK events recording VP = PASS and DATA_ACCESS events recording the four-module scope of consents f050c29a and 04da25f5 as valid",
+   "reason": "The cell implies that VP = PASS evidences the scope. In the code, VP is the purpose check, and scope_valid is written to the DATA_ACCESS metadata. 6.8.13 states that the scope check is 'not one of the five logged predicates'. I confirmed the source cell text in SUBMIT.docx."
+  },
+  {
+   "n": 46,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "Appendix A heading, SUBMIT.txt line 8291 (also the contents entry at line 186 and the six RO/RQ labels of Table 21)",
+   "current": "Appendix A — Traceability to the Implemented System Table 21 summarises how each formal artefact of this report is realised in",
+   "replacement": "[Build change, no other wording change: replace the em-dash with a spaced hyphen, as in the Chapter 4 headings (for example '4.6 RO6 - Formal Security Assurance ...'), in the Appendix A heading and therefore its contents entry ('Appendix A - Traceability to the Implemented System'), and after each of the six labels 'RO1 / RQ1' to 'RO6 / RQ6' in Table 21.]",
+   "reason": "The voice rule forbids em-dashes, and the author's headings use a spaced hyphen. The only other em-dash in the body is the quoted interface message 'Verification Successful — Access Granted', which should stay. The anchor runs into the first line of the paragraph only to reach the minimum length. It does not overlap any other edit. This also covers the em-dash part of n=47."
+  },
+  {
+   "n": 47,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "voice",
+   "location": "Appendix A, Table 21, RO3 row",
+   "current": "2-of-2 ceremony with N = |G|; SBT minted on threshold",
+   "replacement": "Duplicate of n=89 (|G| break) and n=46 (em-dash); no separate edit.",
+   "reason": "Both parts are handled by n=89 and n=46."
+  },
+  {
+   "n": 48,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "consistency",
+   "location": "Abstract, SUBMIT.txt lines 47-48",
+   "current": "The tests include twelve attack scenarios, all of which are refused after a hardening of the service layer.",
+   "replacement": "Duplicate of n=90; no separate edit.",
+   "reason": "This is the same A11 overclaim, handled by n=90."
+  },
+  {
+   "n": 49,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "2.4.7 Comparative Analysis, SUBMIT.txt lines 2865-2868",
+   "current": "The authorisation decision is the conjunction of their independent verification, and this conjunction is both formally argued and validated through positive and negative test cases.",
+   "replacement": "The authorisation decision is the conjunction of their independent verification. This conjunction is formally specified and validated through allow-and-deny test cases and attack cases, whereas its formal verification is reserved for the next stage.",
+   "reason": "Line 2738 sets 'formally argued and empirically tested' as the bar. 1.3 (line 371) says that 'Formal security analysis has not yet been undertaken', and 6.8.13 ends by stating that the formal half of RO6 remains for the next stage. The current sentence therefore implies that the formal half is done, and it omits the attack cases that are now reported. I downgraded this to YELLOW, because 'formally argued' can be read as the formal specification of Chapter 6. Table 9's Req 6 tick for HALAH stays consistent, because other studies receive that tick for empirical validation."
+  },
+  {
+   "n": 50,
+   "decision": "apply",
+   "severity": "RED",
+   "lens": "consistency",
+   "location": "4.6 RO6, SUBMIT.txt lines 3871-3873",
+   "current": "jurisdiction request was refused on the deployed Sepolia contract, and an independent tool re-verified every recorded transaction against the chain.",
+   "replacement": "jurisdiction request against a consent anchored on the deployed Sepolia contract was refused by the application, and an independent tool re-verified every recorded transaction against the chain.",
+   "reason": "6.8.13 states that 'The A7 refusal of Figure 32 was decided by the application rather than by the contract' and that 'the access decision does not consult the chain'. In app.py the denial comes from evaluate_allow (VL) on the local consent object, with no contract call. The span starts after the hyphen break in 'out-of-' so that the match is exact. This merges n=21."
+  },
+  {
+   "n": 51,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "consistency",
+   "location": "6.7, SUBMIT.txt lines 6465-6467",
+   "current": "Consequently, only the formal-assurance branch, together with configurable k-of-n thresholds and authenticated requesters, remains for the next stage.",
+   "replacement": "Consequently, the formal-assurance branch remains for the next stage. The full performance and scalability study, the transition check of Algorithm 5, cryptographic VC validation, configurable k-of-n thresholds and authenticated requesters also remain for that stage.",
+   "reason": "The same paragraph says that Algorithm 5 is realised 'except for its transition check' and that Algorithm 2 has no cryptographic VC validation. Two paragraphs earlier, C11 says that 'CA3 completes their formal security assurance and a full performance and scalability study'. 'Only' contradicts all three. The list is split to avoid a 40-word sentence."
+  },
+  {
+   "n": 52,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "6.8.7 Blockchain Audit, SUBMIT.txt lines 7100-7105",
+   "current": "This audit reconstruction, together with the independent verification of every recorded transaction against the public chain, constitutes the empirical component of the security-assurance objective RO6 of Section 6.6. Representative valid, invalid and adversarial scenarios have been executed against the running prototype, and the recorded evidence is consistent with the public chain.",
+   "replacement": "This audit reconstruction, together with the independent verification of every recorded transaction against the public chain, forms part of the empirical component of the security-assurance objective RO6 of Section 6.6. Representative valid and invalid scenarios have been executed against the running prototype, and the recorded evidence is consistent with the public chain. The attack scenarios of Section 6.8.13 were executed separately as unit-level tests.",
+   "reason": "6.6 defines the empirical component as three parts (the 36 tests, the live demonstration and the verification) plus the measurements of 6.8.13, so the audit reconstruction does not by itself 'constitute' it. 6.8.13 also states that 'None of the tests drives the running application'. This is YELLOW rather than RED, because the live jurisdiction denial, cited as A7 evidence, was indeed run against the running prototype."
+  },
+  {
+   "n": 53,
+   "decision": "apply",
+   "severity": "RED",
+   "lens": "consistency",
+   "location": "6.8.11, SUBMIT.txt lines 7250-7251",
+   "current": "The designated guardians then independently authenticate and provide the required cryptographic approvals.",
+   "replacement": "The designated guardians then independently provide the required EIP-712 approvals.",
+   "reason": "6.8.13 states that 'The interface authenticates no role' and that 'the interface does not authenticate guardians'. In app.py, the guardian picks a DID in a selectbox and the server signs with sign_consent(did, ...) using a key derived from the DID. There is no authentication step."
+  },
+  {
+   "n": 54,
+   "decision": "apply",
+   "severity": "RED",
+   "lens": "consistency",
+   "location": "6.8.11, SUBMIT.txt lines 7266-7268",
+   "current": "EMR authorised medical-record access, Revoke_chain on-chain revocation, Audit immutable lifecycle recording, and Verify independent verification against Sepolia.",
+   "replacement": "EMR authorised medical-record access, Revoke_chain on-chain revocation, Audit lifecycle recording in the application ledger, and Verify independent verification of the anchored transactions against Sepolia.",
+   "reason": "audit_db.event_digest is an unkeyed SHA-256 that is not chained and is stored in the same row. 6.8.13 states that the ledger 'is therefore not tamper-evident against a party with write access to the store', and Q1 in 6.8.9 limits verification to the events that carry a transaction hash. 'Immutable' contradicts both statements."
+  },
+  {
+   "n": 55,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "consistency",
+   "location": "7.4, SUBMIT.txt lines 7892-7895",
+   "current": "In this case VP evaluates to 0 and the request is denied with VP named as the failed check. This over-scope denial is exercised by the per-dimension failure tests described in Section 6.8.9 and by attack scenario A4 of Section 6.8.13.",
+   "replacement": "Duplicate of n=3; no separate edit.",
+   "reason": "This is the same contradiction, handled by n=3."
+  },
+  {
+   "n": 56,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "consistency",
+   "location": "7.4, SUBMIT.txt lines 7901-7902",
+   "current": "Every denial names the failed checks explicitly in both the interface and the audit ledger.",
+   "replacement": "Every denial names the failed checks in the interface. A denial against an ACTIVE consent is also recorded in the audit ledger with the complete decision matrix, whereas a refusal for a consent that is not ACTIVE is shown in the interface only (Section 6.4).",
+   "reason": "6.4 (lines 5847-5849) says that a denial for a consent that is not ACTIVE 'is reported in the doctor interface but is not written to the audit ledger'. 6.8.13 says that the refusal after revocation 'does not appear as a ledger row'. In app.py the branch for a consent that is not ACTIVE only calls st.error and st.warning. The ACTIVE branch logs STATE_CHECK with the matrix and, on denial, logs DATA_ACCESS with decision_matrix."
+  },
+  {
+   "n": 57,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "consistency",
+   "location": "7.6, SUBMIT.txt lines 7975-7976",
+   "current": "6.8.13, all twelve attack scenarios are refused after the hardening of 1 October 2026.",
+   "replacement": "Duplicate of n=1; no separate edit.",
+   "reason": "This is the same A11 overclaim, handled by n=1."
+  },
+  {
+   "n": 58,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "9.2, SUBMIT.txt lines 8102-8104",
+   "current": "Validity windows are enforced and anchored on-chain, revocation is effective at the contract level, and lifecycle transitions are governed by an explicit state machine.",
+   "replacement": "Validity windows are enforced and anchored on-chain, and revocation is effective at the contract level. The six lifecycle states are derived at each evaluation, although the transition check of Algorithm 5 is not yet implemented.",
+   "reason": "6.5 says that Algorithm 5 is implemented 'with the exception of the transition check of lines 16 to 20' and that the state is derived at each evaluation. 7.6 (C23) says that 'The transition check of Algorithm 5 is not yet implemented'. state_service.evaluate_state has no transition guard. 'Transitions are governed' therefore overstates the implementation. I rated it YELLOW, because the six states themselves are implemented."
+  },
+  {
+   "n": 59,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "consistency",
+   "location": "Appendix A, Table 21, RO6 evidence cell",
+   "current": "36 tests passed, attack scenarios A1 to A12 refused (Section 6.8.13)",
+   "replacement": "Duplicate of n=2; no separate edit.",
+   "reason": "This is the same cell, handled by n=2."
+  },
+  {
+   "n": 60,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "Abstract, SUBMIT.txt lines 42-44 (edit C1)",
+   "current": "The current stage delivers RO1 to RO5 in operational form together with the empirical component of RO6.",
+   "replacement": "The current stage delivers RO1 to RO5 in operational form together with the scenario-based empirical component of RO6.",
+   "reason": "4.6 and 9.2 (C39) say that the empirical component is 'partially delivered', and the 7.6 status lists the full performance and scalability study as outstanding. 9.1 already says 'The scenario-based empirical component of RO6 has also been delivered'. The qualifier aligns the abstract with these sections. This does not overlap n=90, which edits a later sentence."
+  },
+  {
+   "n": 61,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "4.7, SUBMIT.txt lines 3900-3901",
+   "current": "The current stage delivers RO1–RO5 in operational form together with the empirical component of RO6, including negative and adversarial testing.",
+   "replacement": "The current stage delivers RO1–RO5 in operational form together with the scenario-based empirical component of RO6, including negative and unit-level adversarial testing.",
+   "reason": "4.6, directly above, says that the empirical component is 'partially delivered', and the next sentence lists the full performance study as remaining. 6.8.13 describes the adversarial tests as unit-level and 'not a penetration test of the deployed system'. This span is adjacent to n=28 but does not overlap it."
+  },
+  {
+   "n": 62,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "6.6, SUBMIT.txt lines 6140-6142",
+   "current": "The empirical half of this objective has been carried out on the demonstrated prototype, whereas formal proofs and model checking of the authorisation properties remain future work.",
+   "replacement": "The scenario-based empirical half of this objective has been carried out on the demonstrated prototype. Formal proofs and model checking of the authorisation properties, together with a full performance and scalability study, remain future work.",
+   "reason": "6.7 (C11), 7.6 and 9.2 list the full performance and scalability study as remaining, and 4.6 says that the empirical component is only partially delivered. As written, 6.6 implies that only the formal half remains."
+  },
+  {
+   "n": 63,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "6.8.2, SUBMIT.txt lines 6632-6634",
+   "current": "and the jurisdiction L are stored on-chain by the deployed ConsentSBTv3 contract and evaluated at every access decision.",
+   "replacement": "and the jurisdiction L are evaluated from the application record at every access decision and are also stored on-chain by the deployed ConsentSBTv3 contract.",
+   "reason": "As written, the sentence can be read as saying that each decision evaluates the on-chain values. 6.5.1 says that the decision evaluates VT and VL from the application record. 6.8.13 says that 'the access decision does not consult the chain', and app.py calls evaluate_allow on the local consent object."
+  },
+  {
+   "n": 64,
+   "decision": "apply",
+   "severity": "RED",
+   "lens": "consistency",
+   "location": "6.8.7, SUBMIT.txt lines 7116-7117",
+   "current": "This corresponds to the proposed requirement for traceability, accountability and non-repudiable consent evidence.",
+   "replacement": "This corresponds to the proposed requirement for traceability and accountability. Non-repudiation of the guardian approvals is not yet provided, because each guardian signing key is derived from the public guardian DID (Section 6.8.13).",
+   "reason": "6.8.13 states that 'any party that knows a guardian DID can produce a valid approval for that guardian'. identity_service._demo_private_key derives the key as keccak of a tag and the DID. Claiming non-repudiable evidence overclaims, so I raised this from YELLOW to RED to match n=53 and n=54."
+  },
+  {
+   "n": 65,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "6.8.13, SUBMIT.txt lines 7760-7762",
+   "current": "Consequently, they are indicative only and do not constitute the systematic performance and overhead study of Section 9.2, which remains outstanding.",
+   "replacement": "Duplicate of n=12; no separate edit.",
+   "reason": "This is the same renaming, handled by n=12."
+  },
+  {
+   "n": 66,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "6.8.13, closing paragraph, SUBMIT.txt lines 7763-7767",
+   "current": "These results extend the empirical half of RO6, which nevertheless remains partially completed, as stated in Section 7.6. The empirical evidence previously consisted of the allow-and-deny cases of Sections 6.8.4 to 6.8.6, the 23 automated tests and the independent verification of Section 6.8.9.",
+   "replacement": "These results extend the empirical half of RO6. Nevertheless, RO6 remains partially completed, as stated in Section 7.6. The empirical evidence previously consisted of the allow-and-deny cases of Sections 6.8.4 to 6.8.6, the 23 functional and regression tests and the independent verification of Section 6.8.9.",
+   "reason": "The relative clause attaches 'remains partially completed' to the empirical half, but 7.6 grades RO6 as a whole. 6.6, 6.8.9 and 6.8.13 now call the earlier suite the '23 functional and regression tests'. This merges n=37 and does not overlap n=25."
+  },
+  {
+   "n": 67,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "6.8.13, closing paragraph, SUBMIT.txt lines 7772-7774",
+   "current": "However, these tests are not a penetration test of the deployed system, and the systematic performance and adversarial evaluation of Section 9.2 remains for the next stage.",
+   "replacement": "Duplicate of n=25; no separate edit.",
+   "reason": "This overlaps n=25, which applies the same renaming."
+  },
+  {
+   "n": 68,
+   "decision": "skip",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "7.5, SUBMIT.txt lines 7921-7922",
+   "current": "After that point the contract itself reports the token as invalid and subsequent access requests are",
+   "replacement": "(no change)",
+   "reason": "Both facts in the sentence are true. checkValid is false for token #1 (verify_poc_output.txt), and later requests are denied. The sentence makes no causal claim, and 6.8.13 already explains the local-flag mechanism. The proposed span also stops mid-sentence at a page break."
+  },
+  {
+   "n": 69,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "7.6 status line, SUBMIT.txt lines 7940-7942",
+   "current": "Status: Partially Completed (scenario-based empirical validation, preliminary measurements and adversarial evaluation complete; formal assurance and a full performance and scalability study outstanding)",
+   "replacement": "Duplicate of n=22; no separate edit.",
+   "reason": "This is the same status fix, handled by n=22."
+  },
+  {
+   "n": 70,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "7.6, SUBMIT.txt lines 7970-7971",
+   "current": "The implemented decision rule is therefore exactly Eq. (75).",
+   "replacement": "The prototype enforces Eq. (75), with the scope condition of VP evaluated by a separate scope check at request time. In addition, access is granted only when the proof verifies.",
+   "reason": "In app.py, access requires both authorize(state, proof_valid, valid_scope) and _m['ALLOW'], and 6.8.13 states that the scope check is separate from the five logged predicates. 'Exactly' is therefore inaccurate. 'Therefore' also does not follow from the Groth16 sentence before it. This span is adjacent to n=4 but does not overlap it."
+  },
+  {
+   "n": 71,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "7.6, SUBMIT.txt lines 7990-7993",
+   "current": "Scenario A12 runs the ConsentSBTv3 bytecode on an in-memory Ethereum virtual machine and shows that an account other than the contract owner can neither mint nor revoke a token.",
+   "replacement": "Duplicate of n=30; no separate edit.",
+   "reason": "This is the same A12 qualification, handled by n=30."
+  },
+  {
+   "n": 72,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "9.1, SUBMIT.txt lines 8081-8083",
+   "current": "in block 11,771,307, and an independently reproduced lifecycle was minted as token #2 in block 11,771,581.",
+   "replacement": "in block 11,771,307, and a second lifecycle with the same configuration, consent 04da25f5, was minted as token #2 in block 11,771,581.",
+   "reason": "6.8.2 says that the second lifecycle was run 'with the same code and the same contract' for a different demonstration patient. 'Independently reproduced' suggests an independent party or set-up. The replacement uses the wording of 6.8.2 and names the consent, as Tables 15 and 16 do."
+  },
+  {
+   "n": 73,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "9.1, SUBMIT.txt lines 8090-8092",
+   "current": "These limitations are the N-of-N approval rule, the server-derived guardian keys, the unauthenticated requester and the absence of cryptographic DID resolution.",
+   "replacement": "These limitations include the N-of-N approval rule, the server-derived guardian keys, the unauthenticated requester, the absence of cryptographic DID resolution, the missing transition check of Algorithm 5 and the unkeyed and unchained audit digest described in Section 6.8.13.",
+   "reason": "The list is presented as complete, but it omits limitations that the report now states: the missing transition check (6.5 and 7.6) and the audit digest, which is neither keyed nor chained (6.8.13). 7.6 correctly uses 'such as'."
+  },
+  {
+   "n": 74,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "9.2, status paragraph, SUBMIT.txt lines 8225-8227",
+   "current": "The on-chain notBefore and expiry fields are in place, the revoke transaction was confirmed in block 11,771,307, and the lifecycle is governed by an explicit state machine.",
+   "replacement": "The on-chain notBefore and expiry fields are in place, the revoke transaction was confirmed in block 11,771,307, and the six lifecycle states are derived at each evaluation. The transition check of Algorithm 5 remains outstanding.",
+   "reason": "This is the same overstatement as in n=58. 6.5 and 7.6 state that the transition check is not implemented, and evaluate_state derives the state without a transition guard."
+  },
+  {
+   "n": 75,
+   "decision": "skip",
+   "severity": "YELLOW",
+   "lens": "consistency",
+   "location": "5.1, SUBMIT.txt lines 4159-4161",
+   "current": "Consequently, the multi-party threshold of Section 5.6 is enforced over signed approvals rather than over interface actions, as described in Section 6.8.",
+   "replacement": "(no change)",
+   "reason": "This is accurate at code level. VA counts guardian_approvals over consent.signatures, and VI verifies each listed signature with verify_signature. The same paragraph already says that wallet-held keys are deferred and that credentials are structural, so the limitation is stated where the claim is made."
+  },
+  {
+   "n": 76,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "layout",
+   "location": "Abstract, page 2",
+   "current": "The tests include twelve attack scenarios, all of which are refused after a hardening of the service layer.",
+   "replacement": "Duplicate of n=90; no separate edit.",
+   "reason": "This is the same A11 overclaim, handled by n=90."
+  },
+  {
+   "n": 77,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "layout",
+   "location": "7.6, page 181",
+   "current": "all twelve attack scenarios are refused after the hardening of 1 October 2026. Before that hardening, three scenarios were accepted by the service-layer functions when these were called directly, although the interface already blocked them.",
+   "replacement": "Duplicate of n=1; no separate edit.",
+   "reason": "This is the same A11 overclaim in 7.6, handled by n=1."
+  },
+  {
+   "n": 78,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "layout",
+   "location": "Appendix A, Table 21, RO6 evidence cell, page 189",
+   "current": "36 tests passed, attack scenarios A1 to A12 refused (Section 6.8.13)",
+   "replacement": "Duplicate of n=2; no separate edit.",
+   "reason": "This is the same cell, handled by n=2."
+  },
+  {
+   "n": 79,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "layout",
+   "location": "6.8.13, Figure 43 (eval_f43.png), page 175; anchored on the caption, SUBMIT.txt lines 7676-7678",
+   "current": "Figure 43: Adversarial evaluation matrix: the component of C or the contract targeted by each of the unit-level scenarios A1 to A12, and its outcome before and after the hardening of 1 October 2026.",
+   "replacement": "[Figure change, caption wording unchanged: re-render eval_f43.png so that both A11 outcome cells show a grey neutral marker (for example a grey dash or a grey circle) instead of the green tick used for refusals. Keep the label 'Differs†' and the dagger note.]",
+   "reason": "In submit-175.png, both A11 cells carry the same green tick as every refusal ('Differs†'), so the 'After hardening' column reads as twelve defended attacks. 6.8.13, however, states that no component compares the digest and that the ledger is not tamper-evident. The anchor is moved to the caption so that it does not overlap n=44, which adjusts the lead-in text to match. The original sentence added at line 7671 is dropped, because n=44 already describes the marker."
+  },
+  {
+   "n": 80,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "layout",
+   "location": "6.8.13, Table 18, pages 173-174 (caption at SUBMIT.txt lines 7582-7584)",
+   "current": "Table 18: Unit-level adversarial tests A1 to A12, their targeted component and their outcome before the hardening (commit b1468b7) and after the hardening of 1 October 2026",
+   "replacement": "[Layout only, caption wording unchanged: in the Table 18 definition, widen the ID column from 460 to 600 twips and narrow the Evidence column from 2920 to 2780 twips (total still 9360), in both w:tblGrid and every cell's w:tcW, so that A10, A11 and A12 print on one line. In the caption, join '1 October 2026' with no-break spaces (U+00A0).]",
+   "reason": "Confirmed in submit-174.png and in SUBMIT.docx. The grid is 460/1600/900/1060/1240/1180/2920 twips, so A10, A11 and A12 print as 'A1' with '0', '1' or '2' below. Taking the width from Evidence leaves the bold Expected, Before and After headers intact. The caption also breaks as '... of 1' / 'October 2026' on page 173. The optional shortening of the 'Accepted at unit level' cells is dropped, because it would add new note text. This merges n=6, 23 and 96."
+  },
+  {
+   "n": 81,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "layout",
+   "location": "6.8.13, Figures 41-43, image alt text and caption labels (SUBMIT.txt lines 7380, 7517 and 7676)",
+   "current": "Figure 41: Gas used by the five anchored Sepolia transactions: mint transactions in blue and revoke transactions in orange, each labelled with its gas and its fee in ETH.",
+   "replacement": "[Build fix, caption wording unchanged: strip the review markers '⦃' and '⦄' from the image alt text (wp:docPr descr and title) of Figures 41, 42 and 43 in both builds. In the review build, also colour the 'Figure N: ' label run of these three captions blue, as is done for 'Table N: '.]",
+   "reason": "Confirmed in SUBMIT.docx. The wp:docPr descr and title of eval_f41.png, eval_f42.png and eval_f43.png contain '⦃' and '⦄', while those of Figures 1 to 40 do not, so the markers carry into the alt text of the submission copy. A pixel check of pink-169.png shows the 'Figure 41:' label in black (0 blue pixels) while the caption text is blue."
+  },
+  {
+   "n": 82,
+   "decision": "apply",
+   "severity": "YELLOW",
+   "lens": "layout",
+   "location": "6.8.13, header rows of Tables 15-18, review copy pages 168-174",
+   "current": "Table 15: On-chain cost and submit-to-confirmation latency of the five anchored Sepolia transactions",
+   "replacement": "[Review build only, text unchanged: give the header-row runs of Tables 15 to 18, including the repeated Table 18 header, the same blue colour as their body cells. The submission build stays black.]",
+   "reason": "pink-174.png shows the repeated Table 18 header row in black, while every body cell is blue, so a reviewer would read the headers as text that already existed. The reviewer's pixel check reports the same for Tables 15 to 17. The submission copy is not affected."
+  },
+  {
+   "n": 83,
+   "decision": "skip",
+   "severity": "YELLOW",
+   "lens": "layout",
+   "location": "6.8.13, page 171, SUBMIT.txt lines 7479-7480",
+   "current": "without signature recovery. EIP- 712 signature recovery was timed for a single signature.",
+   "replacement": "(no change)",
+   "reason": "The line breaks at the existing hyphen of 'EIP-712', which is acceptable typesetting. In justified text, a non-breaking hyphen would push the whole term to the next line and widen the word spacing of the line before it. The change is taste only."
+  },
+  {
+   "n": 84,
+   "decision": "skip",
+   "severity": "YELLOW",
+   "lens": "layout",
+   "location": "6.8.13, Figure 42 caption, SUBMIT.txt lines 7517-7520",
+   "current": "Figure 42: Processing time of the decision components on a logarithmic axis: the dot marks the median and the line spans the minimum to the maximum, with n = 1,000 for the decision rule, n = 5 for anchoring confirmation and n = 20 for the other components.",
+   "replacement": "(no change)",
+   "reason": "The caption is accurate, and stating n in the caption keeps it readable without the figure. A last line holding a single word is minor. The change is taste only."
+  },
+  {
+   "n": 85,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "layout",
+   "location": "6.8.13, Figures 41-43 (eval_f41.png, eval_f42.png, eval_f43.png), pages 169, 172 and 175; anchored on SUBMIT.txt lines 7661-7662",
+   "current": "Figure 43 presents the same results as an evaluation matrix. Each row is a scenario, and the columns I, A, P, T, L, E and Contract mark the component",
+   "replacement": "[Figure change, text unchanged: re-render the three charts so that the smallest text is at least 8 pt at the printed width of about 15.9 cm, and darken the grey secondary labels and notes to about #333. This can be done together with the A11 marker change of n=79.]",
+   "reason": "In the renders, the Figure 43 notes, which define '*' and '†', the Figure 42 axis ticks and 'n =' labels, and the Figure 41 sub-labels are about 6.5 pt in grey, against 12 pt body text. The notes carry definitions that the text relies on. The anchor does not overlap n=44 or n=79."
+  },
+  {
+   "n": 86,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "layout",
+   "location": "6.8.12 Verification Links, page 167, SUBMIT.txt lines 7315-7318",
+   "current": "Full audit-ledger export: evidence/sepolia_audit_ledger_2026-09-24.csv; deployment and run record: evidence/sepolia_deploy_v3_2026-09-24.txt; adversarial test record: evidence/adversarial_2026-10-01/ preserved in the project evidence records.",
+   "replacement": "Full audit-ledger export: evidence/sepolia_audit_ledger_2026-09-24.csv; deployment and run record: evidence/sepolia_deploy_v3_2026-09-24.txt; adversarial test record: evidence/adversarial_2026-10-01/. All three are preserved in the project evidence records. [Build change: set the paragraphs of Section 6.8.12 to left alignment instead of justified.]",
+   "reason": "Q3 inserted the third item before 'preserved', so the phrase now hangs off the folder path ('.../ preserved') and appears to cover only the adversarial record. The old text attached it to the deployment record. submit-167.png also shows gaps of four or five word-widths in 'Consent activation (mint of token #1):' and 'Consent revocation (token #1):', caused by justifying lines that end before an unbreakable URL."
+  },
+  {
+   "n": 87,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "layout",
+   "location": "6.8.13, sixth limitation, page 177",
+   "current": "Consequently, they are indicative only and do not constitute the systematic performance and overhead study of Section 9.2, which remains outstanding.",
+   "replacement": "Duplicate of n=12; no separate edit.",
+   "reason": "This is the same renaming, handled by n=12."
+  },
+  {
+   "n": 88,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "layout",
+   "location": "6.8.13, closing paragraph, page 177",
+   "current": "However, these tests are not a penetration test of the deployed system, and the systematic performance and adversarial evaluation of Section 9.2 remains for the next stage.",
+   "replacement": "Duplicate of n=25; no separate edit.",
+   "reason": "This overlaps n=25, which applies the same renaming."
+  },
+  {
+   "n": 89,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "layout",
+   "location": "Appendix A, Table 21, RO3 and RO1 cells, page 189 (source cell text)",
+   "current": "2-of-2 ceremony with N = |G|; SBT minted on threshold",
+   "replacement": "[Layout only, wording unchanged: keep 'N = |G|' on one line by using no-break spaces (U+00A0) around '=' and a word joiner (U+2060) between each bar and 'G'. Join 'Algorithm 1' in the RO1 cell with a no-break space.]",
+   "reason": "In submit-189.png the RO3 cell breaks as 'N = |' / 'G|;' and the RO1 cell breaks as 'Algorithm' / '1'. A no-break space alone cannot stop a break after '|', which has the Unicode line-break class BA, so a word joiner is needed inside |G|. This merges n=47; its em-dash part is covered by n=46."
+  },
+  {
+   "n": 90,
+   "decision": "modify",
+   "severity": "RED",
+   "lens": "examiner",
+   "location": "Abstract, page 2, SUBMIT.txt lines 47-48 (edit C1)",
+   "current": "The tests include twelve attack scenarios, all of which are refused after a hardening of the service layer.",
+   "replacement": "The tests include twelve unit-level attack scenarios. After a hardening of the service layer, eleven of them are refused, and the twelfth shows only that a rewritten audit event changes its digest.",
+   "reason": "Table 18 gives A11 as 'Digest differs' in the expected, before and after columns, and Figure 43 marks it 'Differs†'. 6.8.13 states that 'no component of the prototype performs this comparison', and test_A11_rewritten_event_changes_its_digest only asserts that the digest changes. 'Unit-level' matches the 6.8.13 title and stops the attacks being read as tests of the deployed system. This merges n=0, 13, 48 and 76. It does not overlap n=60, which edits an earlier sentence."
+  },
+  {
+   "n": 91,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "examiner",
+   "location": "7.6, SUBMIT.txt lines 7975-7977",
+   "current": "all twelve attack scenarios are refused after the hardening of 1 October 2026. Before that hardening, three scenarios were accepted by the service-layer functions when these were called directly, although the interface already blocked them.",
+   "replacement": "Duplicate of n=1; no separate edit.",
+   "reason": "This is the same A11 overclaim, handled by n=1, which adopts the 'unit-level' wording proposed here."
+  },
+  {
+   "n": 92,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "examiner",
+   "location": "6.8.13, paragraph introducing Table 18, SUBMIT.txt lines 7574-7577",
+   "current": "Table 18 summarises the twelve scenarios A1 to A12. Each scenario is implemented as an automated unit test that applies the attack directly to the service functions, the proof verifier, the digest function of the audit ledger or the contract.",
+   "replacement": "Table 18 summarises the twelve scenarios A1 to A12. Together, they target every component of C and the contract at least once, and they use each capability of the adversary stated above. Each scenario is implemented as an automated unit test that applies the attack directly to the service functions, the proof verifier, the digest function of the audit ledger or the contract. A scenario is counted as refused when the targeted predicate fails and the decision is DENY, or when the scope check, the Groth16 prover or verifier, or the contract rejects the input.",
+   "reason": "The subsection never states that the scenarios cover each component and each adversary capability, and 'Refused' is defined only for A12. I checked the coverage claim against the Target column (I: A2; A: A1, A3; P: A4, A5; T: A6, A10; L: A7; E: A8, A9, A11; Contract: A12) and against the threat model. The refusal criterion matches what the tests assert: VI, VA, VT or VL false with ALLOW false, check_scope false, verify_proof false, a failed prover assertion, or a contract revert. The proposed Req 1 to Req 6 mapping is dropped because parts of it are interpretive; for example, A12 attacks the contract rather than a component of C."
+  },
+  {
+   "n": 93,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "examiner",
+   "location": "7.6 status line, SUBMIT.txt lines 7940-7942",
+   "current": "Status: Partially Completed (scenario-based empirical validation, preliminary measurements and adversarial evaluation complete; formal assurance and a full performance and scalability study outstanding)",
+   "replacement": "Duplicate of n=22; no separate edit.",
+   "reason": "This is the same status fix, handled by n=22."
+  },
+  {
+   "n": 94,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "examiner",
+   "location": "7.6, SUBMIT.txt line 7969",
+   "current": "Every granted access is accompanied by a real Groth16 proof generated and verified at request time.",
+   "replacement": "Duplicate of n=4; no separate edit.",
+   "reason": "This span lies inside n=4, which applies the same qualification together with the fix to the token read-back."
+  },
+  {
+   "n": 95,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "examiner",
+   "location": "Appendix A, Table 21, RO6 evidence cell",
+   "current": "36 tests passed, attack scenarios A1 to A12 refused (Section 6.8.13)",
+   "replacement": "Duplicate of n=2; no separate edit.",
+   "reason": "This is the same cell, handled by n=2."
+  },
+  {
+   "n": 96,
+   "decision": "duplicate",
+   "severity": "RED",
+   "lens": "examiner",
+   "location": "6.8.13, Table 18, ID column, page 174",
+   "current": "A1 Honest proof T Refused Refused Refused test_A10_honest_prover_",
+   "replacement": "Duplicate of n=80; no separate edit.",
+   "reason": "This is the same ID-column wrap, handled by n=80."
+  },
+  {
+   "n": 97,
+   "decision": "modify",
+   "severity": "YELLOW",
+   "lens": "examiner",
+   "location": "6.8.13, first paragraph of the adversarial part, top of page 173, SUBMIT.txt lines 7552-7554",
+   "current": "The adversarial tests assume honest infrastructure and exercise the decision functions and the contract at unit level. The adversary considered tries to obtain or keep access without satisfying a condition of C.",
+   "replacement": "The second part of this subsection reports the unit-level adversarial tests. These tests assume honest infrastructure and exercise the decision functions, the proof verifier, the digest function of the audit ledger and the contract. The adversary considered tries to obtain or keep access without satisfying a condition of C, or to alter the anchored consent or the recorded evidence of a decision.",
+   "reason": "The first sentence names only the decision functions and the contract, whereas the opening paragraph of 6.8.13 and the Table 18 lead-in also list the proof verifier and the digest function. The stated goal does not cover A11, which rewrites a recorded result, or the non-owner revocation in A12, where test_A12 calls revoke(tid) from the attacker account. The new first sentence marks the move from the measurements to the tests at the page break."
+  },
+  {
+   "n": 98,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "examiner",
+   "location": "6.8.13, closing paragraph, SUBMIT.txt lines 7769-7774",
+   "current": "Therefore, HALAH now reports both allow-and-deny test cases and attack cases under the empirical component of Req 6. This is the empirical standard against which the reviewed studies were graded in Chapter 2. However, these tests are not a penetration test of the deployed system, and the systematic performance and adversarial evaluation of Section 9.2 remains for the next stage.",
+   "replacement": "Duplicate of n=25; no separate edit.",
+   "reason": "The renaming is handled by n=25. Deleting the sentence about the Chapter 2 standard is taste, because it links the result back to the research gap."
+  },
+  {
+   "n": 99,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "examiner",
+   "location": "6.8.13, sixth limitation, SUBMIT.txt lines 7759-7762",
+   "current": "Sixth, the measurements come from a single container and five transactions. Consequently, they are indicative only and do not constitute the systematic performance and overhead study of Section 9.2, which remains outstanding.",
+   "replacement": "Duplicate of n=12; no separate edit.",
+   "reason": "This overlaps n=12, which fixes the name while keeping the cross-reference to 9.2."
+  },
+  {
+   "n": 100,
+   "decision": "skip",
+   "severity": "YELLOW",
+   "lens": "examiner",
+   "location": "6.8.13, paragraph after Table 18, SUBMIT.txt lines 7651-7655",
+   "current": "For A11, the table reports only that the recomputed digest of the modified event differs from the stored digest, and no component of the prototype performs this comparison. For A12, a refusal means that the contract reverts the transaction on an in-memory Ethereum virtual machine.",
+   "replacement": "(no change)",
+   "reason": "The A11 and A12 qualifications are deliberate hedges. The A11 hedge addresses exactly the point that the abstract, 7.6 and Appendix A overstated (n=90, n=1 and n=2). Repeating it here is a safeguard rather than a defect, so removing it is a matter of taste."
+  },
+  {
+   "n": 101,
+   "decision": "duplicate",
+   "severity": "YELLOW",
+   "lens": "examiner",
+   "location": "6.8.13, Figure 43 lead-in, SUBMIT.txt lines 7666-7671",
+   "current": "with an icon and a label for each refusal or acceptance. An acceptance before the hardening means that the service function accepted the attack when it was called directly, not that the running application did. For A11, the figure reports only that the recomputed digest of the modified event differs, as explained for Table 18.",
+   "replacement": "Duplicate of n=44; no separate edit.",
+   "reason": "This overlaps n=44. The neutral-marker point is handled by n=44 and n=79. Deleting the acceptance and A11 definitions is taste, because they keep the figure readable without its small-print notes."
+  }
+ ]
+}
