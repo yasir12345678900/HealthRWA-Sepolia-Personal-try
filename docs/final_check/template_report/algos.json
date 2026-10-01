@@ -54,7 +54,7 @@
    ],
    [
     0,
-    "Validate jurisdiction L; define authorisation requirement A"
+    "Validate jurisdiction L and define authorisation requirement A"
    ],
    [
     0,
@@ -179,7 +179,7 @@
  },
  "3": {
   "title": "Threshold-Based Multi-Party Authorisation",
-  "require": "Consent object C with identifier id~C~, purpose P~u~, interval (t~s~, t~e~) and jurisdiction L; patient and requester addresses addr~p~, addr~r~; EIP-712 domain; approval a = (g, sig~a~) submitted by guardian g; threshold N = |G|",
+  "require": "Consent object C with identifier id~C~, purpose P~u~, interval (t~s~, t~e~) and jurisdiction L, patient and requester addresses addr~p~, addr~r~, EIP-712 domain, approval a = (g, sig~a~) submitted by guardian g, threshold N = |G|",
   "ensure": "Authorisation result",
   "lines": [
    [
@@ -192,7 +192,7 @@
    ],
    [
     0,
-    "Verify identity and authority of g (Algorithm 2; structural DID check in the prototype); **if** the verification fails **then** record the invalid approval and **return** DENY"
+    "Verify identity and authority of g (Algorithm 2, a structural DID check in the prototype), and **if** the verification fails **then** record the invalid approval and **return** DENY"
    ],
    [
     0,
@@ -264,11 +264,11 @@
    ],
    [
     1,
-    "record a local token identifier; state ← ACTIVE once t~s~ has been reached"
+    "record a local token identifier and set state ← ACTIVE once t~s~ has been reached"
    ],
    [
     1,
-    "submit mintConsentV3(addr~p~, addr~r~, P~u~, t~s~, t~e~, L, burnAuth) via the owner account   ▷ the contract stores keccak256(P~u~); background job; reconciled on request from the guardian view"
+    "submit mintConsentV3(addr~p~, addr~r~, P~u~, t~s~, t~e~, L, burnAuth) via the owner account   ▷ the contract stores keccak256(P~u~), runs as a background job and is reconciled on request from the guardian view"
    ],
    [
     1,
@@ -411,15 +411,15 @@
    ],
    [
     0,
-    "**if** t < t~s~ or t > t~e~ **then** Record denied decision; **return** DENY **end if**"
+    "**if** t < t~s~ or t > t~e~ **then** Record denied decision and **return** DENY **end if**"
    ],
    [
     0,
-    "**if** Jur(R) ≠ Jur(C) **then** Record denied decision; **return** DENY **end if**"
+    "**if** Jur(R) ≠ Jur(C) **then** Record denied decision and **return** DENY **end if**"
    ],
    [
     0,
-    "Generate and verify a Groth16 proof that Poseidon(secret, expiry) equals the public commitment and that t ≤ t~e~; record proof_mode = groth16"
+    "Generate and verify a Groth16 proof that Poseidon(secret, expiry) equals the public commitment and that t ≤ t~e~, and record proof_mode = groth16"
    ],
    [
     0,

@@ -1520,7 +1520,7 @@
     "Refused",
     "Refused",
     "Refused",
-    "test_​A7_​jurisdiction_​mismatch_​is_​denied; live application decision, 24 Sep: {F32}"
+    "test_​A7_​jurisdiction_​mismatch_​is_​denied. Live application decision, 24 Sep: {F32}"
    ],
    [
     "A8",
@@ -1529,7 +1529,7 @@
     "Refused",
     "Refused",
     "Refused",
-    "test_​A8_​revoked_​consent_​is_​denied (local flag); separate on-chain revocation, Sepolia block 11,771,307, 24 Sep"
+    "test_​A8_​revoked_​consent_​is_​denied (local flag). Separate on-chain revocation, Sepolia block 11,771,307, 24 Sep"
    ],
    [
     "A9",
