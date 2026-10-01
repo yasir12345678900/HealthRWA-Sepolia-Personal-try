@@ -6,12 +6,14 @@ Writes docs/final_check/metrics.json with:
   (c) local timings: Groth16 proof generation/verification, decision-rule evaluation, EIP-712 signature recovery,
       on-chain read calls (checkValid / checkValidAt), each repeated N times."""
 import json, os, sys, time, statistics, csv, datetime
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from dotenv import load_dotenv
 load_dotenv()
 N = int(os.environ.get("N_RUNS", "20"))
 OUT = "docs/final_check/metrics.json"
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
-res = {"collected_at": datetime.datetime.utcnow().isoformat() + "Z", "n_runs": N}
+res = {"collected_at": datetime.datetime.now(datetime.timezone.utc).isoformat(), "n_runs": N}
 
 from database import audit_db, consent_db
 events = audit_db.get()
@@ -56,7 +58,7 @@ try:
             t = w3.eth.get_transaction(e["tx_hash"])
             onchain.append({"action": e["action"], "consent_id": e["consent_id"][:8], "tx_hash": e["tx_hash"], "block": r.blockNumber,
                             "status": r.status, "gas_used": r.gasUsed, "gas_limit": t.gas, "effective_gas_price_gwei": r.effectiveGasPrice / 1e9,
-                            "fee_eth": r.gasUsed * r.effectiveGasPrice / 1e18, "block_time_utc": datetime.datetime.utcfromtimestamp(b.timestamp).isoformat() + "Z",
+                            "fee_eth": r.gasUsed * r.effectiveGasPrice / 1e18, "block_time_utc": datetime.datetime.fromtimestamp(b.timestamp, datetime.timezone.utc).isoformat(),
                             "to": r.to})
     res["onchain_tx"] = onchain
     # on-chain read latency
