@@ -1,0 +1,36 @@
+RPC https://ethereum-sepolia-rpc.publicnode.com | chainId 11155111 | head block 11820403
+Contract 0x0EC3617581DEC63A7f2bb162DC14d088916ADc73 | code 16273 bytes | owner 0xD2f6d7A4b0B242E8517bBcC746587e9b03552DCF
+
+Audit ledger: 60 events, 5 with a tx_hash
+  [OK] ONCHAIN_MINT    0x5f9b2f14a3c061ef6a7bbb5959fcecab4d4c393025d96f8440d67e946bc24994 block 11757272 (ledger 11757272) SUCCESS gas 156589 to 0xb0dA0440Abd6bd74bE0aebE226D593492124A6e7
+  [OK] ONCHAIN_REVOKE  0x2adf73d854071e90101d19974b996d29291e9cc2e537b1e3cd2474b606044048 block 11757344 (ledger 11757344) SUCCESS gas 46226 to 0xb0dA0440Abd6bd74bE0aebE226D593492124A6e7
+  [OK] ONCHAIN_MINT    0x8be1b99e9b7054d427bdee0a0b5cc56ae99030a399f4b11d3629ed5d98daf13d block 11771243 (ledger 11771243) SUCCESS gas 196406 to 0x0EC3617581DEC63A7f2bb162DC14d088916ADc73
+  [OK] ONCHAIN_REVOKE  0x017efb9dc6acad9733fa05c19408c0166c9c0645e83b6ffdc41c4b3b85ddceaa block 11771307 (ledger 11771307) SUCCESS gas 32980 to 0x0EC3617581DEC63A7f2bb162DC14d088916ADc73
+  [OK] ONCHAIN_MINT    0x25ef5e2f0046735dcb01ff7b68875b760bdf88ad0fa3fedc9bfb910769d4c210 block 11771581 (ledger 11771581) SUCCESS gas 179306 to 0x0EC3617581DEC63A7f2bb162DC14d088916ADc73
+
+Consent f5a8ad89-597d-4dea-a042-497ed16c3fe1: token SBT-LOCAL-f5a8ad89 (not anchored)
+Consent 2502632b-0bb2-42a9-b7c1-a10218173fa0: token - (not anchored)
+Consent aca837a1-860f-4e8f-ae5b-0e16f3e703da: token - (not anchored)
+Consent cd9a24bd-c0e9-4568-8a07-ed1e9087d132: token SBT-LOCAL-cd9a24bd (not anchored)
+Consent 011bbb21-8a12-45e9-862f-a19e71fd2778 -> token #8 lives on an older deployment 0xb0dA0440Abd6bd74bE0aebE226D593492124A6e7 - skipped
+Consent 0975c645-055d-4263-8571-ce3c8b93c7e9: token - (not anchored)
+Consent f050c29a-3d92-4131-8605-63bcb1ff8d92 -> token #1
+  ownerOf            0x789997BFa84D1383379942E5Df6ABba4304E30C5  == did_to_address(patient) True
+  requester          0xfE1efA136DCbc3B8eE405bB4F359148051a0fA6e  == did_to_address(doctor)  True
+  purposeHash        0xff2a51e6eb5c67c2b1789c5fc8db6aaab2459d70d07eeac5c89f053cb18eb765  == keccak('Treatment') True
+  notBefore/expiry   1790243449 / 1798761599
+  jurisdiction       b'AU'  revoked(on-chain) True  burnAuth 2
+  checkValid         False
+  checkValidAt(AU)   False   checkValidAt(US) False
+  local ledger state revoked=True  (matches chain: True)
+Consent 04da25f5-b16f-4d9a-af39-a78f0a83b17f -> token #2
+  ownerOf            0x167D9770dE0c9E603DCb33e745DCF145adA3BD2F  == did_to_address(patient) True
+  requester          0xfE1efA136DCbc3B8eE405bB4F359148051a0fA6e  == did_to_address(doctor)  True
+  purposeHash        0xff2a51e6eb5c67c2b1789c5fc8db6aaab2459d70d07eeac5c89f053cb18eb765  == keccak('Treatment') True
+  notBefore/expiry   1790247349 / 1793491199
+  jurisdiction       b'AU'  revoked(on-chain) False  burnAuth 2
+  checkValid         True
+  checkValidAt(AU)   True   checkValidAt(US) False
+  local ledger state revoked=False  (matches chain: True)
+
+RESULT: ALL CHECKS PASSED
