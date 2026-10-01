@@ -1,0 +1,35 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#fff;font-family:'Segoe UI',Calibri,Arial,sans-serif}.wrap{padding:10px 14px;display:inline-block;background:#fff}
+</style></head><body><script>
+const INK="#0b0b0b",INK2="#52514e",AXIS="#c3c2b7",DONE="#2a78d6",PROG="#eb6834",PLAN="#898781";
+const M=[
+ {d:"Completed",t:["Chapters 1-4","Introduction, SLR,","RQs, ROs, methodology"],s:"done"},
+ {d:"May 2026",t:["Chapter 5","Research architecture (MVC)"],s:"done"},
+ {d:"Jul 2026",t:["Chapter 6","Proposed solution and","HALAH prototype (RQ1-RQ4)"],s:"done"},
+ {d:"Sep 2026",t:["Publication 1","Conference paper,","BWCCA 2026"],s:"done"},
+ {d:"Oct 2026",t:["Publication 2","SLR journal paper"],s:"prog"},
+ {d:"Nov 2026",t:["Chapter 7","Complete prototype evaluation","and integrated results"],s:"plan"},
+ {d:"Dec 2026",t:["Publication 3 (journal)","Chapter 8: conclusion","and future work"],s:"plan"},
+ {d:"Jan 2027",t:["CA3 assessment","Final candidature","assessment defence"],s:"plan"},
+ {d:"Mar 2027",t:["Thesis submission"],s:"plan"},
+];
+const W=1300,H=560,y0=280,x0=165,x1=W-135, col={done:DONE,prog:PROG,plan:PLAN}, lab={done:"Done",prog:"In progress",plan:"Planned"};
+const T=(x,y,s,o={})=>`<text x="${x}" y="${y}" text-anchor="${o.a||"middle"}" style="font-size:${o.fs||17}px;font-weight:${o.w||400};fill:${o.c||INK}">${s}</text>`;
+let s=`<line x1="${x0}" y1="${y0}" x2="${x1}" y2="${y0}" stroke="${AXIS}" stroke-width="3" stroke-dasharray="2 6" stroke-linecap="round"/>`;
+const step=(x1-x0)/(M.length-1);
+// done segment solid
+const lastDone=3; s+=`<line x1="${x0}" y1="${y0}" x2="${x0+step*lastDone}" y2="${y0}" stroke="${DONE}" stroke-width="4"/>`;
+M.forEach((m,i)=>{
+  const x=x0+i*step, up=i%2===0, c=col[m.s];
+  s+=`<line x1="${x}" y1="${y0}" x2="${x}" y2="${up?y0-50:y0+50}" stroke="${c}" stroke-width="2"/>`;
+  s+=`<circle cx="${x}" cy="${y0}" r="11" fill="#fff" stroke="${c}" stroke-width="4"/>`;
+  if(m.s==="done") s+=`<path d="M ${x-5} ${y0} L ${x-1} ${y0+4} L ${x+5.5} ${y0-4.5}" stroke="${c}" stroke-width="3" fill="none" stroke-linecap="round"/>`;
+  const by=up? y0-62 : y0+82;
+  const lines=[m.d,...m.t];
+  const n=lines.length, top= up? by-(n-1)*26 : by;
+  lines.forEach((l,k)=>{ s+=T(x, top+k*26, l, {fs:k===0?22:(k===1?21:19.5), w:k<2?700:400, c:k===0?c:(k===1?INK:INK2)}); });
+});
+// legend
+[["done","Done"],["prog","In progress"],["plan","Planned"]].forEach(([k,l],i)=>{ const x=W/2-210+i*160; s+=`<circle cx="${x}" cy="${H-18}" r="8" fill="#fff" stroke="${col[k]}" stroke-width="3.5"/>`+T(x+16,H-12,l,{a:"start",fs:20,c:INK2}); });
+document.write(`<div class="wrap" id="plan"><svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}">${s}</svg></div>`);
+</script></body></html>

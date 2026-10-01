@@ -1,0 +1,164 @@
+[
+ {
+  "t": "h1",
+  "text": "Publications Summary"
+ },
+ {
+  "t": "p",
+  "text": "The research is disseminated through three publications. The first presents the trust-oriented consent framework and its prototype, the second reports the systematic literature review of Section 2, and the third reports the formal assurance and the complete evaluation of the framework. {Tpub} summarises these publications, their target venues and their status at the time of writing."
+ },
+ {
+  "t": "table",
+  "key": "Tpub",
+  "custom": {
+   "caption": "Publications of the research and their current status",
+   "header": [
+    "Publication",
+    "Research output",
+    "Target venue",
+    "Related RQs",
+    "Status"
+   ],
+   "widths": [
+    1500,
+    3000,
+    1400,
+    1200,
+    1900
+   ],
+   "rows": [
+    [
+     "Publication 1 (Conference)",
+     "Trust-centric multi-party consent framework and the HALAH prototype on the Sepolia testnet",
+     "BWCCA 2026",
+     "RQ1 to RQ4",
+     "☑ Submitted (September 2026)"
+    ],
+    [
+     "Publication 2 (Journal)",
+     "Systematic literature review of blockchain-based multi-party patient consent (25 primary studies)",
+     "Journal",
+     "Section 2",
+     "⌛ In Progress (October 2026)"
+    ],
+    [
+     "Publication 3 (Journal)",
+     "Formal security assurance, lifecycle trust and the complete evaluation of the HALAH framework",
+     "Journal",
+     "RQ5 and RQ6",
+     "⌛ Planned (December 2026)"
+    ]
+   ]
+  }
+ },
+ {
+  "t": "p",
+  "text": "It should be noted that the second and third publications build directly on the material of this report. The second publication extends Section 2 into a stand-alone review, and the third publication completes the work that Sections 10 and 11 identify as remaining for CA3."
+ },
+ {
+  "t": "h1",
+  "text": "Research Plan"
+ },
+ {
+  "t": "p",
+  "text": "The research plan is divided into the work completed at the CA2 milestone and the work planned for the remainder of the candidature. {Tplan} presents the previous and the coming tasks in chronological order, together with their target dates and their status."
+ },
+ {
+  "t": "table",
+  "key": "Tplan",
+  "custom": {
+   "caption": "Research plan: previous and coming tasks in chronological order",
+   "center": true,
+   "header": [
+    "Task",
+    "Description",
+    "Target date",
+    "Status"
+   ],
+   "widths": [
+    2000,
+    3900,
+    1500,
+    1700
+   ],
+   "rows": [
+    [
+     "Chapters 1–4",
+     "Introduction, SLR, Research Questions and Objectives, Research Methodology",
+     "Completed",
+     "☑ Done"
+    ],
+    [
+     "Chapter 5",
+     "Research Architecture (MVC) and framework design",
+     "May 2026",
+     "☑ Done"
+    ],
+    [
+     "Chapter 6",
+     "Proposed solution for RQ1 to RQ4 and the HALAH prototype",
+     "Jul 2026",
+     "☑ Done"
+    ],
+    [
+     "Publication 1 Conference",
+     "Paper conference submission, BWCCA 2026",
+     "Sep 2026",
+     "☑ Done"
+    ],
+    [
+     "Publication 2 Journal",
+     "SLR paper journal submission",
+     "Oct 2026",
+     "⌛ In Progress"
+    ],
+    [
+     "Chapter 7",
+     "Complete prototype evaluation and integrated results",
+     "Nov 2026",
+     "⌛ Planned"
+    ],
+    [
+     "Publication 3 Journal",
+     "Journal paper on formal security assurance, lifecycle trust and the evaluation of HALAH",
+     "Dec 2026",
+     "⌛ Planned"
+    ],
+    [
+     "Chapter 8",
+     "Conclusion and future work",
+     "Dec 2026",
+     "⌛ Planned"
+    ],
+    [
+     "CA3 Assessment",
+     "Final candidature assessment defence",
+     "Jan 2027",
+     "⌛ Planned"
+    ],
+    [
+     "Thesis submission",
+     "Complete thesis submission",
+     "Mar 2027",
+     "⌛ Planned"
+    ]
+   ]
+  }
+ },
+ {
+  "t": "p",
+  "text": "As shown in {Fplan}, the chapters on the research foundation, the architecture and the proposed solution are complete, and the first publication has been submitted. The coming stage concentrates on RQ5 and RQ6. Consent modification, delegation and guardian-set changes extend the lifecycle trust of Section 10. The formal security assurance and the full performance, scalability and adversarial evaluation complete the work of Section 11."
+ },
+ {
+  "t": "fig",
+  "ref": "Fplan"
+ },
+ {
+  "t": "p",
+  "text": "{T20} summarises the research activities of the coming stage, their methodological focus and their expected outcomes."
+ },
+ {
+  "t": "table",
+  "ref": "T20"
+ }
+]

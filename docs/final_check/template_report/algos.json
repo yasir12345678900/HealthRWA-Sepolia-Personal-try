@@ -1,0 +1,612 @@
+{
+ "1": {
+  "title": "Trust-Aware Consent Creation",
+  "require": "Patient identity I~p~, authorised doctor D, guardian set G, purpose P~u~, data scope S~C~, validity interval T, jurisdiction L",
+  "ensure": "Consent object C or rejection",
+  "lines": [
+   [
+    0,
+    "Validate I~p~"
+   ],
+   [
+    0,
+    "**if** I~p~ is invalid **then**"
+   ],
+   [
+    1,
+    "**return** REJECT"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Validate authorised doctor D"
+   ],
+   [
+    0,
+    "Validate guardian set G"
+   ],
+   [
+    0,
+    "Validate purpose P~u~"
+   ],
+   [
+    0,
+    "Validate data scope S~C~"
+   ],
+   [
+    0,
+    "Validate validity interval T = (t~s~, t~e~)"
+   ],
+   [
+    0,
+    "**if** t~e~ ≤ t~s~ **then**"
+   ],
+   [
+    1,
+    "**return** REJECT"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Validate jurisdiction L; define authorisation requirement A"
+   ],
+   [
+    0,
+    "Generate consent identifier id~C~"
+   ],
+   [
+    0,
+    "Construct C = (I, A, P, T, L, E)"
+   ],
+   [
+    0,
+    "Persist C"
+   ],
+   [
+    0,
+    "state ← PENDING_SIGNATURE   ▷ nothing is anchored on-chain until all guardians approve"
+   ],
+   [
+    0,
+    "Record consent creation evidence"
+   ],
+   [
+    0,
+    "**return** C"
+   ]
+  ]
+ },
+ "2": {
+  "title": "DID and VC Identity and Authority Verification",
+  "require": "Participant u, consent object C",
+  "ensure": "Verification result V~I~(u)",
+  "lines": [
+   [
+    0,
+    "Resolve DID of u"
+   ],
+   [
+    0,
+    "**if** DID resolution fails **then**"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Verify DID document and associated identity information"
+   ],
+   [
+    0,
+    "**if** DID verification fails **then**"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Retrieve VC associated with u"
+   ],
+   [
+    0,
+    "**if** VC retrieval fails **then**"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Verify VC signature, issuer, subject, and validity"
+   ],
+   [
+    0,
+    "**if** VC verification fails **then**"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Extract role and authority claims from VC"
+   ],
+   [
+    0,
+    "**if** claims do not satisfy the authority requirements of C **then**"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Record identity and authority verification evidence"
+   ],
+   [
+    0,
+    "**return** VALID"
+   ]
+  ]
+ },
+ "3": {
+  "title": "Threshold-Based Multi-Party Authorisation",
+  "require": "Consent object C with identifier id~C~, purpose P~u~, interval (t~s~, t~e~) and jurisdiction L; patient and requester addresses addr~p~, addr~r~; EIP-712 domain; approval a = (g, sig~a~) submitted by guardian g; threshold N = |G|",
+  "ensure": "Authorisation result",
+  "lines": [
+   [
+    0,
+    "Retrieve required participant set G"
+   ],
+   [
+    0,
+    "N ← |G|"
+   ],
+   [
+    0,
+    "Verify identity and authority of g (Algorithm 2; structural DID check in the prototype); **if** the verification fails **then** record the invalid approval and **return** DENY"
+   ],
+   [
+    0,
+    "signer ← RecoverEIP712(domain, {id~C~, g, APPROVE}, sig~a~)   ▷ off-chain recovery"
+   ],
+   [
+    0,
+    "**if** signer ≠ Addr(g), or the signature binds a different consent, guardian, or chain **then**"
+   ],
+   [
+    1,
+    "Record invalid approval"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "**if** participant is not in G **then**"
+   ],
+   [
+    1,
+    "Record unauthorised approval attempt"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "**if** participant has already approved C **then**"
+   ],
+   [
+    1,
+    "Record duplicate approval"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Record signature_data[g] ← (signer, sig~a~)"
+   ],
+   [
+    0,
+    "Update valid approval set A~v~"
+   ],
+   [
+    0,
+    "**if** |A~v~| ≥ N **then**"
+   ],
+   [
+    1,
+    "Activate authorisation"
+   ],
+   [
+    1,
+    "record a local token identifier; state ← ACTIVE once t~s~ has been reached"
+   ],
+   [
+    1,
+    "submit mintConsentV3(addr~p~, addr~r~, P~u~, t~s~, t~e~, L, burnAuth) via the owner account   ▷ the contract stores keccak256(P~u~); background job; reconciled on request from the guardian view"
+   ],
+   [
+    1,
+    "on confirmation: replace the local token identifier with the on-chain token identifier"
+   ],
+   [
+    1,
+    "Record threshold-satisfied event"
+   ],
+   [
+    1,
+    "**return** ACTIVATED   ▷ activation is distinct from the access decision"
+   ],
+   [
+    0,
+    "**else**"
+   ],
+   [
+    1,
+    "Keep consent in pending state"
+   ],
+   [
+    1,
+    "Record threshold-pending event"
+   ],
+   [
+    1,
+    "**return** PENDING"
+   ],
+   [
+    0,
+    "**end if**"
+   ]
+  ]
+ },
+ "4": {
+  "title": "Policy-Aware Access Decision",
+  "require": "Consent object C, access request R = (u, P~R~, S~R~, Jur(R)), requesting participant u, current time t",
+  "ensure": "Access decision",
+  "lines": [
+   [
+    0,
+    "Verify DID and VC of u"
+   ],
+   [
+    0,
+    "**if** identity or authority verification fails **then**"
+   ],
+   [
+    1,
+    "Record denied decision"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Evaluate consent state"
+   ],
+   [
+    0,
+    "**if** consent is not active **then**"
+   ],
+   [
+    1,
+    "Record denied decision"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Verify multi-party authorisation"
+   ],
+   [
+    0,
+    "**if** threshold is not satisfied **then**"
+   ],
+   [
+    1,
+    "Record denied decision"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Evaluate requested purpose"
+   ],
+   [
+    0,
+    "**if** purpose is incompatible with consent **then**"
+   ],
+   [
+    1,
+    "Record denied decision"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Evaluate requested data scope"
+   ],
+   [
+    0,
+    "**if** S~R~ = ∅ or S~R~ ⊈ S~C~ **then**"
+   ],
+   [
+    1,
+    "Record denied decision"
+   ],
+   [
+    1,
+    "**return** DENY"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "**if** t < t~s~ or t > t~e~ **then** Record denied decision; **return** DENY **end if**"
+   ],
+   [
+    0,
+    "**if** Jur(R) ≠ Jur(C) **then** Record denied decision; **return** DENY **end if**"
+   ],
+   [
+    0,
+    "Generate and verify a Groth16 proof that Poseidon(secret, expiry) equals the public commitment and that t ≤ t~e~; record proof_mode = groth16"
+   ],
+   [
+    0,
+    "Retrieve authorised healthcare data"
+   ],
+   [
+    0,
+    "Record granted decision"
+   ],
+   [
+    0,
+    "**return** ALLOW"
+   ]
+  ]
+ },
+ "5": {
+  "title": "Temporal and Lifecycle Validation",
+  "require": "Consent object C, current time t, requested transition q",
+  "ensure": "Lifecycle validity result",
+  "lines": [
+   [
+    0,
+    "Retrieve consent start time t~s~ and expiry time t~e~"
+   ],
+   [
+    0,
+    "**if** t < t~s~ or t > t~e~ **then**"
+   ],
+   [
+    1,
+    "Record temporal invalidity"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Retrieve current lifecycle state of C"
+   ],
+   [
+    0,
+    "**if** current state does not permit the requested operation **then**"
+   ],
+   [
+    1,
+    "Record invalid lifecycle state"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Check whether C has been revoked"
+   ],
+   [
+    0,
+    "**if** C is revoked **then**"
+   ],
+   [
+    1,
+    "Record revocation-based invalidity"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Validate requested transition q"
+   ],
+   [
+    0,
+    "**if** transition q is not permitted **then**"
+   ],
+   [
+    1,
+    "Record unauthorised state transition"
+   ],
+   [
+    1,
+    "**return** INVALID"
+   ],
+   [
+    0,
+    "**end if**"
+   ],
+   [
+    0,
+    "Record valid temporal and lifecycle evidence"
+   ],
+   [
+    0,
+    "**return** VALID"
+   ]
+  ]
+ },
+ "6": {
+  "title": "Formal and Empirical Authorisation Validation",
+  "require": "Framework implementation F, validation scenarios S, security properties P",
+  "ensure": "Validation evidence and evaluation results",
+  "lines": [
+   [
+    0,
+    "Define expected authorisation properties P"
+   ],
+   [
+    0,
+    "Define valid scenarios S~valid~"
+   ],
+   [
+    0,
+    "Define negative scenarios S~negative~"
+   ],
+   [
+    0,
+    "Define adversarial scenarios S~adv~"
+   ],
+   [
+    0,
+    "**for** each scenario s in S~valid~ ∪ S~negative~ ∪ S~adv~ **do**"
+   ],
+   [
+    1,
+    "Execute s using framework F"
+   ],
+   [
+    1,
+    "Collect authorisation decision"
+   ],
+   [
+    1,
+    "Collect identity, approval, policy, and audit evidence"
+   ],
+   [
+    1,
+    "Compare observed decision with expected decision"
+   ],
+   [
+    1,
+    "Record pass or failure result"
+   ],
+   [
+    0,
+    "**end for**"
+   ],
+   [
+    0,
+    "Evaluate soundness property"
+   ],
+   [
+    0,
+    "Evaluate denial property"
+   ],
+   [
+    0,
+    "Evaluate threshold correctness"
+   ],
+   [
+    0,
+    "Evaluate policy-scope enforcement"
+   ],
+   [
+    0,
+    "Evaluate audit consistency"
+   ],
+   [
+    0,
+    "Analyse failures and limitations"
+   ],
+   [
+    0,
+    "**return** Validation results"
+   ]
+  ]
+ }
+}

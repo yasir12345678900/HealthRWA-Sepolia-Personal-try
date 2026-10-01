@@ -1,0 +1,178 @@
+{
+ "1": {
+  "file": "assets/F1.png",
+  "caption": "SLR search string definition: the three concept blocks of the master query and their combination across the seven databases"
+ },
+ "2": {
+  "file": "assets/F2.png",
+  "caption": "PRISMA 2020 flow diagram of the study identification, screening, eligibility and inclusion stages, with the audited counts at the reporting checkpoint"
+ },
+ "3": {
+  "file": "assets/F3.png",
+  "caption": "Profile of the 25 included primary studies: distribution by publication year and by review stream. Each study is assigned to the stream of its strongest coded requirement."
+ },
+ "4": {
+  "file": "assets/F4.png",
+  "caption": "Correspondence between the seven review questions of Section 2.3.2 and the sections of the review in which they are addressed, ending in the synthesis that leads to the research questions of Chapter 3."
+ },
+ "5": {
+  "file": "assets/F5.png",
+  "caption": "Synthesis of the review: each of the six requirements is satisfied by some of the 25 studies, but no study conjoins all six conditions in one access decision (conjunction gap) and the strongest mechanisms lack formal assurance (assurance gap); the proposed framework addresses both by treating consent as an evaluable authorisation object."
+ },
+ "6": {
+  "file": "assets/F6.png",
+  "caption": "Layered MVC architecture and component decomposition of the HALAH framework"
+ },
+ "7": {
+  "file": "assets/F7.png",
+  "caption": "Functional decomposition of the MVC components"
+ },
+ "8": {
+  "file": "assets/F8.png",
+  "caption": "Trust predicate evaluation and authorisation decision flow"
+ },
+ "9": {
+  "file": "assets/F9.png",
+  "caption": "End-to-end workflow of the trust-oriented consent authorisation framework"
+ },
+ "10": {
+  "file": "assets/F10.png",
+  "caption": "RO1 workflow for trust-centric consent creation"
+ },
+ "11": {
+  "file": "assets/F11.png",
+  "caption": "Six-component trust-centric consent model C = (I, A, P, T, L, E), showing the content and the supplier of each component, the system-generated consent identifier, and the lifecycle state carried by the consent object."
+ },
+ "12": {
+  "file": "assets/F12.png",
+  "caption": "RO2 workflow for decentralised identity and authority verification"
+ },
+ "13": {
+  "file": "assets/F13.png",
+  "caption": "RO3 workflow for threshold-based multi-party authorisation"
+ },
+ "14": {
+  "file": "assets/F14.png",
+  "caption": "RO4 workflow for policy- and context-aware access control"
+ },
+ "15": {
+  "file": "assets/F15.png",
+  "caption": "RO5 workflow for temporal and consent lifecycle trust"
+ },
+ "16": {
+  "file": "assets/F16.png",
+  "caption": "RO6 workflow for formal security assurance and empirical validation"
+ },
+ "17": {
+  "file": "assets/F17.png",
+  "caption": "Compilation of ConsentSBTv3 in Remix: the compiler reports a successful compilation and the contract is selected for deployment."
+ },
+ "18": {
+  "file": "assets/F18.png",
+  "caption": "Deployment of ConsentSBTv3 from Remix through MetaMask on the Sepolia network."
+ },
+ "19": {
+  "file": "assets/F19.png",
+  "caption": "Remix after deployment: the contract appears under Deployed Contracts and the source verification service reports Verification Successful."
+ },
+ "20": {
+  "file": "assets/F20.png",
+  "caption": "The deployed contract on Sepolia Etherscan, with the creator wallet, the MedicalConsent (CONSENT) token tracker and the first mint transaction."
+ },
+ "21": {
+  "file": "assets/F21.png",
+  "caption": "The patient subsystem after consent creation: four EMR modules, two designated guardians, jurisdiction AU, and the state PENDING_SIGNATURE."
+ },
+ "22": {
+  "file": "assets/F22.png",
+  "caption": "The guardian subsystem at the first approval: the EIP-712 signature of did:parent:A is verified and the multi-signature count is 1/2."
+ },
+ "23": {
+  "file": "assets/F23.png",
+  "caption": "The guardian subsystem at the moment of the second approval: the EIP-712 signature is verified, the 2/2 threshold is reached, the SBT is minted in the local ledger and the Sepolia anchoring starts in the background."
+ },
+ "24": {
+  "file": "assets/F24.png",
+  "caption": "The guardian subsystem while the mint transaction is pending: the 2/2 threshold is reached but not yet anchored, the anchoring runs in the background, and a repeated signature from the same guardian is refused."
+ },
+ "25": {
+  "file": "assets/F25.png",
+  "caption": "The guardian subsystem revisited after the background job has completed: 'Already anchored on Sepolia - token #2'."
+ },
+ "26": {
+  "file": "assets/F26.png",
+  "caption": "The anchoring transaction of the evaluated consent on Sepolia Etherscan: status Success, block 11,771,243, 'Mint 1 of MedicalConsent' to the pseudonymous patient address (function selector 0x1e1e7c76, mintConsentV3)."
+ },
+ "27": {
+  "file": "assets/F27.png",
+  "caption": "The doctor subsystem with requester jurisdiction AU (the evaluated consent f050c29a, captured before its revocation): all five checks report PASS, ALLOW = PASS, and the consent state is ACTIVE."
+ },
+ "28": {
+  "file": "assets/F28.png",
+  "caption": "Trust Predicate Evaluation and Authorisation Decision Flow of Figure 8, as enforced by the implemented Consent Engine."
+ },
+ "29": {
+  "file": "assets/F29.png",
+  "caption": "The doctor subsystem after verification (the photographed lifecycle 04da25f5 introduced earlier): access granted and the authorised medical records displayed per EMR module; the Observation module's Download CSV control is visible."
+ },
+ "30": {
+  "file": "assets/F30.png",
+  "caption": "The remaining authorised modules of the same request: the Condition and Procedure records, with the Condition module's export control visible."
+ },
+ "31": {
+  "file": "assets/F31.png",
+  "caption": "The doctor subsystem with requester jurisdiction SA: VL reports FAIL and consequently ALLOW = FAIL, although the consent state remains ACTIVE."
+ },
+ "32": {
+  "file": "assets/F32.png",
+  "caption": "The refused request: 'Security Exception: Access Denied by ZK-Policy. Failed checks: VL'."
+ },
+ "33": {
+  "file": "assets/F33.png",
+  "caption": "The patient subsystem during revocation: 'Revoking on Sepolia - waiting for block confirmation\u2026'."
+ },
+ "34": {
+  "file": "assets/F34.png",
+  "caption": "The patient subsystem after revocation: the evaluated consent f050c29a is REVOKED with token #1 (displayed as SBT-1). The other rows are earlier trial consents."
+ },
+ "35": {
+  "file": "assets/F35.png",
+  "caption": "The implemented consent lifecycle: every consent progresses through controlled states, and the activating and revoking transitions are anchored as verifiable Sepolia transactions. Solid transitions are recorded in the audit ledger and the red transitions are anchored as Sepolia transactions; the dashed transitions show that revocation is accepted from any state that is not already REVOKED (Section 6.5.3), off-chain only before the mint."
+ },
+ "36": {
+  "file": "assets/F36.png",
+  "caption": "The doctor subsystem after revocation: VA reports FAIL and the consent is reported as 'not active. Current state: REVOKED'."
+ },
+ "37": {
+  "file": "assets/F37.png",
+  "caption": "The revocation transaction on Sepolia Etherscan: status Success, block 11,771,307, decoded input 'Function: revoke(uint256 tokenId)' with tokenId = 1."
+ },
+ "38": {
+  "file": "assets/F38.png",
+  "caption": "The Consent Lifecycle reconstruction for the evaluated consent f050c29a in the auditor subsystem: the thirteen recorded events in order, from CREATE_CONSENT and the two guardian SIGN_CONSENT events through MINT_SBT and ONCHAIN_MINT, the STATE_CHECK and DATA_ACCESS pairs (two granted, one denied on jurisdiction), to REVOKE_CONSENT and ONCHAIN_REVOKE."
+ },
+ "39": {
+  "file": "assets/F39.png",
+  "caption": "The auditor subsystem: the aggregate indicators of the exported ledger (60 events, 8 consent events, 9 access requests, 5 on-chain anchors) and the audit ledger rows 36 to 48 of the evaluated consent f050c29a, from CREATE_CONSENT through ONCHAIN_MINT (block 11,771,243), the granted and denied access requests and REVOKE_CONSENT to ONCHAIN_REVOKE (block 11,771,307)."
+ },
+ "40": {
+  "file": "assets/F40.png",
+  "caption": "The independent verification tool re-executed against Sepolia after the second lifecycle: the five anchored transactions are found in their recorded blocks, the on-chain records of token #1 (revoked) and token #2 (valid for AU, rejected for US) match the local ledger, and the run ends with RESULT: ALL CHECKS PASSED."
+ },
+ "41": {
+  "file": "assets/F41.png",
+  "caption": "Gas used by the five anchored Sepolia transactions: mint transactions in blue and revoke transactions in orange, each labelled with its gas and its fee in ETH."
+ },
+ "42": {
+  "file": "assets/F42.png",
+  "caption": "Processing time of the decision components on a logarithmic axis: the dot marks the median and the line spans the minimum to the maximum, with n = 1,000 for the decision rule, n = 5 for anchoring confirmation and n = 20 for the other components."
+ },
+ "43": {
+  "file": "assets/F43.png",
+  "caption": "Adversarial evaluation matrix: the component of C or the contract targeted by each of the unit-level scenarios A1 to A12, and its outcome before and after the hardening of 1 October 2026."
+ },
+ "plan": {
+  "file": "assets/Fplan.png",
+  "caption": "Research timeline: completed milestones, work in progress and the planned stages up to thesis submission"
+ }
+}
