@@ -504,7 +504,7 @@
   "t": "ifig",
   "file": "M5",
   "caption": "The doctor subsystem after revocation: VA reports FAIL and the consent is reported as 'not active. Current state: REVOKED'.",
-  "w": 560,
+  "w": 600,
   "impl": true
  },
  {
@@ -539,8 +539,8 @@
  {
   "t": "ifig",
   "file": "n_lifecycle",
-  "caption": "The Consent Lifecycle reconstruction for the evaluated consent: the guardian signatures, MINT_SBT and ONCHAIN_MINT on the left, and the STATE_CHECK, DENIED, REVOKE_CONSENT and ONCHAIN_REVOKE events on the right.",
-  "w": 580,
+  "caption": "The Consent Lifecycle reconstruction for the evaluated consent f050c29a in the auditor subsystem: the thirteen recorded events in order, from CREATE_CONSENT and the two guardian SIGN_CONSENT events through MINT_SBT and ONCHAIN_MINT, the STATE_CHECK and DATA_ACCESS pairs (two granted, one denied on jurisdiction), to REVOKE_CONSENT and ONCHAIN_REVOKE.",
+  "w": 520,
   "impl": true
  },
  {
@@ -551,8 +551,8 @@
  {
   "t": "ifig",
   "file": "M7",
-  "caption": "The auditor subsystem with the evaluated consent selected: aggregate indicators and the Detailed Audit Records, in which the on-chain events carry their transaction hashes and block numbers.",
-  "w": 620,
+  "caption": "The auditor subsystem: the aggregate indicators of the exported ledger (60 events, 8 consent events, 9 access requests, 5 on-chain anchors) and the audit ledger rows 36 to 48 of the evaluated consent f050c29a, from CREATE_CONSENT through ONCHAIN_MINT (block 11,771,243), the granted and denied access requests and REVOKE_CONSENT to ONCHAIN_REVOKE (block 11,771,307).",
+  "w": 624,
   "impl": true
  },
  {
@@ -656,8 +656,8 @@
  {
   "t": "ifig",
   "file": "M8_clean",
-  "caption": "The final verdict of the independent verification, re-executed after the second lifecycle: RESULT: ALL CHECKS PASSED.",
-  "w": 430,
+  "caption": "The independent verification tool re-executed against Sepolia after the second lifecycle: the five anchored transactions are found in their recorded blocks, the on-chain records of token #1 (revoked) and token #2 (valid for AU, rejected for US) match the local ledger, and the run ends with RESULT: ALL CHECKS PASSED.",
+  "w": 624,
   "impl": true
  },
  {
