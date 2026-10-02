@@ -63,7 +63,8 @@ function runs(text, base = {}) {
   if (last < text.length) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: text.slice(last) }));
   return out;
 }
-const P = (text, opts = {}, base = {}) => new Paragraph({ children: runs(fixText(text), base), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 }, ...opts });
+const GREEN = process.env.GREEN === "1" ? { color: "00A000" } : {};
+const P = (text, opts = {}, base = {}) => new Paragraph({ children: runs(fixText(text), { ...GREEN, ...base }), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 }, ...opts });
 const cb = { style: BorderStyle.SINGLE, size: 4, color: "666666" };
 const bAll = { top: cb, left: cb, bottom: cb, right: cb };
 
@@ -168,7 +169,7 @@ for (const b of BLOCKS) {
   else if (b.t === "h2") C.push(h2(b.text));
   else if (b.t === "status") C.push(statusLine(b.text));
   else if (b.t === "p") C.push(P(b.text));
-  else if (b.t === "bullets") for (const it of b.items || []) C.push(new Paragraph({ bullet: { level: 0 }, alignment: AlignmentType.JUSTIFIED, spacing: { after: 80, line: 288 }, children: runs(fixText(it)) }));
+  else if (b.t === "bullets") for (const it of b.items || []) C.push(new Paragraph({ bullet: { level: 0 }, alignment: AlignmentType.JUSTIFIED, spacing: { after: 80, line: 288 }, children: runs(fixText(it), GREEN) }));
   else if (b.t === "fig") C.push(...figure(b));
   else if (b.t === "table") C.push(...table(b));
   else if (b.t === "eq") C.push(...equation(b));
@@ -195,7 +196,7 @@ const doc = new Document({
     children: C }],
 });
 Packer.toBuffer(doc).then(buf => {
-  fs.writeFileSync(D + "CA2_short.docx", buf);
+  fs.writeFileSync(D + (process.env.GREEN === "1" ? "CA2_short_green.docx" : "CA2_short.docx"), buf);
   fs.writeFileSync(D + "build_report.json", JSON.stringify({ problems, figures: cnt.F, tables: cnt.T, equations: cnt.E, algorithms: cnt.A, references: citeN, toc: tocTitles }, null, 1));
   console.log("figures", cnt.F, "tables", cnt.T, "equations", cnt.E, "algorithms", cnt.A, "refs", citeN, "problems", problems.length);
   problems.slice(0, 30).forEach(p => console.log("  ", p));
