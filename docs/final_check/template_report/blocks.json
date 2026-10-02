@@ -45,7 +45,7 @@
  },
  {
   "t": "p",
-  "text": "RO1 to RO4 form the foundational scope, namely the trust-centric consent model, decentralised identity and authority trust, trustworthy multi-party authorisation, and policy- and context-aware access control, and are completed with validation and evaluation at the current stage. RO5 adds temporal validity and lifecycle trust, because an approved consent may later become invalid through expiration, revocation, or a lifecycle change. RO6 concerns formal security assurance and empirical validation. RO5 and RO6 are in progress, and part of each has already been delivered. In particular, the temporal and revocation controls of RO5 and the scenario-based empirical validation of RO6 have been realised in the HALAH prototype, the Patient Consent Management Platform for History Access by Authorised Healthcare Providers. Formal security analysis has not yet been undertaken and remains the subject of the next research stage."
+  "text": "RO1 to RO4 form the foundational scope, namely the trust-centric consent model, decentralised identity and authority trust, trustworthy multi-party authorisation, and policy- and context-aware access control, and are completed with validation and evaluation at the current stage. RO5 adds temporal validity and lifecycle trust, because an approved consent may later become invalid through expiration, revocation, or a lifecycle change. RO6 concerns formal security assurance and empirical validation. RO5 and RO6 are in progress, and part of each has already been delivered. In particular, the temporal and revocation controls of RO5 and the scenario-based empirical validation of RO6 have been realised in the HALAH (History Access Link for Authorised Healthcare) prototype. Formal security analysis has not yet been undertaken and remains the subject of the next research stage."
  },
  {
   "t": "p",
@@ -974,7 +974,7 @@
  },
  {
   "t": "p",
-  "text": "The HALAH prototype is a role-based Patient Consent Management Platform with separate patient, guardian, doctor, and auditor interfaces. Its consent token contract, ConsentSBTv3, was compiled in Remix and deployed to Sepolia through MetaMask as a soulbound ERC-721 token, so transfers between accounts are blocked. Each token stores the pseudonymous patient and requester addresses, a hash of the purpose, the validity window, a two-letter jurisdiction code, and a revocation flag. No medical content is written to the chain. The plaintext purpose is passed as a parameter of the mint transaction and is therefore visible in the public transaction input. All medical records used in the demonstration are synthetic."
+  "text": "The HALAH (History Access Link for Authorised Healthcare) prototype is a role-based consent management platform with separate patient, guardian, doctor, and auditor interfaces. Its consent token contract, ConsentSBTv3, was compiled in Remix and deployed to Sepolia through MetaMask as a soulbound ERC-721 token, so transfers between accounts are blocked. Each token stores the pseudonymous patient and requester addresses, a hash of the purpose, the validity window, a two-letter jurisdiction code, and a revocation flag. No medical content is written to the chain. The plaintext purpose is passed as a parameter of the mint transaction and is therefore visible in the public transaction input. All medical records used in the demonstration are synthetic."
  },
  {
   "t": "p",
@@ -1251,7 +1251,7 @@
     ],
     [
      "Publication 1 Conference",
-     "Paper conference submission, BWCCA 2026",
+     "Paper conference submission, BWCCA 2026: \"A Trusted Multi-Party Consent Governance Framework for Decentralized Multi-Stakeholder Data Sharing\"",
      "Sep 2026",
      "☑ Done"
     ],
