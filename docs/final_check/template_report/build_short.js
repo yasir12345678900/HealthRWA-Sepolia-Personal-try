@@ -65,6 +65,9 @@ function runs(text, base = {}) {
 }
 const GREEN = process.env.GREEN === "1" ? { color: "00A000" } : {};
 const P = (text, opts = {}, base = {}) => new Paragraph({ children: runs(fixText(text), { ...GREEN, ...base }), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 }, ...opts });
+// GREEN copy: sentences taken from the original report stay black, the rest are green
+const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t), o ? {} : GREEN));
+const SEGP = segs => new Paragraph({ children: SEGR(segs), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 } });
 const cb = { style: BorderStyle.SINGLE, size: 4, color: "666666" };
 const bAll = { top: cb, left: cb, bottom: cb, right: cb };
 
@@ -168,8 +171,8 @@ for (const b of BLOCKS) {
   if (b.t === "h1") C.push(h1(b.text));
   else if (b.t === "h2") C.push(h2(b.text));
   else if (b.t === "status") C.push(statusLine(b.text));
-  else if (b.t === "p") C.push(P(b.text));
-  else if (b.t === "bullets") for (const it of b.items || []) C.push(new Paragraph({ bullet: { level: 0 }, alignment: AlignmentType.JUSTIFIED, spacing: { after: 80, line: 288 }, children: runs(fixText(it), GREEN) }));
+  else if (b.t === "p") C.push(GREEN.color && b.segs ? SEGP(b.segs) : P(b.text));
+  else if (b.t === "bullets") for (const it of b.items || []) C.push(new Paragraph({ bullet: { level: 0 }, alignment: AlignmentType.JUSTIFIED, spacing: { after: 80, line: 288 }, children: GREEN.color && b.isegs ? SEGR(b.isegs[b.items.indexOf(it)]) : runs(fixText(it), GREEN) }));
   else if (b.t === "fig") C.push(...figure(b));
   else if (b.t === "table") C.push(...table(b));
   else if (b.t === "eq") C.push(...equation(b));
