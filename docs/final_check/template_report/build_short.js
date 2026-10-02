@@ -49,12 +49,13 @@ function fixText(s) {
   return s;
 }
 function runs(text, base = {}) {
-  const out = []; const re = /(\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^)/g; let last = 0, m;
+  const out = []; const re = /(\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
   text = String(text);
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: text.slice(last, m.index) }));
     const t = m[0];
-    if (t.startsWith("**")) out.push(...runs(t.slice(2, -2), { ...base, bold: true }));
+    if (t === ";") out.push(new TextRun({ font: FONT, size: BODY, ...base, text: ";", highlight: "yellow" }));
+    else if (t.startsWith("**")) out.push(...runs(t.slice(2, -2), { ...base, bold: true }));
     else if (t.startsWith("~")) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(1, -1), subScript: true }));
     else out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(1, -1), superScript: true }));
     last = m.index + t.length;
