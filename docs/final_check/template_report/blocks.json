@@ -37,7 +37,7 @@
  },
  {
   "t": "p",
-  "text": "This research adopts a Trust Computing perspective, in which trustworthy data access emerges from the coordinated verification of multiple conditions rather than from any single technology. Trust Computing denotes the evaluation of trust as a computable outcome of explicitly verified conditions on identity, authority, collective approval, policy, and lifecycle. It should be distinguished from trusted computing in the hardware sense, such as trusted execution environments and attestation, which lies outside the scope of this research."
+  "text": "This research adopts a Trust Computing perspective, in which trustworthy data access emerges from the coordinated verification of multiple conditions rather than from any single technology. Trust Computing denotes the evaluation of trust as a computable outcome of explicitly verified conditions on identity, authority, collective approval, policy, and lifecycle. Within this perspective, Trusted Computing is treated as a complementary component. Trusted Execution Environments (TEEs) provide hardware-supported isolation for security-sensitive computation, and remote attestation can provide evidence of the integrity of the execution environment [23, 17]. Nevertheless, Trusted Computing does not by itself determine the correctness of an authorisation policy. Consequently, the current stage concentrates on the authorisation conditions themselves, and hardware-assisted trusted execution is left for future work."
  },
  {
   "t": "p",
@@ -49,7 +49,7 @@
  },
  {
   "t": "p",
-  "text": "The scope of the current stage is bounded. HALAH runs on the Ethereum Sepolia testnet with synthetic healthcare records, and the guardian approval rule is currently implemented as N-of-N over the guardian set G. Security properties are demonstrated through scenario-based, negative, and adversarial testing rather than formal proof. The current stage denotes the work delivered at the CA2 milestone, and CA3 denotes the subsequent stage in which the remaining objectives are completed."
+  "text": "The scope of the current stage is bounded. HALAH runs on the Ethereum Sepolia testnet with synthetic healthcare records derived from the Synthea dataset, and the guardian approval rule is currently implemented as N-of-N over the guardian set G. Security properties are demonstrated through scenario-based, negative, and adversarial testing rather than formal proof. The current stage denotes the work delivered at the CA2 milestone, and CA3 denotes the subsequent stage in which the remaining objectives are completed."
  },
  {
   "t": "p",
@@ -974,7 +974,7 @@
  },
  {
   "t": "p",
-  "text": "The HALAH (History Access Link for Authorised Healthcare) prototype is a role-based consent management platform with separate patient, guardian, doctor, and auditor interfaces. Its consent token contract, ConsentSBTv3, was compiled in Remix and deployed to Sepolia through MetaMask as a soulbound ERC-721 token, so transfers between accounts are blocked. Each token stores the pseudonymous patient and requester addresses, a hash of the purpose, the validity window, a two-letter jurisdiction code, and a revocation flag. No medical content is written to the chain. The plaintext purpose is passed as a parameter of the mint transaction and is therefore visible in the public transaction input. All medical records used in the demonstration are synthetic."
+  "text": "The HALAH (History Access Link for Authorised Healthcare) prototype is a role-based consent management platform with separate patient, guardian, doctor, and auditor interfaces. Its consent token contract, ConsentSBTv3, was compiled in Remix and deployed to Sepolia through MetaMask as a soulbound ERC-721 token, so transfers between accounts are blocked. Each token stores the pseudonymous patient and requester addresses, a hash of the purpose, the validity window, a two-letter jurisdiction code, and a revocation flag. No medical content is written to the chain. The plaintext purpose is passed as a parameter of the mint transaction and is therefore visible in the public transaction input. All medical records used in the demonstration are synthetic and derived from the Synthea dataset."
  },
  {
   "t": "p",
