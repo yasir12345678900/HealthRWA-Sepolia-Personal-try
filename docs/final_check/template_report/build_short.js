@@ -178,8 +178,9 @@ for (const b of BLOCKS) {
 // references
 C.push(new Paragraph({ heading: HeadingLevel.HEADING_1, pageBreakBefore: true, spacing: { after: 200 }, children: [new TextRun({ text: "References", font: FONT, size: 32, bold: true })] }));
 const order = Object.entries(citeMap).sort((a, b) => a[1] - b[1]);
+const HL = new Set(["8", "10", "18", "29", "82"]);
 for (const [orig, n] of order) C.push(new Paragraph({ spacing: { after: 50, line: 240 }, indent: { left: 560, hanging: 560 }, alignment: AlignmentType.LEFT,
-  children: [new TextRun({ text: `[${n}]\t`, font: FONT, size: BODY - 4 }), new TextRun({ text: REFS[orig], font: FONT, size: BODY - 4 })], tabStops: [{ type: TabStopType.LEFT, position: 560 }] }));
+  children: [new TextRun({ text: `[${n}]\t`, font: FONT, size: BODY - 4, highlight: HL.has(String(orig)) ? "yellow" : undefined }), new TextRun({ text: REFS[orig], font: FONT, size: BODY - 4, highlight: HL.has(String(orig)) ? "yellow" : undefined })], tabStops: [{ type: TabStopType.LEFT, position: 560 }] }));
 
 const doc = new Document({
   creator: "Yasir Dhaifallah O Alyoubi", title: "CA2 Report: A Trusted Authorization Framework for Multi-Party Patient Consent in Healthcare Data Sharing",

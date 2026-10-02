@@ -13,11 +13,11 @@
  },
  {
   "t": "p",
-  "text": "Traditional access-control architectures rely on centralised identity providers, institution-specific authentication, and relatively static permissions [28, 25]. These approaches are effective within one organisational boundary, but not when a decision requires patients, guardians, healthcare professionals, and institutional authorities, none of whom may hold sufficient authority alone [31, 9]. Therefore, authorisation is increasingly a distributed governance problem rather than simply a process of authenticating a user and checking a static permission."
+  "text": "Traditional access-control architectures rely on centralised identity providers, institution-specific authentication, and relatively static permissions [28, 25]. These approaches are effective within one organisational boundary, but not when a decision requires patients, guardians, healthcare professionals, and institutional authorities, none of whom may hold sufficient authority alone [31, 9]. Therefore, authorisation is increasingly a distributed governance problem rather than simply a process of authenticating a user and checking a static permission [29]."
  },
  {
   "t": "p",
-  "text": "Blockchain provides tamper-resistant recording and distributed auditability [1, 26], and decentralised identifiers reduce reliance on a central identity provider. Verifiable credentials provide cryptographic evidence of roles and authority [20, 5], and policy-based mechanisms restrict access to authorised resources [2, 28, 25]. However, an immutable consent record does not demonstrate that the participants were legitimate, that they held the required authority, or that a later request remains within the authorised conditions. Consequently, consent must be treated as an active and evaluable component of authorisation rather than a static record of permission, extending the dynamic consent perspective [13, 24]."
+  "text": "Blockchain provides tamper-resistant recording and distributed auditability [1, 26, 8, 18], and decentralised identifiers reduce reliance on a central identity provider. Verifiable credentials provide cryptographic evidence of roles and authority [20, 5], and policy-based mechanisms restrict access to authorised resources [2, 28, 25]. However, an immutable consent record does not demonstrate that the participants were legitimate, that they held the required authority, or that a later request remains within the authorised conditions. Consequently, consent must be treated as an active and evaluable component of authorisation rather than a static record of permission, extending the dynamic consent perspective [13, 24]."
  },
  {
   "t": "h2",
@@ -25,7 +25,7 @@
  },
  {
   "t": "p",
-  "text": "Existing consent-management and decentralised access-control approaches represent authorisation through database records, access-control entries, smart contracts, or blockchain transactions. These mechanisms improve integrity and auditability, but consent usually remains a passive artefact, separated from identity, authority, policy, and the resulting access decision. Similarly, successful authentication establishes that an entity has been identified, but not that it has the authority to access a particular patient's information. When guardians, professionals, or institutional authorities must also approve, no single participant should decide alone, and a request may still exceed the authorised purpose or data scope."
+  "text": "Existing consent-management and decentralised access-control approaches represent authorisation through database records, access-control entries, smart contracts, or blockchain transactions. These mechanisms improve integrity and auditability, but consent usually remains a passive artefact, separated from identity, authority, policy, and the resulting access decision [10, 13]. Similarly, successful authentication establishes that an entity has been identified, but not that it has the authority to access a particular patient's information. When guardians, professionals, or institutional authorities must also approve, no single participant should decide alone, and a request may still exceed the authorised purpose or data scope."
  },
  {
   "t": "p",
@@ -49,7 +49,7 @@
  },
  {
   "t": "p",
-  "text": "The scope of the current stage is bounded. HALAH runs on the Ethereum Sepolia testnet with synthetic healthcare records derived from the Synthea dataset, and the guardian approval rule is currently implemented as N-of-N over the guardian set G. Security properties are demonstrated through scenario-based, negative, and adversarial testing rather than formal proof. The current stage denotes the work delivered at the CA2 milestone, and CA3 denotes the subsequent stage in which the remaining objectives are completed."
+  "text": "The scope of the current stage is bounded. HALAH runs on the Ethereum Sepolia testnet with synthetic healthcare records derived from the Synthea dataset [82], and the guardian approval rule is currently implemented as N-of-N over the guardian set G. Security properties are demonstrated through scenario-based, negative, and adversarial testing rather than formal proof. The current stage denotes the work delivered at the CA2 milestone, and CA3 denotes the subsequent stage in which the remaining objectives are completed."
  },
  {
   "t": "p",
