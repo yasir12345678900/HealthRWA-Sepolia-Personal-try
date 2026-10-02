@@ -20,7 +20,7 @@ for t in toc:
     else: print("TOC MISS",t)
 json.dump(out,open("toc.json","w")); print("toc",len(out),"of",len(toc))
 PY
-node build_short.js toc.json > build.log 2>&1 && cat build.log
+node build_short.js toc.json > build.log 2>&1 && cat build.log && python3 fixhl.py CA2_short.docx
 soffice --headless --convert-to pdf CA2_short.docx >/dev/null 2>&1
 pdftotext -layout CA2_short.pdf CA2_short.txt
 echo "pages: $(pdfinfo CA2_short.pdf | awk '/Pages/{print $2}')"
