@@ -17,7 +17,7 @@
  },
  {
   "t": "p",
-  "text": "Blockchain provides tamper-resistant recording and distributed auditability [1, 26, 8, 18], and decentralised identifiers reduce reliance on a central identity provider. Verifiable credentials provide cryptographic evidence of roles and authority [20, 5], and policy-based mechanisms restrict access to authorised resources [2, 28, 25]. However, an immutable consent record does not demonstrate that the participants were legitimate, that they held the required authority, or that a later request remains within the authorised conditions. Consequently, consent must be treated as an active and evaluable component of authorisation rather than a static record of permission, extending the dynamic consent perspective [13, 24]."
+  "text": "Blockchain provides tamper-resistant recording and distributed auditability [1, 26, 8, 18], and decentralised identifiers reduce reliance on a central identity provider, while verifiable credentials provide cryptographic evidence of roles and authority [20, 5] and policy-based mechanisms restrict access to authorised resources [2, 28, 25]. However, an immutable consent record does not demonstrate that the participants were legitimate, that they held the required authority, or that a later request remains within the authorised conditions. Consequently, consent must be treated as an active and evaluable component of authorisation rather than a static record of permission, extending the dynamic consent perspective [13, 24]."
  },
  {
   "t": "h2",
@@ -25,11 +25,11 @@
  },
  {
   "t": "p",
-  "text": "Existing consent-management and decentralised access-control approaches represent authorisation through database records, access-control entries, smart contracts, or blockchain transactions. These mechanisms improve integrity and auditability, but consent usually remains a passive artefact, separated from identity, authority, policy, and the resulting access decision [10, 13]. Similarly, successful authentication establishes that an entity has been identified, but not that it has the authority to access a particular patient's information. When guardians, professionals, or institutional authorities must also approve, no single participant should decide alone, and a request may still exceed the authorised purpose or data scope."
+  "text": "Existing consent-management and decentralised access-control approaches represent authorisation through database records, access-control entries, smart contracts, or blockchain transactions, and these mechanisms improve integrity and auditability, but consent usually remains a passive artefact, separated from identity, authority, policy, and the resulting access decision [10, 13]. Similarly, successful authentication establishes that an entity has been identified, but not that it has the authority to access a particular patient's information. When guardians, professionals, or institutional authorities must also approve, no single participant should decide alone, and a request may still exceed the authorised purpose or data scope."
  },
  {
   "t": "p",
-  "text": "The central problem addressed by this research is therefore the absence of a mechanism that conjoins identity, authority, multi-party approval, policy, temporal, and lifecycle conditions in every access decision. That conjunction must also be assured both formally and empirically. Section 2 shows that each of these mechanisms already exists. They include decentralised identity and verifiable credentials [58, 76], blockchain-based consent records [53, 71], multi-party approval [53, 61, 69, 43], policy-based access control [44, 57, 63, 15], and several partial combinations [58, 61, 45]. However, they are usually investigated separately. The overarching research question is how a trust-oriented computing framework can establish and enforce trustworthy multi-party consent for decentralised healthcare data sharing under identity, authority, and policy constraints. It is decomposed into six sub-research questions in Section 3 and mapped to the research objectives RO1 to RO6 in Section 4."
+  "text": "The central problem addressed by this research is therefore the absence of a mechanism that conjoins identity, authority, multi-party approval, policy, temporal, and lifecycle conditions in every access decision, and that conjunction must also be assured both formally and empirically. Section 2 shows that each of these mechanisms already exists, and they include decentralised identity and verifiable credentials [58, 76], blockchain-based consent records [53, 71], multi-party approval [53, 61, 69, 43], policy-based access control [44, 57, 63, 15], and several partial combinations [58, 61, 45]. However, they are usually investigated separately. The overarching research question is how a trust-oriented computing framework can establish and enforce trustworthy multi-party consent for decentralised healthcare data sharing under identity, authority, and policy constraints. It is decomposed into six sub-research questions in Section 3 and mapped to the research objectives RO1 to RO6 in Section 4."
  },
  {
   "t": "h2",
@@ -37,7 +37,7 @@
  },
  {
   "t": "p",
-  "text": "This research adopts a Trust Computing perspective, in which trustworthy data access emerges from the coordinated verification of multiple conditions rather than from any single technology. Trust Computing denotes the evaluation of trust as a computable outcome of explicitly verified conditions on identity, authority, collective approval, policy, and lifecycle. Within this perspective, Trusted Computing is treated as a complementary component. Trusted Execution Environments (TEEs) provide hardware-supported isolation for security-sensitive computation, and remote attestation can provide evidence of the integrity of the execution environment [23, 17]. Nevertheless, Trusted Computing does not by itself determine the correctness of an authorisation policy. Consequently, the current stage concentrates on the authorisation conditions themselves, and hardware-assisted trusted execution is left for future work."
+  "text": "This research adopts a Trust Computing perspective, in which trustworthy data access emerges from the coordinated verification of multiple conditions rather than from any single technology. Trust Computing denotes the evaluation of trust as a computable outcome of explicitly verified conditions on identity, authority, collective approval, policy, and lifecycle. Within this perspective, Trusted Computing is treated as a complementary component, since Trusted Execution Environments (TEEs) provide hardware-supported isolation for security-sensitive computation, and remote attestation can provide evidence of the integrity of the execution environment [23, 17]. Nevertheless, Trusted Computing does not by itself determine the correctness of an authorisation policy. Consequently, the current stage concentrates on the authorisation conditions themselves, and hardware-assisted trusted execution is left for future work."
  },
  {
   "t": "p",
@@ -45,7 +45,7 @@
  },
  {
   "t": "p",
-  "text": "RO1 to RO4 form the foundational scope, namely the trust-centric consent model, decentralised identity and authority trust, trustworthy multi-party authorisation, and policy- and context-aware access control, and are completed with validation and evaluation at the current stage. RO5 adds temporal validity and lifecycle trust, because an approved consent may later become invalid through expiration, revocation, or a lifecycle change. RO6 concerns formal security assurance and empirical validation. RO5 and RO6 are in progress, and part of each has already been delivered. In particular, the temporal and revocation controls of RO5 and the scenario-based empirical validation of RO6 have been realised in the HALAH (History Access Link for Authorised Healthcare) prototype. Formal security analysis has not yet been undertaken and remains the subject of the next research stage."
+  "text": "RO1 to RO4 form the foundational scope, namely the trust-centric consent model, decentralised identity and authority trust, trustworthy multi-party authorisation, and policy- and context-aware access control, and are completed with validation and evaluation at the current stage. RO5 adds temporal validity and lifecycle trust, because an approved consent may later become invalid through expiration, revocation, or a lifecycle change, while RO6 concerns formal security assurance and empirical validation. RO5 and RO6 are in progress, and part of each has already been delivered. In particular, the temporal and revocation controls of RO5 and the scenario-based empirical validation of RO6 have been realised in the HALAH (History Access Link for Authorised Healthcare) prototype, whereas formal security analysis has not yet been undertaken and remains the subject of the next research stage."
  },
  {
   "t": "p",
@@ -88,7 +88,7 @@
  },
  {
   "t": "p",
-  "text": "The review followed the PRISMA 2020 statement [34] and a written protocol (Protocol v1.1), which fixed the review questions, databases, master query, eligibility criteria, codebook, and quality items before screening. Six review roles covered five perspectives and a chair who issued the final decision on each record. The counts reported here are those of the decision-log checkpoint of 10 September 2026 (decision D-166). Questions 1 to 5 of the seven review questions correspond to Req 1 to Req 5, while Questions 6 and 7 together correspond to Req 6."
+  "text": "The review followed the PRISMA 2020 statement [34] and a written protocol (Protocol v1.1), which fixed the review questions, databases, master query, eligibility criteria, codebook, and quality items before screening. Six review roles covered five perspectives and a chair who issued the final decision on each record, and the counts reported here are those of the decision-log checkpoint of 10 September 2026 (decision D-166). Questions 1 to 5 of the seven review questions correspond to Req 1 to Req 5, while Questions 6 and 7 together correspond to Req 6."
  },
  {
   "t": "p",
@@ -96,15 +96,15 @@
  },
  {
   "t": "p",
-  "text": "The searches were executed on 24 and 25 August 2026, and the ACM Digital Library was searched on 5 September 2026 as a late arm, which is declared as a limitation. A sentinel test of twelve papers defined in advance was used to check the recall of the master query. All four healthcare-scoped sentinels [53, 49, 71, 37] were retrieved. Seven of the eight misses were attributed to scope, missing trust terms, or the date range, and the cause of the eighth was recorded as an open item."
+  "text": "The searches were executed on 24 and 25 August 2026, and the ACM Digital Library was searched on 5 September 2026 as a late arm, which is declared as a limitation. A sentinel test of twelve papers defined in advance was used to check the recall of the master query, and all four healthcare-scoped sentinels [53, 49, 71, 37] were retrieved. Seven of the eight misses were attributed to scope, missing trust terms, or the date range, and the cause of the eighth was recorded as an open item."
  },
  {
   "t": "p",
-  "text": "Inclusion required healthcare data (IC1), consent, authorisation, access control, trust, or governance relevant to data access (IC2), and a mechanism, model, system, or evaluation relevant to a review question (IC3). Studies also had to be peer-reviewed English papers with full text, published from January 2020 to the 2026 search date (IC4 to IC7). Nine exclusion criteria (EC1 to EC9) removed, among others, non-healthcare studies, secondary reviews, and superficial mentions of consent. No study was excluded for failing to support the proposed research gap."
+  "text": "Inclusion required healthcare data (IC1), consent, authorisation, access control, trust, or governance relevant to data access (IC2), and a mechanism, model, system, or evaluation relevant to a review question (IC3). Studies also had to be peer-reviewed English papers with full text, published from January 2020 to the 2026 search date (IC4 to IC7). Nine exclusion criteria (EC1 to EC9) removed, among others, non-healthcare studies, secondary reviews, and superficial mentions of consent, although no study was excluded for failing to support the proposed research gap."
  },
  {
   "t": "p",
-  "text": "The seven database searches returned 9,256 records, or 6,039 unique records after deduplication. After title and abstract screening, 1,800 records advanced to full text and were read in a prioritised order under a dimension-level saturation rule. Saturation is declared when eight consecutively coded studies with a positive signal for a dimension yield no new mechanism class. At the checkpoint, 44 reports had been coded in full and had passed the quality gate, whereas 1,735 of the 1,800 records had not been assessed, so that corpus completeness is bounded by the saturation rule rather than by exhaustive reading."
+  "text": "The seven database searches returned 9,256 records, or 6,039 unique records after deduplication, and after title and abstract screening, 1,800 records advanced to full text and were read in a prioritised order under a dimension-level saturation rule. Saturation is declared when eight consecutively coded studies with a positive signal for a dimension yield no new mechanism class. At the checkpoint, 44 reports had been coded in full and had passed the quality gate, whereas 1,735 of the 1,800 records had not been assessed, so that corpus completeness is bounded by the saturation rule rather than by exhaustive reading."
  },
  {
   "t": "p",
@@ -128,7 +128,7 @@
  },
  {
   "t": "p",
-  "text": "**Multi-party authorisation and collaborative consent (Req 3).** T3 was graded Yes in 6 of the 25 studies, Partial in 4, and No in 15, across six ratified mechanism classes. Madine et al. [53] require a regulator and a guardian threshold on the incapacitated path, but a single patient key suffices on the normal path. Wu et al. [75] apply a (t, n) investigator threshold to record admission and revocation, and Abbasi et al. [35] use a Shamir (5, 3) threshold for key custody. Punia et al. [61] conjoin an M-of-N multi-signature with an attribute and role policy, but a single emergency officer can bypass the threshold. Tan et al. [69] use patient-appointed verifiers as a contingency, and [43, 47] report guardian co-consent at registration time. No reviewed study evaluates a threshold predicate over a patient-designated guardian set on every request. None does so together with the policy, temporal, and jurisdictional conditions."
+  "text": "**Multi-party authorisation and collaborative consent (Req 3).** T3 was graded Yes in 6 of the 25 studies, Partial in 4, and No in 15, across six ratified mechanism classes. Madine et al. [53] require a regulator and a guardian threshold on the incapacitated path, but a single patient key suffices on the normal path. Wu et al. [75] apply a (t, n) investigator threshold to record admission and revocation, and Abbasi et al. [35] use a Shamir (5, 3) threshold for key custody. Punia et al. [61] conjoin an M-of-N multi-signature with an attribute and role policy, but a single emergency officer can bypass the threshold. Tan et al. [69] use patient-appointed verifiers as a contingency, and [43, 47] report guardian co-consent at registration time. No reviewed study evaluates a threshold predicate over a patient-designated guardian set on every request, and none does so together with the policy, temporal, and jurisdictional conditions."
  },
  {
   "t": "p",
@@ -168,15 +168,15 @@
  },
  {
   "t": "p",
-  "text": "Across the corpus, Req 3 is the least satisfied requirement. For Req 6, formal assurance is provided by 4 studies, argued informally by 9, and absent in 12. These proportions match the wider pool of 1,800 records, in which only 8% carry a multi-party signal, 2% a temporal-validity signal, and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment."
+  "text": "Across the corpus, Req 3 is the least satisfied requirement, while for Req 6, formal assurance is provided by 4 studies, argued informally by 9, and absent in 12. These proportions match the wider pool of 1,800 records, in which only 8% carry a multi-party signal, 2% a temporal-validity signal, and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment."
  },
  {
   "t": "p",
-  "text": "The review corrects one framing of this research. Read on their own, the background surveys cited in Sections 1 and 2 suggest that multi-party authorisation of patient consent does not exist. However, the full-text coding shows it in six forms. These range from contingency-path joint approval and admission gates to delegated, witness, and custodial thresholds and guardian co-consent at registration, but no reviewed study treats it as a constitutive predicate that every access decision must satisfy together with the identity, policy, and temporal conditions."
+  "text": "The review corrects one framing of this research. Read on their own, the background surveys cited in Sections 1 and 2 suggest that multi-party authorisation of patient consent does not exist, although the full-text coding shows it in six forms. These range from contingency-path joint approval and admission gates to delegated, witness, and custodial thresholds and guardian co-consent at registration, but no reviewed study treats it as a constitutive predicate that every access decision must satisfy together with the identity, policy, and temporal conditions."
  },
  {
   "t": "p",
-  "text": "The review establishes two gaps. The first is a **conjunction gap**, since no study conjoins identity, authority, threshold, policy, temporal, jurisdictional, and lifecycle conditions in one decision predicate in which multi-party approval is a standing condition and the patient defines the approving set. The second is an **assurance gap**, since co-existing conditions are neither proved nor tested as an authorisation decision, and any proof covers only a fragment of the predicate. As shown in {F5}, the proposed framework is positioned against both gaps. Each of Req 1 to Req 6 also leaves a requirement-level gap, termed Gap 1 to Gap 6. Each gap corresponds to the research question and objective of the same number in Sections 3 and 4."
+  "text": "The review establishes two gaps. The first is a **conjunction gap**, since no study conjoins identity, authority, threshold, policy, temporal, jurisdictional, and lifecycle conditions in one decision predicate in which multi-party approval is a standing condition and the patient defines the approving set. The second is an **assurance gap**, since co-existing conditions are neither proved nor tested as an authorisation decision, and any proof covers only a fragment of the predicate. As shown in {F5}, the proposed framework is positioned against both gaps. Each of Req 1 to Req 6 also leaves a requirement-level gap, termed Gap 1 to Gap 6, and each gap corresponds to the research question and objective of the same number in Sections 3 and 4."
  },
  {
   "t": "fig",
@@ -185,7 +185,7 @@
  },
  {
   "t": "p",
-  "text": "The review has limitations. A further 588 records, mostly from SpringerLink, could not be screened at the abstract stage because the export contained no abstracts. The 1,800 full-text records were read in a prioritised order under the saturation rule, and a single panel performed the coding. Consequently, a small number of relevant studies may have been missed. The consistency between the coding of the included studies and the signal prevalence of the wider pool limits, but does not remove, this risk."
+  "text": "The review has limitations. A further 588 records, mostly from SpringerLink, could not be screened at the abstract stage because the export contained no abstracts. The 1,800 full-text records were read in a prioritised order under the saturation rule, and a single panel performed the coding, so that a small number of relevant studies may have been missed. The consistency between the coding of the included studies and the signal prevalence of the wider pool limits, but does not remove, this risk."
  },
  {
   "t": "h1",
@@ -209,11 +209,11 @@
  },
  {
   "t": "p",
-  "text": "There therefore remains a need for an authorisation framework in which the consent object carries identity, authority, threshold, policy, temporal, jurisdictional, and lifecycle conditions. In this framework, multi-party approval must be a standing condition of every access decision, and the conjunction of these conditions must be formally and empirically assured. These two requirements correspond to the **conjunction gap** and the **assurance gap** identified in Section 2. The approving set must be defined by the patient rather than by an institution. In the reviewed studies, the approving set is either defined on the institutional or delegate side [61, 50, 75], or appointed by the patient [69, 54] but evaluated only as a contingency path or as a key-custody threshold."
+  "text": "There therefore remains a need for an authorisation framework in which the consent object carries identity, authority, threshold, policy, temporal, jurisdictional, and lifecycle conditions. In this framework, multi-party approval must be a standing condition of every access decision, and the conjunction of these conditions must be formally and empirically assured. These two requirements correspond to the **conjunction gap** and the **assurance gap** identified in Section 2. The approving set must be defined by the patient rather than by an institution, whereas in the reviewed studies, the approving set is either defined on the institutional or delegate side [61, 50, 75], or appointed by the patient [69, 54] but evaluated only as a contingency path or as a key-custody threshold."
  },
  {
   "t": "p",
-  "text": "The following terms are used throughout the remaining sections. The patient is the data subject who creates the consent object C. The guardian set G is the set of designated participants whose independent approval is required, and the threshold N is the number of valid guardian approvals needed for activation. The authorised doctor D is the requester whose access request R is evaluated against C."
+  "text": "The following terms are used throughout the remaining sections. The patient is the data subject who creates the consent object C, while the guardian set G is the set of designated participants whose independent approval is required, and the threshold N is the number of valid guardian approvals needed for activation. The authorised doctor D is the requester whose access request R is evaluated against C."
  },
  {
   "t": "h2",
@@ -256,7 +256,7 @@
  },
  {
   "t": "p",
-  "text": "The six research questions are not independent technical questions. RQ1 establishes the consent representation, RQ2 establishes participant trust, and RQ3 uses trusted participants to establish collective authorisation. RQ4 adds policy enforcement, RQ5 adds temporal and lifecycle control, and RQ6 provides security assurance and validation of the whole. The integrated authorisation condition is expressed in {E22}, where V~I~ represents identity and authority validity, V~A~ collective authorisation validity, V~P~ policy compliance, V~T~ temporal validity, and V~L~ jurisdictional compliance. Lifecycle validity is evaluated within V~A~."
+  "text": "The six research questions are not independent technical questions. RQ1 establishes the consent representation, RQ2 establishes participant trust, and RQ3 uses trusted participants to establish collective authorisation. RQ4 adds policy enforcement, RQ5 adds temporal and lifecycle control, and RQ6 provides security assurance and validation of the whole. The integrated authorisation condition is expressed in {E22}, where V~I~ represents identity and authority validity, V~A~ collective authorisation validity, V~P~ policy compliance, V~T~ temporal validity, and V~L~ jurisdictional compliance, while lifecycle validity is evaluated within V~A~."
  },
  {
   "t": "eq",
@@ -272,7 +272,7 @@
  },
  {
   "t": "p",
-  "text": "The research objectives translate the identified gap into concrete research and development activities. The programme consists of six objectives, each corresponding to one research question and each examinable conceptually, technically, and, where appropriate, empirically."
+  "text": "The research objectives translate the identified gap into concrete research and development activities, and the programme consists of six objectives, each corresponding to one research question and each examinable conceptually, technically, and, where appropriate, empirically."
  },
  {
   "t": "h2",
@@ -288,7 +288,7 @@
  },
  {
   "t": "p",
-  "text": "The second research objective is to develop an identity and authority verification mechanism using decentralised identifiers and verifiable credentials. It establishes trustworthy participants while explicitly separating identity authentication from authorisation authority, and it provides the trust inputs required by multi-party authorisation. RO2 addresses RQ2 and is based on the principle that successful identity verification does not automatically imply permission to access healthcare data."
+  "text": "The second research objective is to develop an identity and authority verification mechanism using decentralised identifiers and verifiable credentials, which establishes trustworthy participants while explicitly separating identity authentication from authorisation authority, and it provides the trust inputs required by multi-party authorisation. RO2 addresses RQ2 and is based on the principle that successful identity verification does not automatically imply permission to access healthcare data."
  },
  {
   "t": "h2",
@@ -304,7 +304,7 @@
  },
  {
   "t": "p",
-  "text": "The fourth research objective is to enforce purpose and healthcare data-scope constraints as explicit and evaluable conditions of access. In the implemented framework, the policy mechanism evaluates whether the requested purpose is consistent with the consent. It rejects any request whose data scope is not a non-empty subset of the authorised EMR modules. Consequently, a valid identity and sufficient multi-party approval cannot be used to obtain healthcare information outside the authorised scope. RO4 addresses RQ4, so that RO1 to RO4 together establish representation, verification, collective authorisation, and policy enforcement."
+  "text": "The fourth research objective is to enforce purpose and healthcare data-scope constraints as explicit and evaluable conditions of access. In the implemented framework, the policy mechanism evaluates whether the requested purpose is consistent with the consent, and it rejects any request whose data scope is not a non-empty subset of the authorised EMR modules. Consequently, a valid identity and sufficient multi-party approval cannot be used to obtain healthcare information outside the authorised scope. RO4 addresses RQ4, so that RO1 to RO4 together establish representation, verification, collective authorisation, and policy enforcement."
  },
  {
   "t": "h2",
@@ -312,7 +312,7 @@
  },
  {
   "t": "p",
-  "text": "The fifth research objective addresses RQ5 by ensuring that an authorisation remains valid only within its permitted time interval and lifecycle state. Part of this objective is already implemented in the current prototype. The prototype enforces the temporal validity window at every access decision through V~T~, and records notBefore and expiry on-chain within the consent token. It also implements end-to-end revocation, including an on-chain revoke transaction, and manages the consent through an explicit lifecycle state machine. The remaining work concerns hardening these controls and extending them to consent modification, delegation, and guardian-set changes."
+  "text": "The fifth research objective addresses RQ5 by ensuring that an authorisation remains valid only within its permitted time interval and lifecycle state. Part of this objective is already implemented in the current prototype. The prototype enforces the temporal validity window at every access decision through V~T~, and records notBefore and expiry on-chain within the consent token, while it also implements end-to-end revocation, including an on-chain revoke transaction, and manages the consent through an explicit lifecycle state machine. The remaining work concerns hardening these controls and extending them to consent modification, delegation, and guardian-set changes."
  },
  {
   "t": "h2",
@@ -320,7 +320,7 @@
  },
  {
   "t": "p",
-  "text": "The sixth research objective addresses RQ6 by formally analysing and empirically evaluating whether the implemented framework satisfies its trust and authorisation properties under representative healthcare data-sharing scenarios. The empirical component has been partially delivered. In particular, 36 automated tests cover signature rejection, proof tampering, and twelve attack scenarios against the components of C and the contract. Preliminary measurements of on-chain cost, confirmation latency, and processing time have been obtained. A live out-of-jurisdiction request against a consent anchored on the deployed Sepolia contract was refused by the application. However, the formal analysis of the stated properties, through proofs or model checking, remains for the next stage."
+  "text": "The sixth research objective addresses RQ6 by formally analysing and empirically evaluating whether the implemented framework satisfies its trust and authorisation properties under representative healthcare data-sharing scenarios. The empirical component has been partially delivered. In particular, 36 automated tests cover signature rejection, proof tampering, and twelve attack scenarios against the components of C and the contract. Preliminary measurements of on-chain cost, confirmation latency, and processing time have been obtained, and a live out-of-jurisdiction request against a consent anchored on the deployed Sepolia contract was refused by the application. However, the formal analysis of the stated properties, through proofs or model checking, remains for the next stage."
  },
  {
   "t": "h2",
@@ -328,7 +328,7 @@
  },
  {
   "t": "p",
-  "text": "RO1 to RO6 are realised in Section 6 to Section 11 respectively, each in the section presenting the solution for the corresponding research question. Because each research question corresponds to one gap identified in Section 2, each objective addresses the gap of the same number, so that RO1 addresses Gap 1 and RO6 addresses Gap 6. RO1 to RO4 are delivered in CA2, together with their validation and evaluation through the implemented prototype. As stated in Section 1, RO5 and RO6 are partially completed. Their remaining work is detailed in Section 10 and Section 11, and its schedule is presented in Section 13. The distinction between the current and next stages is therefore based on research scope and maturity rather than on a different set of questions or objectives."
+  "text": "RO1 to RO6 are realised in Section 6 to Section 11 respectively, each in the section presenting the solution for the corresponding research question. Because each research question corresponds to one gap identified in Section 2, each objective addresses the gap of the same number, so that RO1 addresses Gap 1 and RO6 addresses Gap 6. RO1 to RO4 are delivered in CA2, together with their validation and evaluation through the implemented prototype, whereas, as stated in Section 1, RO5 and RO6 are partially completed. Their remaining work is detailed in Section 10 and Section 11, and its schedule is presented in Section 13. The distinction between the current and next stages is therefore based on research scope and maturity rather than on a different set of questions or objectives."
  },
  {
   "t": "h1",
@@ -336,7 +336,7 @@
  },
  {
   "t": "p",
-  "text": "The proposed research architecture adopts a Model-View-Controller (MVC) design as the implementation foundation for the trusted multi-party consent management framework. Within the framework, MVC separates the representation of consent, the interaction of independent stakeholders, and the enforcement of security-critical authorisation decisions. A consent decision may involve patients, guardians, healthcare professionals, and auditors with different identities, authorities, and responsibilities. Consequently, the system cannot rely on a single authentication event or a static permission entry. Instead, the authorisation decision must emerge from the coordinated evaluation of independently verifiable security conditions."
+  "text": "The proposed research architecture adopts a Model-View-Controller (MVC) design as the implementation foundation for the trusted multi-party consent management framework, and within the framework, MVC separates the representation of consent, the interaction of independent stakeholders, and the enforcement of security-critical authorisation decisions. A consent decision may involve patients, guardians, healthcare professionals, and auditors with different identities, authorities, and responsibilities. Consequently, the system cannot rely on a single authentication event or a static permission entry, and instead the authorisation decision must emerge from the coordinated evaluation of independently verifiable security conditions."
  },
  {
   "t": "h2",
@@ -356,7 +356,7 @@
  },
  {
   "t": "p",
-  "text": "{F7} presents the functional decomposition of each layer. The View is decomposed into the patient, guardian, healthcare professional, and auditor interfaces, none of which independently determines whether access should be granted. The Controller is decomposed into six conceptual security functions: Identity Verification, Authority Verification, Approval Aggregation, Policy Enforcement, the Decision Engine, and Audit Coordination. The Model is decomposed into seven state representations: DID, VC, Consent, Approval, Policy, Evidence, and Lifecycle."
+  "text": "{F7} presents the functional decomposition of each layer. The View is decomposed into the patient, guardian, healthcare professional, and auditor interfaces, none of which independently determines whether access should be granted. The Controller is decomposed into six conceptual security functions: Identity Verification, Authority Verification, Approval Aggregation, Policy Enforcement, the Decision Engine, and Audit Coordination, while the Model is decomposed into seven state representations: DID, VC, Consent, Approval, Policy, Evidence, and Lifecycle."
  },
  {
   "t": "fig",
@@ -364,7 +364,7 @@
  },
  {
   "t": "p",
-  "text": "In the implemented prototype, the Controller comprises eight principal functions rather than six. A ZK Proof Service generates and verifies the Groth16 proof that feeds the Authorisation Decision, and an On-chain Anchor Service performs the Sepolia mint and revoke transactions as a background process. The Model correspondingly contains the ConsentSBTv3 soulbound contract deployed on Sepolia together with the application audit ledger, both of which an independent verification tool reads, as described in Section 11. It should be acknowledged that, in the present prototype, credential verification consists of a structural check that each DID is well formed, and V~I~ combines this check with the EIP-712 verification of each listed guardian's signature. The requester's role and jurisdiction are declared in the interface rather than authenticated, and wallet-held signing keys and authenticated verifiable credentials are deferred to the production design. However, each guardian approval is an EIP-712 typed-data signature bound to the consent identifier, so the multi-party threshold is enforced over signed approvals rather than over interface actions."
+  "text": "In the implemented prototype, the Controller comprises eight principal functions rather than six, since a ZK Proof Service generates and verifies the Groth16 proof that feeds the Authorisation Decision, and an On-chain Anchor Service performs the Sepolia mint and revoke transactions as a background process. The Model correspondingly contains the ConsentSBTv3 soulbound contract deployed on Sepolia together with the application audit ledger, both of which an independent verification tool reads, as described in Section 11. It should be acknowledged that, in the present prototype, credential verification consists of a structural check that each DID is well formed, and V~I~ combines this check with the EIP-712 verification of each listed guardian's signature. The requester's role and jurisdiction are declared in the interface rather than authenticated, and wallet-held signing keys and authenticated verifiable credentials are deferred to the production design. However, each guardian approval is an EIP-712 typed-data signature bound to the consent identifier, so the multi-party threshold is enforced over signed approvals rather than over interface actions."
  },
  {
   "t": "h2",
@@ -372,7 +372,7 @@
  },
  {
   "t": "p",
-  "text": "The layers cooperate through a controlled authorisation sequence rather than through unrestricted direct communication. As shown in {F8}, the Controller coordinates a sequence of trust predicates representing the conditions established by the sub-research questions. V~I~(u) determines whether the requesting participant possesses valid identity and authority evidence. V~A~(C) determines whether the required independently verified participants have collectively satisfied the authorisation threshold N. V~P~(C, R) determines whether the requested operation complies with the purpose and data-scope restrictions of the consent. V~T~(C, t) determines whether the consent remains valid at the time of the request, and V~L~(C) determines whether its recorded jurisdictional constraint is satisfied. Lifecycle validity and revocation are evaluated within V~A~ rather than within V~L~. The integrated decision is the rule of {E22}."
+  "text": "The layers cooperate through a controlled authorisation sequence rather than through unrestricted direct communication, and as shown in {F8}, the Controller coordinates a sequence of trust predicates representing the conditions established by the sub-research questions. V~I~(u) determines whether the requesting participant possesses valid identity and authority evidence, while V~A~(C) determines whether the required independently verified participants have collectively satisfied the authorisation threshold N. V~P~(C, R) determines whether the requested operation complies with the purpose and data-scope restrictions of the consent. V~T~(C, t) determines whether the consent remains valid at the time of the request, and V~L~(C) determines whether its recorded jurisdictional constraint is satisfied. Lifecycle validity and revocation are evaluated within V~A~ rather than within V~L~. The integrated decision is the rule of {E22}."
  },
  {
   "t": "fig",
@@ -380,7 +380,7 @@
  },
  {
   "t": "p",
-  "text": "If any required predicate evaluates to false, the decision is DENY. The Controller does not create these trust conditions but evaluates evidence represented by the Model, and both successful and unsuccessful decisions produce authorisation evidence that supports accountability and subsequent verification. The architecture establishes four explicit trust boundaries. The View cannot be treated as a trusted source of authorisation decisions, and the Controller prevents access to protected healthcare data when the required trust conditions are not satisfied. A consent record, credential, or approval record in the Model cannot independently produce an access decision, and the protected data are reached only through the authorisation path enforced by the Controller. The framework does not claim that MVC itself provides security, since security arises from placing trust-sensitive operations within the Controller and representing security state within the Model. In the present prototype, the Controller is a single trusted server that both evaluates the predicates and writes the audit ledger. Accordingly, the on-chain anchoring of consent state and the independent verification tool provide the external evidence against which the Controller's own records can be checked."
+  "text": "If any required predicate evaluates to false, the decision is DENY. The Controller does not create these trust conditions but evaluates evidence represented by the Model, and both successful and unsuccessful decisions produce authorisation evidence that supports accountability and subsequent verification. The architecture establishes four explicit trust boundaries. The View cannot be treated as a trusted source of authorisation decisions, and the Controller prevents access to protected healthcare data when the required trust conditions are not satisfied. A consent record, credential, or approval record in the Model cannot independently produce an access decision, and the protected data are reached only through the authorisation path enforced by the Controller. The framework does not claim that MVC itself provides security, since security arises from placing trust-sensitive operations within the Controller and representing security state within the Model. In the present prototype, the Controller is a single trusted server that both evaluates the predicates and writes the audit ledger, and accordingly, the on-chain anchoring of consent state and the independent verification tool provide the external evidence against which the Controller's own records can be checked."
  },
  {
   "t": "h2",
@@ -388,7 +388,7 @@
  },
  {
   "t": "p",
-  "text": "{F9} presents the end-to-end workflow of the proposed framework. The workflow begins when the patient creates a consent request specifying the purpose, permitted data scope, and other authorisation conditions. Decentralised identity and authority verification then follows using DIDs and VCs [20]. A verified DID or VC identifies a participant but does not by itself grant permission to access patient data. The framework then collects independent approvals and evaluates the threshold condition of {E28}, where A~v~ denotes the set of verified approvals."
+  "text": "{F9} presents the end-to-end workflow of the proposed framework, and the workflow begins when the patient creates a consent request specifying the purpose, permitted data scope, and other authorisation conditions. Decentralised identity and authority verification then follows using DIDs and VCs [20]. A verified DID or VC identifies a participant but does not by itself grant permission to access patient data. The framework then collects independent approvals and evaluates the threshold condition of {E28}, where A~v~ denotes the set of verified approvals."
  },
  {
   "t": "fig",
@@ -408,7 +408,7 @@
  },
  {
   "t": "p",
-  "text": "In the implemented prototype, the threshold is fixed at N = |G|, as justified in Section 8. Once the N-of-N condition is satisfied, the consent token is minted in the local ledger and a background job anchors the mint on Sepolia asynchronously. The temporal check V~T~ and the jurisdictional check V~L~ are then evaluated, a Groth16 proof is generated and verified before access is granted, and the audit evidence is recorded. The flow continues through patient-initiated revocation and the corresponding on-chain revoke transaction, after which the auditor reviews the record and the verification tool performs an independent verification. On the access path, a consent whose threshold has not been satisfied leads to a denial decision. A request against an active consent is also evaluated against the purpose and data-scope constraints of the consent object. For example, if a consent permits access to Observation and Medication, a request that additionally contains Procedure is denied because it exceeds the authorised scope. A valid identity and sufficient multi-party approval are necessary but not sufficient conditions for access. Both successful and denied decisions should be recorded for accountability, and, in the prototype, a denial against an ACTIVE consent is recorded with its complete decision matrix."
+  "text": "In the implemented prototype, the threshold is fixed at N = |G|, as justified in Section 8, and once the N-of-N condition is satisfied, the consent token is minted in the local ledger and a background job anchors the mint on Sepolia asynchronously. The temporal check V~T~ and the jurisdictional check V~L~ are then evaluated, a Groth16 proof is generated and verified before access is granted, and the audit evidence is recorded. The flow continues through patient-initiated revocation and the corresponding on-chain revoke transaction, after which the auditor reviews the record and the verification tool performs an independent verification. On the access path, a consent whose threshold has not been satisfied leads to a denial decision, while a request against an active consent is also evaluated against the purpose and data-scope constraints of the consent object. For example, if a consent permits access to Observation and Medication, a request that additionally contains Procedure is denied because it exceeds the authorised scope. A valid identity and sufficient multi-party approval are necessary but not sufficient conditions for access. Both successful and denied decisions should be recorded for accountability, and, in the prototype, a denial against an ACTIVE consent is recorded with its complete decision matrix."
  },
  {
   "t": "h2",
@@ -416,7 +416,7 @@
  },
  {
   "t": "p",
-  "text": "The MVC architecture provides a direct implementation structure for the research objectives, as summarised in {T13}. RO1 is primarily represented in the Model through the trust-aware consent object C = (I, A, P, T, L, E). RO2 is implemented through the identity and authority verification mechanisms coordinated by the Controller, and RO3 through the multi-party approval and threshold evaluation process. Similarly, RO4 is implemented through the policy evaluation mechanisms that constrain the authorised purpose and healthcare data scope. RO5 is realised through the temporal and lifecycle state held in the Model and the predicates V~T~ and V~L~ evaluated by the Controller. RO6 operates across all three layers, since the evidence generated by the Controller and stored in the Model is what the empirical validation and the independent verifier examine."
+  "text": "The MVC architecture provides a direct implementation structure for the research objectives, as summarised in {T13}, and RO1 is primarily represented in the Model through the trust-aware consent object C = (I, A, P, T, L, E). RO2 is implemented through the identity and authority verification mechanisms coordinated by the Controller, and RO3 through the multi-party approval and threshold evaluation process. Similarly, RO4 is implemented through the policy evaluation mechanisms that constrain the authorised purpose and healthcare data scope. RO5 is realised through the temporal and lifecycle state held in the Model and the predicates V~T~ and V~L~ evaluated by the Controller. RO6 operates across all three layers, since the evidence generated by the Controller and stored in the Model is what the empirical validation and the independent verifier examine."
  },
  {
   "t": "table",
@@ -440,7 +440,7 @@
  },
  {
   "t": "p",
-  "text": "RO1 addresses RQ1 by developing a trust-aware consent model that represents patient consent as a structured and evaluable authorisation object. This object formally specifies what the patient intends to authorise, who may participate in authorisation, which healthcare data may be accessed, and under what conditions. The consent object is defined by {E46}."
+  "text": "RO1 addresses RQ1 by developing a trust-aware consent model that represents patient consent as a structured and evaluable authorisation object, and this object formally specifies what the patient intends to authorise, who may participate in authorisation, which healthcare data may be accessed, and under what conditions. The consent object is defined by {E46}."
  },
  {
   "t": "eq",
@@ -448,7 +448,7 @@
  },
  {
   "t": "p",
-  "text": "In {E46}, I represents patient and participant identity information, A the authorisation requirements, P the policy constraints, T the temporal validity window, and L the jurisdiction in which the consent may be exercised. E represents the authorisation evidence. The model therefore separates the specification of consent from the final access decision. A consent object does not automatically authorise every subsequent request. Instead, it provides the conditions against which a request is evaluated."
+  "text": "In {E46}, I represents patient and participant identity information, A the authorisation requirements, P the policy constraints, T the temporal validity window, and L the jurisdiction in which the consent may be exercised, while E represents the authorisation evidence. The model therefore separates the specification of consent from the final access decision. A consent object does not automatically authorise every subsequent request and instead provides the conditions against which a request is evaluated."
  },
  {
   "t": "h2",
@@ -456,7 +456,7 @@
  },
  {
   "t": "p",
-  "text": "The workflow begins with a patient request and ends with a structured consent record that subsequent authorisation services can verify. In the HALAH implementation, the patient interface allows the patient to select a patient DID, an authorised doctor, and guardian DIDs. The patient also selects healthcare data modules such as Observation, Medication, Condition, and Procedure, together with the start and expiry time of the consent. In the current interface, the purpose is fixed to Treatment and is not selected by the patient. The purpose vocabulary check is therefore exercised by the automated tests rather than by the interface. As shown in {F10}, the workflow proceeds from input collection to validation, construction, and persistence of the consent object."
+  "text": "The workflow begins with a patient request and ends with a structured consent record that subsequent authorisation services can verify. In the HALAH implementation, the patient interface allows the patient to select a patient DID, an authorised doctor, and guardian DIDs, and the patient also selects healthcare data modules such as Observation, Medication, Condition, and Procedure, together with the start and expiry time of the consent. In the current interface, the purpose is fixed to Treatment and is not selected by the patient, and the purpose vocabulary check is therefore exercised by the automated tests rather than by the interface. As shown in {F10}, the workflow proceeds from input collection to validation, construction, and persistence of the consent object."
  },
  {
   "t": "fig",
@@ -473,7 +473,7 @@
  },
  {
   "t": "p",
-  "text": "{F11} presents the structure of the resulting consent object, showing each of the six components of C = (I, A, P, T, L, E), its content in the HALAH system, and the party that supplies it. The patient supplies the identity, authority, data-scope, temporal, and jurisdictional components. The purpose is presently fixed to Treatment by the interface. The system generates the threshold N = |G| and the consent identifier id~C~. The evidence component is accumulated by the audit layer, the guardians' signatures, and the blockchain as the consent progresses."
+  "text": "{F11} presents the structure of the resulting consent object, showing each of the six components of C = (I, A, P, T, L, E), its content in the HALAH system, and the party that supplies it. The patient supplies the identity, authority, data-scope, temporal, and jurisdictional components, whereas the purpose is presently fixed to Treatment by the interface. The system generates the threshold N = |G| and the consent identifier id~C~, while the evidence component is accumulated by the audit layer, the guardians' signatures, and the blockchain as the consent progresses."
  },
  {
   "t": "fig",
@@ -494,7 +494,7 @@
  },
  {
   "t": "p",
-  "text": "The system then requires t~e~ > t~s~ and validates the jurisdiction L. It defines the authorisation requirement A, and the Consent Service generates a universally unique consent identifier id~C~ when the patient submits the consent. Possession of the identifier alone grants no access, because every subsequent request is evaluated by the complete decision rule. The smart contract assigns the on-chain token identifier separately, only when the consent is activated. Finally, the system constructs C, persists it, and records the creation evidence, giving the sequence I~p~ → D → G → P~u~ → S~C~ → T → L → A → id~C~ → C → E. {A1} formalises this procedure."
+  "text": "The system then requires t~e~ > t~s~, validates the jurisdiction L, and defines the authorisation requirement A, while the Consent Service generates a universally unique consent identifier id~C~ when the patient submits the consent. Possession of the identifier alone grants no access, because every subsequent request is evaluated by the complete decision rule. The smart contract assigns the on-chain token identifier separately, only when the consent is activated. Finally, the system constructs C, persists it, and records the creation evidence, giving the sequence I~p~ → D → G → P~u~ → S~C~ → T → L → A → id~C~ → C → E. {A1} formalises this procedure."
  },
  {
   "t": "algo",
@@ -502,7 +502,7 @@
  },
  {
   "t": "p",
-  "text": "{A1} does not grant data access directly. Instead, it creates a consent object that the authorisation mechanism later evaluates. The consent is placed in the PENDING_SIGNATURE state, and nothing is anchored on-chain until all guardians approve. The research treats consent as a structured policy-bound object rather than as a simple Boolean permission. The algorithm also links RO1 to the remaining objectives. RO2 uses the identity and authority information in I, RO3 evaluates the authorisation requirements in A, and RO4 evaluates the policy constraints in P."
+  "text": "{A1} does not grant data access directly and instead creates a consent object that the authorisation mechanism later evaluates. The consent is placed in the PENDING_SIGNATURE state, and nothing is anchored on-chain until all guardians approve. The research treats consent as a structured policy-bound object rather than as a simple Boolean permission. The algorithm also links RO1 to the remaining objectives, since RO2 uses the identity and authority information in I, RO3 evaluates the authorisation requirements in A, and RO4 evaluates the policy constraints in P."
  },
  {
   "t": "h2",
@@ -510,7 +510,7 @@
  },
  {
   "t": "p",
-  "text": "RO1 has been completed at the conceptual and prototype level. The HALAH patient interface creates the consent object, assigns the identifier, and records the creation event in the audit layer. In the current prototype, the identity validation of the first three steps is structural. In particular, the patient DID is selected from the loaded record set, and each guardian DID must be a well-formed DID before the consent is stored. The doctor DID is checked for DID format only when the access decision is evaluated, as qualified in Section 7. The validation evidence for consent creation, including the demonstration scenarios and the unit-level tests, is presented in Section 11."
+  "text": "RO1 has been completed at the conceptual and prototype level, and the HALAH patient interface creates the consent object, assigns the identifier, and records the creation event in the audit layer. In the current prototype, the identity validation of the first three steps is structural. In particular, the patient DID is selected from the loaded record set, and each guardian DID must be a well-formed DID before the consent is stored, whereas the doctor DID is checked for DID format only when the access decision is evaluated, as qualified in Section 7. The validation evidence for consent creation, including the demonstration scenarios and the unit-level tests, is presented in Section 11."
  },
  {
   "t": "h1",
@@ -534,7 +534,7 @@
  },
  {
   "t": "p",
-  "text": "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant's role, authority, or other relevant attribute [20]. Neither mechanism automatically grants access to patient data. Instead, the verified identity and authority information become inputs to the subsequent authorisation process, whose final decision depends on the consent requirements and the access policy. The identity verification condition is expressed by {E48}, where u is the requesting participant."
+  "text": "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant's role, authority, or other relevant attribute [20]. Neither mechanism automatically grants access to patient data, and instead the verified identity and authority information become inputs to the subsequent authorisation process, whose final decision depends on the consent requirements and the access policy. The identity verification condition is expressed by {E48}, where u is the requesting participant."
  },
  {
   "t": "eq",
@@ -546,7 +546,7 @@
  },
  {
   "t": "p",
-  "text": "The workflow begins when a participant attempts to participate in the consent process or requests access to healthcare data. The system resolves and verifies the participant's DID, retrieves the associated VC, checks its validity, and examines its claims against the authority required by the consent. As shown in {F12}, the output of RO2 is not an access-grant decision but a verified identity and authority result consumed by RO3 and RO4. This separation prevents a participant from obtaining access merely by presenting a valid identity credential."
+  "text": "The workflow begins when a participant attempts to participate in the consent process or requests access to healthcare data. The system resolves and verifies the participant's DID, retrieves the associated VC, checks its validity, and examines its claims against the authority required by the consent. As shown in {F12}, the output of RO2 is not an access-grant decision but a verified identity and authority result consumed by RO3 and RO4, and this separation prevents a participant from obtaining access merely by presenting a valid identity credential."
  },
  {
   "t": "fig",
@@ -567,7 +567,7 @@
  },
  {
   "t": "p",
-  "text": "{A2} formalises the procedure. It returns INVALID at the first failed mandatory verification condition. Otherwise, it records the identity and authority evidence and returns VALID. This evidence may include the resolved DID, the verification status, the credential identifier, the issuer information, the relevant authority claims, and the verification timestamp."
+  "text": "{A2} formalises the procedure and returns INVALID at the first failed mandatory verification condition. Otherwise, it records the identity and authority evidence and returns VALID, and this evidence may include the resolved DID, the verification status, the credential identifier, the issuer information, the relevant authority claims, and the verification timestamp."
  },
  {
   "t": "algo",
@@ -575,7 +575,7 @@
  },
  {
   "t": "p",
-  "text": "{A2} treats identity verification and authority verification as related but distinct operations. A participant may possess a valid DID while lacking the authority required by the consent. Similarly, a credential may be structurally valid but irrelevant to the specific authorisation requirement. Accordingly, the algorithm verifies both credential validity and authority relevance. However, it does not independently establish collective consent or policy compliance, which are evaluated by RO3 and RO4 in Section 8 and Section 9."
+  "text": "{A2} treats identity verification and authority verification as related but distinct operations, since a participant may possess a valid DID while lacking the authority required by the consent. Similarly, a credential may be structurally valid but irrelevant to the specific authorisation requirement. Accordingly, the algorithm verifies both credential validity and authority relevance. However, it does not independently establish collective consent or policy compliance, which are evaluated by RO3 and RO4 in Section 8 and Section 9."
  },
  {
   "t": "h2",
@@ -583,7 +583,7 @@
  },
  {
   "t": "p",
-  "text": "RO2 has been completed at the conceptual and prototype level. The current implementation demonstrates that a participant's identity can be verified independently of whether that participant is authorised to access a particular patient's data. V~I~ in the current prototype combines a structural DID and credential-format check with EIP-712 verification of the signature of each listed guardian, and its outcome is recorded in the audit ledger. The condition VC~valid~ therefore defines the target verification model rather than the behaviour presently exercised by the demonstration. The doctor is not independently authenticated at consent creation, because the doctor DID is checked for DID format only when the access decision is evaluated. Cryptographic DID resolution against a registry, cryptographic validation of verifiable credentials, and authentication of the requester are acknowledged limitations reserved for the next stage. The validation evidence for RO2, including the scenarios and the unit-level adversarial tests, is presented in Section 11."
+  "text": "RO2 has been completed at the conceptual and prototype level, and the current implementation demonstrates that a participant's identity can be verified independently of whether that participant is authorised to access a particular patient's data. V~I~ in the current prototype combines a structural DID and credential-format check with EIP-712 verification of the signature of each listed guardian, and its outcome is recorded in the audit ledger. The condition VC~valid~ therefore defines the target verification model rather than the behaviour presently exercised by the demonstration. The doctor is not independently authenticated at consent creation, because the doctor DID is checked for DID format only when the access decision is evaluated. Cryptographic DID resolution against a registry, cryptographic validation of verifiable credentials, and authentication of the requester are acknowledged limitations reserved for the next stage. The validation evidence for RO2, including the scenarios and the unit-level adversarial tests, is presented in Section 11."
  },
  {
   "t": "h1",
@@ -595,7 +595,7 @@
  },
  {
   "t": "p",
-  "text": "This section presents the solution to RQ3, which is addressed by RO3. RO3 develops a threshold-based multi-party authorisation mechanism for consent approval. The objective is to ensure that sensitive healthcare data cannot be accessed through unilateral approval when the consent requires several independently verified parties."
+  "text": "This section presents the solution to RQ3, which is addressed by RO3. RO3 develops a threshold-based multi-party authorisation mechanism for consent approval, and its objective is to ensure that sensitive healthcare data cannot be accessed through unilateral approval when the consent requires several independently verified parties."
  },
  {
   "t": "h2",
@@ -603,7 +603,7 @@
  },
  {
   "t": "p",
-  "text": "Let A~v~ denote the set of valid approvals and let N denote the required authorisation threshold. {E49} defines the threshold predicate V~A~ over the consent object C."
+  "text": "Let A~v~ denote the set of valid approvals and let N denote the required authorisation threshold, so that {E49} defines the threshold predicate V~A~ over the consent object C."
  },
  {
   "t": "eq",
@@ -611,11 +611,11 @@
  },
  {
   "t": "p",
-  "text": "The threshold mechanism establishes collective authorisation. It follows the threshold-committee principle of decentralised identity systems [4, 33], but applies it to consent approval rather than to credential issuance. For example, where a consent requires two valid guardian approvals, one valid approval is insufficient, whereas two valid approvals satisfy the threshold."
+  "text": "The threshold mechanism establishes collective authorisation, and it follows the threshold-committee principle of decentralised identity systems [4, 33] but applies it to consent approval rather than to credential issuance. For example, where a consent requires two valid guardian approvals, one valid approval is insufficient, whereas two valid approvals satisfy the threshold."
  },
  {
   "t": "p",
-  "text": "The N-of-N configuration was adopted for the prototype because it is the most conservative instantiation of the threshold condition, in which no designated guardian can be bypassed. It also avoids the quorum-selection and key-management questions that a general k-of-n threshold introduces. A configurable k-of-n threshold is a direct generalisation of the implemented mechanism and is therefore left to future work."
+  "text": "The N-of-N configuration was adopted for the prototype because it is the most conservative instantiation of the threshold condition, in which no designated guardian can be bypassed, and it also avoids the quorum-selection and key-management questions that a general k-of-n threshold introduces. A configurable k-of-n threshold is a direct generalisation of the implemented mechanism and is therefore left to future work."
  },
  {
   "t": "h2",
@@ -623,7 +623,7 @@
  },
  {
   "t": "p",
-  "text": "The workflow identifies the participants required by the consent, and each participant must submit an independently verifiable approval. Invalid approvals are rejected, and the authorisation becomes active only when the number of valid approvals reaches the threshold. As shown in {F13}, the Guardian workflow verifies the guardian VC, appends the guardian DID to the consent signatures, and displays the approval count relative to the threshold. When the threshold is reached, the implementation assigns an SBT identifier and records the corresponding minting event."
+  "text": "The workflow identifies the participants required by the consent, and each participant must submit an independently verifiable approval. Invalid approvals are rejected, and the authorisation becomes active only when the number of valid approvals reaches the threshold. As shown in {F13}, the Guardian workflow verifies the guardian VC, appends the guardian DID to the consent signatures, and displays the approval count relative to the threshold, and when the threshold is reached, the implementation assigns an SBT identifier and records the corresponding minting event."
  },
  {
   "t": "fig",
@@ -635,7 +635,7 @@
  },
  {
   "t": "p",
-  "text": "In the HALAH implementation, guardian authority is evidenced by an EIP-712 typed-data signature bound to the consent identifier, the guardian DID, and the Sepolia chain identifier, and verified through off-chain signer recovery. The preceding VC verification is presently a DID-format check, and the signing keys are derived deterministically from the guardian DIDs rather than held in wallets. This substitution is a limitation of the prototype. At access time, the recovery is repeated for every recorded signature within the identity predicate V~I~. V~A~ then counts only the distinct approvals of the members of G against N, and it checks the token identifier and the revocation flag."
+  "text": "In the HALAH implementation, guardian authority is evidenced by an EIP-712 typed-data signature bound to the consent identifier, the guardian DID, and the Sepolia chain identifier, and verified through off-chain signer recovery. The preceding VC verification is presently a DID-format check, and the signing keys are derived deterministically from the guardian DIDs rather than held in wallets, which is a limitation of the prototype. At access time, the recovery is repeated for every recorded signature within the identity predicate V~I~. V~A~ then counts only the distinct approvals of the members of G against N, and it checks the token identifier and the revocation flag."
  },
  {
   "t": "h2",
@@ -643,7 +643,7 @@
  },
  {
   "t": "p",
-  "text": "The procedure determines whether a consent-defined authorisation requirement has received sufficient valid approvals from the designated participants. The system retrieves the required participant set G of the consent object C and the threshold N, which must satisfy 1 ≤ N ≤ |G|. A submitted approval a remains a candidate contribution until the identity and authority of the participant have been verified through {A2}. If this verification fails, the approval is classified as invalid and DENY is returned for that attempt."
+  "text": "The procedure determines whether a consent-defined authorisation requirement has received sufficient valid approvals from the designated participants. The system retrieves the required participant set G of the consent object C and the threshold N, which must satisfy 1 ≤ N ≤ |G|. A submitted approval a remains a candidate contribution until the identity and authority of the participant have been verified through {A2}, and if this verification fails, the approval is classified as invalid and DENY is returned for that attempt."
  },
  {
   "t": "p",
@@ -667,7 +667,7 @@
  },
  {
   "t": "p",
-  "text": "{A3} formalises the procedure and explicitly distinguishes between invalid, duplicate, and valid approvals. This distinction is necessary because simply counting submitted signatures could incorrectly treat unauthorised or repeated approvals as independent evidence."
+  "text": "{A3} formalises the procedure and explicitly distinguishes between invalid, duplicate, and valid approvals, and this distinction is necessary because simply counting submitted signatures could incorrectly treat unauthorised or repeated approvals as independent evidence."
  },
  {
   "t": "algo",
@@ -675,7 +675,7 @@
  },
  {
   "t": "p",
-  "text": "Consequently, a single participant cannot unilaterally activate the consent when the threshold has not been satisfied. In the prototype, the on-chain mint is submitted as a background job through the owner account, and the contract stores keccak256(P~u~) rather than the purpose itself. Activation is distinct from the access decision. {A2} establishes whether an individual participant possesses a valid identity and sufficient authority, whereas {A3} determines whether enough independently verified participants have collectively approved the consent. The resulting activation evidence is consumed by the policy enforcement layer described in Section 9."
+  "text": "Consequently, a single participant cannot unilaterally activate the consent when the threshold has not been satisfied. In the prototype, the on-chain mint is submitted as a background job through the owner account, and the contract stores keccak256(P~u~) rather than the purpose itself. Activation is distinct from the access decision, since {A2} establishes whether an individual participant possesses a valid identity and sufficient authority, whereas {A3} determines whether enough independently verified participants have collectively approved the consent. The resulting activation evidence is consumed by the policy enforcement layer described in Section 9."
  },
  {
   "t": "h2",
@@ -683,7 +683,7 @@
  },
  {
   "t": "p",
-  "text": "RO3 has been completed at the conceptual and prototype level. When the threshold is not satisfied, the access decision is denied, as stated in {E70}."
+  "text": "RO3 has been completed at the conceptual and prototype level, and when the threshold is not satisfied, the access decision is denied, as stated in {E70}."
  },
  {
   "t": "eq",
@@ -703,7 +703,7 @@
  },
  {
   "t": "p",
-  "text": "This provides preliminary evidence that the framework enforces collective rather than unilateral authorisation. The implemented threshold is derived from the designated guardian set as N = |G|. The prototype therefore enforces an N-of-N instantiation of {E49}, and it has been evaluated in the 2-of-2 configuration. The unit-level adversarial tests include an approval from a signer outside G and a repeated approval from the same guardian. Before the hardening of 1 October 2026, both attacks were blocked only by the interface. However, since that hardening, the decision rule and the lifecycle evaluation count only distinct approvals from members of G towards N, and both attacks are refused. Section 11 presents the corresponding scenarios and test results."
+  "text": "This provides preliminary evidence that the framework enforces collective rather than unilateral authorisation. The implemented threshold is derived from the designated guardian set as N = |G|, and the prototype therefore enforces an N-of-N instantiation of {E49} and has been evaluated in the 2-of-2 configuration. The unit-level adversarial tests include an approval from a signer outside G and a repeated approval from the same guardian, and before the hardening of 1 October 2026, both attacks were blocked only by the interface. However, since that hardening, the decision rule and the lifecycle evaluation count only distinct approvals from members of G towards N, and both attacks are refused. Section 11 presents the corresponding scenarios and test results."
  },
  {
   "t": "h1",
@@ -715,7 +715,7 @@
  },
  {
   "t": "p",
-  "text": "This section presents the solution to RQ4, which is addressed by RO4. RO4 develops a policy-aware authorisation mechanism that evaluates the purpose and data scope of a requested operation against the constraints defined by the consent. A valid identity and sufficient approval do not necessarily imply that every requested operation is permitted. For example, a legitimate doctor with a valid consent may request data beyond the authorised scope, or for a purpose that does not match the one specified by the patient."
+  "text": "This section presents the solution to RQ4, which is addressed by RO4. RO4 develops a policy-aware authorisation mechanism that evaluates the purpose and data scope of a requested operation against the constraints defined by the consent. A valid identity and sufficient approval do not necessarily imply that every requested operation is permitted, since, for example, a legitimate doctor with a valid consent may request data beyond the authorised scope, or for a purpose that does not match the one specified by the patient."
  },
  {
   "t": "h2",
@@ -723,7 +723,7 @@
  },
  {
   "t": "p",
-  "text": "Let S~C~ denote the data scope authorised by the consent and S~R~ denote the data scope requested by the participant. {E52} defines the scope condition V~S~."
+  "text": "Let S~C~ denote the data scope authorised by the consent and S~R~ denote the data scope requested by the participant, so that {E52} defines the scope condition V~S~."
  },
  {
   "t": "eq",
@@ -739,7 +739,7 @@
  },
  {
   "t": "p",
-  "text": "The complete authorisation decision enforced by the implemented system is the conjunction of the five verification predicates in {E54}. The predicates are evaluated at every access request. In the current version, each request against an ACTIVE consent has its decision matrix recorded in the audit ledger with the GRANTED or DENIED outcome. The three earliest grants of 22 September 2026 predate this logging."
+  "text": "The complete authorisation decision enforced by the implemented system is the conjunction of the five verification predicates in {E54}, and these predicates are evaluated at every access request. In the current version, each request against an ACTIVE consent has its decision matrix recorded in the audit ledger with the GRANTED or DENIED outcome, although the three earliest grants of 22 September 2026 predate this logging."
  },
  {
   "t": "eq",
@@ -747,7 +747,7 @@
  },
  {
   "t": "p",
-  "text": "In the prototype, the matrix column V~P~ records the purpose check V~U~ only. The scope condition V~S~ is evaluated separately by the scope check of the doctor subsystem at request time. The final decision therefore combines the decision matrix with that scope check and with the verified access proof."
+  "text": "In the prototype, the matrix column V~P~ records the purpose check V~U~ only, while the scope condition V~S~ is evaluated separately by the scope check of the doctor subsystem at request time. The final decision therefore combines the decision matrix with that scope check and with the verified access proof."
  },
  {
   "t": "h2",
@@ -755,7 +755,7 @@
  },
  {
   "t": "p",
-  "text": "When a doctor requests patient data, the system retrieves the consent object, verifies the participant, and checks the multi-party authorisation before evaluating the requested purpose and data scope. As shown in {F14}, the Doctor interface retrieves a consent, evaluates its state, and allows a requested scope to be selected from the consent scope. It then generates a proof, checks the requested scope, and invokes the authorisation function before returning data. Consider the authorised scope in {E55} and the requested scope in {E56}."
+  "text": "When a doctor requests patient data, the system retrieves the consent object, verifies the participant, and checks the multi-party authorisation before evaluating the requested purpose and data scope. As shown in {F14}, the Doctor interface retrieves a consent, evaluates its state, and allows a requested scope to be selected from the consent scope, and it then generates a proof, checks the requested scope, and invokes the authorisation function before returning data. Consider the authorised scope in {E55} and the requested scope in {E56}."
  },
  {
   "t": "fig",
@@ -771,7 +771,7 @@
  },
  {
   "t": "p",
-  "text": "In this case, {E57} holds, and the request must be denied. This rule prevents a legitimate participant from obtaining data outside the patient's authorised scope."
+  "text": "In this case, {E57} holds, and the request must be denied, since this rule prevents a legitimate participant from obtaining data outside the patient's authorised scope."
  },
  {
   "t": "eq",
@@ -783,7 +783,7 @@
  },
  {
   "t": "p",
-  "text": "{A4} defines the access decision for a request R = (u, P~R~, S~R~, Jur(R)) at the current time t. Each failed condition records a denied decision and returns DENY."
+  "text": "{A4} defines the access decision for a request R = (u, P~R~, S~R~, Jur(R)) at the current time t, and each failed condition records a denied decision and returns DENY."
  },
  {
   "t": "algo",
@@ -799,15 +799,15 @@
  },
  {
   "t": "p",
-  "text": "In the HALAH implementation, the access-evidence step is realised by generating and verifying a Groth16 zero-knowledge proof. The proof shows that the prover knows the secret and the expiry time behind a Poseidon commitment held in the application's consent record, and that the consent has not expired at time t. The proof mode is recorded with the decision in the audit ledger. The proof constitutes the access evidence required by {A4} before any data are retrieved."
+  "text": "In the HALAH implementation, the access-evidence step is realised by generating and verifying a Groth16 zero-knowledge proof. The proof shows that the prover knows the secret and the expiry time behind a Poseidon commitment held in the application's consent record, and that the consent has not expired at time t. The proof mode is recorded with the decision in the audit ledger, and the proof constitutes the access evidence required by {A4} before any data are retrieved."
  },
  {
   "t": "p",
-  "text": "In the demonstrated prototype, the doctor does not declare a separate request purpose. The consent purpose is checked against the supported vocabulary of Treatment, Research, and Emergency and is stored on-chain as keccak256(purpose). Consequently, V~P~ is presently evaluated over the consent purpose rather than over a requester-declared P~R~. A formal proof that no execution path can violate the privacy policy is left to the next-stage security analysis."
+  "text": "In the demonstrated prototype, the doctor does not declare a separate request purpose, and the consent purpose is checked against the supported vocabulary of Treatment, Research, and Emergency and is stored on-chain as keccak256(purpose). Consequently, V~P~ is presently evaluated over the consent purpose rather than over a requester-declared P~R~. A formal proof that no execution path can violate the privacy policy is left to the next-stage security analysis."
  },
  {
   "t": "p",
-  "text": "The denial for a consent that is not ACTIVE is reported in the doctor interface but is not written to the audit ledger in the current prototype. Only requests evaluated against an ACTIVE consent produce the STATE_CHECK and DATA_ACCESS records. The refusal that follows revocation is therefore evidenced by the interface and the automated tests rather than by a ledger row. The N-of-N approval rule described in Section 8 also applies to every access request evaluated here."
+  "text": "The denial for a consent that is not ACTIVE is reported in the doctor interface but is not written to the audit ledger in the current prototype. Only requests evaluated against an ACTIVE consent produce the STATE_CHECK and DATA_ACCESS records, and the refusal that follows revocation is therefore evidenced by the interface and the automated tests rather than by a ledger row. The N-of-N approval rule described in Section 8 also applies to every access request evaluated here."
  },
  {
   "t": "h2",
@@ -815,11 +815,11 @@
  },
  {
   "t": "p",
-  "text": "RO4 has been completed and represents the third layer of the foundational framework, beyond identity and multi-party approval. In the formal model, V~P~ evaluates to 0 for the over-scope request given above. In the prototype, the scope condition is enforced by a separate scope check at request time rather than within the logged predicate V~P~. Accordingly, an over-scope request is refused with the scope named as the failed check, and the interface itself offers only the authorised modules. This refusal is exercised by the unit-level adversarial tests. An empty request scope was blocked only by the interface before the hardening of 1 October 2026, and it is now also refused by the scope check itself."
+  "text": "RO4 has been completed and represents the third layer of the foundational framework, beyond identity and multi-party approval. In the formal model, V~P~ evaluates to 0 for the over-scope request given above, whereas in the prototype, the scope condition is enforced by a separate scope check at request time rather than within the logged predicate V~P~. Accordingly, an over-scope request is refused with the scope named as the failed check, and the interface itself offers only the authorised modules. This refusal is exercised by the unit-level adversarial tests. An empty request scope was blocked only by the interface before the hardening of 1 October 2026, and it is now also refused by the scope check itself."
  },
  {
   "t": "p",
-  "text": "Every denial names the failed checks in the interface, and a denial against an ACTIVE consent is also recorded in the audit ledger with the complete decision matrix. Input validation on consent creation and access requests prevents malformed identifiers, scopes, and jurisdictions from reaching the decision logic. The procedure therefore implements the principle of least privilege through the explicit containment condition S~R~ ⊆ S~C~. Even a participant with a valid DID, a valid VC, and sufficient authority cannot retrieve healthcare resources outside the scope authorised by the consent."
+  "text": "Every denial names the failed checks in the interface, and a denial against an ACTIVE consent is also recorded in the audit ledger with the complete decision matrix. Input validation on consent creation and access requests prevents malformed identifiers, scopes, and jurisdictions from reaching the decision logic. The procedure therefore implements the principle of least privilege through the explicit containment condition S~R~ ⊆ S~C~, so that even a participant with a valid DID, a valid VC, and sufficient authority cannot retrieve healthcare resources outside the scope authorised by the consent."
  },
  {
   "t": "p",
@@ -835,7 +835,7 @@
  },
  {
   "t": "p",
-  "text": "RQ5 investigates how an authorisation remains trustworthy as time passes and as the state of the consent changes. RO5 addresses this question by extending the foundational decision rule with temporal validity and consent lifecycle controls. This objective was originally planned for CA3, but its temporal and revocation controls have been brought forward and realised in the current HALAH prototype. Part of RO5 is therefore already delivered and validated, whereas its dynamic and delegated dimension remains for CA3."
+  "text": "RQ5 investigates how an authorisation remains trustworthy as time passes and as the state of the consent changes, and RO5 addresses this question by extending the foundational decision rule with temporal validity and consent lifecycle controls. This objective was originally planned for CA3, but its temporal and revocation controls have been brought forward and realised in the current HALAH prototype. Part of RO5 is therefore already delivered and validated, whereas its dynamic and delegated dimension remains for CA3."
  },
  {
   "t": "h2",
@@ -843,7 +843,7 @@
  },
  {
   "t": "p",
-  "text": "The temporal condition requires that the current time t lies within the validity interval [t~s~, t~e~] of the consent object C = (I, A, P, T, L, E). {E58} defines the temporal predicate V~T~."
+  "text": "The temporal condition requires that the current time t lies within the validity interval [t~s~, t~e~] of the consent object C = (I, A, P, T, L, E), and {E58} defines the temporal predicate V~T~."
  },
  {
   "t": "eq",
@@ -851,7 +851,7 @@
  },
  {
   "t": "p",
-  "text": "The jurisdictional condition compares the jurisdiction declared by the request R with the jurisdiction L recorded in the consent. {E59} defines the predicate V~L~, where Jur(·) denotes the jurisdiction attribute recorded on-chain as a two-letter ISO code."
+  "text": "The jurisdictional condition compares the jurisdiction declared by the request R with the jurisdiction L recorded in the consent, and {E59} defines the predicate V~L~, where Jur(·) denotes the jurisdiction attribute recorded on-chain as a two-letter ISO code."
  },
  {
   "t": "eq",
@@ -859,7 +859,7 @@
  },
  {
   "t": "p",
-  "text": "L is validated and bound at consent creation. Consequently, the disjunct Jur(C) = ∅ is not reached for any consent created through the current interface, and the predicate reduces to strict equality. As in Section 5.2, lifecycle state and revocation remain part of V~A~. The extended authorisation decision is therefore given by {E60}, which the prototype enforces at every access request."
+  "text": "L is validated and bound at consent creation, and consequently the disjunct Jur(C) = ∅ is not reached for any consent created through the current interface, and the predicate reduces to strict equality. As in Section 5.2, lifecycle state and revocation remain part of V~A~. The extended authorisation decision is therefore given by {E60}, which the prototype enforces at every access request."
  },
  {
   "t": "eq",
@@ -895,7 +895,7 @@
  },
  {
   "t": "p",
-  "text": "{F35} summarises the implemented lifecycle and its anchored transitions. Revocation is accepted from any state that is not already REVOKED, and validity is re-established at each evaluated access request and recorded as a STATE_CHECK event in the audit ledger. Expiration and revocation already condition the demonstrated access decisions. However, the expiry path is not shown in the live demonstration, because a validity window long enough to be captured in screenshots cannot expire within the demonstration period. This path is exercised by the automated tests reported in Section 11."
+  "text": "{F35} summarises the implemented lifecycle and its anchored transitions. Revocation is accepted from any state that is not already REVOKED, and validity is re-established at each evaluated access request and recorded as a STATE_CHECK event in the audit ledger. Expiration and revocation already condition the demonstrated access decisions. However, the expiry path is not shown in the live demonstration, because a validity window long enough to be captured in screenshots cannot expire within the demonstration period, although this path is exercised by the automated tests reported in Section 11."
  },
  {
   "t": "fig",
@@ -908,7 +908,7 @@
  },
  {
   "t": "p",
-  "text": "What remains for CA3 is the dynamic and delegated dimension of lifecycle trust rather than temporal enforcement itself. It consists of the following elements."
+  "text": "What remains for CA3 is the dynamic and delegated dimension of lifecycle trust rather than temporal enforcement itself, which consists of the following elements."
  },
  {
   "t": "bullets",
@@ -934,7 +934,7 @@
  },
  {
   "t": "p",
-  "text": "RQ6 investigates whether the proposed trust-oriented authorisation framework satisfies its defined security and authorisation properties. RO6 combines formal security assurance, which specifies the conditions under which the mechanism should be considered secure and consistent, with empirical validation of whether the implemented system behaves according to those conditions. The scenario-based empirical half has been carried out on the HALAH prototype for RQ1 to RQ4, together with the temporal and revocation controls of RQ5. The formal assurance and the full evaluation remain for CA3."
+  "text": "RQ6 investigates whether the proposed trust-oriented authorisation framework satisfies its defined security and authorisation properties. RO6 combines formal security assurance, which specifies the conditions under which the mechanism should be considered secure and consistent, with empirical validation of whether the implemented system behaves according to those conditions. The scenario-based empirical half has been carried out on the HALAH prototype for RQ1 to RQ4, together with the temporal and revocation controls of RQ5, whereas the formal assurance and the full evaluation remain for CA3."
  },
  {
   "t": "h2",
@@ -966,7 +966,7 @@
  },
  {
   "t": "p",
-  "text": "The empirical evidence consists of a suite of 36 automated tests, the live demonstration on the Sepolia test network on 24 September 2026, and the independent re-verification of every recorded transaction against the chain. The 23 functional and regression tests exercise per-dimension failures of the decision matrix, invalid EIP-712 guardian signatures, and tampered or expired zero-knowledge proofs. The 13 adversarial tests cover a baseline and twelve attack scenarios. Preliminary measurements of the on-chain cost, the confirmation latency, and the processing time of the decision components were taken on 1 October 2026."
+  "text": "The empirical evidence consists of a suite of 36 automated tests, the live demonstration on the Sepolia test network on 24 September 2026, and the independent re-verification of every recorded transaction against the chain. The 23 functional and regression tests exercise per-dimension failures of the decision matrix, invalid EIP-712 guardian signatures, and tampered or expired zero-knowledge proofs, whereas the 13 adversarial tests cover a baseline and twelve attack scenarios. Preliminary measurements of the on-chain cost, the confirmation latency, and the processing time of the decision components were taken on 1 October 2026."
  },
  {
   "t": "h2",
@@ -974,7 +974,7 @@
  },
  {
   "t": "p",
-  "text": "The HALAH (History Access Link for Authorised Healthcare) prototype is a role-based consent management platform with separate patient, guardian, doctor, and auditor interfaces. Its consent token contract, ConsentSBTv3, was compiled in Remix and deployed to Sepolia through MetaMask as a soulbound ERC-721 token, so transfers between accounts are blocked. Each token stores the pseudonymous patient and requester addresses, a hash of the purpose, the validity window, a two-letter jurisdiction code, and a revocation flag. No medical content is written to the chain. The plaintext purpose is passed as a parameter of the mint transaction and is therefore visible in the public transaction input. All medical records used in the demonstration are synthetic and derived from the Synthea dataset."
+  "text": "The HALAH (History Access Link for Authorised Healthcare) prototype is a role-based consent management platform with separate patient, guardian, doctor, and auditor interfaces. Its consent token contract, ConsentSBTv3, was compiled in Remix and deployed to Sepolia through MetaMask as a soulbound ERC-721 token, so transfers between accounts are blocked. Each token stores the pseudonymous patient and requester addresses, a hash of the purpose, the validity window, a two-letter jurisdiction code, and a revocation flag. No medical content is written to the chain, although the plaintext purpose is passed as a parameter of the mint transaction and is therefore visible in the public transaction input. All medical records used in the demonstration are synthetic and derived from the Synthea dataset."
  },
  {
   "t": "p",
@@ -991,7 +991,7 @@
  },
  {
   "t": "p",
-  "text": "**Scenario 2: guardian approval and activation (validates RQ2 and RQ3).** Each guardian approves the consent with an EIP-712 typed-data signature that binds the approval to this consent, to this guardian, and to the Sepolia network (chainId 11155111). The system recovers the signer address and compares it with the address associated with the guardian DID. A signature produced for another consent, another guardian, or another chain is rejected, and a second signature from the same guardian is refused. As qualified in Section 7, cryptographic resolution of DIDs against a registry is reserved for CA3. In the implemented configuration, the threshold is N = |G|, so the demonstrated 2-of-2 approval is an N-of-N case of the threshold condition of Section 8. As shown in {F23}, the second approval reaches the 2/2 threshold and the anchoring starts in the background. The anchoring of the evaluated consent is a publicly verifiable transaction confirmed in block 11,771,243, so consent activation can be verified independently of the application."
+  "text": "**Scenario 2: guardian approval and activation (validates RQ2 and RQ3).** Each guardian approves the consent with an EIP-712 typed-data signature that binds the approval to this consent, to this guardian, and to the Sepolia network (chainId 11155111). The system recovers the signer address and compares it with the address associated with the guardian DID, so a signature produced for another consent, another guardian, or another chain is rejected, and a second signature from the same guardian is refused. As qualified in Section 7, cryptographic resolution of DIDs against a registry is reserved for CA3. In the implemented configuration, the threshold is N = |G|, so the demonstrated 2-of-2 approval is an N-of-N case of the threshold condition of Section 8. As shown in {F23}, the second approval reaches the 2/2 threshold and the anchoring starts in the background. The anchoring of the evaluated consent is a publicly verifiable transaction confirmed in block 11,771,243, so consent activation can be verified independently of the application."
  },
  {
   "t": "fig",
@@ -1000,7 +1000,7 @@
  },
  {
   "t": "p",
-  "text": "**Scenario 3: authorised doctor access (validates RQ4).** The doctor enters an authorised Consent ID, and the decision matrix reports the outcome of each predicate individually. As shown in {F27}, the five checks V~I~, V~A~, V~P~, V~T~, and V~L~ all report PASS for a requester jurisdiction of AU, and the request must then be a non-empty subset of the authorised scope. The verification also generates and verifies a Groth16 zero-knowledge proof. Because the prover and the verifier run on the same server, the proof demonstrates the integration of the zero-knowledge toolchain rather than an additional privacy guarantee. As shown in {F29}, access is granted and the authorised records are displayed per EMR module, which demonstrates fine-grained scope enforcement."
+  "text": "**Scenario 3: authorised doctor access (validates RQ4).** The doctor enters an authorised Consent ID, and the decision matrix reports the outcome of each predicate individually. As shown in {F27}, the five checks V~I~, V~A~, V~P~, V~T~, and V~L~ all report PASS for a requester jurisdiction of AU, and the request must then be a non-empty subset of the authorised scope. The verification also generates and verifies a Groth16 zero-knowledge proof, and because the prover and the verifier run on the same server, the proof demonstrates the integration of the zero-knowledge toolchain rather than an additional privacy guarantee. As shown in {F29}, access is granted and the authorised records are displayed per EMR module, which demonstrates fine-grained scope enforcement."
  },
  {
   "t": "fig",
@@ -1032,7 +1032,7 @@
  },
  {
   "t": "p",
-  "text": "**Scenario 6: audit and independent verification (supports RQ1 to RQ4).** The auditor subsystem reconstructs the complete sequence of events of a consent. As shown in {F39}, the exported ledger held 60 events, of which five were anchored on Sepolia. The rows of the evaluated consent run from CREATE_CONSENT and the guardian signatures through the on-chain mint, the granted and denied access requests, and the revocation. Because an application ledger could in principle contain fabricated entries, an independent verification tool fetches the receipt of every recorded transaction from Sepolia and compares the on-chain revocation state of each token with the local state. As shown in {F40}, the run reports ALL CHECKS PASSED, although this verification covers only the events that carry a transaction hash."
+  "text": "**Scenario 6: audit and independent verification (supports RQ1 to RQ4).** The auditor subsystem reconstructs the complete sequence of events of a consent, and as shown in {F39}, the exported ledger held 60 events, of which five were anchored on Sepolia. The rows of the evaluated consent run from CREATE_CONSENT and the guardian signatures through the on-chain mint, the granted and denied access requests, and the revocation. Because an application ledger could in principle contain fabricated entries, an independent verification tool fetches the receipt of every recorded transaction from Sepolia and compares the on-chain revocation state of each token with the local state. As shown in {F40}, the run reports ALL CHECKS PASSED, although this verification covers only the events that carry a transaction hash."
  },
  {
   "t": "fig",
@@ -1066,7 +1066,7 @@
  },
  {
   "t": "p",
-  "text": "{F41} compares the gas used by the five transactions. On the current contract, the mint of token #1 used 196,406 gas, whereas its revocation used 32,980 gas, which is about one sixth of the mint. This is because a mint creates a token and writes a complete consent record, while a revocation changes only a single flag. The gas price remained between 1.04 and 1.10 gwei, so no fee exceeded 0.00021 ETH. However, Sepolia ether has no monetary value, so the portable measure of cost is the gas used rather than the fee. Confirmation took between 4.9 s and 22.1 s, and the mint is confirmed in the background, so it does not delay the guardians or the doctor."
+  "text": "{F41} compares the gas used by the five transactions. On the current contract, the mint of token #1 used 196,406 gas, whereas its revocation used 32,980 gas, which is about one sixth of the mint, because a mint creates a token and writes a complete consent record, while a revocation changes only a single flag. The gas price remained between 1.04 and 1.10 gwei, so no fee exceeded 0.00021 ETH. However, Sepolia ether has no monetary value, so the portable measure of cost is the gas used rather than the fee. Confirmation took between 4.9 s and 22.1 s, and the mint is confirmed in the background, so it does not delay the guardians or the doctor."
  },
  {
   "t": "fig",
@@ -1083,7 +1083,7 @@
  },
  {
   "t": "p",
-  "text": "{T17} summarises the processing time of the decision components. The decision rule was timed over 1,000 evaluations of the five predicates on a loaded consent object, without signature recovery. Signature recovery, proof generation, proof verification, and the two on-chain read calls were each repeated 20 times, and the anchoring confirmation summarises the five transactions of {T15}."
+  "text": "{T17} summarises the processing time of the decision components, and the decision rule was timed over 1,000 evaluations of the five predicates on a loaded consent object, without signature recovery. Signature recovery, proof generation, proof verification, and the two on-chain read calls were each repeated 20 times, and the anchoring confirmation summarises the five transactions of {T15}."
  },
  {
   "t": "table",
@@ -1146,7 +1146,7 @@
  },
  {
   "t": "p",
-  "text": "CA3 will address the prototype limitations that the evaluation has exposed. These include the N-of-N approval rule, the server-derived guardian keys, the unauthenticated requester role, the absence of cryptographic DID resolution and VC validation, the missing lifecycle transition check, and the unkeyed and unchained audit digest. The schedule of this work is set out in Section 13."
+  "text": "CA3 will address the prototype limitations that the evaluation has exposed, which include the N-of-N approval rule, the server-derived guardian keys, the unauthenticated requester role, the absence of cryptographic DID resolution and VC validation, the missing lifecycle transition check, and the unkeyed and unchained audit digest. The schedule of this work is set out in Section 13."
  },
  {
   "t": "h1",
@@ -1210,7 +1210,7 @@
  },
  {
   "t": "p",
-  "text": "The research plan is divided into the work completed at the CA2 milestone and the work planned for the remainder of the candidature. {Tplan} presents the previous and the coming tasks in chronological order, together with their target dates and their status."
+  "text": "The research plan is divided into the work completed at the CA2 milestone and the work planned for the remainder of the candidature, and {Tplan} presents the previous and the coming tasks in chronological order, together with their target dates and their status."
  },
  {
   "t": "table",
@@ -1296,7 +1296,7 @@
  },
  {
   "t": "p",
-  "text": "As shown in {Fplan}, the chapters on the research foundation, the architecture, and the proposed solution for RQ1 to RQ4 are complete. The first publication was submitted to BWCCA 2026 in September 2026. The coming stage concentrates on RQ5 and RQ6. Consent modification, delegation, and guardian-set changes extend the lifecycle trust of Section 10. The formal security assurance and the full performance, scalability, and adversarial evaluation complete the work of Section 11."
+  "text": "As shown in {Fplan}, the chapters on the research foundation, the architecture, and the proposed solution for RQ1 to RQ4 are complete, and the first publication was submitted to BWCCA 2026 in September 2026. The coming stage concentrates on RQ5 and RQ6. Consent modification, delegation, and guardian-set changes extend the lifecycle trust of Section 10, while the formal security assurance and the full performance, scalability, and adversarial evaluation complete the work of Section 11."
  },
  {
   "t": "fig",
