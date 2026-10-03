@@ -192,7 +192,7 @@
    ],
    [
     0,
-    "Verify identity and authority of g (Algorithm 2, a structural DID check in the prototype), and **if** the verification fails **then** record the invalid approval and **return** DENY"
+    "Verify identity and authority of g (Algorithm 2, a structural DID check in the prototype), and **if** the verification fails **then** report the invalid approval and **return** DENY"
    ],
    [
     0,
@@ -204,7 +204,7 @@
    ],
    [
     1,
-    "Record invalid approval"
+    "Record invalid approval   ▷ shown in the interface in the prototype"
    ],
    [
     1,
@@ -220,7 +220,7 @@
    ],
    [
     1,
-    "Record unauthorised approval attempt"
+    "Record unauthorised approval attempt   ▷ shown in the interface in the prototype"
    ],
    [
     1,
@@ -236,7 +236,7 @@
    ],
    [
     1,
-    "Record duplicate approval"
+    "Record duplicate approval   ▷ shown in the interface in the prototype"
    ],
    [
     1,
@@ -292,7 +292,7 @@
    ],
    [
     1,
-    "Record threshold-pending event"
+    "Record threshold-pending event   ▷ shown in the interface in the prototype"
    ],
    [
     1,
@@ -339,7 +339,7 @@
    ],
    [
     1,
-    "Record denied decision"
+    "Report the refusal in the doctor interface   ▷ not written to the audit ledger in the prototype"
    ],
    [
     1,

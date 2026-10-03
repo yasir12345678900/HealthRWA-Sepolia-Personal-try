@@ -3663,14 +3663,14 @@
  },
  {
   "t": "p",
-  "text": "The denial for a consent that is not ACTIVE is reported in the doctor interface but is not written to the audit ledger in the current prototype. Only requests evaluated against an ACTIVE consent produce the STATE_CHECK and DATA_ACCESS records, and the refusal that follows revocation is therefore evidenced by the interface and the automated tests rather than by a ledger row. The system verifies whether the multi-party authorisation requirement associated with consent object C has been satisfied, under the N-of-N approval rule described in Section 8.",
+  "text": "The denial for a consent that is not ACTIVE is reported in the doctor interface but is not written to the audit ledger in the current prototype. Only requests evaluated against an ACTIVE consent produce the STATE_CHECK and DATA_ACCESS records, whether the decision is GRANTED or DENIED, and the refusal that follows revocation is therefore evidenced by the interface and the automated tests rather than by a ledger row. The system verifies whether the multi-party authorisation requirement associated with consent object C has been satisfied, under the N-of-N approval rule described in Section 8.",
   "segs": [
    [
     "The denial for a consent that is not ACTIVE is reported in the doctor interface but is not written to the audit ledger in the current prototype.",
     false
    ],
    [
-    "Only requests evaluated against an ACTIVE consent produce the STATE_CHECK and DATA_ACCESS records, and the refusal that follows revocation is therefore evidenced by the interface and the automated tests rather than by a ledger row.",
+    "Only requests evaluated against an ACTIVE consent produce the STATE_CHECK and DATA_ACCESS records, whether the decision is GRANTED or DENIED, and the refusal that follows revocation is therefore evidenced by the interface and the automated tests rather than by a ledger row.",
     false
    ],
    [
@@ -3963,7 +3963,7 @@
   "t": "bullets",
   "items": [
    "**Temporal validity.** At every access request, the system compares the current time t with the consent validity interval. This step prevents a consent from being used before its effective start time or after its expiration time. At consent creation, the expiry time must be later than the start time. These temporal attributes define the period during which the consent is potentially valid.",
-   "**On-chain revocation.** Revocation represents a deliberate termination of the previously granted consent and must therefore override an otherwise valid temporal interval. The patient's withdrawal is confirmed as a revoke transaction on Sepolia in block 11,771,307, after which the contract reports the token as no longer valid. The blockchain or token layer provides persistence, traceability, and evidence of the resulting state. For subsequent requests, the system explicitly checks whether consent object C has been revoked in the local store. If the state is not ACTIVE, the access request is denied and the decision is recorded.",
+   "**On-chain revocation.** Revocation represents a deliberate termination of the previously granted consent and must therefore override an otherwise valid temporal interval. The patient's withdrawal is confirmed as a revoke transaction on Sepolia in block 11,771,307, after which the contract reports the token as no longer valid. The blockchain or token layer provides persistence, traceability, and evidence of the resulting state. For subsequent requests, the system explicitly checks whether consent object C has been revoked in the local store. If the state is not ACTIVE, the access request is denied, and the refusal is reported in the doctor interface rather than written to the audit ledger in the current prototype.",
    "**Lifecycle states.** The lifecycle is an explicit state machine with six states PENDING_SIGNATURE, PENDING_TOKEN, NOT_STARTED, ACTIVE, EXPIRED, and REVOKED. Each evaluation derives the state from the distinct approvals of members of G, the token identifier, the revocation flag, and the current time. In particular, the system verifies that the consent has not expired, been revoked, or otherwise transitioned into an inactive state. The current state is used to determine whether the requested operation can legally and logically be performed."
   ],
   "isegs": [
@@ -4003,8 +4003,8 @@
      true
     ],
     [
-     "If the state is not ACTIVE, the access request is denied and the decision is recorded.",
-     true
+     "If the state is not ACTIVE, the access request is denied, and the refusal is reported in the doctor interface rather than written to the audit ledger in the current prototype.",
+     false
     ]
    ],
    [
@@ -4029,15 +4029,15 @@
  },
  {
   "t": "p",
-  "text": "{F35} summarises the implemented lifecycle. Each STATE_CHECK event in the audit ledger, recorded at every access request, establishes an auditable relationship between the consent\u2019s lifecycle state and the operation performed at a particular point in time. Rather than treating authorisation as a one-time event, this approach enables the system to determine whether authorisation remains valid at the precise time an operation is requested. The expiry path is not shown in the demonstration, because a window long enough for screenshots cannot expire during it, but the automated tests in Section 11 exercise it.",
+  "text": "{F35} summarises the implemented lifecycle. Each STATE_CHECK event in the audit ledger, recorded at every access request evaluated against an ACTIVE consent, establishes an auditable relationship between the consent\u2019s lifecycle state and the operation performed at a particular point in time. Rather than treating authorisation as a one-time event, this approach enables the system to determine whether authorisation remains valid at the precise time an operation is requested. The expiry path is not shown in the demonstration, because a window long enough for screenshots cannot expire during it, but the automated tests in Section 11 exercise it.",
   "segs": [
    [
     "{F35} summarises the implemented lifecycle.",
     false
    ],
    [
-    "Each STATE_CHECK event in the audit ledger, recorded at every access request, establishes an auditable relationship between the consent\u2019s lifecycle state and the operation performed at a particular point in time.",
-    true
+    "Each STATE_CHECK event in the audit ledger, recorded at every access request evaluated against an ACTIVE consent, establishes an auditable relationship between the consent\u2019s lifecycle state and the operation performed at a particular point in time.",
+    false
    ],
    [
     "Rather than treating authorisation as a one-time event, this approach enables the system to determine whether authorisation remains valid at the precise time an operation is requested.",

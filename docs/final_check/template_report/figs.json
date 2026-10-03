@@ -53,7 +53,7 @@
  },
  "14": {
   "file": "assets/F14.png",
-  "caption": "RO4 workflow for policy- and context-aware access control"
+  "caption": "RO4 workflow for policy- and context-aware access control (in the current prototype, a refusal for a consent that is not ACTIVE is reported in the doctor interface and is not written to the audit ledger, whereas every decision on an ACTIVE consent is recorded)"
  },
  "15": {
   "file": "assets/F15.png",
@@ -129,7 +129,7 @@
  },
  "33": {
   "file": "assets/F33.png",
-  "caption": "The patient subsystem during revocation: 'Revoking on Sepolia - waiting for block confirmation\u2026'."
+  "caption": "The patient subsystem during revocation: 'Revoking on Sepolia - waiting for block confirmation…'."
  },
  "34": {
   "file": "assets/F34.png",
