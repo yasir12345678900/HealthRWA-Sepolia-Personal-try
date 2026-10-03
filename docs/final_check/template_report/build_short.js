@@ -184,9 +184,11 @@ for (const b of BLOCKS) {
 // references
 C.push(new Paragraph({ heading: HeadingLevel.HEADING_1, pageBreakBefore: true, spacing: { after: 200 }, children: [new TextRun({ text: "References", font: FONT, size: 32, bold: true })] }));
 const order = Object.entries(citeMap).sort((a, b) => a[1] - b[1]);
+fs.writeFileSync(D + "citeorder.json", JSON.stringify(order));
 const HL = new Set(["8", "10", "18", "29", "82"]);
+const BLUE = new Set(fs.existsSync(D + "refs_changed.json") ? JSON.parse(fs.readFileSync(D + "refs_changed.json", "utf8")).map(String) : []);
 for (const [orig, n] of order) C.push(new Paragraph({ spacing: { after: 50, line: 240 }, indent: { left: 560, hanging: 560 }, alignment: AlignmentType.LEFT,
-  children: [new TextRun({ text: `[${n}]\t`, font: FONT, size: BODY - 4, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined }), new TextRun({ text: REFS[orig], font: FONT, size: BODY - 4, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined })], tabStops: [{ type: TabStopType.LEFT, position: 560 }] }));
+  children: [new TextRun({ text: `[${n}]\t`, font: FONT, size: BODY - 4, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined }), new TextRun({ text: REFS[orig], font: FONT, size: BODY - 4, color: process.env.RED === "1" && BLUE.has(String(orig)) ? "00B0F0" : undefined, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined })], tabStops: [{ type: TabStopType.LEFT, position: 560 }] }));
 
 const doc = new Document({
   creator: "Yasir Dhaifallah O Alyoubi", title: "CA2 Report: A Trusted Authorization Framework for Multi-Party Patient Consent in Healthcare Data Sharing",
