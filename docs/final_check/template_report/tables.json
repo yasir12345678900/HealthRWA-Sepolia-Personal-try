@@ -676,7 +676,7 @@
   ]
  },
  "9": {
-  "caption": "Comparison of the included studies and the proposed framework against the key requirements",
+  "caption": "Comparison of the included studies against the key requirements",
   "rows": [
    [
     "Study",
@@ -911,15 +911,6 @@
     "⟦r⟧No⟦/r⟧",
     "⟦r⟧No⟦/r⟧",
     "⟦r⟧Yes⟦/r⟧"
-   ],
-   [
-    "Proposed framework (HALAH)",
-    "⟦r⟧Yes⟦/r⟧",
-    "⟦r⟧Yes⟦/r⟧",
-    "⟦r⟧Yes⟦/r⟧",
-    "⟦r⟧Yes⟦/r⟧",
-    "⟦r⟧Partial⟦/r⟧",
-    "⟦r⟧Partial⟦/r⟧"
    ]
   ],
   "widths": [

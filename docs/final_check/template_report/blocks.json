@@ -1232,7 +1232,7 @@
  },
  {
   "t": "p",
-  "text": "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing. These contributions address different layers of the security problem. No individual mechanism can independently establish that a healthcare data-access decision is trustworthy. The systems that enforce purpose and time are authored by a single patient and lack a formal argument. The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, \u27e6r\u27e7where Yes denotes satisfied, Partial partially satisfied, and No not satisfied. For the proposed framework, Yes denotes a requirement that is addressed and validated at the current stage, and Partial denotes a requirement that is partially completed and will be completed in CA3.\u27e6/r\u27e7",
+  "text": "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing. These contributions address different layers of the security problem. No individual mechanism can independently establish that a healthcare data-access decision is trustworthy. The systems that enforce purpose and time are authored by a single patient and lack a formal argument. The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, \u27e6r\u27e7where Yes denotes satisfied, Partial partially satisfied, and No not satisfied.\u27e6/r\u27e7",
   "segs": [
    [
     "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing.",
@@ -1252,10 +1252,6 @@
    ],
    [
     "The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, where Yes denotes satisfied, Partial partially satisfied, and No not satisfied.",
-    false
-   ],
-   [
-    "For the proposed framework, Yes denotes a requirement that is addressed and validated at the current stage, and Partial denotes a requirement that is partially completed and will be completed in CA3.",
     false
    ]
   ]
@@ -1300,7 +1296,7 @@
  },
  {
   "t": "p",
-  "text": "The comparison indicates that the principal contribution of the proposed research is not the replacement of existing technologies. Rather, it lies in establishing an explicit conceptual relationship among them. The consent object C carries the identity, authority, threshold, policy, temporal, and lifecycle conditions together, so that their relationship is verifiable. The final row of {T9} positions the proposed framework relative to the existing literature. The conjunction is formally specified and validated through allow-and-deny test cases and attack cases, whereas its formal verification and the remaining lifecycle extensions of RQ5 are reserved for CA3 (Sections 10 and 11).",
+  "text": "The comparison indicates that the principal contribution of the proposed research is not the replacement of existing technologies. Rather, it lies in establishing an explicit conceptual relationship among them. The consent object C carries the identity, authority, threshold, policy, temporal, and lifecycle conditions together, so that their relationship is verifiable. \u27e6r\u27e7{Treq} in Section 2.6 positions the proposed framework relative to these requirements.\u27e6/r\u27e7 The conjunction is formally specified and validated through allow-and-deny test cases and attack cases, whereas its formal verification and the remaining lifecycle extensions of RQ5 are reserved for CA3 (Sections 10 and 11).",
   "segs": [
    [
     "The comparison indicates that the principal contribution of the proposed research is not the replacement of existing technologies.",
@@ -1311,12 +1307,8 @@
     true
    ],
    [
-    "The consent object C carries the identity, authority, threshold, policy, temporal, and lifecycle conditions together, so that their relationship is verifiable.",
+    "The consent object C carries the identity, authority, threshold, policy, temporal, and lifecycle conditions together, so that their relationship is verifiable. {Treq} in Section 2.6 positions the proposed framework relative to these requirements.",
     false
-   ],
-   [
-    "The final row of {T9} positions the proposed framework relative to the existing literature.",
-    true
    ],
    [
     "The conjunction is formally specified and validated through allow-and-deny test cases and attack cases, whereas its formal verification and the remaining lifecycle extensions of RQ5 are reserved for CA3 (Sections 10 and 11).",
@@ -1428,6 +1420,85 @@
     false
    ]
   ]
+ },
+ {
+  "t": "h2",
+  "text": "The Proposed Framework and the Key Requirements"
+ },
+ {
+  "t": "p",
+  "text": "\u27e6r\u27e7The research addresses this gap by developing a trust-oriented authorisation model in which consent is not simply evidence that permission was granted, but the basis for evaluating whether a particular access request should be trusted. The resulting research direction places Trust Computing at the centre of the investigation, while treating blockchain, decentralised identity, verifiable credentials, and policy mechanisms as enabling technologies supporting the broader trust model. {Treq} summarises how the proposed framework, implemented in the HALAH prototype, addresses each requirement, the research objective that delivers it, and its current status. A requirement with the status Done is addressed and validated at the current stage, whereas a requirement that is partially completed will be completed in CA3.\u27e6/r\u27e7",
+  "segs": [
+   [
+    "The research addresses this gap by developing a trust-oriented authorisation model in which consent is not simply evidence that permission was granted, but the basis for evaluating whether a particular access request should be trusted.",
+    true
+   ],
+   [
+    "The resulting research direction places Trust Computing at the centre of the investigation, while treating blockchain, decentralised identity, verifiable credentials, and policy mechanisms as enabling technologies supporting the broader trust model. {Treq} summarises how the proposed framework, implemented in the HALAH prototype, addresses each requirement, the research objective that delivers it, and its current status.",
+    false
+   ],
+   [
+    "A requirement with the status Done is addressed and validated at the current stage, whereas a requirement that is partially completed will be completed in CA3.",
+    false
+   ]
+  ]
+ },
+ {
+  "t": "table",
+  "key": "Treq",
+  "custom": {
+   "caption": "\u27e6r\u27e7How the proposed framework addresses the key requirements\u27e6/r\u27e7",
+   "header": [
+    "Requirement",
+    "How the proposed framework (HALAH) addresses it",
+    "Objective",
+    "Status"
+   ],
+   "widths": [
+    1350,
+    4478,
+    1500,
+    1800
+   ],
+   "rows": [
+    [
+     "\u27e6r\u27e7Req 1\u27e6/r\u27e7",
+     "\u27e6r\u27e7Consent is represented as the evaluable object C = (I, A, P, T, L, E), created through {A1} and evaluated at every access request.\u27e6/r\u27e7",
+     "\u27e6r\u27e7RO1 (Section 6)\u27e6/r\u27e7",
+     "\u27e6r\u27e7Done\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7Req 2\u27e6/r\u27e7",
+     "\u27e6r\u27e7DID and VC verification separates identity from authority and is expressed as V~I~. The prototype checks the DID format, and full DID resolution and VC validation are planned for CA3.\u27e6/r\u27e7",
+     "\u27e6r\u27e7RO2 (Section 7)\u27e6/r\u27e7",
+     "\u27e6r\u27e7Done\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7Req 3\u27e6/r\u27e7",
+     "\u27e6r\u27e7N-of-N approval by the guardian set G with EIP-712 guardian signatures, evaluated as V~A~ through {A3}.\u27e6/r\u27e7",
+     "\u27e6r\u27e7RO3 (Section 8)\u27e6/r\u27e7",
+     "\u27e6r\u27e7Done\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7Req 4\u27e6/r\u27e7",
+     "\u27e6r\u27e7Purpose and a non-empty data scope within the consent are evaluated as V~P~ through {A4}, together with the jurisdiction condition V~L~(C, R).\u27e6/r\u27e7",
+     "\u27e6r\u27e7RO4 (Section 9)\u27e6/r\u27e7",
+     "\u27e6r\u27e7Done\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7Req 5\u27e6/r\u27e7",
+     "\u27e6r\u27e7The validity window V~T~, revocation, the lifecycle states, and the on-chain revocation on Sepolia. The lifecycle transition check is not yet implemented.\u27e6/r\u27e7",
+     "\u27e6r\u27e7RO5 (Section 10)\u27e6/r\u27e7",
+     "\u27e6r\u27e7In Progress (partially completed)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7Req 6\u27e6/r\u27e7",
+     "\u27e6r\u27e7Audit ledger evidence, 36 automated tests, and twelve unit-level attack scenarios. Formal analysis is reserved for CA3.\u27e6/r\u27e7",
+     "\u27e6r\u27e7RO6 (Section 11)\u27e6/r\u27e7",
+     "\u27e6r\u27e7Partially completed (for RQ1 to RQ4)\u27e6/r\u27e7"
+    ]
+   ]
+  }
  },
  {
   "t": "h1",
