@@ -129,7 +129,7 @@ svg("gfig2b",940,712,s);
 /* ---------- gfig2c : synthesis / gap ---------- */
 {
 let s="";
-const streams=[["Consent representation (Req 1)","satisfied (✓): 12 of 25"],["Identity & authority (Req 2)","satisfied (✓): 7 of 25"],["Multi-party authorisation (Req 3)","satisfied (✓): 6 of 25"],["Policy & context (Req 4)","satisfied (✓): 10 of 25"],["Temporal & lifecycle (Req 5)","satisfied (✓): 8 of 25"],["Formal & empirical assurance (Req 6)","satisfied (✓): 9 of 25, formal proof: 4"]];
+const streams=[["Consent representation (Req 1)","Yes: 12 of 25"],["Identity & authority (Req 2)","Yes: 7 of 25"],["Multi-party authorisation (Req 3)","Yes: 6 of 25"],["Policy & context (Req 4)","Yes: 10 of 25"],["Temporal & lifecycle (Req 5)","Yes: 8 of 25"],["Formal & empirical assurance (Req 6)","Yes: 9 of 25, formal proof: 4"]];
 streams.forEach((p,i)=>{ const y=50+i*76;
   s+=node({x:170,y,w:290,h:58,type:"box",lines:[p[0],p[1]],style:"fill:#E8F5E9;stroke:#43A047",fs:12.5,small:true});
   s+=`<path d="M 316 ${y} C 380 ${y}, 380 ${240}, 428 ${240+(y-240)*0.06}" style="stroke:#8a8a5a;stroke-width:1.4;fill:none" marker-end="url(#arr)"/>`; });

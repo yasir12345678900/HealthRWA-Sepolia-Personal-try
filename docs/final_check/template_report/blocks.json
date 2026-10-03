@@ -878,7 +878,7 @@
  },
  {
   "t": "p",
-  "text": "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing. These contributions address different layers of the security problem. No individual mechanism can independently establish that a healthcare data-access decision is trustworthy. The systems that enforce purpose and time are authored by a single patient and lack a formal argument. The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, where \u2713 denotes satisfied, ~ partially satisfied, and \u00d7 not satisfied. For the proposed framework, \u2713 denotes a requirement that is addressed and validated at the current stage, and ~ denotes a requirement that is partially completed and will be completed in CA3.",
+  "text": "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing. These contributions address different layers of the security problem. No individual mechanism can independently establish that a healthcare data-access decision is trustworthy. The systems that enforce purpose and time are authored by a single patient and lack a formal argument. The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, where Yes denotes satisfied, Partial partially satisfied, and No not satisfied. For the proposed framework, Yes denotes a requirement that is addressed and validated at the current stage, and Partial denotes a requirement that is partially completed and will be completed in CA3.",
   "segs": [
    [
     "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing.",
@@ -897,11 +897,11 @@
     false
    ],
    [
-    "The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, where \u2713 denotes satisfied, ~ partially satisfied, and \u00d7 not satisfied.",
+    "The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, where Yes denotes satisfied, Partial partially satisfied, and No not satisfied.",
     false
    ],
    [
-    "For the proposed framework, \u2713 denotes a requirement that is addressed and validated at the current stage, and ~ denotes a requirement that is partially completed and will be completed in CA3.",
+    "For the proposed framework, Yes denotes a requirement that is addressed and validated at the current stage, and Partial denotes a requirement that is partially completed and will be completed in CA3.",
     false
    ]
   ]
@@ -1051,7 +1051,7 @@
  {
   "t": "fig",
   "ref": "F5",
-  "caption": "Synthesis of the review: the conjunction gap and the assurance gap addressed by the proposed framework, with the number of the 25 analysed studies marked \u2713 for each requirement in Table 1"
+  "caption": "Synthesis of the review: the conjunction gap and the assurance gap addressed by the proposed framework, with the number of the 25 analysed studies graded Yes for each requirement in Table 1"
  },
  {
   "t": "p",
