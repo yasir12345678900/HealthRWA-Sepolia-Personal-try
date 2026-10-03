@@ -546,10 +546,14 @@
  },
  {
   "t": "p",
-  "text": "The searches ran on 24 and 25 August 2026, and the ACM Digital Library on 5 September 2026 as a late arm, a declared limitation. A sentinel test of twelve predefined papers checked the recall of the master query, and all four healthcare-scoped sentinels [53, 49, 71, 37] were retrieved. Seven of the eight misses were attributed to scope, missing trust terms, or the date range, and the cause of the eighth was recorded as an open item. The search results from all databases were exported into a reference management system. Duplicate records were identified using bibliographic metadata, including title, author, DOI, and publication year. Where duplicate records were identified, the most complete bibliographic record was retained for subsequent screening.",
+  "text": "\u27e6r\u27e7IEEE Xplore, Scopus, Web of Science, and ProQuest were searched on 24 August 2026, SpringerLink, ScienceDirect, and Google Scholar on 25 August 2026, and the ACM Digital Library on 5 September 2026 as a late arm, a declared limitation. Full-text coding began on 26 August 2026.\u27e6/r\u27e7 A sentinel test of twelve predefined papers checked the recall of the master query, and all four healthcare-scoped sentinels [53, 49, 71, 37] were retrieved. Seven of the eight misses were attributed to scope, missing trust terms, or the date range, and the cause of the eighth was recorded as an open item. The search results from all databases were exported into a reference management system. Duplicate records were identified using bibliographic metadata, including title, author, DOI, and publication year. Where duplicate records were identified, the most complete bibliographic record was retained for subsequent screening.",
   "segs": [
    [
-    "The searches ran on 24 and 25 August 2026, and the ACM Digital Library on 5 September 2026 as a late arm, a declared limitation.",
+    "IEEE Xplore, Scopus, Web of Science, and ProQuest were searched on 24 August 2026, SpringerLink, ScienceDirect, and Google Scholar on 25 August 2026, and the ACM Digital Library on 5 September 2026 as a late arm, a declared limitation.",
+    false
+   ],
+   [
+    "Full-text coding began on 26 August 2026.",
     false
    ],
    [
@@ -878,7 +882,7 @@
  },
  {
   "t": "p",
-  "text": "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing. These contributions address different layers of the security problem. No individual mechanism can independently establish that a healthcare data-access decision is trustworthy. The systems that enforce purpose and time are authored by a single patient and lack a formal argument. The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, where Yes denotes satisfied, Partial partially satisfied, and No not satisfied. For the proposed framework, Yes denotes a requirement that is addressed and validated at the current stage, and Partial denotes a requirement that is partially completed and will be completed in CA3.",
+  "text": "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing. These contributions address different layers of the security problem. No individual mechanism can independently establish that a healthcare data-access decision is trustworthy. The systems that enforce purpose and time are authored by a single patient and lack a formal argument. The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, \u27e6r\u27e7where Yes denotes satisfied, Partial partially satisfied, and No not satisfied. For the proposed framework, Yes denotes a requirement that is addressed and validated at the current stage, and Partial denotes a requirement that is partially completed and will be completed in CA3.\u27e6/r\u27e7",
   "segs": [
    [
     "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing.",
@@ -1051,7 +1055,7 @@
  {
   "t": "fig",
   "ref": "F5",
-  "caption": "Synthesis of the review: the conjunction gap and the assurance gap addressed by the proposed framework, with the number of the 25 analysed studies graded Yes for each requirement in Table 1"
+  "caption": "Synthesis of the review: the conjunction gap and the assurance gap addressed by the proposed framework, with the number of the 25 analysed studies \u27e6r\u27e7graded Yes for each requirement in Table 1\u27e6/r\u27e7"
  },
  {
   "t": "p",

@@ -49,12 +49,13 @@ function fixText(s) {
   return s;
 }
 function runs(text, base = {}) {
-  const out = []; const re = /(\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
+  const out = []; const re = /(⟦r⟧[\s\S]*?⟦\/r⟧|\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
   text = String(text);
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: text.slice(last, m.index) }));
     const t = m[0];
-    if (t === ";") out.push(new TextRun({ font: FONT, size: BODY, ...base, text: ";", highlight: process.env.GREEN === "1" ? "yellow" : undefined }));
+    if (t.startsWith("⟦r⟧")) out.push(...runs(t.slice(3, -4), process.env.RED === "1" ? { ...base, color: "FF0000" } : base));
+    else if (t === ";") out.push(new TextRun({ font: FONT, size: BODY, ...base, text: ";", highlight: process.env.GREEN === "1" ? "yellow" : undefined }));
     else if (t.startsWith("**")) out.push(...runs(t.slice(2, -2), { ...base, bold: true }));
     else if (t.startsWith("~")) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(1, -1), subScript: true }));
     else out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(1, -1), superScript: true }));
@@ -66,7 +67,7 @@ function runs(text, base = {}) {
 const GREEN = process.env.GREEN === "1" ? { color: "00A000" } : {};
 const P = (text, opts = {}, base = {}) => new Paragraph({ children: runs(fixText(text), { ...GREEN, ...base }), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 }, ...opts });
 // GREEN copy: sentences taken from the original report stay black, the rest are green
-const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t), o ? {} : GREEN));
+const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t.replace(/⟦\/?r⟧/g, "")), o ? {} : GREEN));
 const SEGP = segs => new Paragraph({ children: SEGR(segs), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 } });
 const cb = { style: BorderStyle.SINGLE, size: 4, color: "666666" };
 const bAll = { top: cb, left: cb, bottom: cb, right: cb };
@@ -200,7 +201,7 @@ const doc = new Document({
     children: C }],
 });
 Packer.toBuffer(doc).then(buf => {
-  fs.writeFileSync(D + (process.env.GREEN === "1" ? "CA2_short_green.docx" : "CA2_short.docx"), buf);
+  fs.writeFileSync(D + (process.env.GREEN === "1" ? "CA2_short_green.docx" : process.env.RED === "1" ? "CA2_short_red.docx" : "CA2_short.docx"), buf);
   fs.writeFileSync(D + "build_report.json", JSON.stringify({ problems, figures: cnt.F, tables: cnt.T, equations: cnt.E, algorithms: cnt.A, references: citeN, toc: tocTitles }, null, 1));
   console.log("figures", cnt.F, "tables", cnt.T, "equations", cnt.E, "algorithms", cnt.A, "refs", citeN, "problems", problems.length);
   problems.slice(0, 30).forEach(p => console.log("  ", p));
