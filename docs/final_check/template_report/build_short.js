@@ -54,7 +54,7 @@ function runs(text, base = {}) {
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: text.slice(last, m.index) }));
     const t = m[0];
-    if (t === ";") out.push(new TextRun({ font: FONT, size: BODY, ...base, text: ";", highlight: "yellow" }));
+    if (t === ";") out.push(new TextRun({ font: FONT, size: BODY, ...base, text: ";", highlight: process.env.GREEN === "1" ? "yellow" : undefined }));
     else if (t.startsWith("**")) out.push(...runs(t.slice(2, -2), { ...base, bold: true }));
     else if (t.startsWith("~")) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(1, -1), subScript: true }));
     else out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(1, -1), superScript: true }));
@@ -185,7 +185,7 @@ C.push(new Paragraph({ heading: HeadingLevel.HEADING_1, pageBreakBefore: true, s
 const order = Object.entries(citeMap).sort((a, b) => a[1] - b[1]);
 const HL = new Set(["8", "10", "18", "29", "82"]);
 for (const [orig, n] of order) C.push(new Paragraph({ spacing: { after: 50, line: 240 }, indent: { left: 560, hanging: 560 }, alignment: AlignmentType.LEFT,
-  children: [new TextRun({ text: `[${n}]\t`, font: FONT, size: BODY - 4, highlight: HL.has(String(orig)) ? "yellow" : undefined }), new TextRun({ text: REFS[orig], font: FONT, size: BODY - 4, highlight: HL.has(String(orig)) ? "yellow" : undefined })], tabStops: [{ type: TabStopType.LEFT, position: 560 }] }));
+  children: [new TextRun({ text: `[${n}]\t`, font: FONT, size: BODY - 4, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined }), new TextRun({ text: REFS[orig], font: FONT, size: BODY - 4, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined })], tabStops: [{ type: TabStopType.LEFT, position: 560 }] }));
 
 const doc = new Document({
   creator: "Yasir Dhaifallah O Alyoubi", title: "CA2 Report: A Trusted Authorization Framework for Multi-Party Patient Consent in Healthcare Data Sharing",
