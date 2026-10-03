@@ -878,7 +878,7 @@
  },
  {
   "t": "p",
-  "text": "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing. These contributions address different layers of the security problem. No individual mechanism can independently establish that a healthcare data-access decision is trustworthy. The systems that enforce purpose and time are authored by a single patient and lack a formal argument. The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, where \u2713 denotes satisfied, ~ partially satisfied, and \u00d7 not satisfied.",
+  "text": "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing. These contributions address different layers of the security problem. No individual mechanism can independently establish that a healthcare data-access decision is trustworthy. The systems that enforce purpose and time are authored by a single patient and lack a formal argument. The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, where \u2713 denotes satisfied, ~ partially satisfied, and \u00d7 not satisfied. For the proposed framework, \u2713 denotes a requirement that is addressed and validated at the current stage, and ~ denotes a requirement that is partially completed and will be completed in CA3.",
   "segs": [
    [
     "The reviewed literature demonstrates that existing approaches provide strong solutions for individual dimensions of trustworthy data sharing.",
@@ -898,6 +898,10 @@
    ],
    [
     "The multi-party systems carry no purpose or data-scope condition, whereas the proved schemes omit policy, temporal validity, and lifecycle. {T9} summarises the 25 studies against the six requirements, where \u2713 denotes satisfied, ~ partially satisfied, and \u00d7 not satisfied.",
+    false
+   ],
+   [
+    "For the proposed framework, \u2713 denotes a requirement that is addressed and validated at the current stage, and ~ denotes a requirement that is partially completed and will be completed in CA3.",
     false
    ]
   ]
@@ -1020,7 +1024,7 @@
  },
  {
   "t": "p",
-  "text": "The review establishes two gaps. The first is a **conjunction gap**, since no study conjoins identity, authority, threshold, policy, temporal, jurisdictional, and lifecycle conditions in one decision predicate in which multi-party approval is a standing condition and the patient defines the approving set. The second is an **assurance gap**, since co-existing conditions are neither proved nor tested as an authorisation decision, and any proof covers only a fragment of the predicate. As shown in {F5}, the proposed research addresses both gaps by developing a trusted multi-party consent governance framework in which consent is represented as an evaluable authorisation object. Each of Req 1 to Req 6 also leaves a requirement-level gap, termed Gap 1 to Gap 6, and each gap corresponds to the research question and objective of the same number in Sections 3 and 4.",
+  "text": "The review establishes two gaps. The first is a **conjunction gap**, since no study conjoins identity, authority, threshold, policy, temporal, jurisdictional, and lifecycle conditions in one decision predicate in which multi-party approval is a standing condition and the patient defines the approving set. The second is an **assurance gap**, since co-existing conditions are neither proved nor tested as an authorisation decision, and any proof covers only a fragment of the predicate. As shown in {F5}, the proposed research addresses both gaps by developing a trusted multi-party consent governance framework in which consent is represented as an evaluable authorisation object. Each of Req 1 to Req 6 also leaves a requirement-level gap, termed Gap 1 to Gap 6 and stated in Section 3.1, and each gap corresponds to the research question and objective of the same number in Sections 3 and 4.",
   "segs": [
    [
     "The review establishes two gaps.",
@@ -1039,7 +1043,7 @@
     true
    ],
    [
-    "Each of Req 1 to Req 6 also leaves a requirement-level gap, termed Gap 1 to Gap 6, and each gap corresponds to the research question and objective of the same number in Sections 3 and 4.",
+    "Each of Req 1 to Req 6 also leaves a requirement-level gap, termed Gap 1 to Gap 6 and stated in Section 3.1, and each gap corresponds to the research question and objective of the same number in Sections 3 and 4.",
     false
    ]
   ]
@@ -1191,6 +1195,75 @@
    ],
    [
     "The approving set must be defined by the patient rather than by an institution, whereas in the reviewed studies, the approving set is either defined on the institutional or delegate side [61, 50, 75], or appointed by the patient [69, 54] but evaluated only as a contingency path or as a key-custody threshold.",
+    false
+   ]
+  ]
+ },
+ {
+  "t": "p",
+  "text": "The requirement-level gaps identified in Section 2 can be stated as follows.",
+  "segs": [
+   [
+    "The requirement-level gaps identified in Section 2 can be stated as follows.",
+    false
+   ]
+  ]
+ },
+ {
+  "t": "bullets",
+  "items": [
+   "**Gap 1 (consent representation).** Existing approaches tend to treat consent primarily as a record of a patient\u2019s permission, and the evaluable consent objects reported carry only a subset of the conditions and are issued by a single party.",
+   "**Gap 2 (identity and authority).** A valid decentralised identity can establish who a participant is, but it does not necessarily establish what that participant is authorised to do, and authority is rarely verified separately from authentication.",
+   "**Gap 3 (multi-party authorisation).** Multi-party approval appears as a contingency path, an admission gate, or a registration-time co-consent, but not as a standing condition of every access decision with an approving set defined by the patient.",
+   "**Gap 4 (policy and context).** Purpose, data-scope, and jurisdictional constraints are rarely bound to the same access decision as identity, authority, and multi-party approval.",
+   "**Gap 5 (temporal and lifecycle trust).** Temporal validity, lifecycle state, and revocation are often enforced on a credential or at registration rather than evaluated at the time of each access request.",
+   "**Gap 6 (security assurance).** The authorisation decision as a whole is neither formally proved nor systematically tested, and any proof covers only a fragment of the predicate."
+  ],
+  "isegs": [
+   [
+    [
+     "**Gap 1 (consent representation).** Existing approaches tend to treat consent primarily as a record of a patient\u2019s permission, and the evaluable consent objects reported carry only a subset of the conditions and are issued by a single party.",
+     false
+    ]
+   ],
+   [
+    [
+     "**Gap 2 (identity and authority).** A valid decentralised identity can establish who a participant is, but it does not necessarily establish what that participant is authorised to do, and authority is rarely verified separately from authentication.",
+     true
+    ]
+   ],
+   [
+    [
+     "**Gap 3 (multi-party authorisation).** Multi-party approval appears as a contingency path, an admission gate, or a registration-time co-consent, but not as a standing condition of every access decision with an approving set defined by the patient.",
+     false
+    ]
+   ],
+   [
+    [
+     "**Gap 4 (policy and context).** Purpose, data-scope, and jurisdictional constraints are rarely bound to the same access decision as identity, authority, and multi-party approval.",
+     false
+    ]
+   ],
+   [
+    [
+     "**Gap 5 (temporal and lifecycle trust).** Temporal validity, lifecycle state, and revocation are often enforced on a credential or at registration rather than evaluated at the time of each access request.",
+     false
+    ]
+   ],
+   [
+    [
+     "**Gap 6 (security assurance).** The authorisation decision as a whole is neither formally proved nor systematically tested, and any proof covers only a fragment of the predicate.",
+     false
+    ]
+   ]
+  ]
+ },
+ {
+  "t": "p",
+  "text": "Gap 1 to Gap 5 together form the conjunction gap, whereas Gap 6 corresponds to the assurance gap, and each gap is addressed by the research question and objective of the same number.",
+  "segs": [
+   [
+    "Gap 1 to Gap 5 together form the conjunction gap, whereas Gap 6 corresponds to the assurance gap, and each gap is addressed by the research question and objective of the same number.",
     false
    ]
   ]
@@ -1546,7 +1619,7 @@
  },
  {
   "t": "p",
-  "text": "The fourth research objective is to develop a policy-aware authorisation mechanism that evaluates the purpose and data scope of a requested operation against the constraints defined by the consent. The objective is to ensure that a valid identity and sufficient multi-party approval cannot be used to obtain healthcare information outside the authorised scope. A request is permitted only when the purpose is compatible with the consent and the requested data scope is a non-empty subset of the authorised EMR modules. RO4 directly addresses RQ4 and completes the foundational authorisation model. Together, RO1\u2013RO4 establish the representation, verification, collective authorisation, and policy-enforcement mechanisms required for a trust-oriented healthcare data-sharing decision.",
+  "text": "The fourth research objective is to develop a policy-aware authorisation mechanism that evaluates the purpose and data scope of a requested operation against the constraints defined by the consent. The objective is to ensure that a valid identity and sufficient multi-party approval cannot be used to obtain healthcare information outside the authorised scope. A request is permitted only when the purpose is compatible with the consent and the requested data scope is a non-empty subset of the authorised EMR modules. In the current prototype, the request purpose is taken from the consent, so the purpose check confirms that the consent purpose is a supported healthcare use, while the comparison with a separately declared request purpose is left to the next stage. RO4 directly addresses RQ4 and completes the foundational authorisation model. Together, RO1\u2013RO4 establish the representation, verification, collective authorisation, and policy-enforcement mechanisms required for a trust-oriented healthcare data-sharing decision.",
   "segs": [
    [
     "The fourth research objective is to develop a policy-aware authorisation mechanism that evaluates the purpose and data scope of a requested operation against the constraints defined by the consent.",
@@ -1559,6 +1632,10 @@
    [
     "A request is permitted only when the purpose is compatible with the consent and the requested data scope is a non-empty subset of the authorised EMR modules.",
     true
+   ],
+   [
+    "In the current prototype, the request purpose is taken from the consent, so the purpose check confirms that the consent purpose is a supported healthcare use, while the comparison with a separately declared request purpose is left to the next stage.",
+    false
    ],
    [
     "RO4 directly addresses RQ4 and completes the foundational authorisation model.",
@@ -3723,7 +3800,7 @@
  },
  {
   "t": "p",
-  "text": "Every denial names the failed checks in the interface. Each consent specification and access request is accepted only when the required fields are valid. Malformed identifiers, scopes, and jurisdictions therefore do not reach the decision logic. The procedure also implements the principle of least privilege through the explicit scope-containment condition S~R~ \u2286 S~C~. Consequently, even when a participant possesses a valid DID, a valid VC, and sufficient authority, the participant cannot retrieve healthcare resources outside the scope explicitly authorised by the consent. Similarly, a valid consent cannot be used for an incompatible purpose or before the required multi-party authorisation threshold has been reached.",
+  "text": "Every denial names the failed checks in the interface. Each consent specification and access request is accepted only when the required fields are valid. Malformed identifiers, scopes, and jurisdictions therefore do not reach the decision logic. The procedure also implements the principle of least privilege through the explicit scope-containment condition S~R~ \u2286 S~C~. Consequently, even when a participant possesses a valid DID, a valid VC, and sufficient authority, the participant cannot retrieve healthcare resources outside the scope explicitly authorised by the consent. Similarly, a valid consent cannot be used for an unsupported purpose or before the required multi-party authorisation threshold has been reached.",
   "segs": [
    [
     "Every denial names the failed checks in the interface.",
@@ -3746,7 +3823,7 @@
     true
    ],
    [
-    "Similarly, a valid consent cannot be used for an incompatible purpose or before the required multi-party authorisation threshold has been reached.",
+    "Similarly, a valid consent cannot be used for an unsupported purpose or before the required multi-party authorisation threshold has been reached.",
     true
    ]
   ]
@@ -4522,7 +4599,7 @@
  },
  {
   "t": "p",
-  "text": "**Scenario 3: authorised doctor access (validates RQ4).** The Doctor interface retrieves a consent, evaluates its state, allows a requested scope to be selected from the consent scope, generates a proof, checks the requested scope, and invokes the authorisation function before returning data. As shown in {F27}, the decision matrix enables validation results to be traced from the final decision back to the individual authorisation conditions that produced that decision. A request is permitted only when the purpose is compatible with the consent and the requested data scope is non-empty and contained within the authorised scope. Consequently, a valid identity and sufficient multi-party approval are necessary but not sufficient conditions for access. Here, the system generates or verifies the evidence supporting the access decision as a Groth16 zero-knowledge proof. Because the prover and the verifier run on the same server, the proof demonstrates the integration of the zero-knowledge toolchain rather than an additional privacy guarantee. As shown in {F29}, once the request has been successfully authorised, the system retrieves only the healthcare data satisfying the authorised scope and displays them per EMR module. This rule prevents a legitimate participant from obtaining data outside the patient\u2019s authorised scope.",
+  "text": "**Scenario 3: authorised doctor access (validates RQ4).** The Doctor interface retrieves a consent, evaluates its state, allows a requested scope to be selected from the consent scope, generates a proof, checks the requested scope, and invokes the authorisation function before returning data. As shown in {F27}, the decision matrix enables validation results to be traced from the final decision back to the individual authorisation conditions that produced that decision. A request is permitted only when the consent purpose is a supported healthcare use and the requested data scope is non-empty and contained within the authorised scope. Consequently, a valid identity and sufficient multi-party approval are necessary but not sufficient conditions for access. Here, the system generates or verifies the evidence supporting the access decision as a Groth16 zero-knowledge proof. Because the prover and the verifier run on the same server, the proof demonstrates the integration of the zero-knowledge toolchain rather than an additional privacy guarantee. As shown in {F29}, once the request has been successfully authorised, the system retrieves only the healthcare data satisfying the authorised scope and displays them per EMR module. This rule prevents a legitimate participant from obtaining data outside the patient\u2019s authorised scope.",
   "segs": [
    [
     "**Scenario 3: authorised doctor access (validates RQ4).** The Doctor interface retrieves a consent, evaluates its state, allows a requested scope to be selected from the consent scope, generates a proof, checks the requested scope, and invokes the authorisation function before returning data.",
@@ -4533,8 +4610,8 @@
     true
    ],
    [
-    "A request is permitted only when the purpose is compatible with the consent and the requested data scope is non-empty and contained within the authorised scope.",
-    true
+    "A request is permitted only when the consent purpose is a supported healthcare use and the requested data scope is non-empty and contained within the authorised scope.",
+    false
    ],
    [
     "Consequently, a valid identity and sufficient multi-party approval are necessary but not sufficient conditions for access.",

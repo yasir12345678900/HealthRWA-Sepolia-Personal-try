@@ -53,7 +53,7 @@
  },
  "14": {
   "file": "assets/F14.png",
-  "caption": "RO4 workflow for policy- and context-aware access control (in the current prototype, a refusal for a consent that is not ACTIVE is reported in the doctor interface and is not written to the audit ledger, whereas every decision on an ACTIVE consent is recorded)"
+  "caption": "RO4 workflow for policy- and context-aware access control (in the current prototype, a refusal for a consent that is not ACTIVE is reported in the doctor interface and is not written to the audit ledger, whereas every decision on an ACTIVE consent is recorded, and the requested purpose is the consent purpose)"
  },
  "15": {
   "file": "assets/F15.png",
