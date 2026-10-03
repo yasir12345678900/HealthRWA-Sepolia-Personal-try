@@ -171,6 +171,7 @@ for (const b of BLOCKS) {
   if (b.t === "h1") C.push(h1(b.text));
   else if (b.t === "h2") C.push(h2(b.text));
   else if (b.t === "status") C.push(statusLine(b.text));
+  else if (b.t === "sub") C.push(new Paragraph({ spacing: { before: 0, after: 140 }, children: [new TextRun({ text: b.text, bold: true, italics: true, font: FONT, size: BODY + 4 })] }));
   else if (b.t === "p") C.push(GREEN.color && b.segs ? SEGP(b.segs) : P(b.text));
   else if (b.t === "bullets") for (const it of b.items || []) C.push(new Paragraph({ bullet: { level: 0 }, alignment: AlignmentType.JUSTIFIED, spacing: { after: 80, line: 288 }, children: GREEN.color && b.isegs ? SEGR(b.isegs[b.items.indexOf(it)]) : runs(fixText(it), GREEN) }));
   else if (b.t === "fig") C.push(...figure(b));
