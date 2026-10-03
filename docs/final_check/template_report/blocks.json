@@ -1473,7 +1473,7 @@
  },
  {
   "t": "p",
-  "text": "A valid authorisation decision requires the simultaneous satisfaction of all relevant trust conditions. Consequently, failure of any individual condition results in denial. Formal security assurance does not constitute another authorisation condition to be evaluated at runtime. Instead, it provides a means of specifying, analysing, and verifying the security properties of the integrated authorisation mechanism. Thus, RQ6 operates as an assurance layer over the mechanisms established by RQ1\u2013RQ5.",
+  "text": "A valid authorisation decision requires the simultaneous satisfaction of all relevant trust conditions. Consequently, failure of any individual condition results in denial. In the prototype, an ALLOW decision additionally requires the Groth16 ZK proof to verify, so a request that satisfies the five predicates is still denied when the proof fails, as in attack A9 (Section 11.4). Formal security assurance does not constitute another authorisation condition to be evaluated at runtime. Instead, it provides a means of specifying, analysing, and verifying the security properties of the integrated authorisation mechanism. Thus, RQ6 operates as an assurance layer over the mechanisms established by RQ1\u2013RQ5.",
   "segs": [
    [
     "A valid authorisation decision requires the simultaneous satisfaction of all relevant trust conditions.",
@@ -1482,6 +1482,10 @@
    [
     "Consequently, failure of any individual condition results in denial.",
     true
+   ],
+   [
+    "In the prototype, an ALLOW decision additionally requires the Groth16 ZK proof to verify, so a request that satisfies the five predicates is still denied when the proof fails, as in attack A9 (Section 11.4).",
+    false
    ],
    [
     "Formal security assurance does not constitute another authorisation condition to be evaluated at runtime.",
@@ -1959,10 +1963,10 @@
  },
  {
   "t": "p",
-  "text": "In the implemented prototype, the Controller comprises eight principal functions rather than six, since a ZK Proof Service generates and verifies the Groth16 proof that feeds the Authorisation Decision, and an On-chain Anchor Service performs the Sepolia mint and revoke transactions as a background process. The Model correspondingly contains the ConsentSBTv3 soulbound contract deployed on Sepolia together with the application audit ledger, both of which an independent verification tool reads, as described in Section 11. It should be acknowledged that, in the present prototype, credential verification consists of a structural check that each DID is well formed, and V~I~ combines this check with the EIP-712 verification of each listed guardian's signature. The requester's role and jurisdiction are declared in the interface rather than authenticated, and wallet-held signing keys and authenticated verifiable credentials are deferred to the production design. However, each guardian approval is an EIP-712 typed-data signature bound to the consent identifier, so the multi-party threshold is enforced over signed approvals rather than over interface actions.",
+  "text": "In the implemented prototype, the Controller comprises eight principal functions rather than six, since a zero-knowledge (ZK) Proof Service generates and verifies the Groth16 proof that feeds the Authorisation Decision, and an On-chain Anchor Service performs the Sepolia mint and revoke transactions as a background process. The Model correspondingly contains the ConsentSBTv3 soulbound contract deployed on Sepolia together with the application audit ledger, both of which an independent verification tool reads, as described in Section 11. It should be acknowledged that, in the present prototype, credential verification consists of a structural check that each DID is well formed, and V~I~ combines this check with the EIP-712 verification of each listed guardian's signature. The requester's role and jurisdiction are declared in the interface rather than authenticated, and wallet-held signing keys and authenticated verifiable credentials are deferred to the production design. However, each guardian approval is an EIP-712 typed-data signature bound to the consent identifier, so the multi-party threshold is enforced over signed approvals rather than over interface actions.",
   "segs": [
    [
-    "In the implemented prototype, the Controller comprises eight principal functions rather than six, since a ZK Proof Service generates and verifies the Groth16 proof that feeds the Authorisation Decision, and an On-chain Anchor Service performs the Sepolia mint and revoke transactions as a background process.",
+    "In the implemented prototype, the Controller comprises eight principal functions rather than six, since a zero-knowledge (ZK) Proof Service generates and verifies the Groth16 proof that feeds the Authorisation Decision, and an On-chain Anchor Service performs the Sepolia mint and revoke transactions as a background process.",
     false
    ],
    [
