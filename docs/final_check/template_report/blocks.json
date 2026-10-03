@@ -1354,7 +1354,7 @@
  },
  {
   "t": "p",
-  "text": "The six sub-research questions are not independent technical questions. RQ1 establishes the conceptual object. RQ2 establishes the trustworthiness of the participants. RQ3 then extends this participant-level trust into a collective decision. RQ4 determines whether the resulting authorisation is applicable to the specific data-access request. RQ5 further introduces the dynamic dimension of trust by determining whether the authorisation remains valid with respect to its temporal conditions and lifecycle state. Finally, RQ6 establishes the assurance layer by formally defining the resulting security properties and empirically evaluating whether the implemented framework enforces them correctly. The integrated authorisation condition can therefore be expressed as {E22}. Here, V~I~ represents identity and authority validity, V~A~ collective authorisation validity, V~P~ policy and contextual compliance, V~T~ temporal validity, and V~L~ jurisdictional compliance, while lifecycle validity is evaluated within V~A~.",
+  "text": "The six sub-research questions are not independent technical questions. RQ1 establishes the conceptual object. RQ2 establishes the trustworthiness of the participants. RQ3 then extends this participant-level trust into a collective decision. RQ4 determines whether the resulting authorisation is applicable to the specific data-access request. RQ5 further introduces the dynamic dimension of trust by determining whether the authorisation remains valid with respect to its temporal conditions and lifecycle state. Finally, RQ6 establishes the assurance layer by formally defining the resulting security properties and empirically evaluating whether the implemented framework enforces them correctly. The integrated authorisation condition can therefore be expressed as {E22}. Here, V~I~ represents identity and authority validity, V~A~ collective authorisation validity, V~P~ policy and contextual compliance, V~T~ temporal validity, and V~L~ jurisdictional compliance, while the revocation and token states of the lifecycle are evaluated within V~A~ and its time-based states within V~T~.",
   "segs": [
    [
     "The six sub-research questions are not independent technical questions.",
@@ -1362,7 +1362,7 @@
    ],
    [
     "RQ1 establishes the conceptual object.",
-    true
+    false
    ],
    [
     "RQ2 establishes the trustworthiness of the participants.",
@@ -1389,7 +1389,7 @@
     true
    ],
    [
-    "Here, V~I~ represents identity and authority validity, V~A~ collective authorisation validity, V~P~ policy and contextual compliance, V~T~ temporal validity, and V~L~ jurisdictional compliance, while lifecycle validity is evaluated within V~A~.",
+    "Here, V~I~ represents identity and authority validity, V~A~ collective authorisation validity, V~P~ policy and contextual compliance, V~T~ temporal validity, and V~L~ jurisdictional compliance, while the revocation and token states of the lifecycle are evaluated within V~A~ and its time-based states within V~T~.",
     false
    ]
   ]
@@ -1912,7 +1912,7 @@
  },
  {
   "t": "p",
-  "text": "The architectural layers cooperate through a controlled authorisation sequence rather than through unrestricted direct communication. A healthcare data-access request is not evaluated according to a single authentication event. As illustrated in {F8}, the Controller coordinates a sequence of trust predicates representing the conditions established by the sub-research questions. The first condition, V~I~(u), determines whether the requesting participant possesses valid identity and authority evidence. The second condition, V~A~(C), determines whether the required independently verified participants have collectively satisfied the authorisation threshold N. The third condition, V~P~(C, R), determines whether the requested operation complies with the consent policy, including purpose and data-scope restrictions. The fourth condition, V~T~(C, t), determines whether the consent remains valid at the time of the request. The fifth condition, V~L~(C), determines whether the recorded jurisdictional constraint of the consent is satisfied. Lifecycle validity and revocation are evaluated within V~A~ rather than within V~L~. The integrated decision can therefore be expressed as {E22}.",
+  "text": "The architectural layers cooperate through a controlled authorisation sequence rather than through unrestricted direct communication. A healthcare data-access request is not evaluated according to a single authentication event. As illustrated in {F8}, the Controller coordinates a sequence of trust predicates representing the conditions established by the sub-research questions. The first condition, V~I~(u), determines whether the requesting participant possesses valid identity and authority evidence. The second condition, V~A~(C), determines whether the required independently verified participants have collectively satisfied the authorisation threshold N. The third condition, V~P~(C, R), determines whether the requested operation complies with the consent policy, including purpose and data-scope restrictions. The fourth condition, V~T~(C, t), determines whether the consent remains valid at the time of the request. The fifth condition, V~L~(C), determines whether the recorded jurisdictional constraint of the consent is satisfied. The revocation and token states of the lifecycle are evaluated within V~A~, and its time-based states within V~T~, rather than within V~L~. The integrated decision can therefore be expressed as {E22}.",
   "segs": [
    [
     "The architectural layers cooperate through a controlled authorisation sequence rather than through unrestricted direct communication.",
@@ -1947,7 +1947,7 @@
     false
    ],
    [
-    "Lifecycle validity and revocation are evaluated within V~A~ rather than within V~L~.",
+    "The revocation and token states of the lifecycle are evaluated within V~A~, and its time-based states within V~T~, rather than within V~L~.",
     false
    ],
    [
@@ -2036,7 +2036,7 @@
  },
  {
   "t": "p",
-  "text": "{F9} presents the end-to-end workflow of the proposed framework. The workflow begins when the patient creates a consent request. The consent specification defines the intended purpose, permitted data scope, and other authorisation conditions. This step establishes what the patient intends to authorise and provides the policy context against which subsequent access requests can be evaluated. The next step of the workflow applies a decentralised identity and authority verification mechanism using Decentralised Identifiers and Verifiable Credentials [20]. Importantly, the framework explicitly separates identity authentication from authorisation. A successfully verified DID or VC does not, by itself, grant permission to access patient data. The framework then collects their independent approvals and evaluates whether the predefined authorisation threshold has been satisfied. Let A~v~ denote the set of successfully verified approvals and let N denote the required authorisation threshold, as in {E28}.",
+  "text": "{F9} presents the end-to-end workflow of the proposed framework. The workflow begins when the patient creates a consent request. The consent specification defines the intended purpose, permitted data scope, and other authorisation conditions. This step establishes what the patient intends to authorise and provides the policy context against which subsequent access requests can be evaluated. The next step of the workflow applies a decentralised identity and authority verification mechanism using Decentralised Identifiers and Verifiable Credentials [20]. Importantly, the framework explicitly separates identity authentication from authorisation. A successfully verified DID or VC does not, by itself, grant permission to access patient data. The framework then collects their independent approvals and evaluates whether the predefined authorisation threshold has been satisfied. Let A~v~ denote the set of successfully verified approvals and let N denote the required authorisation threshold, as in {E28}. Here, Token(C) \u2260 \u2205 means that C has been assigned a token identifier, and Revoked(C) = 0 means that the consent has not been revoked.",
   "segs": [
    [
     "{F9} presents the end-to-end workflow of the proposed framework.",
@@ -2073,6 +2073,10 @@
    [
     "Let A~v~ denote the set of successfully verified approvals and let N denote the required authorisation threshold, as in {E28}.",
     true
+   ],
+   [
+    "Here, Token(C) \u2260 \u2205 means that C has been assigned a token identifier, and Revoked(C) = 0 means that the consent has not been revoked.",
+    false
    ]
   ]
  },
@@ -2955,15 +2959,15 @@
  },
  {
   "t": "p",
-  "text": "Let A~v~ represent the set of independently verified authorisation participants and N represent the required approval threshold. The authorisation condition can then be represented as {E49}.",
+  "text": "Let A~v~ represent the set of independently verified authorisation participants and N represent the required approval threshold. The authorisation condition can then be represented as {E49}, where Token(C) and Revoked(C) are defined as in Section 5.3.",
   "segs": [
    [
     "Let A~v~ represent the set of independently verified authorisation participants and N represent the required approval threshold.",
     true
    ],
    [
-    "The authorisation condition can then be represented as {E49}.",
-    true
+    "The authorisation condition can then be represented as {E49}, where Token(C) and Revoked(C) are defined as in Section 5.3.",
+    false
    ]
   ]
  },
@@ -3313,15 +3317,15 @@
  },
  {
   "t": "p",
-  "text": "The prototype demonstrates that a consent object remains unable to establish valid authorisation until the required number of independently verified participants has approved it. For example, where two approvals are required, {E71}, whereas {E72}.",
+  "text": "The prototype demonstrates that a consent object remains unable to establish valid authorisation until the required number of independently verified participants has approved it. For example, where two approvals are required and the consent has not been revoked, {E71}, whereas {E72}.",
   "segs": [
    [
     "The prototype demonstrates that a consent object remains unable to establish valid authorisation until the required number of independently verified participants has approved it.",
     true
    ],
    [
-    "For example, where two approvals are required, {E71}, whereas {E72}.",
-    true
+    "For example, where two approvals are required and the consent has not been revoked, {E71}, whereas {E72}.",
+    false
    ]
   ]
  },
