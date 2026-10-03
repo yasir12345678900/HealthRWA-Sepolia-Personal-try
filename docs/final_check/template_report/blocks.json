@@ -1989,7 +1989,7 @@
  },
  {
   "t": "p",
-  "text": "The architectural layers cooperate through a controlled authorisation sequence rather than through unrestricted direct communication. A healthcare data-access request is not evaluated according to a single authentication event. As illustrated in {F8}, the Controller coordinates a sequence of trust predicates representing the conditions established by the sub-research questions. The first condition, V~I~(u), determines whether the requesting participant possesses valid identity and authority evidence. The second condition, V~A~(C), determines whether the required independently verified participants have collectively satisfied the authorisation threshold N. The third condition, V~P~(C, R), determines whether the requested operation complies with the consent policy, including purpose and data-scope restrictions. The fourth condition, V~T~(C, t), determines whether the consent remains valid at the time of the request. The fifth condition, V~L~(C), determines whether the recorded jurisdictional constraint of the consent is satisfied. The revocation and token states of the lifecycle are evaluated within V~A~, and its time-based states within V~T~, rather than within V~L~. The integrated decision can therefore be expressed as {E22}.",
+  "text": "The architectural layers cooperate through a controlled authorisation sequence rather than through unrestricted direct communication. A healthcare data-access request is not evaluated according to a single authentication event. As illustrated in {F8}, the Controller coordinates a sequence of trust predicates representing the conditions established by the sub-research questions. The first condition, V~I~(u), determines whether the requesting participant possesses valid identity and authority evidence. The second condition, V~A~(C), determines whether the required independently verified participants have collectively satisfied the authorisation threshold N. The third condition, V~P~(C, R), determines whether the requested operation complies with the consent policy, including purpose and data-scope restrictions. The fourth condition, V~T~(C, t), determines whether the consent remains valid at the time of the request. The fifth condition, V~L~(C, R), determines whether the jurisdiction of the request satisfies the recorded jurisdictional constraint of the consent. The revocation and token states of the lifecycle are evaluated within V~A~, and its time-based states within V~T~, rather than within V~L~. The integrated decision can therefore be expressed as {E22}.",
   "segs": [
    [
     "The architectural layers cooperate through a controlled authorisation sequence rather than through unrestricted direct communication.",
@@ -2020,7 +2020,7 @@
     true
    ],
    [
-    "The fifth condition, V~L~(C), determines whether the recorded jurisdictional constraint of the consent is satisfied.",
+    "The fifth condition, V~L~(C, R), determines whether the jurisdiction of the request satisfies the recorded jurisdictional constraint of the consent.",
     false
    ],
    [
@@ -2167,11 +2167,15 @@
  },
  {
   "t": "p",
-  "text": "Only independently verified participants can contribute to the authorisation evidence set A~v~, as defined in {E40}. Consequently, an arbitrary number of unverified or unauthorised approvals cannot satisfy the multi-party authorisation requirement. A compromised or unauthorised participant cannot independently activate access when the threshold has not been satisfied. This distinguishes the framework from reviewed systems in which joint approval is a contingency path [53], a witness or notary threshold [69], a registration-time co-consent [43, 47], an institution-side admission gate [75], a custodial M-of-N signature [61], or a key-share reconstruction [35, 54].",
+  "text": "Only independently verified participants can contribute to the authorisation evidence set A~v~, as defined in {E40}, where A~s~ denotes the set of approvals submitted for C. For a guardian approval, the authority in V~I~(a~i~) is membership of G, and each member of G is counted once. Consequently, an arbitrary number of unverified or unauthorised approvals cannot satisfy the multi-party authorisation requirement. A compromised or unauthorised participant cannot independently activate access when the threshold has not been satisfied. This distinguishes the framework from reviewed systems in which joint approval is a contingency path [53], a witness or notary threshold [69], a registration-time co-consent [43, 47], an institution-side admission gate [75], a custodial M-of-N signature [61], or a key-share reconstruction [35, 54].",
   "segs": [
    [
-    "Only independently verified participants can contribute to the authorisation evidence set A~v~, as defined in {E40}.",
-    true
+    "Only independently verified participants can contribute to the authorisation evidence set A~v~, as defined in {E40}, where A~s~ denotes the set of approvals submitted for C.",
+    false
+   ],
+   [
+    "For a guardian approval, the authority in V~I~(a~i~) is membership of G, and each member of G is counted once.",
+    false
    ],
    [
     "Consequently, an arbitrary number of unverified or unauthorised approvals cannot satisfy the multi-party authorisation requirement.",
@@ -2739,7 +2743,7 @@
  },
  {
   "t": "p",
-  "text": "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant's role, authority, or other relevant attribute [20]. Neither mechanism should automatically grant access to patient data. Instead, the verified identity and authority information become inputs to the subsequent authorisation process. The identity verification condition can be expressed as {E48}, where u is the requesting participant. The DID verification process establishes whether the identity reference is valid. The VC verification process establishes whether the participant possesses valid authority evidence. The final authorisation decision remains dependent on the consent requirements and access policy.",
+  "text": "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant's role, authority, or other relevant attribute [20]. Neither mechanism should automatically grant access to patient data. Instead, the verified identity and authority information become inputs to the subsequent authorisation process. The identity and authority verification condition can be expressed as {E48}, where u is the requesting participant and Authority(u, C) establishes whether the verified authority matches the role required by the consent. The DID verification process establishes whether the identity reference is valid. The VC verification process establishes whether the participant possesses valid authority evidence. The final authorisation decision remains dependent on the consent requirements and access policy.",
   "segs": [
    [
     "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant's role, authority, or other relevant attribute [20].",
@@ -2754,8 +2758,8 @@
     true
    ],
    [
-    "The identity verification condition can be expressed as {E48}, where u is the requesting participant.",
-    true
+    "The identity and authority verification condition can be expressed as {E48}, where u is the requesting participant and Authority(u, C) establishes whether the verified authority matches the role required by the consent.",
+    false
    ],
    [
     "The DID verification process establishes whether the identity reference is valid.",
@@ -3484,11 +3488,11 @@
  },
  {
   "t": "p",
-  "text": "The system evaluates whether the requested data scope S~R~ is contained within the data scope authorised by the consent, denoted by S~C~, and {E52} defines the scope condition V~S~.",
+  "text": "The system evaluates whether the requested data scope S~R~ is non-empty and contained within the data scope authorised by the consent, denoted by S~C~, and {E52} defines the scope condition V~S~.",
   "segs": [
    [
-    "The system evaluates whether the requested data scope S~R~ is contained within the data scope authorised by the consent, denoted by S~C~, and {E52} defines the scope condition V~S~.",
-    true
+    "The system evaluates whether the requested data scope S~R~ is non-empty and contained within the data scope authorised by the consent, denoted by S~C~, and {E52} defines the scope condition V~S~.",
+    false
    ]
   ]
  },
@@ -4353,11 +4357,11 @@
  },
  {
   "t": "p",
-  "text": "Conversely, {E63} states that if any mandatory condition is violated, the request must be denied. A valid authorisation decision requires the simultaneous satisfaction of all relevant trust conditions. Each predicate of Section 10 has a dedicated failure test, because successful operation under valid conditions alone cannot demonstrate that unauthorised access is reliably prevented. The tests confirm that failure of any individual condition results in denial.",
+  "text": "Equivalently, {E63}, the contrapositive of {E62}, states that if any mandatory condition is violated, the request must be denied. {E62} is therefore examined through the granted requests and {E63} through the negative scenarios, while the valid scenarios examine the opposite direction, namely that a request satisfying all conditions is granted. A valid authorisation decision requires the simultaneous satisfaction of all relevant trust conditions. Each predicate of Section 10 has a dedicated failure test, because successful operation under valid conditions alone cannot demonstrate that unauthorised access is reliably prevented. The tests confirm that failure of any individual condition results in denial.",
   "segs": [
    [
-    "Conversely, {E63} states that if any mandatory condition is violated, the request must be denied.",
-    true
+    "Equivalently, {E63}, the contrapositive of {E62}, states that if any mandatory condition is violated, the request must be denied. {E62} is therefore examined through the granted requests and {E63} through the negative scenarios, while the valid scenarios examine the opposite direction, namely that a request satisfying all conditions is granted.",
+    false
    ],
    [
     "A valid authorisation decision requires the simultaneous satisfaction of all relevant trust conditions.",
