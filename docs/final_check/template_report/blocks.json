@@ -618,7 +618,7 @@
  },
  {
   "t": "p",
-  "text": "{F2} presents the PRISMA flow diagram for this review which summarises the identification, screening, eligibility, and inclusion stages of the SLR. Its counts are internally consistent. The seven database searches returned 9,256 records, or 6,039 unique records after deduplication, and after title and abstract screening, 1,800 records advanced to full text and were read in a prioritised order under a dimension-level saturation rule. Records that were clearly unrelated to the review scope were excluded at that stage. Saturation is declared when eight consecutively coded studies with a positive signal for a dimension yield no new mechanism class. At the checkpoint, 44 reports had been fully coded and passed the quality gate, whereas 1,735 of the 1,800 records had not been assessed, so corpus completeness is bounded by the saturation rule rather than by exhaustive reading. The reasons for exclusion at the full-text stage were recorded to improve the transparency of the review.",
+  "text": "{F2} presents the PRISMA flow diagram for this review which summarises the identification, screening, eligibility, and inclusion stages of the SLR. Its counts are internally consistent. The seven database searches returned 9,256 records, or 6,039 unique records after deduplication, and after title and abstract screening, \u27e6r\u27e71,800 records advanced to full text and were prioritised into Tiers A, B, and C of 39, 1,066, and 695 records.\u27e6/r\u27e7 Records that were clearly unrelated to the review scope were excluded at that stage. \u27e6r\u27e7A saturation rule was also defined, under which saturation is declared when eight consecutively coded studies with a positive signal for a dimension yield no new mechanism class. At the checkpoint, all 39 Tier A records and 25 further records had been assessed, and 44 reports had been fully coded and passed the quality gate. The remaining 1,735 records had not yet been assessed, and the coding of Tiers B and C continues, so corpus completeness is bounded by the reporting checkpoint rather than by exhaustive reading.\u27e6/r\u27e7 The reasons for exclusion at the full-text stage were recorded to improve the transparency of the review.",
   "segs": [
    [
     "{F2} presents the PRISMA flow diagram for this review which summarises the identification, screening, eligibility, and inclusion stages of the SLR.",
@@ -629,7 +629,7 @@
     false
    ],
    [
-    "The seven database searches returned 9,256 records, or 6,039 unique records after deduplication, and after title and abstract screening, 1,800 records advanced to full text and were read in a prioritised order under a dimension-level saturation rule.",
+    "The seven database searches returned 9,256 records, or 6,039 unique records after deduplication, and after title and abstract screening, 1,800 records advanced to full text and were prioritised into Tiers A, B, and C of 39, 1,066, and 695 records.",
     false
    ],
    [
@@ -637,11 +637,15 @@
     true
    ],
    [
-    "Saturation is declared when eight consecutively coded studies with a positive signal for a dimension yield no new mechanism class.",
+    "A saturation rule was also defined, under which saturation is declared when eight consecutively coded studies with a positive signal for a dimension yield no new mechanism class.",
     false
    ],
    [
-    "At the checkpoint, 44 reports had been fully coded and passed the quality gate, whereas 1,735 of the 1,800 records had not been assessed, so corpus completeness is bounded by the saturation rule rather than by exhaustive reading.",
+    "At the checkpoint, all 39 Tier A records and 25 further records had been assessed, and 44 reports had been fully coded and passed the quality gate.",
+    false
+   ],
+   [
+    "The remaining 1,735 records had not yet been assessed, and the coding of Tiers B and C continues, so corpus completeness is bounded by the reporting checkpoint rather than by exhaustive reading.",
     false
    ],
    [
@@ -1020,14 +1024,14 @@
  },
  {
   "t": "p",
-  "text": "**Temporal validity and consent lifecycle (Req 5).** A consent that is valid at one point in time cannot necessarily be assumed to remain valid indefinitely. Eneh et al. [44] present EdgeConsent, the first study to enforce temporal validity inside the decision predicate, although its lifecycle is only an active flag. Temporal validity must also be evaluated together with the lifecycle state of the consent. Hema et al. [64] bind the expiry into key derivation, and Panagoulias et al. [57] enforce revocation at decision time across 43,500 simulated attempts in a single-node ledger. Li et al. [51] enforce time on a credential rather than on the consent. T5 is coded Yes in 8 studies and T6 in 7, a post-revocation denial is demonstrated only by [58], [57], and [44], and the three stream-5 systems that enforce time inside the decision are all single-party.",
+  "text": "**Temporal validity and consent lifecycle (Req 5).** A consent that is valid at one point in time cannot necessarily be assumed to remain valid indefinitely. Eneh et al. [44] present EdgeConsent, \u27e6r\u27e7which enforces\u27e6/r\u27e7 temporal validity inside the decision predicate, although its lifecycle is only an active flag. Temporal validity must also be evaluated together with the lifecycle state of the consent. Hema et al. [64] bind the expiry into key derivation, and Panagoulias et al. [57] enforce revocation at decision time across 43,500 simulated attempts in a single-node ledger. Li et al. [51] enforce time on a credential rather than on the consent. T5 is coded Yes in 8 studies and T6 in 7, a post-revocation denial is demonstrated only by [58], [57], and [44], and the three stream-5 systems that enforce time inside the decision are all single-party.",
   "segs": [
    [
     "**Temporal validity and consent lifecycle (Req 5).** A consent that is valid at one point in time cannot necessarily be assumed to remain valid indefinitely.",
     true
    ],
    [
-    "Eneh et al. [44] present EdgeConsent, the first study to enforce temporal validity inside the decision predicate, although its lifecycle is only an active flag.",
+    "Eneh et al. [44] present EdgeConsent, which enforces temporal validity inside the decision predicate, although its lifecycle is only an active flag.",
     false
    ],
    [
@@ -1050,7 +1054,7 @@
  },
  {
   "t": "p",
-  "text": "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable. Wu and Zhang [76] present HealthDID, with three game-based definitions and three theorems proved by reduction, the first complete formal assurance in the corpus, although only for the identity and authority fragment. Zhao and Su [50] and Maruthi and Singh [54] prove threshold gates in isolation, and Mei et al. [55] prove a static encryption predicate. Formal assurance is coded Yes in only 4 of the 25 studies, and empirical validation Yes in 5, Partial in 19, and No in 1. The panel records an inverse relation between predicate breadth and assurance strength. No study executes adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process. \u27e6r\u27e7{Tslr_desc} summarises the description and the issues and limitations of each primary study.\u27e6/r\u27e7",
+  "text": "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable. Wu and Zhang [76] present HealthDID, with three game-based definitions and three theorems proved by reduction, although \u27e6r\u27e7the proofs cover\u27e6/r\u27e7 only the identity and authority fragment. Zhao and Su [50] and Maruthi and Singh [54] prove threshold gates in isolation, and Mei et al. [55] prove a static encryption predicate. Formal assurance is coded Yes in only 4 of the 25 studies, and empirical validation Yes in 5, Partial in 19, and No in 1. The panel records an inverse relation between predicate breadth and assurance strength. \u27e6r\u27e7Few studies\u27e6/r\u27e7 execute adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process. \u27e6r\u27e7{Tslr_desc} summarises the description and the issues and limitations of each primary study.\u27e6/r\u27e7",
   "segs": [
    [
     "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions.",
@@ -1061,7 +1065,7 @@
     true
    ],
    [
-    "Wu and Zhang [76] present HealthDID, with three game-based definitions and three theorems proved by reduction, the first complete formal assurance in the corpus, although only for the identity and authority fragment.",
+    "Wu and Zhang [76] present HealthDID, with three game-based definitions and three theorems proved by reduction, although the proofs cover only the identity and authority fragment.",
     false
    ],
    [
@@ -1077,7 +1081,7 @@
     false
    ],
    [
-    "No study executes adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process. {Tslr_desc} summarises the description and the issues and limitations of each primary study.",
+    "Few studies execute adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process. {Tslr_desc} summarises the description and the issues and limitations of each primary study.",
     false
    ]
   ]
@@ -1401,7 +1405,7 @@
  },
  {
   "t": "p",
-  "text": "The review has limitations. A further 588 records, mostly from SpringerLink, could not be screened at the abstract stage because the export contained no abstracts. The saturation rule and a single coding panel mean that a small number of relevant studies may have been missed. The consistency between the coding of the included studies and the signal prevalence of the wider pool limits, but does not remove, this risk.",
+  "text": "The review has limitations. A further 588 records, mostly from SpringerLink, could not be screened at the abstract stage because the export contained no abstracts. \u27e6r\u27e7The reporting checkpoint and a single coding panel mean that a small number of relevant studies may have been missed.\u27e6/r\u27e7 The consistency between the coding of the included studies and the signal prevalence of the wider pool limits, but does not remove, this risk.",
   "segs": [
    [
     "The review has limitations.",
@@ -1412,7 +1416,7 @@
     false
    ],
    [
-    "The saturation rule and a single coding panel mean that a small number of relevant studies may have been missed.",
+    "The reporting checkpoint and a single coding panel mean that a small number of relevant studies may have been missed.",
     false
    ],
    [
