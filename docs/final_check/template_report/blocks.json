@@ -652,7 +652,7 @@
  },
  {
   "t": "p",
-  "text": "The included studies were systematically analysed using a predefined data extraction framework. Each study was coded as Yes, Partial, or No against seven trust dimensions, T1 (identity), T2 (authority), T3 (multi-party), T4 (policy), T5 (temporal), T6 (lifecycle), and T7 (audit), and against the requirements, with a page reference for every positive coding. A study passed when its score on QA1 to QA4 of the eight quality items was at least 3.0. Under decision D-166, a study is core if its gap-impact verdict is contradicts, weakens, or narrows, or if its T3 coding is Yes or Partial, which gives 23 core studies of the 44. With the two supporting studies of highest quality score 7.0 [37, 51], they form the 25 primary studies, S1 to S25.",
+  "text": "The included studies were systematically analysed using a predefined data extraction framework. Each study was coded as Yes, Partial, or No against seven trust dimensions, T1 (identity), T2 (authority), T3 (multi-party), T4 (policy), T5 (temporal), T6 (lifecycle), and T7 (audit), and against the requirements, with a page reference for every positive coding. A study passed when its score on QA1 to QA4 of the eight quality items was at least 3.0. Under decision D-166, a study is core if its gap-impact verdict is contradicts, weakens, or narrows, or if its T3 coding is Yes or Partial, which gives 23 core studies of the 44. With the two supporting studies of highest quality score 7.0 [37, 51], they form the 25 primary studies, S1 to S25. \u27e6r\u27e7{Tslr_list} lists the 25 primary studies with their year, title, and category.\u27e6/r\u27e7",
   "segs": [
    [
     "The included studies were systematically analysed using a predefined data extraction framework.",
@@ -671,7 +671,7 @@
     false
    ],
    [
-    "With the two supporting studies of highest quality score 7.0 [37, 51], they form the 25 primary studies, S1 to S25.",
+    "With the two supporting studies of highest quality score 7.0 [37, 51], they form the 25 primary studies, S1 to S25. {Tslr_list} lists the 25 primary studies with their year, title, and category.",
     false
    ]
   ]
@@ -681,19 +681,217 @@
   "ref": "F2"
  },
  {
+  "t": "table",
+  "key": "Tslr_list",
+  "custom": {
+   "caption": "\u27e6r\u27e7Listing of the 25 primary studies identified after the selection process\u27e6/r\u27e7",
+   "header": [
+    "Study",
+    "Author(s)",
+    "Year",
+    "Title",
+    "Category"
+   ],
+   "widths": [
+    700,
+    1750,
+    600,
+    3978,
+    2100
+   ],
+   "rows": [
+    [
+     "\u27e6r\u27e7S1\u27e6/r\u27e7",
+     "\u27e6r\u27e7Abbasi et al. [35]\u27e6/r\u27e7",
+     "\u27e6r\u27e72026\u27e6/r\u27e7",
+     "\u27e6r\u27e7Nexa: Enabling Secure, Scalable, and Decentralized Management of Electronic Health Records Using Threshold Cryptography and Public Blockchains\u27e6/r\u27e7",
+     "\u27e6r\u27e7Multi-party authorisation (Req 3)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S2\u27e6/r\u27e7",
+     "\u27e6r\u27e7Albalwy et al. [37]\u27e6/r\u27e7",
+     "\u27e6r\u27e72021\u27e6/r\u27e7",
+     "\u27e6r\u27e7A Blockchain-based dynamic consent architecture to support clinical genomic data sharing (ConsentChain): Proof-of-concept study\u27e6/r\u27e7",
+     "\u27e6r\u27e7Policy and context (Req 4)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S3\u27e6/r\u27e7",
+     "\u27e6r\u27e7Al Amin et al. [38]\u27e6/r\u27e7",
+     "\u27e6r\u27e72023\u27e6/r\u27e7",
+     "\u27e6r\u27e7Informed Consent as Patient Driven Policy for Clinical Diagnosis and Treatment: A Smart Contract Based Approach\u27e6/r\u27e7",
+     "\u27e6r\u27e7Consent representation (Req 1)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S4\u27e6/r\u27e7",
+     "\u27e6r\u27e7Ekholm et al. [43]\u27e6/r\u27e7",
+     "\u27e6r\u27e72025\u27e6/r\u27e7",
+     "\u27e6r\u27e7Implementing electronic informed consent in rare disease genomics\u27e6/r\u27e7",
+     "\u27e6r\u27e7Multi-party authorisation (Req 3)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S5\u27e6/r\u27e7",
+     "\u27e6r\u27e7Eneh et al. [44]\u27e6/r\u27e7",
+     "\u27e6r\u27e72026\u27e6/r\u27e7",
+     "\u27e6r\u27e7Demo: EdgeConsent: On-Chain Attribute-Based Access Control for Data Consent Management\u27e6/r\u27e7",
+     "\u27e6r\u27e7Temporal and lifecycle (Req 5)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S6\u27e6/r\u27e7",
+     "\u27e6r\u27e7Hagstr\u00f6m et al. [47]\u27e6/r\u27e7",
+     "\u27e6r\u27e72024\u27e6/r\u27e7",
+     "\u27e6r\u27e7Minors\u2019 and guardian access to and use of a national patient portal: A retrospective comparative case study of Sweden and Finland\u27e6/r\u27e7",
+     "\u27e6r\u27e7Multi-party authorisation (Req 3)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S7\u27e6/r\u27e7",
+     "\u27e6r\u27e7Jaiman and Urovi [49]\u27e6/r\u27e7",
+     "\u27e6r\u27e72020\u27e6/r\u27e7",
+     "\u27e6r\u27e7A Consent Model for Blockchain-Based Health Data Sharing Platforms\u27e6/r\u27e7",
+     "\u27e6r\u27e7Policy and context (Req 4)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S8\u27e6/r\u27e7",
+     "\u27e6r\u27e7Zhao and Su [50]\u27e6/r\u27e7",
+     "\u27e6r\u27e72024\u27e6/r\u27e7",
+     "\u27e6r\u27e7A threshold traceable delegation authorization scheme for data sharing in healthcare\u27e6/r\u27e7",
+     "\u27e6r\u27e7Security assurance (Req 6)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S9\u27e6/r\u27e7",
+     "\u27e6r\u27e7Li et al. [51]\u27e6/r\u27e7",
+     "\u27e6r\u27e72026\u27e6/r\u27e7",
+     "\u27e6r\u27e7Privacy-Preserving Fine-Grained EMR Access Control for IoMT: A Hybrid RBAC-Smart Contract Scheme With Attribute-Based Authorization\u27e6/r\u27e7",
+     "\u27e6r\u27e7Temporal and lifecycle (Req 5)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S10\u27e6/r\u27e7",
+     "\u27e6r\u27e7Madine et al. [53]\u27e6/r\u27e7",
+     "\u27e6r\u27e72020\u27e6/r\u27e7",
+     "\u27e6r\u27e7Fully Decentralized Multi-Party Consent Management for Secure Sharing of Patient Health Records\u27e6/r\u27e7",
+     "\u27e6r\u27e7Multi-party authorisation (Req 3)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S11\u27e6/r\u27e7",
+     "\u27e6r\u27e7Maruthi and Singh [54]\u27e6/r\u27e7",
+     "\u27e6r\u27e72025\u27e6/r\u27e7",
+     "\u27e6r\u27e7Enhancing Security and Privacy of IoMT Data for Unconscious Patient With Blockchain\u27e6/r\u27e7",
+     "\u27e6r\u27e7Security assurance (Req 6)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S12\u27e6/r\u27e7",
+     "\u27e6r\u27e7Mei et al. [55]\u27e6/r\u27e7",
+     "\u27e6r\u27e72026\u27e6/r\u27e7",
+     "\u27e6r\u27e7Efficient Dual-Revocation CP-ABE for Secure and Fine-Grained Data Sharing in IoMT\u27e6/r\u27e7",
+     "\u27e6r\u27e7Security assurance (Req 6)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S13\u27e6/r\u27e7",
+     "\u27e6r\u27e7Panagoulias et al. [57]\u27e6/r\u27e7",
+     "\u27e6r\u27e72026\u27e6/r\u27e7",
+     "\u27e6r\u27e7Blockchain-Enabled Trust and Compliance for Clinical AI: Decentralized Governance Without Decentralized Data Storage\u27e6/r\u27e7",
+     "\u27e6r\u27e7Temporal and lifecycle (Req 5)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S14\u27e6/r\u27e7",
+     "\u27e6r\u27e7Phuyal et al. [58]\u27e6/r\u27e7",
+     "\u27e6r\u27e72026\u27e6/r\u27e7",
+     "\u27e6r\u27e7Enabling Cross-Institution Health Data Sharing in Norway: EUDI Wallets, On-Chain Consent, and openEHR\u2194FHIR Translation\u27e6/r\u27e7",
+     "\u27e6r\u27e7Identity and authority (Req 2)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S15\u27e6/r\u27e7",
+     "\u27e6r\u27e7Phuyal et al. [59]\u27e6/r\u27e7",
+     "\u27e6r\u27e72026\u27e6/r\u27e7",
+     "\u27e6r\u27e7A Blockchain-Based Architecture for Dynamic and Auditable Patient Consent in Secondary Use of Health Data\u27e6/r\u27e7",
+     "\u27e6r\u27e7Identity and authority (Req 2)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S16\u27e6/r\u27e7",
+     "\u27e6r\u27e7Punia et al. [61]\u27e6/r\u27e7",
+     "\u27e6r\u27e72025\u27e6/r\u27e7",
+     "\u27e6r\u27e7An access control system for cloud-based healthcare systems driven by blockchain\u27e6/r\u27e7",
+     "\u27e6r\u27e7Multi-party authorisation (Req 3)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S17\u27e6/r\u27e7",
+     "\u27e6r\u27e7Rom\u00e1n-Mart\u00ednez et al. [63]\u27e6/r\u27e7",
+     "\u27e6r\u27e72023\u27e6/r\u27e7",
+     "\u27e6r\u27e7Blockchain-Based Service-Oriented Architecture for Consent Management, Access Control, and Auditing\u27e6/r\u27e7",
+     "\u27e6r\u27e7Policy and context (Req 4)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S18\u27e6/r\u27e7",
+     "\u27e6r\u27e7Hema et al. [64]\u27e6/r\u27e7",
+     "\u27e6r\u27e72026\u27e6/r\u27e7",
+     "\u27e6r\u27e7Patient Centric Cryptographic Protection of Cloud Electronic Health Records\u27e6/r\u27e7",
+     "\u27e6r\u27e7Temporal and lifecycle (Req 5)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S19\u27e6/r\u27e7",
+     "\u27e6r\u27e7Soohoo et al. [67]\u27e6/r\u27e7",
+     "\u27e6r\u27e72026\u27e6/r\u27e7",
+     "\u27e6r\u27e7Development of the authentication and authorization processes for the iAgree portal, a platform for patient-controlled data sharing across health systems\u27e6/r\u27e7",
+     "\u27e6r\u27e7Consent representation (Req 1)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S20\u27e6/r\u27e7",
+     "\u27e6r\u27e7Tan et al. [69]\u27e6/r\u27e7",
+     "\u27e6r\u27e72024\u27e6/r\u27e7",
+     "\u27e6r\u27e7Secure and privacy-preserving sharing of personal health records with multi-party pre-authorization verification\u27e6/r\u27e7",
+     "\u27e6r\u27e7Multi-party authorisation (Req 3)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S21\u27e6/r\u27e7",
+     "\u27e6r\u27e7Tith et al. [71]\u27e6/r\u27e7",
+     "\u27e6r\u27e72020\u27e6/r\u27e7",
+     "\u27e6r\u27e7Patient consent management by a purpose-based consent model for electronic health record based on blockchain technology\u27e6/r\u27e7",
+     "\u27e6r\u27e7Policy and context (Req 4)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S22\u27e6/r\u27e7",
+     "\u27e6r\u27e7Tremper et al. [72]\u27e6/r\u27e7",
+     "\u27e6r\u27e72026\u27e6/r\u27e7",
+     "\u27e6r\u27e7Mainzelliste: Ten years of pseudonymization, record linkage, and informed consent management\u27e6/r\u27e7",
+     "\u27e6r\u27e7Consent representation (Req 1)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S23\u27e6/r\u27e7",
+     "\u27e6r\u27e7Tseng et al. [73]\u27e6/r\u27e7",
+     "\u27e6r\u27e72025\u27e6/r\u27e7",
+     "\u27e6r\u27e7EMR-Chain: Decentralized Electronic Medical Record Exchange System\u27e6/r\u27e7",
+     "\u27e6r\u27e7Identity and authority (Req 2)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S24\u27e6/r\u27e7",
+     "\u27e6r\u27e7Wu et al. [75]\u27e6/r\u27e7",
+     "\u27e6r\u27e72023\u27e6/r\u27e7",
+     "\u27e6r\u27e7Apply Trust Computing and\u00a0Privacy Preserving Smart Contracts to\u00a0Manage, Share, and\u00a0Analyze Multi-site Clinical Trial Data\u27e6/r\u27e7",
+     "\u27e6r\u27e7Multi-party authorisation (Req 3)\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S25\u27e6/r\u27e7",
+     "\u27e6r\u27e7Wu and Zhang [76]\u27e6/r\u27e7",
+     "\u27e6r\u27e72025\u27e6/r\u27e7",
+     "\u27e6r\u27e7HealthDID: An efficient and authorizable multi-party privacy-preserving EMR sharing system based on DID\u27e6/r\u27e7",
+     "\u27e6r\u27e7Security assurance (Req 6)\u27e6/r\u27e7"
+    ]
+   ]
+  }
+ },
+ {
   "t": "h2",
   "text": "Review of the Six Streams"
  },
  {
   "t": "p",
-  "text": "The extracted data were organised into thematic categories corresponding to the research questions. Each included study was assigned to the stream on which it is coded most strongly. **Consent representation and blockchain-based consent governance (Req 1).** Both studies of this stream are deployed platforms graded Partial. Soohoo et al. [67] describe the iAgree portal across three United States health systems with a permissioned Ethereum audit contract, but consent enforcement is outside its scope. Tremper et al. [72] report ten years of the Mainzelliste service with FHIR consent directives, but specify no check semantics and no demonstrated enforcement of withdrawal. Both are single-party systems. The supporting references represent consent as a permission indicating whether a particular party is allowed to perform a specified operation [36, 60], or as conditions fixed at encryption time [70, 78]. The existence of a consent record does not necessarily explain whether the conditions required for a subsequent access request are still satisfied.",
+  "text": "The extracted data were organised into thematic categories corresponding to the research questions. Each included study was assigned to the stream on which it is coded most strongly. **Consent representation and blockchain-based consent governance (Req 1).** \u27e6r\u27e7Two of the three studies of this stream are deployed platforms graded Partial.\u27e6/r\u27e7 Soohoo et al. [67] describe the iAgree portal across three United States health systems with a permissioned Ethereum audit contract, but consent enforcement is outside its scope. Tremper et al. [72] report ten years of the Mainzelliste service with FHIR consent directives, but specify no check semantics and no demonstrated enforcement of withdrawal. \u27e6r\u27e7The two platforms are single-party systems. Al Amin et al. [38] model informed consent as a patient-driven policy object with hash integrity, but specify no purpose condition and report no measured results.\u27e6/r\u27e7 The supporting references represent consent as a permission indicating whether a particular party is allowed to perform a specified operation [36, 60], or as conditions fixed at encryption time [70, 78]. The existence of a consent record does not necessarily explain whether the conditions required for a subsequent access request are still satisfied.",
   "segs": [
    [
     "The extracted data were organised into thematic categories corresponding to the research questions.",
     true
    ],
    [
-    "Each included study was assigned to the stream on which it is coded most strongly. **Consent representation and blockchain-based consent governance (Req 1).** Both studies of this stream are deployed platforms graded Partial.",
+    "Each included study was assigned to the stream on which it is coded most strongly. **Consent representation and blockchain-based consent governance (Req 1).** Two of the three studies of this stream are deployed platforms graded Partial.",
     false
    ],
    [
@@ -705,7 +903,11 @@
     false
    ],
    [
-    "Both are single-party systems.",
+    "The two platforms are single-party systems.",
+    false
+   ],
+   [
+    "Al Amin et al. [38] model informed consent as a patient-driven policy object with hash integrity, but specify no purpose condition and report no measured results.",
     false
    ],
    [
@@ -750,7 +952,7 @@
  },
  {
   "t": "p",
-  "text": "**Multi-party authorisation and collaborative consent (Req 3).** T3 was graded Yes in 6 of the 25 studies, Partial in 4, and No in 15, across six ratified mechanism classes. Madine et al. [53] require a regulator and a guardian threshold on the incapacitated path, but a single patient key suffices on the normal path. Wu et al. [75] apply a (t, n) investigator threshold to record admission and revocation, and Abbasi et al. [35] use a Shamir (5, 3) threshold for key custody. Punia et al. [61] conjoin an M-of-N multi-signature with an attribute and role policy, but a single emergency officer can bypass the threshold. Tan et al. [69] use patient-appointed verifiers as a contingency, and [43, 47] report guardian co-consent at registration time. No reviewed study evaluates a threshold predicate over a patient-designated guardian set on every request, and none does so together with the policy, temporal, and jurisdictional conditions. This represents an important area addressed by the proposed framework. Multi-party verification of identity should not be considered equivalent to multi-party authorisation of data access.",
+  "text": "**Multi-party authorisation and collaborative consent (Req 3).** T3 was graded Yes in 6 of the 25 studies, Partial in 4, and No in 15, across six ratified mechanism classes. Madine et al. [53] require a regulator and a guardian threshold on the incapacitated path, but a single patient key suffices on the normal path. Wu et al. [75] apply a (t, n) investigator threshold to record admission and revocation, and Abbasi et al. [35] use a Shamir (5, 3) threshold for key custody. Punia et al. [61] conjoin an M-of-N multi-signature with an attribute and role policy, but a single emergency officer can bypass the threshold. Tan et al. [69] use patient-appointed verifiers as a contingency, \u27e6r\u27e7[43] reports guardian co-consent at registration time, and [47] gates guardian access by the minor's consent and a clinician's capacity assessment.\u27e6/r\u27e7 No reviewed study evaluates a threshold predicate over a patient-designated guardian set on every request, and none does so together with the policy, temporal, and jurisdictional conditions. This represents an important area addressed by the proposed framework. Multi-party verification of identity should not be considered equivalent to multi-party authorisation of data access.",
   "segs": [
    [
     "**Multi-party authorisation and collaborative consent (Req 3).** T3 was graded Yes in 6 of the 25 studies, Partial in 4, and No in 15, across six ratified mechanism classes.",
@@ -769,7 +971,7 @@
     false
    ],
    [
-    "Tan et al. [69] use patient-appointed verifiers as a contingency, and [43, 47] report guardian co-consent at registration time.",
+    "Tan et al. [69] use patient-appointed verifiers as a contingency, [43] reports guardian co-consent at registration time, and [47] gates guardian access by the minor's consent and a clinician's capacity assessment.",
     false
    ],
    [
@@ -848,7 +1050,7 @@
  },
  {
   "t": "p",
-  "text": "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable. Wu and Zhang [76] present HealthDID, with three game-based definitions and three theorems proved by reduction, the first complete formal assurance in the corpus, although only for the identity and authority fragment. Zhao and Su [50] and Maruthi and Singh [54] prove threshold gates in isolation, and Mei et al. [55] prove a static encryption predicate. Formal assurance is coded Yes in only 4 of the 25 studies, and empirical validation Yes in 5, Partial in 19, and No in 1. The panel records an inverse relation between predicate breadth and assurance strength. No study executes adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process.",
+  "text": "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable. Wu and Zhang [76] present HealthDID, with three game-based definitions and three theorems proved by reduction, the first complete formal assurance in the corpus, although only for the identity and authority fragment. Zhao and Su [50] and Maruthi and Singh [54] prove threshold gates in isolation, and Mei et al. [55] prove a static encryption predicate. Formal assurance is coded Yes in only 4 of the 25 studies, and empirical validation Yes in 5, Partial in 19, and No in 1. The panel records an inverse relation between predicate breadth and assurance strength. No study executes adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process. \u27e6r\u27e7{Tslr_desc} summarises the description and the issues and limitations of each primary study.\u27e6/r\u27e7",
   "segs": [
    [
     "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions.",
@@ -875,10 +1077,154 @@
     false
    ],
    [
-    "No study executes adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process.",
-    true
+    "No study executes adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process. {Tslr_desc} summarises the description and the issues and limitations of each primary study.",
+    false
    ]
   ]
+ },
+ {
+  "t": "table",
+  "key": "Tslr_desc",
+  "custom": {
+   "caption": "\u27e6r\u27e7Descriptions, issues and limitations of the 25 primary studies\u27e6/r\u27e7",
+   "header": [
+    "Study",
+    "Description of the study",
+    "Issues/Limitations"
+   ],
+   "widths": [
+    1200,
+    3964,
+    3964
+   ],
+   "rows": [
+    [
+     "\u27e6r\u27e7S1 Abbasi et al. [35]\u27e6/r\u27e7",
+     "\u27e6r\u27e7Decentralised EHR management in which a Shamir (5, 3) threshold reconstructs a symmetric key, and automated oracles release their shares according to the requester's on-chain role.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The threshold is over key custodians rather than authorisers, the patient share is not required, purpose is not evaluated, and no authorisation decision is verified despite extensive performance measurement.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S2 Albalwy et al. [37]\u27e6/r\u27e7",
+     "\u27e6r\u27e7A blockchain-based dynamic consent proof of concept for clinical genomic data, in which a hashed policy tree of data type, role, and purpose is evaluated by the smart contract.\u27e6/r\u27e7",
+     "\u27e6r\u27e7A single patient sets and cancels consent, the requester's role and credentials are not verified, time is applied only at the delivery layer, and there is no formal assurance.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S3 Al Amin et al. [38]\u27e6/r\u27e7",
+     "\u27e6r\u27e7Informed consent is modelled as a patient-driven policy object with hash integrity, which an authorisation module conjoins with other policies inside a smart contract.\u27e6/r\u27e7",
+     "\u27e6r\u27e7Purpose is not a condition, the time and expiry conditions are specified but not enforced, the only multi-party element is a 2-of-2 co-signature at registration, and the Goerli evaluation reports no measured results.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S4 Ekholm et al. [43]\u27e6/r\u27e7",
+     "\u27e6r\u27e7A deployed electronic informed consent platform for rare disease genomics, in which a minor's consent is valid only when all legal guardians sign, and guardianship is verified against the Swedish Population Register.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The guardian co-consent applies at registration rather than at each access request, the platform is centralised and described with little technical detail, and there is no temporal, purpose, or formal assurance condition.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S5 Eneh et al. [44]\u27e6/r\u27e7",
+     "\u27e6r\u27e7EdgeConsent, a demonstration of on-chain attribute-based access control in which consent rules with purpose, data category, and notBefore and notAfter bounds are evaluated at decision time.\u27e6/r\u27e7",
+     "\u27e6r\u27e7A two-page demonstration with weak identity and authority trust and no DID or VC, no multi-party approval, a lifecycle that is only an active flag, and preliminary local evaluation without formal assurance.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S6 Hagstr\u00f6m et al. [47]\u27e6/r\u27e7",
+     "\u27e6r\u27e7A comparative case study of national patient portals, in which a clinician's capacity assessment and the minor's consent jointly gate guardian access, with register-verified guardianship and enforced age windows.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The mechanism is centralised and applied at documentation time, and the guardian is the party whose proxy access is gated rather than a co-authoriser of the patient's access decision.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S7 Jaiman and Urovi [49]\u27e6/r\u27e7",
+     "\u27e6r\u27e7A consent model in which ontology terms requested by a data requester are matched against the patient's consent inside the smart contract, with denial tested across requester profiles.\u27e6/r\u27e7",
+     "\u27e6r\u27e7Security assurance is explicitly outside its scope, and there is no multi-party approval.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S8 Zhao and Su [50]\u27e6/r\u27e7",
+     "\u27e6r\u27e7A threshold traceable delegation scheme in which the patient delegates a threshold of l already-authorised users, who must jointly authorise an out-of-policy requester, with unforgeability argued under DBDH.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The authorisers are consumer-side delegates rather than patient-side stakeholders, the patient's own decision is unilateral, a trusted authority escrows keys, and there is no temporal, lifecycle, or purpose condition.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S9 Li et al. [51]\u27e6/r\u27e7",
+     "\u27e6r\u27e7A hybrid RBAC and smart contract scheme with attribute-based authentication for fine-grained EMR access in IoMT, which enforces credential expiry at every sharing interaction.\u27e6/r\u27e7",
+     "\u27e6r\u27e7Time is enforced on the credential rather than on the consent, so the consent itself carries no enforced validity window, and there is no multi-party approval.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S10 Madine et al. [53]\u27e6/r\u27e7",
+     "\u27e6r\u27e7Fully decentralised multi-party consent management in which, on the incapacitated path, approvals from a regulator and a guardian threshold are required on one access request, and stale attestations stop counting.\u27e6/r\u27e7",
+     "\u27e6r\u27e7On the normal path a single patient key authorises, so multi-party approval is a contingency; purpose and data-category policy are absent, revocation after delivery is not possible, and there is no formal assurance.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S11 Maruthi and Singh [54]\u27e6/r\u27e7",
+     "\u27e6r\u27e7Protection of IoMT data for unconscious patients, in which t-of-n patient-designated relatives release access through threshold proxy re-encryption, and the hospital and relatives are authenticated on chain.\u27e6/r\u27e7",
+     "\u27e6r\u27e7Policy and temporal conditions are not evaluated, and the proofs cover the threshold gate in isolation rather than the complete decision.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S12 Mei et al. [55]\u27e6/r\u27e7",
+     "\u27e6r\u27e7An efficient dual-revocation CP-ABE scheme for IoMT that terminates access immediately through ciphertext update, motivated by consent withdrawal, with a security reduction under q-BDHE.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The proof covers a static encryption predicate, revocation operates at scheme level rather than on a consent object, and there is no multi-party approval.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S13 Panagoulias et al. [57]\u27e6/r\u27e7",
+     "\u27e6r\u27e7Blockchain-enabled trust and compliance for clinical AI, in which an Allow predicate over time, revocation, role, and purpose is evaluated before execution and denials are recorded, verified across simulated attempts with zero consent drift.\u27e6/r\u27e7",
+     "\u27e6r\u27e7A simulated single-node prototype with set-membership policy and aggregate deny attribution, without multi-party approval or identity depth, and the authors declare no formal assurance.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S14 Phuyal et al. [58]\u27e6/r\u27e7",
+     "\u27e6r\u27e7Cross-institution health data sharing with EUDI-compatible wallets, W3C decentralised identifiers, verifiable credentials, an on-chain consent object on Hyperledger Besu, and Groth16 access proofs, where a licensing-body credential asserts role separately from authentication.\u27e6/r\u27e7",
+     "\u27e6r\u27e7A single patient grants consent, the stored expiry is not checked, purpose is handled only at the interface, and there is no threat model.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S15 Phuyal et al. [59]\u27e6/r\u27e7",
+     "\u27e6r\u27e7A design-science architecture for dynamic and auditable patient consent in secondary use, using FHIR Consent with purpose, scope, actors, and validity period, anchored on chain, with conceptual VC validation at a gateway.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The architecture is design-only and is neither implemented nor evaluated, and delegation through VCs is not joint multi-party approval.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S16 Punia et al. [61]\u27e6/r\u27e7",
+     "\u27e6r\u27e7MedXBlock, a blockchain-driven access control system for cloud healthcare that combines an institutional M-of-N multi-signature with a conjunctive role and attribute policy evaluated with deny-by-default.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The signers are doctors and administrators rather than patient-side parties, the threshold sits outside the decision predicate and a single emergency officer can bypass it, there is no purpose term, and no authorisation decision is verified.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S17 Rom\u00e1n-Mart\u00ednez et al. [63]\u27e6/r\u27e7",
+     "\u27e6r\u27e7A blockchain-based service-oriented architecture on Hyperledger Fabric for consent management, access control, and auditing, in which FHIR purpose-of-use limits are evaluated per resource through XACML.\u27e6/r\u27e7",
+     "\u27e6r\u27e7There is no withdrawal or expiry path, and the experiments validate only the blockchain component.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S18 Hema et al. [64]\u27e6/r\u27e7",
+     "\u27e6r\u27e7Patient-centric cryptographic protection of cloud EHRs, in which a signed consent token, role, and expiry are inputs to key derivation, so that access becomes a cryptographic precondition and role-scoped keys separate authority from identity.\u27e6/r\u27e7",
+     "\u27e6r\u27e7Consent is issued from a single patient key, identity relies on a cloud authentication service without DID or VC, and assurance is limited to an adversary model.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S19 Soohoo et al. [67]\u27e6/r\u27e7",
+     "\u27e6r\u27e7The authentication and authorisation processes of the iAgree portal across three United States health systems, using OAuth2, SMART on FHIR, and one-time passwords, with a permissioned Ethereum audit contract.\u27e6/r\u27e7",
+     "\u27e6r\u27e7Consent enforcement is outside its scope, a single patient decides, identity and authority are not separated, revocation is claimed but not tested, and there are no formal methods.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S20 Tan et al. [69]\u27e6/r\u27e7",
+     "\u27e6r\u27e7Sharing of personal health records with multi-party pre-authorisation verification, in which a (t, n) threshold of patient-appointed verifiers each validate the grant, its expiry, and the revocation list before releasing a key share.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The joint approval is a pre-delegated contingency for an unconscious patient rather than a standing condition, purpose and data scope are not evaluated, and the gate is not evaluated empirically as an authorisation decision.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S21 Tith et al. [71]\u27e6/r\u27e7",
+     "\u27e6r\u27e7A purpose-based consent model on Hyperledger Fabric, in which a consent tuple of role, doctor identifiers, action, and intended purpose is matched against a purpose tree in chaincode at request time.\u27e6/r\u27e7",
+     "\u27e6r\u27e7Consent is given by a single patient, the tuple has no temporal element, the effect of withdrawal is not tested, identity uses Fabric certificates without DID or VC, and there is no formal verification.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S22 Tremper et al. [72]\u27e6/r\u27e7",
+     "\u27e6r\u27e7Ten years of the Mainzelliste production service for pseudonymisation, record linkage, and informed consent management, with purpose-scoped FHIR consent directives and automated consent checks.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The consent checks have no specified semantics and no demonstrated enforcement of withdrawal, its multi-party computation parties are linkage units rather than authorisers, and no consent decision is verified.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S23 Tseng et al. [73]\u27e6/r\u27e7",
+     "\u27e6r\u27e7EMR-Chain, a decentralised electronic medical record exchange that verifies authority-issued roles separately from X.509 identities and enforces token expiry at the validator.\u27e6/r\u27e7",
+     "\u27e6r\u27e7It has no W3C identifiers, purpose is logged but never evaluated, scope is hospital-level only, the patient and requester signatures authenticate the request rather than add an independent authoriser, and revocation does not invalidate issued tokens.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S24 Wu et al. [75]\u27e6/r\u27e7",
+     "\u27e6r\u27e7Trust computing and privacy-preserving smart contracts for multi-site clinical trial data, in which a (t, n) investigator threshold signature governs trial admission to the ledger and consent revocation.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The consent grant is unilateral, the voters are institution-side investigators, the vote reduces to a hash-integrity check, there is no policy engine, and there is no formal assurance.\u27e6/r\u27e7"
+    ],
+    [
+     "\u27e6r\u27e7S25 Wu and Zhang [76]\u27e6/r\u27e7",
+     "\u27e6r\u27e7HealthDID, a DID-based privacy-preserving EMR sharing system with three game-based definitions and three theorems proved by reduction, in which a zero-knowledge proof binds the authorisation to a specific requester.\u27e6/r\u27e7",
+     "\u27e6r\u27e7The proofs cover only the identity and authority fragment, multi-party refers to the privacy requirements of several stakeholders rather than joint approval, and there are no policy, temporal, or lifecycle conditions.\u27e6/r\u27e7"
+    ]
+   ]
+  }
  },
  {
   "t": "h2",
@@ -1059,7 +1405,7 @@
  {
   "t": "fig",
   "ref": "F5",
-  "caption": "Synthesis of the review: the conjunction gap and the assurance gap addressed by the proposed framework, with the number of the 25 analysed studies \u27e6r\u27e7graded Yes for each requirement in Table 1\u27e6/r\u27e7"
+  "caption": "Synthesis of the review: the conjunction gap and the assurance gap addressed by the proposed framework, with the number of the 25 analysed studies \u27e6r\u27e7graded Yes for each requirement in {T9}\u27e6/r\u27e7"
  },
  {
   "t": "p",
