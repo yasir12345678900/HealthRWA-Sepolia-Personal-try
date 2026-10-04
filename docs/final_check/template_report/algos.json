@@ -22,19 +22,19 @@
    ],
    [
     0,
-    "Validate authorised doctor D"
+    "⟦b⟧Validate authorised doctor D, guardian set G, purpose P~u~ and data scope S~C~   ▷ in the prototype, D is checked for DID format only at the access decision⟦/b⟧"
    ],
    [
     0,
-    "Validate guardian set G"
+    "⟦b⟧**if** G = ∅, any member of G is invalid, P~u~ is invalid, or S~C~ = ∅ **then**⟦/b⟧"
+   ],
+   [
+    1,
+    "⟦b⟧**return** REJECT⟦/b⟧"
    ],
    [
     0,
-    "Validate purpose P~u~"
-   ],
-   [
-    0,
-    "Validate data scope S~C~"
+    "⟦b⟧**end if**⟦/b⟧"
    ],
    [
     0,
@@ -62,15 +62,15 @@
    ],
    [
     0,
-    "Construct C = (I, A, P, T, L, E)"
+    "⟦b⟧Construct C = (I, A, P, T, L, E) with identifier id~C~, where I holds I~p~ and D, A holds G and the threshold N = |G|, and P holds P~u~ and S~C~⟦/b⟧"
    ],
    [
     0,
-    "Persist C"
+    "⟦b⟧state ← PENDING_SIGNATURE   ▷ nothing is anchored on-chain until all guardians approve⟦/b⟧"
    ],
    [
     0,
-    "state ← PENDING_SIGNATURE   ▷ nothing is anchored on-chain until all guardians approve"
+    "⟦b⟧Persist C⟦/b⟧"
    ],
    [
     0,
@@ -85,7 +85,7 @@
  "2": {
   "title": "DID and VC Identity and Authority Verification",
   "require": "Participant u, consent object C",
-  "ensure": "Verification result V~I~(u)",
+  "ensure": "⟦b⟧Verification result V~I~(u) ∈ {VALID, INVALID}, where VALID corresponds to V~I~(u) = 1⟦/b⟧",
   "lines": [
    [
     0,
@@ -179,7 +179,7 @@
  },
  "3": {
   "title": "Threshold-Based Multi-Party Authorisation",
-  "require": "Consent object C with identifier id~C~, purpose P~u~, interval (t~s~, t~e~) and jurisdiction L, patient and requester addresses addr~p~, addr~r~, EIP-712 domain, approval a = (g, sig~a~) submitted by guardian g, threshold N = |G|",
+  "require": "Consent object C with identifier id~C~, purpose P~u~, interval (t~s~, t~e~) and jurisdiction L, patient and requester addresses addr~p~, addr~r~, EIP-712 domain⟦b⟧, signing address Addr(g) of each guardian, burn authorisation burnAuth = 2 (the issuer and the owner may both burn the token)⟦/b⟧, approval a = (g, sig~a~) submitted by guardian g",
   "ensure": "Authorisation result",
   "lines": [
    [
@@ -216,11 +216,11 @@
    ],
    [
     0,
-    "**if** participant is not in G **then**"
+    "⟦b⟧**if** g ∉ G **then**⟦/b⟧"
    ],
    [
     1,
-    "Record unauthorised approval attempt   ▷ shown in the interface in the prototype"
+    "Record unauthorised approval attempt   ⟦b⟧▷ in the prototype, only members of G can be selected in the guardian view, and a signature from any other signer is not counted towards N⟦/b⟧"
    ],
    [
     1,
@@ -232,7 +232,7 @@
    ],
    [
     0,
-    "**if** participant has already approved C **then**"
+    "⟦b⟧**if** g has already approved C **then**⟦/b⟧"
    ],
    [
     1,
@@ -264,7 +264,7 @@
    ],
    [
     1,
-    "record a local token identifier and set state ← ACTIVE once t~s~ has been reached"
+    "⟦b⟧R⟦/b⟧ecord a local token identifier and set state ← ACTIVE once t~s~ has been reached"
    ],
    [
     1,
@@ -272,7 +272,7 @@
    ],
    [
     1,
-    "on confirmation: replace the local token identifier with the on-chain token identifier"
+    "⟦b⟧On confirmation,⟦/b⟧ replace the local token identifier with the on-chain token identifier"
    ],
    [
     1,
@@ -379,7 +379,7 @@
    ],
    [
     1,
-    "Record denied decision"
+    "Record denied decision   ⟦b⟧▷ in the prototype, an empty request is stopped by the interface and is not written to the audit ledger⟦/b⟧"
    ],
    [
     1,
@@ -415,11 +415,15 @@
    ],
    [
     0,
-    "**if** Jur(R) ≠ Jur(C) **then** Record denied decision and **return** DENY **end if**"
+    "**if** ⟦b⟧Jur(C) ≠ ∅ and ⟦/b⟧Jur(R) ≠ Jur(C) **then** Record denied decision and **return** DENY **end if**"
    ],
    [
     0,
     "Generate and verify a Groth16 proof that Poseidon(secret, expiry) equals the public commitment and that t ≤ t~e~, and record proof_mode = groth16"
+   ],
+   [
+    0,
+    "⟦b⟧**if** the proof does not verify **then** Record denied decision and **return** DENY **end if**⟦/b⟧"
    ],
    [
     0,

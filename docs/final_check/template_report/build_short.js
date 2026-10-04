@@ -49,12 +49,13 @@ function fixText(s) {
   return s;
 }
 function runs(text, base = {}) {
-  const out = []; const re = /(⟦r⟧[\s\S]*?⟦\/r⟧|\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
+  const out = []; const re = /(⟦r⟧[\s\S]*?⟦\/r⟧|⟦b⟧[\s\S]*?⟦\/b⟧|\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
   text = String(text);
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: text.slice(last, m.index) }));
     const t = m[0];
     if (t.startsWith("⟦r⟧")) out.push(...runs(t.slice(3, -4), process.env.RED === "1" ? { ...base, color: "FF0000" } : base));
+    else if (t.startsWith("⟦b⟧")) out.push(...runs(t.slice(3, -4), process.env.RED === "1" ? { ...base, color: "00B0F0" } : base));
     else if (t === ";") out.push(new TextRun({ font: FONT, size: BODY, ...base, text: ";", highlight: process.env.GREEN === "1" ? "yellow" : undefined }));
     else if (t.startsWith("**")) out.push(...runs(t.slice(2, -2), { ...base, bold: true }));
     else if (t.startsWith("~")) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(1, -1), subScript: true }));
@@ -67,7 +68,7 @@ function runs(text, base = {}) {
 const GREEN = process.env.GREEN === "1" ? { color: "00A000" } : {};
 const P = (text, opts = {}, base = {}) => new Paragraph({ children: runs(fixText(text), { ...GREEN, ...base }), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 }, ...opts });
 // GREEN copy: sentences taken from the original report stay black, the rest are green
-const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t.replace(/⟦\/?r⟧/g, "")), o ? {} : GREEN));
+const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t.replace(/⟦\/?[rb]⟧/g, "")), o ? {} : GREEN));
 const SEGP = segs => new Paragraph({ children: SEGR(segs), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 } });
 const cb = { style: BorderStyle.SINGLE, size: 4, color: "666666" };
 const bAll = { top: cb, left: cb, bottom: cb, right: cb };
@@ -96,12 +97,12 @@ function figure(b) {
   const n = +String(b.ref).slice(1);
   const shot = n >= 17 && n <= 40;                       // interface and Etherscan screenshots
   let width = Math.min(b.w || (shot ? 470 : 600), 600), height = Math.round(h * width / w);
-  const maxH = shot ? 400 : 450;
+  const maxH = b.maxH || (shot ? 400 : 450);
   if (height > maxH) { height = maxH; width = Math.round(w * height / h); }
   const cap = (b.caption || f.caption).replace(/\s*\.$/, "");
   return [
     new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { before: 160, after: 60 },
-      children: [new ImageRun({ type: "png", data: buf, transformation: { width, height }, altText: { title: fixText(cap).replace(/⟦\/?r⟧|\*\*|[~^]/g, ""), description: fixText(cap).replace(/⟦\/?r⟧|\*\*|[~^]/g, ""), name: path.basename(f.file) } })] }),
+      children: [new ImageRun({ type: "png", data: buf, transformation: { width, height }, altText: { title: fixText(cap).replace(/⟦\/?[rb]⟧|\*\*|[~^]/g, ""), description: fixText(cap).replace(/⟦\/?[rb]⟧|\*\*|[~^]/g, ""), name: path.basename(f.file) } })] }),
     new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 220 },
       children: [new TextRun({ text: `Figure ${num.F[b.ref]}: `, bold: true, font: FONT, size: BODY - 4 }), ...runs(fixText(cap) + ".", { size: BODY - 4 })] }),
   ];
@@ -119,15 +120,15 @@ function table(b) {
   const tot = widths.reduce((a, c) => a + c, 0); widths = widths.map(x => Math.floor(x * TEXTW / tot));
   widths[ncol - 1] += TEXTW - widths.reduce((a, c) => a + c, 0);
   const fs_ = t.small ? BODY - 7 : BODY - 5;
-  const cell = (txt, i, head) => new TableCell({ borders: bAll, width: { size: widths[i], type: WidthType.DXA },
+  const cell = (txt, i, head, keep) => new TableCell({ borders: bAll, width: { size: widths[i], type: WidthType.DXA },
     shading: head ? { fill: "E7E6E6", type: ShadingType.CLEAR, color: "auto" } : undefined, margins: { top: 40, bottom: 40, left: 80, right: 80 },
-    children: String(txt).split("\n").map(line => new Paragraph({ alignment: t.center && i > 0 ? AlignmentType.CENTER : AlignmentType.LEFT, children: runs(fixText(line).replace(/_(?=[A-Za-z0-9])/g, "_\u200b"), { size: fs_, bold: head }) })) });
+    children: String(txt).split("\n").map(line => new Paragraph({ keepNext: head ? !!b.keep : !!keep, alignment: t.center && i > 0 ? AlignmentType.CENTER : AlignmentType.LEFT, children: runs(fixText(line).replace(/_(?=[A-Za-z0-9])/g, "_\u200b"), { size: fs_, bold: head }) })) });
   return [
     new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { before: 200, after: 80 },
       children: [new TextRun({ text: `Table ${num.T[b.ref || b.key]}: `, bold: true, font: FONT, size: BODY - 4 }), ...runs(fixText(String(t.caption).replace(/\s*\.$/, "")), { size: BODY - 4 })] }),
     new Table({ width: { size: TEXTW, type: WidthType.DXA }, columnWidths: widths,
       rows: [new TableRow({ tableHeader: true, cantSplit: true, children: t.header.map((h, i) => cell(h, i, true)) }),
-        ...t.rows.map(r => new TableRow({ cantSplit: true, children: Array.from({ length: ncol }, (_, i) => cell(r[i] ?? "", i, false)) }))] }),
+        ...t.rows.map((r, ri) => new TableRow({ cantSplit: true, children: Array.from({ length: ncol }, (_, i) => cell(r[i] ?? "", i, false, b.keep && ri < t.rows.length - 1)) }))] }),
     new Paragraph({ spacing: { after: 160 }, children: [] }),
   ];
 }
@@ -135,7 +136,7 @@ function equation(b) {
   const e = EQS[String(b.ref).slice(1)]; if (!e) { problems.push("missing equation " + b.ref); return []; }
   return [new Paragraph({ spacing: { before: 80, after: 160 }, keepLines: true,
     tabStops: [{ type: TabStopType.CENTER, position: Math.round(TEXTW / 2) }, { type: TabStopType.RIGHT, position: TEXTW }],
-    children: [new TextRun({ text: "\t", font: FONT }), ...runs(fixText(e), { font: "Cambria Math", size: e.replace(/~/g, "").length > 78 ? BODY - 6 : e.replace(/~/g, "").length > 62 ? BODY - 4 : BODY - 1, italics: false }), new TextRun({ text: `\t(${num.E[b.ref]})`, font: FONT, size: BODY })] })];
+    children: [new TextRun({ text: "\t", font: FONT }), ...runs(fixText(e), { font: "Cambria Math", size: e.replace(/~|⟦\/?[rb]⟧/g, "").length > 78 ? BODY - 6 : e.replace(/~|⟦\/?[rb]⟧/g, "").length > 62 ? BODY - 4 : BODY - 1, italics: false }), new TextRun({ text: `\t(${num.E[b.ref]})`, font: FONT, size: BODY })] })];
 }
 function algorithm(b) {
   const a = ALGS[String(b.ref).slice(1)]; if (!a) { problems.push("missing algorithm " + b.ref); return []; }

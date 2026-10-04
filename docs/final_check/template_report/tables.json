@@ -182,7 +182,7 @@
    ],
    [
     "S19",
-    "Soohoo et al. (2026)",
+    "⟦b⟧SooHoo⟦/b⟧ et al. (2026)",
     "[67]",
     "Development of the authentication and authorization processes for the iAgree portal, a platform for patient-controlled data sharing across health systems",
     "Consent representation and blockchain-based consent governance (Req 1)"
@@ -217,7 +217,7 @@
    ],
    [
     "S24",
-    "Wu et al. (2023)",
+    "⟦b⟧Wu et al. (2022)⟦/b⟧",
     "[75]",
     "Apply Trust Computing and Privacy Preserving Smart Contracts to Manage, Share, and Analyze Multi-site Clinical Trial Data",
     "Multi-party authorisation (Req 3)"
@@ -850,7 +850,7 @@
     "⟦r⟧Partial⟦/r⟧"
    ],
    [
-    "S19 [67] Soohoo et al. (2026)",
+    "S19 [67] ⟦b⟧SooHoo⟦/b⟧ et al. (2026)",
     "⟦r⟧Partial⟦/r⟧",
     "⟦r⟧Partial⟦/r⟧",
     "⟦r⟧No⟦/r⟧",
@@ -895,7 +895,7 @@
     "⟦r⟧Partial⟦/r⟧"
    ],
    [
-    "S24 [75] Wu et al. (2023)",
+    "S24 [75] ⟦b⟧Wu et al. (2022)⟦/b⟧",
     "⟦r⟧Partial⟦/r⟧",
     "⟦r⟧Partial⟦/r⟧",
     "⟦r⟧Partial⟦/r⟧",
@@ -1039,7 +1039,7 @@
   ]
  },
  "13": {
-  "caption": "Mapping Between Research Objectives and MVC Components",
+  "caption": "⟦b⟧Mapping between research objectives and MVC components⟦/b⟧",
   "rows": [
    [
     "Research Objective",
@@ -1107,7 +1107,7 @@
    [
     "Identity & Authorisation",
     "Guardian Cryptographic Approval",
-    "Verifies guardian identities and EIP-712 signatures"
+    "⟦b⟧Checks the guardian DID format and verifies the EIP-712 signatures⟦/b⟧"
    ],
    [
     "Multi-party Consent",
@@ -1240,7 +1240,7 @@
   ]
  },
  "16": {
-  "caption": "Access decisions recorded in the audit ledger, with the decision matrix of each logged evaluation and the access result that followed",
+  "caption": "⟦b⟧Access decisions recorded in the audit ledger, with the decision matrix of each logged evaluation and the access result that followed. Rows are the index numbers of the exported ledger, counted from 0, and n/l means not logged⟦/b⟧",
   "rows": [
    [
     "Rows",
@@ -1605,7 +1605,7 @@
   ]
  },
  "20": {
-  "caption": "Next Stage Research Activities, Methodological Focus, and Expected Outcomes",
+  "caption": "⟦b⟧Next stage research activities and their expected outcomes⟦/b⟧",
   "rows": [
    [
     "Research Focus",

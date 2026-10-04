@@ -29,7 +29,7 @@
  },
  "8": {
   "file": "assets/F8.png",
-  "caption": "Trust predicate evaluation and authorisation decision flow"
+  "caption": "⟦b⟧Trust predicate evaluation and authorisation decision flow (in the current prototype, V~I~ also checks the EIP-712 signature of each listed guardian, and a refusal for a consent that is not ACTIVE is not recorded)⟦/b⟧"
  },
  "9": {
   "file": "assets/F9.png",
