@@ -1112,7 +1112,7 @@
  },
  {
   "t": "p",
-  "text": "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable. Wu and Zhang [76] present HealthDID, with three game-based definitions and three theorems proved by reduction, although ⟦r⟧the proofs cover⟦/r⟧ only the identity and authority fragment. Zhao and Su [50] and Maruthi and Singh [54] prove threshold gates in isolation, and Mei et al. [55] prove a static encryption predicate. Formal assurance is coded Yes in only 4 of the 25 studies, and empirical validation Yes in 5, Partial in 19, and No in 1. The panel records an inverse relation between predicate breadth and assurance strength. ⟦r⟧Few studies⟦/r⟧ execute adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process. ⟦r⟧{Tslr_desc} summarises the description and the issues and limitations of each primary study.⟦/r⟧",
+  "text": "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable. Wu and Zhang [76] present HealthDID, with three game-based definitions and three theorems proved by reduction, although ⟦r⟧the proofs cover⟦/r⟧ only the identity and authority fragment. Zhao and Su [50] and Maruthi and Singh [54] prove threshold gates in isolation, and Mei et al. [55] prove a static encryption predicate. Formal assurance is coded Yes in only 4 of the 25 studies, and empirical validation Yes in 5, Partial in 19, and No in 1. ⟦r⟧We observed an inverse relation between predicate breadth and assurance strength.⟦/r⟧ ⟦r⟧Few studies⟦/r⟧ execute adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process. ⟦r⟧{Tslr_desc} summarises the description and the issues and limitations of each primary study.⟦/r⟧",
   "segs": [
    [
     "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions.",
@@ -1135,7 +1135,7 @@
     false
    ],
    [
-    "The panel records an inverse relation between predicate breadth and assurance strength.",
+    "⟦r⟧We observed an inverse relation between predicate breadth and assurance strength.⟦/r⟧",
     false
    ],
    [
@@ -1463,7 +1463,7 @@
  },
  {
   "t": "p",
-  "text": "The review has limitations. A further 588 records, mostly from SpringerLink, could not be screened at the abstract stage because the export contained no abstracts. ⟦r⟧The reporting checkpoint and a single coding panel mean that a small number of relevant studies may have been missed.⟦/r⟧ The consistency between the coding of the included studies and the signal prevalence of the wider pool limits, but does not remove, this risk.",
+  "text": "The review has limitations. A further 588 records, mostly from SpringerLink, could not be screened at the abstract stage because the export contained no abstracts. ⟦r⟧The reporting checkpoint and a single round of coding mean that a small number of relevant studies may have been missed.⟦/r⟧ The consistency between the coding of the included studies and the signal prevalence of the wider pool limits, but does not remove, this risk.",
   "segs": [
    [
     "The review has limitations.",
@@ -1474,7 +1474,7 @@
     false
    ],
    [
-    "The reporting checkpoint and a single coding panel mean that a small number of relevant studies may have been missed.",
+    "⟦r⟧The reporting checkpoint and a single round of coding mean that a small number of relevant studies may have been missed.⟦/r⟧",
     false
    ],
    [
