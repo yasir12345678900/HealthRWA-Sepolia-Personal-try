@@ -101,7 +101,7 @@ function figure(b) {
   const cap = (b.caption || f.caption).replace(/\s*\.$/, "");
   return [
     new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { before: 160, after: 60 },
-      children: [new ImageRun({ type: "png", data: buf, transformation: { width, height }, altText: { title: fixText(cap).replace(/⟦\/?r⟧/g, ""), description: fixText(cap).replace(/⟦\/?r⟧/g, ""), name: path.basename(f.file) } })] }),
+      children: [new ImageRun({ type: "png", data: buf, transformation: { width, height }, altText: { title: fixText(cap).replace(/⟦\/?r⟧|\*\*|[~^]/g, ""), description: fixText(cap).replace(/⟦\/?r⟧|\*\*|[~^]/g, ""), name: path.basename(f.file) } })] }),
     new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 220 },
       children: [new TextRun({ text: `Figure ${num.F[b.ref]}: `, bold: true, font: FONT, size: BODY - 4 }), ...runs(fixText(cap) + ".", { size: BODY - 4 })] }),
   ];
