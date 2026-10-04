@@ -482,7 +482,7 @@
  },
  {
   "t": "p",
-  "text": "The review process was structured according to the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020 statement [34]. PRISMA was adopted to improve the transparency, reproducibility, and traceability of the literature identification and selection process. A written protocol (Protocol v1.1) fixed the review questions, databases, master query, eligibility criteria, codebook, and quality items before screening. ⟦r⟧We screened, coded, and assessed every record, and all counts are those of the decision-log checkpoint of 10 September 2026 (decision D-166).⟦/r⟧ This systematic literature review (SLR) is guided by seven review questions. Questions 1 to 5 correspond to Req 1 to Req 5, and Questions 6 and 7 together to Req 6. These questions were formulated to ensure that the review remained directly aligned with the technical objectives of the proposed system.",
+  "text": "The review process was structured according to the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020 statement [34]. PRISMA was adopted to improve the transparency, reproducibility, and traceability of the literature identification and selection process. A written protocol (Protocol v1.1) fixed the review questions, databases, master query, eligibility criteria, codebook, and quality items before screening. ⟦b⟧We screened, coded, and assessed every record, and all counts are those recorded on 10 September 2026.⟦/b⟧ This systematic literature review (SLR) is guided by seven review questions. Questions 1 to 5 correspond to Req 1 to Req 5, and Questions 6 and 7 together to Req 6. These questions were formulated to ensure that the review remained directly aligned with the technical objectives of the proposed system.",
   "segs": [
    [
     "The review process was structured according to the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020 statement [34].",
@@ -497,7 +497,7 @@
     false
    ],
    [
-    "⟦r⟧We screened, coded, and assessed every record, and all counts are those of the decision-log checkpoint of 10 September 2026 (decision D-166).⟦/r⟧",
+    "⟦b⟧We screened, coded, and assessed every record, and all counts are those recorded on 10 September 2026.⟦/b⟧",
     false
    ],
    [
@@ -656,7 +656,7 @@
  },
  {
   "t": "p",
-  "text": "The included studies were systematically analysed using a predefined data extraction framework. Each study was coded as Yes, Partial, or No against seven trust dimensions, T1 (identity), T2 (authority), T3 (multi-party), T4 (policy), T5 (temporal), T6 (lifecycle), and T7 (audit), and against the requirements, with a page reference for every positive coding. A study passed when its score on QA1 to QA4 of the eight quality items was at least 3.0. ⟦r⟧{Tqa} shows the quality items, how each one was scored, and the rule used for inclusion.⟦/r⟧ Under decision D-166, a study is core if its gap-impact verdict is contradicts, weakens, or narrows, or if its T3 coding is Yes or Partial, which gives 23 core studies of the 44. With the two supporting studies of highest quality score 7.0 [37, 51], they form the 25 primary studies, S1 to S25. ⟦r⟧{Tslr_list} lists the 25 primary studies with their year, title, and category.⟦/r⟧",
+  "text": "The included studies were systematically analysed using a predefined data extraction framework. Each study was coded as Yes, Partial, or No against seven trust dimensions, T1 (identity), T2 (authority), T3 (multi-party), T4 (policy), T5 (temporal), T6 (lifecycle), and T7 (audit), and against the requirements, with a page reference for every positive coding. A study passed when its score on QA1 to QA4 of the eight quality items was at least 3.0. ⟦r⟧{Tqa} shows the quality items, how each one was scored, and the rule used for inclusion.⟦/r⟧ ⟦b⟧A study is core⟦/b⟧ if its gap-impact verdict is contradicts, weakens, or narrows, or if its T3 coding is Yes or Partial, which gives 23 core studies of the 44. With the two supporting studies of highest quality score 7.0 [37, 51], they form the 25 primary studies, S1 to S25. ⟦r⟧{Tslr_list} lists the 25 primary studies with their year, title, and category.⟦/r⟧",
   "segs": [
    [
     "The included studies were systematically analysed using a predefined data extraction framework.",
@@ -675,7 +675,7 @@
     false
    ],
    [
-    "Under decision D-166, a study is core if its gap-impact verdict is contradicts, weakens, or narrows, or if its T3 coding is Yes or Partial, which gives 23 core studies of the 44.",
+    "⟦b⟧A study is core⟦/b⟧ if its gap-impact verdict is contradicts, weakens, or narrows, or if its T3 coding is Yes or Partial, which gives 23 core studies of the 44.",
     false
    ],
    [
