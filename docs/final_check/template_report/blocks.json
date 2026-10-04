@@ -293,7 +293,7 @@
  },
  {
   "t": "p",
-  "text": "HALAH runs on the Ethereum Sepolia testnet, and the guardian approval rule is currently implemented as N-of-N over the guardian set G. Synthetic healthcare records derived from the Synthea dataset [82] are used to construct representative consent workflows. Security properties are demonstrated through adversarial and negative testing, as well as empirical evaluation using the HALAH prototype and representative healthcare data-sharing scenarios, rather than formal proof. The current stage denotes work delivered at the CA2 milestone, while temporal and lifecycle trust, formal security assurance, and comprehensive empirical validation will be developed further in CA3.",
+  "text": "HALAH runs on the Ethereum Sepolia testnet, and the guardian approval rule is currently implemented as N-of-N over the guardian set G. Synthetic healthcare records derived from the Synthea dataset [82] are used to construct representative consent workflows. Security properties are demonstrated through adversarial and negative testing, as well as empirical evaluation using the HALAH prototype and representative healthcare data-sharing scenarios, rather than formal proof. ⟦r⟧The current stage covers the work delivered so far,⟦/r⟧ while temporal and lifecycle trust, formal security assurance, and comprehensive empirical validation ⟦r⟧will be developed further in the next stage.⟦/r⟧",
   "segs": [
    [
     "HALAH runs on the Ethereum Sepolia testnet, and the guardian approval rule is currently implemented as N-of-N over the guardian set G.",
@@ -308,7 +308,7 @@
     true
    ],
    [
-    "The current stage denotes work delivered at the CA2 milestone, while temporal and lifecycle trust, formal security assurance, and comprehensive empirical validation will be developed further in CA3.",
+    "⟦r⟧The current stage covers the work delivered so far,⟦/r⟧ while temporal and lifecycle trust, formal security assurance, and comprehensive empirical validation ⟦r⟧will be developed further in the next stage.⟦/r⟧",
     true
    ]
   ]
@@ -1363,7 +1363,7 @@
  },
  {
   "t": "p",
-  "text": "The comparison indicates that the principal contribution of the proposed research is not the replacement of existing technologies. Rather, it lies in establishing an explicit conceptual relationship among them. The consent object C carries the identity, authority, threshold, policy, temporal, and lifecycle conditions together, so that their relationship is verifiable. ⟦r⟧{Treq} in Section 2.6 positions the proposed framework relative to these requirements.⟦/r⟧ The conjunction is formally specified and validated through allow-and-deny test cases and attack cases, whereas its formal verification and the remaining lifecycle extensions of RQ5 are reserved for CA3 (Sections 10 and 11).",
+  "text": "The comparison indicates that the principal contribution of the proposed research is not the replacement of existing technologies. Rather, it lies in establishing an explicit conceptual relationship among them. The consent object C carries the identity, authority, threshold, policy, temporal, and lifecycle conditions together, so that their relationship is verifiable. ⟦r⟧{Treq} in Section 2.6 positions the proposed framework relative to these requirements.⟦/r⟧ The conjunction is formally specified and validated through allow-and-deny test cases and attack cases, whereas its formal verification and the remaining lifecycle extensions of RQ5 ⟦r⟧are left for the next stage (Sections 10 and 11)⟦/r⟧.",
   "segs": [
    [
     "The comparison indicates that the principal contribution of the proposed research is not the replacement of existing technologies.",
@@ -1378,7 +1378,7 @@
     false
    ],
    [
-    "The conjunction is formally specified and validated through allow-and-deny test cases and attack cases, whereas its formal verification and the remaining lifecycle extensions of RQ5 are reserved for CA3 (Sections 10 and 11).",
+    "The conjunction is formally specified and validated through allow-and-deny test cases and attack cases, whereas its formal verification and the remaining lifecycle extensions of RQ5 ⟦r⟧are left for the next stage (Sections 10 and 11)⟦/r⟧.",
     false
    ]
   ]
@@ -1494,7 +1494,7 @@
  },
  {
   "t": "p",
-  "text": "⟦r⟧The research addresses this gap by developing a trust-oriented authorisation model in which consent is not simply evidence that permission was granted, but the basis for evaluating whether a particular access request should be trusted. The resulting research direction places Trust Computing at the centre of the investigation, while treating blockchain, decentralised identity, verifiable credentials, and policy mechanisms as enabling technologies supporting the broader trust model. {Treq} summarises how the proposed framework, implemented in the HALAH prototype, addresses each requirement, the research objective that delivers it, and its current status. A requirement with the status Done is addressed and validated at the current stage, whereas a requirement that is partially completed will be completed in CA3.⟦/r⟧",
+  "text": "⟦r⟧The research addresses this gap by developing a trust-oriented authorisation model in which consent is not simply evidence that permission was granted, but the basis for evaluating whether a particular access request should be trusted. The resulting research direction places Trust Computing at the centre of the investigation, while treating blockchain, decentralised identity, verifiable credentials, and policy mechanisms as enabling technologies supporting the broader trust model. {Treq} summarises how the proposed framework, implemented in the HALAH prototype, addresses each requirement, the research objective that delivers it, and its current status. A requirement with the status Done is addressed and validated at the current stage, whereas a requirement that is partially completed will be completed in the next stage.⟦/r⟧",
   "segs": [
    [
     "The research addresses this gap by developing a trust-oriented authorisation model in which consent is not simply evidence that permission was granted, but the basis for evaluating whether a particular access request should be trusted.",
@@ -1505,7 +1505,7 @@
     false
    ],
    [
-    "A requirement with the status Done is addressed and validated at the current stage, whereas a requirement that is partially completed will be completed in CA3.",
+    "A requirement with the status Done is addressed and validated at the current stage, whereas a requirement that is partially completed ⟦r⟧will be completed in the next stage.⟦/r⟧",
     false
    ]
   ]
@@ -1536,7 +1536,7 @@
     ],
     [
      "⟦r⟧Req 2⟦/r⟧",
-     "⟦r⟧⟦b⟧DID and VC verification separates identity from authority and is evaluated as V~I~ through {A2}.⟦/b⟧ The prototype checks the DID format, and full DID resolution and VC validation are planned for CA3.⟦/r⟧",
+     "⟦r⟧⟦b⟧DID and VC verification separates identity from authority and is evaluated as V~I~ through {A2}.⟦/b⟧ The prototype checks the DID format, and full DID resolution and VC validation are planned for the next stage.⟦/r⟧",
      "⟦r⟧RO2 (Section 7)⟦/r⟧",
      "⟦r⟧Done⟦/r⟧"
     ],
@@ -1560,7 +1560,7 @@
     ],
     [
      "⟦r⟧Req 6⟦/r⟧",
-     "⟦r⟧Audit ledger evidence, 36 automated tests, and twelve unit-level attack scenarios. Formal analysis is reserved for CA3.⟦/r⟧",
+     "⟦r⟧Audit ledger evidence, 36 automated tests, and twelve unit-level attack scenarios. Formal analysis is left for the next stage.⟦/r⟧",
      "⟦r⟧RO6 (Section 11)⟦/r⟧",
      "⟦r⟧Partially completed (for RQ1 to RQ4)⟦/r⟧"
     ]
@@ -2229,7 +2229,7 @@
  },
  {
   "t": "p",
-  "text": "The mapping follows the structure of the research programme and maintains a direct correspondence between each research question and its associated objective. RO1 to RO6 are realised in Section 6 to Section 11 respectively, each in the section presenting the solution for the corresponding research question. Because each research question corresponds to one gap identified in Section 2, each objective addresses the gap of the same number, so that RO1 addresses Gap 1 and RO6 addresses Gap 6. This correspondence ensures that every research question is addressed by a clearly defined research activity and that each objective contributes to the overall development of the proposed trust-oriented authorisation framework. RO1 to RO4 are delivered in CA2, together with their validation and evaluation through the implemented prototype, whereas, as stated in Section 1, RO5 and RO6 are partially completed. Their remaining work is detailed in Section 10 and Section 11, and its schedule is presented in Section 13. The distinction between current stage and next stage is therefore based on research scope and maturity rather than on a different set of research questions or objectives.",
+  "text": "The mapping follows the structure of the research programme and maintains a direct correspondence between each research question and its associated objective. RO1 to RO6 are realised in Section 6 to Section 11 respectively, each in the section presenting the solution for the corresponding research question. Because each research question corresponds to one gap identified in Section 2, each objective addresses the gap of the same number, so that RO1 addresses Gap 1 and RO6 addresses Gap 6. This correspondence ensures that every research question is addressed by a clearly defined research activity and that each objective contributes to the overall development of the proposed trust-oriented authorisation framework. ⟦r⟧RO1 to RO4 are delivered in this stage,⟦/r⟧ together with their validation and evaluation through the implemented prototype, whereas, as stated in Section 1, RO5 and RO6 are partially completed. Their remaining work is detailed in Section 10 and Section 11, and its schedule is presented in Section 13. The distinction between current stage and next stage is therefore based on research scope and maturity rather than on a different set of research questions or objectives.",
   "segs": [
    [
     "The mapping follows the structure of the research programme and maintains a direct correspondence between each research question and its associated objective.",
@@ -2248,7 +2248,7 @@
     true
    ],
    [
-    "RO1 to RO4 are delivered in CA2, together with their validation and evaluation through the implemented prototype, whereas, as stated in Section 1, RO5 and RO6 are partially completed.",
+    "⟦r⟧RO1 to RO4 are delivered in this stage,⟦/r⟧ together with their validation and evaluation through the implemented prototype, whereas, as stated in Section 1, RO5 and RO6 are partially completed.",
     false
    ],
    [
@@ -2797,7 +2797,7 @@
  },
  {
   "t": "p",
-  "text": "The principal contribution of the proposed architecture is not the use of MVC itself, but the way in which MVC is employed to operationalise a trust-oriented authorisation model. This design transforms multi-party consent management from a conventional record-management problem into a distributed security-governance problem. The evaluable consent object as such is already present in the literature [71, 37, 44, 58]. The key innovation is that consent effectiveness depends on the joint satisfaction of identity, authority, collective approval, policy, temporal, and jurisdictional conditions on every access decision. Blockchain or other tamper-resistant storage mechanisms are integrated as infrastructure for preserving selected authorisation evidence. However, the blockchain itself is not treated as the source of trust. Its role is to strengthen integrity, non-repudiation, and auditability of the evidence generated by the authorisation process [2, 28]. The detailed solutions for RQ1 to RQ6 are presented in Sections 6 to 11, and the formal assurance of the complete decision model remains for CA3.",
+  "text": "The principal contribution of the proposed architecture is not the use of MVC itself, but the way in which MVC is employed to operationalise a trust-oriented authorisation model. This design transforms multi-party consent management from a conventional record-management problem into a distributed security-governance problem. The evaluable consent object as such is already present in the literature [71, 37, 44, 58]. The key innovation is that consent effectiveness depends on the joint satisfaction of identity, authority, collective approval, policy, temporal, and jurisdictional conditions on every access decision. Blockchain or other tamper-resistant storage mechanisms are integrated as infrastructure for preserving selected authorisation evidence. However, the blockchain itself is not treated as the source of trust. Its role is to strengthen integrity, non-repudiation, and auditability of the evidence generated by the authorisation process [2, 28]. The detailed solutions for RQ1 to RQ6 are presented in Sections 6 to 11, and the formal assurance of the complete decision model ⟦r⟧remains for the next stage.⟦/r⟧",
   "segs": [
    [
     "The principal contribution of the proposed architecture is not the use of MVC itself, but the way in which MVC is employed to operationalise a trust-oriented authorisation model.",
@@ -2828,7 +2828,7 @@
     true
    ],
    [
-    "The detailed solutions for RQ1 to RQ6 are presented in Sections 6 to 11, and the formal assurance of the complete decision model remains for CA3.",
+    "The detailed solutions for RQ1 to RQ6 are presented in Sections 6 to 11, and the formal assurance of the complete decision model ⟦r⟧remains for the next stage.⟦/r⟧",
     false
    ]
   ]
@@ -4371,14 +4371,14 @@
  },
  {
   "t": "p",
-  "text": "RO5 addresses RQ5 and extends the foundational authorisation model with temporal validity and consent lifecycle controls. This objective was originally planned for CA3 because it investigates how an authorisation remains trustworthy as time passes and as the consent state changes. The objective is to ensure that an authorisation remains valid only within its permitted time interval and lifecycle state. It must also ensure that expiration, revocation, and unauthorised state transitions are correctly enforced.",
+  "text": "RO5 addresses RQ5 and extends the foundational authorisation model with temporal validity and consent lifecycle controls. This objective ⟦r⟧was originally planned for the next stage because⟦/r⟧ it investigates how an authorisation remains trustworthy as time passes and as the consent state changes. The objective is to ensure that an authorisation remains valid only within its permitted time interval and lifecycle state. It must also ensure that expiration, revocation, and unauthorised state transitions are correctly enforced.",
   "segs": [
    [
     "RO5 addresses RQ5 and extends the foundational authorisation model with temporal validity and consent lifecycle controls.",
     true
    ],
    [
-    "This objective was originally planned for CA3 because it investigates how an authorisation remains trustworthy as time passes and as the consent state changes.",
+    "This objective ⟦r⟧was originally planned for the next stage because⟦/r⟧ it investigates how an authorisation remains trustworthy as time passes and as the consent state changes.",
     true
    ],
    [
@@ -4649,14 +4649,14 @@
  },
  {
   "t": "p",
-  "text": "In dynamic consent environments, permissions may expire, be revoked, suspended, renewed, or otherwise modified during the lifecycle of a healthcare data-sharing relationship. Five elements remain for CA3.",
+  "text": "In dynamic consent environments, permissions may expire, be revoked, suspended, renewed, or otherwise modified during the lifecycle of a healthcare data-sharing relationship. ⟦r⟧Five elements remain for the next stage.⟦/r⟧",
   "segs": [
    [
     "In dynamic consent environments, permissions may expire, be revoked, suspended, renewed, or otherwise modified during the lifecycle of a healthcare data-sharing relationship.",
     true
    ],
    [
-    "Five elements remain for CA3.",
+    "⟦r⟧Five elements remain for the next stage.⟦/r⟧",
     false
    ]
   ]
@@ -4664,7 +4664,7 @@
  {
   "t": "bullets",
   "items": [
-   "**Consent modification.** The current prototype assumes that the consent terms do not change after approval. CA3 will therefore extend the consent model to explicitly represent governed modification.",
+   "**Consent modification.** The current prototype assumes that the consent terms do not change after approval. ⟦r⟧The next stage will therefore extend⟦/r⟧ the consent model to explicitly represent governed modification.",
    "**Delegation.** The consent Model will be expanded to include the delegation of consent.",
    "**Guardian-set changes.** Changes to the guardian set G after consent creation remain to be supported.",
    "**Transition check.** Lifecycle safety additionally requires that unauthorised state transitions be rejected. If the transition is not permitted, the system records an unauthorised state-transition event and returns INVALID, but this is the only step not yet implemented. It therefore ensures that a previously valid consent cannot be treated as permanently valid after expiration or revocation, but unauthorised transitions are examined only in part.",
@@ -4677,7 +4677,7 @@
      false
     ],
     [
-     "CA3 will therefore extend the consent model to explicitly represent governed modification.",
+     "⟦r⟧The next stage will therefore extend⟦/r⟧ the consent model to explicitly represent governed modification.",
      true
     ]
    ],
@@ -4721,7 +4721,7 @@
  },
  {
   "t": "p",
-  "text": "The expected outcome is a lifecycle-aware consent mechanism capable of rejecting access after expiration or revocation and preventing unauthorised lifecycle transitions. The lifecycle invariant will be verified by model checking of the state machine or by proof over the predicate definitions, with the formal component of RO6 in Section 11. This work will constitute a major component of CA3. The major CA3 activities and their expected outcomes are summarised in Section 13.",
+  "text": "The expected outcome is a lifecycle-aware consent mechanism capable of rejecting access after expiration or revocation and preventing unauthorised lifecycle transitions. The lifecycle invariant will be verified by model checking of the state machine or by proof over the predicate definitions, with the formal component of RO6 in Section 11. ⟦r⟧This work will be a major part of the next stage. The main activities of the next stage⟦/r⟧ and their expected outcomes are summarised in Section 13.",
   "segs": [
    [
     "The expected outcome is a lifecycle-aware consent mechanism capable of rejecting access after expiration or revocation and preventing unauthorised lifecycle transitions.",
@@ -4732,11 +4732,11 @@
     false
    ],
    [
-    "This work will constitute a major component of CA3.",
+    "⟦r⟧This work will be a major part of the next stage.⟦/r⟧",
     true
    ],
    [
-    "The major CA3 activities and their expected outcomes are summarised in Section 13.",
+    "⟦r⟧The main activities of the next stage⟦/r⟧ and their expected outcomes are summarised in Section 13.",
     true
    ]
   ]
@@ -4755,7 +4755,7 @@
  },
  {
   "t": "p",
-  "text": "RO6 addresses RQ6 by formally analysing and empirically evaluating whether the proposed trust-oriented authorisation framework satisfies its defined security and authorisation properties. The objective combines two complementary forms of assurance. Formal security assurance specifies the conditions under which the authorisation mechanism should be considered secure and consistent. Empirical validation evaluates whether the implemented system behaves according to those conditions. Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable. RO6 is partially completed through the implementation and scenario-based validation of the HALAH prototype for RQ1 to RQ4. The complete formal analysis and comprehensive empirical validation will be conducted as part of CA3.",
+  "text": "RO6 addresses RQ6 by formally analysing and empirically evaluating whether the proposed trust-oriented authorisation framework satisfies its defined security and authorisation properties. The objective combines two complementary forms of assurance. Formal security assurance specifies the conditions under which the authorisation mechanism should be considered secure and consistent. Empirical validation evaluates whether the implemented system behaves according to those conditions. Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable. RO6 is partially completed through the implementation and scenario-based validation of the HALAH prototype for RQ1 to RQ4. The complete formal analysis and comprehensive empirical validation ⟦r⟧will be conducted in the next stage.⟦/r⟧",
   "segs": [
    [
     "RO6 addresses RQ6 by formally analysing and empirically evaluating whether the proposed trust-oriented authorisation framework satisfies its defined security and authorisation properties.",
@@ -4786,7 +4786,7 @@
     true
    ],
    [
-    "The complete formal analysis and comprehensive empirical validation will be conducted as part of CA3.",
+    "The complete formal analysis and comprehensive empirical validation ⟦r⟧will be conducted in the next stage.⟦/r⟧",
     true
    ]
   ]
@@ -5557,14 +5557,14 @@
  },
  {
   "t": "h2",
-  "text": "Remaining Work for CA3"
+  "text": "Remaining Work for the Next Stage"
  },
  {
   "t": "p",
-  "text": "The remaining security assurance and comprehensive empirical evaluation will be conducted in CA3 and consist of three parts.",
+  "text": "The remaining security assurance and comprehensive empirical evaluation ⟦r⟧will be conducted in the next stage and consist⟦/r⟧ of three parts.",
   "segs": [
    [
-    "The remaining security assurance and comprehensive empirical evaluation will be conducted in CA3 and consist of three parts.",
+    "The remaining security assurance and comprehensive empirical evaluation ⟦r⟧will be conducted in the next stage and consist⟦/r⟧ of three parts.",
     true
    ]
   ]
@@ -5574,7 +5574,7 @@
   "items": [
    "**Formal assurance.** The formal component will specify and analyse the security properties, consistency requirements, and soundness conditions of the trust-oriented authorisation mechanism. The soundness property Decision(C, R, t) = ALLOW ⇒ V~I~ ∧ V~A~ ∧ V~P~ ∧ V~T~ ∧ V~L~ and the lifecycle invariant of Section 10 will be verified by model checking of the state machine or by proof over the predicate definitions. Formal analysis will be used to reason about whether unauthorised entities or invalid authorisation conditions can produce an apparently valid access decision under defined assumptions, and every property must be either verified or refuted by an explicit counterexample.",
    "**Full performance and scalability study.** The preliminary measurements will be repeated over a larger number of consents, guardians, and access requests, and the end-to-end decision latency will be measured under concurrent load.",
-   "**Extended adversarial evaluation.** CA3 will extend the current prototype-based evaluation to include both successful and adversarial access requests. The twelve attack scenarios will be extended to larger sets of positive, negative, and adversarial scenarios, and enforcement accuracy will be reported over this extended set. Particular attention will be given to the relationship between the formal security model and the observed behaviour of the implemented system."
+   "**Extended adversarial evaluation.** ⟦r⟧The next stage will extend⟦/r⟧ the current prototype-based evaluation to include both successful and adversarial access requests. The twelve attack scenarios will be extended to larger sets of positive, negative, and adversarial scenarios, and enforcement accuracy will be reported over this extended set. Particular attention will be given to the relationship between the formal security model and the observed behaviour of the implemented system."
   ],
   "isegs": [
    [
@@ -5599,7 +5599,7 @@
    ],
    [
     [
-     "**Extended adversarial evaluation.** CA3 will extend the current prototype-based evaluation to include both successful and adversarial access requests.",
+     "**Extended adversarial evaluation.** ⟦r⟧The next stage will extend⟦/r⟧ the current prototype-based evaluation to include both successful and adversarial access requests.",
      true
     ],
     [
@@ -5615,10 +5615,10 @@
  },
  {
   "t": "p",
-  "text": "CA3 will address the prototype limitations that the evaluation has exposed, which include the N-of-N approval rule, the server-derived guardian keys, the unauthenticated requester role, the absence of cryptographic DID resolution and VC validation, the missing lifecycle transition check, and the unkeyed and unchained audit digest. The purpose of this work is not merely to demonstrate that the prototype works under normal conditions, but to establish explicit security properties and determine whether the proposed authorisation model provides the expected protection when relevant security conditions are violated, and Section 13 sets out its schedule.",
+  "text": "⟦r⟧The next stage will address⟦/r⟧ the prototype limitations that the evaluation has exposed, which include the N-of-N approval rule, the server-derived guardian keys, the unauthenticated requester role, the absence of cryptographic DID resolution and VC validation, the missing lifecycle transition check, and the unkeyed and unchained audit digest. The purpose of this work is not merely to demonstrate that the prototype works under normal conditions, but to establish explicit security properties and determine whether the proposed authorisation model provides the expected protection when relevant security conditions are violated, and Section 13 sets out its schedule.",
   "segs": [
    [
-    "CA3 will address the prototype limitations that the evaluation has exposed, which include the N-of-N approval rule, the server-derived guardian keys, the unauthenticated requester role, the absence of cryptographic DID resolution and VC validation, the missing lifecycle transition check, and the unkeyed and unchained audit digest.",
+    "⟦r⟧The next stage will address⟦/r⟧ the prototype limitations that the evaluation has exposed, which include the N-of-N approval rule, the server-derived guardian keys, the unauthenticated requester role, the absence of cryptographic DID resolution and VC validation, the missing lifecycle transition check, and the unkeyed and unchained audit digest.",
     false
    ],
    [
@@ -5687,7 +5687,7 @@
  },
  {
   "t": "p",
-  "text": "The publication strategy is aligned with the progression of the research. The current stage work establishes the conceptual and technical foundation, while the next stage work will strengthen the framework through formal analysis and comprehensive empirical validation. The second publication extends Section 2 into a stand-alone review, and the third publication completes the work that Sections 10 and 11 identify as remaining for CA3. RO5 and RO6 constitute the principal research agenda for CA3. RO5 extends the authorisation model with temporal and lifecycle trust, while RO6 provides formal security assurance and comprehensive empirical validation.",
+  "text": "The publication strategy is aligned with the progression of the research. The current stage work establishes the conceptual and technical foundation, while the next stage work will strengthen the framework through formal analysis and comprehensive empirical validation. The second publication extends Section 2 into a stand-alone review, and the third publication completes the work that Sections 10 and 11 ⟦r⟧identify as remaining for the next stage.⟦/r⟧ RO5 and RO6 constitute ⟦r⟧the principal research agenda for the next stage.⟦/r⟧ RO5 extends the authorisation model with temporal and lifecycle trust, while RO6 provides formal security assurance and comprehensive empirical validation.",
   "segs": [
    [
     "The publication strategy is aligned with the progression of the research.",
@@ -5698,11 +5698,11 @@
     true
    ],
    [
-    "The second publication extends Section 2 into a stand-alone review, and the third publication completes the work that Sections 10 and 11 identify as remaining for CA3.",
+    "The second publication extends Section 2 into a stand-alone review, and the third publication completes the work that Sections 10 and 11 ⟦r⟧identify as remaining for the next stage.⟦/r⟧",
     false
    ],
    [
-    "RO5 and RO6 constitute the principal research agenda for CA3.",
+    "RO5 and RO6 constitute ⟦r⟧the principal research agenda for the next stage.⟦/r⟧",
     true
    ],
    [
@@ -5793,7 +5793,7 @@
      "⌛ Planned"
     ],
     [
-     "CA3 Assessment",
+     "⟦r⟧Final Assessment⟦/r⟧",
      "Final candidature assessment defence",
      "Jan 2027",
      "⌛ Planned"
