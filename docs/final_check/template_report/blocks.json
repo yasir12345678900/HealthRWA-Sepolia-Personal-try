@@ -5222,7 +5222,9 @@
  {
   "t": "fig",
   "ref": "F37",
-  "caption": "Revocation transaction on Sepolia Etherscan, block 11,771,307"
+  "caption": "Revocation transaction on Sepolia Etherscan, block 11,771,307 ⟦b⟧(the transaction page shown in two parts, side by side)⟦/b⟧",
+  "w": 600,
+  "maxH": 420
  },
  {
   "t": "p",
