@@ -482,7 +482,7 @@
  },
  {
   "t": "p",
-  "text": "The review process was structured according to the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020 statement [34]. PRISMA was adopted to improve the transparency, reproducibility, and traceability of the literature identification and selection process. A written protocol (Protocol v1.1) fixed the review questions, databases, master query, eligibility criteria, codebook, and quality items before screening. Six review roles covered five perspectives and a chair who decided each record, and all counts are those of the decision-log checkpoint of 10 September 2026 (decision D-166). This systematic literature review (SLR) is guided by seven review questions. Questions 1 to 5 correspond to Req 1 to Req 5, and Questions 6 and 7 together to Req 6. These questions were formulated to ensure that the review remained directly aligned with the technical objectives of the proposed system.",
+  "text": "The review process was structured according to the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020 statement [34]. PRISMA was adopted to improve the transparency, reproducibility, and traceability of the literature identification and selection process. A written protocol (Protocol v1.1) fixed the review questions, databases, master query, eligibility criteria, codebook, and quality items before screening. ⟦r⟧I screened, coded, and assessed every record myself, and all counts are those of my decision log at the checkpoint of 10 September 2026 (decision D-166).⟦/r⟧ This systematic literature review (SLR) is guided by seven review questions. Questions 1 to 5 correspond to Req 1 to Req 5, and Questions 6 and 7 together to Req 6. These questions were formulated to ensure that the review remained directly aligned with the technical objectives of the proposed system.",
   "segs": [
    [
     "The review process was structured according to the Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020 statement [34].",
@@ -497,7 +497,7 @@
     false
    ],
    [
-    "Six review roles covered five perspectives and a chair who decided each record, and all counts are those of the decision-log checkpoint of 10 September 2026 (decision D-166).",
+    "⟦r⟧I screened, coded, and assessed every record myself, and all counts are those of my decision log at the checkpoint of 10 September 2026 (decision D-166).⟦/r⟧",
     false
    ],
    [
