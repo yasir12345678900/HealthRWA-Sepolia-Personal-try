@@ -69,14 +69,14 @@
  },
  {
   "t": "p",
-  "text": "Blockchain-based mechanisms can provide tamper-resistant recording and distributed auditability [1, 26, 8, 18], ⟦b⟧while decentralised identifiers [20] can support the identification⟦/b⟧ of participants without relying exclusively on a central identity provider. Verifiable credentials can provide cryptographically verifiable evidence concerning roles or authority [20, 5], and policy-based access-control mechanisms can restrict access to authorised resources [2, 28, 25]. However, an immutable record does not necessarily demonstrate that the participating entities were legitimate, that they possessed the required authority, or that a subsequent data-access request remains consistent with the conditions originally authorised. ⟦d⟧This requires a transition from viewing consent as a static record of permission towards understanding consent as an active and evaluable component of a broader authorisation process⟦/d⟧⟦a⟧Consent must therefore be treated as an active, evaluable part of the authorisation process, not as a static record of permission⟦/a⟧, extending the dynamic consent perspective [13, 24].",
+  "text": "Blockchain-based mechanisms can provide tamper-resistant recording and distributed auditability [1, 26, 8, 18], ⟦b⟧while decentralised identifiers [20] can support the identification⟦/b⟧ of participants without relying exclusively on a central identity provider. Verifiable credentials can provide cryptographically verifiable evidence concerning roles or authority [5], and policy-based access-control mechanisms can restrict access to authorised resources [2, 28, 25]. However, an immutable record does not necessarily demonstrate that the participating entities were legitimate, that they possessed the required authority, or that a subsequent data-access request remains consistent with the conditions originally authorised. ⟦d⟧This requires a transition from viewing consent as a static record of permission towards understanding consent as an active and evaluable component of a broader authorisation process⟦/d⟧⟦a⟧Consent must therefore be treated as an active, evaluable part of the authorisation process, not as a static record of permission⟦/a⟧, extending the dynamic consent perspective [13, 24].",
   "segs": [
    [
     "Blockchain-based mechanisms can provide tamper-resistant recording and distributed auditability [1, 26, 8, 18], ⟦b⟧while decentralised identifiers [20] can support the identification⟦/b⟧ of participants without relying exclusively on a central identity provider.",
     true
    ],
    [
-    "Verifiable credentials can provide cryptographically verifiable evidence concerning roles or authority [20, 5], and policy-based access-control mechanisms can restrict access to authorised resources [2, 28, 25].",
+    "Verifiable credentials can provide cryptographically verifiable evidence concerning roles or authority [5], and policy-based access-control mechanisms can restrict access to authorised resources [2, 28, 25].",
     true
    ],
    [
@@ -125,14 +125,14 @@
  },
  {
   "t": "p",
-  "text": "The central problem addressed by this research is therefore the absence of an integrated trust-oriented mechanism that connects identity, authority, multi-party approval, policy, temporal, and lifecycle conditions within a coherent authorisation decision and whose security can be formally and empirically demonstrated. ⟦b⟧Existing approaches provide important technological components,⟦/b⟧ including decentralised identity and verifiable credentials [58, 76], blockchain-based records [53, 71], multi-party approval mechanisms [53, 61, 69, 43], and policy-based access control [44, 57, 63, 15], as well as several partial combinations [58, 61, 45]. However, these mechanisms are often investigated independently or integrated primarily at the implementation level. The overarching research question is how a trust-oriented computing framework can establish and enforce trustworthy multi-party consent for decentralised healthcare data sharing under identity, authority, and policy constraints. The research objectives are operationalised through six corresponding sub-research questions⟦n⟧ (SRQ1 to SRQ6, referred to as RQ1 to RQ6)⟦/n⟧.",
+  "text": "The central problem addressed by this research is therefore the absence of an integrated trust-oriented mechanism that connects identity, authority, multi-party approval, policy, temporal, and lifecycle conditions within a coherent authorisation decision and whose security can be formally and empirically demonstrated. ⟦b⟧Existing approaches provide important technological components,⟦/b⟧ including decentralised identity and verifiable credentials [58, 76], blockchain-based records [53, 71], multi-party approval mechanisms [61, 69, 43], and policy-based access control [44, 57, 63, 15], as well as several partial combinations [45]. However, these mechanisms are often investigated independently or integrated primarily at the implementation level. The overarching research question is how a trust-oriented computing framework can establish and enforce trustworthy multi-party consent for decentralised healthcare data sharing under identity, authority, and policy constraints. The research objectives are operationalised through six corresponding sub-research questions⟦n⟧ (SRQ1 to SRQ6, referred to as RQ1 to RQ6)⟦/n⟧.",
   "segs": [
    [
     "The central problem addressed by this research is therefore the absence of an integrated trust-oriented mechanism that connects identity, authority, multi-party approval, policy, temporal, and lifecycle conditions within a coherent authorisation decision and whose security can be formally and empirically demonstrated.",
     true
    ],
    [
-    "⟦b⟧Existing approaches provide important technological components,⟦/b⟧ including decentralised identity and verifiable credentials [58, 76], blockchain-based records [53, 71], multi-party approval mechanisms [53, 61, 69, 43], and policy-based access control [44, 57, 63, 15], as well as several partial combinations [58, 61, 45].",
+    "⟦b⟧Existing approaches provide important technological components,⟦/b⟧ including decentralised identity and verifiable credentials [58, 76], blockchain-based records [53, 71], multi-party approval mechanisms [61, 69, 43], and policy-based access control [44, 57, 63, 15], as well as several partial combinations [45].",
     true
    ],
    [
@@ -1053,7 +1053,7 @@
  },
  {
   "t": "p",
-  "text": "**Policy- and context-aware access control (Req 4).** ⟦d⟧Access control becomes more complex when policies must be connected directly to a decentralised consent process.⟦/d⟧ Tith et al. [71] match a purpose tree in chaincode, and Jaiman and Urovi [49] match ontology terms against the patient's consent. Albalwy et al. [37] evaluate a hashed policy tree of data type, role, and purpose, and Román-Martínez et al. [63] evaluate the FHIR purpose-of-use through XACML. ⟦b⟧The trust dimension T4 is coded Yes in 11 studies, Partial in 10, and No in 4, and the Req 4 grade in {T9} is Yes in 10, Partial in 11, and No in 4.⟦/b⟧ However, purpose-of-use enters the decision in only six studies [37, 44, 49, 57, 63, 71], and every one is coded T3 No. Consequently, purpose and data-scope constraints are not carried by the consent object C and evaluated together with the identity, authority, and multi-party conditions.",
+  "text": "**Policy- and context-aware access control (Req 4).** ⟦d⟧Access control becomes more complex when policies must be connected directly to a decentralised consent process.⟦/d⟧ Tith et al. [71] match a purpose tree in chaincode, and Jaiman and Urovi [49] match ontology terms against the patient's consent. Albalwy et al. [37] evaluate a hashed policy tree of data type, role, and purpose, and Román-Martínez et al. [63] evaluate the FHIR purpose-of-use through XACML. ⟦b⟧The trust dimension T4 is coded Yes in 11 studies, Partial in 10, and No in 4, and the Req 4 grade in {T9} is Yes in 10, Partial in 11, and No in 4.⟦/b⟧ However, purpose-of-use enters the decision in only six studies [44, 57], and every one is coded T3 No. Consequently, purpose and data-scope constraints are not carried by the consent object C and evaluated together with the identity, authority, and multi-party conditions.",
   "segs": [
    [
     "**Policy- and context-aware access control (Req 4).** ⟦d⟧Access control becomes more complex when policies must be connected directly to a decentralised consent process.⟦/d⟧",
@@ -1072,7 +1072,7 @@
     false
    ],
    [
-    "However, purpose-of-use enters the decision in only six studies [37, 44, 49, 57, 63, 71], and every one is coded T3 No.",
+    "However, purpose-of-use enters the decision in only six studies [44, 57], and every one is coded T3 No.",
     false
    ],
    [
@@ -1083,7 +1083,7 @@
  },
  {
   "t": "p",
-  "text": "**Temporal validity and consent lifecycle (Req 5).** A consent that is valid at one point in time cannot necessarily be assumed to remain valid indefinitely. Eneh et al. [44] present EdgeConsent, ⟦r⟧which enforces⟦/r⟧ temporal validity inside the decision predicate, although its lifecycle is only an active flag. Temporal validity must also be evaluated together with the lifecycle state of the consent. Hema et al. [64] bind the expiry into key derivation, and Panagoulias et al. [57] enforce revocation at decision time across 43,500 simulated attempts in a single-node ledger. ⟦d⟧Li et al. [51] enforce time on a credential rather than on the consent. ⟦/d⟧T5 is coded Yes in 8 studies and T6 in 7, a post-revocation denial ⟦b⟧is demonstrated only by [58, 57, 44],⟦/b⟧ and the ⟦d⟧three⟦/d⟧⟦n⟧four⟦/n⟧ stream-5 systems that enforce time inside the decision are all single-party⟦n⟧, with [51] doing so through the credential rather than the consent⟦/n⟧.",
+  "text": "**Temporal validity and consent lifecycle (Req 5).** A consent that is valid at one point in time cannot necessarily be assumed to remain valid indefinitely. Eneh et al. [44] present EdgeConsent, ⟦r⟧which enforces⟦/r⟧ temporal validity inside the decision predicate, although its lifecycle is only an active flag. Temporal validity must also be evaluated together with the lifecycle state of the consent. Hema et al. [64] bind the expiry into key derivation, and Panagoulias et al. [57] enforce revocation at decision time across 43,500 simulated attempts in a single-node ledger. ⟦d⟧Li et al. [51] enforce time on a credential rather than on the consent. ⟦/d⟧T5 is coded Yes in 8 studies and T6 in 7, a post-revocation denial ⟦b⟧is demonstrated only by [58],⟦/b⟧ and the ⟦d⟧three⟦/d⟧⟦n⟧four⟦/n⟧ stream-5 systems that enforce time inside the decision are all single-party⟦n⟧, with doing so through the credential rather than the consent⟦/n⟧.",
   "segs": [
    [
     "**Temporal validity and consent lifecycle (Req 5).** A consent that is valid at one point in time cannot necessarily be assumed to remain valid indefinitely.",
@@ -1106,7 +1106,7 @@
     false
    ],
    [
-    "T5 is coded Yes in 8 studies and T6 in 7, a post-revocation denial ⟦b⟧is demonstrated only by [58, 57, 44],⟦/b⟧ and the ⟦d⟧three⟦/d⟧⟦n⟧four⟦/n⟧ stream-5 systems that enforce time inside the decision are all single-party⟦n⟧, with [51] doing so through the credential rather than the consent⟦/n⟧.",
+    "T5 is coded Yes in 8 studies and T6 in 7, a post-revocation denial ⟦b⟧is demonstrated only by [58],⟦/b⟧ and the ⟦d⟧three⟦/d⟧⟦n⟧four⟦/n⟧ stream-5 systems that enforce time inside the decision are all single-party⟦n⟧, with doing so through the credential rather than the consent⟦/n⟧.",
     false
    ]
   ]
@@ -1329,7 +1329,7 @@
  },
  {
   "t": "p",
-  "text": "The matrix supports four observations. First, counting only full satisfaction, Req 1 is met by 12 of the 25 studies, Req 2 by 7, Req 3 by 6, Req 4 by 10, Req 5 by 8, and Req 6 by 9. Second, no study satisfies all six, the maximum of four is reached by [53] and [57], and five studies fully satisfy none. Third, Req 1 with Req 4 is the most frequent pair, in seven studies, whereas Req 2 and Req 4 never co-occur in full. Req 3 co-occurs with Req 4 only in [61], whose threshold lies outside the policy predicate and whose policy carries no purpose term. Similarly, Req 3 co-occurs with Req 6 only in [50, 54]. Fourth, the two quadruples are complementary, since [53] lacks policy and assurance, whereas [57] lacks multi-party approval and identity depth.",
+  "text": "The matrix supports four observations. First, counting only full satisfaction, Req 1 is met by 12 of the 25 studies, Req 2 by 7, Req 3 by 6, Req 4 by 10, Req 5 by 8, and Req 6 by 9. Second, no study satisfies all six, the maximum of four is reached by [53] and [57], and five studies fully satisfy none. Third, Req 1 with Req 4 is the most frequent pair, in seven studies, whereas Req 2 and Req 4 never co-occur in full. Req 3 co-occurs with Req 4 only in [61], whose threshold lies outside the policy predicate and whose policy carries no purpose term. Similarly, Req 3 co-occurs with Req 6 only in [50, 54]. Fourth, the two quadruples are complementary, since lacks policy and assurance, whereas lacks multi-party approval and identity depth.",
   "segs": [
    [
     "The matrix supports four observations.",
@@ -1356,7 +1356,7 @@
     false
    ],
    [
-    "Fourth, the two quadruples are complementary, since [53] lacks policy and assurance, whereas [57] lacks multi-party approval and identity depth.",
+    "Fourth, the two quadruples are complementary, since lacks policy and assurance, whereas lacks multi-party approval and identity depth.",
     false
    ]
   ]
@@ -1577,7 +1577,7 @@
  },
  {
   "t": "p",
-  "text": "⟦d⟧The systematic literature review indicates that substantial research has been conducted on individual mechanisms for securing healthcare data sharing. However, the literature also reveals a significant conceptual and architectural fragmentation⟦/d⟧⟦a⟧The systematic literature review shows much work on individual mechanisms for securing healthcare data sharing, but also a conceptual and architectural fragmentation⟦/a⟧ among these mechanisms. They are commonly investigated as independent technical solutions rather than as coordinated components of a unified trust-oriented authorisation model. The few studies that coordinate several of them in one decision [58, 61, 45, 66, 57] ⟦b⟧do not make multi-party approval a standing condition of that decision. Some of them test their own decisions empirically [58, 57], but none proves or tests a conjunction that includes multi-party approval.⟦/b⟧",
+  "text": "⟦d⟧The systematic literature review indicates that substantial research has been conducted on individual mechanisms for securing healthcare data sharing. However, the literature also reveals a significant conceptual and architectural fragmentation⟦/d⟧⟦a⟧The systematic literature review shows much work on individual mechanisms for securing healthcare data sharing, but also a conceptual and architectural fragmentation⟦/a⟧ among these mechanisms. They are commonly investigated as independent technical solutions rather than as coordinated components of a unified trust-oriented authorisation model. The few studies that coordinate several of them in one decision [58, 61, 45, 66, 57] ⟦b⟧do not make multi-party approval a standing condition of that decision. Some of them test their own decisions empirically, but none proves or tests a conjunction that includes multi-party approval.⟦/b⟧",
   "segs": [
    [
     "The systematic literature review indicates that substantial research has been conducted on individual mechanisms for securing healthcare data sharing.",
@@ -1592,7 +1592,7 @@
     true
    ],
    [
-    "The few studies that coordinate several of them in one decision [58, 61, 45, 66, 57] ⟦b⟧do not make multi-party approval a standing condition of that decision. Some of them test their own decisions empirically [58, 57], but none proves or tests a conjunction that includes multi-party approval.⟦/b⟧",
+    "The few studies that coordinate several of them in one decision [58, 61, 45, 66, 57] ⟦b⟧do not make multi-party approval a standing condition of that decision. Some of them test their own decisions empirically, but none proves or tests a conjunction that includes multi-party approval.⟦/b⟧",
     false
    ]
   ]
@@ -2611,7 +2611,7 @@
  },
  {
   "t": "p",
-  "text": "{F9} presents the end-to-end workflow of the proposed framework. The workflow begins when the patient creates a consent request. The consent specification defines the intended purpose, permitted data scope, and other authorisation conditions. This step establishes what the patient intends to authorise and provides the policy context against which subsequent access requests can be evaluated. The next step of the workflow applies a decentralised identity and authority verification mechanism using Decentralised Identifiers and Verifiable Credentials [20]. ⟦d⟧Importantly, the framework explicitly separates identity authentication from authorisation.⟦/d⟧⟦a⟧The framework separates identity authentication from authorisation.⟦/a⟧ A successfully verified DID or VC does not, by itself, grant permission to access patient data. The framework then collects ⟦d⟧their⟦/d⟧⟦n⟧the guardians'⟦/n⟧ independent approvals and evaluates whether the predefined authorisation threshold has been satisfied. Let A~v~ denote the set of ⟦d⟧successfully verified approvals⟦/d⟧⟦n⟧guardians whose approvals have been verified⟦/n⟧ and let N denote the required authorisation threshold, as in {E28}. Here, Token(C) ≠ ∅ means that C has been assigned a token identifier, and Revoked(C) = 0 means that the consent has not been revoked.",
+  "text": "{F9} presents the end-to-end workflow of the proposed framework. The workflow begins when the patient creates a consent request. The consent specification defines the intended purpose, permitted data scope, and other authorisation conditions. This step establishes what the patient intends to authorise and provides the policy context against which subsequent access requests can be evaluated. The next step of the workflow applies a decentralised identity and authority verification mechanism using Decentralised Identifiers and Verifiable Credentials. ⟦d⟧Importantly, the framework explicitly separates identity authentication from authorisation.⟦/d⟧⟦a⟧The framework separates identity authentication from authorisation.⟦/a⟧ A successfully verified DID or VC does not, by itself, grant permission to access patient data. The framework then collects ⟦d⟧their⟦/d⟧⟦n⟧the guardians'⟦/n⟧ independent approvals and evaluates whether the predefined authorisation threshold has been satisfied. Let A~v~ denote the set of ⟦d⟧successfully verified approvals⟦/d⟧⟦n⟧guardians whose approvals have been verified⟦/n⟧ and let N denote the required authorisation threshold, as in {E28}. Here, Token(C) ≠ ∅ means that C has been assigned a token identifier, and Revoked(C) = 0 means that the consent has not been revoked.",
   "segs": [
    [
     "{F9} presents the end-to-end workflow of the proposed framework.",
@@ -2630,7 +2630,7 @@
     true
    ],
    [
-    "The next step of the workflow applies a decentralised identity and authority verification mechanism using Decentralised Identifiers and Verifiable Credentials [20].",
+    "The next step of the workflow applies a decentralised identity and authority verification mechanism using Decentralised Identifiers and Verifiable Credentials.",
     true
    ],
    [
@@ -2666,7 +2666,7 @@
  },
  {
   "t": "p",
-  "text": "Only independently verified participants can contribute to the ⟦d⟧authorisation evidence set⟦/d⟧⟦n⟧set of verified approving guardians⟦/n⟧ A~v~, as defined in {E40}, where A~s~ denotes the set of approvals submitted for C. ⟦b⟧A~v~ therefore contains each member of G at most once, and an approval from a signer outside G does not enter A~v~.⟦/b⟧ Consequently, an arbitrary number of unverified or unauthorised approvals cannot satisfy the multi-party authorisation requirement. A compromised or unauthorised participant cannot independently activate access when the threshold has not been satisfied. This distinguishes the framework from reviewed systems in which joint approval is a contingency path [53], a witness or notary threshold [69], ⟦b⟧a registration-time co-consent [43], a documentation-time gate on guardian access [47], an institution-side admission gate [75], a custodial M-of-N signature [61], a key-share reconstruction [35], or a threshold proxy re-encryption [54].⟦/b⟧",
+  "text": "Only independently verified participants can contribute to the ⟦d⟧authorisation evidence set⟦/d⟧⟦n⟧set of verified approving guardians⟦/n⟧ A~v~, as defined in {E40}, where A~s~ denotes the set of approvals submitted for C. ⟦b⟧A~v~ therefore contains each member of G at most once, and an approval from a signer outside G does not enter A~v~.⟦/b⟧ Consequently, an arbitrary number of unverified or unauthorised approvals cannot satisfy the multi-party authorisation requirement. A compromised or unauthorised participant cannot independently activate access when the threshold has not been satisfied. This distinguishes the framework from reviewed systems in which joint approval is a contingency path, a witness or notary threshold, ⟦b⟧a registration-time co-consent, a documentation-time gate on guardian access, an institution-side admission gate, a custodial M-of-N signature, a key-share reconstruction, or a threshold proxy re-encryption.⟦/b⟧",
   "segs": [
    [
     "Only independently verified participants can contribute to the ⟦d⟧authorisation evidence set⟦/d⟧⟦n⟧set of verified approving guardians⟦/n⟧ A~v~, as defined in {E40}, where A~s~ denotes the set of approvals submitted for C.",
@@ -2685,7 +2685,7 @@
     true
    ],
    [
-    "This distinguishes the framework from reviewed systems in which joint approval is a contingency path [53], a witness or notary threshold [69], ⟦b⟧a registration-time co-consent [43], a documentation-time gate on guardian access [47], an institution-side admission gate [75], a custodial M-of-N signature [61], a key-share reconstruction [35], or a threshold proxy re-encryption [54].⟦/b⟧",
+    "This distinguishes the framework from reviewed systems in which joint approval is a contingency path, a witness or notary threshold, ⟦b⟧a registration-time co-consent, a documentation-time gate on guardian access, an institution-side admission gate, a custodial M-of-N signature, a key-share reconstruction, or a threshold proxy re-encryption.⟦/b⟧",
     false
    ]
   ]
@@ -2797,7 +2797,7 @@
  },
  {
   "t": "p",
-  "text": "⟦d⟧The principal contribution of the proposed architecture is not the use of MVC itself, but the way in which MVC is employed to operationalise a trust-oriented authorisation model.⟦/d⟧⟦a⟧The contribution of the proposed architecture is the way MVC is used to carry a trust-oriented authorisation model, not the use of MVC itself.⟦/a⟧ This design transforms multi-party consent management from a conventional record-management problem into a distributed security-governance problem. The evaluable consent object as such is already present in the literature [71, 37, 44, 58, 66]. The key innovation is that consent effectiveness depends on the joint satisfaction of identity, authority, collective approval, policy, temporal, and jurisdictional conditions on every access decision. Blockchain or other tamper-resistant storage mechanisms are integrated as infrastructure for preserving selected authorisation evidence. However, the blockchain itself is not treated as the source of trust. Its role is to strengthen integrity, non-repudiation, and auditability of the evidence generated by the authorisation process [2, 28]. The detailed solutions for RQ1 to RQ6 are presented in Sections 6 to 11, and the formal assurance of the complete decision model ⟦r⟧remains for the next stage.⟦/r⟧",
+  "text": "⟦d⟧The principal contribution of the proposed architecture is not the use of MVC itself, but the way in which MVC is employed to operationalise a trust-oriented authorisation model.⟦/d⟧⟦a⟧The contribution of the proposed architecture is the way MVC is used to carry a trust-oriented authorisation model, not the use of MVC itself.⟦/a⟧ This design transforms multi-party consent management from a conventional record-management problem into a distributed security-governance problem. The evaluable consent object as such is already present in the literature. The key innovation is that consent effectiveness depends on the joint satisfaction of identity, authority, collective approval, policy, temporal, and jurisdictional conditions on every access decision. Blockchain or other tamper-resistant storage mechanisms are integrated as infrastructure for preserving selected authorisation evidence. However, the blockchain itself is not treated as the source of trust. Its role is to strengthen integrity, non-repudiation, and auditability of the evidence generated by the authorisation process. The detailed solutions for RQ1 to RQ6 are presented in Sections 6 to 11, and the formal assurance of the complete decision model ⟦r⟧remains for the next stage.⟦/r⟧",
   "segs": [
    [
     "⟦d⟧The principal contribution of the proposed architecture is not the use of MVC itself, but the way in which MVC is employed to operationalise a trust-oriented authorisation model.⟦/d⟧⟦a⟧The contribution of the proposed architecture is the way MVC is used to carry a trust-oriented authorisation model, not the use of MVC itself.⟦/a⟧",
@@ -2808,7 +2808,7 @@
     true
    ],
    [
-    "The evaluable consent object as such is already present in the literature [71, 37, 44, 58, 66].",
+    "The evaluable consent object as such is already present in the literature.",
     false
    ],
    [
@@ -2824,7 +2824,7 @@
     true
    ],
    [
-    "Its role is to strengthen integrity, non-repudiation, and auditability of the evidence generated by the authorisation process [2, 28].",
+    "Its role is to strengthen integrity, non-repudiation, and auditability of the evidence generated by the authorisation process.",
     true
    ],
    [
@@ -3003,7 +3003,7 @@
  },
  {
   "t": "p",
-  "text": "The system validates the temporal validity interval T = (t~s~, t~e~). ⟦d⟧In particular, existing approaches provide limited treatment of patient consent as a security-bearing and policy-aware authorisation object whose validity depends on coordinated conditions concerning participant identity, authority, collective approval, and contextual policy compliance.⟦/d⟧ Unlike the consent objects reported in the literature [71, 37, 44, 58, 66], this object carries the guardian set and threshold together with the purpose, data scope, validity interval, jurisdiction, and lifecycle state.",
+  "text": "The system validates the temporal validity interval T = (t~s~, t~e~). ⟦d⟧In particular, existing approaches provide limited treatment of patient consent as a security-bearing and policy-aware authorisation object whose validity depends on coordinated conditions concerning participant identity, authority, collective approval, and contextual policy compliance.⟦/d⟧ Unlike the consent objects reported in the literature, this object carries the guardian set and threshold together with the purpose, data scope, validity interval, jurisdiction, and lifecycle state.",
   "segs": [
    [
     "The system validates the temporal validity interval T = (t~s~, t~e~).",
@@ -3014,7 +3014,7 @@
     true
    ],
    [
-    "Unlike the consent objects reported in the literature [71, 37, 44, 58, 66], this object carries the guardian set and threshold together with the purpose, data scope, validity interval, jurisdiction, and lifecycle state.",
+    "Unlike the consent objects reported in the literature, this object carries the guardian set and threshold together with the purpose, data scope, validity interval, jurisdiction, and lifecycle state.",
     false
    ]
   ]
@@ -3243,10 +3243,10 @@
  },
  {
   "t": "p",
-  "text": "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant's role, authority, or other relevant attribute [20]. Neither mechanism should automatically grant access to patient data. Instead, the verified identity and authority information become inputs to the subsequent authorisation process. The identity and authority verification condition can be expressed as {E48}, where u is the requesting participant and Authority(u, C) establishes whether the verified authority matches the role required by the consent. The DID verification process establishes whether the identity reference is valid. The VC verification process establishes whether the participant possesses valid authority evidence. The final authorisation decision remains dependent on the consent requirements and access policy.",
+  "text": "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant's role, authority, or other relevant attribute. Neither mechanism should automatically grant access to patient data. Instead, the verified identity and authority information become inputs to the subsequent authorisation process. The identity and authority verification condition can be expressed as {E48}, where u is the requesting participant and Authority(u, C) establishes whether the verified authority matches the role required by the consent. The DID verification process establishes whether the identity reference is valid. The VC verification process establishes whether the participant possesses valid authority evidence. The final authorisation decision remains dependent on the consent requirements and access policy.",
   "segs": [
    [
-    "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant's role, authority, or other relevant attribute [20].",
+    "A valid DID provides an identity reference, while a valid VC provides evidence associated with a participant's role, authority, or other relevant attribute.",
     true
    ],
    [
@@ -3558,7 +3558,7 @@
  },
  {
   "t": "p",
-  "text": "This mechanism allows the framework to distinguish between insufficient and sufficient collective authorisation. For example, a consent may require two valid guardian approvals. In this case, one valid approval is insufficient, whereas two valid approvals satisfy the threshold. ⟦d⟧Decentralised identity systems with multi-party verification have demonstrated the potential to strengthen the process through which identity claims are established or validated⟦/d⟧⟦a⟧Decentralised identity systems with multi-party verification strengthen the way identity claims are established and validated⟦/a⟧ [4, 33]. Nevertheless, multi-party verification of identity should not be considered equivalent to multi-party authorisation of data access. The first concerns whether an identity claim can be trusted, whereas the second concerns whether a group of independent participants has collectively established a valid permission decision.",
+  "text": "This mechanism allows the framework to distinguish between insufficient and sufficient collective authorisation. For example, a consent may require two valid guardian approvals. In this case, one valid approval is insufficient, whereas two valid approvals satisfy the threshold. ⟦d⟧Decentralised identity systems with multi-party verification have demonstrated the potential to strengthen the process through which identity claims are established or validated⟦/d⟧⟦a⟧Decentralised identity systems with multi-party verification strengthen the way identity claims are established and validated⟦/a⟧. Nevertheless, multi-party verification of identity should not be considered equivalent to multi-party authorisation of data access. The first concerns whether an identity claim can be trusted, whereas the second concerns whether a group of independent participants has collectively established a valid permission decision.",
   "segs": [
    [
     "This mechanism allows the framework to distinguish between insufficient and sufficient collective authorisation.",
@@ -3573,7 +3573,7 @@
     true
    ],
    [
-    "⟦d⟧Decentralised identity systems with multi-party verification have demonstrated the potential to strengthen the process through which identity claims are established or validated⟦/d⟧⟦a⟧Decentralised identity systems with multi-party verification strengthen the way identity claims are established and validated⟦/a⟧ [4, 33].",
+    "⟦d⟧Decentralised identity systems with multi-party verification have demonstrated the potential to strengthen the process through which identity claims are established or validated⟦/d⟧⟦a⟧Decentralised identity systems with multi-party verification strengthen the way identity claims are established and validated⟦/a⟧.",
     true
    ],
    [

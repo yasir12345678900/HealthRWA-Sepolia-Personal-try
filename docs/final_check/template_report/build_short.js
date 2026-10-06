@@ -27,6 +27,7 @@ for (const b of BLOCKS) {
 }
 const problems = [];
 const citeMap = {}; let citeN = 0;
+const HV = JSON.parse(fs.readFileSync(D + "refs_harvard.json", "utf8"));
 function fixText(s) {
   s = String(s);
   s = s.replace(/\{([FTEA])(\d+[a-z]?|[A-Za-z_]+)\}/g, (m, k, id) => {
@@ -34,22 +35,25 @@ function fixText(s) {
     if (!n) { problems.push("unplaced token " + m); return m; }
     return k === "F" ? `Figure ${n}` : k === "T" ? `Table ${n}` : k === "E" ? `Equation (${n})` : `Algorithm ${n}`;
   });
-  s = s.replace(/\[(\d+(?:\s*[,–-]\s*\d+)*)\]/g, (m, g) => {
-    const parts = [];
+  s = s.replace(/\[(\d+(?:\s*[,–-]\s*\d+)*)\]/g, (m, g, off, whole) => {
+    const ks = [];
     for (const piece of g.split(/\s*,\s*/)) {
       const r = piece.split(/\s*[–-]\s*/).map(Number);
       const list = r.length === 2 ? Array.from({ length: r[1] - r[0] + 1 }, (_, i) => r[0] + i) : [r[0]];
-      for (const o of list) { if (!REFS[o]) problems.push("unknown ref " + o); if (!citeMap[o]) citeMap[o] = ++citeN; parts.push(citeMap[o]); }
+      for (const o of list) { if (!REFS[o] || !HV[o]) problems.push("unknown ref " + o); else { if (!citeMap[o]) citeMap[o] = ++citeN; if (!ks.includes(o)) ks.push(o); } }
     }
-    const u = [...new Set(parts)].sort((a, b) => a - b);
-    // compress consecutive runs
-    const out = []; for (let i = 0; i < u.length; i++) { let j = i; while (j + 1 < u.length && u[j + 1] === u[j] + 1) j++; out.push(j - i >= 2 ? `${u[i]}–${u[j]}` : (j > i ? `${u[i]}, ${u[j]}` : `${u[i]}`)); i = j; }
-    return "[" + out.join(", ") + "]";
+    const before = whole.slice(Math.max(0, off - 70), off);
+    if (ks.length === 1) {
+      const h = HV[ks[0]], fam = h.first.split(" ").pop();
+      if (new RegExp("\\b" + fam.replace(/[-]/g, "\\-") + "\\b[^.]{0,30}$").test(before) || /et al\.?\s*$/.test(before)) return "⟦c⟧(" + h.year + ")⟦/c⟧";
+    }
+    const items = ks.map(o => HV[o]).sort((a, b) => a.first.localeCompare(b.first) || a.year.localeCompare(b.year)).map(h => h.intext + " " + h.year);
+    return "⟦c⟧(" + items.join("; ") + ")⟦/c⟧";
   });
   return s;
 }
 function runs(text, base = {}) {
-  const out = []; const re = /(⟦r⟧[\s\S]*?⟦\/r⟧|⟦b⟧[\s\S]*?⟦\/b⟧|⟦d⟧[\s\S]*?⟦\/d⟧|⟦n⟧[\s\S]*?⟦\/n⟧|⟦a⟧[\s\S]*?⟦\/a⟧|\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
+  const out = []; const re = /(⟦r⟧[\s\S]*?⟦\/r⟧|⟦b⟧[\s\S]*?⟦\/b⟧|⟦d⟧[\s\S]*?⟦\/d⟧|⟦n⟧[\s\S]*?⟦\/n⟧|⟦a⟧[\s\S]*?⟦\/a⟧|⟦c⟧[\s\S]*?⟦\/c⟧|⟦i⟧[\s\S]*?⟦\/i⟧|\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
   text = String(text);
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(...plain(text.slice(last, m.index), base));
@@ -58,6 +62,8 @@ function runs(text, base = {}) {
     else if (t.startsWith("⟦b⟧")) out.push(...runs(t.slice(3, -4), process.env.RED === "1" ? { ...base, color: "00B0F0" } : base));
     else if (t.startsWith("⟦d⟧")) { if (process.env.DIFF === "1") out.push(...runs(t.slice(3, -4), { ...base, color: "FF0000", strike: true })); }
     else if (t.startsWith("⟦n⟧")) out.push(...runs(t.slice(3, -4), process.env.DIFF === "1" ? { ...base, color: "FF0000" } : base));
+    else if (t.startsWith("⟦i⟧")) out.push(...runs(t.slice(3, -4), { ...base, italics: true }));
+    else if (t.startsWith("⟦c⟧")) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(3, -4), highlight: process.env.YELLOW === "1" ? "yellow" : process.env.PINK === "1" ? "green" : base.highlight }));
     else if (t.startsWith("⟦a⟧")) out.push(...runs(t.slice(3, -4), process.env.DIFF === "1" ? { ...base, color: "FF0000" } : process.env.PINK === "1" ? { ...base, highlight: "magenta" } : base));
     else if (t === ";") out.push(new TextRun({ font: FONT, size: BODY, ...base, text: ";", highlight: process.env.GREEN === "1" ? "yellow" : undefined }));
     else if (t.startsWith("**")) out.push(...runs(t.slice(2, -2), { ...base, bold: true }));
@@ -84,7 +90,7 @@ function plain(t, base) {
 const GREEN = process.env.GREEN === "1" ? { color: "00A000" } : {};
 const P = (text, opts = {}, base = {}) => new Paragraph({ children: runs(fixText(text), { ...GREEN, ...base }), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 }, ...opts });
 // GREEN copy: sentences taken from the original report stay black, the rest are green
-const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t.replace(/⟦d⟧[\s\S]*?⟦\/d⟧/g, "").replace(/⟦\/?[rbna]⟧/g, "")), o ? {} : GREEN));
+const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t.replace(/⟦d⟧[\s\S]*?⟦\/d⟧/g, "").replace(/⟦\/?[rbnaci]⟧/g, "")), o ? {} : GREEN));
 const SEGP = segs => new Paragraph({ children: SEGR(segs), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 } });
 const cb = { style: BorderStyle.SINGLE, size: 4, color: "666666" };
 const bAll = { top: cb, left: cb, bottom: cb, right: cb };
@@ -204,8 +210,9 @@ const order = Object.entries(citeMap).sort((a, b) => a[1] - b[1]);
 fs.writeFileSync(D + "citeorder.json", JSON.stringify(order));
 const HL = new Set(["8", "10", "18", "29", "82"]);
 const BLUE = new Set(fs.existsSync(D + "refs_changed.json") ? JSON.parse(fs.readFileSync(D + "refs_changed.json", "utf8")).map(String) : []);
-for (const [orig, n] of order) C.push(new Paragraph({ spacing: { after: 50, line: 240 }, indent: { left: 560, hanging: 560 }, alignment: AlignmentType.LEFT,
-  children: [new TextRun({ text: `[${n}]\t`, font: FONT, size: BODY - 4, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined }), ...runs(REFS[orig], { size: BODY - 4, color: process.env.RED === "1" && BLUE.has(String(orig)) ? "00B0F0" : undefined, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined })], tabStops: [{ type: TabStopType.LEFT, position: 560 }] }));
+const alpha = Object.keys(citeMap).sort((a, b) => HV[a].first.localeCompare(HV[b].first) || HV[a].year.localeCompare(HV[b].year) || HV[a].title.localeCompare(HV[b].title));
+for (const orig of alpha) C.push(new Paragraph({ spacing: { after: 80, line: 240 }, indent: { left: 560, hanging: 560 }, alignment: AlignmentType.LEFT,
+  children: runs(HV[orig].entry, { size: BODY - 4, color: process.env.RED === "1" && BLUE.has(String(orig)) ? "00B0F0" : undefined, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined }) }));
 
 const doc = new Document({
   creator: "Yasir Dhaifallah O Alyoubi", lastModifiedBy: "Yasir Dhaifallah O Alyoubi", title: "A Trusted Authorisation Framework for Multi-Party Patient Consent in Healthcare Data Sharing",
