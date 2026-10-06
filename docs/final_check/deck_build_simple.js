@@ -110,9 +110,9 @@ pres.addSection({ title: "Cover" }); sec = "Cover";
 
 // 2 outline
 {
-  const s = slide("OUTLINE", "Here is the plan of my talk. First the problem and the literature review. Then the gaps, the questions and the objectives. Then the framework and the prototype. Then the validation and the evaluation results. Then what is still open and the research plan. I close with the implementation of the prototype: the live screens and the public evidence on the chain.");
+  const s = slide("OUTLINE", "Here is the plan of my talk. First the problem and the literature review. Then the gaps, the questions and the objectives. Then the framework and the prototype. Then the validation and the evaluation results. Then what is still open and the research plan. I close with a demonstration of the prototype through the slides: one real consent from creation to revocation.");
   const L = ["THE PROBLEM", "LITERATURE REVIEW", "GAPS, QUESTIONS AND OBJECTIVES", "THE FRAMEWORK", "VALIDATION AND EVALUATION", "WHY THIS MATTERS"];
-  const R = ["WHAT IS STILL OPEN", "RESEARCH PLAN", "THE HALAH PROTOTYPE", "REFERENCES"];
+  const R = ["WHAT IS STILL OPEN", "RESEARCH PLAN", "DEMO: THE HALAH PROTOTYPE", "REFERENCES"];
   [L, R].forEach((col, ci) => col.forEach((t, i) => {
     const x = ci === 0 ? 1.6 : 7.1, y = 1.35 + i * 0.95, n = String(ci * 6 + i + 1).padStart(2, "0");
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 0.8, h: 0.7, rectRadius: 0.08, fill: { color: ci ? CYAN : "2F6FB0" }, line: { color: WHITE, width: 1 }, objectName: "number " + n });
@@ -384,34 +384,71 @@ RO.forEach(([ro, title, sub, figKey, status, pts, notes]) => {
   fig(s, "Fplan", 0.8, 1.4, 11.7, 5.4);
 }
 
-// 19 prototype
+// ---------- DEMO THROUGH THE SLIDES ----------
+function demo(title, ro, roLabel, pts, notes, figs) {
+  const s = slide(title, notes, "Demo: The HALAH Prototype");
+  chip(s, 0.8, 1.1, ro, "2F6FB0");
+  s.addText(roLabel, { x: 3.6, y: 1.1, w: 9.0, h: 0.45, fontSize: 16, italic: true, color: CYAN, valign: "middle", isTextBox: true, objectName: "ro label" });
+  if (figs.length === 1) {
+    fig(s, figs[0][0], 0.7, 1.75, 7.6, 5.15); caption(s, figs[0][1], 0.7, 6.95, 7.6);
+    bullets(s, pts, 8.6, 1.75, 4.1, 5.2, 16);
+  } else {
+    s.addText(pts.map((t, i) => ({ text: t, options: { bullet: true, breakLine: i < pts.length - 1 } })),
+      { x: 0.8, y: 1.6, w: 11.8, h: 0.95, fontSize: 14, color: WHITE, valign: "top", isTextBox: true, objectName: "bullets" });
+    const fh = figs[2] || 4.0;
+    fig(s, figs[0][0], 0.7, 2.6, 5.9, fh); caption(s, figs[0][1], 0.7, 2.65 + fh, 5.9);
+    fig(s, figs[1][0], 6.75, 2.6, 5.9, fh); caption(s, figs[1][1], 6.75, 2.65 + fh, 5.9);
+  }
+  return s;
+}
 {
-  const s = slide("THE HALAH PROTOTYPE", "HALAH is the working prototype. The name means History Access Link for Authorised Healthcare. It has four interfaces: patient, guardian, doctor and auditor. The consent token is a soulbound token, ConsentSBTv3, on the Sepolia test network. Guardians sign with EIP-712. Access uses a Groth16 proof. The data are synthetic Synthea records, so no real patient data is used. Every decision on an active consent is written to an audit ledger, and no medical content goes on-chain.", "The HALAH Prototype");
+  const s = slide("DEMO: THE HALAH PROTOTYPE", "Now the demonstration, through the slides. HALAH means History Access Link for Authorised Healthcare. These are its parts: four interfaces, a soulbound token contract on the Sepolia test network, EIP-712 guardian signatures, a Groth16 proof at access time, synthetic Synthea data, and an audit ledger. In the next slides I walk through one real consent from creation to revocation. What you will see covers RO1 to RO4 in full, and the parts of RO5 and RO6 that are already working.", "Demo: The HALAH Prototype");
+  s.addText("One real consent, from creation to revocation: RO1 to RO4 in full, and the working parts of RO5 and RO6.", { x: 0.8, y: 1.05, w: 11.7, h: 0.45, fontSize: 17, italic: true, color: CYAN, isTextBox: true, objectName: "demo subtitle" });
   const Cc = [["Four interfaces", "Patient, guardian, doctor and auditor"], ["Smart contract", "ConsentSBTv3, a soulbound ERC-721 token (ERC-5484) on the Sepolia testnet"],
     ["Guardian approval", "EIP-712 typed signatures, verified by signature recovery"], ["Access proof", "Groth16 zero-knowledge proof over a Poseidon commitment"],
     ["Data", "Synthetic Synthea records: Observation, Medication, Condition, Procedure"], ["Evidence", "Audit ledger of every decision on an active consent; no medical content on-chain"]];
-  Cc.forEach(([h, b], i) => card(s, 0.7 + (i % 3) * 4.05, 1.4 + Math.floor(i / 3) * 2.75, 3.85, 2.45, h, b));
+  Cc.forEach(([h, b], i) => card(s, 0.7 + (i % 3) * 4.05, 1.7 + Math.floor(i / 3) * 2.6, 3.85, 2.3, h, b));
 }
-
-// 20 live scenarios
-{
-  const s = slide("LIVE SCENARIOS", "These are two real screens from the prototype. On the left, the doctor asks for data under the evaluated consent. All five checks pass and the answer is ALLOW. On the right, the same doctor repeats the request but declares a different jurisdiction. The jurisdiction check VL fails, and access is denied. The same consent, one changed condition, and the answer changes. I also revoked the consent, and the next request was refused.", "The HALAH Prototype");
-  fig(s, "F27", 0.7, 1.3, 6.0, 4.9); fig(s, "F32", 6.95, 1.3, 5.7, 4.9);
-  caption(s, "All five checks pass: ALLOW", 0.7, 6.35, 6.0); caption(s, "Different jurisdiction: VL fails, access denied", 6.95, 6.35, 5.7);
-}
-
-// 21 on-chain evidence
-{
-  const s = slide("EVIDENCE ON THE PUBLIC CHAIN", "This is public evidence on Sepolia. On the left, the revocation of token number 1 in block 11,771,307. On the right, the gas used by the five anchored transactions. A mint writes the full consent record, so it costs more than a revoke, which changes one flag. No fee was above 0.00021 ETH. A separate tool compared the chain with the local records, and all checks passed.", "The HALAH Prototype");
-  fig(s, "F37", 0.7, 1.2, 5.6, 5.45);
-  caption(s, "Revocation of token #1 on Sepolia Etherscan, block 11,771,307", 0.7, 6.75, 5.6);
-  panel(s, 6.6, 1.2, 6.1, 5.95, "chart panel");
-  s.addChart(pres.charts.BAR, [{ name: "Gas used", labels: ["Mint #8 (prev.)", "Revoke #8 (prev.)", "Mint #1", "Revoke #1", "Mint #2"], values: [156589, 46226, 196406, 32980, 179306] }],
-    { x: 6.75, y: 1.35, w: 5.8, h: 5.65, barDir: "col", fill: "FFFFFF", plotArea: { fill: { color: "FFFFFF" } }, chartColors: ["1FB5D6"], showTitle: true, title: "Gas used by the five anchored Sepolia transactions", titleFontSize: 14, titleColor: "0B1F33",
-      titleFontFace: "+mn-lt", showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 10, dataLabelColor: "0B1F33", dataLabelFontFace: "+mn-lt", dataLabelFormatCode: "#,##0",
-      catAxisLabelColor: "0B1F33", valAxisLabelColor: "0B1F33", catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-lt", catAxisLabelFontSize: 10, valAxisLabelFontSize: 10,
-      valGridLine: { color: "D5DEE7", size: 0.5 }, catGridLine: { style: "none" }, showLegend: false, valAxisLabelFormatCode: "#,##0", objectName: "gas chart" });
-}
+demo("DEMO 1: THE PATIENT CREATES THE CONSENT", "RO1", "Consent as an evaluable object",
+  ["The patient chooses the doctor, two guardians, the data modules, the validity time and the jurisdiction AU.", "The purpose is fixed to Treatment in this prototype.", "An empty data scope or a malformed guardian DID is rejected.", "The consent is stored as PENDING_SIGNATURE. Nothing is on the blockchain yet."],
+  "Demo step one. The patient creates the consent. Here you see the four data modules, the two guardians, the jurisdiction AU, and the state PENDING_SIGNATURE. The system checked every field before saving. Nothing has gone to the blockchain yet. This is RO1: consent as an object the system can check.",
+  [["F21", "Patient subsystem after creation: four modules, two guardians, jurisdiction AU, state PENDING_SIGNATURE"]]);
+demo("DEMO 2: THE FIRST GUARDIAN APPROVES", "RO3", "Multi-party approval: one signature is not enough",
+  ["The first guardian signs an EIP-712 approval.", "The system recovers the signer and confirms it is a listed guardian.", "The counter shows 1 of 2. The consent stays pending.", "Approvals from outsiders, replays and duplicates would not be counted."],
+  "Demo step two. The first guardian signs. The system recovers the signer from the EIP-712 signature and confirms that this address is one of the two listed guardians. The counter shows one of two. The consent is still pending, because one approval is never enough. This is RO3.",
+  [["F22", "Guardian subsystem at the first approval: signature verified, multi-signature count 1/2"]]);
+demo("DEMO 3: SECOND APPROVAL, TOKEN MINTED", "RO3", "Threshold reached: 2 of 2, then anchoring in the background",
+  ["Second signature verified; threshold 2 of 2 reached", "A soulbound token is minted on Sepolia in the background; the user does not wait", "Later the same screen reads: already anchored on Sepolia"],
+  "Demo step three. The second guardian signs. The threshold two of two is reached, and the system records the token locally and starts the mint on Sepolia in the background. The guardian does not wait for the blockchain. On the right, the same screen a little later: already anchored on Sepolia, with the token number. RO3 is complete.",
+  [["F23", "Second approval: 2/2 reached, SBT minted in the background"], ["F25", "Revisited after the background job: already anchored on Sepolia"], 3.0]);
+demo("DEMO 4: THE DOCTOR IS ALLOWED", "RO2 + RO4", "Five checks and a proof before any data is released",
+  ["The doctor selects the consent and a scope inside the agreed modules.", "A Groth16 proof is generated and verified.", "The decision matrix shows VI, VA, VP, VT, VL all PASS, so ALLOW.", "Identity, authority, approvals, scope, time and jurisdiction are checked in one decision."],
+  "Demo step four. The doctor asks for the patient's data. The proof is generated and verified, then the five checks run. Identity and authority, VI. Approvals and token, VA. Purpose and scope, VP. Time, VT. Jurisdiction, VL. All five pass, so the answer is ALLOW. This is RO2 and RO4 together in one decision.",
+  [["F27", "Doctor subsystem, requester jurisdiction AU: all five checks PASS, ALLOW"]]);
+demo("DEMO 5: ONLY THE AUTHORISED RECORDS", "RO4", "Data scope enforced: nothing outside the consent",
+  ["Records are displayed per module: Observation, Medication, Condition, Procedure.", "Only the modules inside the consent scope are returned.", "A request for a module outside the scope is refused (attack test A4).", "The decision is written to the audit ledger with its matrix."],
+  "Demo step five. After ALLOW, the authorised records are displayed per module. Only the modules inside the consent scope are returned. If the doctor asked for a module that was not agreed, the request would be refused; that case is covered by attack test A4. The decision and its matrix are written to the audit ledger.",
+  [["F29", "Doctor subsystem after verification: access granted, records displayed per module"]]);
+demo("DEMO 6: THE WRONG JURISDICTION", "RO4", "One failed check is enough to deny",
+  ["Same doctor, same active consent, jurisdiction declared as SA instead of AU", "VL = FAIL, so ALLOW = FAIL", "The refusal names the failed check: Security Exception, failed checks: VL"],
+  "Demo step six. The same doctor repeats the request, but declares the jurisdiction as SA. The consent was issued for AU. Everything else passes, but VL fails, and one failed check is enough: access is denied. The message tells the auditor exactly which check failed. This is the conjunctive rule of RO4 in action.",
+  [["F31", "Requester jurisdiction SA: VL reports FAIL, ALLOW = FAIL"], ["F32", "The refused request names the failed check: VL"]]);
+demo("DEMO 7: THE PATIENT REVOKES THE CONSENT", "RO5", "Revocation end to end, with an on-chain transaction",
+  ["The patient revokes the consent", "The revoke transaction is sent to Sepolia and waits for block confirmation", "The consent becomes REVOKED, token #1"],
+  "Demo step seven. The patient revokes the consent. On the left, the system is sending the revoke transaction to Sepolia and waiting for confirmation. On the right, the consent is now REVOKED, with its token number. This is the working part of RO5.",
+  [["F33", "During revocation: waiting for block confirmation"], ["F34", "After revocation: the consent is REVOKED, token #1"], 3.9]);
+demo("DEMO 8: AFTER REVOCATION, REFUSED", "RO5", "A revoked consent cannot be used",
+  ["The same doctor repeats the request.", "VA reports FAIL: the consent is not active, current state REVOKED.", "Access is refused.", "Expired consents are refused the same way through VT."],
+  "Demo step eight. The doctor tries again. Now VA fails, because the consent is not active: its state is REVOKED. Access is refused. An expired consent is refused in the same way, through the time check VT. So a consent that was valid yesterday does not stay usable forever.",
+  [["F36", "Doctor subsystem after revocation: VA FAIL, state REVOKED"]]);
+demo("DEMO 9: PUBLIC EVIDENCE ON SEPOLIA", "RO5 + RO6", "The mint and the revoke are public, verifiable transactions",
+  ["Mint of the evaluated consent: block 11,771,243", "Revoke of token #1: block 11,771,307, decoded input revoke(uint256 tokenId)", "No medical data is on the chain, only the consent state"],
+  "Demo step nine. Both the mint and the revoke are public transactions on Sepolia. On the left, the anchoring transaction of the evaluated consent in block 11,771,243. On the right, the revocation in block 11,771,307, with the decoded function revoke and token id 1. Anyone can verify them. No medical data is on the chain.",
+  [["F26", "Anchoring transaction: status Success, block 11,771,243"], ["F37", "Revocation transaction: status Success, block 11,771,307"]]);
+demo("DEMO 10: THE AUDITOR SEES EVERYTHING", "RO6", "Every event in order, and the chain agrees with the local records",
+  ["The lifecycle of the consent: thirteen recorded events in order, from creation to revocation", "Aggregate indicators of the exported ledger: 60 events, 9 access requests, 5 on-chain anchors", "An independent tool re-checked Sepolia: all anchored transactions found in their recorded blocks"],
+  "Demo step ten, the last one. The auditor can rebuild the full lifecycle of the consent: thirteen events in order, from creation to revocation, each with its decision matrix. The dashboard shows the exported ledger: 60 events, 9 access requests and 5 on-chain anchors. And a separate tool re-checked Sepolia and found every anchored transaction in its recorded block: all checks passed. This is the working part of RO6: evidence that can be audited.",
+  [["F38", "Auditor subsystem: lifecycle of the evaluated consent, thirteen events in order"], ["F39", "Auditor dashboard: 60 events, 9 access requests, 5 on-chain anchors"]]);
 
 // references
 {
