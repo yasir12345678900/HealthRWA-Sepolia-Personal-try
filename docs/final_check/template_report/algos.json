@@ -379,7 +379,7 @@
    ],
    [
     1,
-    "Record denied decision   ⟦b⟧▷ in the prototype, an empty request is stopped by the interface and is not written to the audit ledger⟦/b⟧"
+    "Record denied decision⟦d⟧   ▷ in the prototype, an empty request is stopped by the interface and is not written to the audit ledger⟦/d⟧"
    ],
    [
     1,
@@ -399,7 +399,7 @@
    ],
    [
     1,
-    "Record denied decision"
+    "Record denied decision⟦n⟧   ▷ in the prototype, an empty request is stopped by the interface and is not written to the audit ledger⟦/n⟧"
    ],
    [
     1,
@@ -419,7 +419,7 @@
    ],
    [
     0,
-    "Generate and verify a Groth16 proof that Poseidon(secret, expiry) equals the public commitment and that t ≤ t~e~, and record proof_mode = groth16"
+    "Generate and verify a Groth16 proof that Poseidon(secret, expiry) equals the public commitment and that t ≤ t~e~, and record proof_mode = groth16⟦n⟧   ▷ in the prototype, the proof is generated and verified before the decision matrix is evaluated⟦/n⟧"
    ],
    [
     0,

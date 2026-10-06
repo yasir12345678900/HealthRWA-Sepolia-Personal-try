@@ -49,13 +49,15 @@ function fixText(s) {
   return s;
 }
 function runs(text, base = {}) {
-  const out = []; const re = /(⟦r⟧[\s\S]*?⟦\/r⟧|⟦b⟧[\s\S]*?⟦\/b⟧|\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
+  const out = []; const re = /(⟦r⟧[\s\S]*?⟦\/r⟧|⟦b⟧[\s\S]*?⟦\/b⟧|⟦d⟧[\s\S]*?⟦\/d⟧|⟦n⟧[\s\S]*?⟦\/n⟧|\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
   text = String(text);
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: text.slice(last, m.index) }));
     const t = m[0];
     if (t.startsWith("⟦r⟧")) out.push(...runs(t.slice(3, -4), process.env.RED === "1" ? { ...base, color: "FF0000" } : base));
     else if (t.startsWith("⟦b⟧")) out.push(...runs(t.slice(3, -4), process.env.RED === "1" ? { ...base, color: "00B0F0" } : base));
+    else if (t.startsWith("⟦d⟧")) { if (process.env.DIFF === "1") out.push(...runs(t.slice(3, -4), { ...base, color: "FF0000", strike: true })); }
+    else if (t.startsWith("⟦n⟧")) out.push(...runs(t.slice(3, -4), process.env.DIFF === "1" ? { ...base, color: "FF0000" } : base));
     else if (t === ";") out.push(new TextRun({ font: FONT, size: BODY, ...base, text: ";", highlight: process.env.GREEN === "1" ? "yellow" : undefined }));
     else if (t.startsWith("**")) out.push(...runs(t.slice(2, -2), { ...base, bold: true }));
     else if (t.startsWith("~")) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(1, -1), subScript: true }));
@@ -68,7 +70,7 @@ function runs(text, base = {}) {
 const GREEN = process.env.GREEN === "1" ? { color: "00A000" } : {};
 const P = (text, opts = {}, base = {}) => new Paragraph({ children: runs(fixText(text), { ...GREEN, ...base }), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 }, ...opts });
 // GREEN copy: sentences taken from the original report stay black, the rest are green
-const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t.replace(/⟦\/?[rb]⟧/g, "")), o ? {} : GREEN));
+const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t.replace(/⟦d⟧[\s\S]*?⟦\/d⟧/g, "").replace(/⟦\/?[rbn]⟧/g, "")), o ? {} : GREEN));
 const SEGP = segs => new Paragraph({ children: SEGR(segs), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 } });
 const cb = { style: BorderStyle.SINGLE, size: 4, color: "666666" };
 const bAll = { top: cb, left: cb, bottom: cb, right: cb };
@@ -83,7 +85,7 @@ function h1(title) {
 function h2(title) {
   h2n++;
   return new Paragraph({ heading: HeadingLevel.HEADING_2, keepNext: true, spacing: { before: 240, after: 120 },
-    children: [new TextRun({ text: `${h1n}.${h2n}  ${title}`, font: FONT, size: 26, bold: true })] });
+    children: [new TextRun({ text: `${h1n}.${h2n}  `, font: FONT, size: 26, bold: true }), ...runs(title, { size: 26, bold: true })] });
 }
 function statusLine(text) {
   const m = /^\s*Status:\s*(.*)$/i.exec(text); const v = m ? m[1] : text;
@@ -204,7 +206,7 @@ const doc = new Document({
     children: C }],
 });
 Packer.toBuffer(doc).then(buf => {
-  fs.writeFileSync(D + (process.env.GREEN === "1" ? "CA2_short_green.docx" : process.env.RED === "1" ? "CA2_short_red.docx" : "CA2_short.docx"), buf);
+  fs.writeFileSync(D + (process.env.DIFF === "1" ? "CA2_short_diff.docx" : process.env.GREEN === "1" ? "CA2_short_green.docx" : process.env.RED === "1" ? "CA2_short_red.docx" : "CA2_short.docx"), buf);
   fs.writeFileSync(D + "build_report.json", JSON.stringify({ problems, figures: cnt.F, tables: cnt.T, equations: cnt.E, algorithms: cnt.A, references: citeN, toc: tocTitles }, null, 1));
   console.log("figures", cnt.F, "tables", cnt.T, "equations", cnt.E, "algorithms", cnt.A, "refs", citeN, "problems", problems.length);
   problems.slice(0, 30).forEach(p => console.log("  ", p));

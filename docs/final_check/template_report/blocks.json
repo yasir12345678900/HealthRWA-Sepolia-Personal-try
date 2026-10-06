@@ -391,7 +391,7 @@
   "t": "bullets",
   "items": [
    "**Req 1: Representation of consent as an evaluable authorisation object.** Rather than representing consent as a simple association between a patient, a requester, and a permission, consent should be represented as a structured and evaluable authorisation object. The object should incorporate identity information, authority requirements, policy constraints on purpose, data scope, and jurisdiction, temporal validity, and authorisation evidence so that a consent decision can be evaluated when a subsequent data-access request is made.",
-   "**Req 2: Decentralised verification of identity and authority.** Decentralised Identity (DID) and Verifiable Credentials (VCs) provide an alternative to conventional identity architectures based exclusively on centralised identity providers. Participants should establish persistent and cryptographically verifiable identifiers without dependence on a single identity provider. Identity verification establishes who is participating, while authority verification determines whether that entity satisfies the requirements associated with a particular consent. This separation prevents successful authentication from being interpreted as automatic authorisation.",
+   "**Req 2: Decentralised verification of identity and authority.** Decentralised ⟦d⟧Identity (DID)⟦/d⟧⟦n⟧Identifiers (DIDs)⟦/n⟧ and Verifiable Credentials (VCs) provide an alternative to conventional identity architectures based exclusively on centralised identity providers. Participants should establish persistent and cryptographically verifiable identifiers without dependence on a single identity provider. Identity verification establishes who is participating, while authority verification determines whether that entity satisfies the requirements associated with a particular consent. This separation prevents successful authentication from being interpreted as automatic authorisation.",
    "**Req 3: Multi-party authorisation through a verifiable threshold.** Multiple independently verified participants can jointly establish a trustworthy consent decision without allowing a single participant to unilaterally authorise sensitive healthcare data access. A predefined threshold of independent approvals from designated parties should be modelled as an explicit and independently verifiable security condition within the consent object.",
    "**Req 4: Policy- and context-aware enforcement at the time of access.** A requester may possess a valid identity, valid credentials, and even the required multi-party approval while still requesting information outside the scope authorised by the patient. The access decision must also be evaluated against the purpose and data-scope constraints explicitly associated with the consent. Every request should be evaluated against contextual constraints such as jurisdiction, because many unauthorised disclosures are caused by legitimate requesters who exceed their scope [11].",
    "**Req 5: Temporal validity and lifecycle control of consent.** A consent that has expired, has been revoked, or has entered an invalid state must not be treated as an active authorisation even when its original identity, authority, and approval conditions were valid. The requirement is to ensure that an authorisation remains valid only within its permitted time interval and lifecycle state, and that expiration, immediate and verifiable revocation, and unauthorised state transitions are correctly enforced at every request.",
@@ -410,7 +410,7 @@
    ],
    [
     [
-     "**Req 2: Decentralised verification of identity and authority.** Decentralised Identity (DID) and Verifiable Credentials (VCs) provide an alternative to conventional identity architectures based exclusively on centralised identity providers.",
+     "**Req 2: Decentralised verification of identity and authority.** Decentralised ⟦d⟧Identity (DID)⟦/d⟧⟦n⟧Identifiers (DIDs)⟦/n⟧ and Verifiable Credentials (VCs) provide an alternative to conventional identity architectures based exclusively on centralised identity providers.",
      true
     ],
     [
@@ -618,7 +618,7 @@
  },
  {
   "t": "p",
-  "text": "{F2} presents the PRISMA flow diagram for this review which summarises the identification, screening, eligibility, and inclusion stages of the SLR. Its counts are internally consistent. The seven database searches returned 9,256 records, or 6,039 unique records after deduplication, and after title and abstract screening, ⟦r⟧1,800 records advanced to full text and were prioritised into Tiers A, B, and C of 39, 1,066, and 695 records.⟦/r⟧ Records that were clearly unrelated to the review scope were excluded at that stage. ⟦r⟧A saturation rule was also defined, under which saturation is declared when eight consecutively coded studies with a positive signal for a dimension yield no new mechanism class. At the checkpoint, all 39 Tier A records and 25 further records had been assessed, and 44 reports had been fully coded and passed the quality gate. The remaining 1,735 records had not yet been assessed, and the coding of Tiers B and C continues, so corpus completeness is bounded by the reporting checkpoint rather than by exhaustive reading.⟦/r⟧ The reasons for exclusion at the full-text stage were recorded to improve the transparency of the review.",
+  "text": "{F2} presents the PRISMA flow diagram for this review which summarises the identification, screening, eligibility, and inclusion stages of the SLR. Its counts are internally consistent. The seven database searches returned 9,256 records, or 6,039 unique records after deduplication, and after title and abstract screening, ⟦r⟧1,800 records advanced to full text and were prioritised into Tiers A, B, and C of 39, 1,066, and 695 records.⟦/r⟧ Records that were clearly unrelated to the review scope were excluded at that stage. ⟦r⟧A saturation rule was also defined, under which saturation is declared when eight consecutively coded studies with a positive signal for a dimension yield no new mechanism class. At the checkpoint, all 39 Tier A records and 25 further records had been assessed, and 44 reports had been fully coded and passed the quality gate. ⟦n⟧One full-text report could not be retrieved, and the⟦/n⟧⟦d⟧The⟦/d⟧ remaining 1,735 records had not yet been assessed, and the coding of Tiers B and C continues, so corpus completeness is bounded by the reporting checkpoint rather than by exhaustive reading.⟦/r⟧ The reasons for exclusion at the full-text stage were recorded to improve the transparency of the review.",
   "segs": [
    [
     "{F2} presents the PRISMA flow diagram for this review which summarises the identification, screening, eligibility, and inclusion stages of the SLR.",
@@ -645,7 +645,7 @@
     false
    ],
    [
-    "The remaining 1,735 records had not yet been assessed, and the coding of Tiers B and C continues, so corpus completeness is bounded by the reporting checkpoint rather than by exhaustive reading.",
+    "⟦n⟧One full-text report could not be retrieved, and the⟦/n⟧⟦d⟧The⟦/d⟧ remaining 1,735 records had not yet been assessed, and the coding of Tiers B and C continues, so corpus completeness is bounded by the reporting checkpoint rather than by exhaustive reading.",
     false
    ],
    [
@@ -2149,7 +2149,7 @@
  },
  {
   "t": "p",
-  "text": "The fifth research objective is to extend the trust-oriented framework with temporal validity and consent lifecycle controls. The objective is to ensure that an authorisation remains valid only within its permitted time interval and lifecycle state, and that expiration, revocation, and unauthorised state transitions are correctly enforced. RO5 addresses RQ5 and extends the foundational authorisation model into a dynamic consent environment. The current HALAH code already collects a start time and expiry time during consent creation. The prototype records them on-chain as notBefore and expiry within the consent token, enforces the temporal validity window at every access decision through V~T~, implements end-to-end revocation, including an on-chain revoke transaction, and manages the consent through an explicit lifecycle state machine. A consent that has expired or been revoked must not remain usable merely because its original approval threshold was satisfied. The remaining work concerns hardening these controls and extending them to consent modification, delegation, and guardian-set changes.",
+  "text": "The fifth research objective is to extend the trust-oriented framework with temporal validity and consent lifecycle controls. The objective is to ensure that an authorisation remains valid only within its permitted time interval and lifecycle state, and that expiration, revocation, and unauthorised state transitions are correctly enforced. RO5 addresses RQ5 and extends the foundational authorisation model into a dynamic consent environment. The current HALAH code already collects a start time and expiry time during consent creation. The prototype records them on-chain as notBefore and expiry within the consent token, enforces the temporal validity window at every access decision through V~T~, implements end-to-end revocation, including an on-chain revoke transaction, and manages the consent through an explicit lifecycle state machine. A consent that has expired or been revoked must not remain usable merely because its original approval threshold was satisfied. The remaining work concerns ⟦n⟧the lifecycle transition check, a formal lifecycle model, and ⟦/n⟧hardening these controls and extending them to consent modification, delegation, and guardian-set changes.",
   "segs": [
    [
     "The fifth research objective is to extend the trust-oriented framework with temporal validity and consent lifecycle controls.",
@@ -2176,7 +2176,7 @@
     true
    ],
    [
-    "The remaining work concerns hardening these controls and extending them to consent modification, delegation, and guardian-set changes.",
+    "The remaining work concerns ⟦n⟧the lifecycle transition check, a formal lifecycle model, and ⟦/n⟧hardening these controls and extending them to consent modification, delegation, and guardian-set changes.",
     false
    ]
   ]
@@ -2750,7 +2750,7 @@
  },
  {
   "t": "p",
-  "text": "The MVC architecture also provides a direct implementation structure for the research objectives, as summarised in {T13}. RO1 is primarily represented in the Model through the development of the trust-aware consent object C = (I, A, P, T, L, E). RO2 is implemented through the identity and authority verification mechanisms coordinated by the Controller. RO3 is realised through the multi-party approval and threshold evaluation process. RO4 is implemented through the policy evaluation mechanisms that constrain the authorised purpose and healthcare data scope. For RO5, temporal conditions and lifecycle state are represented in the Model, while V~T~ and V~L~ are evaluated by the Controller before an access decision is produced. RO6 operates across the complete architecture rather than being confined to a single MVC layer. Formal security assurance evaluates the logical properties of the integrated model, while empirical validation evaluates whether the implementation consistently realises those properties. The evidence generated by the Controller and stored in the Model is what the empirical validation and the independent verifier examine.",
+  "text": "The MVC architecture also provides a direct implementation structure for the research objectives, as summarised in {T13}. RO1 is primarily represented in the Model through the development of the trust-aware consent object C = (I, A, P, T, L, E). RO2 is implemented through the identity and authority verification mechanisms coordinated by the Controller. RO3 is realised through the multi-party approval and threshold evaluation process. RO4 is implemented through the policy evaluation mechanisms that constrain the authorised purpose and healthcare data scope. For RO5, temporal conditions and lifecycle state are represented in the Model, while V~T~ ⟦d⟧and V~L~ are⟦/d⟧⟦n⟧is⟦/n⟧ evaluated by the Controller before an access decision is produced⟦n⟧, and the jurisdiction condition V~L~ of RO4 is evaluated in the same step⟦/n⟧. RO6 operates across the complete architecture rather than being confined to a single MVC layer. Formal security assurance evaluates the logical properties of the integrated model, while empirical validation evaluates whether the implementation consistently realises those properties. The evidence generated by the Controller and stored in the Model is what the empirical validation and the independent verifier examine.",
   "segs": [
    [
     "The MVC architecture also provides a direct implementation structure for the research objectives, as summarised in {T13}.",
@@ -2773,7 +2773,7 @@
     true
    ],
    [
-    "For RO5, temporal conditions and lifecycle state are represented in the Model, while V~T~ and V~L~ are evaluated by the Controller before an access decision is produced.",
+    "For RO5, temporal conditions and lifecycle state are represented in the Model, while V~T~ ⟦d⟧and V~L~ are⟦/d⟧⟦n⟧is⟦/n⟧ evaluated by the Controller before an access decision is produced⟦n⟧, and the jurisdiction condition V~L~ of RO4 is evaluated in the same step⟦/n⟧.",
     true
    ],
    [
@@ -2797,7 +2797,7 @@
  },
  {
   "t": "p",
-  "text": "The principal contribution of the proposed architecture is not the use of MVC itself, but the way in which MVC is employed to operationalise a trust-oriented authorisation model. This design transforms multi-party consent management from a conventional record-management problem into a distributed security-governance problem. The evaluable consent object as such is already present in the literature [71, 37, 44, 58]. The key innovation is that consent effectiveness depends on the joint satisfaction of identity, authority, collective approval, policy, temporal, and jurisdictional conditions on every access decision. Blockchain or other tamper-resistant storage mechanisms are integrated as infrastructure for preserving selected authorisation evidence. However, the blockchain itself is not treated as the source of trust. Its role is to strengthen integrity, non-repudiation, and auditability of the evidence generated by the authorisation process [2, 28]. The detailed solutions for RQ1 to RQ6 are presented in Sections 6 to 11, and the formal assurance of the complete decision model ⟦r⟧remains for the next stage.⟦/r⟧",
+  "text": "The principal contribution of the proposed architecture is not the use of MVC itself, but the way in which MVC is employed to operationalise a trust-oriented authorisation model. This design transforms multi-party consent management from a conventional record-management problem into a distributed security-governance problem. The evaluable consent object as such is already present in the literature [71, 37, 44, 58⟦n⟧, 66⟦/n⟧]. The key innovation is that consent effectiveness depends on the joint satisfaction of identity, authority, collective approval, policy, temporal, and jurisdictional conditions on every access decision. Blockchain or other tamper-resistant storage mechanisms are integrated as infrastructure for preserving selected authorisation evidence. However, the blockchain itself is not treated as the source of trust. Its role is to strengthen integrity, non-repudiation, and auditability of the evidence generated by the authorisation process [2, 28]. The detailed solutions for RQ1 to RQ6 are presented in Sections 6 to 11, and the formal assurance of the complete decision model ⟦r⟧remains for the next stage.⟦/r⟧",
   "segs": [
    [
     "The principal contribution of the proposed architecture is not the use of MVC itself, but the way in which MVC is employed to operationalise a trust-oriented authorisation model.",
@@ -2808,7 +2808,7 @@
     true
    ],
    [
-    "The evaluable consent object as such is already present in the literature [71, 37, 44, 58].",
+    "The evaluable consent object as such is already present in the literature [71, 37, 44, 58⟦n⟧, 66⟦/n⟧].",
     false
    ],
    [
@@ -4203,10 +4203,10 @@
  },
  {
   "t": "p",
-  "text": "If the policy evaluation succeeds, the system generates and verifies the evidence supporting the access decision as a Groth16 zero-knowledge proof. The proof shows that the prover knows the secret and the expiry time ⟦b⟧behind a Poseidon commitment [84] held⟦/b⟧ in the application's consent record, and that the consent has not expired at time t. The proof mode is recorded with the decision in the audit ledger, and the proof constitutes the access evidence required by {A4} before any data are retrieved. This evidence provides an auditable relationship between the access request and the conditions that justified the resulting authorisation.",
+  "text": "If the policy evaluation succeeds, the system ⟦d⟧generates and verifies⟦/d⟧⟦n⟧requires⟦/n⟧ the evidence supporting the access decision⟦d⟧ as⟦/d⟧⟦n⟧ to be⟦/n⟧ a Groth16 zero-knowledge proof⟦n⟧ that has verified; in the prototype, the doctor subsystem generates and verifies this proof before the decision matrix is evaluated⟦/n⟧. The proof shows that the prover knows the secret and the expiry time ⟦b⟧behind a Poseidon commitment [84] held⟦/b⟧ in the application's consent record, and that the consent has not expired at time t. The proof mode is recorded with the decision in the audit ledger, and the proof constitutes the access evidence required by {A4} before any data are retrieved. This evidence provides an auditable relationship between the access request and the conditions that justified the resulting authorisation.",
   "segs": [
    [
-    "If the policy evaluation succeeds, the system generates and verifies the evidence supporting the access decision as a Groth16 zero-knowledge proof.",
+    "If the policy evaluation succeeds, the system ⟦d⟧generates and verifies⟦/d⟧⟦n⟧requires⟦/n⟧ the evidence supporting the access decision⟦d⟧ as⟦/d⟧⟦n⟧ to be⟦/n⟧ a Groth16 zero-knowledge proof⟦n⟧ that has verified; in the prototype, the doctor subsystem generates and verifies this proof before the decision matrix is evaluated⟦/n⟧.",
     true
    ],
    [
@@ -4393,7 +4393,7 @@
  },
  {
   "t": "h2",
-  "text": "Temporal and Jurisdictional Trust Conditions"
+  "text": "Temporal ⟦d⟧and Jurisdictional ⟦/d⟧⟦n⟧⟦/n⟧Trust Conditions"
  },
  {
   "t": "p",
@@ -4667,7 +4667,7 @@
    "**Consent modification.** The current prototype assumes that the consent terms do not change after approval. ⟦r⟧The next stage will therefore extend⟦/r⟧ the consent model to explicitly represent governed modification.",
    "**Delegation.** The consent Model will be expanded to include the delegation of consent.",
    "**Guardian-set changes.** Changes to the guardian set G after consent creation remain to be supported.",
-   "**Transition check.** Lifecycle safety additionally requires that unauthorised state transitions be rejected. If the transition is not permitted, the system records an unauthorised state-transition event and returns INVALID, but this is the only step not yet implemented. It therefore ensures that a previously valid consent cannot be treated as permanently valid after expiration or revocation, but unauthorised transitions are examined only in part.",
+   "**Transition check.** Lifecycle safety additionally requires that unauthorised state transitions be rejected. If the transition is not permitted, the system ⟦d⟧records⟦/d⟧⟦n⟧will record⟦/n⟧ an unauthorised state-transition event and ⟦d⟧returns⟦/d⟧⟦n⟧return⟦/n⟧ INVALID, but this is the only step ⟦d⟧not yet implemented.⟦/d⟧⟦n⟧of the Figure 12 workflow that is not yet implemented.⟦/n⟧ ⟦d⟧It therefore ensures⟦/d⟧⟦n⟧The implemented temporal and revocation checks already ensure⟦/n⟧ that a previously valid consent cannot be treated as permanently valid after expiration or revocation, but unauthorised transitions are examined only in part.",
    "**Formal lifecycle model.** The consent lifecycle will also be extended to represent controlled transitions formally. Unauthorised transitions are thereby excluded by construction, with the central invariant that no REVOKED or EXPIRED consent can re-enter the ACTIVE state."
   ],
   "isegs": [
@@ -4699,11 +4699,11 @@
      true
     ],
     [
-     "If the transition is not permitted, the system records an unauthorised state-transition event and returns INVALID, but this is the only step not yet implemented.",
+     "If the transition is not permitted, the system ⟦d⟧records⟦/d⟧⟦n⟧will record⟦/n⟧ an unauthorised state-transition event and ⟦d⟧returns⟦/d⟧⟦n⟧return⟦/n⟧ INVALID, but this is the only step ⟦d⟧not yet implemented.⟦/d⟧⟦n⟧of the Figure 12 workflow that is not yet implemented.⟦/n⟧",
      true
     ],
     [
-     "It therefore ensures that a previously valid consent cannot be treated as permanently valid after expiration or revocation, but unauthorised transitions are examined only in part.",
+     "⟦d⟧It therefore ensures⟦/d⟧⟦n⟧The implemented temporal and revocation checks already ensure⟦/n⟧ that a previously valid consent cannot be treated as permanently valid after expiration or revocation, but unauthorised transitions are examined only in part.",
      true
     ]
    ],
@@ -5191,7 +5191,7 @@
  },
  {
   "t": "p",
-  "text": "**Scenario 5: revocation followed by refusal (validates the revocation control of RQ5).** Revocation should invalidate a previously established consent rather than merely create a new record indicating that the consent has changed. The patient revokes the evaluated consent, the system submits a revoke transaction to the contract, and the consent is displayed as REVOKED with its token number. A subsequent request by the doctor fails at V~A~, because the system verifies that the consent has not been revoked or otherwise transitioned into an inactive state. Revocation represents a deliberate termination of the previously granted consent and must therefore override an otherwise valid temporal interval. The revocation control allows the framework to distinguish between a consent that was previously valid and a consent that remains valid at the time of a particular access request, and {F37} shows the publicly verifiable revocation transaction in block 11,771,307. The doctor subsystem does not read the chain, so this refusal follows from the revocation flag in the local store, while the on-chain state corroborates it separately.",
+  "text": "**Scenario 5: revocation followed by refusal (validates the revocation control of RQ5).** Revocation should invalidate a previously established consent rather than merely create a new record indicating that the consent has changed. The patient revokes the evaluated consent, the system submits a revoke transaction to the contract, and the consent is displayed as REVOKED with its token number. A subsequent request by the doctor ⟦d⟧fails at V~A~, because the system verifies that the consent has not been revoked or otherwise transitioned into an inactive state.⟦/d⟧⟦n⟧is refused by the doctor subsystem at the consent-state check, because the consent is no longer ACTIVE; the V~A~ predicate itself rejects a revoked consent, which test A8 exercises.⟦/n⟧ Revocation represents a deliberate termination of the previously granted consent and must therefore override an otherwise valid temporal interval. The revocation control allows the framework to distinguish between a consent that was previously valid and a consent that remains valid at the time of a particular access request, and {F37} shows the publicly verifiable revocation transaction in block 11,771,307. The doctor subsystem does not read the chain, so this refusal follows from the revocation flag in the local store, while the on-chain state corroborates it separately.",
   "segs": [
    [
     "**Scenario 5: revocation followed by refusal (validates the revocation control of RQ5).** Revocation should invalidate a previously established consent rather than merely create a new record indicating that the consent has changed.",
@@ -5202,7 +5202,7 @@
     false
    ],
    [
-    "A subsequent request by the doctor fails at V~A~, because the system verifies that the consent has not been revoked or otherwise transitioned into an inactive state.",
+    "A subsequent request by the doctor ⟦d⟧fails at V~A~, because the system verifies that the consent has not been revoked or otherwise transitioned into an inactive state.⟦/d⟧⟦n⟧is refused by the doctor subsystem at the consent-state check, because the consent is no longer ACTIVE; the V~A~ predicate itself rejects a revoked consent, which test A8 exercises.⟦/n⟧",
     true
    ],
    [
@@ -5340,14 +5340,14 @@
  },
  {
   "t": "p",
-  "text": "{T16} shows how the validation procedure provides traceability between the final access decision and its supporting evidence. The ledger row of the single logged DENY, the jurisdiction scenario, records the proof check as passed and the scope as valid, so the refusal was produced by the decision matrix alone. In each of the six logged evaluations, the recorded audit evidence is consistent with the actual authorisation decision. Consequently, validation does not merely determine whether the final output is ALLOW or DENY; it also determines whether the underlying evidence is consistent with the decision. In the logged decisions, the implementation consistently produces an ALLOW decision only when the required trust conditions are satisfied and produces a DENY decision when one or more required conditions are violated. The three earlier grants of 22 September 2026 predate the logging of the matrix and of the proof mode. Similarly, the refusal after revocation has no ledger row, because the doctor subsystem stops the request before it can be submitted.",
+  "text": "{T16} shows how the validation procedure provides traceability between the final access decision and its supporting evidence. The ledger row of the single logged DENY, the jurisdiction scenario, records the proof check as passed and the scope as valid, so the refusal was produced by the decision matrix alone⟦n⟧; the proof mode itself is written only on granted rows, which is why {T16} shows it as not logged for that row⟦/n⟧. In each of the six logged evaluations, the recorded audit evidence is consistent with the actual authorisation decision. Consequently, validation does not merely determine whether the final output is ALLOW or DENY; it also determines whether the underlying evidence is consistent with the decision. In the logged decisions, the implementation consistently produces an ALLOW decision only when the required trust conditions are satisfied and produces a DENY decision when one or more required conditions are violated. The three earlier grants of 22 September 2026 predate the logging of the matrix and of the proof mode. Similarly, the refusal after revocation has no ledger row, because the doctor subsystem stops the request before it can be submitted.",
   "segs": [
    [
     "{T16} shows how the validation procedure provides traceability between the final access decision and its supporting evidence.",
     true
    ],
    [
-    "The ledger row of the single logged DENY, the jurisdiction scenario, records the proof check as passed and the scope as valid, so the refusal was produced by the decision matrix alone.",
+    "The ledger row of the single logged DENY, the jurisdiction scenario, records the proof check as passed and the scope as valid, so the refusal was produced by the decision matrix alone⟦n⟧; the proof mode itself is written only on granted rows, which is why {T16} shows it as not logged for that row⟦/n⟧.",
     false
    ],
    [
@@ -5809,7 +5809,7 @@
  },
  {
   "t": "p",
-  "text": "As shown in {Fplan}, the current stage focuses on establishing the foundational trust-oriented authorisation framework. The main activities are the development of the trust-centric consent model, decentralised identity and authority verification, multi-party authorisation, and policy-aware access control. The progression is RO1, RO2, RO3 and then RO4, which have been implemented and initially validated through the HALAH prototype. The next stage, which concentrates on RO5 and RO6, will build upon the foundational trust-oriented authorisation framework established during current stage and extend the research towards dynamic consent governance, formal security assurance, and comprehensive empirical validation. Consent modification, delegation, and guardian-set changes extend the lifecycle trust of Section 10, while the formal security assurance and the full performance, scalability, and adversarial evaluation complete the work of Section 11.",
+  "text": "As shown in {Fplan}, the current stage focuses on establishing the foundational trust-oriented authorisation framework. The main activities are the development of the trust-centric consent model, decentralised identity and authority verification, multi-party authorisation, and policy-aware access control. The progression is RO1, RO2, RO3 and then RO4, which have been implemented and initially validated through the HALAH prototype. The next stage, which concentrates on RO5 and RO6, will build upon the foundational trust-oriented authorisation framework established during current stage and extend the research towards dynamic consent governance, formal security assurance, and comprehensive empirical validation. ⟦n⟧The lifecycle transition check, the formal lifecycle model, and c⟦/n⟧⟦d⟧C⟦/d⟧onsent modification, delegation, and guardian-set changes extend the lifecycle trust of Section 10, while the formal security assurance and the full performance, scalability, and adversarial evaluation complete the work of Section 11.",
   "segs": [
    [
     "As shown in {Fplan}, the current stage focuses on establishing the foundational trust-oriented authorisation framework.",
@@ -5828,7 +5828,7 @@
     true
    ],
    [
-    "Consent modification, delegation, and guardian-set changes extend the lifecycle trust of Section 10, while the formal security assurance and the full performance, scalability, and adversarial evaluation complete the work of Section 11.",
+    "⟦n⟧The lifecycle transition check, the formal lifecycle model, and c⟦/n⟧⟦d⟧C⟦/d⟧onsent modification, delegation, and guardian-set changes extend the lifecycle trust of Section 10, while the formal security assurance and the full performance, scalability, and adversarial evaluation complete the work of Section 11.",
     false
    ]
   ]

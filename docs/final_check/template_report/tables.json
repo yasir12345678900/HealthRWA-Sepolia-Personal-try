@@ -1439,7 +1439,7 @@
   ]
  },
  "18": {
-  "caption": "Unit-level adversarial tests A1 to A12, their targeted component and their outcome before the hardening (commit b1468b7) and after the hardening of 1 October 2026",
+  "caption": "Unit-level adversarial tests A1 to A12, their targeted component and their outcome before the hardening⟦d⟧ (commit b1468b7)⟦/d⟧ and after the hardening of 1 October 2026",
   "rows": [
    [
     "ID",
