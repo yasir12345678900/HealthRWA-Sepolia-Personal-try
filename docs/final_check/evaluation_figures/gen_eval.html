@@ -117,8 +117,8 @@ const yb=top+ATT.length*rowH-6;
 s+=`<line x1="10" y1="${yb}" x2="${W-10}" y2="${yb}" stroke="${AXIS}" stroke-width="1.5"/>`;
 const notes=["I identity, A authority, P policy and scope, T time, L jurisdiction, E evidence and its",
  "revocation dimension. Contract denotes ConsentSBTv3 executed on an in-memory EVM.",
- "* Accepted at unit level, when the service function of commit b1468b7 was called",
- "  directly. The interface of the 24 September demonstration already refused it.",
+ "* Accepted at unit level, when the service function was called directly before the",
+ "  hardening. The interface of the 24 September demonstration already refused it.",
  "† The recomputed digest of the rewritten event differs from the stored digest, but no",
  "  component of the prototype compares the two, so a neutral marker is used."];
 notes.forEach((l,k)=>{ s+=T(14,yb+28+k*24,l,{fs:18,c:INK2}); });
