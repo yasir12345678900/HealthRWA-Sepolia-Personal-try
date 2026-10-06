@@ -323,7 +323,7 @@ RO.forEach(([ro, title, sub, figKey, status, pts, notes]) => {
 {
   const s = slide("DATA AND PRIVACY", "A few important points about data. No real patient data is used; the records are synthetic Synthea data. The medical records stay off-chain. The token on Sepolia stores only pseudonymous addresses, a hash of the purpose, the validity window, a jurisdiction code and a revocation flag. Data are released only on ALLOW and only inside the agreed scope. One known limitation: the plaintext purpose is visible in the mint transaction input, and I will address this in the next stage.", "Contribution");
   table(s, ["Aspect", "Key points"], [
-    ["Data source", "No real patient data. Synthetic records from the Synthea dataset (Observation, Medication, Condition, Procedure)."],
+    ["Data source", "Synthea 1K sample of synthetic patient records (synthea.mitre.org), CSV export; a subset of patients with their observations, conditions, medications and procedures. No real patient data is involved."],
     ["Data storage", "Medical records stay off-chain in the application. No medical content is written to the chain."],
     ["On-chain record", "Pseudonymous patient and requester addresses, a hash of the purpose, the validity window, a jurisdiction code and a revocation flag."],
     ["Access to data", "Records are released only on ALLOW and only within the agreed data scope."],
