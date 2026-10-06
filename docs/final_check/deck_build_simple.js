@@ -280,15 +280,46 @@ RO.forEach(([ro, title, sub, figKey, status, pts, notes]) => {
     0.7, 1.3, 11.9, [2.3, 3.4, 2.8, 3.4], 14, { firstBold: true, rowH: [0.55, 0.95, 0.95, 0.95, 0.95, 0.95] });
 }
 
-// 23 attacks
+// 23a recorded decisions
 {
-  const s = slide("VALIDATION: TWELVE ATTACK SCENARIOS", "I also attacked my own system twelve times. For example: a signer who is not a guardian, a replayed or duplicate approval, a request outside the data scope, an expired or revoked consent, and a tampered proof. Before the hardening on 1 October, three attacks were accepted when the service functions were called directly. After the hardening, eleven of twelve are refused. The one that remains, A11, changes a stored digest: the prototype does not yet compare the digest, so it is marked neutral, and that is on the list for the next stage.", "Validation and Evaluation");
-  fig(s, "F43", 0.7, 1.2, 7.2, 5.95);
-  BIG(s, 8.3, 1.35, "12", "attack scenarios, A1 to A12", 4.3);
-  BIG(s, 8.3, 3.25, "11 / 12", "refused after the hardening", 4.3);
-  BIG(s, 8.3, 5.15, "36", "automated tests pass", 4.3);
+  const s = slide("VALIDATION: THE RECORDED DECISIONS", "This table is taken directly from the audit ledger of 24 September. Each row is one real request, with the five checks and the decision. The first two rows and the last three rows are allowed requests: all five checks PASS, the decision is ALLOW, access is GRANTED, and the proof mode is Groth16. The row in the middle is the request from the wrong jurisdiction: VI, VA, VP and VT pass, VL fails, so the decision is DENY. One failed check is enough. The request after revocation is not in this table, because a consent that is no longer active is refused before any decision is logged; its revocation is public on Sepolia in block 11,771,307.", "Validation and Evaluation");
+  const G = (v) => ({ text: v, options: { color: v === "FAIL" || v === "DENY" || v === "DENIED" ? "C62828" : "2E7D32", bold: true, align: "center" } });
+  const rows = [["09:51:36", "f050c29a", "PASS", "PASS", "PASS", "PASS", "PASS", "ALLOW", "GRANTED", "groth16"],
+    ["09:51:39", "f050c29a", "PASS", "PASS", "PASS", "PASS", "PASS", "ALLOW", "GRANTED", "groth16"],
+    ["10:02:50", "f050c29a (jurisdiction SA)", "PASS", "PASS", "PASS", "PASS", "FAIL", "DENY", "DENIED", "n/l"],
+    ["11:02:52", "04da25f5", "PASS", "PASS", "PASS", "PASS", "PASS", "ALLOW", "GRANTED", "groth16"],
+    ["11:04:16", "04da25f5", "PASS", "PASS", "PASS", "PASS", "PASS", "ALLOW", "GRANTED", "groth16"],
+    ["11:04:26", "04da25f5", "PASS", "PASS", "PASS", "PASS", "PASS", "ALLOW", "GRANTED", "groth16"]];
+  const hdr = ["Time (24 Sep)", "Consent", "VI", "VA", "VP", "VT", "VL", "Decision", "Access", "Proof"].map(h => ({ text: h, options: { bold: true, color: WHITE, fill: { color: NAVY }, fontSize: 13, valign: "middle", align: "center" } }));
+  const body = rows.map(r => r.map((c, k) => (k >= 2 && k <= 8) ? { text: c, options: { ...G(c).options, fill: { color: WHITE }, fontSize: 13, valign: "middle" } } : { text: c, options: { color: INK, fill: { color: WHITE }, fontSize: 13, valign: "middle", bold: k === 0 } }));
+  s.addTable([hdr, ...body], { x: 0.6, y: 1.35, w: 12.1, colW: [1.4, 2.5, 0.85, 0.85, 0.85, 0.85, 0.85, 1.2, 1.3, 1.45], border: { type: "solid", pt: 0.75, color: "9FB3C8" }, margin: [0.03, 0.08, 0.03, 0.08], rowH: 0.55, autoPage: false, objectName: "ledger table" });
+  bullets(s, ["Allowed requests: all five checks PASS, decision ALLOW, access GRANTED, proof mode Groth16 (Scenario 3).", "Wrong jurisdiction: only VL fails, decision DENY, access DENIED (Scenario 4). One failed check is enough.", "After revocation (Scenario 5) the request is refused before any decision is logged (n/l = not logged); the revocation is public on Sepolia, block 11,771,307."], 0.7, 5.35, 11.9, 1.7, 14);
 }
-
+// 23b attacks table
+{
+  const s = slide("VALIDATION: TWELVE ATTACK SCENARIOS", "I also attacked my own system twelve times, A1 to A12. This table shows each attack, the part of the consent it targets, and the outcome before and after the hardening on the first of October. Before the hardening, three attacks got through when the service functions were called directly: A1, a signer outside the guardian set; A3, the same guardian signing twice; and A5, an empty data scope. The interface already refused them, but the service layer did not. The hardening moved these checks into the service layer, so now they are refused on every path. After the hardening, eleven of twelve are refused. The last one, A11, changes a stored digest. The prototype does not compare that digest yet, so it is marked as differs, which is neutral, not passed. It is on the list for the next stage.", "Validation and Evaluation");
+  const A = [["A1", "Approval signed by a signer outside G", "A", "Accepted*", "Refused"],
+    ["A2", "Guardian signature replayed from another consent", "I", "Refused", "Refused"],
+    ["A3", "Same guardian approves twice to reach N", "A", "Accepted*", "Refused"],
+    ["A4", "Requested scope exceeds the authorised scope", "P", "Refused", "Refused"],
+    ["A5", "Request with an empty scope", "P", "Accepted*", "Refused"],
+    ["A6", "Request before notBefore or after expiry", "T", "Refused", "Refused"],
+    ["A7", "Requester declares a different jurisdiction", "L", "Refused", "Refused"],
+    ["A8", "Access after revocation", "E", "Refused", "Refused"],
+    ["A9", "Tampered Groth16 proof or public signal", "E", "Refused", "Refused"],
+    ["A10", "Honest proof for an expired consent", "T", "Refused", "Refused"],
+    ["A11", "Result of a recorded audit event rewritten", "E", "Differs†", "Differs†"],
+    ["A12", "Mint or revoke by a non-owner, or token transfer", "Contract", "Refused", "Refused"]];
+  const col = v => v.startsWith("Accepted") ? "C62828" : v.startsWith("Differs") ? "8A6D00" : "2E7D32";
+  const hdr = ["ID", "Attack", "Target", "Before hardening", "After hardening"].map(h => ({ text: h, options: { bold: true, color: WHITE, fill: { color: NAVY }, fontSize: 12, valign: "middle" } }));
+  const body = A.map(r => r.map((c, k) => ({ text: c, options: { fill: { color: WHITE }, fontSize: 11.5, valign: "middle", bold: k === 0 || k >= 3, color: k >= 3 ? col(c) : INK, align: k >= 2 ? "center" : "left" } })));
+  s.addTable([hdr, ...body], { x: 0.6, y: 1.2, w: 8.0, colW: [0.6, 4.3, 0.9, 1.1, 1.1], border: { type: "solid", pt: 0.75, color: "9FB3C8" }, margin: [0.02, 0.06, 0.02, 0.06], rowH: 0.4, autoPage: false, objectName: "attack table" });
+  s.addText("* Accepted at unit level only, when the service function was called directly; the interface already refused it.\n† The rewritten event's digest differs from the stored digest, but no component compares the two yet, so the result is neutral.\nTarget: I identity, A authority, P policy and scope, T time, L jurisdiction, E evidence, Contract = ConsentSBTv3 on an in-memory EVM.",
+    { x: 0.6, y: 6.45, w: 8.0, h: 0.8, fontSize: 9.5, italic: true, color: WHITE, valign: "top", isTextBox: true, objectName: "attack notes" });
+  BIG(s, 9.0, 1.3, "12", "attack scenarios, A1 to A12", 3.7);
+  BIG(s, 9.0, 3.2, "11 / 12", "refused after the hardening (A11 neutral)", 3.7);
+  BIG(s, 9.0, 5.1, "36", "automated tests pass", 3.7);
+}
 // 24 evaluation
 {
   const s = slide("EVALUATION: HOW FAST AND HOW MUCH?", "Evaluation asks: how fast is it, and what does it cost? The decision rule itself takes about 2 microseconds. One guardian signature takes about 11 milliseconds. The Groth16 proof is the slowest part: about 1.4 seconds to generate and 0.47 seconds to verify. Anchoring on Sepolia takes about 11.5 seconds, but it runs in the background, so users do not wait. A revoke uses about one sixth of the gas of a mint. The timings were measured on 1 October 2026; the gas and the anchoring times come from the five Sepolia transactions of September 2026. They are indicative.", "Validation and Evaluation");
