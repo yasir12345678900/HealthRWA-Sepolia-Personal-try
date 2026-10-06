@@ -19,7 +19,7 @@ pres.author = "Yasir Dhaifallah O Alyoubi";
 pres.title = "A Trusted Authorisation Framework for Multi-Party Patient Consent in Healthcare Data Sharing";
 pres.theme = { headFontFace: THEME.headFontFace, bodyFontFace: THEME.bodyFontFace };
 const C = pres.SchemeColor;
-const NOTES2 = fs.existsSync("/tmp/deck/notes_simple.json") ? JSON.parse(fs.readFileSync("/tmp/deck/notes2.json", "utf8")) : {};
+const NOTES2 = fs.existsSync("/tmp/deck/notes_simple.json") ? JSON.parse(fs.readFileSync("/tmp/deck/notes_simple.json", "utf8")) : {};
 let SLN = 0; const _add = pres.addSlide.bind(pres);
 pres.addSlide = (o) => { const sl = _add(o); const k = String(++SLN); const _n = sl.addNotes.bind(sl); let done = false;
   sl.addNotes = (t) => { if (!done) { done = true; _n(NOTES2[k] || t); } return sl; };
