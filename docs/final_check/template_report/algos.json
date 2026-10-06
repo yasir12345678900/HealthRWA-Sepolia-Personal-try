@@ -252,7 +252,7 @@
    ],
    [
     0,
-    "Update valid approval set A~v~"
+    "Update valid ⟦d⟧approval⟦/d⟧⟦n⟧approver⟦/n⟧ set A~v~"
    ],
    [
     0,
@@ -419,7 +419,7 @@
    ],
    [
     0,
-    "Generate and verify a Groth16 proof that Poseidon(secret, expiry) equals the public commitment and that t ≤ t~e~, and record proof_mode = groth16⟦n⟧   ▷ in the prototype, the proof is generated and verified before the decision matrix is evaluated⟦/n⟧"
+    "Generate and verify a Groth16 proof that Poseidon(secret, expiry) equals the public commitment and that t ≤ t~e~⟦d⟧, and record proof_mode = groth16⟦/d⟧⟦n⟧   ▷ in the prototype, the proof is generated and verified before the decision matrix is evaluated⟦/n⟧"
    ],
    [
     0,
@@ -431,7 +431,7 @@
    ],
    [
     0,
-    "Record granted decision"
+    "Record granted decision⟦n⟧ with proof_mode = groth16⟦/n⟧"
    ],
    [
     0,

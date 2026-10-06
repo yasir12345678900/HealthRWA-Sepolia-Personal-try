@@ -1,0 +1,46 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>
+body{margin:0;background:#fff;font-family:'Segoe UI',Calibri,Arial,sans-serif}
+.wrap{padding:10px;display:inline-block;background:#fff}
+</style></head><body><script>
+function sub(s){return s.replace(/V_([A-Z])/g,'V<tspan baseline-shift="sub" style="font-size:70%">$1</tspan>');}
+function st(x,y,name,note,fill,stroke){return `<rect x="${x-125}" y="${y-38}" width="250" height="76" rx="10" style="fill:${fill};stroke:${stroke};stroke-width:2"/>
+<text x="${x}" y="${y-6}" text-anchor="middle" style="font-family:'DejaVu Sans Mono',monospace;font-size:23px;font-weight:700;fill:#1a1a1a">${name}</text>
+<text x="${x}" y="${y+20}" text-anchor="middle" style="font-size:19px;fill:#333">${sub(note)}</text>`;}
+function arrow(d,red,dash){return `<path d="${d}" style="stroke:${red?'#C62828':'#555'};stroke-width:2.2;fill:none${dash?';stroke-dasharray:7 5':''}" marker-end="url(#${red?'arrR':'arr'})"/>`;}
+function lab(x,y,t,red,anchor){return t.split("\n").map((l,i)=>`<text x="${x}" y="${y+i*19}" text-anchor="${anchor||'middle'}" style="font-size:18px;font-weight:600;fill:${red?'#C62828':'#333'}">${sub(l)}</text>`).join("");}
+let s=`<defs><marker id="arr" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L9,5 L0,10 z" fill="#555"/></marker><marker id="arrR" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L9,5 L0,10 z" fill="#C62828"/></marker></defs>`;
+// fix_F35: activation no longer waits for Sepolia; mint shown as background annotation; anchored revocations in red
+const Y=150, X=[190,470,750,1030], EX=1030, EY=350, RX=500, RY=370;
+const LAB=(x,y,t,red,anchor)=>t.split("\n").map((l,i)=>`<text x="${x}" y="${y+i*23}" text-anchor="${anchor||'middle'}" style="font-size:20px;font-weight:600;fill:${red?'#C62828':'#333'}">${sub(l)}</text>`).join("");
+s+=`<circle cx="30" cy="${Y}" r="12" fill="#1a1a1a"/>`+arrow(`M 42 ${Y} L ${X[0]-129} ${Y}`);
+s+=st(X[0],Y,"PENDING_SIGNATURE","consent created off-chain","#FFF8E1","#C9A227");
+s+=`<rect x="${X[1]-125}" y="${Y-38}" width="250" height="76" rx="10" style="fill:#FFF8E1;stroke:#C9A227;stroke-width:2"/>
+<text x="${X[1]}" y="${Y-13}" text-anchor="middle" style="font-family:'DejaVu Sans Mono',monospace;font-size:23px;font-weight:700;fill:#1a1a1a">PENDING_TOKEN</text>
+<text x="${X[1]}" y="${Y+9}" text-anchor="middle" style="font-size:16.5px;fill:#333">threshold met, no token</text>
+<text x="${X[1]}" y="${Y+28}" text-anchor="middle" style="font-size:16.5px;fill:#333">identifier yet</text>`;
+s+=st(X[2],Y,"NOT_STARTED","now < notBefore","#ECEFF1","#607D8B");
+s+=st(X[3],Y,"ACTIVE","access may be granted","#E8F5E9","#2E7D32");
+s+=st(EX,EY,"EXPIRED","V_T fails","#ECEFF1","#607D8B");
+s+=st(RX,RY,"REVOKED","V_A fails permanently","#FFEBEE","#C62828");
+// solid grey activation: PENDING_SIGNATURE -> NOT_STARTED / ACTIVE (arc over PENDING_TOKEN)
+s+=LAB(330,Y-60,"all |G| EIP-712\nsignatures verified")+LAB(610,Y-60,"local token recorded\n(MINT_SBT)");
+s+=arrow(`M ${X[0]+125} ${Y} L ${X[1]-129} ${Y}`);
+s+=arrow(`M ${X[1]+125} ${Y} L ${X[2]-129} ${Y}`);
+s+=arrow(`M ${X[2]+125} ${Y} L ${X[3]-129} ${Y}`)+LAB((X[2]+X[3])/2,Y-50,"notBefore ≤ now");
+// red annotation attached to NOT_STARTED / ACTIVE
+s+=`<path d="M 790 ${Y-40} L 790 ${Y-82} L 1070 ${Y-82} L 1070 ${Y-40}" style="stroke:#C62828;stroke-width:2;fill:none;stroke-dasharray:3 3"/>`;
+s+=`<circle cx="790" cy="${Y-40}" r="4" fill="#C62828"/><circle cx="1070" cy="${Y-40}" r="4" fill="#C62828"/>`;
+s+=LAB(930,Y-124,"background ONCHAIN_MINT on Sepolia;\nlocal token replaced on confirmation",true);
+// expiry
+s+=arrow(`M ${X[3]+40} ${Y+38} L ${EX+40} ${EY-42}`)+LAB(EX+52,(Y+EY)/2+6,"now > expiry",false,"start");
+// anchored revocations (red)
+s+=arrow(`M ${X[3]-70} ${Y+38} C ${X[3]-110} ${Y+130}, ${RX+250} ${RY-80}, ${RX+129} ${RY-14}`,true);
+s+=arrow(`M ${X[2]-20} ${Y+38} C ${X[2]-40} ${Y+130}, ${RX+140} ${RY-120}, ${RX+90} ${RY-42}`,true);
+s+=arrow(`M ${EX-125} ${EY+10} C ${EX-250} ${EY+40}, ${RX+250} ${RY+50}, ${RX+129} ${RY+22}`,true);
+s+=LAB(RX+150,RY+78,"revoke(tokenId) — ONCHAIN_REVOKE",true,"start");
+// revocation before a token exists (dashed, off-chain only)
+s+=arrow(`M ${X[1]+20} ${Y+38} C ${X[1]+30} ${Y+130}, ${RX-100} ${RY-120}, ${RX-60} ${RY-42}`,false,true);
+s+=arrow(`M ${X[0]} ${Y+38} C ${X[0]} ${Y+190}, ${RX-220} ${RY+10}, ${RX-129} ${RY+10}`,false,true);
+s+=LAB(30,RY+62,"revoke before a token exists\n(off-chain only)",false,"start");
+document.write(`<div class="wrap" id="lifecycle_sm"><svg width="1240" height="470" viewBox="0 0 1240 470">${s}</svg></div>`);
+</script></body></html>

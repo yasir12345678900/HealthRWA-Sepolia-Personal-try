@@ -1614,7 +1614,7 @@
    ],
    [
     "Consent Modification, Delegation and Lifecycle Extensions",
-    "Extend the implemented lifecycle mechanism to support consent modification, delegation and guardian-set changes, and formalise the state-transition model so that unauthorised transitions are excluded by construction. Evaluate access decisions under varying temporal and consent-state constraints.",
+    "Extend the implemented lifecycle mechanism to support consent modification, delegation⟦n⟧, a declared request purpose⟦/n⟧ and guardian-set changes, and formalise the state-transition model so that unauthorised transitions are excluded by construction. Evaluate access decisions under varying temporal and consent-state constraints.",
     "A dynamic consent management mechanism capable of validating whether an authorisation remains active at the precise point of access."
    ],
    [
