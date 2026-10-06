@@ -23,7 +23,7 @@ s+=st(X[3],Y,"ACTIVE","access may be granted","#E8F5E9","#2E7D32");
 s+=st(EX,EY,"EXPIRED","V_T fails","#ECEFF1","#607D8B");
 s+=st(RX,RY,"REVOKED","V_A fails permanently","#FFEBEE","#C62828");
 // solid grey activation: PENDING_SIGNATURE -> NOT_STARTED / ACTIVE (arc over PENDING_TOKEN)
-s+=LAB(330,Y-60,"all |G| EIP-712\nsignatures verified")+LAB(610,Y-60,"local token recorded\n(MINT_SBT)");
+s+=LAB(330,Y-78,"all |G| EIP-712\nsignatures verified")+LAB(610,Y-78,"local token recorded\n(MINT_SBT)");
 s+=arrow(`M ${X[0]+125} ${Y} L ${X[1]-129} ${Y}`);
 s+=arrow(`M ${X[1]+125} ${Y} L ${X[2]-129} ${Y}`);
 s+=arrow(`M ${X[2]+125} ${Y} L ${X[3]-129} ${Y}`)+LAB((X[2]+X[3])/2,Y-50,"notBefore ≤ now");

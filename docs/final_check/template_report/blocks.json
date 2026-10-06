@@ -125,7 +125,7 @@
  },
  {
   "t": "p",
-  "text": "The central problem addressed by this research is therefore the absence of an integrated trust-oriented mechanism that connects identity, authority, multi-party approval, policy, temporal, and lifecycle conditions within a coherent authorisation decision and whose security can be formally and empirically demonstrated. ⟦b⟧Existing approaches provide important technological components,⟦/b⟧ including decentralised identity and verifiable credentials [58, 76], blockchain-based records [53, 71], multi-party approval mechanisms [53, 61, 69, 43], and policy-based access control [44, 57, 63, 15], as well as several partial combinations [58, 61, 45]. However, these mechanisms are often investigated independently or integrated primarily at the implementation level. The overarching research question is how a trust-oriented computing framework can establish and enforce trustworthy multi-party consent for decentralised healthcare data sharing under identity, authority, and policy constraints. The research objectives are operationalised through six corresponding sub-research questions.",
+  "text": "The central problem addressed by this research is therefore the absence of an integrated trust-oriented mechanism that connects identity, authority, multi-party approval, policy, temporal, and lifecycle conditions within a coherent authorisation decision and whose security can be formally and empirically demonstrated. ⟦b⟧Existing approaches provide important technological components,⟦/b⟧ including decentralised identity and verifiable credentials [58, 76], blockchain-based records [53, 71], multi-party approval mechanisms [53, 61, 69, 43], and policy-based access control [44, 57, 63, 15], as well as several partial combinations [58, 61, 45]. However, these mechanisms are often investigated independently or integrated primarily at the implementation level. The overarching research question is how a trust-oriented computing framework can establish and enforce trustworthy multi-party consent for decentralised healthcare data sharing under identity, authority, and policy constraints. The research objectives are operationalised through six corresponding sub-research questions⟦n⟧ (SRQ1 to SRQ6, referred to as RQ1 to RQ6)⟦/n⟧.",
   "segs": [
    [
     "The central problem addressed by this research is therefore the absence of an integrated trust-oriented mechanism that connects identity, authority, multi-party approval, policy, temporal, and lifecycle conditions within a coherent authorisation decision and whose security can be formally and empirically demonstrated.",
@@ -144,7 +144,7 @@
     true
    ],
    [
-    "The research objectives are operationalised through six corresponding sub-research questions.",
+    "The research objectives are operationalised through six corresponding sub-research questions⟦n⟧ (SRQ1 to SRQ6, referred to as RQ1 to RQ6)⟦/n⟧.",
     true
    ]
   ]
@@ -947,7 +947,7 @@
  },
  {
   "t": "p",
-  "text": "The extracted data were organised into thematic categories corresponding to the research questions. ⟦b⟧Each included study was assigned to one stream, normally the one on which it is coded most strongly; S6 [47] is placed in the multi-party stream for its guardian access gate, although it is graded Partial on Req 3.⟦/b⟧ **Consent representation and blockchain-based consent governance (Req 1).** ⟦r⟧Two of the three studies of this stream are deployed platforms graded Partial.⟦/r⟧ ⟦b⟧SooHoo⟦/b⟧ et al. [67] describe the iAgree portal across three United States health systems with a permissioned Ethereum audit contract, but consent enforcement is outside its scope. Tremper et al. [72] report ten years of the Mainzelliste service with FHIR consent directives, but specify no check semantics and no demonstrated enforcement of withdrawal. ⟦r⟧The two platforms are single-party systems. Al Amin et al. [38] model informed consent as a patient-driven policy object with hash integrity, but specify no purpose condition and report no measured results.⟦/r⟧ The supporting references represent consent as a permission indicating whether a particular party is allowed to perform a specified ⟦b⟧operation [36, 60], as conditions fixed at encryption time [78], or as a key issued by the patient for each request [70].⟦/b⟧ The existence of a consent record does not necessarily explain whether the conditions required for a subsequent access request are still satisfied.",
+  "text": "The extracted data were organised into thematic categories corresponding to the research questions. ⟦b⟧Each included study was assigned to one stream, normally the one on which it is coded most strongly; S6 [47] is placed in the multi-party stream for its guardian access gate, although it is graded Partial on Req 3.⟦/b⟧ **Consent representation and blockchain-based consent governance (Req 1).** ⟦r⟧Two of the three studies of this stream are deployed platforms graded Partial.⟦/r⟧ ⟦b⟧SooHoo⟦/b⟧ et al. [67] describe the iAgree portal across three United States health systems with a permissioned Ethereum audit contract, but consent enforcement is outside its scope. Tremper et al. [72] report ten years of the Mainzelliste service with FHIR consent directives, but specify no check semantics and no demonstrated enforcement of withdrawal. ⟦r⟧The two platforms are single-party systems. Al Amin et al. [38] model informed consent as a patient-driven policy object with hash integrity, but specify no purpose condition and report no measured results.⟦/r⟧ The supporting references represent consent as a permission indicating whether a particular party is allowed to perform a specified ⟦b⟧operation [36, 60], as conditions fixed at encryption time [78], or as a key issued by the patient for each request [70].⟦/b⟧ The existence of a consent record does not necessarily explain whether the conditions required for a subsequent access request are still satisfied.⟦n⟧ {Tslr_desc} summarises the description and the issues and limitations of each primary study.⟦/n⟧",
   "segs": [
    [
     "The extracted data were organised into thematic categories corresponding to the research questions.",
@@ -978,7 +978,7 @@
     true
    ],
    [
-    "The existence of a consent record does not necessarily explain whether the conditions required for a subsequent access request are still satisfied.",
+    "The existence of a consent record does not necessarily explain whether the conditions required for a subsequent access request are still satisfied.⟦n⟧ {Tslr_desc} summarises the description and the issues and limitations of each primary study.⟦/n⟧",
     true
    ]
   ]
@@ -1113,7 +1113,7 @@
  },
  {
   "t": "p",
-  "text": "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable. Wu and Zhang [76] present HealthDID, with three game-based definitions and three theorems proved by reduction, although ⟦r⟧the proofs cover⟦/r⟧ only the identity and authority fragment. Zhao and Su [50] and Maruthi and Singh [54] prove threshold gates in isolation, and Mei et al. [55] prove a static encryption predicate. Formal assurance is coded Yes in only 4 of the 25 studies, and empirical validation Yes in 5, Partial in 19, and No in 1. ⟦r⟧We observed an inverse relation between predicate breadth and assurance strength.⟦/r⟧ ⟦r⟧Few studies⟦/r⟧ execute adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process. ⟦r⟧{Tslr_desc} summarises the description and the issues and limitations of each primary study.⟦/r⟧",
+  "text": "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions. Consequently, the two forms of evidence are complementary rather than interchangeable. Wu and Zhang [76] present HealthDID, with three game-based definitions and three theorems proved by reduction, although ⟦r⟧the proofs cover⟦/r⟧ only the identity and authority fragment. Zhao and Su [50] and Maruthi and Singh [54] prove threshold gates in isolation, and Mei et al. [55] prove a static encryption predicate. Formal assurance is coded Yes in only 4 of the 25 studies, and empirical validation Yes in 5, Partial in 19, and No in 1. ⟦r⟧We observed an inverse relation between predicate breadth and assurance strength.⟦/r⟧ ⟦r⟧Few studies⟦/r⟧ execute adversarial scenarios that examine whether security controls can resist deliberate attempts to circumvent the authorisation process.⟦d⟧ {Tslr_desc} summarises the description and the issues and limitations of each primary study.⟦/d⟧",
   "segs": [
    [
     "**Formal security assurance and empirical validation (Req 6).** Experimental success alone cannot establish that unauthorised access is impossible under the stated model, while formal reasoning establishes security properties only under explicitly defined assumptions.",
@@ -1389,7 +1389,7 @@
  },
  {
   "t": "p",
-  "text": "The literature review identifies a consistent pattern of fragmentation across existing research. Across the corpus, Req 3 is the least satisfied requirement, ⟦b⟧while within Req 6, formal assurance alone is provided by 4 studies, argued informally by 9, and absent in 12. The other five Yes grades for Req 6 in {T9} rest on empirical validation.⟦/b⟧ These proportions match the wider pool of 1,800 records, in which only 8% carry a multi-party signal, 2% a temporal-validity signal, and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment.",
+  "text": "The literature review identifies a consistent pattern of fragmentation across existing research. Across the corpus, Req 3 is the least satisfied requirement, ⟦b⟧while within Req 6, formal assurance alone is provided by 4 studies, argued informally by 9, and absent in 12. The other five Yes grades for Req 6 in {T9} rest on empirical validation.⟦/b⟧ ⟦d⟧These proportions match⟦/d⟧⟦n⟧The rarity of formal verification is also seen in⟦/n⟧ the wider pool of 1,800 records, in which only 8% carry a multi-party signal, 2% a temporal-validity signal, and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment.",
   "segs": [
    [
     "The literature review identifies a consistent pattern of fragmentation across existing research.",
@@ -1400,7 +1400,7 @@
     false
    ],
    [
-    "These proportions match the wider pool of 1,800 records, in which only 8% carry a multi-party signal, 2% a temporal-validity signal, and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment.",
+    "⟦d⟧These proportions match⟦/d⟧⟦n⟧The rarity of formal verification is also seen in⟦/n⟧ the wider pool of 1,800 records, in which only 8% carry a multi-party signal, 2% a temporal-validity signal, and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment.",
     false
    ]
   ]
@@ -3959,10 +3959,10 @@
  },
  {
   "t": "p",
-  "text": "RO4 directly addresses RQ4 and completes the foundational authorisation model investigated during current stage. The objective is to ensure that an otherwise valid requester cannot access healthcare information outside the purpose and data scope authorised by the consent. RO4 develops a policy-aware access-control mechanism capable of evaluating purpose and data-scope constraints before an access decision is issued. The objective is based on the observation that a valid identity and sufficient approval do not necessarily imply that every requested operation is permitted. A doctor may be a legitimate participant and may possess a valid consent, but the requested data may exceed the authorised scope or the requested purpose may not match the purpose specified by the patient.",
+  "text": "RO4 directly addresses RQ4 and completes the foundational authorisation model investigated during ⟦n⟧the ⟦/n⟧current stage. The objective is to ensure that an otherwise valid requester cannot access healthcare information outside the purpose and data scope authorised by the consent. RO4 develops a policy-aware access-control mechanism capable of evaluating purpose and data-scope constraints before an access decision is issued. The objective is based on the observation that a valid identity and sufficient approval do not necessarily imply that every requested operation is permitted. A doctor may be a legitimate participant and may possess a valid consent, but the requested data may exceed the authorised scope or the requested purpose may not match the purpose specified by the patient.",
   "segs": [
    [
-    "RO4 directly addresses RQ4 and completes the foundational authorisation model investigated during current stage.",
+    "RO4 directly addresses RQ4 and completes the foundational authorisation model investigated during ⟦n⟧the ⟦/n⟧current stage.",
     true
    ],
    [
@@ -4862,7 +4862,7 @@
  },
  {
   "t": "p",
-  "text": "Equivalently, {E63}, the contrapositive of {E62}, states that if any mandatory condition is violated, the request must be denied. {E62} is therefore examined through the granted requests and {E63} through the negative scenarios, while the valid scenarios examine the opposite direction, namely that a request satisfying all conditions is granted. A valid authorisation decision requires the simultaneous satisfaction of all relevant trust conditions. Each predicate of Section 10 has a dedicated failure test, because successful operation under valid conditions alone cannot demonstrate that unauthorised access is reliably prevented. The tests confirm that failure of any individual condition results in denial.",
+  "text": "Equivalently, {E63}, the contrapositive of {E62}, states that if any mandatory condition is violated, the request must be denied. {E62} is therefore examined through the granted requests and {E63} through the negative scenarios, while the valid scenarios examine the opposite direction, namely that a request satisfying all conditions is granted. A valid authorisation decision requires the simultaneous satisfaction of all relevant trust conditions. Each ⟦d⟧predicate of Section 10⟦/d⟧⟦n⟧of the five predicates of {E60}⟦/n⟧ has a dedicated failure test, because successful operation under valid conditions alone cannot demonstrate that unauthorised access is reliably prevented. The tests confirm that failure of any individual condition results in denial.",
   "segs": [
    [
     "Equivalently, {E63}, the contrapositive of {E62}, states that if any mandatory condition is violated, the request must be denied. {E62} is therefore examined through the granted requests and {E63} through the negative scenarios, while the valid scenarios examine the opposite direction, namely that a request satisfying all conditions is granted.",
@@ -4873,7 +4873,7 @@
     true
    ],
    [
-    "Each predicate of Section 10 has a dedicated failure test, because successful operation under valid conditions alone cannot demonstrate that unauthorised access is reliably prevented.",
+    "Each ⟦d⟧predicate of Section 10⟦/d⟧⟦n⟧of the five predicates of {E60}⟦/n⟧ has a dedicated failure test, because successful operation under valid conditions alone cannot demonstrate that unauthorised access is reliably prevented.",
     true
    ],
    [
@@ -5152,7 +5152,9 @@
  {
   "t": "fig",
   "ref": "F29",
-  "caption": "⟦b⟧Doctor subsystem after verification for consent 04da25f5 (two captures joined): access granted and records displayed per EMR module⟦/b⟧"
+  "caption": "⟦b⟧Doctor subsystem after verification for consent 04da25f5 (two captures joined): access granted and records displayed per EMR module⟦/b⟧",
+  "w": 600,
+  "maxH": 560
  },
  {
   "t": "p",
@@ -5759,7 +5761,7 @@
     [
      "Chapter 6",
      "Proposed solution for RQ1 to RQ4 and the HALAH prototype",
-     "Jul 2026",
+     "⟦d⟧Jul 2026⟦/d⟧⟦n⟧Jul–Oct 2026⟦/n⟧",
      "☑ Done"
     ],
     [
@@ -5809,7 +5811,7 @@
  },
  {
   "t": "p",
-  "text": "As shown in {Fplan}, the current stage focuses on establishing the foundational trust-oriented authorisation framework. The main activities are the development of the trust-centric consent model, decentralised identity and authority verification, multi-party authorisation, and policy-aware access control. The progression is RO1, RO2, RO3 and then RO4, which have been implemented and initially validated through the HALAH prototype. The next stage, which concentrates on RO5 and RO6, will build upon the foundational trust-oriented authorisation framework established during current stage and extend the research towards dynamic consent governance, formal security assurance, and comprehensive empirical validation. ⟦n⟧The lifecycle transition check, the formal lifecycle model, and c⟦/n⟧⟦d⟧C⟦/d⟧onsent modification, delegation, and guardian-set changes extend the lifecycle trust of Section 10, while the formal security assurance and the full performance, scalability, and adversarial evaluation complete the work of Section 11.",
+  "text": "As shown in {Fplan}, the current stage focuses on establishing the foundational trust-oriented authorisation framework. The main activities are the development of the trust-centric consent model, decentralised identity and authority verification, multi-party authorisation, and policy-aware access control. The progression is RO1, RO2, RO3 and then RO4, which have been implemented and initially validated through the HALAH prototype. The next stage, which concentrates on RO5 and RO6, will build upon the foundational trust-oriented authorisation framework established during ⟦n⟧the ⟦/n⟧current stage and extend the research towards dynamic consent governance, formal security assurance, and comprehensive empirical validation. ⟦n⟧The lifecycle transition check, the formal lifecycle model, and c⟦/n⟧⟦d⟧C⟦/d⟧onsent modification, delegation, and guardian-set changes extend the lifecycle trust of Section 10, while the formal security assurance and the full performance, scalability, and adversarial evaluation complete the work of Section 11.",
   "segs": [
    [
     "As shown in {Fplan}, the current stage focuses on establishing the foundational trust-oriented authorisation framework.",
@@ -5824,7 +5826,7 @@
     true
    ],
    [
-    "The next stage, which concentrates on RO5 and RO6, will build upon the foundational trust-oriented authorisation framework established during current stage and extend the research towards dynamic consent governance, formal security assurance, and comprehensive empirical validation.",
+    "The next stage, which concentrates on RO5 and RO6, will build upon the foundational trust-oriented authorisation framework established during ⟦n⟧the ⟦/n⟧current stage and extend the research towards dynamic consent governance, formal security assurance, and comprehensive empirical validation.",
     true
    ],
    [

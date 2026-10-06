@@ -411,7 +411,7 @@
    ],
    [
     0,
-    "**if** t < t~s~ or t > t~e~ **then** Record denied decision and **return** DENY **end if**"
+    "**if** t < t~s~ or t > t~e~ **then** Record denied decision and **return** DENY **end if**⟦n⟧   ▷ in the prototype, a consent outside its window is NOT_STARTED or EXPIRED, so this refusal is reported in the doctor interface and is not written to the audit ledger⟦/n⟧"
    ],
    [
     0,

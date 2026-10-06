@@ -1081,7 +1081,7 @@
     "RO6",
     "Model, View, and Controller",
     "Formal security analysis and empirical validation",
-    "Will provide formal assurance (next stage) of the defined trust and authorisation properties and empirically evaluates whether the implemented framework correctly enforces authorised and unauthorised healthcare data-access decisions."
+    "Will provide formal assurance (next stage) of the defined trust and authorisation properties and empirically ⟦d⟧evaluates⟦/d⟧⟦n⟧evaluate⟦/n⟧ whether the implemented framework correctly enforces authorised and unauthorised healthcare data-access decisions."
    ]
   ],
   "widths": [
