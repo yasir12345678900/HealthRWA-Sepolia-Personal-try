@@ -169,9 +169,9 @@ function algorithm(b) {
 // ---------- document ----------
 const C = [];
 // title page (template)
-const TP = (t, o = {}) => new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: o.after ?? 120, before: o.before ?? 0 }, children: [new TextRun({ text: t, font: FONT, size: o.size || 28, bold: !!o.bold })] });
+const TP = (t, o = {}) => new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: o.after ?? 120, before: o.before ?? 0 }, children: runs(t, { size: o.size || 28, bold: !!o.bold }) });
 C.push(TP("Suggested Title:", { size: 28, before: 1800, after: 200 }));
-C.push(TP("A Trusted Authorization Framework for Multi-Party Patient Consent in Healthcare Data Sharing", { size: 40, bold: true, after: 1400 }));
+C.push(TP("A Trusted ⟦d⟧Authorization⟦/d⟧⟦n⟧Authorisation⟦/n⟧ Framework for Multi-Party Patient Consent in Healthcare Data Sharing", { size: 40, bold: true, after: 1400 }));
 C.push(TP("Principal Supervisor: Professor Farookh Hussain", { size: 26 }));
 C.push(TP("Co-Supervisor: Dr. Firas Al-Doghman", { size: 26, after: 600 }));
 C.push(TP("Presenter: Yasir Dhaifallah O Alyoubi", { size: 26 }));
@@ -206,7 +206,7 @@ for (const [orig, n] of order) C.push(new Paragraph({ spacing: { after: 50, line
   children: [new TextRun({ text: `[${n}]\t`, font: FONT, size: BODY - 4, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined }), ...runs(REFS[orig], { size: BODY - 4, color: process.env.RED === "1" && BLUE.has(String(orig)) ? "00B0F0" : undefined, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined })], tabStops: [{ type: TabStopType.LEFT, position: 560 }] }));
 
 const doc = new Document({
-  creator: "Yasir Dhaifallah O Alyoubi", title: "CA2 Report: A Trusted Authorization Framework for Multi-Party Patient Consent in Healthcare Data Sharing",
+  creator: "Yasir Dhaifallah O Alyoubi", lastModifiedBy: "Yasir Dhaifallah O Alyoubi", title: "A Trusted Authorisation Framework for Multi-Party Patient Consent in Healthcare Data Sharing",
   styles: { default: { document: { run: { font: FONT, size: BODY } } },
     paragraphStyles: [
       { id: "Heading1", name: "Heading 1", basedOn: "Normal", next: "Normal", quickFormat: true, run: { font: FONT, size: 32, bold: true, color: "000000" }, paragraph: { outlineLevel: 0 } },
