@@ -97,7 +97,7 @@ pres.addSection({ title: "Cover" }); sec = "Cover";
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 10.6, y: 0.3, w: 2.3, h: 1.25, rectRadius: 0.1, fill: { color: WHITE }, line: { color: WHITE }, objectName: "logo card" });
   s.addImage({ path: IMG("uts"), x: 10.75, y: 0.33, w: 2.0, h: 1.28, objectName: "UTS logo" });
   s.addText("A Trusted Authorisation Framework for Multi-Party Patient Consent in Healthcare Data Sharing",
-    { x: 1.4, y: 1.7, w: 10.5, h: 1.6, fontSize: 34, bold: true, italic: true, color: WHITE, align: "center", valign: "middle", fontFace: "Arial", isTextBox: true, objectName: "deck title" });
+    { x: 1.4, y: 1.7, w: 10.5, h: 1.6, fontSize: 32, bold: true, italic: true, color: WHITE, align: "center", valign: "middle", fontFace: "Arial", isTextBox: true, objectName: "deck title" });
   s.addText("Candidature Reassessment", { x: 4.4, y: 3.35, w: 4.5, h: 0.5, fontSize: 20, bold: true, color: CYAN, align: "center", isTextBox: true, objectName: "subtitle" });
   s.addText([
     { text: "Principal Supervisor: Professor Farookh Hussain", options: { breakLine: true } },
@@ -110,11 +110,11 @@ pres.addSection({ title: "Cover" }); sec = "Cover";
 
 // 2 outline
 {
-  const s = slide("OUTLINE", "Here is the plan of my talk. First the problem and the literature review. Then the gaps, the questions and the objectives. Then the framework and the prototype. Then the validation and the evaluation results. I finish with what is still open, the research plan and the timeline.");
-  const L = ["THE PROBLEM", "LITERATURE REVIEW", "GAPS, QUESTIONS AND OBJECTIVES", "THE FRAMEWORK", "THE HALAH PROTOTYPE"];
-  const R = ["VALIDATION AND EVALUATION", "CONTRIBUTION", "WHAT IS STILL OPEN", "RESEARCH PLAN", "REFERENCES"];
+  const s = slide("OUTLINE", "Here is the plan of my talk. First the problem and the literature review. Then the gaps, the questions and the objectives. Then the framework and the prototype. Then the validation and the evaluation results. Then what is still open and the research plan. I close with the implementation of the prototype: the live screens and the public evidence on the chain.");
+  const L = ["THE PROBLEM", "LITERATURE REVIEW", "GAPS, QUESTIONS AND OBJECTIVES", "THE FRAMEWORK", "VALIDATION AND EVALUATION", "WHY THIS MATTERS"];
+  const R = ["WHAT IS STILL OPEN", "RESEARCH PLAN", "THE HALAH PROTOTYPE", "REFERENCES"];
   [L, R].forEach((col, ci) => col.forEach((t, i) => {
-    const x = ci === 0 ? 1.6 : 7.1, y = 1.5 + i * 1.05, n = String(ci * 5 + i + 1).padStart(2, "0");
+    const x = ci === 0 ? 1.6 : 7.1, y = 1.35 + i * 0.95, n = String(ci * 6 + i + 1).padStart(2, "0");
     s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x, y, w: 0.8, h: 0.7, rectRadius: 0.08, fill: { color: ci ? CYAN : "2F6FB0" }, line: { color: WHITE, width: 1 }, objectName: "number " + n });
     s.addText(n, { x, y, w: 0.8, h: 0.7, fontSize: 20, bold: true, color: WHITE, align: "center", valign: "middle", isTextBox: true, objectName: "number text " + n });
     s.addText(t, { x: x + 1.0, y, w: 4.6, h: 0.7, fontSize: 18, bold: true, color: WHITE, valign: "middle", isTextBox: true, objectName: "item " + n });
@@ -128,7 +128,7 @@ pres.addSection({ title: "Cover" }); sec = "Cover";
     "Today, consent is a stored record. It shows that permission was given, but it checks nothing at access time.",
     "A valid identity does not prove the right to see this patient's data.",
     "A request can ask for more data than allowed, or arrive after the consent expired or was revoked.",
-    "Nobody has shown, with proof and tests, that the whole decision is safe."], 0.9, 1.4, 6.8, 5.4, 19);
+    "None of the reviewed studies proves or tests the whole decision."], 0.9, 1.4, 6.8, 5.4, 19);
   card(s, 8.1, 1.6, 4.3, 4.5, "In one sentence", "There is no trusted mechanism that checks identity, authority, multi-party approval, policy, time and lifecycle together in one access decision, with evidence that it is secure.");
 }
 
@@ -136,7 +136,7 @@ pres.addSection({ title: "Cover" }); sec = "Cover";
 {
   const s = slide("THE KEY IDEA", "My answer is simple to say. Consent becomes an object that the system can check, not a record that it stores. I call it C, and it has six parts. I is identity: who is involved. A is authority: the guardians who must approve and how many are needed. P is policy: the purpose and the data scope. T is time: the validity window. L is jurisdiction. E is evidence: the signatures, the token and whether the consent is revoked. At every request, the system checks all six parts. If one check fails, the answer is no.", "The Problem");
   s.addShape(pres.shapes.ROUNDED_RECTANGLE, { x: 0.9, y: 1.3, w: 11.4, h: 1.5, rectRadius: 0.1, fill: { color: NAVY, transparency: 15 }, line: { color: CYAN, width: 1.5 }, objectName: "idea box" });
-  s.addText([{ text: "Consent is not a record. It is an object the system checks at every request.", options: { bold: true, fontSize: 20, color: WHITE, breakLine: true } },
+  s.addText([{ text: "Consent is not a stored record. It is an object checked at every request.", options: { bold: true, fontSize: 20, color: WHITE, breakLine: true } },
     { text: "C = (I, A, P, T, L, E)", options: { bold: true, fontSize: 28, color: CYAN } }],
     { x: 1.1, y: 1.35, w: 11.0, h: 1.4, align: "center", valign: "middle", isTextBox: true, objectName: "idea text" });
   const items = [["I  Identity", "Who is the patient, the doctor and each guardian (DID)."], ["A  Authority", "The guardian set G and how many approvals are needed (N)."],
@@ -169,7 +169,7 @@ pres.addSection({ title: "Cover" }); sec = "Cover";
     "Identity shows who a person is, not what they may do. Only 10 of 25 studies check authority separately.",
     "Multi-party approval is a backup path or a one-time step, not a condition of every access.",
     "Purpose, data scope and jurisdiction are rarely checked in the same decision as identity and approval.",
-    "Time, lifecycle and revocation are checked once, at registration, not at each request.",
+    "Time, lifecycle and revocation are often checked once, at registration, not at each request.",
     "The decision as a whole is neither formally proved nor systematically tested."];
   G.forEach((t, i) => card(s, 0.7 + (i % 2) * 6.05, 1.3 + Math.floor(i / 2) * 1.85, 5.85, 1.65, "Gap " + (i + 1), t));
 }
@@ -206,7 +206,7 @@ pres.addSection({ title: "Cover" }); sec = "Cover";
 {
   const s = slide("RESEARCH METHODOLOGY", "These are the steps I followed. One: identify the problem. Two: the systematic review. Three: the gaps and the questions. Four: the objectives. Five: the design: the MVC architecture, the consent object and four algorithms. Six: the prototype on the Sepolia test network. Seven: the evaluation with live scenarios, measurements and attack tests. The formal assurance is the next stage.", "Gaps, Questions and Objectives");
   const steps = [["Problem", "Consent is a passive record; no single trusted decision"], ["Literature review", "PRISMA 2020; 25 primary studies"], ["Gaps and questions", "Gap 1 to Gap 6; RQ1 to RQ6"], ["Objectives", "RO1 to RO6"],
-    ["Design", "MVC architecture, consent object C, Algorithms 1 to 4"], ["Prototype", "HALAH; ConsentSBTv3 on Sepolia"], ["Evaluation", "Live scenarios, measurements, 12 attack tests; formal proofs next"]];
+    ["Design", "MVC architecture, consent object C, Algorithms 1 to 4"], ["Prototype", "HALAH; ConsentSBTv3 on Sepolia"], ["Evaluation", "Live scenarios, measurements and 12 attack tests; formal proofs next"]];
   steps.forEach(([h, b], i) => {
     const x = 0.55 + i * 1.78, y = 1.7;
     s.addShape(pres.shapes.OVAL, { x: x + 0.53, y, w: 0.6, h: 0.6, fill: { color: i < 6 ? CYAN : "6D5BA8" }, line: { color: WHITE, width: 1.5 }, objectName: "step number " + (i + 1) });
@@ -244,14 +244,14 @@ const RO = [
     ["Identity is checked through the DID; authority through a verifiable credential.", "Identity is not authority: a valid DID alone never gives access.", "In the prototype: a DID-format check and EIP-712 signature recovery for each guardian.", "Full DID resolution and credential validation are planned for the next stage."],
     "Step two. I separate two questions: who are you, and what may you do? The DID answers the first. The credential answers the second. A valid identity alone never gives access. To be clear about the current state: the prototype checks the DID format and recovers each guardian's EIP-712 signature. Full DID resolution and credential validation are planned for the next stage. RO2 is done at the design and prototype level."],
   ["RO3", "STEP 3: THE GUARDIANS APPROVE TOGETHER", "Multi-party authorisation", "F13", "Done",
-    ["The guardian set G is fixed when the consent is created.", "Each guardian signs an EIP-712 approval; the system recovers the signer and checks it is in G.", "Approvals from outsiders, replays and duplicates are not counted.", "N-of-N rule: every listed guardian must sign (2-of-2 in the demo).", "When all have signed, a soulbound token is minted on Sepolia in the background."],
+    ["The guardian set G is fixed when the consent is created.", "Each guardian signs an EIP-712 approval; the system recovers the signer and checks it is in G.", "Approvals from outsiders, replays and duplicates are not counted.", "N-of-N rule: every listed guardian must sign (2-of-2 in the demo).", "When all have signed, a soulbound token is minted on Sepolia in the background.", "In the prototype the guardian keys are derived from the guardian DIDs; wallet-held keys are for the next stage."],
     "Step three. No single person can approve alone. Each guardian signs with an EIP-712 signature. The system recovers the signer and checks it is one of the listed guardians. Outsiders, replays and duplicates are not counted. In the demo, two of two guardians must sign. When both have signed, a soulbound consent token is minted on the Sepolia test network in the background. RO3 is done."],
   ["RO4", "STEP 4: ONLY THE AGREED DATA AND PURPOSE", "Policy- and context-aware access", "F14", "Done",
     ["The requested data must be a non-empty subset of the agreed data scope.", "The purpose must be a supported purpose of the consent.", "Time and jurisdiction are checked in the same decision.", "A Groth16 proof must verify before any data is retrieved.", "Example: asking for Procedure when only Observation and Medication were agreed gives DENY."],
     "Step four. A valid identity and all approvals are still not enough. The requested data must be inside the agreed data scope. For example, if the consent allows Observation and Medication, a request that also asks for Procedure is denied. The purpose, the time and the jurisdiction are checked in the same decision, and a Groth16 proof must verify before any data is released. RO4 is done."],
   ["RO5", "STEP 5: TIME AND LIFECYCLE", "Time and lifecycle control", "F35", "In Progress",
-    ["Working now: the validity window is stored on-chain and checked at every request.", "Working now: revocation end to end, including an on-chain revoke transaction.", "Working now: a clear lifecycle: PENDING_SIGNATURE, PENDING_TOKEN, NOT_STARTED, ACTIVE, EXPIRED, REVOKED.", "Next stage: consent modification, delegation, guardian-set changes and a formal lifecycle model."],
-    "Step five. Time and lifecycle. What works now: the validity window is stored on-chain and checked at every request, revocation works end to end with an on-chain transaction, and the consent moves through a clear lifecycle. What is still open: consent modification, delegation, changes to the guardian set, and a formal lifecycle model. That is why RO5 is in progress."],
+    ["Working now: the validity window is stored on-chain and checked at every request.", "Working now: revocation end to end, including an on-chain revoke transaction.", "Working now: a clear lifecycle: PENDING_SIGNATURE, PENDING_TOKEN, NOT_STARTED, ACTIVE, EXPIRED, REVOKED.", "Next stage: the lifecycle transition check, consent modification, delegation, guardian-set changes and a formal lifecycle model."],
+    "Step five. Time and lifecycle. What works now: the validity window is stored on-chain and checked at every request, revocation works end to end with an on-chain transaction, and the consent moves through a clear lifecycle. What is still open: the lifecycle transition check, consent modification, delegation, changes to the guardian set, and a formal lifecycle model. That is why RO5 is in progress."],
   ["RO6", "STEP 6: PROVE IT AND TEST IT", "Formal assurance and validation", "F16", "Partially completed",
     ["Done: 36 automated tests pass, including 12 attack scenarios A1 to A12.", "Done: gas, confirmation latency and processing time measured.", "Done: a live request from the wrong jurisdiction was refused against a Sepolia-anchored consent.", "Next stage: formal proofs or model checking of the security properties, and a larger evaluation under load."],
     "Step six. Prove it and test it. The testing part is done: 36 automated tests pass, including twelve attack scenarios, and I measured the cost and the timing. The proof part is the next stage: formal proofs or model checking of the security properties, and a larger evaluation under load. That is why RO6 is partially completed."],
@@ -268,42 +268,13 @@ RO.forEach(([ro, title, sub, figKey, status, pts, notes]) => {
   } else if (tall) fig(s, figKey, 8.2, 1.1, 4.4, 6.05); else fig(s, figKey, 7.8, 2.0, 5.1, 3.6);
 });
 
-// 19 prototype
-{
-  const s = slide("THE HALAH PROTOTYPE", "HALAH is the working prototype. The name means History Access Link for Authorised Healthcare. It has four interfaces: patient, guardian, doctor and auditor. The consent token is a soulbound token, ConsentSBTv3, on the Sepolia test network. Guardians sign with EIP-712. Access uses a Groth16 proof. The data are synthetic Synthea records, so no real patient data is used. Every decision is written to an audit ledger, and no medical content goes on-chain.", "The HALAH Prototype");
-  const Cc = [["Four interfaces", "Patient, guardian, doctor and auditor"], ["Smart contract", "ConsentSBTv3, a soulbound ERC-721 token (ERC-5484) on the Sepolia testnet"],
-    ["Guardian approval", "EIP-712 typed signatures, verified by signature recovery"], ["Access proof", "Groth16 zero-knowledge proof over a Poseidon commitment"],
-    ["Data", "Synthetic Synthea records: Observation, Medication, Condition, Procedure"], ["Evidence", "Audit ledger of every decision; no medical content on-chain"]];
-  Cc.forEach(([h, b], i) => card(s, 0.7 + (i % 3) * 4.05, 1.4 + Math.floor(i / 3) * 2.75, 3.85, 2.45, h, b));
-}
-
-// 20 live scenarios
-{
-  const s = slide("LIVE SCENARIOS", "These are two real screens from the prototype. On the left, the doctor asks for data under the evaluated consent. All five checks pass and the answer is ALLOW. On the right, the same doctor repeats the request but declares a different jurisdiction. The jurisdiction check VL fails, and access is denied. The same consent, one changed condition, and the answer changes. I also revoked the consent, and the next request was refused.", "The HALAH Prototype");
-  fig(s, "F27", 0.7, 1.3, 6.0, 4.9); fig(s, "F32", 6.95, 1.3, 5.7, 4.9);
-  caption(s, "All five checks pass: ALLOW", 0.7, 6.35, 6.0); caption(s, "Different jurisdiction: VL fails, access denied", 6.95, 6.35, 5.7);
-}
-
-// 21 on-chain evidence
-{
-  const s = slide("EVIDENCE ON THE PUBLIC CHAIN", "This is public evidence on Sepolia. On the left, the revocation of token number 1 in block 11,771,307. On the right, the gas used by the five anchored transactions. A mint writes the full consent record, so it costs more than a revoke, which changes one flag. No fee was above 0.00021 ETH. A separate tool compared the chain with the local records, and all checks passed.", "The HALAH Prototype");
-  fig(s, "F37", 0.7, 1.2, 5.6, 5.45);
-  caption(s, "Revocation of token #1 on Sepolia Etherscan, block 11,771,307", 0.7, 6.75, 5.6);
-  panel(s, 6.6, 1.2, 6.1, 5.95, "chart panel");
-  s.addChart(pres.charts.BAR, [{ name: "Gas used", labels: ["Mint #8 (prev.)", "Revoke #8 (prev.)", "Mint #1", "Revoke #1", "Mint #2"], values: [156589, 46226, 196406, 32980, 179306] }],
-    { x: 6.75, y: 1.35, w: 5.8, h: 5.65, barDir: "col", fill: "FFFFFF", plotArea: { fill: { color: "FFFFFF" } }, chartColors: ["1FB5D6"], showTitle: true, title: "Gas used by the five anchored Sepolia transactions", titleFontSize: 14, titleColor: "0B1F33",
-      titleFontFace: "+mn-lt", showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 10, dataLabelColor: "0B1F33", dataLabelFontFace: "+mn-lt", dataLabelFormatCode: "#,##0",
-      catAxisLabelColor: "0B1F33", valAxisLabelColor: "0B1F33", catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-lt", catAxisLabelFontSize: 10, valAxisLabelFontSize: 10,
-      valGridLine: { color: "D5DEE7", size: 0.5 }, catGridLine: { style: "none" }, showLegend: false, valAxisLabelFormatCode: "#,##0", objectName: "gas chart" });
-}
-
 // 22 validation
 {
   const s = slide("VALIDATION: DOES IT DO WHAT IT SHOULD?", "Validation asks: does the system do what it should? I used five kinds of evidence. Valid scenarios: the legitimate requests were allowed. Negative scenarios: the wrong jurisdiction and the revoked consent were refused. Adversarial scenarios: eleven of twelve attacks are refused after the hardening. Automated tests: all 36 pass. And an independent check: the on-chain state matches the local state.", "Validation and Evaluation");
   table(s, ["Evidence", "What it checks", "Pass rule", "Result"], [
     ["Valid scenarios", "Legitimate requests get access", "Observed = expected", "Scenarios 1 to 3: consent created, 2-of-2 approval, ALLOW"],
     ["Negative scenarios", "Wrong requests are refused", "Any failed check gives DENY", "Scenario 4: wrong jurisdiction refused. Scenario 5: revoked consent refused"],
-    ["Attack scenarios", "Deliberate attempts to bypass a check, A1 to A12", "Refused / 12", "11 of 12 refused after the hardening (A11: the changed digest is not yet compared)"],
+    ["Attack scenarios", "Deliberate attempts to bypass a check, A1 to A12", "Every attack is refused", "11 of 12 refused after the hardening (A11: the changed digest is not yet compared)"],
     ["Automated tests", "23 functional tests and 13 adversarial tests", "All pass", "36 of 36 pass"],
     ["Independent check", "On-chain receipts against the local consent state", "Local state = on-chain state", "Scenario 6: all checks passed"]],
     0.7, 1.3, 11.9, [2.3, 3.4, 2.8, 3.4], 14, { firstBold: true, rowH: [0.55, 0.95, 0.95, 0.95, 0.95, 0.95] });
@@ -320,30 +291,31 @@ RO.forEach(([ro, title, sub, figKey, status, pts, notes]) => {
 
 // 24 evaluation
 {
-  const s = slide("EVALUATION: HOW FAST AND HOW MUCH?", "Evaluation asks: how fast is it, and what does it cost? The decision rule itself takes about 2 microseconds. One guardian signature takes about 11 milliseconds. The Groth16 proof is the slowest part: about 1.4 seconds to generate and 0.47 seconds to verify. Anchoring on Sepolia takes about 11.5 seconds, but it runs in the background, so users do not wait. A revoke uses about one sixth of the gas of a mint. These numbers were measured on 1 October 2026 and are indicative.", "Validation and Evaluation");
+  const s = slide("EVALUATION: HOW FAST AND HOW MUCH?", "Evaluation asks: how fast is it, and what does it cost? The decision rule itself takes about 2 microseconds. One guardian signature takes about 11 milliseconds. The Groth16 proof is the slowest part: about 1.4 seconds to generate and 0.47 seconds to verify. Anchoring on Sepolia takes about 11.5 seconds, but it runs in the background, so users do not wait. A revoke uses about one sixth of the gas of a mint. The timings were measured on 1 October 2026; the gas and the anchoring times come from the five Sepolia transactions of September 2026. They are indicative.", "Validation and Evaluation");
   table(s, ["Component", "Median", "Min", "Max", "n"], [
     ["Decision rule, five checks", "2.37 µs", "2.32 µs", "31.59 µs", "1,000"],
     ["One EIP-712 signature", "10.93 ms", "10.55 ms", "15.64 ms", "20"],
     ["Groth16 proof generation", "1,401.1 ms", "1,342.8 ms", "5,349.6 ms", "20"],
     ["Groth16 proof verification", "465.3 ms", "441.0 ms", "525.1 ms", "20"],
-    ["On-chain validity read", "573.5 ms", "568.2 ms", "715.5 ms", "20"],
-    ["Anchoring confirmation", "11.5 s", "4.9 s", "22.1 s", "5"],
-    ["Gas: mint / revoke", "196,406 / 32,980", "", "", ""]],
+    ["On-chain checkValid read", "573.5 ms", "568.2 ms", "715.5 ms", "20"],
+    ["On-chain checkValidAt read", "574.6 ms", "568.2 ms", "745.6 ms", "20"],
+    ["Anchoring confirmation", "11.5 s", "4.9 s", "22.1 s", "5"]],
     0.8, 1.4, 6.4, [2.3, 1.3, 1.0, 1.1, 0.7], 12, { firstBold: true, rowH: 0.6 });
+  s.addText("Gas used: mint #1 196,406; revoke #1 32,980. No fee above 0.00021 ETH.", { x: 0.8, y: 6.3, w: 6.4, h: 0.5, fontSize: 14, bold: true, color: WHITE, isTextBox: true, objectName: "gas line" });
   fig(s, "F42", 7.45, 1.4, 5.15, 4.3);
-  caption(s, "Measured on 1 October 2026; indicative only", 7.45, 5.85, 5.15);
+  caption(s, "Timings measured on 1 October 2026; gas and anchoring from the five Sepolia transactions of September 2026; indicative only", 7.45, 5.8, 5.15);
 }
 
 // 25 comparison
 {
-  const s = slide("WHAT IS DIFFERENT FROM TODAY'S SYSTEMS", "Here is the difference in plain terms. Today, a central identity provider logs you in and a static permission decides. Consent is a stored record. In HALAH, every participant has a DID, and identity is separate from authority. Consent is an object checked at every request. All the guardians must approve. Five checks and a proof run before any data is released. Time and revocation are checked each time, and every decision is logged with the reason.", "Contribution");
+  const s = slide("WHAT IS DIFFERENT FROM TODAY'S SYSTEMS", "Here is the difference in plain terms. Today, a central identity provider logs you in and a static permission decides. Consent is a stored record. In HALAH, every participant has a DID, and identity is separate from authority. Consent is an object checked at every request. All the guardians must approve. Five checks and a proof run before any data is released. Time and revocation are checked each time, and every decision on an active consent is logged with the reason.", "Contribution");
   table(s, ["Aspect", "Traditional EHR access control", "HALAH framework"], [
     ["Identity", "Central identity provider; institution login", "A DID for every participant; identity kept separate from authority"],
     ["Consent", "A stored record that permission was given", "An object C = (I, A, P, T, L, E), checked at every request"],
     ["Approval", "A static permission set by one party", "All listed guardians sign (EIP-712); no single party can approve alone"],
     ["Access check", "Log in, then check a static permission", "VI ∧ VA ∧ VP ∧ VT ∧ VL, plus a Groth16 proof before data is released"],
     ["Time and revocation", "Hard to verify once the permission is stored", "Validity window and revocation checked each time; on-chain revoke"],
-    ["Audit", "A record that consent occurred", "Each decision logged with its decision matrix; state anchored on Sepolia"]],
+    ["Audit", "A record that consent occurred", "Each decision on an active consent logged with its decision matrix; state anchored on Sepolia"]],
     0.7, 1.4, 11.9, [2.0, 4.4, 5.5], 14, { firstBold: true, rowH: 0.8 });
 }
 
@@ -357,7 +329,7 @@ RO.forEach(([ro, title, sub, figKey, status, pts, notes]) => {
     ["Access to data", "Records are released only on ALLOW and only within the agreed data scope."],
     ["Audit", "Each decision on an ACTIVE consent is recorded with its decision matrix."],
     ["Known limitation", "The plaintext purpose is passed in the mint transaction and is visible in the public transaction input."]],
-    0.7, 1.35, 11.9, [2.4, 9.5], 15, { firstBold: true, rowH: 0.85 });
+    0.7, 1.35, 11.9, [2.4, 9.5], 15, { firstBold: true, rowH: 0.78 });
 }
 
 // 27 significance
@@ -379,10 +351,10 @@ RO.forEach(([ro, title, sub, figKey, status, pts, notes]) => {
 
 // 28 open items
 {
-  const s = slide("WHAT IS STILL OPEN", "I want to be clear about what is not done yet, because this is what the next stage is for. First, the formal proofs: the properties are tested, but not yet proved by a formal model or model checking. Second, the rest of the lifecycle: consent modification, delegation and guardian-set changes. Third, full DID resolution and credential validation; today it is a format check and a signature. Fourth, the one open attack, A11, where a changed digest is not yet compared. Fifth, a larger evaluation under load with more users and consents. Sixth, the plaintext purpose in the mint transaction.", "What is Still Open");
+  const s = slide("WHAT IS STILL OPEN", "I want to be clear about what is not done yet, because this is what the next stage is for. First, the formal proofs: the properties are tested, but not yet proved by a formal model or model checking. Second, the rest of the lifecycle: consent modification, delegation and guardian-set changes. Third, full DID resolution, credential validation and wallet-held guardian keys; today it is a format check, a signature, and keys derived from the guardian DIDs. Fourth, the one open attack, A11, where a changed digest is not yet compared. Fifth, a larger evaluation under load with more users and consents. Sixth, the plaintext purpose in the mint transaction.", "What is Still Open");
   const O = [["Formal proofs", "The security properties are tested, not yet proved. Next: a formal model and model checking or proofs (RO6)."],
     ["Lifecycle", "Consent modification, delegation and guardian-set changes, with a formal lifecycle model (RO5)."],
-    ["Identity", "Full DID resolution and credential validation. Today: a DID-format check and signature recovery (RO2)."],
+    ["Identity and keys", "Full DID resolution, credential validation and wallet-held guardian keys. Today: a DID-format check, signature recovery and keys derived from the guardian DIDs (RO2, RO3)."],
     ["Attack A11", "A changed audit digest is not yet compared by any component. It is marked neutral, not refused."],
     ["Scale", "A larger evaluation under load, with more users, consents and concurrent requests."],
     ["Purpose on-chain", "The plaintext purpose is visible in the mint transaction input."]];
@@ -412,6 +384,35 @@ RO.forEach(([ro, title, sub, figKey, status, pts, notes]) => {
   fig(s, "Fplan", 0.8, 1.4, 11.7, 5.4);
 }
 
+// 19 prototype
+{
+  const s = slide("THE HALAH PROTOTYPE", "HALAH is the working prototype. The name means History Access Link for Authorised Healthcare. It has four interfaces: patient, guardian, doctor and auditor. The consent token is a soulbound token, ConsentSBTv3, on the Sepolia test network. Guardians sign with EIP-712. Access uses a Groth16 proof. The data are synthetic Synthea records, so no real patient data is used. Every decision on an active consent is written to an audit ledger, and no medical content goes on-chain.", "The HALAH Prototype");
+  const Cc = [["Four interfaces", "Patient, guardian, doctor and auditor"], ["Smart contract", "ConsentSBTv3, a soulbound ERC-721 token (ERC-5484) on the Sepolia testnet"],
+    ["Guardian approval", "EIP-712 typed signatures, verified by signature recovery"], ["Access proof", "Groth16 zero-knowledge proof over a Poseidon commitment"],
+    ["Data", "Synthetic Synthea records: Observation, Medication, Condition, Procedure"], ["Evidence", "Audit ledger of every decision on an active consent; no medical content on-chain"]];
+  Cc.forEach(([h, b], i) => card(s, 0.7 + (i % 3) * 4.05, 1.4 + Math.floor(i / 3) * 2.75, 3.85, 2.45, h, b));
+}
+
+// 20 live scenarios
+{
+  const s = slide("LIVE SCENARIOS", "These are two real screens from the prototype. On the left, the doctor asks for data under the evaluated consent. All five checks pass and the answer is ALLOW. On the right, the same doctor repeats the request but declares a different jurisdiction. The jurisdiction check VL fails, and access is denied. The same consent, one changed condition, and the answer changes. I also revoked the consent, and the next request was refused.", "The HALAH Prototype");
+  fig(s, "F27", 0.7, 1.3, 6.0, 4.9); fig(s, "F32", 6.95, 1.3, 5.7, 4.9);
+  caption(s, "All five checks pass: ALLOW", 0.7, 6.35, 6.0); caption(s, "Different jurisdiction: VL fails, access denied", 6.95, 6.35, 5.7);
+}
+
+// 21 on-chain evidence
+{
+  const s = slide("EVIDENCE ON THE PUBLIC CHAIN", "This is public evidence on Sepolia. On the left, the revocation of token number 1 in block 11,771,307. On the right, the gas used by the five anchored transactions. A mint writes the full consent record, so it costs more than a revoke, which changes one flag. No fee was above 0.00021 ETH. A separate tool compared the chain with the local records, and all checks passed.", "The HALAH Prototype");
+  fig(s, "F37", 0.7, 1.2, 5.6, 5.45);
+  caption(s, "Revocation of token #1 on Sepolia Etherscan, block 11,771,307", 0.7, 6.75, 5.6);
+  panel(s, 6.6, 1.2, 6.1, 5.95, "chart panel");
+  s.addChart(pres.charts.BAR, [{ name: "Gas used", labels: ["Mint #8 (prev.)", "Revoke #8 (prev.)", "Mint #1", "Revoke #1", "Mint #2"], values: [156589, 46226, 196406, 32980, 179306] }],
+    { x: 6.75, y: 1.35, w: 5.8, h: 5.65, barDir: "col", fill: "FFFFFF", plotArea: { fill: { color: "FFFFFF" } }, chartColors: ["1FB5D6"], showTitle: true, title: "Gas used by the five anchored Sepolia transactions", titleFontSize: 14, titleColor: "0B1F33",
+      titleFontFace: "+mn-lt", showValue: true, dataLabelPosition: "outEnd", dataLabelFontSize: 10, dataLabelColor: "0B1F33", dataLabelFontFace: "+mn-lt", dataLabelFormatCode: "#,##0",
+      catAxisLabelColor: "0B1F33", valAxisLabelColor: "0B1F33", catAxisLabelFontFace: "+mn-lt", valAxisLabelFontFace: "+mn-lt", catAxisLabelFontSize: 10, valAxisLabelFontSize: 10,
+      valGridLine: { color: "D5DEE7", size: 0.5 }, catGridLine: { style: "none" }, showLegend: false, valAxisLabelFormatCode: "#,##0", objectName: "gas chart" });
+}
+
 // references
 {
   const per = 12; const n = Math.ceil(D.refs.length / per);
@@ -430,7 +431,7 @@ RO.forEach(([ro, title, sub, figKey, status, pts, notes]) => {
   const s = pres.addSlide({ masterName: "COVER", sectionTitle: "Thank You" });
   s.addText("Thank You", { x: 2.5, y: 2.6, w: 8.3, h: 1.4, fontSize: 54, bold: true, color: WHITE, align: "center", valign: "middle", isTextBox: true, objectName: "thanks" });
   s.addText("Questions and discussion", { x: 2.5, y: 4.0, w: 8.3, h: 0.6, fontSize: 22, italic: true, color: CYAN, align: "center", isTextBox: true, objectName: "questions" });
-  s.addNotes("Thank you for listening. I am happy to take your questions.\n\nLikely questions and short answers:\n1. Why blockchain if the data stay off-chain? It gives a shared, tamper-evident record of the consent state and the revocation. No medical data is on-chain.\n2. What is new? The consent object carries all the conditions; multi-party approval is a condition of every access; and the whole decision is tested against attacks.\n3. Why is RO6 only partial? The testing is done; the formal proofs are the next stage.\n4. Why Groth16? To show that the request matches the committed consent without revealing it. It is the slowest part, about 1.4 seconds, and it is acceptable for a consent decision.\n5. Why did three attacks pass before the hardening? They passed only when the service functions were called directly, not through the interface. The hardening moved the checks into the service layer, so they are now refused on every path.");
+  s.addNotes("Thank you for listening. I am happy to take your questions.\n\nLikely questions and short answers:\n1. Why blockchain if the data stay off-chain? It gives a shared, tamper-evident record of the consent state and the revocation. No medical data is on-chain.\n2. What is new? The consent object carries all the conditions; multi-party approval is a condition of every access; and the whole decision is tested against attacks.\n3. Why is RO6 only partial? The testing is done; the formal proofs are the next stage.\n4. Why Groth16? The doctor proves knowledge of the secret and the expiry behind the Poseidon commitment stored in the consent, and that the consent has not expired, without revealing them. It is the slowest part, about 1.4 seconds, and that is acceptable for a consent decision.\n5. Why did three attacks pass before the hardening? They passed only when the service functions were called directly, not through the interface. The hardening moved the checks into the service layer, so they are now refused on every path.");
 }
 
 (async () => {
