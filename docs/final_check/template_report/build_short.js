@@ -52,7 +52,7 @@ function runs(text, base = {}) {
   const out = []; const re = /(⟦r⟧[\s\S]*?⟦\/r⟧|⟦b⟧[\s\S]*?⟦\/b⟧|⟦d⟧[\s\S]*?⟦\/d⟧|⟦n⟧[\s\S]*?⟦\/n⟧|\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
   text = String(text);
   while ((m = re.exec(text))) {
-    if (m.index > last) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: text.slice(last, m.index) }));
+    if (m.index > last) out.push(...plain(text.slice(last, m.index), base));
     const t = m[0];
     if (t.startsWith("⟦r⟧")) out.push(...runs(t.slice(3, -4), process.env.RED === "1" ? { ...base, color: "FF0000" } : base));
     else if (t.startsWith("⟦b⟧")) out.push(...runs(t.slice(3, -4), process.env.RED === "1" ? { ...base, color: "00B0F0" } : base));
@@ -64,7 +64,19 @@ function runs(text, base = {}) {
     else out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(1, -1), superScript: true }));
     last = m.index + t.length;
   }
-  if (last < text.length) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: text.slice(last) }));
+  if (last < text.length) out.push(...plain(text.slice(last), base));
+  return out;
+}
+// YELLOW copy: every printed citation [n, n–n] gets a yellow highlight, text unchanged
+function plain(t, base) {
+  if (process.env.YELLOW !== "1") return [new TextRun({ font: FONT, size: BODY, ...base, text: t })];
+  const out = []; const re = /\[(\d+(?:\s*[,–]\s*\d+)*)\]/g; let last = 0, m;
+  while ((m = re.exec(t))) {
+    if (m.index > last) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(last, m.index) }));
+    out.push(new TextRun({ font: FONT, size: BODY, ...base, text: m[0], highlight: "yellow" }));
+    last = m.index + m[0].length;
+  }
+  if (last < t.length) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(last) }));
   return out;
 }
 const GREEN = process.env.GREEN === "1" ? { color: "00A000" } : {};
@@ -206,7 +218,7 @@ const doc = new Document({
     children: C }],
 });
 Packer.toBuffer(doc).then(buf => {
-  fs.writeFileSync(D + (process.env.DIFF === "1" ? "CA2_short_diff.docx" : process.env.GREEN === "1" ? "CA2_short_green.docx" : process.env.RED === "1" ? "CA2_short_red.docx" : "CA2_short.docx"), buf);
+  fs.writeFileSync(D + (process.env.YELLOW === "1" ? "CA2_short_yellow.docx" : process.env.DIFF === "1" ? "CA2_short_diff.docx" : process.env.GREEN === "1" ? "CA2_short_green.docx" : process.env.RED === "1" ? "CA2_short_red.docx" : "CA2_short.docx"), buf);
   fs.writeFileSync(D + "build_report.json", JSON.stringify({ problems, figures: cnt.F, tables: cnt.T, equations: cnt.E, algorithms: cnt.A, references: citeN, toc: tocTitles }, null, 1));
   console.log("figures", cnt.F, "tables", cnt.T, "equations", cnt.E, "algorithms", cnt.A, "refs", citeN, "problems", problems.length);
   problems.slice(0, 30).forEach(p => console.log("  ", p));
