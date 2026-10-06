@@ -49,7 +49,7 @@ function fixText(s) {
   return s;
 }
 function runs(text, base = {}) {
-  const out = []; const re = /(⟦r⟧[\s\S]*?⟦\/r⟧|⟦b⟧[\s\S]*?⟦\/b⟧|⟦d⟧[\s\S]*?⟦\/d⟧|⟦n⟧[\s\S]*?⟦\/n⟧|\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
+  const out = []; const re = /(⟦r⟧[\s\S]*?⟦\/r⟧|⟦b⟧[\s\S]*?⟦\/b⟧|⟦d⟧[\s\S]*?⟦\/d⟧|⟦n⟧[\s\S]*?⟦\/n⟧|⟦a⟧[\s\S]*?⟦\/a⟧|\*\*[^*]+\*\*|~[^~]+~|\^[^^]+\^|;)/g; let last = 0, m;
   text = String(text);
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(...plain(text.slice(last, m.index), base));
@@ -58,6 +58,7 @@ function runs(text, base = {}) {
     else if (t.startsWith("⟦b⟧")) out.push(...runs(t.slice(3, -4), process.env.RED === "1" ? { ...base, color: "00B0F0" } : base));
     else if (t.startsWith("⟦d⟧")) { if (process.env.DIFF === "1") out.push(...runs(t.slice(3, -4), { ...base, color: "FF0000", strike: true })); }
     else if (t.startsWith("⟦n⟧")) out.push(...runs(t.slice(3, -4), process.env.DIFF === "1" ? { ...base, color: "FF0000" } : base));
+    else if (t.startsWith("⟦a⟧")) out.push(...runs(t.slice(3, -4), process.env.DIFF === "1" ? { ...base, color: "FF0000" } : process.env.PINK === "1" ? { ...base, highlight: "magenta" } : base));
     else if (t === ";") out.push(new TextRun({ font: FONT, size: BODY, ...base, text: ";", highlight: process.env.GREEN === "1" ? "yellow" : undefined }));
     else if (t.startsWith("**")) out.push(...runs(t.slice(2, -2), { ...base, bold: true }));
     else if (t.startsWith("~")) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(1, -1), subScript: true }));
@@ -69,11 +70,12 @@ function runs(text, base = {}) {
 }
 // YELLOW copy: every printed citation [n, n–n] gets a yellow highlight, text unchanged
 function plain(t, base) {
-  if (process.env.YELLOW !== "1") return [new TextRun({ font: FONT, size: BODY, ...base, text: t })];
+  const HLC = process.env.YELLOW === "1" ? "yellow" : process.env.PINK === "1" ? "green" : null;
+  if (!HLC) return [new TextRun({ font: FONT, size: BODY, ...base, text: t })];
   const out = []; const re = /\[(\d+(?:\s*[,–]\s*\d+)*)\]/g; let last = 0, m;
   while ((m = re.exec(t))) {
     if (m.index > last) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(last, m.index) }));
-    out.push(new TextRun({ font: FONT, size: BODY, ...base, text: m[0], highlight: "yellow" }));
+    out.push(new TextRun({ font: FONT, size: BODY, ...base, text: m[0], highlight: base.highlight || HLC }));
     last = m.index + m[0].length;
   }
   if (last < t.length) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(last) }));
@@ -82,7 +84,7 @@ function plain(t, base) {
 const GREEN = process.env.GREEN === "1" ? { color: "00A000" } : {};
 const P = (text, opts = {}, base = {}) => new Paragraph({ children: runs(fixText(text), { ...GREEN, ...base }), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 }, ...opts });
 // GREEN copy: sentences taken from the original report stay black, the rest are green
-const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t.replace(/⟦d⟧[\s\S]*?⟦\/d⟧/g, "").replace(/⟦\/?[rbn]⟧/g, "")), o ? {} : GREEN));
+const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t.replace(/⟦d⟧[\s\S]*?⟦\/d⟧/g, "").replace(/⟦\/?[rbna]⟧/g, "")), o ? {} : GREEN));
 const SEGP = segs => new Paragraph({ children: SEGR(segs), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 } });
 const cb = { style: BorderStyle.SINGLE, size: 4, color: "666666" };
 const bAll = { top: cb, left: cb, bottom: cb, right: cb };
@@ -218,7 +220,7 @@ const doc = new Document({
     children: C }],
 });
 Packer.toBuffer(doc).then(buf => {
-  fs.writeFileSync(D + (process.env.YELLOW === "1" ? "CA2_short_yellow.docx" : process.env.DIFF === "1" ? "CA2_short_diff.docx" : process.env.GREEN === "1" ? "CA2_short_green.docx" : process.env.RED === "1" ? "CA2_short_red.docx" : "CA2_short.docx"), buf);
+  fs.writeFileSync(D + (process.env.PINK === "1" ? "CA2_short_pink.docx" : process.env.YELLOW === "1" ? "CA2_short_yellow.docx" : process.env.DIFF === "1" ? "CA2_short_diff.docx" : process.env.GREEN === "1" ? "CA2_short_green.docx" : process.env.RED === "1" ? "CA2_short_red.docx" : "CA2_short.docx"), buf);
   fs.writeFileSync(D + "build_report.json", JSON.stringify({ problems, figures: cnt.F, tables: cnt.T, equations: cnt.E, algorithms: cnt.A, references: citeN, toc: tocTitles }, null, 1));
   console.log("figures", cnt.F, "tables", cnt.T, "equations", cnt.E, "algorithms", cnt.A, "refs", citeN, "problems", problems.length);
   problems.slice(0, 30).forEach(p => console.log("  ", p));
