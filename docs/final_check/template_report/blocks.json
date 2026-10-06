@@ -1389,7 +1389,7 @@
  },
  {
   "t": "p",
-  "text": "The literature review identifies a consistent pattern of fragmentation across existing research. Across the corpus, Req 3 is the least satisfied requirement, ⟦b⟧while within Req 6, formal assurance alone is provided by 4 studies, argued informally by 9, and absent in 12. The other five Yes grades for Req 6 in {T9} rest on empirical validation.⟦/b⟧ ⟦d⟧These proportions match⟦/d⟧⟦n⟧The rarity of formal verification is also seen in⟦/n⟧ the wider pool of 1,800 records, in which only 8% carry a multi-party signal, 2% a temporal-validity signal, and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment.",
+  "text": "The literature review identifies a consistent pattern of fragmentation across existing research. Across the corpus, Req 3 is the least satisfied requirement, ⟦b⟧while within Req 6, formal assurance alone is provided by 4 studies, argued informally by 9, and absent in 12. The other five Yes grades for Req 6 in {T9} rest on empirical validation.⟦/b⟧ ⟦d⟧These proportions match⟦/d⟧⟦n⟧The rarity of multi-party approval and formal verification is also seen in⟦/n⟧ the wider pool of 1,800 records, in which only 8% carry a multi-party signal, 2% a temporal-validity signal, and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment.",
   "segs": [
    [
     "The literature review identifies a consistent pattern of fragmentation across existing research.",
@@ -1400,7 +1400,7 @@
     false
    ],
    [
-    "⟦d⟧These proportions match⟦/d⟧⟦n⟧The rarity of formal verification is also seen in⟦/n⟧ the wider pool of 1,800 records, in which only 8% carry a multi-party signal, 2% a temporal-validity signal, and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment.",
+    "⟦d⟧These proportions match⟦/d⟧⟦n⟧The rarity of multi-party approval and formal verification is also seen in⟦/n⟧ the wider pool of 1,800 records, in which only 8% carry a multi-party signal, 2% a temporal-validity signal, and 1% a formal-verification signal, compared with 74% for audit or evidence and 69% for a prototype or experiment.",
     false
    ]
   ]
@@ -4968,14 +4968,14 @@
  },
  {
   "t": "p",
-  "text": "The evaluated consent, f050c29a, was carried through the complete lifecycle as token #1, being granted access, refused access, and finally revoked. ⟦b⟧The creation, approval, and record-display screens ({F21}, {F23} and {F29}) were captured from a second lifecycle, 04da25f5, which used the same code, contract, and configuration and was anchored as token #2. {F27} shows the evaluated consent f050c29a.⟦/b⟧ The evaluation considers both successful and unsuccessful authorisation scenarios.",
+  "text": "The evaluated consent, f050c29a, was carried through the complete lifecycle as token #1, being granted access, refused access, and finally revoked. ⟦n⟧{F27} shows the evaluated consent f050c29a.⟦/n⟧ ⟦b⟧The creation, approval, and record-display screens ({F21}, {F23} and {F29}) were captured from a second lifecycle, 04da25f5, which used the same code, contract, and configuration and was anchored as token #2.⟦/b⟧⟦d⟧ {F27} shows the evaluated consent f050c29a.⟦/d⟧ The evaluation considers both successful and unsuccessful authorisation scenarios.",
   "segs": [
    [
     "The evaluated consent, f050c29a, was carried through the complete lifecycle as token #1, being granted access, refused access, and finally revoked.",
     false
    ],
    [
-    "⟦b⟧The creation, approval, and record-display screens ({F21}, {F23} and {F29}) were captured from a second lifecycle, 04da25f5, which used the same code, contract, and configuration and was anchored as token #2. {F27} shows the evaluated consent f050c29a.⟦/b⟧",
+    "⟦n⟧{F27} shows the evaluated consent f050c29a.⟦/n⟧ ⟦b⟧The creation, approval, and record-display screens ({F21}, {F23} and {F29}) were captured from a second lifecycle, 04da25f5, which used the same code, contract, and configuration and was anchored as token #2.⟦/b⟧⟦d⟧ {F27} shows the evaluated consent f050c29a.⟦/d⟧",
     false
    ],
    [
@@ -5452,14 +5452,14 @@
  },
  {
   "t": "p",
-  "text": "The twelve scenarios A1 to A12 include replayed approvals, duplicate approvals, unauthorised participants attempting to satisfy a threshold, attempts to access data outside the authorised scope, and attempts to use a revoked or expired consent object. Each scenario is associated with an expected authorisation outcome and the security properties that it is intended to evaluate. A scenario is counted as refused when the targeted predicate fails and the decision is DENY, or when the scope check, the Groth16 prover or verifier, or the contract rejects the input.",
+  "text": "The twelve scenarios A1 to A12 include replayed approvals, duplicate approvals, unauthorised participants attempting to satisfy a threshold, attempts to access data outside the authorised scope, and attempts to use a revoked or expired consent object. Each scenario is associated with an expected authorisation outcome and ⟦d⟧the security properties that it is intended to evaluate⟦/d⟧⟦n⟧the component of C that it targets, as listed in {T18}⟦/n⟧. A scenario is counted as refused when the targeted predicate fails and the decision is DENY, or when the scope check, the Groth16 prover or verifier, or the contract rejects the input.",
   "segs": [
    [
     "The twelve scenarios A1 to A12 include replayed approvals, duplicate approvals, unauthorised participants attempting to satisfy a threshold, attempts to access data outside the authorised scope, and attempts to use a revoked or expired consent object.",
     true
    ],
    [
-    "Each scenario is associated with an expected authorisation outcome and the security properties that it is intended to evaluate.",
+    "Each scenario is associated with an expected authorisation outcome and ⟦d⟧the security properties that it is intended to evaluate⟦/d⟧⟦n⟧the component of C that it targets, as listed in {T18}⟦/n⟧.",
     true
    ],
    [
