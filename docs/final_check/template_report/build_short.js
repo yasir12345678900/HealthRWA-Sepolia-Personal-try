@@ -28,6 +28,8 @@ for (const b of BLOCKS) {
 const problems = [];
 const citeMap = {}; let citeN = 0;
 const HV = JSON.parse(fs.readFileSync(D + "refs_harvard.json", "utf8"));
+const STUDY_ORDER = (() => { const t2 = JSON.stringify(JSON.parse(fs.readFileSync(D + "tables.json", "utf8"))["2"]); const ks = []; const re = /\[(\d+)\]/g; let m; while ((m = re.exec(t2))) if (!ks.includes(m[1])) ks.push(m[1]); return ks; })();
+STUDY_ORDER.forEach(k => { citeMap[k] = ++citeN; });
 function fixText(s) {
   s = String(s);
   s = s.replace(/\{([FTEA])(\d+[a-z]?|[A-Za-z_]+)\}/g, (m, k, id) => {
@@ -42,13 +44,9 @@ function fixText(s) {
       const list = r.length === 2 ? Array.from({ length: r[1] - r[0] + 1 }, (_, i) => r[0] + i) : [r[0]];
       for (const o of list) { if (!REFS[o] || !HV[o]) problems.push("unknown ref " + o); else { if (!citeMap[o]) citeMap[o] = ++citeN; if (!ks.includes(o)) ks.push(o); } }
     }
-    const before = whole.slice(Math.max(0, off - 70), off);
-    if (ks.length === 1) {
-      const h = HV[ks[0]], fam = h.first.split(" ").pop();
-      if (new RegExp("\\b" + fam.replace(/[-]/g, "\\-") + "\\b[^.]{0,30}$").test(before) || /et al\.?\s*$/.test(before)) return "⟦c⟧(" + h.year + ")⟦/c⟧";
-    }
-    const items = ks.map(o => HV[o]).sort((a, b) => a.first.localeCompare(b.first) || a.year.localeCompare(b.year)).map(h => h.intext + " " + h.year);
-    return "⟦c⟧(" + items.join("; ") + ")⟦/c⟧";
+    const u = [...new Set(ks.map(o => citeMap[o]))].sort((a, b) => a - b);
+    const out = []; for (let i = 0; i < u.length; i++) { let j = i; while (j + 1 < u.length && u[j + 1] === u[j] + 1) j++; out.push(j - i >= 2 ? `${u[i]}–${u[j]}` : (j > i ? `${u[i]}, ${u[j]}` : `${u[i]}`)); i = j; }
+    return "⟦c⟧[" + out.join(", ") + "]⟦/c⟧";
   });
   return s;
 }
@@ -210,9 +208,8 @@ const order = Object.entries(citeMap).sort((a, b) => a[1] - b[1]);
 fs.writeFileSync(D + "citeorder.json", JSON.stringify(order));
 const HL = new Set(["8", "10", "18", "29", "82"]);
 const BLUE = new Set(fs.existsSync(D + "refs_changed.json") ? JSON.parse(fs.readFileSync(D + "refs_changed.json", "utf8")).map(String) : []);
-const alpha = Object.keys(citeMap).sort((a, b) => HV[a].first.localeCompare(HV[b].first) || HV[a].year.localeCompare(HV[b].year) || HV[a].title.localeCompare(HV[b].title));
-for (const orig of alpha) C.push(new Paragraph({ spacing: { after: 80, line: 240 }, indent: { left: 560, hanging: 560 }, alignment: AlignmentType.LEFT,
-  children: runs(HV[orig].entry, { size: BODY - 4, color: process.env.RED === "1" && BLUE.has(String(orig)) ? "00B0F0" : undefined, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined }) }));
+for (const [orig, n] of order) C.push(new Paragraph({ spacing: { after: 50, line: 240 }, indent: { left: 560, hanging: 560 }, alignment: AlignmentType.LEFT,
+  children: [new TextRun({ text: `[${n}]\t`, font: FONT, size: BODY - 4 }), ...runs(REFS[orig], { size: BODY - 4, color: process.env.RED === "1" && BLUE.has(String(orig)) ? "00B0F0" : undefined, highlight: process.env.GREEN === "1" && HL.has(String(orig)) ? "yellow" : undefined })], tabStops: [{ type: TabStopType.LEFT, position: 560 }] }));
 
 const doc = new Document({
   creator: "Yasir Dhaifallah O Alyoubi", lastModifiedBy: "Yasir Dhaifallah O Alyoubi", title: "A Trusted Authorisation Framework for Multi-Party Patient Consent in Healthcare Data Sharing",
