@@ -1,0 +1,75 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+body{margin:0;font-family:"Times New Roman",serif;background:#fff}
+#gates{width:1180px;padding:26px 30px;background:#fff;box-sizing:border-box}
+.lane{display:flex;align-items:stretch;gap:0}
+.req,.gate,.allow{border:2px solid #222;border-radius:8px;background:#fafafa;padding:12px 12px;box-sizing:border-box}
+.req{width:200px;display:flex;flex-direction:column;justify-content:center;text-align:center;font-size:20px}
+.req b{font-size:22px}
+.allow{width:200px;display:flex;align-items:center;justify-content:center;text-align:center;font-size:24px;font-weight:bold;background:#e8eef6}
+.arr{width:40px;display:flex;align-items:center;justify-content:center;font-size:34px;color:#222}
+.gate{flex:1;min-width:0}
+.gate h3{margin:0 0 4px;font-size:21px;text-align:center}
+.gate .q{font-size:18px;font-style:italic;text-align:center;color:#333;margin-bottom:8px}
+.gate .m{font-size:17px;margin:6px 0;line-height:1.3}
+.gate .m b{font-weight:bold}
+.gate .now{border-top:1px dashed #777;margin-top:8px;padding-top:6px;font-size:16px;color:#333;line-height:1.3}
+.gate .pred{text-align:center;font-size:19px;font-weight:bold;margin-top:8px;border:1.5px solid #222;border-radius:5px;padding:4px;background:#fff}
+.denyrow{display:flex;margin-top:4px}
+.denyrow .sp{width:230px}
+.denyrow .cell{flex:1;text-align:center;font-size:28px;line-height:26px}
+.denyrow .sp2{width:150px}
+.deny{margin:4px 0 0 230px;width:calc(100% - 380px);border:2px solid #222;border-radius:8px;padding:10px;text-align:center;font-size:20px;background:#fff}
+.deny b{font-size:22px}
+.foot{margin-top:14px;font-size:17px;color:#333;text-align:center}
+.turn{text-align:right;padding-right:120px;font-size:34px;line-height:30px;margin:4px 0}
+.deny2{margin-top:14px;border:2px solid #222;border-radius:8px;padding:10px;text-align:center;font-size:20px;background:#fff}
+.deny2 b{font-size:22px}
+.gate .m{font-size:18px}.gate .now{font-size:17px}
+</style></head><body>
+<div id="gates">
+<div class="lane">
+ <div class="req"><b>Access request R</b><br>doctor u asks for data of consent C at time t</div>
+ <div class="arr">&#8594;</div>
+ <div class="gate">
+  <h3>Gate 1: Who is asking?</h3>
+  <div class="q">Decentralised Identifier (DID)</div>
+  <div class="m"><b>Mechanism:</b> an identifier of the form did:method:id that the holder controls, e.g. did:patient:&lt;id&gt; for a patient and a DID for each guardian and doctor.</div>
+  <div class="m"><b>Proves:</b> an identity reference, not a permission.</div>
+  <div class="now"><b>HALAH today:</b> the DID must be well formed and must match a participant listed in C; cryptographic resolution against a registry is next-stage work.</div>
+  <div class="pred">feeds V<sub>I</sub>(u)</div>
+ </div>
+ <div class="arr">&#8594;</div>
+ <div class="gate">
+  <h3>Gate 2: What may they do?</h3>
+  <div class="q">Verifiable Credential (VC) and signed approval</div>
+  <div class="m"><b>Mechanism:</b> a claim signed by an issuer, such as a hospital or guardianship authority, held by the participant.</div>
+  <div class="m"><b>Proves:</b> authority for a role, separately from identity.</div>
+  <div class="now"><b>HALAH today:</b> credential format is checked, and each guardian's authority is evidenced by an EIP-712 signature bound to the consent identifier; issuer and signature validation of the VC itself is next-stage work.</div>
+  <div class="pred">feeds V<sub>I</sub>(u) and the approvals counted in V<sub>A</sub>(C)</div>
+ </div>
+</div>
+<div class="turn"><span>&#8595;</span></div>
+<div class="lane">
+ <div class="gate">
+  <h3>Gate 3: Did the guardians agree?</h3>
+  <div class="q">Threshold of distinct approvals</div>
+  <div class="m"><b>Mechanism:</b> the guardian set G is fixed in C, and N distinct members of G must have signed.</div>
+  <div class="m"><b>Proves:</b> collective, not unilateral, authorisation.</div>
+  <div class="now"><b>HALAH today:</b> N = |G|, evaluated in the 2-of-2 configuration; an approval from outside G or a repeated approval is not counted.</div>
+  <div class="pred">V<sub>A</sub>(C)</div>
+ </div>
+ <div class="arr">&#8594;</div>
+ <div class="gate">
+  <h3>Gate 4: Is the consent still valid for this request?</h3>
+  <div class="q">Policy, time, jurisdiction and a zero-knowledge proof</div>
+  <div class="m"><b>Mechanism:</b> requested scope within the consent scope, supported purpose, time t inside the validity window, matching jurisdiction, and a Groth16 proof that the prover knows the consent secret and expiry behind a Poseidon commitment.</div>
+  <div class="m"><b>Proves:</b> validity without revealing the secret or the expiry.</div>
+  <div class="now"><b>HALAH today:</b> all four predicates are evaluated and the proof is generated and verified before any data are returned.</div>
+  <div class="pred">V<sub>P</sub>, V<sub>T</sub>, V<sub>L</sub> and the proof</div>
+ </div>
+ <div class="arr">&#8594;</div>
+ <div class="allow"><div>ALLOW<br><span style="font-size:16px;font-weight:normal;display:block;margin-top:6px">data released, decision logged</span></div></div>
+</div>
+<div class="deny2"><b>DENY</b> as soon as any gate fails. The failed check is recorded in the audit ledger with the full decision matrix, so a refusal is as traceable as a grant.</div>
+<div class="foot">Decision(C, R, t) = ALLOW &hArr; V<sub>I</sub> &and; V<sub>A</sub> &and; V<sub>P</sub> &and; V<sub>T</sub> &and; V<sub>L</sub>, with the proof required before ALLOW. No single mechanism grants access on its own.</div>
+</div></body></html>

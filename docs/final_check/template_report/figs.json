@@ -174,5 +174,9 @@
  "plan": {
   "file": "assets/Fplan.png",
   "caption": "Research timeline: completed milestones, work in progress and the planned stages up to thesis submission"
+ },
+ "44": {
+  "file": "assets/F44.png",
+  "caption": "The four gates that an access request passes before data are released: identity (DID), authority (VC and signed approval), collective approval (threshold), and validity of the consent for the request (policy, time, jurisdiction and the zero-knowledge proof). Each gate names what the current prototype checks, and a failure at any gate produces DENY with the decision matrix recorded in the audit ledger"
  }
 }
