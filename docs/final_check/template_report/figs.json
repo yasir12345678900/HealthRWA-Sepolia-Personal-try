@@ -13,7 +13,7 @@
  },
  "4": {
   "file": "assets/F4.png",
-  "caption": "Correspondence between the seven review questions of Section 2.3.2 and the sections of the review in which they are addressed, ending in the synthesis that leads to the research questions of Chapter 3."
+  "caption": "Correspondence between the seven review questions of Section 2.2 and the sections of the review in which they are addressed, ending in the synthesis that leads to the research questions of Section 3."
  },
  "5": {
   "file": "assets/F5.png",
@@ -137,7 +137,7 @@
  },
  "35": {
   "file": "assets/F35.png",
-  "caption": "The implemented consent lifecycle: every consent progresses through controlled states, and the activating and revoking transitions are anchored as verifiable Sepolia transactions. Solid transitions are recorded in the audit ledger and the red transitions are anchored as Sepolia transactions; the dashed transitions show that revocation is accepted from any state that is not already REVOKED (Section 6.5.3), off-chain only before the mint."
+  "caption": "The implemented consent lifecycle: every consent progresses through controlled states, and the activating and revoking transitions are anchored as verifiable Sepolia transactions. Solid transitions are recorded in the audit ledger and the red transitions are anchored as Sepolia transactions; the dashed transitions show that revocation is accepted from any state that is not already REVOKED (Section 10.2), off-chain only before the mint."
  },
  "36": {
   "file": "assets/F36.png",

@@ -192,7 +192,7 @@
    ],
    [
     0,
-    "Verify identity and authority of g (Algorithm 2, a structural DID check in the prototype), and **if** the verification fails **then** report the invalid approval and **return** DENY"
+    "Verify identity and authority of g ({A2}, a structural DID check in the prototype), and **if** the verification fails **then** report the invalid approval and **return** DENY"
    ],
    [
     0,

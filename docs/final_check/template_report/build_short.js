@@ -19,11 +19,13 @@ const TOC = fs.existsSync(process.argv[2] || "") ? JSON.parse(fs.readFileSync(pr
 // ---------- numbering pass ----------
 const num = { F: {}, T: {}, E: {}, A: {} }, cnt = { F: 0, T: 0, E: 0, A: 0 };
 const kindOf = { fig: "F", table: "T", eq: "E", algo: "A" };
+let secNo = 0;
 for (const b of BLOCKS) {
+  if (b.t === "h1") { secNo++; cnt.F = cnt.T = cnt.E = cnt.A = 0; continue; }
   const k = kindOf[b.t]; if (!k) continue;
   const key = b.ref || b.key; if (!key) throw new Error("block without ref " + JSON.stringify(b).slice(0, 80));
   if (num[k][key]) throw new Error("duplicate placement " + key);
-  num[k][key] = ++cnt[k];
+  num[k][key] = `${secNo}.${++cnt[k]}`;
 }
 const problems = [];
 const citeMap = {}; let citeN = 0;
@@ -110,7 +112,7 @@ function h2(title) {
 function statusLine(text) {
   const m = /^\s*Status:\s*(.*)$/i.exec(text); const v = m ? m[1] : text;
   return new Paragraph({ spacing: { before: 60, after: 200 }, border: { left: { style: BorderStyle.SINGLE, size: 18, color: "000000", space: 8 } },
-    indent: { left: 160 }, children: [new TextRun({ text: "Status: ", bold: true, font: FONT, size: BODY + 2 }), new TextRun({ text: v, bold: true, font: FONT, size: BODY + 2 })] });
+    indent: { left: 160 }, children: [new TextRun({ text: "Status: ", bold: true, font: FONT, size: BODY + 2 }), ...runs(v, { bold: true, size: BODY + 2 })] });
 }
 function figure(b) {
   const f = FIGS[String(b.ref).slice(1)]; if (!f) { problems.push("missing figure " + b.ref); return []; }
@@ -119,7 +121,7 @@ function figure(b) {
   const n = +String(b.ref).slice(1);
   const shot = n >= 17 && n <= 40;                       // interface and Etherscan screenshots
   let width = Math.min(b.w || (shot ? 470 : 600), 600), height = Math.round(h * width / w);
-  const maxH = b.maxH || (shot ? 400 : 450);
+  const maxH = b.maxH || (shot ? 400 : 560);
   if (height > maxH) { height = maxH; width = Math.round(w * height / h); }
   const cap = (b.caption || f.caption).replace(/\s*\.$/, "");
   return [
@@ -165,11 +167,11 @@ function algorithm(b) {
   const AF = { size: BODY - 3 };
   const out = [new Paragraph({ keepNext: true, spacing: { before: 220, after: 40 },
     border: { top: { style: BorderStyle.SINGLE, size: 12, color: "000000" }, bottom: { style: BorderStyle.SINGLE, size: 6, color: "000000" } },
-    children: [new TextRun({ text: `Algorithm ${num.A[b.ref]} `, bold: true, font: FONT, ...AF }), ...runs(a.title, AF)] }),
-    new Paragraph({ keepNext: true, spacing: { after: 20 }, children: [new TextRun({ text: "Require: ", bold: true, font: FONT, ...AF }), ...runs(a.require, AF)] }),
-    new Paragraph({ keepNext: true, spacing: { after: 40 }, children: [new TextRun({ text: "Ensure: ", bold: true, font: FONT, ...AF }), ...runs(a.ensure, AF)] })];
+    children: [new TextRun({ text: `Algorithm ${num.A[b.ref]} `, bold: true, font: FONT, ...AF }), ...runs(fixText(a.title), AF)] }),
+    new Paragraph({ keepNext: true, spacing: { after: 20 }, children: [new TextRun({ text: "Require: ", bold: true, font: FONT, ...AF }), ...runs(fixText(a.require), AF)] }),
+    new Paragraph({ keepNext: true, spacing: { after: 40 }, children: [new TextRun({ text: "Ensure: ", bold: true, font: FONT, ...AF }), ...runs(fixText(a.ensure), AF)] })];
   a.lines.forEach(([ind, txt], i) => out.push(new Paragraph({ keepNext: i < a.lines.length - 1, spacing: { after: 10 }, indent: { left: 240 + ind * 360 },
-    children: [new TextRun({ text: `${i + 1}:  `, font: FONT, size: BODY - 6, color: "555555" }), ...runs(txt, AF)] })));
+    children: [new TextRun({ text: `${i + 1}:  `, font: FONT, size: BODY - 6, color: "555555" }), ...runs(fixText(txt), AF)] })));
   out.push(new Paragraph({ spacing: { after: 200 }, border: { bottom: { style: BorderStyle.SINGLE, size: 12, color: "000000" } }, children: [] }));
   return out;
 }
@@ -228,7 +230,7 @@ const doc = new Document({
 });
 Packer.toBuffer(doc).then(buf => {
   fs.writeFileSync(D + (process.env.PINK === "1" ? "CA2_short_pink.docx" : process.env.YELLOW === "1" ? "CA2_short_yellow.docx" : process.env.DIFF === "1" ? "CA2_short_diff.docx" : process.env.GREEN === "1" ? "CA2_short_green.docx" : process.env.RED === "1" ? "CA2_short_red.docx" : "CA2_short.docx"), buf);
-  fs.writeFileSync(D + "build_report.json", JSON.stringify({ problems, figures: cnt.F, tables: cnt.T, equations: cnt.E, algorithms: cnt.A, references: citeN, toc: tocTitles }, null, 1));
+  fs.writeFileSync(D + "build_report.json", JSON.stringify({ problems, figures: Object.keys(num.F).length, tables: Object.keys(num.T).length, equations: Object.keys(num.E).length, algorithms: Object.keys(num.A).length, references: citeN, toc: tocTitles }, null, 1));
   console.log("figures", cnt.F, "tables", cnt.T, "equations", cnt.E, "algorithms", cnt.A, "refs", citeN, "problems", problems.length);
   problems.slice(0, 30).forEach(p => console.log("  ", p));
 });

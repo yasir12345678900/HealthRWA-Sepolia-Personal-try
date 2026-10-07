@@ -1362,7 +1362,7 @@
   ]
  },
  "17": {
-  "caption": "Processing time of the decision components, measured in the cloud development container used for the demonstration, with the anchoring confirmation taken from Table 15",
+  "caption": "Processing time of the decision components, measured in the cloud development container used for the demonstration, with the anchoring confirmation taken from {T15}",
   "rows": [
    [
     "Component",
