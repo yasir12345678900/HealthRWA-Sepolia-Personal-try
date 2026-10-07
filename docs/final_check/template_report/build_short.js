@@ -65,7 +65,7 @@ function runs(text, base = {}) {
     else if (t.startsWith("⟦d⟧")) { if (process.env.DIFF === "1") out.push(...runs(t.slice(3, -4), { ...base, color: "FF0000", strike: true })); }
     else if (t.startsWith("⟦n⟧")) out.push(...runs(t.slice(3, -4), process.env.DIFF === "1" ? { ...base, color: "FF0000" } : base));
     else if (t.startsWith("⟦i⟧")) out.push(...runs(t.slice(3, -4), { ...base, italics: true }));
-    else if (t.startsWith("⟦c⟧")) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(3, -4), highlight: process.env.YELLOW === "1" ? "yellow" : process.env.PINK === "1" ? "green" : base.highlight }));
+    else if (t.startsWith("⟦c⟧")) out.push(new TextRun({ font: FONT, size: BODY, ...base, text: t.slice(3, -4), highlight: IN_TABLE ? base.highlight : process.env.YELLOW === "1" ? "yellow" : process.env.PINK === "1" ? "green" : base.highlight }));
     else if (t.startsWith("⟦a⟧")) out.push(...runs(t.slice(3, -4), process.env.DIFF === "1" ? { ...base, color: "FF0000" } : process.env.PINK === "1" ? { ...base, highlight: "magenta" } : base));
     else if (t === ";") out.push(new TextRun({ font: FONT, size: BODY, ...base, text: ";", highlight: process.env.GREEN === "1" ? "yellow" : undefined }));
     else if (t.startsWith("**")) out.push(...runs(t.slice(2, -2), { ...base, bold: true }));
@@ -77,8 +77,9 @@ function runs(text, base = {}) {
   return out;
 }
 // YELLOW copy: every printed citation [n, n–n] gets a yellow highlight, text unchanged
+let IN_TABLE = false; // citations inside tables are not highlighted in the YELLOW and PINK copies
 function plain(t, base) {
-  const HLC = process.env.YELLOW === "1" ? "yellow" : process.env.PINK === "1" ? "green" : null;
+  const HLC = IN_TABLE ? null : process.env.YELLOW === "1" ? "yellow" : process.env.PINK === "1" ? "green" : null;
   if (!HLC) return [new TextRun({ font: FONT, size: BODY, ...base, text: t })];
   const out = []; const re = /\[(\d+(?:\s*[,–]\s*\d+)*)\]/g; let last = 0, m;
   while ((m = re.exec(t))) {
@@ -131,7 +132,8 @@ function figure(b) {
       children: [new TextRun({ text: `Figure ${num.F[b.ref]}: `, bold: true, font: FONT, size: BODY - 4 }), ...runs(fixText(cap) + ".", { size: BODY - 4 })] }),
   ];
 }
-function table(b) {
+function table(b) { IN_TABLE = true; try { return table_(b); } finally { IN_TABLE = false; } }
+function table_(b) {
   let t;
   if (b.custom) t = b.custom; else {
     const src = TABS[String(b.ref).slice(1)]; if (!src) { problems.push("missing table " + b.ref); return []; }
