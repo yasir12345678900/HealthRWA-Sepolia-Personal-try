@@ -85,5 +85,13 @@
  "84": "L. Grassi, D. Khovratovich, C. Rechberger, A. Roy, and M. Schofnegger. Poseidon: A new hash function for zero-knowledge proof systems. In Proceedings of the 30th USENIX Security Symposium, pages 519–535, 2021.",
  "85": "R. Bloemen, L. Logvinov, and J. Evans. EIP-712: Typed structured data hashing and signing. Ethereum Improvement Proposals, no. 712, 2017.",
  "86": "W. Entriken, D. Shirley, J. Evans, and N. Sachs. ERC-721: Non-fungible token standard. Ethereum Improvement Proposals, no. 721, 2018.",
- "87": "B. Cai. ERC-5484: Consensual soulbound tokens. Ethereum Improvement Proposals, no. 5484, 2022."
+ "87": "B. Cai. ERC-5484: Consensual soulbound tokens. Ethereum Improvement Proposals, no. 5484, 2022.",
+ "88": "G. Wood. Ethereum: A secure decentralised generalised transaction ledger. Ethereum Project Yellow Paper, 2014.",
+ "89": "Ethereum Foundation. Solidity documentation, version 0.8. 2026.",
+ "90": "Ethereum Foundation. Networks: Ethereum testnets. ethereum.org developer documentation, 2026.",
+ "91": "Consensys. MetaMask developer documentation. 2026.",
+ "92": "Ethereum Foundation. Remix IDE documentation. 2026.",
+ "93": "HL7 International. HL7 FHIR Release 4 (R4). 2019.",
+ "94": "iden3. snarkjs: zkSNARK implementation in JavaScript and WASM. 2026.",
+ "95": "iden3. circom: circuit compiler for zero-knowledge proofs. 2026."
 }

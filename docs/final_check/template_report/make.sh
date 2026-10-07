@@ -12,7 +12,7 @@ sq=lambda s: re.sub(r'[^a-z0-9]','',s.lower())
 out={}; cur=2
 for t in toc:
     if t=="References":
-        cand=[i for i,p in enumerate(pages) if i>cur and re.search(r'^\s*References\s*$',p,re.M) and '[1]' in p]
+        cand=[i for i,p in enumerate(pages) if i>cur and re.search(r'^\s*References\s*$',p,re.M)]
     else:
         num,title=t.split('. ',1)
         cand=[i for i,p in enumerate(pages) if i>=cur and re.search(r'^\s*'+re.escape(num)+r'\.\s+',p,re.M) and sq(title)[:40] in sq(p)]

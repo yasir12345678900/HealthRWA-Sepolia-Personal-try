@@ -502,5 +502,61 @@
   "first": "Webber",
   "entry": "Webber, E.C., Brick, D., Scibilia, J.P., Dehnel, P., Council on Clinical Information Technology et al. 2019, 'Electronic communication of the health record and information with pediatric patients and their guardians', ⟦i⟧Pediatrics⟦/i⟧, vol. 144, no. 1, p. e20191359, <https://doi.org/10.1542/peds.2019-1359>.",
   "title": "Electronic communication of the health record and information with pediatric patients and their guardians"
+ },
+ "88": {
+  "intext": "Wood",
+  "year": "2014",
+  "first": "Wood",
+  "title": "Ethereum: A secure decentralised generalised transaction ledger",
+  "entry": "Wood, G. 2014, ⟦i⟧Ethereum: A secure decentralised generalised transaction ledger⟦/i⟧, Ethereum Project Yellow Paper, viewed 7 October 2026, <https://ethereum.github.io/yellowpaper/paper.pdf>."
+ },
+ "89": {
+  "intext": "Ethereum Foundation",
+  "year": "2026a",
+  "first": "Ethereum Foundation",
+  "title": "Solidity documentation",
+  "entry": "Ethereum Foundation 2026a, ⟦i⟧Solidity documentation⟦/i⟧, viewed 7 October 2026, <https://docs.soliditylang.org/>."
+ },
+ "90": {
+  "intext": "Ethereum Foundation",
+  "year": "2026b",
+  "first": "Ethereum Foundation",
+  "title": "Networks",
+  "entry": "Ethereum Foundation 2026b, ⟦i⟧Networks⟦/i⟧, ethereum.org developer documentation, viewed 7 October 2026, <https://ethereum.org/en/developers/docs/networks/>."
+ },
+ "91": {
+  "intext": "Consensys",
+  "year": "2026",
+  "first": "Consensys",
+  "title": "MetaMask developer documentation",
+  "entry": "Consensys 2026, ⟦i⟧MetaMask developer documentation⟦/i⟧, viewed 7 October 2026, <https://docs.metamask.io/>."
+ },
+ "92": {
+  "intext": "Ethereum Foundation",
+  "year": "2026c",
+  "first": "Ethereum Foundation",
+  "title": "Remix IDE documentation",
+  "entry": "Ethereum Foundation 2026c, ⟦i⟧Remix IDE documentation⟦/i⟧, viewed 7 October 2026, <https://remix-ide.readthedocs.io/>."
+ },
+ "93": {
+  "intext": "HL7 International",
+  "year": "2019",
+  "first": "HL7 International",
+  "title": "HL7 FHIR Release 4",
+  "entry": "HL7 International 2019, ⟦i⟧HL7 FHIR Release 4 (R4)⟦/i⟧, viewed 7 October 2026, <https://hl7.org/fhir/R4/>."
+ },
+ "94": {
+  "intext": "iden3",
+  "year": "2026a",
+  "first": "iden3",
+  "title": "snarkjs",
+  "entry": "iden3 2026a, ⟦i⟧snarkjs: zkSNARK implementation in JavaScript and WASM⟦/i⟧, viewed 7 October 2026, <https://github.com/iden3/snarkjs>."
+ },
+ "95": {
+  "intext": "iden3",
+  "year": "2026b",
+  "first": "iden3",
+  "title": "circom",
+  "entry": "iden3 2026b, ⟦i⟧circom: circuit compiler for zero-knowledge proofs⟦/i⟧, viewed 7 October 2026, <https://docs.circom.io/>."
  }
 }
