@@ -508,7 +508,7 @@
   "year": "2014",
   "first": "Wood",
   "title": "Ethereum: A secure decentralised generalised transaction ledger",
-  "entry": "Wood, G. 2014, ⟦i⟧Ethereum: A secure decentralised generalised transaction ledger⟦/i⟧, Ethereum Project Yellow Paper, viewed 7 October 2026, <https://ethereum.github.io/yellowpaper/paper.pdf>."
+  "entry": "Wood, G. 2014, ⟦i⟧Ethereum: A secure decentralised generalised transaction ledger⟦/i⟧, Ethereum Project Yellow Paper."
  },
  "89": {
   "intext": "Ethereum Foundation",
@@ -549,8 +549,8 @@
   "intext": "iden3",
   "year": "2026a",
   "first": "iden3",
-  "title": "snarkjs",
-  "entry": "iden3 2026a, ⟦i⟧snarkjs: zkSNARK implementation in JavaScript and WASM⟦/i⟧, viewed 7 October 2026, <https://github.com/iden3/snarkjs>."
+  "title": "snarkjs: zkSNARKs implementation in JavaScript",
+  "entry": "iden3 2026a, ⟦i⟧snarkjs: zkSNARKs implementation in JavaScript⟦/i⟧, version 0.7, npm package, viewed 7 October 2026, <https://www.npmjs.com/package/snarkjs>."
  },
  "95": {
   "intext": "iden3",
