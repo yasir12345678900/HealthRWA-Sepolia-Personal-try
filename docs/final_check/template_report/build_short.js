@@ -93,7 +93,7 @@ function plain(t, base) {
 const GREEN = process.env.GREEN === "1" ? { color: "00A000" } : {};
 const P = (text, opts = {}, base = {}) => new Paragraph({ children: runs(fixText(text), { ...GREEN, ...base }), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 }, ...opts });
 // GREEN copy: sentences taken from the original report stay black, the rest are green
-const SEGR = segs => segs.flatMap(([t, o], i) => runs(fixText((i ? " " : "") + t.replace(/⟦d⟧[\s\S]*?⟦\/d⟧/g, "").replace(/⟦\/?[rbnaci]⟧/g, "")), o ? {} : GREEN));
+const SEGR = segs => segs.flatMap(([t, o], i) => (c => runs(fixText((i && !/^[;,:.)]/.test(c) ? " " : "") + c), o ? {} : GREEN))(t.replace(/⟦d⟧[\s\S]*?⟦\/d⟧/g, "").replace(/⟦\/?[rbnaci]⟧/g, "")));
 const SEGP = segs => new Paragraph({ children: SEGR(segs), alignment: AlignmentType.JUSTIFIED, spacing: { after: 110, line: 264 } });
 const cb = { style: BorderStyle.SINGLE, size: 4, color: "666666" };
 const bAll = { top: cb, left: cb, bottom: cb, right: cb };
@@ -127,7 +127,7 @@ function figure(b) {
   const cap = (b.caption || f.caption).replace(/\s*\.$/, "");
   return [
     new Paragraph({ alignment: AlignmentType.CENTER, keepNext: true, spacing: { before: 160, after: 60 },
-      children: [new ImageRun({ type: "png", data: buf, transformation: { width, height }, altText: { title: fixText(cap).replace(/⟦\/?[rb]⟧|\*\*|[~^]/g, ""), description: fixText(cap).replace(/⟦\/?[rb]⟧|\*\*|[~^]/g, ""), name: path.basename(f.file) } })] }),
+      children: [new ImageRun({ type: "png", data: buf, transformation: { width, height }, altText: { title: fixText(cap).replace(/⟦d⟧[\s\S]*?⟦\/d⟧/g, "").replace(/⟦\/?[rbnaci]⟧|\*\*|[~^]/g, ""), description: fixText(cap).replace(/⟦d⟧[\s\S]*?⟦\/d⟧/g, "").replace(/⟦\/?[rbnaci]⟧|\*\*|[~^]/g, ""), name: path.basename(f.file) } })] }),
     new Paragraph({ alignment: AlignmentType.CENTER, spacing: { after: 220 },
       children: [new TextRun({ text: `Figure ${num.F[b.ref]}: `, bold: true, font: FONT, size: BODY - 4 }), ...runs(fixText(cap) + ".", { size: BODY - 4 })] }),
   ];

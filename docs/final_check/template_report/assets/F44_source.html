@@ -35,7 +35,7 @@ body{margin:0;font-family:"Times New Roman",serif;background:#fff}
   <div class="q">Decentralised Identifier (DID)</div>
   <div class="m"><b>Mechanism:</b> an identifier of the form did:method:id that the holder controls, e.g. did:patient:&lt;id&gt; for a patient and a DID for each guardian and doctor.</div>
   <div class="m"><b>Proves:</b> an identity reference, not a permission.</div>
-  <div class="now"><b>HALAH today:</b> the DID must be well formed and must match a participant listed in C; cryptographic resolution against a registry is next-stage work.</div>
+  <div class="now"><b>HALAH today:</b> the DIDs recorded in C must be well formed; the requester is not yet authenticated, and resolution against a registry is next-stage work.</div>
   <div class="pred">feeds V<sub>I</sub>(u)</div>
  </div>
  <div class="arr">&#8594;</div>
@@ -70,6 +70,6 @@ body{margin:0;font-family:"Times New Roman",serif;background:#fff}
  <div class="arr">&#8594;</div>
  <div class="allow"><div>ALLOW<br><span style="font-size:16px;font-weight:normal;display:block;margin-top:6px">data released, decision logged</span></div></div>
 </div>
-<div class="deny2"><b>DENY</b> as soon as any gate fails. The failed check is recorded in the audit ledger with the full decision matrix, so a refusal is as traceable as a grant.</div>
+<div class="deny2"><b>DENY</b> as soon as any gate fails. For a consent in the ACTIVE state the failed check is recorded in the audit ledger with the full decision matrix; a refusal for a consent that is not ACTIVE is shown in the doctor interface only.</div>
 <div class="foot">Decision(C, R, t) = ALLOW &hArr; V<sub>I</sub> &and; V<sub>A</sub> &and; V<sub>P</sub> &and; V<sub>T</sub> &and; V<sub>L</sub>, with the proof required before ALLOW. No single mechanism grants access on its own.</div>
 </div></body></html>
