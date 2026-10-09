@@ -25,6 +25,7 @@ body{margin:0;font-family:"Times New Roman",serif;background:#fff}
 .deny2{margin-top:14px;border:2px solid #222;border-radius:8px;padding:10px;text-align:center;font-size:20px;background:#fff}
 .deny2 b{font-size:22px}
 .gate .m{font-size:18px}.gate .now{font-size:17px}
+body.pink .k{color:#D81B60}
 </style></head><body>
 <div id="gates">
 <div class="lane">
@@ -51,20 +52,20 @@ body{margin:0;font-family:"Times New Roman",serif;background:#fff}
 <div class="turn"><span>&#8595;</span></div>
 <div class="lane">
  <div class="gate">
-  <h3>Gate 3: Did the guardians agree?</h3>
+  <h3>Gate 3: Did <span class="k">the required participants</span> agree?</h3>
   <div class="q">Threshold of distinct approvals</div>
-  <div class="m"><b>Mechanism:</b> the guardian set G is fixed in C, and N distinct members of G must have signed.</div>
+  <div class="m"><b>Mechanism:</b> <span class="k">the approving set G is fixed in C and may contain healthcare professionals, guardians, institutional representatives, or other authorised parties;</span> N distinct members of G must have signed.</div>
   <div class="m"><b>Proves:</b> collective, not unilateral, authorisation.</div>
-  <div class="now"><b>HALAH today:</b> N = |G|, evaluated in the 2-of-2 configuration; an approval from outside G or a repeated approval is not counted.</div>
+  <div class="now"><b>HALAH today:</b> <span class="k">the members of G are guardians,</span> <span style="white-space:nowrap">N = |G|,</span> evaluated in the 2-of-2 configuration; an approval from outside G or a repeated approval is not counted.</div>
   <div class="pred">V<sub>A</sub>(C)</div>
  </div>
  <div class="arr">&#8594;</div>
  <div class="gate">
   <h3>Gate 4: Is the consent still valid for this request?</h3>
-  <div class="q">Policy, time, jurisdiction and a zero-knowledge proof</div>
-  <div class="m"><b>Mechanism:</b> requested scope within the consent scope, supported purpose, time t inside the validity window, matching jurisdiction, and a Groth16 proof that the prover knows the consent secret and expiry behind a Poseidon commitment.</div>
+  <div class="q">Policy, time, <span class="k">lifecycle</span> and a zero-knowledge proof</div>
+  <div class="m"><b>Mechanism:</b> requested scope within the consent scope, supported purpose, time t inside the validity window, <span class="k">a lifecycle state that permits access,</span> and a Groth16 proof that the prover knows the consent secret and expiry behind a Poseidon commitment.</div>
   <div class="m"><b>Proves:</b> validity without revealing the secret or the expiry.</div>
-  <div class="now"><b>HALAH today:</b> all four predicates are evaluated and the proof is generated and verified before any data are returned.</div>
+  <div class="now"><b>HALAH today:</b> <span class="k">the consent must be ACTIVE, V<sub>P</sub> and V<sub>T</sub> are evaluated together with an exploratory jurisdiction check,</span> and the proof is generated and verified before any data are returned.</div>
   <div class="pred">V<sub>P</sub>, V<sub>T</sub>, V<sub>L</sub> and the proof</div>
  </div>
  <div class="arr">&#8594;</div>
@@ -72,4 +73,4 @@ body{margin:0;font-family:"Times New Roman",serif;background:#fff}
 </div>
 <div class="deny2"><b>DENY</b> as soon as any gate fails. For a consent in the ACTIVE state the failed check is recorded in the audit ledger with the full decision matrix; a refusal for a consent that is not ACTIVE is shown in the doctor interface only.</div>
 <div class="foot">Decision(C, R, t) = ALLOW &hArr; V<sub>I</sub> &and; V<sub>A</sub> &and; V<sub>P</sub> &and; V<sub>T</sub> &and; V<sub>L</sub>, with the proof required before ALLOW. No single mechanism grants access on its own.</div>
-</div></body></html>
+</div><script>if(location.search.includes("pink"))document.body.classList.add("pink");</script></body></html>

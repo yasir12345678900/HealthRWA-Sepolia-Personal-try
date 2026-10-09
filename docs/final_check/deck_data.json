@@ -1,1 +1,652 @@
-{"list": [["S1", "Abbasi, Humeidi & Wang (2026)", "2026", "Nexa: Enabling Secure, Scalable, and Decentralized Management of Electronic Health Records Using Threshold Cryptography and Public Blockchains", "Multi-party authorisation (Req 3)"], ["S2", "Albalwy, Brass & Davies (2021)", "2021", "A Blockchain-based dynamic consent architecture to support clinical genomic data sharing (ConsentChain): Proof-of-concept study", "Policy and context (Req 4)"], ["S3", "Al Amin, Altarawneh & Ray (2023)", "2023", "Informed Consent as Patient Driven Policy for Clinical Diagnosis and Treatment: A Smart Contract Based Approach", "Consent representation (Req 1)"], ["S4", "Ekholm et al. (2025)", "2025", "Implementing electronic informed consent in rare disease genomics", "Multi-party authorisation (Req 3)"], ["S5", "Eneh et al. (2026)", "2026", "Demo: EdgeConsent: On-Chain Attribute-Based Access Control for Data Consent Management", "Temporal and lifecycle (Req 5)"], ["S6", "Hagström et al. (2024)", "2024", "Minors’ and guardian access to and use of a national patient portal: A retrospective comparative case study of Sweden and Finland", "Multi-party authorisation (Req 3)"], ["S7", "Jaiman & Urovi (2020)", "2020", "A Consent Model for Blockchain-Based Health Data Sharing Platforms", "Policy and context (Req 4)"], ["S8", "Zhao & Su (2024)", "2024", "A threshold traceable delegation authorization scheme for data sharing in healthcare", "Security assurance (Req 6)"], ["S9", "Li et al. (2026a)", "2026", "Privacy-Preserving Fine-Grained EMR Access Control for IoMT: A Hybrid RBAC-Smart Contract Scheme With Attribute-Based Authorization", "Temporal and lifecycle (Req 5)"], ["S10", "Madine et al. (2020)", "2020", "Fully Decentralized Multi-Party Consent Management for Secure Sharing of Patient Health Records", "Multi-party authorisation (Req 3)"], ["S11", "Maruthi & Singh (2025)", "2025", "Enhancing Security and Privacy of IoMT Data for Unconscious Patient With Blockchain", "Security assurance (Req 6)"], ["S12", "Mei et al. (2026)", "2026", "Efficient Dual-Revocation CP-ABE for Secure and Fine-Grained Data Sharing in IoMT", "Security assurance (Req 6)"], ["S13", "Panagoulias et al. (2026)", "2026", "Blockchain-Enabled Trust and Compliance for Clinical AI: Decentralized Governance Without Decentralized Data Storage", "Temporal and lifecycle (Req 5)"], ["S14", "Phuyal et al. (2026b)", "2026", "Enabling Cross-Institution Health Data Sharing in Norway: EUDI Wallets, On-Chain Consent, and openEHR↔FHIR Translation", "Identity and authority (Req 2)"], ["S15", "Phuyal et al. (2026a)", "2026", "A Blockchain-Based Architecture for Dynamic and Auditable Patient Consent in Secondary Use of Health Data", "Identity and authority (Req 2)"], ["S16", "Punia et al. (2025)", "2025", "An access control system for cloud-based healthcare systems driven by blockchain", "Multi-party authorisation (Req 3)"], ["S17", "Román-Martínez et al. (2023)", "2023", "Blockchain-Based Service-Oriented Architecture for Consent Management, Access Control, and Auditing", "Policy and context (Req 4)"], ["S18", "Hema, Reddy & Shalini (2026)", "2026", "Patient Centric Cryptographic Protection of Cloud Electronic Health Records", "Temporal and lifecycle (Req 5)"], ["S19", "SooHoo et al. (2026)", "2026", "Development of the authentication and authorization processes for the iAgree portal, a platform for patient-controlled data sharing across health systems", "Consent representation (Req 1)"], ["S20", "Tan, Chi & Lam (2024)", "2024", "Secure and privacy-preserving sharing of personal health records with multi-party pre-authorization verification", "Multi-party authorisation (Req 3)"], ["S21", "Tith et al. (2020)", "2020", "Patient consent management by a purpose-based consent model for electronic health record based on blockchain technology", "Policy and context (Req 4)"], ["S22", "Tremper et al. (2026)", "2026", "Mainzelliste: Ten years of pseudonymization, record linkage, and informed consent management", "Consent representation (Req 1)"], ["S23", "Tseng et al. (2025)", "2025", "EMR-Chain: Decentralized Electronic Medical Record Exchange System", "Identity and authority (Req 2)"], ["S24", "Wu et al. (2022)", "2022", "Apply Trust Computing and Privacy Preserving Smart Contracts to Manage, Share, and Analyze Multi-site Clinical Trial Data", "Multi-party authorisation (Req 3)"], ["S25", "Wu & Zhang (2025)", "2025", "HealthDID: An efficient and authorizable multi-party privacy-preserving EMR sharing system based on DID", "Security assurance (Req 6)"]], "listhdr": ["Study", "Author(s)", "Year", "Title", "Category"], "t4": {"header": ["Study", "Req 1", "Req 2", "Req 3", "Req 4", "Req 5", "Req 6"], "rows": [["S1 Abbasi, Humeidi & Wang (2026)", "Partial", "Partial", "Partial", "Partial", "Partial", "Partial"], ["S2 Albalwy, Brass & Davies (2021)", "Yes", "Partial", "No", "Yes", "Partial", "Yes"], ["S3 Al Amin, Altarawneh & Ray (2023)", "Yes", "Partial", "Partial", "Partial", "Partial", "Partial"], ["S4 Ekholm et al. (2025)", "Partial", "Yes", "Yes", "No", "Partial", "Partial"], ["S5 Eneh et al. (2026)", "Yes", "Partial", "No", "Yes", "Yes", "Partial"], ["S6 Hagström et al. (2024)", "Partial", "Yes", "Partial", "Partial", "Yes", "Yes"], ["S7 Jaiman & Urovi (2020)", "Yes", "Partial", "No", "Yes", "Partial", "Yes"], ["S8 Zhao & Su (2024)", "Partial", "Partial", "Yes", "Partial", "No", "Yes"], ["S9 Li et al. (2026a)", "Partial", "Partial", "No", "Yes", "Yes", "Partial"], ["S10 Madine et al. (2020)", "Yes", "Yes", "Yes", "Partial", "Yes", "Partial"], ["S11 Maruthi & Singh (2025)", "Partial", "Partial", "Yes", "No", "No", "Yes"], ["S12 Mei et al. (2026)", "Partial", "Partial", "No", "Yes", "Yes", "Yes"], ["S13 Panagoulias et al. (2026)", "Yes", "Partial", "No", "Yes", "Yes", "Yes"], ["S14 Phuyal et al. (2026b)", "Yes", "Yes", "No", "Partial", "Partial", "Yes"], ["S15 Phuyal et al. (2026a)", "Partial", "Partial", "No", "Partial", "Partial", "Partial"], ["S16 Punia et al. (2025)", "Partial", "Partial", "Yes", "Yes", "Yes", "Partial"], ["S17 Román-Martínez et al. (2023)", "Yes", "Partial", "No", "Yes", "No", "Partial"], ["S18 Hema, Reddy & Shalini (2026)", "Yes", "Partial", "No", "Yes", "Yes", "Partial"], ["S19 SooHoo et al. (2026)", "Partial", "Partial", "No", "Partial", "Partial", "Partial"], ["S20 Tan, Chi & Lam (2024)", "Yes", "Yes", "Yes", "No", "Partial", "Partial"], ["S21 Tith et al. (2020)", "Yes", "Partial", "No", "Yes", "Partial", "Partial"], ["S22 Tremper et al. (2026)", "Partial", "Partial", "No", "Partial", "Partial", "Partial"], ["S23 Tseng et al. (2025)", "Partial", "Yes", "No", "Partial", "Partial", "Partial"], ["S24 Wu et al. (2022)", "Partial", "Partial", "Partial", "Partial", "Partial", "Partial"], ["S25 Wu & Zhang (2025)", "Yes", "Yes", "No", "No", "No", "Yes"]]}, "refs": ["Abbasi, A., Humeidi, M.N. & Wang, Q. 2026, 'Nexa: Enabling secure, scalable, and decentralized management of electronic health records using threshold cryptography and public blockchains', IEEE Access, vol. 14, pp. 50791–50810, <https://doi.org/10.1109/ACCESS.2026.3677499>.", "Akter, S. & Sanam, T.F. 2025, 'A blockchain framework for secure healthcare data management using role-based access control and smart contracts', 2025 International Conference on Electrical, Computer and Communication Engineering (ECCE), pp. 1–6, <https://doi.org/10.1109/ECCE64574.2025.11013162>.", "Al Amin, M., Altarawneh, A. & Ray, I. 2023, 'Informed consent as patient driven policy for clinical diagnosis and treatment: A smart contract based approach', Proceedings of the 20th International Conference on Security and Cryptography (SECRYPT 2023), pp. 159–170, SciTePress, <https://doi.org/10.5220/0012090600003555>.", "Al Mamun, A., Azam, S. & Gritti, C. 2022, 'Blockchain-based electronic health records management: A comprehensive review and future research direction', IEEE Access, vol. 10, pp. 5768–5789, <https://doi.org/10.1109/ACCESS.2022.3141079>.", "Albalwy, F., Brass, A. & Davies, A. 2021, 'A blockchain-based dynamic consent architecture to support clinical genomic data sharing (ConsentChain): Proof-of-concept study', JMIR Medical Informatics, vol. 9, no. 11, p. e27816, <https://doi.org/10.2196/27816>.", "Andrew, J., Isravel, D.P., Sagayam, K.M., Bhushan, B., Sei, Y. & Eunice, J. 2023, 'Blockchain for healthcare systems: Architecture, security challenges, trends and future directions', Journal of Network and Computer Applications, vol. 215, p. 103633, <https://doi.org/10.1016/j.jnca.2023.103633>.", "Arbabi, M.S., Lal, C., Veeraragavan, N.R., Marijan, D., Nygård, J.F. & Vitenberg, R. 2023, 'A survey on blockchain for healthcare: Challenges, benefits, and future directions', IEEE Communications Surveys & Tutorials, vol. 25, no. 1, pp. 386–424, <https://doi.org/10.1109/COMST.2022.3224644>.", "Bloemen, R., Logvinov, L. & Evans, J. 2017, EIP-712: Typed structured data hashing and signing, Ethereum Improvement Proposals, no. 712, viewed 6 October 2026, <https://eips.ethereum.org/EIPS/eip-712>.", "Cai, B. 2022, ERC-5484: Consensual soulbound tokens, Ethereum Improvement Proposals, no. 5484, viewed 6 October 2026, <https://eips.ethereum.org/EIPS/eip-5484>.", "Consensys 2026, MetaMask developer documentation, viewed 7 October 2026, <https://docs.metamask.io/>.", "Deng, H., Liang, J., Zhang, C., Liu, X., Zhu, L. & Guo, S. 2024, 'FutureDID: A fully decentralized identity system with multi-party verification', IEEE Transactions on Computers, vol. 73, no. 8, pp. 2051–2065, <https://doi.org/10.1109/TC.2024.3398509>.", "Ekholm, K., Augustinsson, A., Sundström, J., Johansen, C., Storgärds, M., Ljöstad, L. et al. 2025, 'Implementing electronic informed consent in rare disease genomics', Scientific Reports, vol. 15, no. 1, p. 44419, <https://doi.org/10.1038/s41598-025-32740-1>.", "Eneh, A.U., Ahakonye, L.A.C., Lee, J.M. & Kim, D.-S. 2026, 'Demo: EdgeConsent: On-chain attribute-based access control for data consent management', 2026 IEEE International Conference on Blockchain and Cryptocurrency (ICBC), pp. 1–2, <https://doi.org/10.1109/ICBC67748.2026.11575534>.", "Entriken, W., Shirley, D., Evans, J. & Sachs, N. 2018, ERC-721: Non-fungible token standard, Ethereum Improvement Proposals, no. 721, viewed 6 October 2026, <https://eips.ethereum.org/EIPS/eip-721>.", "Ethereum Foundation 2026a, Solidity documentation, viewed 7 October 2026, <https://docs.soliditylang.org/>.", "Ethereum Foundation 2026b, Networks, ethereum.org developer documentation, viewed 7 October 2026, <https://ethereum.org/en/developers/docs/networks/>.", "Ethereum Foundation 2026c, Remix IDE documentation, viewed 7 October 2026, <https://remix-ide.readthedocs.io/>.", "Ferreira, J.C., Correia, R., Rosário, L. & Vila, A. 2025, 'Blockchain integration for trust and consent management in MCP-enabled FHIR systems', 2025 IEEE International Conference on Distributed Ledger Technologies (ICDLT), pp. 1–10, <https://doi.org/10.1109/ICDLT66400.2025.11466653>.", "Flamini, A., Sciarretta, G., Scuro, M., Sharif, A., Tomasi, A. & Ranise, S. 2024, 'On cryptographic mechanisms for the selective disclosure of verifiable credentials', Journal of Information Security and Applications, vol. 83, p. 103789, <https://doi.org/10.1016/j.jisa.2024.103789>.", "Ghafoor, A., Symeonidis, I., Rydberg, A., Lindahl, C. & Abbasi, A.Q. 2025, 'Towards empowering stakeholders through decentralized trust and secure livestock data sharing', Cryptography, vol. 9, no. 3, p. 52, <https://doi.org/10.3390/cryptography9030052>.", "Ghosh, P.K., Chakraborty, A., Hasan, M., Rashid, K. & Siddique, A.H. 2023, 'Blockchain application in healthcare systems: A review', Systems, vol. 11, no. 1, p. 38, <https://doi.org/10.3390/systems11010038>.", "Grassi, L., Khovratovich, D., Rechberger, C., Roy, A. & Schofnegger, M. 2021, 'Poseidon: A new hash function for zero-knowledge proof systems', Proceedings of the 30th USENIX Security Symposium, pp. 519–535.", "Groth, J. 2016, 'On the size of pairing-based non-interactive arguments', Advances in Cryptology – EUROCRYPT 2016, LNCS, vol. 9666, pp. 305–326, Springer, <https://doi.org/10.1007/978-3-662-49896-5_11>.", "Hagström, J., Hägglund, M., Holmroos, M., Lähteenmäki, P. & Hörhammer, I. 2024, 'Minors’ and guardian access to and use of a national patient portal: A retrospective comparative case study of Sweden and Finland', International Journal of Medical Informatics, vol. 187, p. 105465, <https://doi.org/10.1016/j.ijmedinf.2024.105465>.", "Hellstern, R., Park, D.C., Lemieux, V. & Salimjan, G. 2022, 'Leveraging blockchain-based archival solutions for sensitive documentation: A Xinjiang case study', Digital Society, vol. 1, no. 1, p. 4, <https://doi.org/10.1007/s44206-022-00007-1>.", "Hema, S., Reddy, G.B.S. & Shalini, R. 2026, 'Patient centric cryptographic protection of cloud electronic health records', 2026 6th International Conference on Expert Clouds and Applications (ICOECA), pp. 293–300, <https://doi.org/10.1109/ICOECA68095.2026.11485301>.", "HL7 International 2019, HL7 FHIR Release 4 (R4), viewed 7 October 2026, <https://hl7.org/fhir/R4/>.", "Ibrahim, A.M., Abdel-Aziz, H.R., Mohamed, H.A.H., Zaghamir, D.E.F., Wahba, N.M.I., Hassan, G.A. et al. 2024, 'Balancing confidentiality and care coordination: Challenges in patient privacy', BMC Nursing, vol. 23, no. 1, p. 564, <https://doi.org/10.1186/s12912-024-02231-1>.", "iden3 2026a, snarkjs: zkSNARKs implementation in JavaScript, version 0.7, npm package, viewed 7 October 2026, <https://www.npmjs.com/package/snarkjs>.", "iden3 2026b, circom: circuit compiler for zero-knowledge proofs, viewed 7 October 2026, <https://docs.circom.io/>.", "Jaiman, V. & Urovi, V. 2020, 'A consent model for blockchain-based health data sharing platforms', IEEE Access, vol. 8, pp. 143734–143745, <https://doi.org/10.1109/ACCESS.2020.3014565>.", "Jesus, V. & Pandit, H.J. 2022, 'Consent receipts for a usable and auditable web of personal data', IEEE Access, vol. 10, pp. 28545–28563, <https://doi.org/10.1109/ACCESS.2022.3157850>.", "Jiang, R., Chen, X., Yu, Y., Zhang, Y. & Ding, W. 2023, 'Risk and UCON-based access control model for healthcare big data', Journal of Big Data, vol. 10, no. 1, p. 104, <https://doi.org/10.1186/s40537-023-00783-8>.", "Kaplow, K., Downey, M., Stewart, D., Massie, A.B., Motter, J.D., Taylor, L. et al. 2024, 'Data professionals’ attitudes on data privacy, sharing, and consent in healthcare and research', Digital Health, vol. 10, p. 20552076241290964, <https://doi.org/10.1177/20552076241290964>.", "Khalid, M.I., Ahmed, M., Helfert, M. & Kim, J. 2023, 'Privacy-first paradigm for dynamic consent management systems: Empowering data subjects through decentralized data controllers and privacy-preserving techniques', Electronics, vol. 12, no. 24, p. 4973, <https://doi.org/10.3390/electronics12244973>.", "Kharlamov, A., Hohmann, R. & Parry, G. 2023, 'Data sharing decisions: Perceptions and intentions in healthcare', Strategic Change, vol. 32, no. 6, pp. 223–237, <https://doi.org/10.1002/jsc.2558>.", "Khayer, B., Mirzaei, S., Alavizadeh, H. & Salehi Shahraki, A. 2025, 'Blockchain for secure IoT: A review of identity management, access control, and trust mechanisms', IoT, vol. 6, no. 4, p. 65, <https://doi.org/10.3390/iot6040065>.", "Li, L., Liu, C.Z. & Shrestha, S. 2026, 'Analytical entropy approach for measuring blockchain immutability and tamper-resilient trust', Entropy, vol. 28, no. 6, p. 690, <https://doi.org/10.3390/e28060690>.", "Li, H., Li, D., Lv, G., Crespi, N., Minerva, R., Shao, W. et al. 2026a, 'Privacy-preserving fine-grained EMR access control for IoMT: A hybrid RBAC-smart contract scheme with attribute-based authorization', IEEE Internet of Things Journal, vol. 13, no. 2, pp. 2970–2987, <https://doi.org/10.1109/JIOT.2025.3633504>.", "Li, L., Liu, C.Z., Huang, K., Deng, R., Alrowaily, M.A., Alghamdi, M. et al. 2026b, 'Trust-aware environmental state consensus for smart agriculture with TEE-enabled sensing and Byzantine-resilient blockchain coordination', Sensors, vol. 26, no. 14, p. 4577, <https://doi.org/10.3390/s26144577>.", "Lomotey, R.K., Kumi, S. & Deters, R. 2022, 'Data trusts as a service: Providing a platform for multi-party data sharing', International Journal of Information Management Data Insights, vol. 2, no. 1, p. 100075, <https://doi.org/10.1016/j.jjimei.2022.100075>.", "Madine, M.M., Salah, K., Jayaraman, R., Yaqoob, I., Al-Hammadi, Y., Ellahham, S. et al. 2020, 'Fully decentralized multi-party consent management for secure sharing of patient health records', IEEE Access, vol. 8, pp. 225777–225791, <https://doi.org/10.1109/ACCESS.2020.3045048>.", "Maruthi, V. & Singh, K. 2025, 'Enhancing security and privacy of IoMT data for unconscious patient with blockchain', IEEE Transactions on Network and Service Management, vol. 22, no. 6, pp. 5223–5238, <https://doi.org/10.1109/TNSM.2025.3602117>.", "Mazzocca, C., Acar, A., Uluagac, A.S., Montanari, R., Bellavista, P. & Conti, M. 2025, 'A survey on decentralized identifiers and verifiable credentials', IEEE Communications Surveys & Tutorials, vol. 27, no. 6, pp. 3641–3671, <https://doi.org/10.1109/COMST.2025.3543197>.", "McClelland, R. & Harper, C.M. 2023, 'Information privacy in healthcare — the vital role of informed consent', European Journal of Health Law, vol. 30, no. 4, pp. 469–480, <https://doi.org/10.1163/15718093-bja10097>.", "Mei, L., Huang, K., Li, X., Wang, H. & Zhang, X. 2026, 'Efficient dual-revocation CP-ABE for secure and fine-grained data sharing in IoMT', IEEE Internet of Things Journal, vol. 13, no. 14, pp. 30933–30940, <https://doi.org/10.1109/JIOT.2026.3685269>.", "Ménétrey, J., Göttel, C., Khurshid, A., Pasin, M., Felber, P., Schiavoni, V. et al. 2022, 'Attestation mechanisms for trusted execution environments demystified', IFIP International Conference on Distributed Applications and Interoperable Systems (DAIS 2022), LNCS, vol. 13272, pp. 95–113, Springer, <https://doi.org/10.1007/978-3-031-16092-9_7>.", "Narkhede, M.R., Wankhede, N.I. & Kamble, A.M. 2025, 'Enhancing patient autonomy in data ownership: Privacy models and consent frameworks for healthcare', Journal of Digital Health, vol. 4, no. 1, pp. 1–23, <https://doi.org/10.55976/jdh.4202513361-23>.", "Nassar Kyriakidou, C.D., Papathanasiou, A.M. & Polyzos, G.C. 2023, 'Decentralized identity with applications to security and privacy for the internet of things', Computer Networks and Communications, vol. 1, no. 2, pp. 244–271, <https://doi.org/10.37256/cnc.1220233048>.", "Nazir, A., Rehmani, M.H., Butler, B. & O’Shea, D. 2026, 'Access control in healthcare IoT: A comprehensive survey', Engineering Reports, vol. 8, no. 4, p. e70766, <https://doi.org/10.1002/eng2.70766>.", "Nguyen, T.L., Nguyen, L., Hoang, T., Bandara, D., Wang, Q., Lu, Q. et al. 2025, 'Blockchain-empowered trustworthy data sharing: Fundamentals, applications, and challenges', ACM Computing Surveys, vol. 57, no. 8, p. 195, <https://doi.org/10.1145/3718082>.", "Page, M.J., McKenzie, J.E., Bossuyt, P.M., Boutron, I., Hoffmann, T.C., Mulrow, C.D. et al. 2021, 'The PRISMA 2020 statement: An updated guideline for reporting systematic reviews', BMJ, vol. 372, p. n71, <https://doi.org/10.1136/bmj.n71>.", "Panagoulias, D.P., Damian, A.I., Stamate, C., Toderian, V., Butusina, P., De Franceschi, A. et al. 2026, 'Blockchain-enabled trust and compliance for clinical AI: Decentralized governance without decentralized data storage', Electronics, vol. 15, no. 14, p. 3046, <https://doi.org/10.3390/electronics15143046>.", "Parameswarath, R.P., Gope, P. & Sikdar, B. 2022, 'User-empowered privacy-preserving authentication protocol for electric vehicle charging based on decentralized identity and verifiable credential', ACM Transactions on Management Information Systems, vol. 13, no. 4, p. 44, <https://doi.org/10.1145/3532869>.", "Phuyal, S., Bhandari, M., Bista, R. & Ferreira, J.C. 2026a, 'A blockchain-based architecture for dynamic and auditable patient consent in secondary use of health data', Blockchain in Healthcare Today, vol. 9, no. 1, p. 491, <https://doi.org/10.30953/bhty.v9.491>.", "Phuyal, S., Bhandari, M., Bista, R. & Ferreira, J.C. 2026b, 'Enabling cross-institution health data sharing in Norway: EUDI wallets, on-chain consent, and openEHR↔FHIR translation', IEEE Access, vol. 14, pp. 20309–20327, <https://doi.org/10.1109/ACCESS.2026.3661642>.", "Prashanth, M.S., Karnati, R., Velpuru, M.S. & Venkateshwara Reddy, H. 2024, 'Enhancing health record security and privacy with blockchain-based access management', Pervasive Knowledge and Collective Intelligence on Web and Social Media (PerSOM 2023), LNICST, vol. 517, pp. 182–202, Springer, <https://doi.org/10.1007/978-3-031-66044-3_13>.", "Punia, A., Gulia, P., Gill, N.S., Kaushik, D., Alduaiji, N., Shukla, P.K. et al. 2025, 'An access control system for cloud-based healthcare systems driven by blockchain', Journal of Cloud Computing, vol. 14, no. 1, p. 78, <https://doi.org/10.1186/s13677-025-00831-z>.", "Román-Martínez, I., Calvillo-Arbizu, J., Mayor-Gallego, V.J., Madinabeitia-Luque, G., Estepa-Alonso, A.J. & Estepa-Alonso, R.M. 2023, 'Blockchain-based service-oriented architecture for consent management, access control, and auditing', IEEE Access, vol. 11, pp. 12727–12741, <https://doi.org/10.1109/ACCESS.2023.3242605>.", "Sawant, N.M. & Gomes, J. 2026, 'A decentralized solution for smarter and safer healthcare systems with FabricMedChain', Iranian Journal of Science and Technology, Transactions of Electrical Engineering, vol. 50, pp. 2843–2869, <https://doi.org/10.1007/s40998-025-00994-0>.", "Shanmugham, M. & Senthilkumar, C. 2026, 'Blockchain enabled self-sovereign identity and consent framework for secure healthcare data access', 2026 3rd International Conference on Emerging Trends in Engineering and Medical Sciences (ICETEMS), pp. 1–6, <https://doi.org/10.1109/ICETEMS66917.2026.11469586>.", "SooHoo, S.L., Keller, M.S., Chen, Y., Hu, D., Huang, S.-C., Kuo, T.-T. et al. 2026, 'Development of the authentication and authorization processes for the iAgree portal, a platform for patient-controlled data sharing across health systems', JAMIA Open, vol. 9, no. 3, p. ooag111, <https://doi.org/10.1093/jamiaopen/ooag111>.", "Tan, K.-L., Chi, C.-H. & Lam, K.-Y. 2024, 'Secure and privacy-preserving sharing of personal health records with multi-party pre-authorization verification', Wireless Networks, vol. 30, no. 4, pp. 4773–4795, <https://doi.org/10.1007/s11276-022-03114-6>.", "Tawfik, A.M., Al-Ahwal, A., Tag Eldien, A.S. & Zayed, H.H. 2025, 'Blockchain-based access control and privacy preservation in healthcare: A comprehensive survey', Cluster Computing, vol. 28, p. 529, <https://doi.org/10.1007/s10586-025-05308-x>.", "Teeda, A. & Subba Rao, Y.V. 2026, 'A patient-centric blockchain based electronic health records for data privacy and confidentiality', International Conference on Smart Computing and Informatics, LNNS, vol. 1684, pp. 179–192, Springer, <https://doi.org/10.1007/978-3-032-08246-6_15>.", "Theodorakopoulos, L., Theodoropoulou, A. & Halkiopoulos, C. 2024, 'Enhancing decentralized decision-making with big data and blockchain technology: A comprehensive review', Applied Sciences, vol. 14, no. 16, p. 7007, <https://doi.org/10.3390/app14167007>.", "Tith, D., Lee, J.-S., Suzuki, H., Wijesundara, W.M.A.B., Taira, N., Obi, T. et al. 2020, 'Patient consent management by a purpose-based consent model for electronic health record based on blockchain technology', Healthcare Informatics Research, vol. 26, no. 4, pp. 265–273, <https://doi.org/10.4258/hir.2020.26.4.265>.", "Tremper, G., Brenner, T., Ben Amor, M., Kussel, T. & Lablans, M. 2026, 'Mainzelliste: Ten years of pseudonymization, record linkage, and informed consent management', Patterns, vol. 7, no. 1, p. 101432, <https://doi.org/10.1016/j.patter.2025.101432>.", "Tseng, C.-H., Hsieh, Y.-H., Lin, H.-Y. & Yuan, S.-M. 2025, 'EMR-Chain: Decentralized electronic medical record exchange system', Technologies, vol. 13, no. 10, p. 446, <https://doi.org/10.3390/technologies13100446>.", "Turan, M.N., Hashimzai, I.A. & Qiam, M.Q. 2025, 'A blockchain-based framework for secure and transparent environmental data sharing in smart cities: Enhancing trust, integrity, and interoperability in urban sustainability systems', Nata Palemahan: Journal of Environmental Engineering Innovations, vol. 2, no. 2, pp. 70–79, <https://doi.org/10.38043/natapalemahan.v2i2.6996>.", "Walonoski, J., Kramer, M., Nichols, J., Quina, A., Moesel, C., Hall, D. et al. 2018, 'Synthea: An approach, method, and software mechanism for generating synthetic patients and the synthetic electronic health care record', Journal of the American Medical Informatics Association, vol. 25, no. 3, pp. 230–238, <https://doi.org/10.1093/jamia/ocx079>.", "Webber, E.C., Brick, D., Scibilia, J.P., Dehnel, P., Council on Clinical Information Technology et al. 2019, 'Electronic communication of the health record and information with pediatric patients and their guardians', Pediatrics, vol. 144, no. 1, p. e20191359, <https://doi.org/10.1542/peds.2019-1359>.", "Welzel, C., Ostermann, M., Smith, H.L., Minssen, T., Kirsten, T. & Gilbert, S. 2025, 'Enabling secure and self determined health data sharing and consent management', npj Digital Medicine, vol. 8, no. 1, p. 560, <https://doi.org/10.1038/s41746-025-01945-z>.", "Wood, G. 2014, Ethereum: A secure decentralised generalised transaction ledger, Ethereum Project Yellow Paper.", "Wu, Y., Liu, C., Sebald, L., Nguyen, P. & Yesha, Y. 2022, 'Apply trust computing and privacy preserving smart contracts to manage, share, and analyze multi-site clinical trial data', Proceedings of the International Conference on Deep Learning, Big Data and Blockchain (DBB 2022), LNNS, vol. 541, pp. 3–14, Springer, <https://doi.org/10.1007/978-3-031-16035-6_1>.", "Wu, Z. & Zhang, D. 2025, 'HealthDID: An efficient and authorizable multi-party privacy-preserving EMR sharing system based on DID', Computer Standards & Interfaces, vol. 93, p. 103967, <https://doi.org/10.1016/j.csi.2024.103967>.", "Yin, H., Zhao, Y., Zhang, L., Qiao, B., Chen, W. & Wang, H. 2024, 'Attribute-based searchable encryption with decentralized key management for healthcare data sharing', Journal of Systems Architecture, vol. 148, p. 103081, <https://doi.org/10.1016/j.sysarc.2024.103081>.", "Yin, J., Xiao, Y., Chen, Q., Lim, Y.Z., Liu, X., Pei, Q. et al. 2025, 'DP-DID: A dynamic and proactive decentralized identity system', IEEE Transactions on Information Forensics and Security, vol. 20, pp. 4999–5014, <https://doi.org/10.1109/TIFS.2025.3561662>.", "Zhang, L., Kan, H. & Huang, H. 2022, 'Patient-centered cross-enterprise document sharing and dynamic consent framework using consortium blockchain and ciphertext-policy attribute-based encryption', Proceedings of the 19th ACM International Conference on Computing Frontiers (CF ’22), pp. 58–66, <https://doi.org/10.1145/3528416.3530228>.", "Zhao, J. & Su, Q. 2024, 'A threshold traceable delegation authorization scheme for data sharing in healthcare', Computers & Security, vol. 139, p. 103686, <https://doi.org/10.1016/j.cose.2023.103686>."], "dims": {"uts": [913, 585], "F8": [1368, 1986], "F21": [1156, 855], "F11": [3160, 1746], "F16": [1888, 2118], "F39": [1435, 769], "F2": [2068, 1888], "F6": [2528, 1558], "F43": [2096, 1534], "F23": [1156, 530], "Fplan": [2656, 1170], "F35": [2520, 990], "bg": [1536, 1024], "F27": [850, 670], "F13": [1568, 2406], "F12": [1368, 2038], "F5": [2268, 1138], "bgtitle": [1250, 703], "F10": [1288, 2490], "F37": [2970, 2680], "F42": [2056, 1034], "F14": [1528, 2718], "F41": [2056, 1146], "F32": [850, 420], "F22": [1156, 415], "F24": [1156, 575], "F25": [1013, 313], "F26": [855, 496], "F29": [1013, 1150], "F30": [1013, 835], "F31": [850, 670], "F33": [830, 600], "F34": [830, 550], "F36": [1990, 1010], "F38": [1748, 2180], "F40": [2202, 1270]}}
+{
+ "list": [
+  [
+   "S1",
+   "Abbasi, Humeidi & Wang (2026)",
+   "2026",
+   "Nexa: Enabling Secure, Scalable, and Decentralized Management of Electronic Health Records Using Threshold Cryptography and Public Blockchains",
+   "Multi-party authorisation (Req 3)"
+  ],
+  [
+   "S2",
+   "Albalwy, Brass & Davies (2021)",
+   "2021",
+   "A Blockchain-based dynamic consent architecture to support clinical genomic data sharing (ConsentChain): Proof-of-concept study",
+   "Policy and context (Req 4)"
+  ],
+  [
+   "S3",
+   "Al Amin, Altarawneh & Ray (2023)",
+   "2023",
+   "Informed Consent as Patient Driven Policy for Clinical Diagnosis and Treatment: A Smart Contract Based Approach",
+   "Consent representation (Req 1)"
+  ],
+  [
+   "S4",
+   "Ekholm et al. (2025)",
+   "2025",
+   "Implementing electronic informed consent in rare disease genomics",
+   "Multi-party authorisation (Req 3)"
+  ],
+  [
+   "S5",
+   "Eneh et al. (2026)",
+   "2026",
+   "Demo: EdgeConsent: On-Chain Attribute-Based Access Control for Data Consent Management",
+   "Temporal and lifecycle (Req 5)"
+  ],
+  [
+   "S6",
+   "Hagström et al. (2024)",
+   "2024",
+   "Minors’ and guardian access to and use of a national patient portal: A retrospective comparative case study of Sweden and Finland",
+   "Multi-party authorisation (Req 3)"
+  ],
+  [
+   "S7",
+   "Jaiman & Urovi (2020)",
+   "2020",
+   "A Consent Model for Blockchain-Based Health Data Sharing Platforms",
+   "Policy and context (Req 4)"
+  ],
+  [
+   "S8",
+   "Zhao & Su (2024)",
+   "2024",
+   "A threshold traceable delegation authorization scheme for data sharing in healthcare",
+   "Security assurance (Req 6)"
+  ],
+  [
+   "S9",
+   "Li et al. (2026a)",
+   "2026",
+   "Privacy-Preserving Fine-Grained EMR Access Control for IoMT: A Hybrid RBAC-Smart Contract Scheme With Attribute-Based Authorization",
+   "Temporal and lifecycle (Req 5)"
+  ],
+  [
+   "S10",
+   "Madine et al. (2020)",
+   "2020",
+   "Fully Decentralized Multi-Party Consent Management for Secure Sharing of Patient Health Records",
+   "Multi-party authorisation (Req 3)"
+  ],
+  [
+   "S11",
+   "Maruthi & Singh (2025)",
+   "2025",
+   "Enhancing Security and Privacy of IoMT Data for Unconscious Patient With Blockchain",
+   "Security assurance (Req 6)"
+  ],
+  [
+   "S12",
+   "Mei et al. (2026)",
+   "2026",
+   "Efficient Dual-Revocation CP-ABE for Secure and Fine-Grained Data Sharing in IoMT",
+   "Security assurance (Req 6)"
+  ],
+  [
+   "S13",
+   "Panagoulias et al. (2026)",
+   "2026",
+   "Blockchain-Enabled Trust and Compliance for Clinical AI: Decentralized Governance Without Decentralized Data Storage",
+   "Temporal and lifecycle (Req 5)"
+  ],
+  [
+   "S14",
+   "Phuyal et al. (2026b)",
+   "2026",
+   "Enabling Cross-Institution Health Data Sharing in Norway: EUDI Wallets, On-Chain Consent, and openEHR↔FHIR Translation",
+   "Identity and authority (Req 2)"
+  ],
+  [
+   "S15",
+   "Phuyal et al. (2026a)",
+   "2026",
+   "A Blockchain-Based Architecture for Dynamic and Auditable Patient Consent in Secondary Use of Health Data",
+   "Identity and authority (Req 2)"
+  ],
+  [
+   "S16",
+   "Punia et al. (2025)",
+   "2025",
+   "An access control system for cloud-based healthcare systems driven by blockchain",
+   "Multi-party authorisation (Req 3)"
+  ],
+  [
+   "S17",
+   "Román-Martínez et al. (2023)",
+   "2023",
+   "Blockchain-Based Service-Oriented Architecture for Consent Management, Access Control, and Auditing",
+   "Policy and context (Req 4)"
+  ],
+  [
+   "S18",
+   "Hema, Reddy & Shalini (2026)",
+   "2026",
+   "Patient Centric Cryptographic Protection of Cloud Electronic Health Records",
+   "Temporal and lifecycle (Req 5)"
+  ],
+  [
+   "S19",
+   "SooHoo et al. (2026)",
+   "2026",
+   "Development of the authentication and authorization processes for the iAgree portal, a platform for patient-controlled data sharing across health systems",
+   "Consent representation (Req 1)"
+  ],
+  [
+   "S20",
+   "Tan, Chi & Lam (2024)",
+   "2024",
+   "Secure and privacy-preserving sharing of personal health records with multi-party pre-authorization verification",
+   "Multi-party authorisation (Req 3)"
+  ],
+  [
+   "S21",
+   "Tith et al. (2020)",
+   "2020",
+   "Patient consent management by a purpose-based consent model for electronic health record based on blockchain technology",
+   "Policy and context (Req 4)"
+  ],
+  [
+   "S22",
+   "Tremper et al. (2026)",
+   "2026",
+   "Mainzelliste: Ten years of pseudonymization, record linkage, and informed consent management",
+   "Consent representation (Req 1)"
+  ],
+  [
+   "S23",
+   "Tseng et al. (2025)",
+   "2025",
+   "EMR-Chain: Decentralized Electronic Medical Record Exchange System",
+   "Identity and authority (Req 2)"
+  ],
+  [
+   "S24",
+   "Wu et al. (2022)",
+   "2022",
+   "Apply Trust Computing and Privacy Preserving Smart Contracts to Manage, Share, and Analyze Multi-site Clinical Trial Data",
+   "Multi-party authorisation (Req 3)"
+  ],
+  [
+   "S25",
+   "Wu & Zhang (2025)",
+   "2025",
+   "HealthDID: An efficient and authorizable multi-party privacy-preserving EMR sharing system based on DID",
+   "Security assurance (Req 6)"
+  ]
+ ],
+ "listhdr": [
+  "Study",
+  "Author(s)",
+  "Year",
+  "Title",
+  "Category"
+ ],
+ "t4": {
+  "header": [
+   "Study",
+   "Req 1",
+   "Req 2",
+   "Req 3",
+   "Req 4",
+   "Req 5",
+   "Req 6"
+  ],
+  "rows": [
+   [
+    "S1 Abbasi, Humeidi & Wang (2026)",
+    "Partial",
+    "Partial",
+    "Partial",
+    "Partial",
+    "Partial",
+    "Partial"
+   ],
+   [
+    "S2 Albalwy, Brass & Davies (2021)",
+    "Yes",
+    "Partial",
+    "No",
+    "Yes",
+    "Partial",
+    "Yes"
+   ],
+   [
+    "S3 Al Amin, Altarawneh & Ray (2023)",
+    "Yes",
+    "Partial",
+    "Partial",
+    "Partial",
+    "Partial",
+    "Partial"
+   ],
+   [
+    "S4 Ekholm et al. (2025)",
+    "Partial",
+    "Yes",
+    "Yes",
+    "No",
+    "Partial",
+    "Partial"
+   ],
+   [
+    "S5 Eneh et al. (2026)",
+    "Yes",
+    "Partial",
+    "No",
+    "Yes",
+    "Yes",
+    "Partial"
+   ],
+   [
+    "S6 Hagström et al. (2024)",
+    "Partial",
+    "Yes",
+    "Partial",
+    "Partial",
+    "Yes",
+    "Yes"
+   ],
+   [
+    "S7 Jaiman & Urovi (2020)",
+    "Yes",
+    "Partial",
+    "No",
+    "Yes",
+    "Partial",
+    "Yes"
+   ],
+   [
+    "S8 Zhao & Su (2024)",
+    "Partial",
+    "Partial",
+    "Yes",
+    "Partial",
+    "No",
+    "Yes"
+   ],
+   [
+    "S9 Li et al. (2026a)",
+    "Partial",
+    "Partial",
+    "No",
+    "Yes",
+    "Yes",
+    "Partial"
+   ],
+   [
+    "S10 Madine et al. (2020)",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partial",
+    "Yes",
+    "Partial"
+   ],
+   [
+    "S11 Maruthi & Singh (2025)",
+    "Partial",
+    "Partial",
+    "Yes",
+    "No",
+    "No",
+    "Yes"
+   ],
+   [
+    "S12 Mei et al. (2026)",
+    "Partial",
+    "Partial",
+    "No",
+    "Yes",
+    "Yes",
+    "Yes"
+   ],
+   [
+    "S13 Panagoulias et al. (2026)",
+    "Yes",
+    "Partial",
+    "No",
+    "Yes",
+    "Yes",
+    "Yes"
+   ],
+   [
+    "S14 Phuyal et al. (2026b)",
+    "Yes",
+    "Yes",
+    "No",
+    "Partial",
+    "Partial",
+    "Yes"
+   ],
+   [
+    "S15 Phuyal et al. (2026a)",
+    "Partial",
+    "Partial",
+    "No",
+    "Partial",
+    "Partial",
+    "Partial"
+   ],
+   [
+    "S16 Punia et al. (2025)",
+    "Partial",
+    "Partial",
+    "Yes",
+    "Yes",
+    "Yes",
+    "Partial"
+   ],
+   [
+    "S17 Román-Martínez et al. (2023)",
+    "Yes",
+    "Partial",
+    "No",
+    "Yes",
+    "No",
+    "Partial"
+   ],
+   [
+    "S18 Hema, Reddy & Shalini (2026)",
+    "Yes",
+    "Partial",
+    "No",
+    "Yes",
+    "Yes",
+    "Partial"
+   ],
+   [
+    "S19 SooHoo et al. (2026)",
+    "Partial",
+    "Partial",
+    "No",
+    "Partial",
+    "Partial",
+    "Partial"
+   ],
+   [
+    "S20 Tan, Chi & Lam (2024)",
+    "Yes",
+    "Yes",
+    "Yes",
+    "No",
+    "Partial",
+    "Partial"
+   ],
+   [
+    "S21 Tith et al. (2020)",
+    "Yes",
+    "Partial",
+    "No",
+    "Yes",
+    "Partial",
+    "Partial"
+   ],
+   [
+    "S22 Tremper et al. (2026)",
+    "Partial",
+    "Partial",
+    "No",
+    "Partial",
+    "Partial",
+    "Partial"
+   ],
+   [
+    "S23 Tseng et al. (2025)",
+    "Partial",
+    "Yes",
+    "No",
+    "Partial",
+    "Partial",
+    "Partial"
+   ],
+   [
+    "S24 Wu et al. (2022)",
+    "Partial",
+    "Partial",
+    "Partial",
+    "Partial",
+    "Partial",
+    "Partial"
+   ],
+   [
+    "S25 Wu & Zhang (2025)",
+    "Yes",
+    "Yes",
+    "No",
+    "No",
+    "No",
+    "Yes"
+   ]
+  ]
+ },
+ "refs": [
+  "Abbasi, A., Humeidi, M.N. & Wang, Q. 2026, 'Nexa: Enabling secure, scalable, and decentralized management of electronic health records using threshold cryptography and public blockchains', IEEE Access, vol. 14, pp. 50791–50810, <https://doi.org/10.1109/ACCESS.2026.3677499>.",
+  "Akter, S. & Sanam, T.F. 2025, 'A blockchain framework for secure healthcare data management using role-based access control and smart contracts', 2025 International Conference on Electrical, Computer and Communication Engineering (ECCE), pp. 1–6, <https://doi.org/10.1109/ECCE64574.2025.11013162>.",
+  "Al Amin, M., Altarawneh, A. & Ray, I. 2023, 'Informed consent as patient driven policy for clinical diagnosis and treatment: A smart contract based approach', Proceedings of the 20th International Conference on Security and Cryptography (SECRYPT 2023), pp. 159–170, SciTePress, <https://doi.org/10.5220/0012090600003555>.",
+  "Al Mamun, A., Azam, S. & Gritti, C. 2022, 'Blockchain-based electronic health records management: A comprehensive review and future research direction', IEEE Access, vol. 10, pp. 5768–5789, <https://doi.org/10.1109/ACCESS.2022.3141079>.",
+  "Albalwy, F., Brass, A. & Davies, A. 2021, 'A blockchain-based dynamic consent architecture to support clinical genomic data sharing (ConsentChain): Proof-of-concept study', JMIR Medical Informatics, vol. 9, no. 11, p. e27816, <https://doi.org/10.2196/27816>.",
+  "Andrew, J., Isravel, D.P., Sagayam, K.M., Bhushan, B., Sei, Y. & Eunice, J. 2023, 'Blockchain for healthcare systems: Architecture, security challenges, trends and future directions', Journal of Network and Computer Applications, vol. 215, p. 103633, <https://doi.org/10.1016/j.jnca.2023.103633>.",
+  "Arbabi, M.S., Lal, C., Veeraragavan, N.R., Marijan, D., Nygård, J.F. & Vitenberg, R. 2023, 'A survey on blockchain for healthcare: Challenges, benefits, and future directions', IEEE Communications Surveys & Tutorials, vol. 25, no. 1, pp. 386–424, <https://doi.org/10.1109/COMST.2022.3224644>.",
+  "Bloemen, R., Logvinov, L. & Evans, J. 2017, EIP-712: Typed structured data hashing and signing, Ethereum Improvement Proposals, no. 712, viewed 6 October 2026, <https://eips.ethereum.org/EIPS/eip-712>.",
+  "Cai, B. 2022, ERC-5484: Consensual soulbound tokens, Ethereum Improvement Proposals, no. 5484, viewed 6 October 2026, <https://eips.ethereum.org/EIPS/eip-5484>.",
+  "Consensys 2026, MetaMask developer documentation, viewed 7 October 2026, <https://docs.metamask.io/>.",
+  "Deng, H., Liang, J., Zhang, C., Liu, X., Zhu, L. & Guo, S. 2024, 'FutureDID: A fully decentralized identity system with multi-party verification', IEEE Transactions on Computers, vol. 73, no. 8, pp. 2051–2065, <https://doi.org/10.1109/TC.2024.3398509>.",
+  "Ekholm, K., Augustinsson, A., Sundström, J., Johansen, C., Storgärds, M., Ljöstad, L. et al. 2025, 'Implementing electronic informed consent in rare disease genomics', Scientific Reports, vol. 15, no. 1, p. 44419, <https://doi.org/10.1038/s41598-025-32740-1>.",
+  "Eneh, A.U., Ahakonye, L.A.C., Lee, J.M. & Kim, D.-S. 2026, 'Demo: EdgeConsent: On-chain attribute-based access control for data consent management', 2026 IEEE International Conference on Blockchain and Cryptocurrency (ICBC), pp. 1–2, <https://doi.org/10.1109/ICBC67748.2026.11575534>.",
+  "Entriken, W., Shirley, D., Evans, J. & Sachs, N. 2018, ERC-721: Non-fungible token standard, Ethereum Improvement Proposals, no. 721, viewed 6 October 2026, <https://eips.ethereum.org/EIPS/eip-721>.",
+  "Ethereum Foundation 2026a, Solidity documentation, viewed 7 October 2026, <https://docs.soliditylang.org/>.",
+  "Ethereum Foundation 2026b, Networks, ethereum.org developer documentation, viewed 7 October 2026, <https://ethereum.org/en/developers/docs/networks/>.",
+  "Ethereum Foundation 2026c, Remix IDE documentation, viewed 7 October 2026, <https://remix-ide.readthedocs.io/>.",
+  "Ferreira, J.C., Correia, R., Rosário, L. & Vila, A. 2025, 'Blockchain integration for trust and consent management in MCP-enabled FHIR systems', 2025 IEEE International Conference on Distributed Ledger Technologies (ICDLT), pp. 1–10, <https://doi.org/10.1109/ICDLT66400.2025.11466653>.",
+  "Flamini, A., Sciarretta, G., Scuro, M., Sharif, A., Tomasi, A. & Ranise, S. 2024, 'On cryptographic mechanisms for the selective disclosure of verifiable credentials', Journal of Information Security and Applications, vol. 83, p. 103789, <https://doi.org/10.1016/j.jisa.2024.103789>.",
+  "Ghafoor, A., Symeonidis, I., Rydberg, A., Lindahl, C. & Abbasi, A.Q. 2025, 'Towards empowering stakeholders through decentralized trust and secure livestock data sharing', Cryptography, vol. 9, no. 3, p. 52, <https://doi.org/10.3390/cryptography9030052>.",
+  "Ghosh, P.K., Chakraborty, A., Hasan, M., Rashid, K. & Siddique, A.H. 2023, 'Blockchain application in healthcare systems: A review', Systems, vol. 11, no. 1, p. 38, <https://doi.org/10.3390/systems11010038>.",
+  "Grassi, L., Khovratovich, D., Rechberger, C., Roy, A. & Schofnegger, M. 2021, 'Poseidon: A new hash function for zero-knowledge proof systems', Proceedings of the 30th USENIX Security Symposium, pp. 519–535.",
+  "Groth, J. 2016, 'On the size of pairing-based non-interactive arguments', Advances in Cryptology – EUROCRYPT 2016, LNCS, vol. 9666, pp. 305–326, Springer, <https://doi.org/10.1007/978-3-662-49896-5_11>.",
+  "Hagström, J., Hägglund, M., Holmroos, M., Lähteenmäki, P. & Hörhammer, I. 2024, 'Minors’ and guardian access to and use of a national patient portal: A retrospective comparative case study of Sweden and Finland', International Journal of Medical Informatics, vol. 187, p. 105465, <https://doi.org/10.1016/j.ijmedinf.2024.105465>.",
+  "Hellstern, R., Park, D.C., Lemieux, V. & Salimjan, G. 2022, 'Leveraging blockchain-based archival solutions for sensitive documentation: A Xinjiang case study', Digital Society, vol. 1, no. 1, p. 4, <https://doi.org/10.1007/s44206-022-00007-1>.",
+  "Hema, S., Reddy, G.B.S. & Shalini, R. 2026, 'Patient centric cryptographic protection of cloud electronic health records', 2026 6th International Conference on Expert Clouds and Applications (ICOECA), pp. 293–300, <https://doi.org/10.1109/ICOECA68095.2026.11485301>.",
+  "HL7 International 2019, HL7 FHIR Release 4 (R4), viewed 7 October 2026, <https://hl7.org/fhir/R4/>.",
+  "Ibrahim, A.M., Abdel-Aziz, H.R., Mohamed, H.A.H., Zaghamir, D.E.F., Wahba, N.M.I., Hassan, G.A. et al. 2024, 'Balancing confidentiality and care coordination: Challenges in patient privacy', BMC Nursing, vol. 23, no. 1, p. 564, <https://doi.org/10.1186/s12912-024-02231-1>.",
+  "iden3 2026a, snarkjs: zkSNARKs implementation in JavaScript, version 0.7, npm package, viewed 7 October 2026, <https://www.npmjs.com/package/snarkjs>.",
+  "iden3 2026b, circom: circuit compiler for zero-knowledge proofs, viewed 7 October 2026, <https://docs.circom.io/>.",
+  "Jaiman, V. & Urovi, V. 2020, 'A consent model for blockchain-based health data sharing platforms', IEEE Access, vol. 8, pp. 143734–143745, <https://doi.org/10.1109/ACCESS.2020.3014565>.",
+  "Jesus, V. & Pandit, H.J. 2022, 'Consent receipts for a usable and auditable web of personal data', IEEE Access, vol. 10, pp. 28545–28563, <https://doi.org/10.1109/ACCESS.2022.3157850>.",
+  "Jiang, R., Chen, X., Yu, Y., Zhang, Y. & Ding, W. 2023, 'Risk and UCON-based access control model for healthcare big data', Journal of Big Data, vol. 10, no. 1, p. 104, <https://doi.org/10.1186/s40537-023-00783-8>.",
+  "Kaplow, K., Downey, M., Stewart, D., Massie, A.B., Motter, J.D., Taylor, L. et al. 2024, 'Data professionals’ attitudes on data privacy, sharing, and consent in healthcare and research', Digital Health, vol. 10, p. 20552076241290964, <https://doi.org/10.1177/20552076241290964>.",
+  "Khalid, M.I., Ahmed, M., Helfert, M. & Kim, J. 2023, 'Privacy-first paradigm for dynamic consent management systems: Empowering data subjects through decentralized data controllers and privacy-preserving techniques', Electronics, vol. 12, no. 24, p. 4973, <https://doi.org/10.3390/electronics12244973>.",
+  "Kharlamov, A., Hohmann, R. & Parry, G. 2023, 'Data sharing decisions: Perceptions and intentions in healthcare', Strategic Change, vol. 32, no. 6, pp. 223–237, <https://doi.org/10.1002/jsc.2558>.",
+  "Khayer, B., Mirzaei, S., Alavizadeh, H. & Salehi Shahraki, A. 2025, 'Blockchain for secure IoT: A review of identity management, access control, and trust mechanisms', IoT, vol. 6, no. 4, p. 65, <https://doi.org/10.3390/iot6040065>.",
+  "Li, L., Liu, C.Z. & Shrestha, S. 2026, 'Analytical entropy approach for measuring blockchain immutability and tamper-resilient trust', Entropy, vol. 28, no. 6, p. 690, <https://doi.org/10.3390/e28060690>.",
+  "Li, H., Li, D., Lv, G., Crespi, N., Minerva, R., Shao, W. et al. 2026a, 'Privacy-preserving fine-grained EMR access control for IoMT: A hybrid RBAC-smart contract scheme with attribute-based authorization', IEEE Internet of Things Journal, vol. 13, no. 2, pp. 2970–2987, <https://doi.org/10.1109/JIOT.2025.3633504>.",
+  "Li, L., Liu, C.Z., Huang, K., Deng, R., Alrowaily, M.A., Alghamdi, M. et al. 2026b, 'Trust-aware environmental state consensus for smart agriculture with TEE-enabled sensing and Byzantine-resilient blockchain coordination', Sensors, vol. 26, no. 14, p. 4577, <https://doi.org/10.3390/s26144577>.",
+  "Lomotey, R.K., Kumi, S. & Deters, R. 2022, 'Data trusts as a service: Providing a platform for multi-party data sharing', International Journal of Information Management Data Insights, vol. 2, no. 1, p. 100075, <https://doi.org/10.1016/j.jjimei.2022.100075>.",
+  "Madine, M.M., Salah, K., Jayaraman, R., Yaqoob, I., Al-Hammadi, Y., Ellahham, S. et al. 2020, 'Fully decentralized multi-party consent management for secure sharing of patient health records', IEEE Access, vol. 8, pp. 225777–225791, <https://doi.org/10.1109/ACCESS.2020.3045048>.",
+  "Maruthi, V. & Singh, K. 2025, 'Enhancing security and privacy of IoMT data for unconscious patient with blockchain', IEEE Transactions on Network and Service Management, vol. 22, no. 6, pp. 5223–5238, <https://doi.org/10.1109/TNSM.2025.3602117>.",
+  "Mazzocca, C., Acar, A., Uluagac, A.S., Montanari, R., Bellavista, P. & Conti, M. 2025, 'A survey on decentralized identifiers and verifiable credentials', IEEE Communications Surveys & Tutorials, vol. 27, no. 6, pp. 3641–3671, <https://doi.org/10.1109/COMST.2025.3543197>.",
+  "McClelland, R. & Harper, C.M. 2023, 'Information privacy in healthcare — the vital role of informed consent', European Journal of Health Law, vol. 30, no. 4, pp. 469–480, <https://doi.org/10.1163/15718093-bja10097>.",
+  "Mei, L., Huang, K., Li, X., Wang, H. & Zhang, X. 2026, 'Efficient dual-revocation CP-ABE for secure and fine-grained data sharing in IoMT', IEEE Internet of Things Journal, vol. 13, no. 14, pp. 30933–30940, <https://doi.org/10.1109/JIOT.2026.3685269>.",
+  "Ménétrey, J., Göttel, C., Khurshid, A., Pasin, M., Felber, P., Schiavoni, V. et al. 2022, 'Attestation mechanisms for trusted execution environments demystified', IFIP International Conference on Distributed Applications and Interoperable Systems (DAIS 2022), LNCS, vol. 13272, pp. 95–113, Springer, <https://doi.org/10.1007/978-3-031-16092-9_7>.",
+  "Narkhede, M.R., Wankhede, N.I. & Kamble, A.M. 2025, 'Enhancing patient autonomy in data ownership: Privacy models and consent frameworks for healthcare', Journal of Digital Health, vol. 4, no. 1, pp. 1–23, <https://doi.org/10.55976/jdh.4202513361-23>.",
+  "Nassar Kyriakidou, C.D., Papathanasiou, A.M. & Polyzos, G.C. 2023, 'Decentralized identity with applications to security and privacy for the internet of things', Computer Networks and Communications, vol. 1, no. 2, pp. 244–271, <https://doi.org/10.37256/cnc.1220233048>.",
+  "Nazir, A., Rehmani, M.H., Butler, B. & O’Shea, D. 2026, 'Access control in healthcare IoT: A comprehensive survey', Engineering Reports, vol. 8, no. 4, p. e70766, <https://doi.org/10.1002/eng2.70766>.",
+  "Nguyen, T.L., Nguyen, L., Hoang, T., Bandara, D., Wang, Q., Lu, Q. et al. 2025, 'Blockchain-empowered trustworthy data sharing: Fundamentals, applications, and challenges', ACM Computing Surveys, vol. 57, no. 8, p. 195, <https://doi.org/10.1145/3718082>.",
+  "Page, M.J., McKenzie, J.E., Bossuyt, P.M., Boutron, I., Hoffmann, T.C., Mulrow, C.D. et al. 2021, 'The PRISMA 2020 statement: An updated guideline for reporting systematic reviews', BMJ, vol. 372, p. n71, <https://doi.org/10.1136/bmj.n71>.",
+  "Panagoulias, D.P., Damian, A.I., Stamate, C., Toderian, V., Butusina, P., De Franceschi, A. et al. 2026, 'Blockchain-enabled trust and compliance for clinical AI: Decentralized governance without decentralized data storage', Electronics, vol. 15, no. 14, p. 3046, <https://doi.org/10.3390/electronics15143046>.",
+  "Parameswarath, R.P., Gope, P. & Sikdar, B. 2022, 'User-empowered privacy-preserving authentication protocol for electric vehicle charging based on decentralized identity and verifiable credential', ACM Transactions on Management Information Systems, vol. 13, no. 4, p. 44, <https://doi.org/10.1145/3532869>.",
+  "Phuyal, S., Bhandari, M., Bista, R. & Ferreira, J.C. 2026a, 'A blockchain-based architecture for dynamic and auditable patient consent in secondary use of health data', Blockchain in Healthcare Today, vol. 9, no. 1, p. 491, <https://doi.org/10.30953/bhty.v9.491>.",
+  "Phuyal, S., Bhandari, M., Bista, R. & Ferreira, J.C. 2026b, 'Enabling cross-institution health data sharing in Norway: EUDI wallets, on-chain consent, and openEHR↔FHIR translation', IEEE Access, vol. 14, pp. 20309–20327, <https://doi.org/10.1109/ACCESS.2026.3661642>.",
+  "Prashanth, M.S., Karnati, R., Velpuru, M.S. & Venkateshwara Reddy, H. 2024, 'Enhancing health record security and privacy with blockchain-based access management', Pervasive Knowledge and Collective Intelligence on Web and Social Media (PerSOM 2023), LNICST, vol. 517, pp. 182–202, Springer, <https://doi.org/10.1007/978-3-031-66044-3_13>.",
+  "Punia, A., Gulia, P., Gill, N.S., Kaushik, D., Alduaiji, N., Shukla, P.K. et al. 2025, 'An access control system for cloud-based healthcare systems driven by blockchain', Journal of Cloud Computing, vol. 14, no. 1, p. 78, <https://doi.org/10.1186/s13677-025-00831-z>.",
+  "Román-Martínez, I., Calvillo-Arbizu, J., Mayor-Gallego, V.J., Madinabeitia-Luque, G., Estepa-Alonso, A.J. & Estepa-Alonso, R.M. 2023, 'Blockchain-based service-oriented architecture for consent management, access control, and auditing', IEEE Access, vol. 11, pp. 12727–12741, <https://doi.org/10.1109/ACCESS.2023.3242605>.",
+  "Sawant, N.M. & Gomes, J. 2026, 'A decentralized solution for smarter and safer healthcare systems with FabricMedChain', Iranian Journal of Science and Technology, Transactions of Electrical Engineering, vol. 50, pp. 2843–2869, <https://doi.org/10.1007/s40998-025-00994-0>.",
+  "Shanmugham, M. & Senthilkumar, C. 2026, 'Blockchain enabled self-sovereign identity and consent framework for secure healthcare data access', 2026 3rd International Conference on Emerging Trends in Engineering and Medical Sciences (ICETEMS), pp. 1–6, <https://doi.org/10.1109/ICETEMS66917.2026.11469586>.",
+  "SooHoo, S.L., Keller, M.S., Chen, Y., Hu, D., Huang, S.-C., Kuo, T.-T. et al. 2026, 'Development of the authentication and authorization processes for the iAgree portal, a platform for patient-controlled data sharing across health systems', JAMIA Open, vol. 9, no. 3, p. ooag111, <https://doi.org/10.1093/jamiaopen/ooag111>.",
+  "Tan, K.-L., Chi, C.-H. & Lam, K.-Y. 2024, 'Secure and privacy-preserving sharing of personal health records with multi-party pre-authorization verification', Wireless Networks, vol. 30, no. 4, pp. 4773–4795, <https://doi.org/10.1007/s11276-022-03114-6>.",
+  "Tawfik, A.M., Al-Ahwal, A., Tag Eldien, A.S. & Zayed, H.H. 2025, 'Blockchain-based access control and privacy preservation in healthcare: A comprehensive survey', Cluster Computing, vol. 28, p. 529, <https://doi.org/10.1007/s10586-025-05308-x>.",
+  "Teeda, A. & Subba Rao, Y.V. 2026, 'A patient-centric blockchain based electronic health records for data privacy and confidentiality', International Conference on Smart Computing and Informatics, LNNS, vol. 1684, pp. 179–192, Springer, <https://doi.org/10.1007/978-3-032-08246-6_15>.",
+  "Theodorakopoulos, L., Theodoropoulou, A. & Halkiopoulos, C. 2024, 'Enhancing decentralized decision-making with big data and blockchain technology: A comprehensive review', Applied Sciences, vol. 14, no. 16, p. 7007, <https://doi.org/10.3390/app14167007>.",
+  "Tith, D., Lee, J.-S., Suzuki, H., Wijesundara, W.M.A.B., Taira, N., Obi, T. et al. 2020, 'Patient consent management by a purpose-based consent model for electronic health record based on blockchain technology', Healthcare Informatics Research, vol. 26, no. 4, pp. 265–273, <https://doi.org/10.4258/hir.2020.26.4.265>.",
+  "Tremper, G., Brenner, T., Ben Amor, M., Kussel, T. & Lablans, M. 2026, 'Mainzelliste: Ten years of pseudonymization, record linkage, and informed consent management', Patterns, vol. 7, no. 1, p. 101432, <https://doi.org/10.1016/j.patter.2025.101432>.",
+  "Tseng, C.-H., Hsieh, Y.-H., Lin, H.-Y. & Yuan, S.-M. 2025, 'EMR-Chain: Decentralized electronic medical record exchange system', Technologies, vol. 13, no. 10, p. 446, <https://doi.org/10.3390/technologies13100446>.",
+  "Turan, M.N., Hashimzai, I.A. & Qiam, M.Q. 2025, 'A blockchain-based framework for secure and transparent environmental data sharing in smart cities: Enhancing trust, integrity, and interoperability in urban sustainability systems', Nata Palemahan: Journal of Environmental Engineering Innovations, vol. 2, no. 2, pp. 70–79, <https://doi.org/10.38043/natapalemahan.v2i2.6996>.",
+  "Walonoski, J., Kramer, M., Nichols, J., Quina, A., Moesel, C., Hall, D. et al. 2018, 'Synthea: An approach, method, and software mechanism for generating synthetic patients and the synthetic electronic health care record', Journal of the American Medical Informatics Association, vol. 25, no. 3, pp. 230–238, <https://doi.org/10.1093/jamia/ocx079>.",
+  "Webber, E.C., Brick, D., Scibilia, J.P., Dehnel, P., Council on Clinical Information Technology et al. 2019, 'Electronic communication of the health record and information with pediatric patients and their guardians', Pediatrics, vol. 144, no. 1, p. e20191359, <https://doi.org/10.1542/peds.2019-1359>.",
+  "Welzel, C., Ostermann, M., Smith, H.L., Minssen, T., Kirsten, T. & Gilbert, S. 2025, 'Enabling secure and self determined health data sharing and consent management', npj Digital Medicine, vol. 8, no. 1, p. 560, <https://doi.org/10.1038/s41746-025-01945-z>.",
+  "Wood, G. 2014, Ethereum: A secure decentralised generalised transaction ledger, Ethereum Project Yellow Paper.",
+  "Wu, Y., Liu, C., Sebald, L., Nguyen, P. & Yesha, Y. 2022, 'Apply trust computing and privacy preserving smart contracts to manage, share, and analyze multi-site clinical trial data', Proceedings of the International Conference on Deep Learning, Big Data and Blockchain (DBB 2022), LNNS, vol. 541, pp. 3–14, Springer, <https://doi.org/10.1007/978-3-031-16035-6_1>.",
+  "Wu, Z. & Zhang, D. 2025, 'HealthDID: An efficient and authorizable multi-party privacy-preserving EMR sharing system based on DID', Computer Standards & Interfaces, vol. 93, p. 103967, <https://doi.org/10.1016/j.csi.2024.103967>.",
+  "Yin, H., Zhao, Y., Zhang, L., Qiao, B., Chen, W. & Wang, H. 2024, 'Attribute-based searchable encryption with decentralized key management for healthcare data sharing', Journal of Systems Architecture, vol. 148, p. 103081, <https://doi.org/10.1016/j.sysarc.2024.103081>.",
+  "Yin, J., Xiao, Y., Chen, Q., Lim, Y.Z., Liu, X., Pei, Q. et al. 2025, 'DP-DID: A dynamic and proactive decentralized identity system', IEEE Transactions on Information Forensics and Security, vol. 20, pp. 4999–5014, <https://doi.org/10.1109/TIFS.2025.3561662>.",
+  "Zhang, L., Kan, H. & Huang, H. 2022, 'Patient-centered cross-enterprise document sharing and dynamic consent framework using consortium blockchain and ciphertext-policy attribute-based encryption', Proceedings of the 19th ACM International Conference on Computing Frontiers (CF ’22), pp. 58–66, <https://doi.org/10.1145/3528416.3530228>.",
+  "Zhao, J. & Su, Q. 2024, 'A threshold traceable delegation authorization scheme for data sharing in healthcare', Computers & Security, vol. 139, p. 103686, <https://doi.org/10.1016/j.cose.2023.103686>."
+ ],
+ "dims": {
+  "uts": [
+   913,
+   585
+  ],
+  "F8": [
+   1368,
+   1986
+  ],
+  "F21": [
+   1156,
+   855
+  ],
+  "F11": [
+   3160,
+   1746
+  ],
+  "F16": [
+   1888,
+   2118
+  ],
+  "F39": [
+   1435,
+   769
+  ],
+  "F2": [
+   2068,
+   1888
+  ],
+  "F6": [
+   2528,
+   1558
+  ],
+  "F43": [
+   2096,
+   1534
+  ],
+  "F23": [
+   1156,
+   530
+  ],
+  "Fplan": [
+   2656,
+   1170
+  ],
+  "F35": [
+   2520,
+   990
+  ],
+  "bg": [
+   1536,
+   1024
+  ],
+  "F27": [
+   850,
+   670
+  ],
+  "F13": [
+   1568,
+   2406
+  ],
+  "F12": [
+   1368,
+   2038
+  ],
+  "F5": [
+   2268,
+   1138
+  ],
+  "bgtitle": [
+   1250,
+   703
+  ],
+  "F10": [
+   1288,
+   2306
+  ],
+  "F37": [
+   2970,
+   2680
+  ],
+  "F42": [
+   2056,
+   1034
+  ],
+  "F14": [
+   1528,
+   2718
+  ],
+  "F41": [
+   2056,
+   1146
+  ],
+  "F32": [
+   850,
+   420
+  ],
+  "F22": [
+   1156,
+   415
+  ],
+  "F24": [
+   1156,
+   575
+  ],
+  "F25": [
+   1013,
+   313
+  ],
+  "F26": [
+   855,
+   496
+  ],
+  "F29": [
+   1013,
+   1150
+  ],
+  "F30": [
+   1013,
+   835
+  ],
+  "F31": [
+   850,
+   670
+  ],
+  "F33": [
+   830,
+   600
+  ],
+  "F34": [
+   830,
+   550
+  ],
+  "F36": [
+   1990,
+   1010
+  ],
+  "F38": [
+   1748,
+   2180
+  ],
+  "F40": [
+   2202,
+   1270
+  ]
+ }
+}
