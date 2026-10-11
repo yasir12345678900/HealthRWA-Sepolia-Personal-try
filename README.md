@@ -41,14 +41,19 @@ branch 'main' set up to track 'origin/main'.
 - **Verifiable credentials (RO2)**: `verify_vc(did, role)` now checks a real credential, as in the original design:
   VC_valid = Sig_VC AND Issuer_valid AND Subject_match AND Time_valid, then the role claim (`services/identity_service.py`).
   Demo credentials for `did:parent:A..D` (guardian) and `did:hospital:001..003` (doctor) are in `data/credentials/demo_credentials.json`,
-  signed by one demo issuer (`python3 tools/issue_demo_credentials.py` rebuilds the same file). Full DID resolution is still next-stage work.
+  signed by one demo issuer (`python3 tools/issue_demo_credentials.py` rebuilds the same file).
 - **Patient form**: the authorised doctor and every guardian must be a valid DID holding a valid credential with the right role
-  (a field such as `did:hospital:001did:hospital:002` is now rejected).
-- **Guardian approval**: the guardian's credential is checked before the EIP-712 signature is added; a rejected approval is logged.
+  (a field such as `did:hospital:001did:hospital:002` is now refused); a guardian listed twice is refused.
+- **Guardian approval**: the guardian's credential is checked before the EIP-712 signature is added; a refused approval is logged.
 - **Doctor access**: the doctor enters their own DID. VI checks the DID, the doctor credential and that it is the doctor named in
-  the consent. Ledger rows carry the requester's DID.
+  the consent; a requester who fails VI is refused (and the refusal recorded) before any scope or record is shown.
+  Ledger rows carry the requester's DID and credential (RO2 Step 8) and `matrix_version` 1.3.
 - **Decision matrix**: VL is now the lifecycle check (the consent state must be ACTIVE); the jurisdiction comparison moved into VP
-  (policy context). The screens no longer label it VL.
+  (policy context). In the v1.1 and v1.2 entries above and in the ConsentSBTv3 source comments, "VL" means the jurisdiction field.
 - **Fixed counts**: the "2/2" texts show the real number of guardians.
-- **Tests**: attack A13 (invalid or forged credential) and `tests/test_credentials.py`; 42 tests.
+- **Tests**: attack A13 (invalid or forged credential), `tests/test_credentials.py`, `tests/test_app_flows.py`; 46 tests.
 - **Timings**: `tools/measure_local_timing.py` -> `docs/final_check/metrics_local_2026-10-11.json` (no chain access).
+- **Limits of this stage**: the requester DID is entered, not authenticated (holder binding is next-stage work); there is no full
+  DID resolution; the demo issuer key, like the guardian demo keys, can be reproduced from the source, so A13 shows the
+  verification steps rather than key secrecy; VL checks the state only (ValidState) - the transition check and the SUSPENDED
+  state are next-stage work, and in this prototype VL fails only together with VA or VT. Evidence: `evidence/vc_check_2026-10-11/`.

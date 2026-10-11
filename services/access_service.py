@@ -2,8 +2,10 @@
 Secure Data Access for HALAH
 History Access Link for Authorised Healthcare Version 1
 Authors: Charles, Yasir, Daniel, Kejia, Yasmin, Farookh
-Date: 2026-06-10
+Date: 2026-06-10, 2026-10-11
 '''
+from datetime import datetime
+from services.identity_service import is_valid_did, verify_vc
 
 def guardian_approvals(consent):
     """Distinct approvals from members of the guardian set G (a signer outside G, or the same
@@ -40,21 +42,22 @@ ALLOWED_PURPOSES = {"Treatment", "Research", "Emergency"}
 
 def evaluate_allow(consent, requester_jurisdiction="AU", now=None, verify_sig=None, verify_did=None, requester_did=None):
     """Full decision matrix for C=(I,A,P,T,L,E). Returns dict VI,VA,VP,VT,VL,ALLOW (bools).
-    requester_did: the DID of the participant making the request (defaults to the consent's authorised doctor).
-    verify_did(did, role=None): identity and credential check; the app passes identity_service.verify_vc."""
-    from datetime import datetime
-    from services.identity_service import is_valid_did
-    from services.state_service import lifecycle_state
+    requester_did: the DID entered by the participant making the request (None = the consent's authorised doctor,
+    for offline tools). The DID is entered, not authenticated: VI shows that this DID holds a valid doctor credential
+    and is the doctor named in the consent; proof that the user controls the DID is next-stage work.
+    verify_did(did, role=None, now=None): identity and credential check; defaults to identity_service.verify_vc.
+    Timing tools that measure the predicates only pass a DID-syntax checker explicitly."""
+    from services.state_service import lifecycle_state       # imported here: state_service imports this module
     now = now or datetime.now()
     requester = consent.requester_did if requester_did is None else requester_did
 
+    check = verify_did or verify_vc
+
     def vdid(did, role=None):
-        if verify_did is None:
-            return is_valid_did(did)
         try:
-            return verify_did(did, role=role)
-        except TypeError:                      # a checker that takes only the DID
-            return verify_did(did)
+            return bool(check(did, role=role, now=now))
+        except TypeError:                      # a checker without a `now` argument still gets the role
+            return bool(check(did, role=role))
 
     sigs = getattr(consent, "signature_data", {}) or {}
     # VI: the requester's DID and credential (role doctor), bound to the consent's authorised doctor,
@@ -74,7 +77,8 @@ def evaluate_allow(consent, requester_jurisdiction="AU", now=None, verify_sig=No
     except Exception:
         vt = False
     # VL: consent lifecycle validity - the lifecycle state must be ACTIVE (ValidState).
-    # The transition check (ValidTransition) and the SUSPENDED state are next-stage work.
+    # The transition check (ValidTransition) and the SUSPENDED state are next-stage work. In this prototype every
+    # non-ACTIVE state also fails VA or VT, so VL never refuses a request on its own.
     try:
         vl = lifecycle_state(consent, now) == "ACTIVE"
     except Exception:

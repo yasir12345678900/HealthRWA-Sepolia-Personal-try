@@ -136,6 +136,7 @@ def test_A12_non_owner_cannot_mint_or_revoke():
 
 # A13 - invalid or forged credentials (original report, 6.6 Step 4): a request or an approval backed by a credential that
 # fails VC_valid = Sig_VC AND Issuer_valid AND Subject_match AND Time_valid, or by the wrong role, is refused.
+# The forger here does not hold the issuer key; in the demo that key, like the guardian keys, can be reproduced from the source.
 def test_A13_invalid_or_forged_credential_is_rejected():
     from eth_account import Account
     from web3 import Web3

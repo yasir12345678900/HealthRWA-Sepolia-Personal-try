@@ -35,7 +35,7 @@ def test_each_credential_condition_fails_on_its_own():
     assert r["Issuer_valid"] is False and r["VALID"] is False
     r = check_credential(did, role="doctor", credential=get_credential("did:hospital:002"))
     assert r["Subject_match"] is False and r["VALID"] is False
-    r = check_credential(did, role="doctor", now=datetime(2028, 1, 1)); assert r["Time_valid"] is False and r["VALID"] is False
+    r = check_credential(did, role="doctor", now=datetime(2031, 1, 1)); assert r["Time_valid"] is False and r["VALID"] is False
     r = check_credential(did, role="guardian"); assert r["Role_match"] is False and r["VALID"] is False
     r = check_credential("did:hospital:999", role="doctor"); assert r["VC_found"] is False and r["VALID"] is False
 
@@ -43,7 +43,7 @@ def test_each_credential_condition_fails_on_its_own():
 def test_did_syntax():
     from services.identity_service import is_valid_did
     assert is_valid_did("did:patient:5f01f823-c8e8-9e40-c911-54b7b1ad843a") and is_valid_did("did:hospital:001")
-    for bad in ("", "did:", "did:x", "hospital:001", "did:hospital:00 1", "did:Hospital:001", None, 7):
+    for bad in ("", "did:", "did:x", "hospital:001", "did:hospital:00 1", "did:Hospital:001", "did:hospital:001\n", None, 7):
         assert is_valid_did(bad) is False
 
 
@@ -66,3 +66,26 @@ def test_vl_is_the_lifecycle_check():
     c = _active(); c.signatures = ["did:parent:A"]
     assert lifecycle_state(c) == "PENDING_SIGNATURE" and evaluate_allow(c, "AU")["VL"] is False
     c = _active(); assert evaluate_allow(c, "US")["VL"] is True and evaluate_allow(c, "US")["VP"] is False   # policy context is VP, not VL
+
+
+def test_credential_time_follows_the_evaluation_time_and_bad_fields_fail_closed():
+    from services.access_service import evaluate_allow
+    from services.identity_service import verify_signature, verify_vc, check_credential, get_credential, ISSUER_DID
+    c = _active(); c.expiry_date = "2099-12-31T23:59:59"
+    later = datetime(2031, 6, 1)                                   # after the demo credentials expire (2030-12-31)
+    m = evaluate_allow(c, "AU", now=later, verify_sig=verify_signature, verify_did=verify_vc)
+    assert m["VI"] is False and m["ALLOW"] is False
+    odd = json.loads(json.dumps(get_credential("did:hospital:001"))); odd["issuer"] = {"id": ISSUER_DID}
+    assert check_credential("did:hospital:001", role="doctor", credential=odd)["Sig_VC"] is True   # object-form issuer is read
+    for broken in ("not a credential", {"credentialSubject": "x"}, {}):
+        assert check_credential("did:hospital:001", role="doctor", credential=broken)["VALID"] is False
+
+
+def test_other_predicates_still_fail_through_evaluate_allow():
+    from services.access_service import evaluate_allow
+    c = _active(); c.start_date = (datetime.now() + timedelta(days=1)).isoformat()
+    m = evaluate_allow(c, "AU"); assert m["VT"] is False and m["VL"] is False          # NOT_STARTED
+    c = _active(); c.token_id = None; m = evaluate_allow(c, "AU"); assert m["VA"] is False and m["VL"] is False
+    c = _active(); c.patient_did = "patient-x"; assert evaluate_allow(c, "AU")["VI"] is False
+    c = _active(); assert evaluate_allow(c, "AU")["ALLOW"] is True                       # default checker = credential check
+    c = _active(); c.requester_did = "did:hospital:999"; assert evaluate_allow(c, "AU")["VI"] is False

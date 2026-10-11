@@ -21,7 +21,7 @@ def lifecycle_state(consent, now=None):
     if len(guardian_approvals(consent)) < consent.threshold:
         return "PENDING_SIGNATURE"
 
-    if consent.token_id is None:
+    if not consent.token_id:
         return "PENDING_TOKEN"
 
     if now < start:

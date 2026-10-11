@@ -1,7 +1,8 @@
 """Local timings after the credential check was added (no chain access, nothing is written to the ledger).
 Run:  python3 tools/measure_local_timing.py
 Writes docs/final_check/metrics_local_2026-10-11.json. The decision rule is timed exactly as in tools/collect_metrics.py
-(evaluate_allow(consent, "AU") on consent f050c29a, predicates only, 1,000 runs), so the two files can be compared.
+(evaluate_allow on consent f050c29a, predicates only with a DID-syntax checker, 1,000 runs), so the two files can be
+compared. Consent f050c29a is REVOKED, as it was on 1 October; the state is written to the output.
 It also times the credential check (one credential), EIP-712 signature recovery (one signature), and the decision
 rule with the credential and signature checks switched on."""
 import json, os, sys, time, statistics, datetime
@@ -9,10 +10,12 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from database import consent_db
 from services.access_service import evaluate_allow
-from services.identity_service import verify_signature, verify_vc
+from services.identity_service import verify_signature, verify_vc, is_valid_did
+from services.state_service import lifecycle_state
 N = int(os.environ.get("N_RUNS", "20"))
 OUT = "docs/final_check/metrics_local_2026-10-11.json"
-cons = consent_db.get("f050c29a-3d92-4131-8605-63bcb1ff8d92") or next(iter(consent_db._load().values()))
+cons = consent_db.get("f050c29a-3d92-4131-8605-63bcb1ff8d92") or next(iter(consent_db.CONSENTS.values()))
+syntax_only = lambda d, role=None, now=None: is_valid_did(d)
 
 def timed(fn, n):
     v = []
@@ -21,7 +24,7 @@ def timed(fn, n):
     return v
 
 timing = {
-    "decision_rule_s": timed(lambda: evaluate_allow(cons, "AU"), N * 50),
+    "decision_rule_s": timed(lambda: evaluate_allow(cons, "AU", verify_did=syntax_only), N * 50),
     "vc_verify_one_credential_s": timed(lambda: verify_vc(cons.requester_did, role="doctor"), N),
     "decision_rule_with_credential_and_signature_checks_s": timed(
         lambda: evaluate_allow(cons, "AU", verify_sig=verify_signature, verify_did=verify_vc), N),
@@ -36,7 +39,7 @@ def summ(v):
             "min_ms": min(v) * 1000, "max_ms": max(v) * 1000, "stdev_ms": statistics.stdev(v) * 1000 if len(v) > 1 else 0}
 
 res = {"collected_at": datetime.datetime.now(datetime.timezone.utc).isoformat(), "n_runs": N,
-       "consent_id": cons.consent_id[:8], "timing_summary": {k: summ(v) for k, v in timing.items()}, "timing": timing}
+       "consent_id": cons.consent_id[:8], "consent_state": lifecycle_state(cons), "timing_summary": {k: summ(v) for k, v in timing.items()}, "timing": timing}
 os.makedirs(os.path.dirname(OUT), exist_ok=True)
 json.dump(res, open(OUT, "w"), indent=1)
 print(json.dumps(res["timing_summary"], indent=1))

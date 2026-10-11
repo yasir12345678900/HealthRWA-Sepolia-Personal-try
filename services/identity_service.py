@@ -12,7 +12,10 @@ DEMO KEY MODEL: the guardian key is derived from its DID so the prototype can si
 In production the guardian's own wallet signs the SAME typed data; only verify_signature() is used.
 DEMO ISSUER MODEL: the credentials in data/credentials/demo_credentials.json are signed by one demo issuer whose key is
 derived from a fixed tag (tools/issue_demo_credentials.py). In production the issuer signs with its own key and the
-verifier only needs the issuer's registered address (TRUSTED_ISSUERS). Full DID resolution is not implemented yet.
+verifier only needs the issuer's registered address (TRUSTED_ISSUERS). Like the guardian demo keys, the demo issuer
+key can be reproduced from the source, so the credential check demonstrates the verification, not the secrecy of the
+issuer key. Full DID resolution, and proof that a user controls the DID they enter (holder binding), are not
+implemented yet.
 """
 import json
 import os
@@ -35,7 +38,7 @@ _DID_RE = re.compile(r"^did:[a-z0-9]+:(?:" + _IDCHAR + r"*:)*" + _IDCHAR + r"+$"
 
 
 def is_valid_did(did):
-    return isinstance(did, str) and bool(_DID_RE.match(did))
+    return isinstance(did, str) and bool(_DID_RE.fullmatch(did))
 
 
 # ---------------------------------------------------------------------------
@@ -63,7 +66,9 @@ TRUSTED_ISSUERS = {ISSUER_DID: _issuer_account(ISSUER_DID).address}
 
 def _cred_message(cred):
     s = cred.get("credentialSubject", {}) or {}
-    return {"id": str(cred.get("id", "")), "issuer": str(cred.get("issuer", "")), "subject": str(s.get("id", "")),
+    iss = cred.get("issuer", "")
+    iss = iss.get("id", "") if isinstance(iss, dict) else iss          # W3C allows the issuer as an object with an id
+    return {"id": str(cred.get("id", "")), "issuer": str(iss), "subject": str(s.get("id", "")),
             "role": str(s.get("role", "")), "organisation": str(s.get("organisation", "")),
             "validFrom": str(cred.get("validFrom", "")), "validUntil": str(cred.get("validUntil", ""))}
 
@@ -73,7 +78,7 @@ def _cred_signable(cred):
 
 
 def issue_credential(subject_did, role, organisation="", valid_from="2026-01-01T00:00:00",
-                     valid_until="2027-12-31T23:59:59", issuer_did=ISSUER_DID, signer=None):
+                     valid_until="2030-12-31T23:59:59", issuer_did=ISSUER_DID, signer=None):
     """Issue a role credential for subject_did. `signer` (an eth_account LocalAccount) defaults to the demo issuer key;
     tests pass another key to forge a credential."""
     cred = {"@context": ["https://www.w3.org/ns/credentials/v2"],
@@ -110,28 +115,36 @@ def get_credential(did):
 
 
 def check_credential(did, role=None, credential=None, now=None):
-    """Original report, RO2 Steps 1-6 (without DID resolution): returns each condition and VALID."""
+    """Original report, RO2 Steps 3-6: returns each condition and VALID. Steps 1-2 (DID resolution and DID document
+    verification) are reduced to a DID syntax check in this stage. Sig_VC is checked against the registered key of the
+    trusted issuer, so an untrusted issuer fails both Sig_VC and Issuer_valid. Any malformed field fails the check."""
     now = now or datetime.now()
     cred = credential if credential is not None else get_credential(did)
     r = {"DID_syntax": is_valid_did(did), "VC_found": cred is not None, "Sig_VC": False, "Issuer_valid": False,
          "Subject_match": False, "Time_valid": False, "Role_match": False, "credential_id": None, "issuer": None}
-    if cred is not None:
-        r["credential_id"], r["issuer"] = cred.get("id"), cred.get("issuer")
-        expected = TRUSTED_ISSUERS.get(cred.get("issuer"))
-        r["Issuer_valid"] = expected is not None
+    if isinstance(cred, dict):
         try:
-            recovered = Account.recover_message(_cred_signable(cred), signature=(cred.get("proof") or {}).get("proofValue"))
-            r["Sig_VC"] = expected is not None and recovered == expected
+            iss = cred.get("issuer")
+            iss = iss.get("id") if isinstance(iss, dict) else iss
+            r["credential_id"], r["issuer"] = cred.get("id"), iss
+            expected = TRUSTED_ISSUERS.get(iss) if isinstance(iss, str) else None
+            r["Issuer_valid"] = expected is not None
+            try:
+                recovered = Account.recover_message(_cred_signable(cred), signature=(cred.get("proof") or {}).get("proofValue"))
+                r["Sig_VC"] = expected is not None and recovered == expected
+            except Exception:
+                r["Sig_VC"] = False
+            subj = cred.get("credentialSubject") or {}
+            r["Subject_match"] = isinstance(subj, dict) and subj.get("id") == did
+            try:
+                r["Time_valid"] = datetime.fromisoformat(cred["validFrom"]) <= now <= datetime.fromisoformat(cred["validUntil"])
+            except Exception:
+                r["Time_valid"] = False
+            r["Role_match"] = isinstance(subj, dict) and (role is None or subj.get("role") == role)
         except Exception:
-            r["Sig_VC"] = False
-        subj = cred.get("credentialSubject") or {}
-        r["Subject_match"] = subj.get("id") == did
-        try:
-            r["Time_valid"] = datetime.fromisoformat(cred["validFrom"]) <= now <= datetime.fromisoformat(cred["validUntil"])
-        except Exception:
-            r["Time_valid"] = False
-        r["Role_match"] = role is None or subj.get("role") == role
-    r["VALID"] = all(r[k] for k in ("DID_syntax", "VC_found", "Sig_VC", "Issuer_valid", "Subject_match", "Time_valid", "Role_match"))
+            for k in ("Sig_VC", "Issuer_valid", "Subject_match", "Time_valid", "Role_match"):
+                r[k] = False
+    r["VALID"] = r["VC_found"] and isinstance(cred, dict) and all(r[k] for k in ("DID_syntax", "VC_found", "Sig_VC", "Issuer_valid", "Subject_match", "Time_valid", "Role_match"))
     return r
 
 

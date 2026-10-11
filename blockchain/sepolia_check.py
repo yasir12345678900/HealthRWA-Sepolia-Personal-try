@@ -31,7 +31,7 @@ def main():
     print((OK if s["signer_is_owner"] else NO) + f"Signer is contract owner (owner = {s['owner']})")
     print("Explorer: " + s["explorer_contract"])
     ready = s["is_sepolia"] and s["balance_eth"] > 0 and s["contract_has_code"] and bool(s["signer_is_owner"])
-    print("\nREADY - run the app and complete a 2/2 guardian signature to mint on-chain." if ready else "\nNOT READY - fix the [XX] items above.")
+    print("\nREADY - run the app and complete all guardian approvals (N of N) to mint on-chain." if ready else "\nNOT READY - fix the [XX] items above.")
     return 0 if ready else 3
 
 

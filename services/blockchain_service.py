@@ -45,7 +45,7 @@ def _not_before_ts(consent):
 
 
 def mint_consent(consent):
-    """Real Sepolia mint. Uses mintConsentV3 (VT/VL) when the deployed contract supports it, else v2."""
+    """Real Sepolia mint. Uses mintConsentV3 (validity window and jurisdiction) when the deployed contract supports it, else v2."""
     c = chain.ConsentContract()
     if getattr(c, "has_v3", lambda: False)():
         return c.mint_consent_v3(consent.patient_did, consent.requester_did, consent.purpose,

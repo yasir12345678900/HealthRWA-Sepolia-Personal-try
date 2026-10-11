@@ -191,6 +191,9 @@ if role == "Patient":
         if not guardian_list or not all(verify_vc(g, role="guardian") for g in guardian_list):
             st.error("Enter at least one guardian DID; each must be a valid DID that holds a valid guardian credential.")
             st.stop()
+        if len(set(guardian_list)) != len(guardian_list):
+            st.error("Each guardian DID may appear only once.")
+            st.stop()
         consent = create_consent(
             patient_did,
             doctor.strip(),
@@ -221,7 +224,7 @@ if role == "Patient":
         <div class="blockchain-badge">
             <b>[CONSENT CREATED - OFF-CHAIN]</b><br>
             • <b>Consent ID:</b> {consent.consent_id}<br>
-            • <b>TxHash:</b> OFF-CHAIN - anchoring happens after guardian {len(guardian_list)}/{len(guardian_list)} approval <br>
+            • <b>TxHash:</b> OFF-CHAIN - anchoring happens after guardian {consent.threshold}/{consent.threshold} approval <br>
             • <b>Block Number:</b> pending
         </div>
         """, unsafe_allow_html=True)
@@ -238,7 +241,7 @@ if role == "Patient":
         _cols = st.columns([3, 2, 3, 2])
         _cols[0].markdown(f"`{_c.consent_id[:8]}...` -> {_c.requester_did}")
         _cols[1].markdown(f"**{_state}**")
-        _cols[2].markdown(f"{len(_c.signatures)}/{_c.threshold} sigs - token: {_c.token_id or '-'}")
+        _cols[2].markdown(f"{len(guardian_approvals(_c))}/{_c.threshold} sigs - token: {_c.token_id or '-'}")
         if getattr(_c, "revoked", False):
             _cols[3].markdown("REVOKED")
             continue
@@ -284,7 +287,7 @@ if role == "Guardian":
         if _anchored:
             st.success(f"Already anchored on {onchain_ui.network_label()} - token #{_tid[4:]}")
         elif len(guardian_approvals(consent)) >= consent.threshold:
-            st.warning(f"Threshold {len(consent.signatures)}/{consent.threshold} reached but NOT anchored on {onchain_ui.network_label()} yet (token: {consent.token_id or '-'}). "
+            st.warning(f"Threshold {len(guardian_approvals(consent))}/{consent.threshold} reached but NOT anchored on {onchain_ui.network_label()} yet (token: {consent.token_id or '-'}). "
                        "Click below and wait ~30 s without touching anything.")
             _c1, _c2 = st.columns(2)
             if _c1.button(f"Sync from {onchain_ui.network_label()} (find existing mint)", key=f"sync_{consent.consent_id}"):
@@ -344,7 +347,7 @@ if role == "Guardian":
                     result="SUCCESS",
                     metadata={
                         "threshold": consent.threshold,
-                        "signature_count": len(consent.signatures),
+                        "signature_count": len(guardian_approvals(consent)),
                         "scheme": "EIP-712",
                         "guardian_address": _addr,
                         "signature": _sig,
@@ -430,6 +433,9 @@ if role == "Doctor":
                 st.info("Enter your doctor DID. Your DID and credential are checked as part of VI.")
                 st.stop()
             _rvc = check_credential(requester, role="doctor")
+            # Identity and authority evidence for the ledger (original report, RO2 Step 8)
+            _ev = {"requester_did": requester, "requester_credential": {"credential_id": _rvc["credential_id"],
+                   "issuer": _rvc["issuer"], "valid": _rvc["VALID"]}, "matrix_version": "1.3"}
             if _rvc["VALID"]:
                 st.caption(f"Doctor credential verified: {_rvc['credential_id']} (issuer {_rvc['issuer']}).")
             else:
@@ -446,6 +452,20 @@ if role == "Doctor":
             _m = evaluate_allow(consent, _req_jur, verify_sig=verify_signature, verify_did=verify_vc, requester_did=requester)
             st.markdown("**Decision matrix - ALLOW = VI AND VA AND VP AND VT AND VL**")
             st.table(pd.DataFrame([{k: ("PASS" if v else "FAIL") for k, v in _m.items()}]))
+
+            # A requester who fails VI is refused before any consent detail or data is shown (Algorithm 4).
+            if not _m["VI"]:
+                st.error("Identity and authority check (VI) failed: this requester cannot access this consent.")
+                if st.button("Request Data Access", type="primary", key="request_vi_fail"):
+                    audit_db.log(actor_did="System", actor_role="ConsentEngine", action="STATE_CHECK",
+                                 patient_did=consent.patient_did, consent_id=consent.consent_id, scope=consent.scope,
+                                 purpose=consent.purpose, result=state, metadata={**_m, **_ev})
+                    audit_db.log(actor_did=requester, actor_role="Doctor", action="DATA_ACCESS",
+                                 patient_did=consent.patient_did, consent_id=consent.consent_id, scope=[],
+                                 purpose=consent.purpose, result="DENIED",
+                                 metadata={"consent_state": state, "decision_matrix": _m, **_ev})
+                    st.error("Access Denied (failed check: VI). The denied request is recorded in the audit ledger.")
+                st.stop()
 
             if state.upper() in ["ACTIVE", "SUCCESS"]:
 
@@ -502,7 +522,7 @@ if role == "Doctor":
                         scope=consent.scope,
                         purpose=consent.purpose,
                         result=state,
-                        metadata={**_m, "requester_did": requester}
+                        metadata={**_m, **_ev}
                     )
 
                     # Generate ZK proof
@@ -560,7 +580,9 @@ if role == "Doctor":
                                 "zk_proof_verified": proof_valid,
                                 "scope_valid": valid_scope,
                                 "consent_state": state,
-                                "proof_mode": proof.get("mode")
+                                "proof_mode": proof.get("mode"),
+                                "decision_matrix": _m,
+                                **_ev
                             }
                         )
 
@@ -617,7 +639,8 @@ if role == "Doctor":
                                 "scope_valid": valid_scope,
                                 "consent_state": state,
                                 "proof_mode": proof.get("mode"),
-                                "decision_matrix": _m
+                                "decision_matrix": _m,
+                                **_ev
                             }
                         )
 
@@ -645,7 +668,7 @@ if role == "Doctor":
                         scope=consent.scope,
                         purpose=consent.purpose,
                         result=state,
-                        metadata={**_m, "requester_did": requester}
+                        metadata={**_m, **_ev}
                     )
 
                     audit_db.log(
@@ -659,7 +682,8 @@ if role == "Doctor":
                         result="DENIED",
                         metadata={
                             "consent_state": state,
-                            "decision_matrix": _m
+                            "decision_matrix": _m,
+                            **_ev
                         }
                     )
 

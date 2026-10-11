@@ -1,0 +1,15 @@
+{
+ "create_bad_doctor_rejected": true,
+ "create_bad_guardian_rejected": true,
+ "create_duplicate_guardian_rejected": true,
+ "consent_id": "18ab9b62-4081-40e0-8b6a-4b266b1ea6ae",
+ "create_badge_counts": true,
+ "04_guardian_A_1of2": true,
+ "05_guardian_B_2of2": true,
+ "wrong_doctor_warning": true,
+ "wrong_doctor_denied": true,
+ "granted": true,
+ "vp_fail_shown": true,
+ "revoked_state": true,
+ "revoked_denied": true
+}

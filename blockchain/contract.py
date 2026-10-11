@@ -169,7 +169,7 @@ class ConsentContract:
         return any(x.get("name") == "mintConsentV3" for x in self.abi if x.get("type") == "function")
 
     def mint_consent_v3(self, patient_did, requester_did, purpose, not_before_ts, expiry_ts, jurisdiction="AU", burn_auth=2):
-        """VT: notBefore/expiry, VL: 2-letter jurisdiction, ERC-5484 burnAuth (0 Issuer,1 Owner,2 Both,3 Neither)."""
+        """VT: notBefore/expiry, 2-letter jurisdiction (policy context; the app checks it in VP), ERC-5484 burnAuth (0 Issuer,1 Owner,2 Both,3 Neither)."""
         jur = (jurisdiction or "")[:2].encode("ascii").ljust(2, b"\0") if jurisdiction else b"\0\0"
         fn = self.contract.functions.mintConsentV3(did_to_address(patient_did), did_to_address(requester_did), str(purpose),
                                                    int(not_before_ts), int(expiry_ts), jur, int(burn_auth))

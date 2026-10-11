@@ -76,11 +76,11 @@ except Exception as ex:
 res.setdefault("timing", {})
 cons = consent_db.get("f050c29a-3d92-4131-8605-63bcb1ff8d92") or next(iter(consent_db._load().values()))
 from services.access_service import evaluate_allow
-from services.identity_service import verify_signature
+from services.identity_service import verify_signature, is_valid_did
 from services import zk_service
 tt = []
 for _ in range(N * 50):
-    t0 = time.perf_counter(); evaluate_allow(cons, "AU"); tt.append(time.perf_counter() - t0)
+    t0 = time.perf_counter(); evaluate_allow(cons, "AU", verify_did=lambda d, role=None, now=None: is_valid_did(d)); tt.append(time.perf_counter() - t0)
 res["timing"]["decision_rule_s"] = tt
 sd = getattr(cons, "signature_data", {}) or {}
 if sd:

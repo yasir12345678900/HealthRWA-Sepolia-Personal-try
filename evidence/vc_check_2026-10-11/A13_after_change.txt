@@ -1,4 +1,4 @@
-# The code after this change: credential check, requester bound to the consent doctor
+# The code after this change (tools/a13_probe.py): credential check, requester bound to the consent doctor
 doctor DID with no credential          requester=did:hospital:999                   VI=False ALLOW=False
 two DIDs typed into one field          requester=did:hospital:001did:hospital:002   VI=False ALLOW=False
 a guardian DID used as the doctor      requester=did:parent:A                       VI=False ALLOW=False

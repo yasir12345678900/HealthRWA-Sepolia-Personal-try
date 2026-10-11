@@ -29,7 +29,8 @@ def test_eip712_roundtrip_and_rejections():
     assert verify_signature("did:parent:A") is False
 
 
-def test_matrix_all_pass_and_each_dimension_fails_independently():
+def test_matrix_all_pass_and_each_dimension_can_fail():
+    # VI, VA, VP and VT can each fail alone; VL (lifecycle) fails with VA or VT in this prototype
     from services.access_service import evaluate_allow
     from services.identity_service import verify_signature, verify_vc
     assert evaluate_allow(_signed(_consent()), "AU", verify_sig=verify_signature, verify_did=verify_vc)["ALLOW"] is True
