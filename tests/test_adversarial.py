@@ -1,6 +1,7 @@
-"""Adversarial evaluation of the HALAH authorisation decision (CA2 report, Section 6.8.13).
-Twelve attack scenarios A1-A12, each aimed at one component of C = (I, A, P, T, L, E) or at the contract.
-Every scenario must end in a refusal. No Sepolia transaction is sent: A12 runs the real ConsentSBTv3
+"""Adversarial evaluation of the HALAH authorisation decision.
+Thirteen attack scenarios A1-A13, each aimed at one component of C = (I, A, P, T, L, E) or at the contract.
+Every scenario except A11 must end in a refusal; A11 shows that a rewritten audit event no longer matches its
+digest, which no component compares yet (neutral). No Sepolia transaction is sent: A12 runs the real ConsentSBTv3
 bytecode on an in-memory EVM (eth-tester), and A7/A8 are additionally evidenced on-chain by tools/verify_poc."""
 import json, os, pytest
 from datetime import datetime, timedelta
@@ -8,7 +9,7 @@ from models.consent import Consent
 from models.access import AccessRequest
 from services.access_service import evaluate_allow, check_scope
 from services.state_service import evaluate_state
-from services.identity_service import sign_consent, verify_signature, verify_vc
+from services.identity_service import sign_consent, verify_signature, verify_vc, issue_credential, get_credential
 from services import zk_service as zk
 from database import audit_db
 
@@ -24,8 +25,8 @@ def consent(**kw):
     for k, v in kw.items(): setattr(c, k, v)
     return c
 
-def decide(c, jur="AU"):
-    return evaluate_allow(c, jur, verify_sig=verify_signature, verify_did=verify_vc)
+def decide(c, jur="AU", requester=None, verify_did=verify_vc):
+    return evaluate_allow(c, jur, verify_sig=verify_signature, verify_did=verify_did, requester_did=requester)
 
 def test_baseline_allows():
     assert decide(consent())["ALLOW"] is True
@@ -74,14 +75,15 @@ def test_A6_outside_validity_interval_is_denied():
     assert decide(early)["VT"] is False and decide(early)["ALLOW"] is False
     assert decide(late)["VT"] is False and decide(late)["ALLOW"] is False
 
-# A7 - requester declares a jurisdiction different from the consent's
+# A7 - requester declares a jurisdiction different from the consent's (a policy-context condition, checked in VP)
 def test_A7_jurisdiction_mismatch_is_denied():
-    m = decide(consent(), "US"); assert m["VL"] is False and m["ALLOW"] is False
+    m = decide(consent(), "US"); assert m["VP"] is False and m["ALLOW"] is False
     assert decide(consent(), "AU")["ALLOW"] is True
 
 # A8 - access after revocation
 def test_A8_revoked_consent_is_denied():
-    m = decide(consent(revoked=True)); assert m["VA"] is False and m["ALLOW"] is False
+    m = decide(consent(revoked=True)); assert m["VA"] is False and m["VL"] is False and m["ALLOW"] is False
+    assert evaluate_state(consent(revoked=True)) == "REVOKED"
 
 # A9 - tampered Groth16 proof / public signal
 def test_A9_tampered_proof_fails_verification():
@@ -131,3 +133,29 @@ def test_A12_non_owner_cannot_mint_or_revoke():
         c.functions.transferFrom(patient, attacker, tid).transact({"from": patient})
     c.functions.revoke(tid).transact({"from": owner})
     assert c.functions.checkValid(tid).call() is False
+
+# A13 - invalid or forged credentials (original report, 6.6 Step 4): a request or an approval backed by a credential that
+# fails VC_valid = Sig_VC AND Issuer_valid AND Subject_match AND Time_valid, or by the wrong role, is refused.
+def test_A13_invalid_or_forged_credential_is_rejected():
+    from eth_account import Account
+    from web3 import Web3
+    doctor = "did:hospital:001"
+    good = get_credential(doctor)
+    assert verify_vc(doctor, role="doctor", credential=good) is True                  # positive control
+    forger = Account.from_key(Web3.keccak(text="attacker key"))
+    forged_issuer = issue_credential(doctor, "doctor", signer=forger)                  # signed by a key that is not the issuer's
+    untrusted = issue_credential(doctor, "doctor", issuer_did="did:example:unknown-issuer", signer=forger)
+    tampered = json.loads(json.dumps(get_credential("did:parent:A"))); tampered["credentialSubject"]["role"] = "doctor"
+    other_subject = get_credential("did:hospital:002")                                 # a real credential, but for another DID
+    expired = issue_credential(doctor, "doctor", valid_until=(datetime.now() - timedelta(days=1)).isoformat(timespec="seconds"))
+    wrong_role = get_credential("did:parent:A")                                       # a valid guardian credential, not a doctor's
+    for bad in (forged_issuer, untrusted, tampered, other_subject, expired):
+        assert verify_vc(doctor, role="doctor", credential=bad) is False
+        m = decide(consent(), verify_did=lambda d, role=None, b=bad: verify_vc(d, role=role, credential=b))
+        assert m["VI"] is False and m["ALLOW"] is False
+    assert verify_vc("did:parent:A", role="doctor", credential=wrong_role) is False
+    m = decide(consent(requester_did="did:parent:A"), requester="did:parent:A")       # a guardian posing as the doctor
+    assert m["VI"] is False and m["ALLOW"] is False
+    assert decide(consent(), requester="did:hospital:002")["VI"] is False              # valid doctor, not the one in the consent
+    assert decide(consent(), requester="did:hospital:999")["VI"] is False              # well-formed DID with no credential
+    assert verify_vc("did:parent:A", role="guardian", credential=forged_issuer) is False   # a forged guardian credential

@@ -44,7 +44,7 @@ def test_v3_contract_compat_mint_does_not_use_external_self_call():
 def test_jurisdiction_mismatch_denies():
     from services.access_service import evaluate_allow
     m = evaluate_allow(_consent(jurisdiction="AU"), "US")
-    assert m["VL"] is False and m["ALLOW"] is False
+    assert m["VP"] is False and m["ALLOW"] is False
 
 
 def test_partially_corrupted_csv_is_salvaged(tmp_path):

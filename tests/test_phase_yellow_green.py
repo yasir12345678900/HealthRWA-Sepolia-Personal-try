@@ -33,9 +33,10 @@ def test_matrix_all_pass_and_each_dimension_fails_independently():
     from services.access_service import evaluate_allow
     from services.identity_service import verify_signature, verify_vc
     assert evaluate_allow(_signed(_consent()), "AU", verify_sig=verify_signature, verify_did=verify_vc)["ALLOW"] is True
-    assert evaluate_allow(_signed(_consent()), "US")["VL"] is False
+    assert evaluate_allow(_signed(_consent()), "US")["VP"] is False                 # policy context (requester jurisdiction)
     c = _signed(_consent()); c.expiry_date = (datetime.now() - timedelta(hours=1)).isoformat(); assert evaluate_allow(c, "AU")["VT"] is False
-    c = _signed(_consent()); c.revoked = True; assert evaluate_allow(c, "AU")["VA"] is False
+    c = _signed(_consent()); c.revoked = True; m = evaluate_allow(c, "AU"); assert m["VA"] is False and m["VL"] is False
+    c = _signed(_consent()); c.token_id = None; assert evaluate_allow(c, "AU")["VL"] is False   # PENDING_TOKEN is not ACTIVE
     c = _signed(_consent()); c.purpose = "Marketing"; assert evaluate_allow(c, "AU")["VP"] is False
     c = _signed(_consent()); c.signature_data["did:parent:A"]["signature"] = "0x" + "11" * 65
     assert evaluate_allow(c, "AU", verify_sig=verify_signature)["VI"] is False

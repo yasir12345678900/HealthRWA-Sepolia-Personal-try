@@ -156,7 +156,7 @@ if role == "Patient":
         patients = repo.get_patient_dids()
         patient_did = st.selectbox("Patient DID (Identity Pointer)", patients["DID"].tolist())
         doctor = st.text_input("Authorised Doctor DID", "did:hospital:001")
-        jurisdiction = st.selectbox("Jurisdiction (VL)", ["AU", "SA", "GB", "US"], index=0)
+        jurisdiction = st.selectbox("Jurisdiction (policy context)", ["AU", "SA", "GB", "US"], index=0)
         scope = st.multiselect("Data Access Scope (EMR Modules)", ["Observation", "Medication", "Condition", "Procedure"])
         
     with col2:
@@ -183,12 +183,17 @@ if role == "Patient":
         if not scope:
             st.error("Select at least one EMR module for the data access scope.")
             st.stop()
-        if not guardian_list or not all(verify_vc(g) for g in guardian_list):
-            st.error("Enter at least one guardian DID; each must start with 'did:'.")
+        # Validate the authorised doctor D and the guardian set G (Algorithm 1, lines 5-6):
+        # a valid DID holding a valid credential with the right role.
+        if not verify_vc(doctor.strip(), role="doctor"):
+            st.error("The authorised doctor must be one valid DID that holds a valid doctor credential.")
+            st.stop()
+        if not guardian_list or not all(verify_vc(g, role="guardian") for g in guardian_list):
+            st.error("Enter at least one guardian DID; each must be a valid DID that holds a valid guardian credential.")
             st.stop()
         consent = create_consent(
             patient_did,
-            doctor,
+            doctor.strip(),
             guardian_list,
             scope,
             "Treatment",
@@ -216,7 +221,7 @@ if role == "Patient":
         <div class="blockchain-badge">
             <b>[CONSENT CREATED - OFF-CHAIN]</b><br>
             • <b>Consent ID:</b> {consent.consent_id}<br>
-            • <b>TxHash:</b> OFF-CHAIN - anchoring happens after guardian 2/2 approval <br>
+            • <b>TxHash:</b> OFF-CHAIN - anchoring happens after guardian {len(guardian_list)}/{len(guardian_list)} approval <br>
             • <b>Block Number:</b> pending
         </div>
         """, unsafe_allow_html=True)
@@ -307,6 +312,15 @@ if role == "Guardian":
             if did in consent.signatures:
                 st.warning("This guardian has already signed this consent (one signature per guardian).")
                 st.stop()
+            _vc = check_credential(did, role="guardian")
+            if not _vc["VALID"]:
+                audit_db.log(actor_did=did, actor_role="Guardian", action="SIGN_CONSENT",
+                             patient_did=consent.patient_did, consent_id=consent.consent_id,
+                             scope=consent.scope, purpose=consent.purpose, result="REJECTED",
+                             metadata={"reason": "guardian credential not valid", "credential_checks": _vc})
+                _bad = [k for k in ("DID_syntax", "VC_found", "Sig_VC", "Issuer_valid", "Subject_match", "Time_valid", "Role_match") if not _vc[k]]
+                st.error(f"Guardian credential is not valid ({', '.join(_bad)}) - approval rejected.")
+                st.stop()
             _sig, _addr = sign_consent(did, consent.consent_id)
             if not verify_signature(did, consent.consent_id, _sig):
                 st.error("EIP-712 signature verification failed - approval rejected.")
@@ -314,7 +328,7 @@ if role == "Guardian":
             if not hasattr(consent, "signature_data") or consent.signature_data is None:
                 consent.signature_data = {}
             consent.signature_data[did] = {"scheme": "EIP-712", "signer": _addr, "signature": _sig}
-            if verify_vc(did):
+            if _vc["VALID"]:
                 consent.signatures.append(did)
                 consent_db.update(consent)
                 
@@ -333,11 +347,13 @@ if role == "Guardian":
                         "signature_count": len(consent.signatures),
                         "scheme": "EIP-712",
                         "guardian_address": _addr,
-                        "signature": _sig
+                        "signature": _sig,
+                        "credential_id": _vc["credential_id"],
+                        "credential_issuer": _vc["issuer"]
                     }
                 )
 
-                st.success(f"EIP-712 signature verified (signer {_addr[:10]}...). Multi-sig: {len(consent.signatures)}/{consent.threshold}")
+                st.success(f"Guardian credential verified; EIP-712 signature verified (signer {_addr[:10]}...). Multi-sig: {len(guardian_approvals(consent))}/{consent.threshold}")
 
                 # 如果多签满足阈值，铸造SBT令牌
                 if len(guardian_approvals(consent)) == consent.threshold:
@@ -358,7 +374,7 @@ if role == "Guardian":
                     <div class="blockchain-badge" style="border-left-color: #00f5d4;">
                         <b>[SBT MINTED - LOCAL LEDGER]</b><br>
                         • <b>Soulbound Token ID:</b> {consent.token_id}<br>
-                        • <b>Status:</b> 2/2 guardian approval reached - on-chain anchoring result shown below.
+                        • <b>Status:</b> {len(guardian_approvals(consent))}/{consent.threshold} guardian approval reached - on-chain anchoring result shown below.
                     </div>
                     """, unsafe_allow_html=True)
                     onchain_ui.render_onchain_anchor_async(consent, audit_db, consent_db)
@@ -407,11 +423,27 @@ if role == "Doctor":
                 )
 
             # ---------------------------------
+            # Requester identity and credential (VI)
+            # ---------------------------------
+            requester = st.text_input("Your Doctor DID (requester)", key="requester_did").strip()
+            if not requester:
+                st.info("Enter your doctor DID. Your DID and credential are checked as part of VI.")
+                st.stop()
+            _rvc = check_credential(requester, role="doctor")
+            if _rvc["VALID"]:
+                st.caption(f"Doctor credential verified: {_rvc['credential_id']} (issuer {_rvc['issuer']}).")
+            else:
+                _bad = [k for k in ("DID_syntax", "VC_found", "Sig_VC", "Issuer_valid", "Subject_match", "Time_valid", "Role_match") if not _rvc[k]]
+                st.warning(f"No valid doctor credential for this DID ({', '.join(_bad)}).")
+            if requester != consent.requester_did:
+                st.warning("This DID is not the doctor authorised by this consent.")
+
+            # ---------------------------------
             # Evaluate Consent State
             # ---------------------------------
             state = evaluate_state(consent)
-            _req_jur = st.selectbox("Requester jurisdiction (VL check)", ["AU", "SA", "GB", "US"], index=0, key="req_jur")
-            _m = evaluate_allow(consent, _req_jur, verify_sig=verify_signature, verify_did=verify_vc)
+            _req_jur = st.selectbox("Requester jurisdiction (policy context)", ["AU", "SA", "GB", "US"], index=0, key="req_jur")
+            _m = evaluate_allow(consent, _req_jur, verify_sig=verify_signature, verify_did=verify_vc, requester_did=requester)
             st.markdown("**Decision matrix - ALLOW = VI AND VA AND VP AND VT AND VL**")
             st.table(pd.DataFrame([{k: ("PASS" if v else "FAIL") for k, v in _m.items()}]))
 
@@ -470,7 +502,7 @@ if role == "Doctor":
                         scope=consent.scope,
                         purpose=consent.purpose,
                         result=state,
-                        metadata=_m
+                        metadata={**_m, "requester_did": requester}
                     )
 
                     # Generate ZK proof
@@ -478,7 +510,7 @@ if role == "Doctor":
 
                     # Verify requested scope
                     request = AccessRequest(
-                        consent.requester_did,
+                        requester,
                         consent.patient_did,
                         scope,
                         consent.purpose,
@@ -494,7 +526,7 @@ if role == "Doctor":
                     proof_valid = verify_proof(proof)
 
                     # Authorization decision
-                    # ALLOW also requires the full matrix (e.g. a VL jurisdiction mismatch must deny)
+                    # ALLOW also requires the full matrix (VI to VL)
                     allowed = authorize(
                         state,
                         proof_valid,
@@ -516,7 +548,7 @@ if role == "Doctor":
                         )
 
                         audit_db.log(
-                            actor_did=consent.requester_did,
+                            actor_did=requester,
                             actor_role="Doctor",
                             action="DATA_ACCESS",
                             patient_did=consent.patient_did,
@@ -572,7 +604,7 @@ if role == "Doctor":
                         )
 
                         audit_db.log(
-                            actor_did=consent.requester_did,
+                            actor_did=requester,
                             actor_role="Doctor",
                             action="DATA_ACCESS",
                             patient_did=consent.patient_did,
@@ -613,11 +645,11 @@ if role == "Doctor":
                         scope=consent.scope,
                         purpose=consent.purpose,
                         result=state,
-                        metadata=_m
+                        metadata={**_m, "requester_did": requester}
                     )
 
                     audit_db.log(
-                        actor_did=consent.requester_did,
+                        actor_did=requester,
                         actor_role="Doctor",
                         action="DATA_ACCESS",
                         patient_did=consent.patient_did,

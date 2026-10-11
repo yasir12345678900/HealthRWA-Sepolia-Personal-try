@@ -1,0 +1,5 @@
+# The code before this change (11 Oct 2026): verify_vc only checked the "did:" prefix
+doctor DID with no credential          requester=did:hospital:999                   VI=True ALLOW=True
+two DIDs typed into one field          requester=did:hospital:001did:hospital:002   VI=True ALLOW=True
+a guardian DID used as the doctor      requester=did:parent:A                       VI=True ALLOW=True
+verify_vc('did:anything') = True

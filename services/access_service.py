@@ -38,24 +38,46 @@ def authorize(
 ALLOWED_PURPOSES = {"Treatment", "Research", "Emergency"}
 
 
-def evaluate_allow(consent, requester_jurisdiction="AU", now=None, verify_sig=None, verify_did=None):
-    """Full decision matrix for C=(I,A,P,T,L,E). Returns dict VI,VA,VP,VT,VL,ALLOW (bools)."""
+def evaluate_allow(consent, requester_jurisdiction="AU", now=None, verify_sig=None, verify_did=None, requester_did=None):
+    """Full decision matrix for C=(I,A,P,T,L,E). Returns dict VI,VA,VP,VT,VL,ALLOW (bools).
+    requester_did: the DID of the participant making the request (defaults to the consent's authorised doctor).
+    verify_did(did, role=None): identity and credential check; the app passes identity_service.verify_vc."""
     from datetime import datetime
+    from services.identity_service import is_valid_did
+    from services.state_service import lifecycle_state
     now = now or datetime.now()
-    vdid = verify_did or (lambda d: isinstance(d, str) and d.startswith("did:"))
+    requester = consent.requester_did if requester_did is None else requester_did
+
+    def vdid(did, role=None):
+        if verify_did is None:
+            return is_valid_did(did)
+        try:
+            return verify_did(did, role=role)
+        except TypeError:                      # a checker that takes only the DID
+            return verify_did(did)
+
     sigs = getattr(consent, "signature_data", {}) or {}
-    vi = vdid(consent.requester_did) and vdid(consent.patient_did) and len(consent.signatures) > 0
+    # VI: the requester's DID and credential (role doctor), bound to the consent's authorised doctor,
+    # a well-formed patient DID, and every recorded guardian approval verifies.
+    vi = (vdid(requester, role="doctor") and requester == consent.requester_did
+          and is_valid_did(consent.patient_did) and len(consent.signatures) > 0)
     if verify_sig is not None:
         vi = vi and all(g in sigs and verify_sig(g, consent.consent_id, sigs[g].get("signature")) for g in consent.signatures)
-    # Only distinct approvals from members of the guardian set G count towards the threshold N.
+    # VA: only distinct approvals from members of the guardian set G count towards the threshold N.
     approvers = guardian_approvals(consent)
     va = (len(approvers) >= consent.threshold) and bool(consent.token_id) and not getattr(consent, "revoked", False)
-    vp = consent.purpose in ALLOWED_PURPOSES
+    # VP: purpose and policy context (the requester's jurisdiction must match the consent's).
+    cj = getattr(consent, "jurisdiction", "") or ""
+    vp = consent.purpose in ALLOWED_PURPOSES and ((cj == "") or (cj == requester_jurisdiction))
     try:
         vt = datetime.fromisoformat(consent.start_date) <= now <= datetime.fromisoformat(consent.expiry_date)
     except Exception:
         vt = False
-    cj = getattr(consent, "jurisdiction", "") or ""
-    vl = (cj == "") or (cj == requester_jurisdiction)
+    # VL: consent lifecycle validity - the lifecycle state must be ACTIVE (ValidState).
+    # The transition check (ValidTransition) and the SUSPENDED state are next-stage work.
+    try:
+        vl = lifecycle_state(consent, now) == "ACTIVE"
+    except Exception:
+        vl = False
     return {"VI": bool(vi), "VA": bool(va), "VP": bool(vp), "VT": bool(vt), "VL": bool(vl),
             "ALLOW": bool(vi and va and vp and vt and vl)}

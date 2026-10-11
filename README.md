@@ -36,3 +36,19 @@ branch 'main' set up to track 'origin/main'.
   STATE_CHECK is logged once per access request instead of on every page refresh; guardian DIDs are trimmed and validated.
 - New: `tools/verify_poc.py` (checks the audit ledger against the chain), `tools/poc_screenshots.py` (browser A-to-Z walkthrough),
   `tests/test_regressions.py`.
+
+## v1.3 (2026-10-11) - credentials, VL as the lifecycle check, requester identity
+- **Verifiable credentials (RO2)**: `verify_vc(did, role)` now checks a real credential, as in the original design:
+  VC_valid = Sig_VC AND Issuer_valid AND Subject_match AND Time_valid, then the role claim (`services/identity_service.py`).
+  Demo credentials for `did:parent:A..D` (guardian) and `did:hospital:001..003` (doctor) are in `data/credentials/demo_credentials.json`,
+  signed by one demo issuer (`python3 tools/issue_demo_credentials.py` rebuilds the same file). Full DID resolution is still next-stage work.
+- **Patient form**: the authorised doctor and every guardian must be a valid DID holding a valid credential with the right role
+  (a field such as `did:hospital:001did:hospital:002` is now rejected).
+- **Guardian approval**: the guardian's credential is checked before the EIP-712 signature is added; a rejected approval is logged.
+- **Doctor access**: the doctor enters their own DID. VI checks the DID, the doctor credential and that it is the doctor named in
+  the consent. Ledger rows carry the requester's DID.
+- **Decision matrix**: VL is now the lifecycle check (the consent state must be ACTIVE); the jurisdiction comparison moved into VP
+  (policy context). The screens no longer label it VL.
+- **Fixed counts**: the "2/2" texts show the real number of guardians.
+- **Tests**: attack A13 (invalid or forged credential) and `tests/test_credentials.py`; 42 tests.
+- **Timings**: `tools/measure_local_timing.py` -> `docs/final_check/metrics_local_2026-10-11.json` (no chain access).
