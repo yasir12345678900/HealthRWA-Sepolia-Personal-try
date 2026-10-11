@@ -57,7 +57,7 @@ const ATT=[
   "id": "A7",
   "name": "Requester declares a different jurisdiction",
   "comp": [
-   "L"
+   "P"
   ],
   "before": "Refused",
   "after": "Refused"
@@ -105,6 +105,15 @@ const ATT=[
    "Contract"
   ],
   "before": "Refused",
+  "after": "Refused"
+ },
+ {
+  "id": "A13",
+  "name": "Invalid or forged credential",
+  "comp": [
+   "I"
+  ],
+  "before": "Accepted before the credential check",
   "after": "Refused"
  }
 ];

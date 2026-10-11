@@ -62,7 +62,7 @@ const H=rowH*COMP.length;
 for(let k=lo;k<=hi;k++){const x=sx(Math.pow(10,k));s+=`<line x1="${x}" y1="${top-6}" x2="${x}" y2="${top+H}" stroke="${GRID}"/>`;s+=T(x,top+H+24,tick[k-lo],{a:"middle",fs:16.5,c:INK2});}
 s+=`<line x1="${X0}" y1="${top+H}" x2="${X0+XW}" y2="${top+H}" stroke="${AXIS}" stroke-width="1.5"/>`;
 s+=T(X0+XW/2,top+H+52,"Time per operation (logarithmic scale)",{a:"middle",fs:17,c:INK2,w:600});
-const bgY=top+rowH*5;
+const bgY=top+rowH*(COMP.length-1);
 s+=`<line x1="14" y1="${bgY}" x2="${W-14}" y2="${bgY}" stroke="${AXIS}" stroke-dasharray="4 4"/>`;
 COMP.forEach((c,i)=>{
   const y=top+i*rowH+rowH/2;
@@ -84,7 +84,8 @@ svg("f42",W,top+H+64,s);
 const SHORT={A1:"Approval from a signer outside G",A2:"Signature replayed across consents",A3:"Same guardian approves twice",
  A4:"Request beyond the authorised scope",A5:"Request with an empty scope",A6:"Request outside the validity interval",
  A7:"Different declared jurisdiction",A8:"Access after revocation",A9:"Tampered proof or public signal",
- A10:"Honest proof for an expired consent",A11:"Result of an audit event rewritten",A12:"Non-owner mint or revoke, transfer"};
+ A10:"Honest proof for an expired consent",A11:"Result of an audit event rewritten",A12:"Non-owner mint or revoke, transfer",
+ A13:"Invalid or forged credential"};
 const cols=["I","A","P","T","L","E","Contract"];
 const X0=404, CW=38, CWc=80, top=96, rowH=40;
 const cx=j=> j<6? X0+j*CW+CW/2 : X0+6*CW+CWc/2;
@@ -109,20 +110,22 @@ ATT.forEach((a,i)=>{
   s+=T(14,y+6,a.id,{fs:18,w:700});
   s+=T(62,y+6,SHORT[a.id]||a.name,{fs:17.5});
   cols.forEach((c,j)=>{ if(a.comp.includes(c)) s+=`<circle cx="${cx(j)}" cy="${y}" r="8" fill="${INK2}"/>`; else s+=`<circle cx="${cx(j)}" cy="${y}" r="2.2" fill="${AXIS}"/>`; });
-  const outc=(x,v)=> /^Accepted/.test(v)? bad(x-52,y)+T(x-36,y+6,"Accepted*",{fs:17,w:700}) : (/^Digest/.test(v)? neu(x-52,y)+T(x-36,y+6,"Differs†",{fs:17}) : ok(x-52,y)+T(x-36,y+6,"Refused",{fs:17}));
+  const outc=(x,v)=> /credential check/.test(v)? bad(x-52,y)+T(x-36,y+6,"Accepted‡",{fs:17,w:700}) : /^Accepted/.test(v)? bad(x-52,y)+T(x-36,y+6,"Accepted*",{fs:17,w:700}) : (/^Digest/.test(v)? neu(x-52,y)+T(x-36,y+6,"Differs†",{fs:17}) : ok(x-52,y)+T(x-36,y+6,"Refused",{fs:17}));
   s+=outc(OX+OW/2,a.before);
   s+=outc(OX+OW*1.5,a.after);
 });
 const yb=top+ATT.length*rowH-6;
 s+=`<line x1="10" y1="${yb}" x2="${W-10}" y2="${yb}" stroke="${AXIS}" stroke-width="1.5"/>`;
-const notes=["I identity, A authority, P policy and scope, T time, L jurisdiction, E evidence and its",
+const notes=["I identity, A authorisation, P policy and scope, T time, L lifecycle, E evidence and its",
  "revocation dimension. Contract denotes ConsentSBTv3 executed on an in-memory EVM.",
  "* Accepted at unit level, when the service function was called directly before the",
  "  hardening. The interface of the 24 September demonstration already refused it.",
  "† The recomputed digest of the rewritten event differs from the stored digest, but no",
- "  component of the prototype compares the two, so a neutral marker is used."];
+ "  component of the prototype compares the two, so a neutral marker is used.",
+ "‡ Before the credential check was added on 11 October 2026, only the DID format was",
+ "  checked, so a requester without a valid credential was accepted."];
 notes.forEach((l,k)=>{ s+=T(14,yb+28+k*24,l,{fs:18,c:INK2}); });
-svg("f43",W,yb+28+6*24,s);
+svg("f43",W,yb+28+notes.length*24,s);
 }
 </script>
 </body></html>
