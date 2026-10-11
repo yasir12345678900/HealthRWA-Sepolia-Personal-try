@@ -75,6 +75,8 @@ with sync_playwright() as pw:
         role(p, "Doctor")
         f = p.get_by_label("Enter Authorised Consent ID", exact=True)
         f.fill(CID); f.press("Enter"); wait_idle(p)
+        d = p.get_by_label("Your Doctor DID (requester)", exact=True)
+        d.fill(os.environ.get("POC_DOCTOR", "did:hospital:001")); d.press("Enter"); wait_idle(p)
         full_shot(p, "doctor_revoked_lookup")
     step("doctor lookup", doctor)
     b.close()
