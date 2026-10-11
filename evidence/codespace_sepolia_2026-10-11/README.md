@@ -40,3 +40,8 @@ Only one mint was sent for each consent, even though a guardian button was press
 | `22_3G_e9ef47d2_auditor_detailed_records.webp` | Detailed audit records of e9ef47d2, with the on-chain mint in block 11,888,870 |
 | `23_audit_ledger_all_82_events.csv` | Full audit ledger exported by the auditor (82 events) |
 | `24_audit_ledger_e9ef47d2.csv` | Audit records of consent e9ef47d2 only |
+| `25_56428247_patient_form_doctor_field_two_dids.webp` | Patient form: the doctor field holds "did:hospital:001did:hospital:002" (two DIDs without a separator); scope Medication |
+| `26_56428247_patient_created_offchain.webp` | The consent is accepted and created off-chain; the doctor field is not checked |
+| `27_56428247_guardian_B_2of2_token_anchoring.webp` | 2/2 reached, local token, anchoring on Sepolia |
+| `28_56428247_doctor_active_all_pass.webp` | Doctor view: ACTIVE, all checks PASS; the screen does not ask which doctor is requesting |
+| `29_56428247_doctor_medication_granted.webp` | Medication records released |
