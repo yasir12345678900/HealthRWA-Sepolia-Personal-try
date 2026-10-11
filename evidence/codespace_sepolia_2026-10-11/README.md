@@ -8,7 +8,7 @@ request on a consent that is not ACTIVE. The app was connected to Sepolia (contr
 | Consent | Guardians | Transaction | Block | Time (UTC) | Status |
 |---|---|---|---|---|---|
 | 49c7bfaa | 2 of 2 | `0x7a9efb621e8497259c53e9b1c69e60d350bf4f47f2e378049e734d813dd08949` (mintConsentV3) | 11,888,788 | 02:42:12 | success, token #3 |
-| e9ef47d2 | 3 of 3 | `0x432b25ab81b14b381a8810436af14f796b815f1d099fb9dc75ce1d67093fe428` (mintConsentV3) | 11,888,870 | 02:58:36 | success |
+| e9ef47d2 | 3 of 3 | `0x432b25ab81b14b381a8810436af14f796b815f1d099fb9dc75ce1d67093fe428` (mintConsentV3) | 11,888,870 | 02:58:36 | success, token #4 |
 
 Only one mint was sent for each consent, even though a guardian button was pressed more than once.
 
@@ -33,3 +33,10 @@ Only one mint was sent for each consent, even though a guardian button was press
 | `15_3G_e9ef47d2_doctor_request_observation.webp` | Doctor selects the agreed module (Observation) |
 | `16_3G_e9ef47d2_doctor_access_granted_records.webp` | Groth16 verification successful, access granted, records shown |
 | `17_3G_e9ef47d2_observation_export.csv` | The Observation records the doctor downloaded (synthetic Synthea patient) |
+| `18_auditor_dashboard_82_events.webp` | Auditor dashboard: 82 events, 12 consent events, 13 access requests, 7 on-chain anchors |
+| `19_3G_e9ef47d2_auditor_lifecycle_create_and_signatures.webp` | Auditor lifecycle of e9ef47d2: creation, signatures of A and B |
+| `20_3G_e9ef47d2_auditor_lifecycle_denied_then_C_signs.webp` | STATE_CHECK PENDING_SIGNATURE and DATA_ACCESS DENIED at 2/3, then guardian C signs |
+| `21_3G_e9ef47d2_auditor_lifecycle_mint_and_active.webp` | Local token, on-chain mint, STATE_CHECK ACTIVE |
+| `22_3G_e9ef47d2_auditor_detailed_records.webp` | Detailed audit records of e9ef47d2, with the on-chain mint in block 11,888,870 |
+| `23_audit_ledger_all_82_events.csv` | Full audit ledger exported by the auditor (82 events) |
+| `24_audit_ledger_e9ef47d2.csv` | Audit records of consent e9ef47d2 only |
