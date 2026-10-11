@@ -600,6 +600,42 @@ if role == "Doctor":
                     "because the consent is not currently valid."
                 )
 
+                # A request on a consent that is not ACTIVE is denied and recorded,
+                # like every other denied request (lifecycle-based denial).
+                if st.button("Request Data Access", type="primary", key="request_inactive"):
+
+                    audit_db.log(
+                        actor_did="System",
+                        actor_role="ConsentEngine",
+                        action="STATE_CHECK",
+                        patient_did=consent.patient_did,
+                        consent_id=consent.consent_id,
+                        scope=consent.scope,
+                        purpose=consent.purpose,
+                        result=state,
+                        metadata=_m
+                    )
+
+                    audit_db.log(
+                        actor_did=consent.requester_did,
+                        actor_role="Doctor",
+                        action="DATA_ACCESS",
+                        patient_did=consent.patient_did,
+                        consent_id=consent.consent_id,
+                        scope=[],
+                        purpose=consent.purpose,
+                        result="DENIED",
+                        metadata={
+                            "consent_state": state,
+                            "decision_matrix": _m
+                        }
+                    )
+
+                    st.error(
+                        f"Access Denied: the consent is {state}. "
+                        "The denied request is recorded in the audit ledger."
+                    )
+
 
 
 
