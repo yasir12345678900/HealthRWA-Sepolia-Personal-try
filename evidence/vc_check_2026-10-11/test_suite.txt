@@ -52,4 +52,4 @@ tests/test_zk.py::test_placeholder_mode_is_labelled_honestly PASSED      [ 95%]
 tests/test_zk.py::test_real_groth16_roundtrip_and_tamper PASSED          [ 97%]
 tests/test_zk.py::test_expired_consent_cannot_be_proven PASSED           [100%]
 
-============================= 46 passed in 16.21s ==============================
+============================= 46 passed in 14.93s ==============================

@@ -60,3 +60,6 @@ def test_doctor_screen_refuses_another_doctor_and_records_it(app_test):
     [t for t in at.text_input if t.label == "Your Doctor DID (requester)"][0].set_value("did:hospital:001").run()
     assert not any("(VI) failed" in e.value for e in at.error)
     assert any(s.value == "Authorised Data Scope" for s in at.subheader)
+    [b for b in at.button if b.label.startswith("Request Data Access")][0].click().run()     # no module selected
+    rows = [e for e in audit_db.get() if e["consent_id"] == c.consent_id and e["action"] == "DATA_ACCESS"]
+    assert rows[-1]["result"] == "DENIED" and rows[-1]["metadata"]["reason"] == "empty request scope"

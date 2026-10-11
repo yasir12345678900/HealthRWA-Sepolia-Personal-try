@@ -510,7 +510,16 @@ if role == "Doctor":
                 ):
 
                     if not scope:
-                        st.warning("Please select at least one authorised data module.")
+                        # An empty request scope is refused (attack A5) and recorded like every other refusal.
+                        audit_db.log(actor_did="System", actor_role="ConsentEngine", action="STATE_CHECK",
+                                     patient_did=consent.patient_did, consent_id=consent.consent_id, scope=consent.scope,
+                                     purpose=consent.purpose, result=state, metadata={**_m, **_ev})
+                        audit_db.log(actor_did=requester, actor_role="Doctor", action="DATA_ACCESS",
+                                     patient_did=consent.patient_did, consent_id=consent.consent_id, scope=[],
+                                     purpose=consent.purpose, result="DENIED",
+                                     metadata={"consent_state": state, "reason": "empty request scope",
+                                               "decision_matrix": _m, **_ev})
+                        st.warning("Please select at least one authorised data module. The refused request is recorded in the audit ledger.")
                         st.stop()
 
                     audit_db.log(
