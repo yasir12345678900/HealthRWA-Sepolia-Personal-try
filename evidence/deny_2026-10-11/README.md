@@ -4,8 +4,9 @@ This is a real run of the Streamlit app, driven by a browser (Playwright + Chrom
 It shows three requests that the doctor sends on a consent that is not ACTIVE. Since the change in `app.py`
 on this date, such a request is denied and recorded in the audit ledger, like every other denied request.
 
-**Setup:** the app ran on a copy of `data/halah.db` taken after the 24 September run (`halah_run.db` here),
-so `data/halah.db` itself is unchanged. No chain was configured ("Demo mode (local ledger)"), so no new Sepolia
+**Setup:** the app ran on a copy of `data/halah.db` taken after the 24 September run
+(`HALAH_DB_PATH` pointed to the copy), so `data/halah.db` itself is unchanged. The copy is not kept in the
+repository (`*.db` is ignored); every event it gained is in the CSV file below. No chain was configured ("Demo mode (local ledger)"), so no new Sepolia
 transaction was sent. The revocation of consent f050c29a is the one already on Sepolia (block 11,771,307).
 Times are Sydney time (AEDT).
 
