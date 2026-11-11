@@ -19,6 +19,7 @@ import database.repository as repository
 import database.consent_db as consent_db
 import database.audit_db as audit_db
 from models.access import AccessRequest
+from services import capacity_service, trigger_service, time_source
 
 # ==========================================
 # MEDICAL & BLOCKCHAIN THEME CSS INJECTION
@@ -158,9 +159,17 @@ if role == "Patient":
         doctor = st.text_input("Authorised Doctor DID", "did:hospital:001")
         jurisdiction = st.selectbox("Jurisdiction (policy context)", ["AU", "SA", "GB", "US"], index=0)
         scope = st.multiselect("Data Access Scope (EMR Modules)", ["Observation", "Medication", "Condition", "Procedure"])
+        birth_text = st.text_input("Patient Date of Birth (YYYY-MM-DD, optional)", value="",
+                                   help="When given, the consent passes to the patient's own authority at the age of majority.")
+        trigger_event = st.text_input("Conditional Trigger Event (optional)", value="",
+                                      help="An event that a clinician must attest before the consent becomes active.")
         
     with col2:
         guardians = st.text_area("Designated Guardian DIDs (Comma Separated)", "did:parent:A,did:parent:B")
+        _g_count = len({g.strip() for g in guardians.split(",") if g.strip()}) or 1
+        # Patient-defined threshold N with 1 <= N <= |G| (thesis Section 3.2.4). The default N = |G| is the N-of-N rule.
+        threshold_n = st.number_input("Approval Threshold N (guardians who must approve)", min_value=1,
+                                      max_value=_g_count, value=_g_count, step=1)
         st.markdown("**Contract Temporal Validity**")
         start_text = st.text_input("Start Time (YYYY-MM-DD HH:MM:SS)", value=datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
         expiry_text = st.text_input("Expiry Time (YYYY-MM-DD HH:MM:SS)", value="2026-12-31 23:59:59")
@@ -177,6 +186,13 @@ if role == "Patient":
         st.stop()
 
     guardian_list = [g.strip() for g in guardians.split(",") if g.strip()]
+    birth_date = None
+    if birth_text.strip():
+        try:
+            birth_date = datetime.strptime(birth_text.strip(), "%Y-%m-%d").date()
+        except ValueError:
+            st.error("Date of birth format must be YYYY-MM-DD")
+            st.stop()
 
     st.markdown("---")
     if st.button("Initial Consent"):
@@ -194,16 +210,22 @@ if role == "Patient":
         if len(set(guardian_list)) != len(guardian_list):
             st.error("Each guardian DID may appear only once.")
             st.stop()
-        consent = create_consent(
-            patient_did,
-            doctor.strip(),
-            guardian_list,
-            scope,
-            "Treatment",
-            start_datetime.isoformat(),
-            expiry_datetime.isoformat()
-        )
-        consent.jurisdiction = jurisdiction
+        try:
+            consent = create_consent(
+                patient_did,
+                doctor.strip(),
+                guardian_list,
+                scope,
+                "Treatment",
+                start_datetime.isoformat(),
+                expiry_datetime.isoformat(),
+                threshold=int(threshold_n),
+                context=jurisdiction,
+                patient_birth_date=birth_date
+            )
+        except ValueError as _e:
+            st.error(f"Consent specification rejected: {_e}")
+            st.stop()
         consent_db.save(consent)
 
         # 触发审计日志并捕获返回值记录虚拟交易
@@ -217,6 +239,13 @@ if role == "Patient":
             purpose="Treatment",
             result="SUCCESS"
         )
+        # Algorithm 6.3: the capacity transition at the age of majority and the conditional trigger are
+        # recorded with the consent, and a consent that waits on either of them is SUSPENDED.
+        if birth_date is not None:
+            capacity_service.schedule_majority_transition(consent, datetime.now())
+        if trigger_event.strip():
+            trigger_service.add_trigger(consent, trigger_event.strip(), attester_role="doctor",
+                                        actor_did=patient_did, actor_role="Patient")
         
         st.success("Consent contract created and logged (off-chain).")
         # 视觉渲染渲染区块链生成的哈希结果
@@ -224,7 +253,7 @@ if role == "Patient":
         <div class="blockchain-badge">
             <b>[CONSENT CREATED - OFF-CHAIN]</b><br>
             • <b>Consent ID:</b> {consent.consent_id}<br>
-            • <b>TxHash:</b> OFF-CHAIN - anchoring happens after guardian {consent.threshold}/{consent.threshold} approval <br>
+            • <b>TxHash:</b> OFF-CHAIN - anchoring happens after {consent.threshold} of {len(consent.guardian_dids)} guardian approvals <br>
             • <b>Block Number:</b> pending
         </div>
         """, unsafe_allow_html=True)
@@ -242,9 +271,28 @@ if role == "Patient":
         _cols[0].markdown(f"`{_c.consent_id[:8]}...` -> {_c.requester_did}")
         _cols[1].markdown(f"**{_state}**")
         _cols[2].markdown(f"{len(guardian_approvals(_c))}/{_c.threshold} sigs - token: {_c.token_id or '-'}")
-        if getattr(_c, "revoked", False):
+        if getattr(_c, "revoked", False) or _state == "REVOKED":
             _cols[3].markdown("REVOKED")
             continue
+        if capacity_service.pending_transitions(_c, datetime.now()):
+            st.caption(f"`{_c.consent_id[:8]}...`: the patient has reached the age of majority. "
+                       "The consent is suspended until the patient takes it over.")
+            if st.button("Take over this consent (age of majority)", key=f"tr_{_c.consent_id}"):
+                def _mint_local(_new):
+                    # the local ledger token of the re-issued consent. execute_transition records the mint.
+                    _new.token_id = f"SBT-LOCAL-{_new.consent_id[:8]}"
+                    return _new.token_id
+                def _revoke_old(_old):
+                    _t = str(_old.token_id or "")
+                    if bc.onchain_enabled() and _t.startswith("SBT-") and _t[4:].isdigit():
+                        return bc.revoke(int(_t[4:]))
+                    return {"token_id": _old.token_id, "status": 1}
+                _tr = capacity_service.execute_transition(_c, _mint_local, _revoke_old, now=datetime.now())
+                if _tr["status"] == "COMPLETED":
+                    st.success(f"Consent re-issued to the patient: {_tr['successor_id']} (guardian set: the patient, threshold 1).")
+                else:
+                    st.warning(f"Transition {_tr['status']}: {_tr.get('reason')}")
+                st.rerun()
         if _cols[3].button("Revoke", key=f"rv_{_c.consent_id}"):
             consent_db.revoke(_c.consent_id)
             audit_db.log(actor_did=patient_did, actor_role="Patient", action="REVOKE_CONSENT",
@@ -447,11 +495,39 @@ if role == "Doctor":
             # ---------------------------------
             # Evaluate Consent State
             # ---------------------------------
-            state = evaluate_state(consent)
+            # The time of the decision and the label of its source (the system clock is a labelled fallback).
+            _now, _time_source = time_source.trusted_now()
+            _waiting = trigger_service.waiting_triggers(consent)
+            if _waiting and _rvc["VALID"]:
+                with st.expander(f"Conditional triggers waiting for an attestation ({len(_waiting)})", expanded=True):
+                    for _t in _waiting:
+                        _tev = _t.get("event") if isinstance(_t, dict) else str(_t)
+                        st.write(f"Event: **{_tev}** (attester role: {_t.get('attester_role', 'doctor') if isinstance(_t, dict) else 'doctor'})")
+                        if st.button(f"Attest this event as {requester}", key=f"att_{_t.get('id') if isinstance(_t, dict) else _tev}"):
+                            _att = trigger_service.sign_attestation(requester, consent, _tev)
+                            _pr = trigger_service.present_attestation(consent, _att, trigger_id=_t.get("id"), now=_now,
+                                                                      verify_did=verify_identity)
+                            if _pr["VALID"]:
+                                st.success("Attestation verified and recorded. The trigger is satisfied.")
+                            else:
+                                st.error(f"Attestation refused: {_pr['reason']}")
+                            st.rerun()
+            # Algorithm 6.3: triggers and capacity transitions are evaluated before the decision.
+            capacity_service.evaluate_conditions(consent, _now)
+            state = evaluate_state(consent, _now)
             _req_jur = st.selectbox("Requester jurisdiction (policy context)", ["AU", "SA", "GB", "US"], index=0, key="req_jur")
-            _m = evaluate_allow(consent, _req_jur, verify_sig=verify_signature, verify_did=verify_vc, requester_did=requester)
+            _purposes = sorted(ALLOWED_PURPOSES)
+            _req_purpose = st.selectbox("Purpose of this request", _purposes,
+                                        index=_purposes.index("Treatment") if "Treatment" in _purposes else 0, key="req_purpose")
+            # The purpose of the request is compared with the purpose of the consent inside VP (thesis Section 3.2.5).
+            _full = decision_matrix(consent, _req_jur, now=_now, verify_sig=verify_signature, verify_did=verify_vc,
+                                    requester_did=requester, request_purpose=_req_purpose)
+            _m = {k: _full[k] for k in MATRIX_KEYS}
+            _ev.update({"time_source": _time_source, "request_purpose": _req_purpose, "deny_codes": list(_full["DENY"])})
             st.markdown("**Decision matrix - ALLOW = VI AND VA AND VP AND VT AND VL**")
             st.table(pd.DataFrame([{k: ("PASS" if v else "FAIL") for k, v in _m.items()}]))
+            if _full["DENY"]:
+                st.caption("Deny codes: " + ", ".join(_full["DENY"]))
 
             # A requester who fails VI is refused before any consent detail or data is shown (Algorithm 4).
             if not _m["VI"]:
@@ -542,7 +618,7 @@ if role == "Doctor":
                         requester,
                         consent.patient_did,
                         scope,
-                        consent.purpose,
+                        _req_purpose,
                         datetime.now().isoformat()
                     )
 
@@ -550,6 +626,10 @@ if role == "Doctor":
                         consent,
                         request
                     )
+                    # Algorithm 6.1: the decision for this request, with its purpose and its scope, and its deny code.
+                    _final = decision_matrix(consent, _req_jur, now=_now, verify_sig=verify_signature, verify_did=verify_vc,
+                                             requester_did=requester, request_purpose=_req_purpose, request_scope=scope)
+                    _ev.update({"deny_codes": list(_final["DENY"]), "deny_code": deny_code(_final)})
 
                     # Verify proof
                     proof_valid = verify_proof(proof)
@@ -560,7 +640,7 @@ if role == "Doctor":
                         state,
                         proof_valid,
                         valid_scope
-                    ) and _m["ALLOW"]
+                    ) and _m["ALLOW"] and _final["ALLOW"]
 
                     # ---------------------------------
                     # ACCESS GRANTED
@@ -632,6 +712,7 @@ if role == "Doctor":
                             "Security Exception: "
                             "Access Denied by ZK-Policy."
                             + (f" Failed checks: {', '.join(_failed)}" if _failed else "")
+                            + (f" Deny code: {deny_code(_final)}" if deny_code(_final) else "")
                         )
 
                         audit_db.log(
@@ -657,6 +738,7 @@ if role == "Doctor":
 
                 st.error(
                     f"Consent is not active. Current state: {state}"
+                    + (f" (deny code: {deny_code(_full)})" if deny_code(_full) else "")
                 )
 
                 st.warning(
