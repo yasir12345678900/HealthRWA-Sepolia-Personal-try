@@ -11,3 +11,4 @@ zk/build/
 zk/node_modules/
 zk/circom
 zk/package*.json
+data/credential_status.json
