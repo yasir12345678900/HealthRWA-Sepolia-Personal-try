@@ -72,7 +72,7 @@ def test_default_threshold_keeps_the_n_of_n_rule():
     assert c.jurisdiction == "AU" and c.patient_birth_date is None and c.token_id is None and c.signatures == []
 
 
-@pytest.mark.parametrize("k,n", [(2, 2), (2, 3), (3, 5), (1, 3)])
+@pytest.mark.parametrize("k,n", [(2, 2), (3, 3), (2, 3), (3, 5), (1, 3)])
 def test_k_of_n_consent_is_issued_by_the_kth_distinct_approval(k, n):
     c = create_consent(PATIENT, DOCTOR, G[:n], ["Observation", "Medication"], "Treatment", START, EXPIRY, threshold=k)
     assert c.threshold == k and len(c.guardian_dids) == n
