@@ -69,6 +69,10 @@ header[data-testid="stHeader"]{background:transparent!important;}
 [data-testid="stExpander"] summary,[data-testid="stExpander"] summary *{background:transparent!important;color:var(--text)!important;-webkit-text-fill-color:var(--text)!important;font-weight:700;}
 [data-testid="stDownloadButton"] button{background:linear-gradient(90deg,#2ec4b6 0%,#39d98a 100%)!important;border:none!important;border-radius:10px!important;}
 [data-testid="stDownloadButton"] button,[data-testid="stDownloadButton"] button *{color:#06222e!important;-webkit-text-fill-color:#06222e!important;font-weight:800!important;}
+/* alerts (newer Streamlit draws a light box inside the alert, under the light text) */
+[data-testid="stAlertContainer"]{background:transparent!important;}
+/* tables (newer Streamlit draws dark text in the cells, on the dark page) */
+[data-testid="stTable"] th,[data-testid="stTable"] td,[data-testid="stTable"] th *,[data-testid="stTable"] td *{color:var(--text)!important;}
 </style>
 """
 

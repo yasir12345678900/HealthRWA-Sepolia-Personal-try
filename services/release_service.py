@@ -2,7 +2,7 @@
 Consent-Bound Data Release for HALAH
 History Access Link for Authorised Healthcare Version 1
 Authors: Charles, Yasir, Daniel, Kejia, Yasmin, Farookh
-Date: 2026-11-11
+Date: 2026-11-11, 2026-11-17
 '''
 # Algorithm 6.5, consent-bound data release (thesis Section 6.3.6).
 #
@@ -207,9 +207,21 @@ def _verify(proof, verify_proof):
     return False, "the proof did not verify"
 
 
+def section_codes(codes):
+    """The codes of a list that are among the nine of Section 6.3.1, in their order."""
+    return [code for code in (codes or []) if code in SECTION_CODES]
+
+
+def failed_checks(matrix, proof_failed=False, copy_failed=False):
+    """What failed in one request, by name: the predicates of the decision rule that are false, "proof" when no
+    proof was presented or it did not verify, and "copy" when the consent-bound copy could not be opened."""
+    failed = [name for name in ("VI", "VA", "VP", "VT", "VL") if matrix.get(name) is not True]
+    return failed + (["proof"] if proof_failed else []) + (["copy"] if copy_failed else [])
+
+
 def release(consent, requester_did, request_scope, request_purpose, context="AU", proof=None, verify_proof=None,
             proof_ref=None, now=None, time_label=None, verify_sig=None, verify_did=None, decide=None, vault=None,
-            audit=None, source=None, state_check=True):
+            audit=None, source=None, state_check=True, section_codes_only=False):
     """Algorithm 6.5: judge the request, verify its proof, release the requested modules and record the outcome.
 
     consent           the stored consent the request is made against
@@ -232,10 +244,14 @@ def release(consent, requester_did, request_scope, request_purpose, context="AU"
     source            callable (patient_did, scope) -> {module: records}. When it is given and the vault has no
                       copy of a requested module, the consent-bound copy is sealed from it first
     state_check       write the STATE_CHECK record of the evaluation before the DATA_ACCESS record
+    section_codes_only   the form the running application records (thesis Section 6.3.1). The field deny_code holds
+                      one of the nine deny codes or None, deny_codes and the DENY list of the matrix hold the nine
+                      only, and a failure that has no code among the nine (VI, VA, a consent without its token, the
+                      proof, the copy) is named in the field failed_checks. The reason text stays as it is
 
     Returns a dict: outcome (GRANTED or DENIED), allow, deny_code, deny_codes, reason, decision (the matrix),
     state, data ({module: records}, empty unless GRANTED), modules, proof_verified, proof_reference, decided_at,
-    time_source, audit_event and state_check_event. It holds no key."""
+    time_source, audit_event and state_check_event, and failed_checks with section_codes_only. It holds no key."""
     ledger = audit or audit_db
     vault = vault if vault is not None else data_vault.default_vault()
     now, label = _decision_time(now, time_label)
@@ -270,15 +286,18 @@ def release(consent, requester_did, request_scope, request_purpose, context="AU"
 
     # Decrypt, inside the Controller, the modules of the requested scope and no other module.
     data = {}
+    copy_failed = False
     if allow and proof_verified:
         try:
             if source is not None and not all(vault.has_copy(consent.consent_id, m) for m in scope):
                 vault.seal_from_source(consent, source, now=now)
             data = vault.open(consent.consent_id, scope)
         except key_store.KeyDestroyedError:
+            copy_failed = True
             codes.append(DENY_REVOKED)
             reason = "the keys of the consent were destroyed"
         except Exception as error:
+            copy_failed = True
             codes.append(DENY_COPY_UNAVAILABLE)
             reason = f"the consent-bound copy could not be opened: {str(error)[:200]}"
     granted = allow and proof_verified is True and not codes
@@ -286,6 +305,14 @@ def release(consent, requester_did, request_scope, request_purpose, context="AU"
         data = {}
     code = None if granted else primary_deny_code(codes)
     reference = proof_reference(proof, proof_ref)
+    failed = None
+    if section_codes_only:
+        # A deny code is one of the nine or it is not recorded as a code: what failed without one is named.
+        failed = [] if granted else failed_checks(matrix, proof_failed=allow and proof_verified is not True,
+                                                  copy_failed=copy_failed)
+        codes = section_codes(codes)
+        code = codes[0] if codes and not granted else None
+        matrix = dict(matrix, DENY=section_codes(matrix.get("DENY")))
 
     # Record the evaluation and the outcome in E, off chain.
     check_event = None
@@ -295,17 +322,22 @@ def release(consent, requester_did, request_scope, request_purpose, context="AU"
                                  purpose=consent.purpose, result=state or "UNKNOWN", metadata=dict(matrix))
     released = list(data)
     references = vault.key_store.key_ids(consent.consent_id) if granted else {}
+    metadata = {"consent_state": state, "decision_matrix": dict(matrix), "deny_code": code,
+                "deny_codes": [] if granted else codes, "reason": reason, "context": context,
+                "consent_purpose": consent.purpose, "decision_time": now.isoformat(),
+                "time_source": label, "zk_proof_verified": proof_verified,
+                "proof_mode": proof.get("mode") if isinstance(proof, dict) else None,
+                "proof_reference": reference, "modules_released": released,
+                "key_references": {m: references.get(m) for m in released}}
+    if section_codes_only:
+        metadata["failed_checks"] = failed
     event = ledger.log(actor_did=requester or str(requester_did), actor_role="Doctor", action="DATA_ACCESS",
                        patient_did=consent.patient_did, consent_id=consent.consent_id, scope=scope, purpose=purpose,
-                       result=GRANTED if granted else DENIED,
-                       metadata={"consent_state": state, "decision_matrix": dict(matrix), "deny_code": code,
-                                 "deny_codes": [] if granted else codes, "reason": reason, "context": context,
-                                 "consent_purpose": consent.purpose, "decision_time": now.isoformat(),
-                                 "time_source": label, "zk_proof_verified": proof_verified,
-                                 "proof_mode": proof.get("mode") if isinstance(proof, dict) else None,
-                                 "proof_reference": reference, "modules_released": released,
-                                 "key_references": {m: references.get(m) for m in released}})
-    return {"outcome": GRANTED if granted else DENIED, "allow": allow, "deny_code": code,
-            "deny_codes": [] if granted else codes, "reason": reason, "decision": matrix, "state": state, "data": data,
-            "modules": released, "proof_verified": proof_verified, "proof_reference": reference,
-            "decided_at": now.isoformat(), "time_source": label, "audit_event": event, "state_check_event": check_event}
+                       result=GRANTED if granted else DENIED, metadata=metadata)
+    out = {"outcome": GRANTED if granted else DENIED, "allow": allow, "deny_code": code,
+           "deny_codes": [] if granted else codes, "reason": reason, "decision": matrix, "state": state, "data": data,
+           "modules": released, "proof_verified": proof_verified, "proof_reference": reference,
+           "decided_at": now.isoformat(), "time_source": label, "audit_event": event, "state_check_event": check_event}
+    if section_codes_only:
+        out["failed_checks"] = failed
+    return out

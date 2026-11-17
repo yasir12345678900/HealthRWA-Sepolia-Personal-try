@@ -2,7 +2,7 @@
 Conditional Triggers for HALAH
 History Access Link for Authorised Healthcare Version 1
 Authors: Charles, Yasir, Daniel, Kejia, Yasmin, Farookh
-Date: 2026-11-11
+Date: 2026-11-11, 2026-11-17
 '''
 # A conditional trigger is a predicate over an attested event that must hold before a consent becomes active
 # (thesis Sections 3.2.6 and 6.2.3). The example of the thesis is an advance directive, which waits for a
@@ -54,6 +54,26 @@ TRIGGER_MALFORMED = "TRIGGER-MALFORMED"
 _CHECKS = (("Well_formed", ATTESTATION_MALFORMED), ("Event_match", EVENT_MISMATCH), ("Fresh", ATTESTATION_REPLAYED),
            ("Time_valid", ATTESTATION_TIME_INVALID), ("Sig_valid", ATTESTATION_SIGNATURE_INVALID),
            ("Attester_valid", ATTESTER_NOT_AUTHORISED))
+
+# The reasons of a refused attestation in plain words, for the clinician screen. The ledger keeps the reason itself.
+REFUSAL_WORDS = {
+    ATTESTATION_MALFORMED: "the attestation is not complete",
+    TRIGGER_NOT_FOUND: "no trigger of this consent waits for this event",
+    EVENT_MISMATCH: "no trigger of this consent waits for this event",
+    TRIGGER_ALREADY_SATISFIED: "this event was attested already",
+    ATTESTATION_REPLAYED: "this event was attested already",
+    ATTESTATION_TIME_INVALID: "the signing time of the attestation cannot be accepted",
+    ATTESTATION_SIGNATURE_INVALID: "the attestation is not signed by the attester for this consent",
+    ATTESTER_NOT_AUTHORISED: "the attester holds no valid credential with the required role",
+    CONSENT_REVOKED: "the consent has ended",
+    CONSENT_EXPIRED: "the consent has ended",
+}
+
+
+def refusal_words(reason):
+    """A refused attestation in the words a screen shows, without the reason code."""
+    return REFUSAL_WORDS.get(reason, "the attestation could not be verified")
+
 
 # The clock of the attester and the time source of the decision may differ by this much (the tolerance that the
 # verifier of Chapter 7 applies to the time of a proof).

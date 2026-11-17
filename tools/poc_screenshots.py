@@ -1,8 +1,10 @@
-"""End-to-end browser walkthrough of HALAH (Patient -> Guardian x2 -> Doctor -> Revoke -> Auditor) with full-page
+"""End-to-end browser walkthrough of HALAH (Patient -> Guardian x2 -> Clinician -> Revoke -> Auditor) with full-page
 screenshots. Start the app first (streamlit run app.py), then:  python3 tools/poc_screenshots.py
 Env: POC_URL (default http://localhost:8501), POC_OUT (default evidence/poc_2026-09-24; set a new folder for a new run),
 POC_DOCTOR (default did:hospital:001), CHROMIUM (optional browser path).
-One consent goes through the whole chain: creation, two approvals, anchoring, access, refusals, revocation, audit."""
+One consent goes through the whole chain: creation, two approvals, anchoring, access, refusals, revocation, audit.
+The screenshots keep their file names (doctor_...), so that a new run can be laid beside the run of 24 September.
+Every scenario of the thesis is run by tools/final_run.py."""
 import os, re, sys, time, json
 from playwright.sync_api import sync_playwright, expect
 OUT = os.environ.get("POC_OUT", "evidence/poc_2026-09-24")
@@ -39,13 +41,12 @@ def fill(p, label, value, enter=True):
 
 def multiselect(p, label, options):
     box = p.locator('[data-testid="stMultiSelect"]').filter(has_text=label)
-    for attempt in range(4):
-        (box.get_by_role("button", name="Open") if attempt % 2 == 0 else box.get_by_role("combobox")).click()
-        try:
-            p.get_by_role("option", name=options[0], exact=True).wait_for(timeout=4000); break
-        except Exception:
-            p.keyboard.press("Escape"); time.sleep(1)
-    p.get_by_role("option", name="Select all", exact=True).click(); time.sleep(1)
+    box.scroll_into_view_if_needed()
+    for name in options:                               # each option by its name: the list is opened when it is not shown
+        option = p.get_by_role("option", name=name, exact=True)
+        if option.count() == 0 or not option.first.is_visible():
+            box.get_by_role("combobox").click(); time.sleep(0.6)
+        option.click(); time.sleep(0.6)
     p.keyboard.press("Escape"); wait_idle(p)
 
 def pick(p, label, option):
@@ -91,11 +92,11 @@ with sync_playwright() as pw:
     role(p, "Guardian"); fill(p, "Enter Target Consent ID", cid)
     shot(p, "07_guardian_anchored_onchain_token")
 
-    role(p, "Doctor")
+    role(p, "Clinician")
     fill(p, "Enter Authorised Consent ID", cid)
-    fill(p, "Your Doctor DID (requester)", "did:hospital:002")
+    fill(p, "Your Clinician DID (requester)", "did:hospital:002")
     shot(p, "08a_doctor_other_doctor_VI_fail")
-    fill(p, "Your Doctor DID (requester)", DOCTOR)
+    fill(p, "Your Clinician DID (requester)", DOCTOR)
     shot(p, "08_doctor_decision_matrix_all_pass")
     click(p, "Request Data Access")
     shot(p, "09_doctor_empty_request_scope_blocked")
@@ -104,7 +105,7 @@ with sync_playwright() as pw:
     p.wait_for_selector("text=Access Granted", timeout=120000)
     shot(p, "10_doctor_groth16_zk_access_granted_records")
 
-    pick(p, "Requester jurisdiction", "US")
+    pick(p, "Request Context", "US")
     click(p, "Request Data Access")
     shot(p, "11_doctor_policy_context_denied_VP_fail")
     p.reload(); p.wait_for_selector('[data-testid="stSidebar"]'); wait_idle(p)   # a new session resets the selections
@@ -114,7 +115,7 @@ with sync_playwright() as pw:
     p.locator('[data-testid="stHorizontalBlock"]').filter(has_text=cid[:8]).get_by_role("button", name="Revoke").click(); wait_idle(p, 120)
     shot(p, "13_patient_revoked_onchain")
 
-    role(p, "Doctor"); fill(p, "Enter Authorised Consent ID", cid); fill(p, "Your Doctor DID (requester)", DOCTOR)
+    role(p, "Clinician"); fill(p, "Enter Authorised Consent ID", cid); fill(p, "Your Clinician DID (requester)", DOCTOR)
     shot(p, "14_doctor_after_revoke_state_revoked")
     click(p, "Request Data Access", exact=True)
     shot(p, "14b_doctor_after_revoke_denied_recorded")

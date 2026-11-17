@@ -1,4 +1,4 @@
-"""App-level checks with Streamlit's test runner (no browser): the patient form and the doctor screen."""
+"""App-level checks with Streamlit's test runner (no browser): the patient form and the clinician screen."""
 import os, shutil, tempfile
 import pytest
 
@@ -20,7 +20,7 @@ def app_test(monkeypatch):
 def _patient(AppTest, doctor, guardians):
     at = AppTest.from_file(os.path.join(ROOT, "app.py"), default_timeout=120).run()
     at.multiselect[0].set_value(["Observation"]).run()
-    [t for t in at.text_input if t.label == "Authorised Doctor DID"][0].set_value(doctor).run()
+    [t for t in at.text_input if t.label == "Authorised Clinician DID"][0].set_value(doctor).run()
     [t for t in at.text_area if t.label.startswith("Designated Guardian DIDs")][0].set_value(guardians).run()
     [b for b in at.button if b.label == "Initial Consent"][0].click().run()
     return at
@@ -28,7 +28,7 @@ def _patient(AppTest, doctor, guardians):
 
 def test_patient_form_checks_the_doctor_and_the_guardians(app_test):
     at = _patient(app_test, "did:hospital:001did:hospital:002", "did:parent:A,did:parent:B")
-    assert any("valid doctor credential" in e.value for e in at.error)
+    assert any("valid clinician credential" in e.value for e in at.error)
     at = _patient(app_test, "did:hospital:001", "did:parent:A,did:parent:Z")
     assert any("valid guardian credential" in e.value for e in at.error)
     at = _patient(app_test, "did:hospital:001", "did:parent:A,did:parent:A")
@@ -48,18 +48,39 @@ def test_doctor_screen_refuses_another_doctor_and_records_it(app_test):
         s, a = sign_consent(g, c.consent_id); c.signatures.append(g); c.signature_data[g] = {"signer": a, "signature": s}
     c.token_id = "SBT-LOCAL-test"; consent_db.save(c)
     at = app_test.from_file(os.path.join(ROOT, "app.py"), default_timeout=120).run()
-    at.sidebar.selectbox[0].set_value("Doctor").run()
+    at.sidebar.selectbox[0].set_value("Clinician").run()
     [t for t in at.text_input if t.label == "Enter Authorised Consent ID"][0].set_value(c.consent_id).run()
-    [t for t in at.text_input if t.label == "Your Doctor DID (requester)"][0].set_value("did:hospital:002").run()
+    [t for t in at.text_input if t.label == "Your Clinician DID (requester)"][0].set_value("did:hospital:002").run()
     assert any("(VI) failed" in e.value for e in at.error)
     assert not any(s.value == "Authorised Data Scope" for s in at.subheader)      # nothing about the consent is shown
     [b for b in at.button if b.label == "Request Data Access"][0].click().run()
     rows = [e for e in audit_db.get() if e["consent_id"] == c.consent_id and e["action"] == "DATA_ACCESS"]
     assert rows and rows[-1]["result"] == "DENIED" and rows[-1]["actor_did"] == "did:hospital:002"
     assert rows[-1]["metadata"]["decision_matrix"]["VI"] is False
-    [t for t in at.text_input if t.label == "Your Doctor DID (requester)"][0].set_value("did:hospital:001").run()
+    [t for t in at.text_input if t.label == "Your Clinician DID (requester)"][0].set_value("did:hospital:001").run()
     assert not any("(VI) failed" in e.value for e in at.error)
     assert any(s.value == "Authorised Data Scope" for s in at.subheader)
     [b for b in at.button if b.label.startswith("Request Data Access")][0].click().run()     # no module selected
     rows = [e for e in audit_db.get() if e["consent_id"] == c.consent_id and e["action"] == "DATA_ACCESS"]
-    assert rows[-1]["result"] == "DENIED" and rows[-1]["metadata"]["reason"] == "empty request scope"
+    assert rows[-1]["result"] == "DENIED" and rows[-1]["metadata"]["deny_code"] == "OUT-OF-SCOPE"     # the empty scope
+    assert rows[-1]["scope"] == [] and rows[-1]["metadata"]["failed_checks"] == ["VP"]
+
+
+def test_patient_form_keeps_the_start_time_that_was_typed(app_test):
+    import time
+    from datetime import datetime, timedelta
+    from database import consent_db
+    from services.state_service import lifecycle_state
+    start = (datetime.now() + timedelta(days=2)).replace(microsecond=0)
+    before = set(consent_db.CONSENTS)
+    at = app_test.from_file(os.path.join(ROOT, "app.py"), default_timeout=120).run()
+    at.multiselect[0].set_value(["Observation"]).run()
+    [t for t in at.text_input if t.label.startswith("Start Time")][0].set_value(start.strftime("%Y-%m-%d %H:%M:%S")).run()
+    time.sleep(1.1)                                                   # the click comes in a later second than the typing
+    [b for b in at.button if b.label == "Initial Consent"][0].click().run()
+    assert not at.error and any("created and logged" in s.value for s in at.success)
+    (cid,) = set(consent_db.CONSENTS) - before
+    c = consent_db.get(cid)
+    assert c.start_date == start.isoformat()                          # the start that was typed, not the time of the click
+    c.signatures, c.token_id = list(c.guardian_dids), "SBT-LOCAL-x"
+    assert lifecycle_state(c) == "NOT_STARTED" and lifecycle_state(c, start + timedelta(minutes=1)) == "ACTIVE"

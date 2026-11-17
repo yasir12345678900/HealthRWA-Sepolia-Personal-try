@@ -2,7 +2,7 @@
 Revocation by Crypto-Shredding for HALAH
 History Access Link for Authorised Healthcare Version 1
 Authors: Charles, Yasir, Daniel, Kejia, Yasmin, Farookh
-Date: 2026-11-11
+Date: 2026-11-11, 2026-11-17
 
 Algorithm 6.4 (thesis Sections 6.2.4, 6.3.5 and 6.4.2). Revocation in HALAH is crypto-shredding in four steps:
 - the on-chain revoke
@@ -70,6 +70,31 @@ REFUSED_FORMER_GUARDIAN = "FORMER-GUARDIAN"                  # a guardian of the
 REFUSED_GUARDIAN_AFTER_MAJORITY = "GUARDIAN-AFTER-MAJORITY"  # after majority the patient alone may revoke
 REFUSED_SIGNATURE_INVALID = "SIGNATURE-INVALID"              # the request is not signed by the key of the revoker
 REFUSED_SUPERSEDED = "CONSENT-SUPERSEDED"                    # the consent was replaced, its successor is the one to revoke
+
+# The reasons of a refused revocation in plain words, for the screens. The ledger keeps the reason itself.
+REFUSAL_WORDS = {
+    REFUSED_NOT_A_PARTY: "this identifier is neither the patient nor a guardian of this consent",
+    REFUSED_FORMER_GUARDIAN: "a guardian of the replaced consent cannot revoke the re-issued consent",
+    REFUSED_GUARDIAN_AFTER_MAJORITY: "the patient has reached the age of majority, and only the patient may revoke now",
+    REFUSED_SIGNATURE_INVALID: "the request is not signed by the key of the revoker",
+    REFUSED_SUPERSEDED: "this consent was re-issued: revoke the re-issued consent",
+}
+
+# The steps that a revocation can leave pending, in plain words.
+PENDING_WORDS = {"onchain_revoke": "on-chain revoke", "crypto_shredding": "deletion of the copy and its keys",
+                 "link_deletion": "link deletion"}
+
+
+def refusal_words(reason):
+    """A refused revocation in the words a screen shows, without the reason code."""
+    return REFUSAL_WORDS.get(reason, "the request could not be verified")
+
+
+def pending_words(pending):
+    """The pending steps of a revocation in the words a screen shows."""
+    return ", ".join(PENDING_WORDS.get(step, "notification of " + step.split(":", 1)[1] if step.startswith("notification:")
+                                       else step) for step in (pending or []))
+
 
 # Passed as onchain_revoke for a consent that has no token on a chain (the demonstration mode without a chain).
 NO_CHAIN = "NO_CHAIN"
@@ -478,3 +503,14 @@ def revocation_evidence(consent, vault=None, audit=None, retained_copy=None, con
             "link_deleted": not any(_held(c, LINK_FIELDS) for c in [consent] + replaced),
             "retained_blobs_tested": len(retained_copy or {}), "retained_blobs_opened": opened,
             "notification": notice["complete"], "recipients": notice["recipients"], "missing_notifications": notice["missing"]}
+
+
+def pending_steps(consent_id, audit=None):
+    """The steps that the last revocation record of a consent in E leaves pending (REVOKE_CONSENT with the result
+    SUCCESS, or REVOCATION_COMPLETION). An empty list means that nothing is pending or that E holds no such record."""
+    for event in reversed((audit or audit_db).get()):
+        if event.get("consent_id") == consent_id and (
+                event.get("action") == "REVOCATION_COMPLETION"
+                or (event.get("action") == "REVOKE_CONSENT" and event.get("result") == "SUCCESS")):
+            return list((event.get("metadata") or {}).get("pending") or [])
+    return []

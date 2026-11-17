@@ -242,13 +242,23 @@ def prove_decision(statement, consent_tree, revocation_tree, check=True):
     name = circuit_name(consent_tree.depth)
     if not decision_available(consent_tree.depth):
         raise ProofUnavailable("the decision circuit %s is not built: run zk/build_decision.sh" % name)
+    # a prover that fails, cannot be started, does not answer in time or prints no proof gives no proof
     try:
         out = json.loads(_node("prove_decision.js", json.dumps(inputs), name))
-    except RuntimeError as error:
-        raise DecisionProofError(failed, str(error).splitlines()[-1]) from None
+        proof, signals = out["proof"], out["publicSignals"]
+        if len(signals) != len(PUBLIC_SIGNALS) or not all(proof[k] for k in ("pi_a", "pi_b", "pi_c")):
+            raise ValueError("the output is not a proof of this circuit")
+        tag = signals[4]
+    except subprocess.TimeoutExpired as error:
+        # the text of the exception holds the command line, and with it the witness: it is not passed on
+        raise DecisionProofError(failed, "the prover did not answer within %s seconds" % error.timeout) from None
+    except (RuntimeError, OSError) as error:
+        raise DecisionProofError(failed, (str(error).splitlines() or ["node failed"])[-1]) from None
+    except (ValueError, KeyError, IndexError, TypeError) as error:
+        raise DecisionProofError(failed, "the prover printed no proof: %s" % error) from None
     return {"mode": "groth16", "scheme": "%s, tree depth %d" % (SCHEME, consent_tree.depth), "circuit": name,
-            "proof": out["proof"], "publicSignals": out["publicSignals"],
-            "public": dict(zip(PUBLIC_SIGNALS, out["publicSignals"])), "tag": out["publicSignals"][4],
+            "proof": proof, "publicSignals": signals,
+            "public": dict(zip(PUBLIC_SIGNALS, signals)), "tag": tag,
             "audit": dict(statement["audit"])}
 
 

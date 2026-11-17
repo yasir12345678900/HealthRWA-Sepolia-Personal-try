@@ -6,7 +6,7 @@ import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from services.identity_service import issue_credential, ISSUER_DID, TRUSTED_ISSUERS, CREDENTIALS_PATH
 
-GUARDIANS = ["did:parent:A", "did:parent:B", "did:parent:C", "did:parent:D"]
+GUARDIANS = ["did:parent:A", "did:parent:B", "did:parent:C", "did:parent:D", "did:parent:E"]
 DOCTORS = [("did:hospital:001", "Hospital 001"), ("did:hospital:002", "Hospital 002"), ("did:hospital:003", "Hospital 003")]
 
 creds = [issue_credential(g, "guardian") for g in GUARDIANS] + [issue_credential(d, "doctor", org) for d, org in DOCTORS]

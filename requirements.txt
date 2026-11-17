@@ -8,3 +8,5 @@ python-dateutil
 plotly
 python-dotenv
 pytest
+eth-tester[py-evm]
+playwright

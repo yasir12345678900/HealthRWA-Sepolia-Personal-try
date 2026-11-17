@@ -1,10 +1,17 @@
 """Local timings after the credential check was added (no chain access, nothing is written to the ledger).
 Run:  python3 tools/measure_local_timing.py
-Writes docs/final_check/metrics_local_2026-10-11.json. The decision rule is timed exactly as in tools/collect_metrics.py
+      N_RUNS=1000 TIMING_OUT=<file> python3 tools/measure_local_timing.py      (at least 1,000 trials of each operation)
+Writes TIMING_OUT, or docs/final_check/metrics_local_<today>.json, so the file of 11 October is not written over.
+The decision rule is timed exactly as in tools/collect_metrics.py
 (evaluate_allow on consent f050c29a, predicates only with a DID-syntax checker, 1,000 runs), so the two files can be
 compared. Consent f050c29a is REVOKED, as it was on 1 October; the state is written to the output.
 It also times the credential check (one credential), EIP-712 signature recovery (one signature), and the decision
-rule with the credential and signature checks switched on."""
+rule with the credential and signature checks switched on.
+Added for the thesis design: the identity verification of Algorithm 5.1 (one participant), the recovery of an approval
+signed over the consent commitment, and the request path of the clinician screen (identity, triggers, decision matrix,
+lifecycle check, the local proof and the release from a sealed copy) on a consent made for the measurement, with a
+ledger, a vault and a store of its own in memory. The chain is not used: the request path is timed in the mode without
+a chain, so the proof is the local one and no transaction is sent."""
 import json, os, sys, time, statistics, datetime
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 os.chdir(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -12,8 +19,13 @@ from database import consent_db
 from services.access_service import evaluate_allow
 from services.identity_service import verify_signature, verify_vc, is_valid_did
 from services.state_service import lifecycle_state
+from services import commitment_service, data_vault, identity_service, key_store, request_service, time_source
+from services.consent_service import create_consent
+# No chain access: the settings of a chain are taken out of this process, so the request path runs without one.
+for _name in ("CONTRACT_V4_ADDRESS", "CONTRACT_ADDRESS", "VERIFIER_ADDRESS", "PRIVATE_KEY"):
+    os.environ.pop(_name, None)
 N = int(os.environ.get("N_RUNS", "20"))
-OUT = "docs/final_check/metrics_local_2026-10-11.json"
+OUT = os.environ.get("TIMING_OUT") or f"docs/final_check/metrics_local_{datetime.date.today().isoformat()}.json"
 cons = consent_db.get("f050c29a-3d92-4131-8605-63bcb1ff8d92") or next(iter(consent_db.CONSENTS.values()))
 syntax_only = lambda d, role=None, now=None: is_valid_did(d)
 
@@ -33,6 +45,41 @@ sd = getattr(cons, "signature_data", {}) or {}
 if sd:
     g, s = next(iter(sd.items()))
     timing["eip712_recover_s"] = timed(lambda: verify_signature(g, cons.consent_id, s.get("signature")), N)
+
+# A consent made for the measurement, as the form and the guardian screen leave it: committed, approved by both
+# guardians over the commitment, with a token of the local ledger. Nothing of it is stored.
+_now = datetime.datetime.now()
+probe = create_consent("did:patient:timing", cons.requester_did, ["did:parent:A", "did:parent:B"], ["Observation"], "Treatment",
+                       (_now - datetime.timedelta(days=1)).isoformat(), (_now + datetime.timedelta(days=30)).isoformat(),
+                       threshold=2, context="AU")
+commitment_service.commit_consent(probe)
+for _g in probe.guardian_dids:
+    _sig, _addr = identity_service.sign_consent_v2(_g, probe.consent_id, probe.commitment)
+    probe.signatures.append(_g)
+    probe.signature_data[_g] = {"scheme": "EIP-712", "version": 2, "signer": _addr, "signature": _sig}
+probe.token_id = "SBT-LOCAL-" + probe.consent_id[:8]
+
+
+class _Ledger:                                     # the rows of the measurement are kept nowhere
+    def log(self, **row):
+        return row
+
+    def get(self):
+        return []
+
+
+_vault = data_vault.DataVault(key_store.KeyStore(None), None)
+_vault.seal(probe, {"Observation": [{"code": "8302-2", "value": 170}]})
+_g0 = probe.guardian_dids[0]
+_request = lambda: request_service.submit_request(probe, probe.requester_did, ["Observation"], "Treatment", "AU",
+                                                  time=time_source.read_time(None), vault=_vault, audit=_Ledger(),
+                                                  save=lambda c: None)
+assert _request()["outcome"] == "GRANTED"
+timing["identity_verification_algorithm_5_1_s"] = timed(lambda: identity_service.verify_identity(cons.requester_did, role="doctor"), N)
+timing["eip712_recover_over_commitment_s"] = timed(lambda: identity_service.verify_signature_v2(
+    _g0, probe.consent_id, probe.commitment, probe.signature_data[_g0]["signature"]), N)
+timing["request_path_without_chain_s"] = timed(_request, N)
+
 
 def summ(v):
     return {"n": len(v), "mean_ms": statistics.mean(v) * 1000, "median_ms": statistics.median(v) * 1000,

@@ -25,14 +25,24 @@ def render_chain_badge():
     s = _cached_status()
     if s.get("mode") == "demo":
         st.sidebar.caption("Chain: Demo mode (local ledger)")
+        st.sidebar.caption("Time source: server clock (demo mode, no chain is configured)")
         return
     if "error" in s:
         st.sidebar.warning(f"Sepolia: not reachable - {s['error'][:90]}")
         return
     net = "Sepolia" if s.get("is_sepolia") else f"chain {s.get('chain_id')}"
     st.sidebar.success(f"{net} - block {s['block']:,}\n\nSigner balance: {s['balance_eth']:.4f} ETH")
+    v4 = s.get("version") == 4          # the thesis design: ConsentSBTv4 and the decision verifier
+    if v4:
+        st.sidebar.caption(f"Consent contract: ConsentSBTv4 {s['contract']}")
+        if s.get("verifier"):
+            st.sidebar.caption(f"Decision verifier: {s['verifier']}")
+        else:
+            st.sidebar.caption("Decision verifier: not configured. A request is refused, naming the proof.")
+    # with a chain configured the time of every decision is the timestamp of the latest block
+    st.sidebar.caption("Time source: block timestamp")
     if not s.get("contract_has_code"):
-        st.sidebar.error("Contract address has no code - check CONTRACT_ADDRESS")
+        st.sidebar.error(f"Contract address has no code - check {'CONTRACT_V4_ADDRESS' if v4 else 'CONTRACT_ADDRESS'}")
     elif s.get("signer_is_owner") is False:
         st.sidebar.error("Signer is not the contract owner - mint will revert")
     if s.get("is_sepolia"):

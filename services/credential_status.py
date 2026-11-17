@@ -18,10 +18,10 @@ Date: 2026-11-11
 # data, the same proof type the role credentials carry. A verifier accepts a list only when its signature recovers to
 # the registered address of the issuer of the credential.
 # POSITION: a credential issued with a status entry (issue_credential(..., status_index=i)) carries its position in
-# credentialStatus, under the issuer's signature. The seven demonstration credentials were issued before this check
-# and carry no entry. Their position is derived from the credential identifier, which the issuer did sign, so they
-# need no re-issue. Two identifiers can derive the same position. That revokes a second credential with the first
-# and never hides a revocation, and it does not occur among the demonstration credentials.
+# credentialStatus, under the issuer's signature. The demonstration credentials carry no entry (the first seven were
+# issued before this check). Their position is derived from the credential identifier, which the issuer did sign, so
+# they need no re-issue. Two identifiers can derive the same position. That revokes a second credential with the
+# first and never hides a revocation, and it does not occur among the demonstration credentials.
 # REVOCATION IS NOT REVERSIBLE: a published list never clears a bit and never lowers its sequence number. The verifier
 # also remembers the newest sequence it has seen while the process runs and refuses an older list. A restart forgets
 # that sequence, so a published file that is rolled back while the server is stopped is not detected.

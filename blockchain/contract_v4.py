@@ -30,6 +30,10 @@ Deployment (a real transaction, only when run on purpose). The Poseidon contract
 only, so the three contracts are deployed from here and not from Remix:
 
     python3 -m blockchain.contract_v4 [address of the Groth16 verifier of the decision circuit]
+
+The four contracts in one command, with the checks before and after and the addresses written to .env:
+
+    python3 -m blockchain.deploy_v4
 '''
 import json
 import logging

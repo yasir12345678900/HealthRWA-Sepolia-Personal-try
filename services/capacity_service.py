@@ -2,7 +2,7 @@
 Capacity Transitions for HALAH
 History Access Link for Authorised Healthcare Version 1
 Authors: Charles, Yasir, Daniel, Kejia, Yasmin, Farookh
-Date: 2026-11-11
+Date: 2026-11-11, 2026-11-17
 '''
 # A capacity transition is a documented life event that changes who may consent for the patient (thesis
 # Sections 3.2.6 and 6.2.3). The thesis delivers one: the patient reaches the age of majority, after which the
@@ -58,6 +58,21 @@ PATIENT_IDENTIFIER_INVALID = "PATIENT-IDENTIFIER-INVALID"
 PATIENT_SIGNATURE_INVALID = "PATIENT-SIGNATURE-INVALID"
 SUCCESSOR_MISMATCH = "SUCCESSOR-MISMATCH"        # the prepared consent is not the re-issue of this consent
 REVOKE_FAILED = "REVOKE-FAILED"
+
+
+def outcome_words(outcome):
+    """An outcome of execute_transition that is not COMPLETED, in the words a screen shows, without the reason code."""
+    status, reason = outcome.get("status"), outcome.get("reason")
+    if status == MINT_FAILED:
+        return f"The mint of the re-issued consent failed and nothing was changed. Try again. ({outcome.get('error')})"
+    if status == REVOKE_PENDING:
+        return ("The consent is re-issued and the old consent gives no access any more. The revocation of its token on "
+                "chain failed: click again to submit it.")
+    why = {NO_TRANSITION_DUE: "no transition is due.", ALREADY_TRANSITIONED: "it was re-issued before.",
+           CONSENT_REVOKED: "it has ended.", CONSENT_EXPIRED: "it has ended.",
+           TOKEN_PENDING: "its own token is not confirmed yet. Try again after the anchoring."}
+    return "The consent was not re-issued: " + why.get(reason, "the patient's signature or record could not be verified.")
+
 
 # Fields in which a prepared successor may differ from the one prepare_successor builds: its own identifier, the
 # approval that execute_transition records, the state, and the commitment and key material that the issuance

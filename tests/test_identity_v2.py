@@ -338,7 +338,7 @@ def test_status_list_encoding_follows_the_bitstring_recommendation(status_store)
 
 def test_nothing_is_revoked_until_the_issuer_publishes_a_list(status_store):
     creds = list(ids.load_credentials().values())
-    assert len(creds) == 7 and len({status.status_entry(c) for c in creds}) == 7        # no two demonstration credentials share a position
+    assert len(creds) == 8 and len({status.status_entry(c) for c in creds}) == 8        # no two demonstration credentials share a position
     assert all(status.is_revoked(c) is False for c in creds) and not status_store.exists()
     first = status.current_status_list(ids.ISSUER_DID)
     assert first["sequence"] == 0 and first["issuer"] == ids.ISSUER_DID and status.verify_status_list(first) == EMPTY

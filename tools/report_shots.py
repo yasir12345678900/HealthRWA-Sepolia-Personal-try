@@ -70,12 +70,12 @@ with sync_playwright() as pw:
         print("shot auditor_table_fullscreen", flush=True)
     step("detailed table fullscreen", table_fullscreen)
 
-    # ---- Doctor: look up the revoked consent (no access request is submitted)
+    # ---- Clinician: look up the revoked consent (no access request is submitted)
     def doctor():
-        role(p, "Doctor")
+        role(p, "Clinician")
         f = p.get_by_label("Enter Authorised Consent ID", exact=True)
         f.fill(CID); f.press("Enter"); wait_idle(p)
-        d = p.get_by_label("Your Doctor DID (requester)", exact=True)
+        d = p.get_by_label("Your Clinician DID (requester)", exact=True)
         d.fill(os.environ.get("POC_DOCTOR", "did:hospital:001")); d.press("Enter"); wait_idle(p)
         full_shot(p, "doctor_revoked_lookup")
     step("doctor lookup", doctor)

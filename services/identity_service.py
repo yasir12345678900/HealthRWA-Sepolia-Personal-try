@@ -20,6 +20,9 @@ verify_signature_v2(did, consent_id, commitment, signature, address=None) -> boo
                                           the guardian identifier, the consent commitment c and the chain identifier
 approval_typed_data(did, consent_id, commitment) -> the JSON a wallet signs (eth_signTypedData_v4)
 approval_verifier(consent)             -> the same check for one consent, as the verify_sig argument of evaluate_allow
+approval_check(consent)                -> the approval check that fits a stored record: over the commitment for an
+                                          approval recorded with version 2, over the consent identifier for an older one
+refusal_words(result)                  -> a refused verification of Algorithm 5.1 in plain words, for a screen
 DEMO KEY MODEL: the guardian key is derived from its DID so the prototype can sign without wallets.
 In production the guardian's own wallet signs the SAME typed data; only verify_signature() is used.
 WALLET-HELD KEYS: verify_signature_v2 takes the guardian's wallet address (consent.guardian_addresses) and accepts only
@@ -382,6 +385,25 @@ def approval_verifier(consent, commitment=None, chain_id=None, allow_demo_key=Tr
     return verify
 
 
+def approval_check(consent, chain_id=None, allow_demo_key=True):
+    """The approval check that fits one stored consent, as the verify_sig argument of the decision function.
+    A record with a commitment carries approvals signed over that commitment (Algorithm 5.2), and every one of them
+    is verified over it. A record without a commitment was made before the commitment existed, and its approvals
+    are verified over the consent identifier, as before. An approval recorded with version 2 whose commitment is
+    gone belongs to a revoked consent (the revocation deletes the commitment): it cannot be verified again and is
+    not, because such a consent gives no access whatever its approvals say (VL). The same entry in a record that is
+    not revoked is refused."""
+    if getattr(consent, "commitment", None):
+        return approval_verifier(consent, chain_id=chain_id, allow_demo_key=allow_demo_key)
+
+    def verify(did, consent_id=None, signature=None):
+        entry = (getattr(consent, "signature_data", None) or {}).get(did) if isinstance(did, str) else None
+        if isinstance(entry, dict) and entry.get("version") == 2:
+            return bool(getattr(consent, "revoked", False))
+        return verify_signature(did, consent_id, signature)
+    return verify
+
+
 # ---------------------------------------------------------------------------
 # Identity and authority verification (Algorithm 5.1)
 # ---------------------------------------------------------------------------
@@ -507,10 +529,34 @@ def verify_identity(did, role=None, now=None, credential=None, resolver=None, re
     return result
 
 
-def record_identity_evidence(evidence, consent_id=None, patient_did=None, actor_role=None):
+# The reason codes in plain words for the screens: reason -> (the check that failed, words).
+REASON_WORDS = {
+    IdentityReason.DID_RESOLUTION_FAILED: ("DID_resolved", "the identifier could not be resolved"),
+    IdentityReason.DID_DOCUMENT_INVALID: ("DID_document_valid", "the document of the identifier is not valid"),
+    IdentityReason.CREDENTIAL_NOT_FOUND: ("VC_found", "no credential is held for this identifier"),
+    IdentityReason.CREDENTIAL_ISSUER_UNTRUSTED: ("Issuer_valid", "the issuer of the credential is not trusted"),
+    IdentityReason.CREDENTIAL_SIGNATURE_INVALID: ("Sig_VC", "the signature of the credential is not valid"),
+    IdentityReason.CREDENTIAL_SUBJECT_MISMATCH: ("Subject_match", "the credential was issued to another identifier"),
+    IdentityReason.CREDENTIAL_TIME_INVALID: ("Time_valid", "the credential is outside its validity time"),
+    IdentityReason.CREDENTIAL_STATUS_UNAVAILABLE: ("Status_valid", "the status of the credential could not be read"),
+    IdentityReason.CREDENTIAL_REVOKED: ("Status_valid", "the credential was revoked by its issuer"),
+    IdentityReason.AUTHORITY_MISMATCH: ("Role_match", "the credential does not carry the role this step requires"),
+    IdentityReason.EVIDENCE_NOT_RECORDED: (None, "the verification could not be recorded"),
+}
+
+
+def refusal_words(result):
+    """A refused verification in the words a screen shows: the check that failed and why, without the reason code."""
+    check, words = REASON_WORDS.get(getattr(result, "reason", None), (None, "the identity could not be verified"))
+    return f"{check}: {words}" if check else words
+
+
+def record_identity_evidence(evidence, consent_id=None, patient_did=None, actor_role=None, audit=None):
     """Write the evidence of one verification to the audit ledger (Algorithm 5.1, line 21). Pass it, or a
-    functools.partial of it that names the consent, as the `record` argument of verify_identity."""
-    from database import audit_db                            # imported here: the checks themselves need no database
+    functools.partial of it that names the consent, as the `record` argument of verify_identity. `audit` is
+    another ledger to write to (default: the audit ledger of the Controller)."""
+    if audit is None:
+        from database import audit_db as audit               # imported here: the checks themselves need no database
     role = actor_role or str(evidence.get("required_role") or "participant").capitalize()
-    return audit_db.log(actor_did=evidence.get("did"), actor_role=role, action="IDENTITY_VERIFICATION",
-                        patient_did=patient_did, consent_id=consent_id, result=evidence.get("result"), metadata=evidence)
+    return audit.log(actor_did=evidence.get("did"), actor_role=role, action="IDENTITY_VERIFICATION",
+                     patient_did=patient_did, consent_id=consent_id, result=evidence.get("result"), metadata=evidence)

@@ -54,6 +54,11 @@ def _rows(cid, action):
     return [e for e in audit_db.get() if e["consent_id"] == cid and e["action"] == action]
 
 
+def _state_lines(at):
+    """The line that names the consent with its state. The page holds it once."""
+    return [i.value for i in at.info if i.value.startswith("Found consent for Patient")]
+
+
 def _stored(cid):
     from database import db
     return [r for r in db.all_rows("consents") if r["consent_id"] == cid][0]                 # the row in SQLite, not the object in memory
@@ -78,7 +83,10 @@ def test_two_approvals_reach_the_threshold_and_start_anchoring_once(app_test, an
     last = _rows(c.consent_id, "SIGN_CONSENT")[-1]
     assert last["result"] == "SUCCESS" and last["actor_did"] == "did:parent:A"
     assert last["metadata"]["threshold"] == 2 and last["metadata"]["signature_count"] == 1
+    assert last["metadata"]["time_source"] == "system-clock-fallback"     # demo mode: the server clock, and the row says so
     assert _stored(c.consent_id)["signatures"] == ["did:parent:A"]
+    # the page of an approval below the threshold names the state that the approval left
+    assert _state_lines(at) == ["Found consent for Patient: `did:patient:x` (state: PENDING_SIGNATURE)"]
     assert not _rows(c.consent_id, "MINT_SBT") and not _stored(c.consent_id)["token_id"]
     assert anchor_calls == []                                         # below the threshold nothing is anchored
     at = _approve(at, "did:parent:B")
@@ -88,6 +96,9 @@ def test_two_approvals_reach_the_threshold_and_start_anchoring_once(app_test, an
     stored = _stored(c.consent_id)
     assert stored["signatures"] == ["did:parent:A", "did:parent:B"] and stored["token_id"] == f"SBT-LOCAL-{c.consent_id[:8]}"
     assert anchor_calls == [c.consent_id]
+    # the page of the approval that reaches the threshold shows the token and the state of the record at that moment
+    assert any("[SBT MINTED - LOCAL LEDGER]" in m.value for m in at.markdown)
+    assert _state_lines(at) == ["Found consent for Patient: `did:patient:x` (state: ACTIVE)"]
 
 
 def test_repeated_approval_by_the_same_guardian_adds_nothing(app_test, anchor_calls):
